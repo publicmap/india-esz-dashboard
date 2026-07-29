@@ -7,8 +7,9 @@
   "scripts": {
     "fetch": "node scripts/fetch-source.js",
     "parse": "node scripts/parse-table.js",
-    "enrich": "node scripts/enrich-wikidata.js",
-    "update": "npm run fetch && npm run parse && npm run enrich"
+    "enrich:wikidata": "node scripts/enrich-wikidata.js",
+    "enrich:archive": "node scripts/enrich-archive-org.js",
+    "update": "npm run fetch && npm run parse && npm run enrich:wikidata && npm run enrich:archive"
   },
   "license": "MIT",
   "dependencies": {

@@ -1,8 +1,8 @@
-// Enriches the parsed MoEF notification records with Wikidata protected-area
-// data via a full outer join on protected area name (State is used only as a
-// soft disambiguation signal, not a hard requirement: Wikidata's "located in
-// the administrative territorial entity" (P131) is frequently a district
-// rather than the state itself, so it can't be relied on to always agree).
+// Fetches the full Wikidata protected-area list for India as its own
+// standalone table (data/wikidata-protected-areas.{json,csv}), and separately
+// links each MoEF notification record to its Wikidata item by adding a
+// wikidataId + matchConfidence column to data/moef-esz-notifications.{json,csv}
+// (rather than merging the two into one combined table).
 
 import { readFile, writeFile } from 'node:fs/promises';
 import { stringify } from 'csv-stringify/sync';
@@ -46,6 +46,13 @@ const PROTECTED_AREA_TYPE_UNION = PROTECTED_AREA_TYPES
   .map((qid) => `{ ?item wdt:P31 wd:${qid} }`)
   .join(' UNION\n    ');
 
+// Wikidata's "located in the administrative territorial entity" (P131) is
+// often a district, taluka, or even a village-level block rather than the
+// state -- so it can't be used directly as "state". Instead walk up the P131
+// chain (however many hops it takes) until hitting an ancestor that is
+// itself an instance of "state of India" or "union territory of India".
+const STATE_TYPES = ['Q12443800', 'Q467745'];
+
 const SPARQL_QUERY = `
 SELECT ?item ?itemLabel
   (SAMPLE(?image) AS ?image)
@@ -58,6 +65,7 @@ SELECT ?item ?itemLabel
   (GROUP_CONCAT(DISTINCT ?website; separator="; ") AS ?websites)
   (GROUP_CONCAT(DISTINCT ?partOfLabel; separator="; ") AS ?partOf)
   (GROUP_CONCAT(DISTINCT ?adminEntityLabel; separator="; ") AS ?adminEntity)
+  (GROUP_CONCAT(DISTINCT ?resolvedStateLabel; separator="; ") AS ?resolvedState)
   (GROUP_CONCAT(DISTINCT ?significantPlaceLabel; separator="; ") AS ?significantPlace)
   (GROUP_CONCAT(DISTINCT ?heritageLabel; separator="; ") AS ?heritageDesignation)
   (SAMPLE(?enwiki) AS ?enwikiUrl)
@@ -76,6 +84,13 @@ WHERE {
   OPTIONAL { ?item wdt:P814 ?iucn . ?iucn rdfs:label ?iucnLabel . FILTER(LANG(?iucnLabel)="en") }
   OPTIONAL { ?item wdt:P361 ?partOf_ . ?partOf_ rdfs:label ?partOfLabel . FILTER(LANG(?partOfLabel)="en") }
   OPTIONAL { ?item wdt:P131 ?adminEntity_ . ?adminEntity_ rdfs:label ?adminEntityLabel . FILTER(LANG(?adminEntityLabel)="en") }
+  OPTIONAL {
+    ?item wdt:P131+ ?resolvedState_ .
+    ?resolvedState_ wdt:P31 ?stateType .
+    VALUES ?stateType { wd:${STATE_TYPES.join(' wd:')} }
+    ?resolvedState_ rdfs:label ?resolvedStateLabel .
+    FILTER(LANG(?resolvedStateLabel)="en")
+  }
   OPTIONAL { ?item wdt:P7153 ?significantPlace_ . ?significantPlace_ rdfs:label ?significantPlaceLabel . FILTER(LANG(?significantPlaceLabel)="en") }
   OPTIONAL { ?item wdt:P1435 ?heritage_ . ?heritage_ rdfs:label ?heritageLabel . FILTER(LANG(?heritageLabel)="en") }
   OPTIONAL { ?enwiki schema:about ?item ; schema:isPartOf <https://en.wikipedia.org/> }
@@ -137,13 +152,17 @@ async function fetchWikidataProtectedAreas() {
 
   return json.results.bindings.map((b) => {
     const coord = parseWktPoint(b.coord?.value);
+    const wikidataLabel = b.itemLabel?.value ?? null;
     return {
       wikidataId: b.item.value.replace('http://www.wikidata.org/entity/', ''),
-      wikidataLabel: b.itemLabel?.value ?? null,
-      normalizedName: normalizeName(b.itemLabel?.value),
+      wikidataLabel,
+      normalizedName: normalizeName(wikidataLabel),
+      protectedAreaType: classifyProtectedAreaType(wikidataLabel),
+      partOf: splitConcat(b.partOf?.value),
       image: b.image?.value ?? null,
       iucnCategory: b.iucnCategory?.value ?? null,
       locatedInAdminTerritorialEntity: splitConcat(b.adminEntity?.value),
+      state: splitConcat(b.resolvedState?.value),
       coordinateLatitude: coord?.lat ?? null,
       coordinateLongitude: coord?.lon ?? null,
       significantPlace: splitConcat(b.significantPlace?.value),
@@ -153,31 +172,9 @@ async function fetchWikidataProtectedAreas() {
       pageBanner: b.banner?.value ?? null,
       commonsCategory: b.commonsCategory?.value ?? null,
       osmRelationIds: splitConcat(b.osmRelations?.value),
-      partOf: splitConcat(b.partOf?.value),
       enwikiUrl: b.enwikiUrl?.value ?? null,
     };
   });
-}
-
-function emptyWikidataFields() {
-  return {
-    wikidataId: null,
-    wikidataLabel: null,
-    partOf: [],
-    image: null,
-    iucnCategory: null,
-    locatedInAdminTerritorialEntity: [],
-    coordinateLatitude: null,
-    coordinateLongitude: null,
-    significantPlace: [],
-    heritageDesignation: [],
-    area: null,
-    officialWebsite: [],
-    pageBanner: null,
-    commonsCategory: null,
-    osmRelationIds: [],
-    enwikiUrl: null,
-  };
 }
 
 function buildMatcher(wikidataItems) {
@@ -199,7 +196,7 @@ function buildMatcher(wikidataItems) {
     }
     if (exact.length > 1) {
       const disambiguated = exact.find((c) =>
-        c.locatedInAdminTerritorialEntity.some((a) => statesAgree(normalizeState(a), normMoefState)));
+        c.state.some((a) => statesAgree(normalizeState(a), normMoefState)));
       return { item: disambiguated ?? exact[0], matchConfidence: 'exact' };
     }
 
@@ -212,7 +209,7 @@ function buildMatcher(wikidataItems) {
       const overlap = Math.min(item.normalizedName.length, normMoefName.length)
         / Math.max(item.normalizedName.length, normMoefName.length);
       if (overlap < 0.6) continue;
-      const stateBonus = item.locatedInAdminTerritorialEntity.some((a) => statesAgree(normalizeState(a), normMoefState)) ? 0.25 : 0;
+      const stateBonus = item.state.some((a) => statesAgree(normalizeState(a), normMoefState)) ? 0.25 : 0;
       const score = overlap + stateBonus;
       if (score > bestScore) {
         bestScore = score;
@@ -223,96 +220,61 @@ function buildMatcher(wikidataItems) {
   };
 }
 
-function toWikidataFields(item) {
-  if (!item) return emptyWikidataFields();
-  return {
-    wikidataId: item.wikidataId,
-    wikidataLabel: item.wikidataLabel,
-    partOf: item.partOf,
-    image: item.image,
-    iucnCategory: item.iucnCategory,
-    locatedInAdminTerritorialEntity: item.locatedInAdminTerritorialEntity,
-    coordinateLatitude: item.coordinateLatitude,
-    coordinateLongitude: item.coordinateLongitude,
-    significantPlace: item.significantPlace,
-    heritageDesignation: item.heritageDesignation,
-    area: item.area,
-    officialWebsite: item.officialWebsite,
-    pageBanner: item.pageBanner,
-    commonsCategory: item.commonsCategory,
-    osmRelationIds: item.osmRelationIds,
-    enwikiUrl: item.enwikiUrl,
-  };
+function writeWikidataTable(wikidataItems) {
+  const rows = wikidataItems.map(({ normalizedName, ...item }) => item);
+  const jsonPromise = writeFile('data/wikidata-protected-areas.json', JSON.stringify(rows, null, 2), 'utf8');
+
+  const csvRows = rows.map((r) => ({
+    ...r,
+    partOf: r.partOf.join('; '),
+    locatedInAdminTerritorialEntity: r.locatedInAdminTerritorialEntity.join('; '),
+    state: r.state.join('; '),
+    significantPlace: r.significantPlace.join('; '),
+    heritageDesignation: r.heritageDesignation.join('; '),
+    officialWebsite: r.officialWebsite.join('; '),
+    osmRelationIds: r.osmRelationIds.join('; '),
+  }));
+  const csvPromise = writeFile('data/wikidata-protected-areas.csv', stringify(csvRows, { header: true }), 'utf8');
+
+  return Promise.all([jsonPromise, csvPromise]);
 }
 
-function emptyMoefFields() {
-  return {
-    moefSNo: null,
-    state: null,
-    protectedAreaName: null,
-    protectedAreaType: null,
-    notificationStatus: null,
-    notificationDate: null,
-    notificationSummary: null,
-    notificationPdfLink: null,
-    maps: [],
-    notificationUploadDate: null,
-    orderNumber: null,
-  };
+async function writeMoefTable(moefRecords, match) {
+  const linked = moefRecords.map((record) => {
+    const { item, matchConfidence } = match(record.protectedAreaName, record.state);
+    // MoEF notification text is the primary source for type; fall back to the
+    // matched Wikidata label (e.g. "... National Park") when it's still blank.
+    const protectedAreaType = record.protectedAreaType ?? item?.protectedAreaType ?? null;
+    return {
+      ...record,
+      protectedAreaType,
+      wikidataId: item?.wikidataId ?? null,
+      matchConfidence,
+    };
+  });
+
+  await writeFile('data/moef-esz-notifications.json', JSON.stringify(linked, null, 2), 'utf8');
+  const csvRows = linked.map((r) => ({ ...r, maps: JSON.stringify(r.maps) }));
+  await writeFile('data/moef-esz-notifications.csv', stringify(csvRows, { header: true }), 'utf8');
+  return linked;
 }
 
 async function main() {
   const moefRecords = JSON.parse(await readFile('data/moef-esz-notifications.json', 'utf8'));
   const wikidataItems = await fetchWikidataProtectedAreas();
   console.log(`Fetched ${wikidataItems.length} Indian protected areas from Wikidata.`);
+  await writeWikidataTable(wikidataItems);
 
   const match = buildMatcher(wikidataItems);
-  const matchedWikidataIds = new Set();
+  const linked = await writeMoefTable(moefRecords, match);
 
-  const joined = moefRecords.map((record) => {
-    const { item, matchConfidence } = match(record.protectedAreaName, record.state);
-    if (item) matchedWikidataIds.add(item.wikidataId);
-    // MoEF notification text is the primary source for type; fall back to the
-    // matched Wikidata label (e.g. "... National Park") when it's still blank.
-    const protectedAreaType = record.protectedAreaType
-      ?? (item ? classifyProtectedAreaType(item.wikidataLabel) : null);
-    return { ...record, ...toWikidataFields(item), protectedAreaType, matchConfidence };
-  });
-
-  const unmatchedWikidata = wikidataItems.filter((item) => !matchedWikidataIds.has(item.wikidataId));
-  for (const item of unmatchedWikidata) {
-    joined.push({
-      ...emptyMoefFields(),
-      protectedAreaName: item.wikidataLabel,
-      protectedAreaType: classifyProtectedAreaType(item.wikidataLabel),
-      state: item.locatedInAdminTerritorialEntity[0] ?? null,
-      ...toWikidataFields(item),
-      matchConfidence: 'none',
-    });
-  }
-
-  await writeFile('data/protected-areas-enriched.json', JSON.stringify(joined, null, 2), 'utf8');
-
-  const csvRows = joined.map((r) => ({
-    ...r,
-    maps: JSON.stringify(r.maps),
-    partOf: r.partOf.join('; '),
-    locatedInAdminTerritorialEntity: r.locatedInAdminTerritorialEntity.join('; '),
-    significantPlace: r.significantPlace.join('; '),
-    heritageDesignation: r.heritageDesignation.join('; '),
-    officialWebsite: r.officialWebsite.join('; '),
-    osmRelationIds: r.osmRelationIds.join('; '),
-  }));
-  const csv = stringify(csvRows, { header: true });
-  await writeFile('data/protected-areas-enriched.csv', csv, 'utf8');
-
-  const exact = joined.filter((r) => r.matchConfidence === 'exact').length;
-  const fuzzy = joined.filter((r) => r.matchConfidence === 'fuzzy').length;
-  const none = joined.filter((r) => r.matchConfidence === 'none').length;
-  console.log(`Joined ${joined.length} rows (${moefRecords.length} MoEF notifications + ${unmatchedWikidata.length} unmatched Wikidata protected areas).`);
+  const exact = linked.filter((r) => r.matchConfidence === 'exact').length;
+  const fuzzy = linked.filter((r) => r.matchConfidence === 'fuzzy').length;
+  const none = linked.filter((r) => r.matchConfidence === 'none').length;
+  console.log(`Linked ${linked.length} MoEF notification records to ${wikidataItems.length} Wikidata protected areas.`);
   console.log(`  matchConfidence exact: ${exact}`);
   console.log(`  matchConfidence fuzzy: ${fuzzy}`);
-  console.log(`  matchConfidence none (incl. ${unmatchedWikidata.length} Wikidata-only rows): ${none}`);
+  console.log(`  matchConfidence none: ${none}`);
 }
 
 main().catch((err) => {

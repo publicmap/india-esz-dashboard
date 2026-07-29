@@ -30,7 +30,10 @@ jobs:
         run: npm run parse
 
       - name: Enrich with Wikidata
-        run: npm run enrich
+        run: npm run enrich:wikidata
+
+      - name: Link Gazette of India archive.org entries
+        run: npm run enrich:archive
 
       - name: Commit and push changes
         run: |
