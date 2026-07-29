@@ -2,7 +2,7 @@
 
 - Model: Anthropic Sonnet 5 via Claude CLI
 - Project [README](README.md)
-- Token Estimate: 100k
+- Token Estimate: 150k
 
 ## Project Components
 
@@ -31,6 +31,8 @@
   - image
   - IUCN protected areas category
   - located in the administrative territorial entity
+  - state name
+    - by recursively using the property `located in the administrative territorial entity` and getting the instance of `state`
   - coordinate location
   - significant place
   - heritage designation

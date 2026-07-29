@@ -39,4 +39,6 @@ proposed eco-sensitive area.
 (v) An inventory of activities to be regulated and/ or prohibited in the
 proposed eco-sensitive zone.
 (vi) List of the protected areas for declaring eco-sensitive zone.
+- 2012: Due to lack of progress on ESZ identification, [CEC reccomends a safety zone of 100m-2000m metres](https://hash-cookies.s3.amazonaws.com/CEC%20buffer%20zones%20report%2020.9.2012.pdf) in the interim based on protected area size
 ```
+- 2022: [Supreme Court mandates a minimum 1km ESZ](https://api.sci.gov.in/supremecourt/1995/2997/2997_1995_5_1501_36130_Order_03-Jun-2022.pdf) around all protected areas

@@ -100,21 +100,68 @@ GROUP BY ?item ?itemLabel
 `;
 
 const GENERIC_PA_WORDS = [
-  'wildlife sanctuary', 'wild life sanctuary', 'national park', 'tiger reserve',
+  'wildlife sanctuary', 'wild life sanctuary', 'wildlife', 'national park', 'tiger reserve',
   'bird sanctuary', 'biosphere reserve', 'conservation reserve',
-  'community reserve', 'sanctuary', 'reserve forest', 'reserve', 'forest',
+  'community reserve', 'sanctuary', 'santuary', 'reserve forest', 'reserve', 'forest',
   'wls', 'np', 'esz', 'eco sensitive zone', 'eco-sensitive zone',
+];
+
+// MoEF notification text very often tacks the state/UT name onto the end of
+// the protected area name (e.g. "Galathea Bay National Park, Andaman &
+// Nicobar Islands") -- strip it the same way as the generic type words so it
+// doesn't dilute the name-similarity score against Wikidata's bare PA name.
+const INDIAN_STATE_AND_UT_NAMES = [
+  'andhra pradesh', 'arunachal pradesh', 'assam', 'bihar', 'chhattisgarh', 'chattisgarh',
+  'goa', 'gujarat', 'haryana', 'himachal pradesh', 'jharkhand', 'karnataka', 'kerala',
+  'madhya pradesh', 'maharashtra', 'manipur', 'meghalaya', 'mizoram', 'nagaland', 'odisha',
+  'punjab', 'rajasthan', 'sikkim', 'tamil nadu', 'telangana', 'tripura', 'uttar pradesh',
+  'uttarakhand', 'west bengal', 'andaman and nicobar islands', 'andaman and nicobar',
+  'jammu and kashmir', 'ladakh', 'delhi', 'national capital territory of delhi',
+  'chandigarh', 'dadra and nagar haveli and daman and diu', 'dadra and nagar haveli',
+  'dadra nagar haveli', 'daman and diu', 'puducherry', 'lakshadweep',
 ];
 
 function normalizeName(name) {
   if (!name) return '';
   let n = name.toLowerCase();
   n = n.replace(/&/g, ' and ');
-  n = n.replace(/[.,()'"]/g, ' ');
-  for (const word of GENERIC_PA_WORDS) {
+  n = n.replace(/[-.,()'"]/g, ' ');
+  // Collapse whitespace before phrase-stripping: "&" -> " and " combined with
+  // spacing already around "&" produces double spaces, which breaks the
+  // literal single-space phrases below (e.g. "andaman and nicobar islands").
+  n = n.replace(/\s+/g, ' ').trim();
+  for (const word of [...GENERIC_PA_WORDS, ...INDIAN_STATE_AND_UT_NAMES]) {
     n = n.replace(new RegExp(`\\b${word}\\b`, 'g'), ' ');
   }
   return n.replace(/\s+/g, ' ').trim();
+}
+
+function compactName(normalizedName) {
+  return normalizedName.replace(/\s+/g, '');
+}
+
+// Plain Levenshtein edit distance, used to tolerate the source data's
+// frequent single-letter typos/transpositions (Kambalakonda/Kambalkonda,
+// Venkateswara/Venkateshwara, Narasimha/Narsimha, Nagarjunsagar/Nagarjunasagar...).
+function levenshtein(a, b) {
+  if (a === b) return 0;
+  if (!a.length) return b.length;
+  if (!b.length) return a.length;
+  let prevRow = Array.from({ length: b.length + 1 }, (_, j) => j);
+  for (let i = 1; i <= a.length; i += 1) {
+    const currRow = [i];
+    for (let j = 1; j <= b.length; j += 1) {
+      const cost = a[i - 1] === b[j - 1] ? 0 : 1;
+      currRow[j] = Math.min(prevRow[j] + 1, currRow[j - 1] + 1, prevRow[j - 1] + cost);
+    }
+    prevRow = currRow;
+  }
+  return prevRow[b.length];
+}
+
+function similarity(a, b) {
+  if (!a || !b) return 0;
+  return 1 - levenshtein(a, b) / Math.max(a.length, b.length);
 }
 
 function normalizeState(state) {
@@ -157,6 +204,7 @@ async function fetchWikidataProtectedAreas() {
       wikidataId: b.item.value.replace('http://www.wikidata.org/entity/', ''),
       wikidataLabel,
       normalizedName: normalizeName(wikidataLabel),
+      compactName: compactName(normalizeName(wikidataLabel)),
       protectedAreaType: classifyProtectedAreaType(wikidataLabel),
       partOf: splitConcat(b.partOf?.value),
       image: b.image?.value ?? null,
@@ -177,40 +225,88 @@ async function fetchWikidataProtectedAreas() {
   });
 }
 
+function pickByState(candidates, normMoefState) {
+  return candidates.find((c) => c.state.some((a) => statesAgree(normalizeState(a), normMoefState))) ?? candidates[0];
+}
+
 function buildMatcher(wikidataItems) {
   const byNormName = new Map();
+  const byCompactName = new Map();
   for (const item of wikidataItems) {
-    if (!item.normalizedName) continue;
-    if (!byNormName.has(item.normalizedName)) byNormName.set(item.normalizedName, []);
-    byNormName.get(item.normalizedName).push(item);
+    if (item.normalizedName) {
+      if (!byNormName.has(item.normalizedName)) byNormName.set(item.normalizedName, []);
+      byNormName.get(item.normalizedName).push(item);
+    }
+    if (item.compactName) {
+      if (!byCompactName.has(item.compactName)) byCompactName.set(item.compactName, []);
+      byCompactName.get(item.compactName).push(item);
+    }
   }
 
   return function match(moefName, moefState) {
     const normMoefName = normalizeName(moefName);
+    const compactMoefName = compactName(normMoefName);
     const normMoefState = normalizeState(moefState);
     if (!normMoefName) return { item: null, matchConfidence: 'none' };
 
     const exact = byNormName.get(normMoefName) ?? [];
-    if (exact.length === 1) {
-      return { item: exact[0], matchConfidence: 'exact' };
+    if (exact.length > 0) {
+      return { item: pickByState(exact, normMoefState), matchConfidence: 'exact' };
     }
-    if (exact.length > 1) {
-      const disambiguated = exact.find((c) =>
-        c.state.some((a) => statesAgree(normalizeState(a), normMoefState)));
-      return { item: disambiguated ?? exact[0], matchConfidence: 'exact' };
+    // Same name once whitespace/hyphens are ignored (e.g. "Eaglenest" vs
+    // "Eagle Nest") -- still an exact match, just a spacing variant.
+    const compactExact = byCompactName.get(compactMoefName) ?? [];
+    if (compactExact.length > 0) {
+      return { item: pickByState(compactExact, normMoefState), matchConfidence: 'exact' };
     }
 
+    // Fuzzy tier. Two structurally different kinds of near-match need two
+    // different bars:
+    //  - Containment (one name is a clean, whole substring of the other --
+    //    e.g. "Pulicat" in "Pulicat Lake Bird Sanctuary", "Sri Penusila" in
+    //    "Sri Penusila Narasimha ...") is strong structural evidence even at
+    //    a fairly low length ratio, since the shorter name appears verbatim.
+    //  - A same-length-ish edit-distance match with NO containment (typos:
+    //    Kambalakonda/Kambalkonda, Venkateswara/Venkateshwara) needs a much
+    //    higher similarity bar, because short unrelated words can coincidentally
+    //    score just as "similar" this way -- e.g. "Tale"/"Kane" and
+    //    "Ramnagar"/"Ramsagar" both score >=0.5 despite being different places.
+    // A confirmed state disagreement is a hard veto either way (MoEF's own
+    // state column is independent, reliable ground truth); when Wikidata has
+    // no resolved state for the item at all, both bars are raised instead.
+    // Both kinds of candidate are pooled into one ranking by score (not
+    // "containment always wins"): a containment match can still be a worse
+    // candidate than an edit-distance one when it only explains a weak
+    // fraction of the name (e.g. "Cauvery" contained in "Talacauvery" scores
+    // lower than "Talacauvery" ~ "Talakaveri" by edit distance, correctly).
     let best = null;
     let bestScore = 0;
     for (const item of wikidataItems) {
       if (!item.normalizedName) continue;
-      const contains = item.normalizedName.includes(normMoefName) || normMoefName.includes(item.normalizedName);
-      if (!contains) continue;
-      const overlap = Math.min(item.normalizedName.length, normMoefName.length)
-        / Math.max(item.normalizedName.length, normMoefName.length);
-      if (overlap < 0.6) continue;
-      const stateBonus = item.state.some((a) => statesAgree(normalizeState(a), normMoefState)) ? 0.25 : 0;
-      const score = overlap + stateBonus;
+      const stateKnown = item.state.length > 0;
+      const stateAgrees = stateKnown && item.state.some((a) => statesAgree(normalizeState(a), normMoefState));
+      if (stateKnown && !stateAgrees) continue;
+
+      const shorterLen = Math.min(normMoefName.length, item.normalizedName.length);
+      const isContainment = item.normalizedName.includes(normMoefName) || normMoefName.includes(item.normalizedName);
+      let nameScore;
+      if (isContainment) {
+        // No length floor: a short name (e.g. "Nagi" in "Nagi Dam Bird
+        // Sanctuary") appearing verbatim as a whole prefix/suffix of the
+        // other is meaningful regardless of length.
+        nameScore = shorterLen / Math.max(normMoefName.length, item.normalizedName.length);
+        if (nameScore < (stateAgrees ? 0.5 : 0.7)) continue;
+      } else {
+        // Edit-distance-only matches on short strings are exactly the
+        // coincidence risk ("Tale"/"Kane" scores 0.5, a hypothetical
+        // single-letter-typo 4-letter pair would score 0.75) -- require
+        // enough length that a passing score reflects a real typo, not luck.
+        if (shorterLen < 6) continue;
+        nameScore = similarity(normMoefName, item.normalizedName);
+        if (nameScore < (stateAgrees ? 0.7 : 0.85)) continue;
+      }
+
+      const score = nameScore + (stateAgrees ? 0.25 : 0);
       if (score > bestScore) {
         bestScore = score;
         best = item;
@@ -221,7 +317,7 @@ function buildMatcher(wikidataItems) {
 }
 
 function writeWikidataTable(wikidataItems) {
-  const rows = wikidataItems.map(({ normalizedName, ...item }) => item);
+  const rows = wikidataItems.map(({ normalizedName, compactName: _compactName, ...item }) => item);
   const jsonPromise = writeFile('data/wikidata-protected-areas.json', JSON.stringify(rows, null, 2), 'utf8');
 
   const csvRows = rows.map((r) => ({
