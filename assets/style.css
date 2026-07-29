@@ -218,6 +218,12 @@ tbody td {
   vertical-align: top;
 }
 tbody tr:hover { background: rgba(42, 120, 214, 0.06); }
+tbody tr.has-location { cursor: pointer; }
+tbody tr.selected-row,
+tbody tr.selected-row:hover {
+  background: rgba(42, 120, 214, 0.14);
+  box-shadow: inset 3px 0 0 var(--accent);
+}
 
 .status-pill {
   display: inline-flex;

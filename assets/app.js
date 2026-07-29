@@ -13,6 +13,7 @@ let wikidataPAs = [];
 let paGeojson = null;
 let filteredRecords = [];
 let sortState = { key: 'notificationDate', dir: 'desc' };
+let featuresByWikidataId = new Map();
 
 async function loadData() {
   const [moefRes, wdRes, geoRes] = await Promise.all([
@@ -23,6 +24,7 @@ async function loadData() {
   moefRecords = await moefRes.json();
   wikidataPAs = await wdRes.json();
   paGeojson = await geoRes.json();
+  featuresByWikidataId = new Map(paGeojson.features.map((f) => [f.properties.wikidataId, f]));
 }
 
 function computeKPIs() {
@@ -77,6 +79,60 @@ function initAtlasLink() {
   document.getElementById('open-atlas-link').href = url;
 }
 
+// MapLibre's GeoJSON source encodes array/object properties as JSON
+// strings when tiling internally, but returns plain arrays for small
+// untiled sources -- handle either shape defensively.
+function asArray(value) {
+  if (Array.isArray(value)) return value;
+  if (typeof value === 'string') {
+    try { return JSON.parse(value); } catch { return []; }
+  }
+  return [];
+}
+
+function buildPopupHtml(p) {
+  const statusLabel = p.eszStatus === 'final' ? 'Final ESZ notified' : p.eszStatus === 'draft' ? 'Draft ESZ notified' : 'Not yet notified';
+  const links = [];
+  links.push(`<a href="${p.wikidataUrl}" target="_blank" rel="noopener">Wikidata</a>`);
+  if (p.enwikiUrl) links.push(`<a href="${p.enwikiUrl}" target="_blank" rel="noopener">Wikipedia</a>`);
+  if (p.notificationPdfLink) links.push(`<a href="${p.notificationPdfLink}" target="_blank" rel="noopener">Notification PDF</a>`);
+  if (p.notificationArchiveLink) links.push(`<a href="${p.notificationArchiveLink}" target="_blank" rel="noopener">Gazette archive</a>`);
+  const osmIds = asArray(p.osmRelationIds);
+  if (osmIds.length) {
+    const atlasUrl = `${AMCHE_ATLAS_BASE}?layers=osm:relation/${osmIds[0]}`;
+    links.push(`<a href="${atlasUrl}" target="_blank" rel="noopener">View boundary in amche-atlas</a>`);
+  }
+
+  return `
+    <p class="popup-title">${p.name}</p>
+    <p class="popup-row">${p.protectedAreaType || 'Protected area'} &middot; ${p.state || 'Unknown state'}</p>
+    <p class="popup-row"><i class="dot dot-${p.eszStatus}" style="display:inline-block;vertical-align:middle;margin-right:4px;"></i>${statusLabel}${p.notificationDate ? ` (${p.notificationDate})` : ''}</p>
+    <div class="popup-links">${links.join(' &middot; ')}</div>
+  `;
+}
+
+let activePopup = null;
+function showPopup(coordinates, html) {
+  if (activePopup) activePopup.remove();
+  activePopup = new maplibregl.Popup({ maxWidth: '280px' }).setLngLat(coordinates).setHTML(html).addTo(map);
+}
+
+// Pans/flies the map to a PA feature. Pass `zoom` to fly in (table row
+// click); omit it to just re-center at the current zoom (table row hover).
+function focusFeature(feature, { zoom } = {}) {
+  const center = feature.geometry.coordinates;
+  if (zoom != null) map.flyTo({ center, zoom, essential: true });
+  else map.panTo(center, { duration: 300 });
+}
+
+function highlightTableRow(wikidataId) {
+  document.querySelectorAll('#notifications-table tbody tr.selected-row').forEach((tr) => tr.classList.remove('selected-row'));
+  if (!wikidataId) return;
+  const rows = document.querySelectorAll(`#notifications-table tbody tr[data-wikidata-id="${wikidataId}"]`);
+  rows.forEach((row) => row.classList.add('selected-row'));
+  if (rows.length) rows[0].scrollIntoView({ behavior: 'smooth', block: 'center' });
+}
+
 let map;
 function initMap() {
   map = new maplibregl.Map({
@@ -109,33 +165,8 @@ function initMap() {
 
     map.on('click', 'protected-areas-circles', (e) => {
       const f = e.features[0];
-      const p = f.properties;
-      const statusLabel = p.eszStatus === 'final' ? 'Final ESZ notified' : p.eszStatus === 'draft' ? 'Draft ESZ notified' : 'Not yet notified';
-      const links = [];
-      links.push(`<a href="${p.wikidataUrl}" target="_blank" rel="noopener">Wikidata</a>`);
-      if (p.enwikiUrl) links.push(`<a href="${p.enwikiUrl}" target="_blank" rel="noopener">Wikipedia</a>`);
-      if (p.notificationPdfLink) links.push(`<a href="${p.notificationPdfLink}" target="_blank" rel="noopener">Notification PDF</a>`);
-      if (p.notificationArchiveLink) links.push(`<a href="${p.notificationArchiveLink}" target="_blank" rel="noopener">Gazette archive</a>`);
-      // MapLibre's GeoJSON source encodes array/object properties as JSON
-      // strings when tiling internally, but returns plain arrays for small
-      // untiled sources -- handle either shape defensively.
-      let osmIds = p.osmRelationIds || [];
-      if (typeof osmIds === 'string') {
-        try { osmIds = JSON.parse(osmIds); } catch { osmIds = []; }
-      }
-      if (!Array.isArray(osmIds)) osmIds = [];
-      if (osmIds.length) {
-        const atlasUrl = `${AMCHE_ATLAS_BASE}?layers=osm:relation/${osmIds[0]}`;
-        links.push(`<a href="${atlasUrl}" target="_blank" rel="noopener">View boundary in amche-atlas</a>`);
-      }
-
-      const html = `
-        <p class="popup-title">${p.name}</p>
-        <p class="popup-row">${p.protectedAreaType || 'Protected area'} &middot; ${p.state || 'Unknown state'}</p>
-        <p class="popup-row"><i class="dot dot-${p.eszStatus}" style="display:inline-block;vertical-align:middle;margin-right:4px;"></i>${statusLabel}${p.notificationDate ? ` (${p.notificationDate})` : ''}</p>
-        <div class="popup-links">${links.join(' &middot; ')}</div>
-      `;
-      new maplibregl.Popup({ maxWidth: '280px' }).setLngLat(f.geometry.coordinates).setHTML(html).addTo(map);
+      showPopup(f.geometry.coordinates, buildPopupHtml(f.properties));
+      highlightTableRow(f.properties.wikidataId);
     });
     map.on('mouseenter', 'protected-areas-circles', () => { map.getCanvas().style.cursor = 'pointer'; });
     map.on('mouseleave', 'protected-areas-circles', () => { map.getCanvas().style.cursor = ''; });
@@ -191,6 +222,11 @@ function renderTable() {
 
   for (const r of filteredRecords) {
     const tr = document.createElement('tr');
+    const feature = r.wikidataId ? featuresByWikidataId.get(r.wikidataId) : null;
+    if (feature) {
+      tr.dataset.wikidataId = r.wikidataId;
+      tr.classList.add('has-location');
+    }
     const dotClass = r.notificationStatus === 'Final' ? 'dot-final' : 'dot-draft';
     const links = [];
     if (r.notificationPdfLink) links.push(`<a href="${r.notificationPdfLink}" target="_blank" rel="noopener">PDF</a>`);
@@ -221,6 +257,27 @@ function initSorting() {
       sortRecords();
       renderTable();
     });
+  });
+}
+
+function initTableMapSync() {
+  const tbody = document.querySelector('#notifications-table tbody');
+
+  tbody.addEventListener('mouseover', (e) => {
+    const tr = e.target.closest('tr[data-wikidata-id]');
+    if (!tr) return;
+    const feature = featuresByWikidataId.get(tr.dataset.wikidataId);
+    if (feature) focusFeature(feature);
+  });
+
+  tbody.addEventListener('click', (e) => {
+    const tr = e.target.closest('tr[data-wikidata-id]');
+    if (!tr) return;
+    const feature = featuresByWikidataId.get(tr.dataset.wikidataId);
+    if (!feature) return;
+    focusFeature(feature, { zoom: 10 });
+    showPopup(feature.geometry.coordinates, buildPopupHtml(feature.properties));
+    highlightTableRow(feature.properties.wikidataId);
   });
 }
 
@@ -267,6 +324,7 @@ async function main() {
   populateFilterOptions();
   initSorting();
   initFilterEvents();
+  initTableMapSync();
   filteredRecords = [...moefRecords];
   sortRecords();
   renderTable();
