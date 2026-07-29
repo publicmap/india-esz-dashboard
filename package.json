@@ -1,0 +1,18 @@
+{
+  "name": "moef-esz-notifications",
+  "version": "1.0.0",
+  "description": "Weekly mirror and structured dataset of MoEFCC Eco-Sensitive Zone notifications, enriched with Wikidata protected area data",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "fetch": "node scripts/fetch-source.js",
+    "parse": "node scripts/parse-table.js",
+    "enrich": "node scripts/enrich-wikidata.js",
+    "update": "npm run fetch && npm run parse && npm run enrich"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "cheerio": "^1.0.0",
+    "csv-stringify": "^6.5.0"
+  }
+}
