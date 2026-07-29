@@ -7,13 +7,15 @@
   "scripts": {
     "fetch": "node scripts/fetch-source.js",
     "parse": "node scripts/parse-table.js",
+    "clean": "node scripts/clean-moef-data.js",
     "enrich:wikidata": "node scripts/enrich-wikidata.js",
     "enrich:archive": "node scripts/enrich-archive-org.js",
-    "update": "npm run fetch && npm run parse && npm run enrich:wikidata && npm run enrich:archive"
+    "update": "npm run fetch && npm run parse && npm run clean && npm run enrich:wikidata && npm run enrich:archive"
   },
   "license": "MIT",
   "dependencies": {
     "cheerio": "^1.0.0",
+    "csv-parse": "^7.0.1",
     "csv-stringify": "^6.5.0"
   }
 }

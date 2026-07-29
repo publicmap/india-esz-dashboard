@@ -29,6 +29,9 @@ jobs:
       - name: Parse table
         run: npm run parse
 
+      - name: Clean MoEF data (split multi-park rows, canonicalize names)
+        run: npm run clean
+
       - name: Enrich with Wikidata
         run: npm run enrich:wikidata
 

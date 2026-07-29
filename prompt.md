@@ -2,7 +2,7 @@
 
 - Model: Anthropic Sonnet 5 via Claude CLI
 - Project [README](README.md)
-- Token Estimate: 150k
+- Token Estimate: 250k
 
 ## Project Components
 
@@ -47,3 +47,55 @@
  - For the map dashboard, build a custom atlas JSON for [amche-atlas](https://amche.in/dev/) via [URL API](https://github.com/publicmap/amche-atlas/blob/dev/docs/API.md) and dynamic osm layers
  - Add KPI for total PAs in the country vs number of PAs with draft ESZ notifications vs number of PAs with final ESZ notifications vs number of PAs with final ESZ notifications and show progress bar
  - Use [OpenStreetMap relation IDs](https://www.openstreetmap.org/relation/281033) to show PA boundaries
+
+### MoEF Data cleaing
+
+**Multiple Parks**
+Several notifications affect more than a single park. These rows should be expanded into multiple rows each with a single park. Some example protectedAreaName:
+- Marine National Park and Marine Sanctuary
+- Kamlang Wildlife Sanctuary and Namdapha Tiger Reserve
+- Nameri National Park and Sonai-Rupai Wildlife
+- Valmiki Wildlife Sanctuary Valmiki National Park and Valmiki Tiger Reserve
+- Bhagwan Mahaveer Wildlife Sanctuary and National Park
+- Marine National Park and Marine Sanctuary
+- Betla National Park, Palamau Wildlife Sanctuary and Mahuadanr Wolf Sanctuary Sanctuary
+- Eravikulam National Park, Chinnar Wildlife Sanctuary, Anamudi Shola National Park, Pampadum Shola National Park and Kurinjimala Sanctuary
+
+**Inconsistent names**
+The Moef table has inconsistent park names and type across the draft and final status which need to be cleaned up. The following pairs are the same parks and will have to be canonicalized by choosing the best one:
+
+Pulicat Bird Sanctuary	Bird Sanctuary	Draft
+Pulicat Wildlife Sanctuary	Wildlife Sanctuary	Final
+Great Indian Bustard Rollapadu Wildlife Sanctuary	Wildlife Sanctuary	Draft
+Great Indian Bustard Rollapadu Wildlife Sanctuary	Wildlife Sanctuary	Final
+Kambalkonda Wildlife Sanctuary	Wildlife Sanctuary	Draft
+Kambalakonda Wildlife Sanctuary	Wildlife Sanctuary	Final
+Coringa Wildlife Santuary	Wildlife Sanctuary	Draft
+Coringa Wildlife Sanctuary	Wildlife Sanctuary	Final
+Cuthbert Bay Wildlife	Wildlife Sanctuary	Draft
+Cuthbert Bay Sanctuary	Wildlife Sanctuary	Final
+Mount harriet National Park	National Park	Draft
+Mount Harriet National Park	National Park	Final
+Mount Harriet National Park	National Park	Final
+Eagle Nest Wildlife Sanctuary	Wildlife Sanctuary	Draft
+Eagle Nest Wildlife	Wildlife Sanctuary	Final
+Bhimbandh Wildlife Sanctuary	Wildlife Sanctuary	Draft
+Bhimbandh Wildlife Sanctuary,	Wildlife Sanctuary	Final
+Khijadia Wildlife Sanctuary	Wildlife Sanctuary	Draft
+Khijadiya Wildlife Sanctuary	Wildlife Sanctuary	Final
+Eravikulam National Park, Chinnar Wildlife Sanctuary, Anamudi Shola National Park, Pampadum Shola National Park and Kurinjimala Sanctuary
+Eravikulam National Park + 4 PAs
+
+For cases where it is hard to code a logic create a corrections.tsv that has the input values and the canonical values for manual overrides. Fields should include PA name, state, correct PA name, correct state, correct PA type
+
+### Fuzzy wikidata joins
+
+Joining wikidataId to the MoEF table will require fuzzy joins due to inconsistent names
+- Tokenize names
+- Score matches and pick the best match which is not already matched to another park
+
+### Archive links
+
+ Maintain a CSV cache of archive links so previoulsy matched ones do not need to be searched again. 
+ - SO number will be the primary key
+ - Include the wikidataId

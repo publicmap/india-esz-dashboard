@@ -7,6 +7,10 @@
 import { readFile, writeFile } from 'node:fs/promises';
 import { stringify } from 'csv-stringify/sync';
 import { classifyProtectedAreaType } from './lib/protected-area-type.js';
+import { INDIAN_STATE_AND_UT_NAMES } from './lib/indian-states.js';
+import { loadCache, saveCache, setWikidataId } from './lib/enrichment-cache.js';
+
+const CACHE_PATH = 'data/enrichment-cache.csv';
 
 const SPARQL_ENDPOINT = 'https://query.wikidata.org/sparql';
 const USER_AGENT = 'moef-esz-notifications-bot/1.0 (https://github.com/publicmap/moef-esz-notifications)';
@@ -104,21 +108,6 @@ const GENERIC_PA_WORDS = [
   'bird sanctuary', 'biosphere reserve', 'conservation reserve',
   'community reserve', 'sanctuary', 'santuary', 'reserve forest', 'reserve', 'forest',
   'wls', 'np', 'esz', 'eco sensitive zone', 'eco-sensitive zone',
-];
-
-// MoEF notification text very often tacks the state/UT name onto the end of
-// the protected area name (e.g. "Galathea Bay National Park, Andaman &
-// Nicobar Islands") -- strip it the same way as the generic type words so it
-// doesn't dilute the name-similarity score against Wikidata's bare PA name.
-const INDIAN_STATE_AND_UT_NAMES = [
-  'andhra pradesh', 'arunachal pradesh', 'assam', 'bihar', 'chhattisgarh', 'chattisgarh',
-  'goa', 'gujarat', 'haryana', 'himachal pradesh', 'jharkhand', 'karnataka', 'kerala',
-  'madhya pradesh', 'maharashtra', 'manipur', 'meghalaya', 'mizoram', 'nagaland', 'odisha',
-  'punjab', 'rajasthan', 'sikkim', 'tamil nadu', 'telangana', 'tripura', 'uttar pradesh',
-  'uttarakhand', 'west bengal', 'andaman and nicobar islands', 'andaman and nicobar',
-  'jammu and kashmir', 'ladakh', 'delhi', 'national capital territory of delhi',
-  'chandigarh', 'dadra and nagar haveli and daman and diu', 'dadra and nagar haveli',
-  'dadra nagar haveli', 'daman and diu', 'puducherry', 'lakshadweep',
 ];
 
 function normalizeName(name) {
@@ -335,16 +324,18 @@ function writeWikidataTable(wikidataItems) {
   return Promise.all([jsonPromise, csvPromise]);
 }
 
-async function writeMoefTable(moefRecords, match) {
+async function writeMoefTable(moefRecords, match, cache) {
   const linked = moefRecords.map((record) => {
     const { item, matchConfidence } = match(record.protectedAreaName, record.state);
     // MoEF notification text is the primary source for type; fall back to the
     // matched Wikidata label (e.g. "... National Park") when it's still blank.
     const protectedAreaType = record.protectedAreaType ?? item?.protectedAreaType ?? null;
+    const wikidataId = item?.wikidataId ?? null;
+    setWikidataId(cache, record.orderNumber, record.notificationDate, record.protectedAreaName, wikidataId);
     return {
       ...record,
       protectedAreaType,
-      wikidataId: item?.wikidataId ?? null,
+      wikidataId,
       matchConfidence,
     };
   });
@@ -357,12 +348,14 @@ async function writeMoefTable(moefRecords, match) {
 
 async function main() {
   const moefRecords = JSON.parse(await readFile('data/moef-esz-notifications.json', 'utf8'));
+  const cache = await loadCache(CACHE_PATH);
   const wikidataItems = await fetchWikidataProtectedAreas();
   console.log(`Fetched ${wikidataItems.length} Indian protected areas from Wikidata.`);
   await writeWikidataTable(wikidataItems);
 
   const match = buildMatcher(wikidataItems);
-  const linked = await writeMoefTable(moefRecords, match);
+  const linked = await writeMoefTable(moefRecords, match, cache);
+  await saveCache(CACHE_PATH, cache);
 
   const exact = linked.filter((r) => r.matchConfidence === 'exact').length;
   const fuzzy = linked.filter((r) => r.matchConfidence === 'fuzzy').length;
