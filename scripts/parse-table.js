@@ -11,21 +11,10 @@
 import * as cheerio from 'cheerio';
 import { readFile, writeFile } from 'node:fs/promises';
 import { stringify } from 'csv-stringify/sync';
+import { classifyProtectedAreaType } from './lib/protected-area-type.js';
 
 const INPUT_PATH = 'data/raw/moef-esz-notifications-table.html';
 const BASE_URL = 'https://moef.gov.in';
-
-const PA_TYPE_KEYWORDS = [
-  'Tiger Reserve',
-  'Biosphere Reserve',
-  'Conservation Reserve',
-  'Community Reserve',
-  'National Park',
-  'Bird Sanctuary',
-  'Wildlife Sanctuary',
-  'Wild Life Sanctuary',
-  'Sanctuary',
-];
 
 const CLICK_TITLE_PREFIX = /^click here to view or download\s*-\s*/i;
 // The site's own anchor titles/text occasionally contain the whole notification
@@ -72,13 +61,6 @@ function extractNotificationDate(text) {
 function extractMoefSNo(text) {
   const m = text.match(LEADING_INDEX_RE);
   return m ? Number(m[1]) : null;
-}
-
-function extractProtectedAreaType(text) {
-  for (const keyword of PA_TYPE_KEYWORDS) {
-    if (text.toLowerCase().includes(keyword.toLowerCase())) return keyword;
-  }
-  return null;
 }
 
 function stripBoilerplate(name) {
@@ -195,15 +177,19 @@ function resolveRowCells($, tr, currentState) {
 }
 
 function parseNotificationCell($, cell, { state, status, uploadDateText }) {
-  const rawText = $(cell).html() ?? '';
   const text = cleanText($(cell).text());
   if (isEffectivelyEmpty(text)) return null;
+
+  // The protected area name is sometimes only fully spelled out (with its
+  // type, e.g. "... Wildlife Sanctuary") in the anchor's title attribute, not
+  // in the cell's own visible text -- classify against both.
+  const protectedAreaName = extractProtectedAreaName($, cell, text);
 
   return {
     moefSNo: extractMoefSNo(text),
     state,
-    protectedAreaName: extractProtectedAreaName($, cell, text),
-    protectedAreaType: extractProtectedAreaType(text),
+    protectedAreaName,
+    protectedAreaType: classifyProtectedAreaType(`${protectedAreaName} ${text}`),
     notificationStatus: status,
     notificationDate: extractNotificationDate(text),
     notificationSummary: text,

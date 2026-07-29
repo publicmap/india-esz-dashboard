@@ -2,6 +2,7 @@
 
 - Model: Anthropic Sonnet 5 via Claude CLI
 - Project [README](README.md)
+- Token Estimate: 100k
 
 ## Project Components
 
@@ -15,7 +16,10 @@
   - Notification Date
   - Notification Summary 
   - Notification PDF Link
+  - Notification Archive Link
+    - Parse this by searching archive.org `gazetteofindia` collection for the SO Number eg. https://archive.org/advancedsearch.php?q=collection%3A%22gazetteofindia%22%20AND%20title%3A%22S.O.%20118(E)%22&fl%5B%5D=identifier&fl%5B%5D=title&rows=50&output=json
   - Maps (Array of map title and map link)
+    - Several rows have links to one or more individual mapss
   - Notification Upload Date
   - Order Number (S.O. Number)
 - Query Wikidata to get a complete list of protected areas (Q473972) and full join to the above table with the following additional fields

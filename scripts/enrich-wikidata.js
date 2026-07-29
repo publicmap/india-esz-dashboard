@@ -6,6 +6,7 @@
 
 import { readFile, writeFile } from 'node:fs/promises';
 import { stringify } from 'csv-stringify/sync';
+import { classifyProtectedAreaType } from './lib/protected-area-type.js';
 
 const SPARQL_ENDPOINT = 'https://query.wikidata.org/sparql';
 const USER_AGENT = 'moef-esz-notifications-bot/1.0 (https://github.com/publicmap/moef-esz-notifications)';
@@ -271,7 +272,11 @@ async function main() {
   const joined = moefRecords.map((record) => {
     const { item, matchConfidence } = match(record.protectedAreaName, record.state);
     if (item) matchedWikidataIds.add(item.wikidataId);
-    return { ...record, ...toWikidataFields(item), matchConfidence };
+    // MoEF notification text is the primary source for type; fall back to the
+    // matched Wikidata label (e.g. "... National Park") when it's still blank.
+    const protectedAreaType = record.protectedAreaType
+      ?? (item ? classifyProtectedAreaType(item.wikidataLabel) : null);
+    return { ...record, ...toWikidataFields(item), protectedAreaType, matchConfidence };
   });
 
   const unmatchedWikidata = wikidataItems.filter((item) => !matchedWikidataIds.has(item.wikidataId));
@@ -279,6 +284,7 @@ async function main() {
     joined.push({
       ...emptyMoefFields(),
       protectedAreaName: item.wikidataLabel,
+      protectedAreaType: classifyProtectedAreaType(item.wikidataLabel),
       state: item.locatedInAdminTerritorialEntity[0] ?? null,
       ...toWikidataFields(item),
       matchConfidence: 'none',
