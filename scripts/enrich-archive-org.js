@@ -12,7 +12,7 @@
 import { readFile, writeFile } from 'node:fs/promises';
 import { stringify } from 'csv-stringify/sync';
 import { findGazetteArchiveLink } from './lib/archive-org.js';
-import { loadCache, saveCache, getArchiveLink, setArchiveLink } from './lib/enrichment-cache.js';
+import { loadCache, saveCache, getArchiveResult, setArchiveResult } from './lib/enrichment-cache.js';
 
 const CONCURRENCY = 6;
 const CACHE_PATH = 'data/enrichment-cache.csv';
@@ -45,10 +45,10 @@ async function main() {
       return { ...record, notificationArchiveLink: null };
     }
 
-    const cached = getArchiveLink(cache, record.orderNumber, record.notificationDate);
+    const cached = getArchiveResult(cache, record.orderNumber, record.notificationDate);
     if (cached !== undefined) {
       cacheHits += 1;
-      return { ...record, notificationArchiveLink: cached };
+      return { ...record, notificationArchiveLink: cached ? cached.url : null };
     }
 
     const key = `${record.orderNumber}|${record.notificationDate}`;
@@ -56,7 +56,7 @@ async function main() {
       pending.set(key, (async () => {
         lookups += 1;
         try {
-          return await findGazetteArchiveLink(record.orderNumber, record.notificationDate);
+          return await findGazetteArchiveLink(record.orderNumber, record.notificationDate, record.protectedAreaName);
         } catch (err) {
           failures += 1;
           console.error(`Archive.org lookup failed for ${key}: ${err.message}`);
@@ -64,9 +64,9 @@ async function main() {
         }
       })());
     }
-    const notificationArchiveLink = await pending.get(key);
-    setArchiveLink(cache, record.orderNumber, record.notificationDate, notificationArchiveLink);
-    return { ...record, notificationArchiveLink };
+    const result = await pending.get(key);
+    setArchiveResult(cache, record.orderNumber, record.notificationDate, result);
+    return { ...record, notificationArchiveLink: result ? result.url : null };
   }, CONCURRENCY);
 
   await writeFile('data/moef-esz-notifications.json', JSON.stringify(linked, null, 2), 'utf8');

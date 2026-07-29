@@ -38,6 +38,12 @@ jobs:
       - name: Link Gazette of India archive.org entries
         run: npm run enrich:archive
 
+      - name: Build protected areas GeoJSON
+        run: npm run build:geojson
+
+      - name: Build amche-atlas custom atlas JSON
+        run: npm run build:atlas
+
       - name: Commit and push changes
         run: |
           git config user.name "github-actions[bot]"

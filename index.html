@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>MoEF ESZ Notification Tracker</title>
+  <meta name="description" content="Status of Eco-Sensitive Zone (ESZ) notifications for protected areas of India, tracked from MoEFCC and cross-referenced with Wikidata." />
+  <link rel="icon" href="data:," />
+  <link rel="stylesheet" href="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.css" />
+  <link rel="stylesheet" href="assets/style.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <h1>MoEF ESZ Notification Tracker</h1>
+      <p class="subtitle">
+        Status of Eco-Sensitive Zone (ESZ) notifications around India's protected areas,
+        mirrored weekly from <a href="https://www.moef.gov.in/esz-notifications" target="_blank" rel="noopener">moef.gov.in</a>
+        and cross-referenced with <a href="https://www.wikidata.org/wiki/Q473972" target="_blank" rel="noopener">Wikidata</a>.
+      </p>
+      <div class="header-links">
+        <a class="btn btn-primary" id="open-atlas-link" href="#" target="_blank" rel="noopener">Explore in amche-atlas &rarr;</a>
+        <a class="btn" href="https://github.com/publicmap/moef-esz-notifications" target="_blank" rel="noopener">GitHub repo</a>
+        <a class="btn" href="https://github.com/publicmap/moef-esz-notifications#readme" target="_blank" rel="noopener">About ESZs</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="kpi-section" aria-label="Key metrics">
+      <div class="stat-tile-row">
+        <div class="stat-tile">
+          <span class="stat-label">Protected areas in India</span>
+          <span class="stat-value" id="stat-total">&ndash;</span>
+          <span class="stat-note">tracked via Wikidata</span>
+        </div>
+        <div class="stat-tile">
+          <span class="stat-label"><i class="dot dot-final" aria-hidden="true"></i>Final ESZ notified</span>
+          <span class="stat-value" id="stat-final">&ndash;</span>
+          <span class="stat-note" id="stat-final-pct">&ndash;</span>
+        </div>
+        <div class="stat-tile">
+          <span class="stat-label"><i class="dot dot-draft" aria-hidden="true"></i>Draft ESZ notified</span>
+          <span class="stat-value" id="stat-draft">&ndash;</span>
+          <span class="stat-note" id="stat-draft-pct">&ndash;</span>
+        </div>
+        <div class="stat-tile">
+          <span class="stat-label"><i class="dot dot-none" aria-hidden="true"></i>Not yet notified</span>
+          <span class="stat-value" id="stat-none">&ndash;</span>
+          <span class="stat-note" id="stat-none-pct">&ndash;</span>
+        </div>
+      </div>
+
+      <div class="progress-wrap">
+        <div class="progress-bar" id="progress-bar" role="img" aria-label="Share of protected areas by ESZ notification status">
+          <div class="segment segment-final" id="seg-final"></div>
+          <div class="segment segment-draft" id="seg-draft"></div>
+          <div class="segment segment-none" id="seg-none"></div>
+        </div>
+        <div class="progress-legend">
+          <span class="legend-item"><i class="dot dot-final" aria-hidden="true"></i>Final</span>
+          <span class="legend-item"><i class="dot dot-draft" aria-hidden="true"></i>Draft only</span>
+          <span class="legend-item"><i class="dot dot-none" aria-hidden="true"></i>Not yet notified</span>
+        </div>
+      </div>
+      <p class="caveat" id="match-caveat"></p>
+    </section>
+
+    <section class="map-section" aria-label="Map">
+      <div class="filter-bar">
+        <input type="search" id="filter-search" placeholder="Search protected area, state..." />
+        <select id="filter-state"><option value="">All states</option></select>
+        <select id="filter-type"><option value="">All PA types</option></select>
+        <select id="filter-status">
+          <option value="">All statuses</option>
+          <option value="Final">Final</option>
+          <option value="Draft">Draft</option>
+        </select>
+        <button class="btn" id="reset-filters" type="button">Reset</button>
+      </div>
+      <div id="map"></div>
+      <p class="map-hint">Click a point for details. Points are protected areas with a known Wikidata location; boundary outlines (where available via OpenStreetMap) can be opened in amche-atlas from the popup.</p>
+    </section>
+
+    <section class="table-section" aria-label="Notification records">
+      <div class="table-toolbar">
+        <span id="result-count" class="result-count"></span>
+        <div class="export-buttons">
+          <span class="export-label">Download:</span>
+          <a class="btn btn-sm" href="data/moef-esz-notifications.csv">Notifications CSV</a>
+          <a class="btn btn-sm" href="data/moef-esz-notifications.json">JSON</a>
+          <a class="btn btn-sm" href="data/wikidata-protected-areas.csv">PAs CSV</a>
+          <a class="btn btn-sm" href="data/protected-areas.geojson">GeoJSON</a>
+          <button class="btn btn-sm" id="export-filtered" type="button">Export filtered view (CSV)</button>
+        </div>
+      </div>
+      <div class="table-wrap">
+        <table id="notifications-table">
+          <thead>
+            <tr>
+              <th data-key="state">State</th>
+              <th data-key="protectedAreaName">Protected area</th>
+              <th data-key="protectedAreaType">Type</th>
+              <th data-key="notificationStatus">Status</th>
+              <th data-key="notificationDate">Date</th>
+              <th data-key="orderNumber">S.O. number</th>
+              <th>Links</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>
+      Data updated weekly via GitHub Actions. Source: MoEFCC ESZ notification list, Wikidata, archive.org
+      <a href="https://archive.org/details/gazetteofindia" target="_blank" rel="noopener">Gazette of India</a> collection.
+      See the <a href="https://github.com/publicmap/moef-esz-notifications" target="_blank" rel="noopener">repository</a> for the data pipeline and full methodology.
+    </p>
+  </footer>
+
+  <script src="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.js"></script>
+  <script type="module" src="assets/app.js"></script>
+</body>
+</html>

@@ -6,6 +6,8 @@
 
 ## Project Components
 
+### Phas 1: Data preperation
+
 - Github actions to update moef-esz-notifications-table.html every week from https://www.moef.gov.in/esz-notifications
 - Clean and convert the table to structured html table format with the following fields:
   - Moef S.No
@@ -21,9 +23,9 @@
   - Notification Summary 
   - Notification PDF Link
   - Notification Archive Link
-    - Parse this by searching archive.org `gazetteofindia` collection for the SO Number eg. https://archive.org/advancedsearch.php?q=collection%3A%22gazetteofindia%22%20AND%20title%3A%22S.O.%20118(E)%22&fl%5B%5D=identifier&fl%5B%5D=title&rows=50&output=json
+    - See archive link section
   - Maps (Array of map title and map link)
-    - Several rows have links to one or more individual mapss
+    - Several rows have links to one or more individual maps
   - Notification Upload Date
   - Order Number (S.O. Number)
 - Query Wikidata to get a complete list of protected areas (Q473972) with the following fields
@@ -42,10 +44,16 @@
   - Commons category
   - OpenStreetMap relation ID
   - enwiki link
+  - wikidata link
 - Add a `wikidataId` join key to the MoEF table for linking PAs across data sources
-- A map dashboard to explore the above two datasets and export data as CSV and JSON that is stored on Github
+
+### Phase 2: Data dashboard
+
+A static web page deployed on github pages
+
+- Add KPI for total PAs in the country vs number of PAs with draft ESZ notifications vs number of PAs with final ESZ notifications vs number of PAs with final ESZ notifications and show progress bar
+- A map based dashboard to explore the above datasets and export data as CSV and JSON that is stored on Github
  - For the map dashboard, build a custom atlas JSON for [amche-atlas](https://amche.in/dev/) via [URL API](https://github.com/publicmap/amche-atlas/blob/dev/docs/API.md) and dynamic osm layers
- - Add KPI for total PAs in the country vs number of PAs with draft ESZ notifications vs number of PAs with final ESZ notifications vs number of PAs with final ESZ notifications and show progress bar
  - Use [OpenStreetMap relation IDs](https://www.openstreetmap.org/relation/281033) to show PA boundaries
 
 ### MoEF Data cleaing
@@ -96,6 +104,29 @@ Joining wikidataId to the MoEF table will require fuzzy joins due to inconsisten
 
 ### Archive links
 
+Parse this by searching archive.org `gazetteofindia` collection eg. https://archive.org/advancedsearch.php?q=collection%3A%22gazetteofindia%22%20AND%20title%3A%22S.O.%20118(E)%22&fl%5B%5D=identifier&fl%5B%5D=title&rows=50&output=json . See [sample gazette](https://archive.org/details/in.gazette.central.e.2024-09-06.256983/page/n1/mode/2up)
+- notification date should match the publication date
+- Search title for the SO number
+- Search text contents for the SO number or PA name
+
  Maintain a CSV cache of archive links so previoulsy matched ones do not need to be searched again. 
  - SO number will be the primary key
  - Include the wikidataId
+ - Include parsed data from the [archive meta](https://dn710004.ca.archive.org/0/items/in.gazette.central.e.2024-09-06.256983/in.gazette.central.e.2024-09-06.256983_meta.xml) in the cache for QA
+   - identifier
+   - collection[]
+   - creator
+   - date
+   - description
+     - Ministry
+     - Department
+     - Subject
+     - Gazette Source
+
+In the cache if an archiveLink is found with the other fields empty it means it was manually entered and the archive metadata must be updated by re-searching archive.org 
+
+## General architecture
+
+- Keep seperate files for code that produces seperate output to allow for easy debugging and testing
+
+  

@@ -7,18 +7,31 @@
 // numbers reset every calendar year (so the same number can, rarely, refer to
 // two different notifications in our own data) and a single multi-park
 // notification covers several areas, each with its own Wikidata match, so
-// all three fields together are needed to identify a row. archiveLink is the
-// same across every park row for a given (orderNumber, notificationDate),
+// all three fields together are needed to identify a row. The archive* columns
+// are the same across every park row for a given (orderNumber, notificationDate),
 // since the archive link is a property of the notification, not the park.
 //
 // archiveLink cell: empty = not yet looked up, "NONE" = looked up, confirmed
-// no match, a URL = found.
+// no match, a URL = found. The other archive* columns carry a copy of the
+// matched item's metadata (identifier, collection, creator, date, and the
+// Ministry/Department/Subject/Gazette Source parsed out of its `description`
+// field) purely so a human can QA a match from the cache CSV without having
+// to re-open archive.org for every row.
 import { readFile, writeFile } from 'node:fs/promises';
 import { parse } from 'csv-parse/sync';
 import { stringify } from 'csv-stringify/sync';
 
-const COLUMNS = ['orderNumber', 'notificationDate', 'protectedAreaName', 'wikidataId', 'archiveLink'];
+const COLUMNS = [
+  'orderNumber', 'notificationDate', 'protectedAreaName', 'wikidataId',
+  'archiveLink', 'archiveMatchMethod', 'archiveIdentifier', 'archiveCollection',
+  'archiveCreator', 'archiveDate', 'archiveMinistry', 'archiveDepartment',
+  'archiveSubject', 'archiveGazetteSource',
+];
 const NO_MATCH = 'NONE';
+const EMPTY_ARCHIVE_FIELDS = {
+  archiveMatchMethod: '', archiveIdentifier: '', archiveCollection: '', archiveCreator: '',
+  archiveDate: '', archiveMinistry: '', archiveDepartment: '', archiveSubject: '', archiveGazetteSource: '',
+};
 
 export async function loadCache(path) {
   let text;
@@ -42,20 +55,48 @@ function findRow(cache, orderNumber, notificationDate, protectedAreaName) {
     && (protectedAreaName === undefined || r.protectedAreaName === protectedAreaName));
 }
 
-export function getArchiveLink(cache, orderNumber, notificationDate) {
+export function getArchiveResult(cache, orderNumber, notificationDate) {
   const row = findRow(cache, orderNumber, notificationDate);
   if (!row || !row.archiveLink) return undefined; // not yet looked up
-  return row.archiveLink === NO_MATCH ? null : row.archiveLink;
+  if (row.archiveLink === NO_MATCH) return null;
+  return {
+    url: row.archiveLink,
+    matchMethod: row.archiveMatchMethod || '',
+    identifier: row.archiveIdentifier || '',
+    collection: row.archiveCollection || '',
+    creator: row.archiveCreator || '',
+    date: row.archiveDate || '',
+    ministry: row.archiveMinistry || '',
+    department: row.archiveDepartment || '',
+    subject: row.archiveSubject || '',
+    gazetteSource: row.archiveGazetteSource || '',
+  };
 }
 
-export function setArchiveLink(cache, orderNumber, notificationDate, archiveLink) {
-  const value = archiveLink ?? NO_MATCH;
+export function setArchiveResult(cache, orderNumber, notificationDate, result) {
+  const fields = result
+    ? {
+      archiveLink: result.url,
+      archiveMatchMethod: result.matchMethod || '',
+      archiveIdentifier: result.identifier || '',
+      archiveCollection: result.collection || '',
+      archiveCreator: result.creator || '',
+      archiveDate: result.date || '',
+      archiveMinistry: result.ministry || '',
+      archiveDepartment: result.department || '',
+      archiveSubject: result.subject || '',
+      archiveGazetteSource: result.gazetteSource || '',
+    }
+    : { archiveLink: NO_MATCH, ...EMPTY_ARCHIVE_FIELDS };
+
   const matching = cache.filter((r) => r.orderNumber === orderNumber && r.notificationDate === notificationDate);
   if (matching.length === 0) {
-    cache.push({ orderNumber, notificationDate, protectedAreaName: '', wikidataId: '', archiveLink: value });
+    cache.push({
+      orderNumber, notificationDate, protectedAreaName: '', wikidataId: '', ...fields,
+    });
     return;
   }
-  for (const row of matching) row.archiveLink = value;
+  for (const row of matching) Object.assign(row, fields);
 }
 
 export function getWikidataId(cache, orderNumber, notificationDate, protectedAreaName) {
@@ -70,5 +111,7 @@ export function setWikidataId(cache, orderNumber, notificationDate, protectedAre
     row.wikidataId = wikidataId || '';
     return;
   }
-  cache.push({ orderNumber, notificationDate, protectedAreaName, wikidataId: wikidataId || '', archiveLink: '' });
+  cache.push({
+    orderNumber, notificationDate, protectedAreaName, wikidataId: wikidataId || '', archiveLink: '', ...EMPTY_ARCHIVE_FIELDS,
+  });
 }

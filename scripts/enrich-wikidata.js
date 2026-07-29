@@ -55,6 +55,18 @@ const PROTECTED_AREA_TYPE_UNION = PROTECTED_AREA_TYPES
 // state -- so it can't be used directly as "state". Instead walk up the P131
 // chain (however many hops it takes) until hitting an ancestor that is
 // itself an instance of "state of India" or "union territory of India".
+// Many individual protected areas (e.g. a range/block within a larger
+// sanctuary) have no P131 at all, only a "part of" (P361) link to the
+// larger area -- and it's that larger area that carries the P131 chain. So
+// as a fallback, when the direct P131 walk finds nothing, also try one
+// P361 hop followed by a P131 walk from there. This fallback is fetched as
+// a *separate* binding (?resolvedStateViaPartOf) rather than folded into
+// the same path, because some P361 targets (e.g. "Western Ghats", which
+// Wikidata links via P131 to all 6 states it physically spans) resolve to
+// several genuinely different states -- that's correct for the mountain
+// range but useless/misleading as "the state" of one specific sanctuary
+// inside it, so buildMatcher's caller only accepts the fallback when it is
+// unambiguous (exactly one distinct state).
 const STATE_TYPES = ['Q12443800', 'Q467745'];
 
 const SPARQL_QUERY = `
@@ -70,6 +82,7 @@ SELECT ?item ?itemLabel
   (GROUP_CONCAT(DISTINCT ?partOfLabel; separator="; ") AS ?partOf)
   (GROUP_CONCAT(DISTINCT ?adminEntityLabel; separator="; ") AS ?adminEntity)
   (GROUP_CONCAT(DISTINCT ?resolvedStateLabel; separator="; ") AS ?resolvedState)
+  (GROUP_CONCAT(DISTINCT ?resolvedStateViaPartOfLabel; separator="; ") AS ?resolvedStateViaPartOf)
   (GROUP_CONCAT(DISTINCT ?significantPlaceLabel; separator="; ") AS ?significantPlace)
   (GROUP_CONCAT(DISTINCT ?heritageLabel; separator="; ") AS ?heritageDesignation)
   (SAMPLE(?enwiki) AS ?enwikiUrl)
@@ -94,6 +107,14 @@ WHERE {
     VALUES ?stateType { wd:${STATE_TYPES.join(' wd:')} }
     ?resolvedState_ rdfs:label ?resolvedStateLabel .
     FILTER(LANG(?resolvedStateLabel)="en")
+  }
+  OPTIONAL {
+    ?item wdt:P361 ?partOfState_ .
+    ?partOfState_ wdt:P131* ?resolvedStateViaPartOf_ .
+    ?resolvedStateViaPartOf_ wdt:P31 ?stateTypeViaPartOf .
+    VALUES ?stateTypeViaPartOf { wd:${STATE_TYPES.join(' wd:')} }
+    ?resolvedStateViaPartOf_ rdfs:label ?resolvedStateViaPartOfLabel .
+    FILTER(LANG(?resolvedStateViaPartOfLabel)="en")
   }
   OPTIONAL { ?item wdt:P7153 ?significantPlace_ . ?significantPlace_ rdfs:label ?significantPlaceLabel . FILTER(LANG(?significantPlaceLabel)="en") }
   OPTIONAL { ?item wdt:P1435 ?heritage_ . ?heritage_ rdfs:label ?heritageLabel . FILTER(LANG(?heritageLabel)="en") }
@@ -189,8 +210,19 @@ async function fetchWikidataProtectedAreas() {
   return json.results.bindings.map((b) => {
     const coord = parseWktPoint(b.coord?.value);
     const wikidataLabel = b.itemLabel?.value ?? null;
+    const directState = splitConcat(b.resolvedState?.value);
+    const partOfState = splitConcat(b.resolvedStateViaPartOf?.value);
+    // Only fall back to the "part of" state resolution when the direct P131
+    // walk found nothing AND the fallback itself is unambiguous -- a P361
+    // target that spans multiple states (e.g. "Western Ghats") is correct
+    // Wikidata data, but useless/misleading as a single "state" value here.
+    const state = directState.length > 0
+      ? directState
+      : (partOfState.length === 1 ? partOfState : []);
+    const wikidataId = b.item.value.replace('http://www.wikidata.org/entity/', '');
     return {
-      wikidataId: b.item.value.replace('http://www.wikidata.org/entity/', ''),
+      wikidataId,
+      wikidataUrl: `https://www.wikidata.org/wiki/${wikidataId}`,
       wikidataLabel,
       normalizedName: normalizeName(wikidataLabel),
       compactName: compactName(normalizeName(wikidataLabel)),
@@ -199,7 +231,7 @@ async function fetchWikidataProtectedAreas() {
       image: b.image?.value ?? null,
       iucnCategory: b.iucnCategory?.value ?? null,
       locatedInAdminTerritorialEntity: splitConcat(b.adminEntity?.value),
-      state: splitConcat(b.resolvedState?.value),
+      state,
       coordinateLatitude: coord?.lat ?? null,
       coordinateLongitude: coord?.lon ?? null,
       significantPlace: splitConcat(b.significantPlace?.value),

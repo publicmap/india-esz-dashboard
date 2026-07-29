@@ -1,0 +1,497 @@
+{
+  "name": "MoEF ESZ Notifications",
+  "description": "Protected areas of India and the status of their Eco-Sensitive Zone (ESZ) notifications by MoEFCC. Green = final ESZ notified, amber = draft only, grey = not yet notified.",
+  "center": [
+    82,
+    22
+  ],
+  "zoom": 4.2,
+  "inspect": {
+    "id": "wikidataId",
+    "title": "name",
+    "label": "name",
+    "fields": [
+      "protectedAreaType",
+      "state",
+      "eszStatus",
+      "notificationStatus",
+      "notificationDate",
+      "orderNumber",
+      "iucnCategory",
+      "area"
+    ]
+  },
+  "layers": [
+    {
+      "id": "protected-areas",
+      "type": "geojson",
+      "title": "Protected Areas (ESZ status)",
+      "description": "All Indian protected areas with a known location, colored by Eco-Sensitive Zone notification status.",
+      "url": "https://raw.githubusercontent.com/publicmap/moef-esz-notifications/main/data/protected-areas.geojson",
+      "initiallyChecked": true,
+      "attribution": "Wikidata, MoEFCC ESZ notifications",
+      "style": {
+        "circle-color": [
+          "match",
+          [
+            "get",
+            "eszStatus"
+          ],
+          "final",
+          "#0ca30c",
+          "draft",
+          "#fab219",
+          "#898781"
+        ],
+        "circle-radius": [
+          "interpolate",
+          [
+            "linear"
+          ],
+          [
+            "zoom"
+          ],
+          4,
+          3,
+          10,
+          8
+        ],
+        "circle-stroke-color": "#111827",
+        "circle-stroke-width": 0.5
+      },
+      "inspect": {
+        "id": "wikidataId",
+        "title": "name",
+        "label": "name",
+        "fields": [
+          "protectedAreaType",
+          "state",
+          "eszStatus",
+          "notificationStatus",
+          "notificationDate",
+          "orderNumber",
+          "iucnCategory",
+          "area"
+        ]
+      }
+    },
+    {
+      "id": "pa-boundary-Q7193996",
+      "type": "overpass",
+      "title": "Pilibhit Tiger Reserve (boundary)",
+      "description": "Not yet notified &middot; Uttar Pradesh",
+      "tags": [
+        "Uttar Pradesh",
+        "Not yet notified"
+      ],
+      "query": "relation(9474608);\nout geom;",
+      "initiallyChecked": false,
+      "attribution": "&copy; OpenStreetMap contributors (via Overpass API)",
+      "style": {
+        "line-color": "#898781",
+        "line-width": 2,
+        "fill-color": "#898781",
+        "fill-opacity": 0.15
+      }
+    },
+    {
+      "id": "pa-boundary-Q135826470",
+      "type": "overpass",
+      "title": "West Sunderban Wildlife Sanctuary (boundary)",
+      "description": "Not yet notified &middot; West Bengal",
+      "tags": [
+        "West Bengal",
+        "Not yet notified"
+      ],
+      "query": "relation(678835645);\nout geom;",
+      "initiallyChecked": false,
+      "attribution": "&copy; OpenStreetMap contributors (via Overpass API)",
+      "style": {
+        "line-color": "#898781",
+        "line-width": 2,
+        "fill-color": "#898781",
+        "fill-opacity": 0.15
+      }
+    },
+    {
+      "id": "pa-boundary-Q2605019",
+      "type": "overpass",
+      "title": "Khangchendzonga National Park (boundary)",
+      "description": "Final ESZ notified &middot; Sikkim",
+      "tags": [
+        "Sikkim",
+        "Final ESZ notified"
+      ],
+      "query": "relation(3895850);\nout geom;",
+      "initiallyChecked": true,
+      "attribution": "&copy; OpenStreetMap contributors (via Overpass API)",
+      "style": {
+        "line-color": "#0ca30c",
+        "line-width": 2,
+        "fill-color": "#0ca30c",
+        "fill-opacity": 0.15
+      }
+    },
+    {
+      "id": "pa-boundary-Q5617576",
+      "type": "overpass",
+      "title": "Gulf of Mannar Marine National Park (boundary)",
+      "description": "Not yet notified &middot; Tamil Nadu",
+      "tags": [
+        "Tamil Nadu",
+        "Not yet notified"
+      ],
+      "query": "relation(415570);\nout geom;",
+      "initiallyChecked": false,
+      "attribution": "&copy; OpenStreetMap contributors (via Overpass API)",
+      "style": {
+        "line-color": "#898781",
+        "line-width": 2,
+        "fill-color": "#898781",
+        "fill-opacity": 0.15
+      }
+    },
+    {
+      "id": "pa-boundary-Q532440",
+      "type": "overpass",
+      "title": "Sundarbans National Park (boundary)",
+      "description": "Not yet notified &middot; West Bengal",
+      "tags": [
+        "West Bengal",
+        "Not yet notified"
+      ],
+      "query": "relation(13617703);\nout geom;",
+      "initiallyChecked": false,
+      "attribution": "&copy; OpenStreetMap contributors (via Overpass API)",
+      "style": {
+        "line-color": "#898781",
+        "line-width": 2,
+        "fill-color": "#898781",
+        "fill-opacity": 0.15
+      }
+    },
+    {
+      "id": "pa-boundary-Q192764",
+      "type": "overpass",
+      "title": "Kaziranga National Park (boundary)",
+      "description": "Not yet notified &middot; Assam",
+      "tags": [
+        "Assam",
+        "Not yet notified"
+      ],
+      "query": "relation(9483703);\nout geom;",
+      "initiallyChecked": false,
+      "attribution": "&copy; OpenStreetMap contributors (via Overpass API)",
+      "style": {
+        "line-color": "#898781",
+        "line-width": 2,
+        "fill-color": "#898781",
+        "fill-opacity": 0.15
+      }
+    },
+    {
+      "id": "pa-boundary-Q235878",
+      "type": "overpass",
+      "title": "Kevladev National Park (boundary)",
+      "description": "Final ESZ notified &middot; Rajasthan",
+      "tags": [
+        "Rajasthan",
+        "Final ESZ notified"
+      ],
+      "query": "relation(15743640);\nout geom;",
+      "initiallyChecked": true,
+      "attribution": "&copy; OpenStreetMap contributors (via Overpass API)",
+      "style": {
+        "line-color": "#0ca30c",
+        "line-width": 2,
+        "fill-color": "#0ca30c",
+        "fill-opacity": 0.15
+      }
+    },
+    {
+      "id": "pa-boundary-Q2572177",
+      "type": "overpass",
+      "title": "Sariska Tiger Reserve (boundary)",
+      "description": "Draft ESZ notified &middot; Rajasthan",
+      "tags": [
+        "Rajasthan",
+        "Draft ESZ notified"
+      ],
+      "query": "relation(9466769);\nout geom;",
+      "initiallyChecked": true,
+      "attribution": "&copy; OpenStreetMap contributors (via Overpass API)",
+      "style": {
+        "line-color": "#fab219",
+        "line-width": 2,
+        "fill-color": "#fab219",
+        "fill-opacity": 0.15
+      }
+    },
+    {
+      "id": "pa-boundary-Q61529",
+      "type": "overpass",
+      "title": "Simlipal National Park (boundary)",
+      "description": "Draft ESZ notified &middot; Odisha",
+      "tags": [
+        "Odisha",
+        "Draft ESZ notified"
+      ],
+      "query": "relation(19289292);\nout geom;",
+      "initiallyChecked": true,
+      "attribution": "&copy; OpenStreetMap contributors (via Overpass API)",
+      "style": {
+        "line-color": "#fab219",
+        "line-width": 2,
+        "fill-color": "#fab219",
+        "fill-opacity": 0.15
+      }
+    },
+    {
+      "id": "pa-boundary-Q3091762",
+      "type": "overpass",
+      "title": "Mount Manipur National Park (boundary)",
+      "description": "Not yet notified &middot; Andaman and Nicobar Islands",
+      "tags": [
+        "Andaman and Nicobar Islands",
+        "Not yet notified"
+      ],
+      "query": "relation(9282503);\nout geom;",
+      "initiallyChecked": false,
+      "attribution": "&copy; OpenStreetMap contributors (via Overpass API)",
+      "style": {
+        "line-color": "#898781",
+        "line-width": 2,
+        "fill-color": "#898781",
+        "fill-opacity": 0.15
+      }
+    },
+    {
+      "id": "pa-boundary-Q3333420",
+      "type": "overpass",
+      "title": "Anamudi Shola National Park (boundary)",
+      "description": "Draft ESZ notified &middot; Kerala",
+      "tags": [
+        "Kerala",
+        "Draft ESZ notified"
+      ],
+      "query": "relation(15036911);\nout geom;",
+      "initiallyChecked": true,
+      "attribution": "&copy; OpenStreetMap contributors (via Overpass API)",
+      "style": {
+        "line-color": "#fab219",
+        "line-width": 2,
+        "fill-color": "#fab219",
+        "fill-opacity": 0.15
+      }
+    },
+    {
+      "id": "pa-boundary-Q123439915",
+      "type": "overpass",
+      "title": "Kudremukh National Park (boundary)",
+      "description": "Final ESZ notified &middot; Karnataka",
+      "tags": [
+        "Karnataka",
+        "Final ESZ notified"
+      ],
+      "query": "relation(9482054);\nout geom;",
+      "initiallyChecked": true,
+      "attribution": "&copy; OpenStreetMap contributors (via Overpass API)",
+      "style": {
+        "line-color": "#0ca30c",
+        "line-width": 2,
+        "fill-color": "#0ca30c",
+        "fill-opacity": 0.15
+      }
+    },
+    {
+      "id": "pa-boundary-Q775202",
+      "type": "overpass",
+      "title": "Saddle Peak National Park (boundary)",
+      "description": "Final ESZ notified &middot; Andaman and Nicobar Islands",
+      "tags": [
+        "Andaman and Nicobar Islands",
+        "Final ESZ notified"
+      ],
+      "query": "relation(9282556);\nout geom;",
+      "initiallyChecked": true,
+      "attribution": "&copy; OpenStreetMap contributors (via Overpass API)",
+      "style": {
+        "line-color": "#0ca30c",
+        "line-width": 2,
+        "fill-color": "#0ca30c",
+        "fill-opacity": 0.15
+      }
+    },
+    {
+      "id": "pa-boundary-Q806310",
+      "type": "overpass",
+      "title": "Bandhavgarh National Park (boundary)",
+      "description": "Final ESZ notified &middot; Madhya Pradesh",
+      "tags": [
+        "Madhya Pradesh",
+        "Final ESZ notified"
+      ],
+      "query": "relation(15694340);\nout geom;",
+      "initiallyChecked": true,
+      "attribution": "&copy; OpenStreetMap contributors (via Overpass API)",
+      "style": {
+        "line-color": "#0ca30c",
+        "line-width": 2,
+        "fill-color": "#0ca30c",
+        "fill-opacity": 0.15
+      }
+    },
+    {
+      "id": "pa-boundary-Q949297",
+      "type": "overpass",
+      "title": "Jim Corbett National Park (boundary)",
+      "description": "Not yet notified &middot; Uttarakhand",
+      "tags": [
+        "Uttarakhand",
+        "Not yet notified"
+      ],
+      "query": "relation(16831555);\nout geom;",
+      "initiallyChecked": false,
+      "attribution": "&copy; OpenStreetMap contributors (via Overpass API)",
+      "style": {
+        "line-color": "#898781",
+        "line-width": 2,
+        "fill-color": "#898781",
+        "fill-opacity": 0.15
+      }
+    },
+    {
+      "id": "pa-boundary-Q1194252",
+      "type": "overpass",
+      "title": "Eravikulam National Park (boundary)",
+      "description": "Draft ESZ notified &middot; Kerala",
+      "tags": [
+        "Kerala",
+        "Draft ESZ notified"
+      ],
+      "query": "relation(4148317);\nout geom;",
+      "initiallyChecked": true,
+      "attribution": "&copy; OpenStreetMap contributors (via Overpass API)",
+      "style": {
+        "line-color": "#fab219",
+        "line-width": 2,
+        "fill-color": "#fab219",
+        "fill-opacity": 0.15
+      }
+    },
+    {
+      "id": "pa-boundary-Q1466242",
+      "type": "overpass",
+      "title": "Ranthambore National Park (boundary)",
+      "description": "Not yet notified &middot; Rajasthan",
+      "tags": [
+        "Rajasthan",
+        "Not yet notified"
+      ],
+      "query": "relation(3494941);\nout geom;",
+      "initiallyChecked": false,
+      "attribution": "&copy; OpenStreetMap contributors (via Overpass API)",
+      "style": {
+        "line-color": "#898781",
+        "line-width": 2,
+        "fill-color": "#898781",
+        "fill-opacity": 0.15
+      }
+    },
+    {
+      "id": "pa-boundary-Q1480481",
+      "type": "overpass",
+      "title": "Kanha National Park (boundary)",
+      "description": "Final ESZ notified &middot; Madhya Pradesh",
+      "tags": [
+        "Madhya Pradesh",
+        "Final ESZ notified"
+      ],
+      "query": "relation(15588876);\nout geom;",
+      "initiallyChecked": true,
+      "attribution": "&copy; OpenStreetMap contributors (via Overpass API)",
+      "style": {
+        "line-color": "#0ca30c",
+        "line-width": 2,
+        "fill-color": "#0ca30c",
+        "fill-opacity": 0.15
+      }
+    },
+    {
+      "id": "pa-boundary-Q1544213",
+      "type": "overpass",
+      "title": "Great Himalayan National Park (boundary)",
+      "description": "Not yet notified &middot; Himachal Pradesh",
+      "tags": [
+        "Himachal Pradesh",
+        "Not yet notified"
+      ],
+      "query": "relation(8815513);\nout geom;",
+      "initiallyChecked": false,
+      "attribution": "&copy; OpenStreetMap contributors (via Overpass API)",
+      "style": {
+        "line-color": "#898781",
+        "line-width": 2,
+        "fill-color": "#898781",
+        "fill-opacity": 0.15
+      }
+    },
+    {
+      "id": "pa-boundary-Q3635169",
+      "type": "overpass",
+      "title": "Parambikulam Tiger Reserve (boundary)",
+      "description": "Draft ESZ notified &middot; Kerala",
+      "tags": [
+        "Kerala",
+        "Draft ESZ notified"
+      ],
+      "query": "relation(11279548);\nout geom;",
+      "initiallyChecked": true,
+      "attribution": "&copy; OpenStreetMap contributors (via Overpass API)",
+      "style": {
+        "line-color": "#fab219",
+        "line-width": 2,
+        "fill-color": "#fab219",
+        "fill-opacity": 0.15
+      }
+    },
+    {
+      "id": "pa-boundary-Q3936889",
+      "type": "overpass",
+      "title": "Kalakkad Mundanthurai Tiger Reserve (boundary)",
+      "description": "Not yet notified &middot; Tamil Nadu",
+      "tags": [
+        "Tamil Nadu",
+        "Not yet notified"
+      ],
+      "query": "relation(17746132);\nout geom;",
+      "initiallyChecked": false,
+      "attribution": "&copy; OpenStreetMap contributors (via Overpass API)",
+      "style": {
+        "line-color": "#898781",
+        "line-width": 2,
+        "fill-color": "#898781",
+        "fill-opacity": 0.15
+      }
+    },
+    {
+      "id": "pa-boundary-Q102047437",
+      "type": "overpass",
+      "title": "Gulmarg Wildlife Sanctuary (boundary)",
+      "description": "Final ESZ notified &middot; Jammu and Kashmir",
+      "tags": [
+        "Jammu and Kashmir",
+        "Final ESZ notified"
+      ],
+      "query": "relation(15876412);\nout geom;",
+      "initiallyChecked": true,
+      "attribution": "&copy; OpenStreetMap contributors (via Overpass API)",
+      "style": {
+        "line-color": "#0ca30c",
+        "line-width": 2,
+        "fill-color": "#0ca30c",
+        "fill-opacity": 0.15
+      }
+    }
+  ]
+}

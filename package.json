@@ -10,7 +10,9 @@
     "clean": "node scripts/clean-moef-data.js",
     "enrich:wikidata": "node scripts/enrich-wikidata.js",
     "enrich:archive": "node scripts/enrich-archive-org.js",
-    "update": "npm run fetch && npm run parse && npm run clean && npm run enrich:wikidata && npm run enrich:archive"
+    "build:geojson": "node scripts/build-geojson.js",
+    "build:atlas": "node scripts/build-atlas.js",
+    "update": "npm run fetch && npm run parse && npm run clean && npm run enrich:wikidata && npm run enrich:archive && npm run build:geojson && npm run build:atlas"
   },
   "license": "MIT",
   "dependencies": {

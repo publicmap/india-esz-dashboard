@@ -1,12 +1,32 @@
 # moef-esz-notifications
 
-A frontend dashboard to show current status of ESZ notifications by the Ministry of Environment Forests & Climate Change (MoEFCC), Government of India. Features include:
+A frontend dashboard to show current status of ESZ notifications by the Ministry of Environment Forests & Climate Change (MoEFCC), Government of India. **[Live dashboard &rarr;](https://publicmap.github.io/moef-esz-notifications/)**
+
+Features include:
 
 - Mirror the ESZ notification table on https://www.moef.gov.in/esz-notifications updated weekly
 - Master list of protected areas in India with ESZ notification status in CSV format
-- Interactive protected area GIS dashboard showing:
-    - extent of protected areas (with core and buffer zone) and notified ESZ boundaries
-- Download GeoJSON files for protected areas and notified ESZs
+- Interactive map dashboard showing:
+    - KPIs for total protected areas vs. draft/final ESZ notification coverage
+    - Protected area locations colored by ESZ notification status, with a filterable/sortable notification table
+    - PA boundaries (where mapped on OpenStreetMap) explorable via a custom [amche-atlas](https://amche.in/dev/) atlas
+- Download the notification list and protected area list as CSV/JSON, and protected area locations as GeoJSON
+
+## Data pipeline
+
+```
+npm install
+npm run update   # fetch -> parse -> clean -> enrich:wikidata -> enrich:archive -> build:geojson -> build:atlas
+```
+
+Runs weekly via `.github/workflows/update.yml`; the dashboard (`index.html`) is redeployed to GitHub Pages afterwards by `.github/workflows/pages.yml`. Enable Pages once under repo Settings &rarr; Pages &rarr; Source: "GitHub Actions".
+
+Outputs, all in `data/`:
+- `moef-esz-notifications.{csv,json}` — one row per protected area per notification, with a `wikidataId` join key
+- `wikidata-protected-areas.{csv,json}` — full Wikidata list of Indian protected areas
+- `protected-areas.geojson` — PA point locations with ESZ status, used by the dashboard map
+- `amche-atlas.json` — custom [amche-atlas](https://github.com/publicmap/amche-atlas/blob/dev/docs/API.md) config (PA points + OSM-relation boundary layers)
+- `enrichment-cache.csv` — persistent cache of Wikidata/archive.org lookups so repeat runs are fast
 
 **About Eco-Sensitive Zones (ESZs)**
 
