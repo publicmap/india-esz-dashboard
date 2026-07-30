@@ -1,6 +1,6 @@
-# moef-esz-notifications
+# india-esz-dashboard
 
-A frontend dashboard to show current status of ESZ notifications by the Ministry of Environment Forests & Climate Change (MoEFCC), Government of India. **[Live dashboard &rarr;](https://publicmap.github.io/moef-esz-notifications/)**
+A frontend dashboard to show current status of ESZ notifications by the Ministry of Environment Forests & Climate Change (MoEFCC), Government of India. **[Live dashboard &rarr;](https://publicmap.github.io/india-esz-dashboard/)**
 
 Features:
 

@@ -6,7 +6,7 @@
 import { registerCorrectionProtocol } from 'https://cdn.jsdelivr.net/npm/@india-boundary-corrector/maplibre-protocol@0.2.2/+esm';
 import { TabulatorFull as Tabulator } from 'https://unpkg.com/tabulator-tables@6.3.1/dist/js/tabulator_esm.min.js';
 
-const GITHUB_RAW_ATLAS_URL = 'https://raw.githubusercontent.com/publicmap/moef-esz-notifications/main/data/amche-atlas.json';
+const GITHUB_RAW_ATLAS_URL = 'https://raw.githubusercontent.com/publicmap/india-esz-dashboard/main/data/amche-atlas.json';
 const AMCHE_ATLAS_BASE = 'https://amche.in/dev/';
 const WIKIPEDIA_SUMMARY_API = 'https://en.wikipedia.org/api/rest_v1/page/summary/';
 
@@ -78,6 +78,29 @@ function preprocessRecords() {
     if (r.notificationStatus === 'Draft') info.hasDraft = true;
     paStatusMap.set(r._paKey, info);
   }
+}
+
+// The other side of the full join: Wikidata PAs that no MoEF notification
+// references at all (paStatusMap has no entry for their wikidataId). These
+// have no rows in moefRecords, so the table would otherwise omit them even
+// though the map (and the KPIs above) already count them as "not notified".
+function computeNoNotificationPAs() {
+  return wikidataPAs
+    .filter((pa) => !paStatusMap.has(pa.wikidataId))
+    .map((pa) => ({
+      _paKey: pa.wikidataId,
+      _typeGroup: pa.protectedAreaType || 'Unspecified type',
+      wikidataId: pa.wikidataId,
+      protectedAreaName: pa.wikidataLabel,
+      protectedAreaType: pa.protectedAreaType,
+      state: pa.state,
+      notificationStatus: null,
+      notificationDate: null,
+      orderNumber: null,
+      notificationPdfLink: null,
+      notificationArchiveLink: null,
+      moefSNo: null,
+    }));
 }
 
 // Returns one entry per distinct protected area referenced only by MoEF
@@ -175,6 +198,38 @@ function renderQaList() {
   const unmatchedPAs = computeUnmatchedPAs();
   document.getElementById('qa-count').textContent = unmatchedPAs.length.toLocaleString();
   document.getElementById('qa-table-body').innerHTML = unmatchedPAs.map(unmatchedRowHtml).join('');
+}
+
+// Wikidata PAs with no coordinateLatitude/Longitude -- these can't be placed
+// on the map (they're absent from paGeojson/featuresByWikidataId) even
+// though they're counted in the KPIs and listed in the table.
+function computeNoCoordinatePAs() {
+  return wikidataPAs
+    .filter((pa) => !featuresByWikidataId.has(pa.wikidataId))
+    .filter((pa) => matchesTypeFilter(pa.protectedAreaType))
+    .filter((pa) => matchesStateFilter(pa.state))
+    .sort((a, b) => {
+      const s = stateAsString(a.state).localeCompare(stateAsString(b.state));
+      if (s) return s;
+      return (a.wikidataLabel || '').localeCompare(b.wikidataLabel || '');
+    });
+}
+
+function noCoordRowHtml(pa) {
+  const state = Array.isArray(pa.state) ? pa.state.join(', ') : (pa.state || '');
+  return `
+    <tr>
+      <td>${escapeHtml(state)}</td>
+      <td>${escapeHtml(pa.wikidataLabel || '')}</td>
+      <td>${escapeHtml(pa.protectedAreaType || '')}</td>
+      <td><a href="${pa.wikidataUrl}" target="_blank" rel="noopener">Edit on Wikidata</a></td>
+    </tr>`;
+}
+
+function renderNoCoordList() {
+  const noCoordPAs = computeNoCoordinatePAs();
+  document.getElementById('nocoord-count').textContent = noCoordPAs.length.toLocaleString();
+  document.getElementById('nocoord-table-body').innerHTML = noCoordPAs.map(noCoordRowHtml).join('');
 }
 
 function initAtlasLink() {
@@ -281,7 +336,7 @@ function openPopupForFeature(feature) {
 
 let activePopup = null;
 let selectedWikidataId = null;
-const hoverPopup = new maplibregl.Popup({ closeButton: false, closeOnClick: false, className: 'map-hover-popup' });
+const hoverPopup = new maplibregl.Popup({ closeButton: false, closeOnClick: false, className: 'map-hover-popup', offset: 10, anchor: 'bottom' });
 
 function closePopup() {
   if (activePopup) { activePopup.remove(); activePopup = null; }
@@ -428,10 +483,17 @@ function updateMapFilter() {
 
 // Alphabetical by state/type/PA name so groups render in a stable, scannable
 // order; within a PA, Final rows sort ahead of Draft rows (most recent first).
+// Notification records carry `state` as a single string; synthetic
+// no-notification rows (built from wikidataPAs) carry it as an array --
+// normalize to a sortable/searchable string either way.
+function stateAsString(state) {
+  return Array.isArray(state) ? state.join(', ') : (state || '');
+}
+
 function sortInitialRecords(records) {
   const statusRank = { Final: 0, Draft: 1 };
   return [...records].sort((a, b) => {
-    const s = (a.state || '').localeCompare(b.state || '');
+    const s = stateAsString(a.state).localeCompare(stateAsString(b.state));
     if (s) return s;
     const t = (a._typeGroup || '').localeCompare(b._typeGroup || '');
     if (t) return t;
@@ -458,9 +520,9 @@ function statusFormatter(cell) {
   const pill = document.createElement('span');
   pill.className = 'status-pill';
   const dot = document.createElement('i');
-  dot.className = `dot ${status === 'Final' ? 'dot-final' : 'dot-draft'}`;
+  dot.className = `dot ${status === 'Final' ? 'dot-final' : status === 'Draft' ? 'dot-draft' : 'dot-none'}`;
   pill.appendChild(dot);
-  pill.appendChild(document.createTextNode(status || ''));
+  pill.appendChild(document.createTextNode(status || 'Not notified'));
   wrap.appendChild(pill);
 
   const info = paStatusMap.get(rowData._paKey);
@@ -527,7 +589,7 @@ function draftVisibilityFilter(rowData) {
 
 function searchFilter(rowData) {
   if (!searchTerm) return true;
-  const haystack = `${rowData.protectedAreaName || ''} ${rowData.state || ''} ${rowData.protectedAreaType || ''} ${rowData.orderNumber || ''}`.toLowerCase();
+  const haystack = `${rowData.protectedAreaName || ''} ${stateAsString(rowData.state)} ${rowData.protectedAreaType || ''} ${rowData.orderNumber || ''}`.toLowerCase();
   return haystack.includes(searchTerm);
 }
 
@@ -543,14 +605,19 @@ function stateFilter(rowData) {
 }
 
 let table;
+let tableRecords = [];
 
 function initTable() {
+  // Full outer join for the table too: every MoEF notification record, plus
+  // one synthetic "not notified" row per Wikidata PA that no notification
+  // references, so the table lists every PA the map (and KPIs) show.
+  tableRecords = [...moefRecords, ...computeNoNotificationPAs()];
   table = new Tabulator('#notifications-table', {
-    data: sortInitialRecords(moefRecords),
+    data: sortInitialRecords(tableRecords),
     layout: 'fitColumns',
     rowFormatter,
     columns: [
-      { title: 'State', field: 'state', width: 150 },
+      { title: 'State', field: 'state', width: 150, formatter: (cell) => escapeHtml(stateAsString(cell.getValue())) },
       { title: 'Protected area', field: 'protectedAreaName', minWidth: 220 },
       { title: 'Type', field: 'protectedAreaType', width: 170 },
       {
@@ -576,7 +643,7 @@ function initTable() {
     filteredRecords = rows.map((row) => row.getData());
     updateMapFilter();
     document.getElementById('result-count').textContent =
-      `${filteredRecords.length.toLocaleString()} of ${moefRecords.length.toLocaleString()} notification records`;
+      `${filteredRecords.length.toLocaleString()} of ${tableRecords.length.toLocaleString()} rows`;
   });
 
   table.on('rowMouseEnter', (e, row) => {
@@ -636,6 +703,7 @@ function setPaTypeFilter(value) {
   table.refreshFilter();
   renderKPIs();
   renderQaList();
+  renderNoCoordList();
 }
 
 function initTypeFilter() {
@@ -670,6 +738,7 @@ function setPaStateFilter(value) {
   table.refreshFilter();
   renderKPIs();
   renderQaList();
+  renderNoCoordList();
 }
 
 function initStateFilter() {
@@ -706,6 +775,7 @@ function initFilterEvents() {
     table.refreshFilter();
     renderKPIs();
     renderQaList();
+    renderNoCoordList();
   });
   document.getElementById('export-filtered').addEventListener('click', exportFilteredCsv);
 }
@@ -717,6 +787,7 @@ async function main() {
   initStateFilter();
   renderKPIs();
   renderQaList();
+  renderNoCoordList();
   initAtlasLink();
   initMap();
   initTable();

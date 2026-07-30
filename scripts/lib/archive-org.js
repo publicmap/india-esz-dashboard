@@ -25,7 +25,7 @@
 //      "S.O." / "SO" / "S,O," punctuation is inconsistent across scans, so
 //      we search on the bare digits rather than an "S.O. <n>" phrase.
 const ADVANCED_SEARCH_URL = 'https://archive.org/advancedsearch.php';
-const USER_AGENT = 'moef-esz-notifications-bot/1.0 (https://github.com/publicmap/moef-esz-notifications)';
+const USER_AGENT = 'india-esz-dashboard-bot/1.0 (https://github.com/publicmap/india-esz-dashboard)';
 const IDENTIFIER_PREFIX = 'in.gazette.central.e.*';
 const FIELDS = ['identifier', 'date', 'title', 'description', 'creator', 'collection'];
 const DESCRIPTION_LABELS = ['Date', 'Type', 'Part Number', 'Reference Number', 'Department', 'Ministry', 'Office', 'Subject', 'Gazette Source', 'Gazette ID'];

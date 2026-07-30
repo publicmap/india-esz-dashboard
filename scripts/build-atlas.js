@@ -10,13 +10,13 @@
 //      API (`relation(<id>); out geom;`) rather than us having to fetch and
 //      re-host the geometry ourselves.
 //
-// NOTE: assumes this repo is published at github.com/publicmap/moef-esz-notifications
+// NOTE: assumes this repo is published at github.com/publicmap/india-esz-dashboard
 // (matches the local `Github/publicmap/` checkout path and sibling amche-atlas
 // repo's org) -- update GITHUB_RAW_BASE below if it ends up elsewhere.
 
 import { readFile, writeFile } from 'node:fs/promises';
 
-const GITHUB_RAW_BASE = 'https://raw.githubusercontent.com/publicmap/moef-esz-notifications/main';
+const GITHUB_RAW_BASE = 'https://raw.githubusercontent.com/publicmap/india-esz-dashboard/main';
 
 // Fixed status palette (see dataviz skill references/palette.md) -- never
 // themed per-mode, and always paired with an icon/label in the UI since

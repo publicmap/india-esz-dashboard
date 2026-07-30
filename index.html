@@ -21,8 +21,8 @@
       </p>
       <div class="header-links">
         <a class="btn btn-primary" id="open-atlas-link" href="#" target="_blank" rel="noopener">Explore in amche-atlas &rarr;</a>
-        <a class="btn" href="https://github.com/publicmap/moef-esz-notifications" target="_blank" rel="noopener">GitHub repo</a>
-        <a class="btn" href="https://github.com/publicmap/moef-esz-notifications#readme" target="_blank" rel="noopener">About ESZs</a>
+        <a class="btn" href="https://github.com/publicmap/india-esz-dashboard" target="_blank" rel="noopener">GitHub repo</a>
+        <a class="btn" href="https://github.com/publicmap/india-esz-dashboard#readme" target="_blank" rel="noopener">About ESZs</a>
       </div>
     </div>
   </header>
@@ -84,7 +84,7 @@
           with columns <code>paName, state, correctPaName, correctState, correctPaType</code> &mdash; the
           <code>paName</code>/<code>state</code> as they appear below, and the corrected values to re-run the join
           with &mdash; then open a pull request against the
-          <a href="https://github.com/publicmap/moef-esz-notifications" target="_blank" rel="noopener">repo</a>.
+          <a href="https://github.com/publicmap/india-esz-dashboard" target="_blank" rel="noopener">repo</a>.
         </p>
         <div class="table-wrap qa-table-wrap">
           <table class="qa-table">
@@ -130,6 +130,28 @@
         <div class="map-panel">
           <div id="map"></div>
           <p class="map-hint">Click a point for details. Points are protected areas with a known Wikidata location; boundary outlines (where available via OpenStreetMap) can be opened in amche-atlas from the popup.</p>
+
+          <details class="qa-panel">
+            <summary>Protected areas without a Wikidata coordinate (<span id="nocoord-count">&ndash;</span>)</summary>
+            <p class="qa-instructions">
+              These protected areas are listed in Wikidata but have no coordinate location, so they can't be placed on the
+              map above (they're still counted in the KPIs and listed in the table). Use the edit link to add a
+              <code>coordinate location</code> statement on Wikidata.
+            </p>
+            <div class="table-wrap qa-table-wrap">
+              <table class="qa-table">
+                <thead>
+                  <tr>
+                    <th>State</th>
+                    <th>Protected area</th>
+                    <th>Type</th>
+                    <th>Edit</th>
+                  </tr>
+                </thead>
+                <tbody id="nocoord-table-body"></tbody>
+              </table>
+            </div>
+          </details>
         </div>
       </div>
     </section>
@@ -139,7 +161,7 @@
     <p>
       Data updated weekly via GitHub Actions. Source: MoEFCC ESZ notification list, Wikidata, archive.org
       <a href="https://archive.org/details/gazetteofindia" target="_blank" rel="noopener">Gazette of India</a> collection.
-      See the <a href="https://github.com/publicmap/moef-esz-notifications" target="_blank" rel="noopener">repository</a> for the data pipeline and full methodology.
+      See the <a href="https://github.com/publicmap/india-esz-dashboard" target="_blank" rel="noopener">repository</a> for the data pipeline and full methodology.
     </p>
   </footer>
 

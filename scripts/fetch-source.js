@@ -12,7 +12,7 @@ import { writeFile, mkdir } from 'node:fs/promises';
 const SOURCE_URL = 'https://moef.gov.in/esz-notifications';
 const SET_LOCALE_URL = 'https://moef.gov.in/set-locale';
 const OUTPUT_PATH = 'data/raw/moef-esz-notifications-table.html';
-const USER_AGENT = 'Mozilla/5.0 (compatible; moef-esz-notifications-bot/1.0; +https://github.com/publicmap/moef-esz-notifications)';
+const USER_AGENT = 'Mozilla/5.0 (compatible; india-esz-dashboard-bot/1.0; +https://github.com/publicmap/india-esz-dashboard)';
 
 function mergeCookies(jar, setCookieHeaders) {
   for (const header of setCookieHeaders) {

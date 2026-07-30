@@ -17,7 +17,7 @@ import {
 
 const CACHE_PATH = 'data/enrichment-cache.csv';
 const CONCURRENCY = 6;
-const USER_AGENT = 'moef-esz-notifications-bot/1.0 (https://github.com/publicmap/moef-esz-notifications)';
+const USER_AGENT = 'india-esz-dashboard-bot/1.0 (https://github.com/publicmap/india-esz-dashboard)';
 
 async function runWithConcurrency(items, worker, concurrency) {
   let next = 0;

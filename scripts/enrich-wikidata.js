@@ -13,7 +13,7 @@ import { loadCache, saveCache, setWikidataId } from './lib/enrichment-cache.js';
 const CACHE_PATH = 'data/enrichment-cache.csv';
 
 const SPARQL_ENDPOINT = 'https://query.wikidata.org/sparql';
-const USER_AGENT = 'moef-esz-notifications-bot/1.0 (https://github.com/publicmap/moef-esz-notifications)';
+const USER_AGENT = 'india-esz-dashboard-bot/1.0 (https://github.com/publicmap/india-esz-dashboard)';
 
 // Most individual Indian protected areas are NOT typed as a direct instance of
 // "protected area" (Q473972) itself -- they use a more specific subclass

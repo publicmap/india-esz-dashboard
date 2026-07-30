@@ -27,7 +27,7 @@
       "type": "geojson",
       "title": "Protected Areas (ESZ status)",
       "description": "All Indian protected areas with a known location, colored by Eco-Sensitive Zone notification status.",
-      "url": "https://raw.githubusercontent.com/publicmap/moef-esz-notifications/main/data/protected-areas.geojson",
+      "url": "https://raw.githubusercontent.com/publicmap/india-esz-dashboard/main/data/protected-areas.geojson",
       "initiallyChecked": true,
       "attribution": "Wikidata, MoEFCC ESZ notifications",
       "style": {

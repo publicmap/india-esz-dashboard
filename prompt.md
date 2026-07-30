@@ -98,7 +98,7 @@ Khijadiya Wildlife Sanctuary	Wildlife Sanctuary	Final
 Eravikulam National Park, Chinnar Wildlife Sanctuary, Anamudi Shola National Park, Pampadum Shola National Park and Kurinjimala Sanctuary
 Eravikulam National Park + 4 PAs
 
-For cases where it is hard to code a logic create a corrections.csv that has the input values and the canonical values for manual overrides. Fields should include PA name, state, correct PA name, correct state, correct PA type
+For cases where it is hard to code a logic create a corrections.tsv that has the input values and the canonical values for manual overrides. Fields should include PA name, state, correct PA name, correct state, correct PA type
 
 ### Fuzzy wikidata joins
 
@@ -131,7 +131,7 @@ In the cache if an archiveLink is found with the other fields empty it means it 
 
 **Allmaps IIIF URLs**
 
- add cols for 'allmaps images' 'toposheet page' 'toposheet thumbnail' 'allmaps editor' and 'tms'
+Add cols for 'allmaps images' 'toposheet page' 'toposheet thumbnail' 'allmaps editor' and 'tms'
 
   this will be populated using the archive iiif manifest
 

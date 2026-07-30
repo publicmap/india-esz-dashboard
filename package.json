@@ -1,5 +1,5 @@
 {
-  "name": "moef-esz-notifications",
+  "name": "india-esz-dashboard",
   "version": "1.0.0",
   "description": "Weekly mirror and structured dataset of MoEFCC Eco-Sensitive Zone notifications, enriched with Wikidata protected area data",
   "type": "module",
@@ -11,6 +11,7 @@
     "enrich:wikidata": "node scripts/enrich-wikidata.js",
     "enrich:archive": "node scripts/enrich-archive-org.js",
     "enrich:allmaps": "node scripts/enrich-allmaps.js",
+    "suggest:missing-state": "node scripts/plugins/quickstatements-from-wikilinks.js --input data/wikidata-protected-areas.csv --output data/wikidata-protected-areas.state-suggestions.csv --qs-output data/wikidata-protected-areas.state.qs.txt --property P131 --property-label state --target-types Q12443800,Q467745 --filter-column state",
     "build:geojson": "node scripts/build-geojson.js",
     "build:atlas": "node scripts/build-atlas.js",
     "update": "npm run fetch && npm run parse && npm run clean && npm run enrich:wikidata && npm run enrich:archive && npm run enrich:allmaps && npm run build:geojson && npm run build:atlas"
