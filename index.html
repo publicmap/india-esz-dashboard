@@ -7,6 +7,7 @@
   <meta name="description" content="Status of Eco-Sensitive Zone (ESZ) notifications for protected areas of India, tracked from MoEFCC and cross-referenced with Wikidata." />
   <link rel="icon" href="data:," />
   <link rel="stylesheet" href="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.css" />
+  <link rel="stylesheet" href="https://unpkg.com/tabulator-tables@6.3.1/dist/css/tabulator_simple.min.css" />
   <link rel="stylesheet" href="assets/style.css" />
 </head>
 <body>
@@ -29,8 +30,16 @@
   <main>
     <section class="kpi-section" aria-label="Key metrics">
       <div class="stat-tile-row">
-        <div class="stat-tile">
+        <div class="stat-tile stat-tile-filter">
           <span class="stat-label">Protected areas in India</span>
+          <div class="stat-filter-row">
+            <select id="pa-state-filter" class="type-filter-select" aria-label="Filter by state">
+              <option value="">All states</option>
+            </select>
+            <select id="pa-type-filter" class="type-filter-select" aria-label="Filter by protected area type">
+              <option value="">All types</option>
+            </select>
+          </div>
           <span class="stat-value" id="stat-total">&ndash;</span>
           <span class="stat-note">tracked via Wikidata</span>
         </div>
@@ -64,51 +73,64 @@
         </div>
       </div>
       <p class="caveat" id="match-caveat"></p>
-    </section>
 
-    <section class="map-section" aria-label="Map">
-      <div class="filter-bar">
-        <input type="search" id="filter-search" placeholder="Search protected area, state..." />
-        <select id="filter-state"><option value="">All states</option></select>
-        <select id="filter-type"><option value="">All PA types</option></select>
-        <select id="filter-status">
-          <option value="">All statuses</option>
-          <option value="Final">Final</option>
-          <option value="Draft">Draft</option>
-        </select>
-        <button class="btn" id="reset-filters" type="button">Reset</button>
-      </div>
-      <div id="map"></div>
-      <p class="map-hint">Click a point for details. Points are protected areas with a known Wikidata location; boundary outlines (where available via OpenStreetMap) can be opened in amche-atlas from the popup.</p>
-    </section>
-
-    <section class="table-section" aria-label="Notification records">
-      <div class="table-toolbar">
-        <span id="result-count" class="result-count"></span>
-        <div class="export-buttons">
-          <span class="export-label">Download:</span>
-          <a class="btn btn-sm" href="data/moef-esz-notifications.csv">Notifications CSV</a>
-          <a class="btn btn-sm" href="data/moef-esz-notifications.json">JSON</a>
-          <a class="btn btn-sm" href="data/wikidata-protected-areas.csv">PAs CSV</a>
-          <a class="btn btn-sm" href="data/protected-areas.geojson">GeoJSON</a>
-          <button class="btn btn-sm" id="export-filtered" type="button">Export filtered view (CSV)</button>
+      <details class="qa-panel">
+        <summary>QA: protected areas not yet matched to Wikidata (<span id="qa-count">&ndash;</span>)</summary>
+        <p class="qa-instructions">
+          These protected area names and states come from MoEF ESZ notifications but couldn't be automatically
+          matched to a Wikidata item &mdash; usually a spelling variant, a notification covering multiple parks,
+          or an item genuinely missing from Wikidata. To fix one, add a row to
+          <a href="data/corrections.csv" target="_blank" rel="noopener"><code>data/corrections.csv</code></a>
+          with columns <code>paName, state, correctPaName, correctState, correctPaType</code> &mdash; the
+          <code>paName</code>/<code>state</code> as they appear below, and the corrected values to re-run the join
+          with &mdash; then open a pull request against the
+          <a href="https://github.com/publicmap/moef-esz-notifications" target="_blank" rel="noopener">repo</a>.
+        </p>
+        <div class="table-wrap qa-table-wrap">
+          <table class="qa-table">
+            <thead>
+              <tr>
+                <th>State</th>
+                <th>Protected area (as parsed)</th>
+                <th>Type</th>
+                <th>Notification records</th>
+                <th>Status seen</th>
+              </tr>
+            </thead>
+            <tbody id="qa-table-body"></tbody>
+          </table>
         </div>
-      </div>
-      <div class="table-wrap">
-        <table id="notifications-table">
-          <thead>
-            <tr>
-              <th data-key="state">State</th>
-              <th data-key="protectedAreaName">Protected area</th>
-              <th data-key="protectedAreaType">Type</th>
-              <th data-key="notificationStatus">Status</th>
-              <th data-key="notificationDate">Date</th>
-              <th data-key="orderNumber">S.O. number</th>
-              <th>Links</th>
-            </tr>
-          </thead>
-          <tbody></tbody>
-        </table>
+      </details>
+    </section>
+
+    <section class="explorer-section" aria-label="Notification explorer">
+      <div class="explorer-grid">
+        <div class="table-panel">
+          <div class="table-toolbar">
+            <div class="search-group">
+              <input type="search" id="filter-search" placeholder="Search protected area, state, type..." />
+              <button class="btn btn-sm" id="reset-filters" type="button">Reset filters</button>
+            </div>
+            <span id="result-count" class="result-count"></span>
+            <div class="export-buttons">
+              <span class="export-label">Download:</span>
+              <a class="btn btn-sm" href="data/moef-esz-notifications.csv">Notifications CSV</a>
+              <a class="btn btn-sm" href="data/moef-esz-notifications.json">JSON</a>
+              <a class="btn btn-sm" href="data/wikidata-protected-areas.csv">PAs CSV</a>
+              <a class="btn btn-sm" href="data/protected-areas.geojson">GeoJSON</a>
+              <button class="btn btn-sm" id="export-filtered" type="button">Export filtered view (CSV)</button>
+            </div>
+          </div>
+          <p class="table-hint">Where a protected area has a final notification, its earlier drafts are hidden by default &mdash; use the "View draft" toggle on the Final row to reveal them just below it.</p>
+          <div class="table-wrap">
+            <div id="notifications-table"></div>
+          </div>
+        </div>
+
+        <div class="map-panel">
+          <div id="map"></div>
+          <p class="map-hint">Click a point for details. Points are protected areas with a known Wikidata location; boundary outlines (where available via OpenStreetMap) can be opened in amche-atlas from the popup.</p>
+        </div>
       </div>
     </section>
   </main>

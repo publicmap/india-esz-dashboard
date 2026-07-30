@@ -104,6 +104,23 @@ section { margin-bottom: 2rem; }
   align-items: center;
   gap: 0.4rem;
 }
+.stat-filter-row {
+  display: flex;
+  gap: 0.4rem;
+}
+.type-filter-select {
+  flex: 1;
+  min-width: 0;
+  font-size: 0.76rem;
+  color: var(--text-secondary);
+  background: var(--page-plane);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 0.1rem 0.35rem;
+  cursor: pointer;
+}
+.type-filter-select:hover { border-color: var(--text-muted); }
+.stat-tile-filter.stat-tile--active .stat-value { color: var(--accent); }
 .stat-value { font-size: 1.9rem; font-weight: 600; line-height: 1.1; }
 .stat-note { font-size: 0.78rem; color: var(--text-muted); }
 
@@ -146,13 +163,57 @@ section { margin-bottom: 2rem; }
   margin-top: 0.75rem;
 }
 
-.filter-bar {
-  display: flex;
-  gap: 0.6rem;
-  flex-wrap: wrap;
-  margin-bottom: 0.75rem;
+.qa-panel {
+  margin-top: 0.75rem;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 0.6rem 0.85rem;
+  background: var(--surface-1);
 }
-.filter-bar input, .filter-bar select {
+.qa-panel summary {
+  cursor: pointer;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+.qa-instructions {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+  margin: 0.6rem 0;
+  max-width: 80ch;
+}
+.qa-instructions code {
+  font-size: 0.85em;
+  background: var(--page-plane);
+  border: 1px solid var(--border);
+  border-radius: 3px;
+  padding: 0.05rem 0.3rem;
+}
+.qa-table-wrap { max-height: 320px; }
+.qa-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.8rem;
+}
+.qa-table th, .qa-table td {
+  text-align: left;
+  padding: 0.4rem 0.6rem;
+  border-bottom: 1px solid var(--gridline);
+}
+.qa-table thead th {
+  position: sticky;
+  top: 0;
+  background: var(--surface-1);
+}
+
+.search-group {
+  display: flex;
+  gap: 0.5rem;
+  flex: 1 1 260px;
+}
+#filter-search {
+  flex: 1 1 220px;
+  min-width: 160px;
   padding: 0.45rem 0.6rem;
   border-radius: 6px;
   border: 1px solid var(--border);
@@ -160,7 +221,26 @@ section { margin-bottom: 2rem; }
   color: var(--text-primary);
   font-size: 0.9rem;
 }
-#filter-search { flex: 1 1 220px; min-width: 180px; }
+.table-hint { font-size: 0.78rem; color: var(--text-muted); margin: 0 0 0.6rem; }
+
+.explorer-grid {
+  display: grid;
+  grid-template-areas: "map" "table";
+  gap: 1.25rem;
+}
+.map-panel { grid-area: map; min-width: 0; }
+.table-panel { grid-area: table; min-width: 0; }
+
+@media (min-width: 1024px) {
+  .explorer-grid {
+    grid-template-columns: 7fr 3fr;
+    grid-template-areas: "table map";
+    align-items: start;
+  }
+  .map-panel { position: sticky; top: 1rem; }
+  #map { height: calc(100vh - 220px); }
+  .table-panel .table-wrap { max-height: calc(100vh - 220px); }
+}
 
 #map {
   width: 100%;
@@ -179,7 +259,31 @@ section { margin-bottom: 2rem; }
 }
 .popup-title { font-weight: 600; margin: 0 0 0.35rem; }
 .popup-row { font-size: 0.85rem; color: var(--text-secondary); margin: 0.15rem 0; }
+.popup-meta { font-size: 0.78rem; }
+.popup-extract:empty { display: none; }
 .popup-links { margin-top: 0.5rem; display: flex; gap: 0.6rem; flex-wrap: wrap; font-size: 0.82rem; }
+.popup-banner {
+  display: block;
+  width: calc(100% + 2rem);
+  max-width: none;
+  height: 130px;
+  object-fit: cover;
+  margin: -0.85rem -1rem 0.6rem;
+  border-radius: 8px 8px 0 0;
+}
+
+.map-hover-popup {
+  pointer-events: none;
+}
+.map-hover-popup .maplibregl-popup-content {
+  padding: 0.3rem 0.55rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+.map-hover-popup .maplibregl-popup-tip {
+  display: none;
+}
 
 .table-toolbar {
   display: flex;
@@ -200,37 +304,60 @@ section { margin-bottom: 2rem; }
   max-height: 520px;
   overflow-y: auto;
 }
-table { width: 100%; border-collapse: collapse; font-size: 0.85rem; }
-thead th {
-  position: sticky;
-  top: 0;
-  background: var(--surface-1);
-  text-align: left;
-  padding: 0.6rem 0.75rem;
-  border-bottom: 1px solid var(--border);
-  cursor: pointer;
-  white-space: nowrap;
-}
-thead th:hover { color: var(--accent); }
-tbody td {
-  padding: 0.5rem 0.75rem;
-  border-bottom: 1px solid var(--gridline);
-  vertical-align: top;
-}
-tbody tr:hover { background: rgba(42, 120, 214, 0.06); }
-tbody tr.has-location { cursor: pointer; }
-tbody tr.selected-row,
-tbody tr.selected-row:hover {
-  background: rgba(42, 120, 214, 0.14);
-  box-shadow: inset 3px 0 0 var(--accent);
-}
 
+.status-cell {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
 .status-pill {
   display: inline-flex;
   align-items: center;
   gap: 0.35rem;
   font-size: 0.78rem;
 }
+
+/* Tabulator theme -- reskin the default "simple" theme to match the site's
+   surface/border/text variables (incl. dark mode). tabulator_simple.min.css
+   sets its colors via 2-4 chained class selectors (e.g.
+   ".tabulator .tabulator-header .tabulator-col"), so overrides below match
+   those same chains -- a single-class selector loses the specificity fight
+   and silently no-ops (e.g. white-on-white header text in dark mode). */
+.tabulator {
+  background: transparent;
+  border: none;
+  font-family: inherit;
+  font-size: 0.85rem;
+  color: var(--text-primary);
+}
+.tabulator .tabulator-header {
+  background-color: var(--surface-1);
+  border-bottom: 1px solid var(--border);
+  color: var(--text-primary);
+}
+.tabulator .tabulator-header .tabulator-col { background: var(--surface-1); border-right: none; }
+.tabulator-col-title { color: var(--text-primary); font-weight: 600; }
+.tabulator-row,
+.tabulator-row.tabulator-row-even {
+  background-color: var(--surface-1);
+  border-bottom: 1px solid var(--gridline);
+}
+.tabulator-row { cursor: pointer; }
+.tabulator-row.tabulator-selectable:hover { background-color: rgba(42, 120, 214, 0.06); }
+.tabulator-row.selected-row,
+.tabulator-row.selected-row:hover {
+  background-color: rgba(42, 120, 214, 0.14);
+  box-shadow: inset 3px 0 0 var(--accent);
+}
+.tabulator-row .tabulator-cell { border-right: none; color: var(--text-primary); padding: 0.5rem 0.75rem; }
+.tabulator-row.nested-draft-row {
+  background-color: var(--page-plane);
+}
+.tabulator-row.nested-draft-row .tabulator-cell:first-child {
+  box-shadow: inset 3px 0 0 var(--status-draft);
+}
+
+.draft-toggle { padding: 0.15rem 0.5rem; font-size: 0.72rem; }
 
 .site-footer {
   max-width: 1180px;

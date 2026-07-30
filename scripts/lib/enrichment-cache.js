@@ -26,11 +26,15 @@ const COLUMNS = [
   'archiveLink', 'archiveMatchMethod', 'archiveIdentifier', 'archiveCollection',
   'archiveCreator', 'archiveDate', 'archiveMinistry', 'archiveDepartment',
   'archiveSubject', 'archiveGazetteSource',
+  'allmaps images', 'toposheet page', 'toposheet thumbnail', 'allmaps editor', 'tms',
 ];
 const NO_MATCH = 'NONE';
 const EMPTY_ARCHIVE_FIELDS = {
   archiveMatchMethod: '', archiveIdentifier: '', archiveCollection: '', archiveCreator: '',
   archiveDate: '', archiveMinistry: '', archiveDepartment: '', archiveSubject: '', archiveGazetteSource: '',
+};
+const EMPTY_ALLMAPS_FIELDS = {
+  'allmaps images': '', 'toposheet page': '', 'toposheet thumbnail': '', 'allmaps editor': '', tms: '',
 };
 
 export async function loadCache(path) {
@@ -46,7 +50,14 @@ export async function loadCache(path) {
 
 export async function saveCache(path, cache) {
   const sorted = [...cache].sort((a, b) => (a.orderNumber + a.notificationDate).localeCompare(b.orderNumber + b.notificationDate));
-  const csv = stringify(sorted, { header: true, columns: COLUMNS });
+  // Quote every field, not just ones that strictly require it (e.g. containing
+  // a comma). Several allmaps/toposheet columns are URLs sitting right next to
+  // a comma-containing IIIF thumbnail URL -- unquoted, a naive (non-CSV-aware)
+  // URL auto-linker can match straight across the delimiter comma into the
+  // next column, since a bare comma is a legal, unencoded URI character.
+  const csv = stringify(sorted, {
+    header: true, columns: COLUMNS, quoted: true,
+  });
   await writeFile(path, csv, 'utf8');
 }
 
@@ -92,11 +103,28 @@ export function setArchiveResult(cache, orderNumber, notificationDate, result) {
   const matching = cache.filter((r) => r.orderNumber === orderNumber && r.notificationDate === notificationDate);
   if (matching.length === 0) {
     cache.push({
-      orderNumber, notificationDate, protectedAreaName: '', wikidataId: '', ...fields,
+      orderNumber, notificationDate, protectedAreaName: '', wikidataId: '', ...fields, ...EMPTY_ALLMAPS_FIELDS,
     });
     return;
   }
   for (const row of matching) Object.assign(row, fields);
+}
+
+// The "allmaps *"/"toposheet *"/tms columns are keyed per-row (not per
+// notification like the archive* columns): a multi-park notification is one
+// gazette PDF but each park's toposheet/annexure map can sit on a different
+// page, so "toposheet page" can legitimately differ across rows that share
+// the same archiveLink.
+export function setAllmapsFields(cache, orderNumber, notificationDate, protectedAreaName, fields) {
+  const row = findRow(cache, orderNumber, notificationDate, protectedAreaName);
+  if (!row) return;
+  Object.assign(row, {
+    'allmaps images': fields.allmapsImages ?? '',
+    'toposheet page': fields.toposheetPage ?? '',
+    'toposheet thumbnail': fields.toposheetThumbnail ?? '',
+    'allmaps editor': fields.allmapsEditor ?? '',
+    tms: fields.tms ?? '',
+  });
 }
 
 export function getWikidataId(cache, orderNumber, notificationDate, protectedAreaName) {
@@ -112,6 +140,6 @@ export function setWikidataId(cache, orderNumber, notificationDate, protectedAre
     return;
   }
   cache.push({
-    orderNumber, notificationDate, protectedAreaName, wikidataId: wikidataId || '', archiveLink: '', ...EMPTY_ARCHIVE_FIELDS,
+    orderNumber, notificationDate, protectedAreaName, wikidataId: wikidataId || '', archiveLink: '', ...EMPTY_ARCHIVE_FIELDS, ...EMPTY_ALLMAPS_FIELDS,
   });
 }

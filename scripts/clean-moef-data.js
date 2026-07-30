@@ -6,21 +6,21 @@
 // scripts/enrich-wikidata.js.
 
 import { readFile, writeFile } from 'node:fs/promises';
+import { parse } from 'csv-parse/sync';
 import { stringify } from 'csv-stringify/sync';
 import { classifyProtectedAreaType } from './lib/protected-area-type.js';
 import { cleanTrailingJunk } from './lib/clean-pa-name.js';
 import { splitMultiPark } from './lib/split-multi-park.js';
 
-const CORRECTIONS_PATH = 'data/corrections.tsv';
+const CORRECTIONS_PATH = 'data/corrections.csv';
 const DATA_PATH = 'data/moef-esz-notifications.json';
 
 async function loadCorrections() {
   const text = await readFile(CORRECTIONS_PATH, 'utf8');
-  const lines = text.split('\n').map((l) => l.trimEnd()).filter(Boolean);
-  const [, ...rows] = lines; // skip header
+  const rows = parse(text, { columns: true, skip_empty_lines: true });
   const map = new Map();
   for (const row of rows) {
-    const [paName, state, correctPaName, correctState, correctPaType] = row.split('\t');
+    const { paName, state, correctPaName, correctState, correctPaType } = row;
     if (!paName || !state) continue;
     map.set(`${paName}${state}`, {
       correctPaName: correctPaName || paName,

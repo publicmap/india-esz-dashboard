@@ -55,6 +55,10 @@ A static web page deployed on github pages
 - A map based dashboard to explore the above datasets and export data as CSV and JSON that is stored on Github
  - For the map dashboard, build a custom atlas JSON for [amche-atlas](https://amche.in/dev/) via [URL API](https://github.com/publicmap/amche-atlas/blob/dev/docs/API.md) and dynamic osm layers
  - Use [OpenStreetMap relation IDs](https://www.openstreetmap.org/relation/281033) to show PA boundaries
+ - Hovering over the table rows should center the map on the PA location
+ - Clicking the table row should toggle zoom to z10 and open the popup
+ - Similiarly clicking the map marker should select and scroll to the table row
+ - Correct the India boundaries using https://github.com/ramSeraph/india_boundary_corrector
 
 ### MoEF Data cleaing
 
@@ -94,7 +98,7 @@ Khijadiya Wildlife Sanctuary	Wildlife Sanctuary	Final
 Eravikulam National Park, Chinnar Wildlife Sanctuary, Anamudi Shola National Park, Pampadum Shola National Park and Kurinjimala Sanctuary
 Eravikulam National Park + 4 PAs
 
-For cases where it is hard to code a logic create a corrections.tsv that has the input values and the canonical values for manual overrides. Fields should include PA name, state, correct PA name, correct state, correct PA type
+For cases where it is hard to code a logic create a corrections.csv that has the input values and the canonical values for manual overrides. Fields should include PA name, state, correct PA name, correct state, correct PA type
 
 ### Fuzzy wikidata joins
 
@@ -124,6 +128,23 @@ Parse this by searching archive.org `gazetteofindia` collection eg. https://arch
      - Gazette Source
 
 In the cache if an archiveLink is found with the other fields empty it means it was manually entered and the archive metadata must be updated by re-searching archive.org 
+
+**Allmaps IIIF URLs**
+
+ add cols for 'allmaps images' 'toposheet page' 'toposheet thumbnail' 'allmaps editor' and 'tms'
+
+  this will be populated using the archive iiif manifest
+
+  eg for https://archive.org/details/in.gazette.central.e.2017-08-10.178009
+  allmaps images url is https://editor.allmaps.org/images?url=https://iiif.archive.org/iiif/in.gazette.central.e.2017-08-10.178009/manifest.json&bg-preset=osm&bg-url=https://indianopenmaps.fly.dev/soi/osm/{z}/{x}/{y}.webp
+
+  if archive url includes pg https://archive.org/details/in.gazette.central.e.2017-08-10.178009/page/n27/mode/2up
+  in the cache populate the 'toposheet page' and use the iiif manifest https://iiif.archive.org/iiif/in.gazette.central.e.2017-08-10.178009/manifest.json to parse the image id for the allmaps editor url https://editor.allmaps.org/georeference?url=https%3A%2F%2Fiiif.archive.org%2Fiiif%2Fin.gazette.central.e.2017-08-10.178009%2Fmanifest.json&bg-preset=osm&bg-url=https%3A%2F%2Findianopenmaps.fly.dev%2Fsoi%2Fosm%2F%7Bz%7D%2F%7Bx%7D%2F%7By%7D.webp&image=https%3A%2F%2Fiiif.archive.org%2Fimage%2Fiiif%2F3%2Fin.gazette.central.e.2017-08-10.178009%252F178009_jp2.zip%252F178009_jp2%252F178009_0027.jp2
+  add the thumbnail link to the page for 200px size
+  add the tms link like https://allmaps.xyz/images/80713f728801d925/{z}/{x}/{y}@2x.png
+
+  if toposheet page is filled in a different from the page in the url, the toposheet page value should get preference since it is expected to be a manual correction. use this page number for the allmaps urls
+
 
 ## General architecture
 
