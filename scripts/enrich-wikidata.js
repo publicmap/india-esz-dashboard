@@ -77,6 +77,8 @@ SELECT ?item ?itemLabel
   (SAMPLE(?banner) AS ?banner)
   (SAMPLE(?commonsCategory) AS ?commonsCategory)
   (SAMPLE(?iucnLabel) AS ?iucnCategory)
+  (SAMPLE(?inception) AS ?inception)
+  (SAMPLE(?worldHeritageSiteId) AS ?worldHeritageSiteId)
   (GROUP_CONCAT(DISTINCT ?osmRelation; separator="; ") AS ?osmRelations)
   (GROUP_CONCAT(DISTINCT ?website; separator="; ") AS ?websites)
   (GROUP_CONCAT(DISTINCT ?partOfLabel; separator="; ") AS ?partOf)
@@ -86,6 +88,7 @@ SELECT ?item ?itemLabel
   (GROUP_CONCAT(DISTINCT ?significantPlaceLabel; separator="; ") AS ?significantPlace)
   (GROUP_CONCAT(DISTINCT ?heritageLabel; separator="; ") AS ?heritageDesignation)
   (SAMPLE(?enwiki) AS ?enwikiUrl)
+  (GROUP_CONCAT(DISTINCT ?alias; separator="; ") AS ?aliases)
 WHERE {
   {
     ${PROTECTED_AREA_TYPE_UNION}
@@ -99,6 +102,8 @@ WHERE {
   OPTIONAL { ?item wdt:P402 ?osmRelation }
   OPTIONAL { ?item wdt:P856 ?website }
   OPTIONAL { ?item wdt:P814 ?iucn . ?iucn rdfs:label ?iucnLabel . FILTER(LANG(?iucnLabel)="en") }
+  OPTIONAL { ?item wdt:P571 ?inception }
+  OPTIONAL { ?item wdt:P757 ?worldHeritageSiteId }
   OPTIONAL { ?item wdt:P361 ?partOf_ . ?partOf_ rdfs:label ?partOfLabel . FILTER(LANG(?partOfLabel)="en") }
   OPTIONAL { ?item wdt:P131 ?adminEntity_ . ?adminEntity_ rdfs:label ?adminEntityLabel . FILTER(LANG(?adminEntityLabel)="en") }
   OPTIONAL {
@@ -119,6 +124,7 @@ WHERE {
   OPTIONAL { ?item wdt:P7153 ?significantPlace_ . ?significantPlace_ rdfs:label ?significantPlaceLabel . FILTER(LANG(?significantPlaceLabel)="en") }
   OPTIONAL { ?item wdt:P1435 ?heritage_ . ?heritage_ rdfs:label ?heritageLabel . FILTER(LANG(?heritageLabel)="en") }
   OPTIONAL { ?enwiki schema:about ?item ; schema:isPartOf <https://en.wikipedia.org/> }
+  OPTIONAL { ?item skos:altLabel ?alias . FILTER(LANG(?alias)="en") }
   SERVICE wikibase:label { bd:serviceParam wikibase:language "en". }
 }
 GROUP BY ?item ?itemLabel
@@ -220,16 +226,24 @@ async function fetchWikidataProtectedAreas() {
       ? directState
       : (partOfState.length === 1 ? partOfState : []);
     const wikidataId = b.item.value.replace('http://www.wikidata.org/entity/', '');
+    const aliases = splitConcat(b.aliases?.value);
+    const normalizedAliases = aliases.map((a) => normalizeName(a)).filter(Boolean);
+    const compactAliases = normalizedAliases.map((n) => compactName(n));
     return {
       wikidataId,
       wikidataUrl: `https://www.wikidata.org/wiki/${wikidataId}`,
       wikidataLabel,
+      aliases,
       normalizedName: normalizeName(wikidataLabel),
       compactName: compactName(normalizeName(wikidataLabel)),
+      normalizedAliases,
+      compactAliases,
       protectedAreaType: classifyProtectedAreaType(wikidataLabel),
       partOf: splitConcat(b.partOf?.value),
       image: b.image?.value ?? null,
       iucnCategory: b.iucnCategory?.value ?? null,
+      inception: b.inception?.value ?? null,
+      worldHeritageSiteId: b.worldHeritageSiteId?.value ?? null,
       locatedInAdminTerritorialEntity: splitConcat(b.adminEntity?.value),
       state,
       coordinateLatitude: coord?.lat ?? null,
@@ -246,22 +260,61 @@ async function fetchWikidataProtectedAreas() {
   });
 }
 
+// Prefers a candidate whose state agrees with MoEF's, but -- unlike a plain
+// find-with-fallback -- refuses to silently hand back a candidate whose
+// state is known and DISAGREES just because it's the only one in the
+// bucket. A same-normalized-name collision across unrelated items in
+// different states does happen (e.g. two different sanctuaries both named
+// after the same person, one via a label and one only via an alias), so an
+// exact-name bucket isn't proof they're the same place. Returns null when
+// every candidate with a known state disagrees, so the caller can fall
+// through to the fuzzy tier (which applies the same veto) rather than
+// forcing a wrong match.
 function pickByState(candidates, normMoefState) {
-  return candidates.find((c) => c.state.some((a) => statesAgree(normalizeState(a), normMoefState))) ?? candidates[0];
+  const agrees = (c) => c.state.some((a) => statesAgree(normalizeState(a), normMoefState));
+  const exactStateMatch = candidates.find(agrees);
+  if (exactStateMatch) return exactStateMatch;
+  const viable = candidates.filter((c) => c.state.length === 0);
+  return viable[0] ?? null;
+}
+
+// A candidate name that scores against the MoEF name -- either an item's
+// primary label or one of its Wikidata aliases (e.g. "Madei Wildlife
+// Sanctuary" is a registered en alias of Q6826847, whose label is "Mhadei
+// Wildlife Sanctuary" -- close enough by edit distance, but at 5 characters
+// it's too short to clear the no-containment length floor below).
+function scoreCandidateName(normMoefName, candidateName, stateAgrees) {
+  const shorterLen = Math.min(normMoefName.length, candidateName.length);
+  const isContainment = candidateName.includes(normMoefName) || normMoefName.includes(candidateName);
+  if (isContainment) {
+    // No length floor: a short name (e.g. "Nagi" in "Nagi Dam Bird
+    // Sanctuary") appearing verbatim as a whole prefix/suffix of the
+    // other is meaningful regardless of length.
+    const nameScore = shorterLen / Math.max(normMoefName.length, candidateName.length);
+    return nameScore >= (stateAgrees ? 0.5 : 0.7) ? nameScore : null;
+  }
+  // Edit-distance-only matches on short strings are exactly the
+  // coincidence risk ("Tale"/"Kane" scores 0.5, a hypothetical
+  // single-letter-typo 4-letter pair would score 0.75) -- require
+  // enough length that a passing score reflects a real typo, not luck.
+  if (shorterLen < 6) return null;
+  const nameScore = similarity(normMoefName, candidateName);
+  return nameScore >= (stateAgrees ? 0.7 : 0.85) ? nameScore : null;
 }
 
 function buildMatcher(wikidataItems) {
   const byNormName = new Map();
   const byCompactName = new Map();
+  const index = (map, key, item) => {
+    if (!key) return;
+    if (!map.has(key)) map.set(key, []);
+    map.get(key).push(item);
+  };
   for (const item of wikidataItems) {
-    if (item.normalizedName) {
-      if (!byNormName.has(item.normalizedName)) byNormName.set(item.normalizedName, []);
-      byNormName.get(item.normalizedName).push(item);
-    }
-    if (item.compactName) {
-      if (!byCompactName.has(item.compactName)) byCompactName.set(item.compactName, []);
-      byCompactName.get(item.compactName).push(item);
-    }
+    index(byNormName, item.normalizedName, item);
+    index(byCompactName, item.compactName, item);
+    item.normalizedAliases.forEach((n) => index(byNormName, n, item));
+    item.compactAliases.forEach((n) => index(byCompactName, n, item));
   }
 
   return function match(moefName, moefState) {
@@ -271,15 +324,13 @@ function buildMatcher(wikidataItems) {
     if (!normMoefName) return { item: null, matchConfidence: 'none' };
 
     const exact = byNormName.get(normMoefName) ?? [];
-    if (exact.length > 0) {
-      return { item: pickByState(exact, normMoefState), matchConfidence: 'exact' };
-    }
+    const exactPick = pickByState(exact, normMoefState);
+    if (exactPick) return { item: exactPick, matchConfidence: 'exact' };
     // Same name once whitespace/hyphens are ignored (e.g. "Eaglenest" vs
     // "Eagle Nest") -- still an exact match, just a spacing variant.
     const compactExact = byCompactName.get(compactMoefName) ?? [];
-    if (compactExact.length > 0) {
-      return { item: pickByState(compactExact, normMoefState), matchConfidence: 'exact' };
-    }
+    const compactExactPick = pickByState(compactExact, normMoefState);
+    if (compactExactPick) return { item: compactExactPick, matchConfidence: 'exact' };
 
     // Fuzzy tier. Two structurally different kinds of near-match need two
     // different bars:
@@ -303,31 +354,27 @@ function buildMatcher(wikidataItems) {
     let best = null;
     let bestScore = 0;
     for (const item of wikidataItems) {
-      if (!item.normalizedName) continue;
+      const candidateNames = item.normalizedName
+        ? [item.normalizedName, ...item.normalizedAliases]
+        : item.normalizedAliases;
+      if (candidateNames.length === 0) continue;
       const stateKnown = item.state.length > 0;
       const stateAgrees = stateKnown && item.state.some((a) => statesAgree(normalizeState(a), normMoefState));
       if (stateKnown && !stateAgrees) continue;
 
-      const shorterLen = Math.min(normMoefName.length, item.normalizedName.length);
-      const isContainment = item.normalizedName.includes(normMoefName) || normMoefName.includes(item.normalizedName);
-      let nameScore;
-      if (isContainment) {
-        // No length floor: a short name (e.g. "Nagi" in "Nagi Dam Bird
-        // Sanctuary") appearing verbatim as a whole prefix/suffix of the
-        // other is meaningful regardless of length.
-        nameScore = shorterLen / Math.max(normMoefName.length, item.normalizedName.length);
-        if (nameScore < (stateAgrees ? 0.5 : 0.7)) continue;
-      } else {
-        // Edit-distance-only matches on short strings are exactly the
-        // coincidence risk ("Tale"/"Kane" scores 0.5, a hypothetical
-        // single-letter-typo 4-letter pair would score 0.75) -- require
-        // enough length that a passing score reflects a real typo, not luck.
-        if (shorterLen < 6) continue;
-        nameScore = similarity(normMoefName, item.normalizedName);
-        if (nameScore < (stateAgrees ? 0.7 : 0.85)) continue;
+      // An item can match through its label or any alias; take whichever
+      // candidate name scores best (e.g. "Madei" vs. an item labelled
+      // "Mhadei" but aliased "Madei Wildlife Sanctuary").
+      let itemBestNameScore = null;
+      for (const candidateName of candidateNames) {
+        const nameScore = scoreCandidateName(normMoefName, candidateName, stateAgrees);
+        if (nameScore !== null && (itemBestNameScore === null || nameScore > itemBestNameScore)) {
+          itemBestNameScore = nameScore;
+        }
       }
+      if (itemBestNameScore === null) continue;
 
-      const score = nameScore + (stateAgrees ? 0.25 : 0);
+      const score = itemBestNameScore + (stateAgrees ? 0.25 : 0);
       if (score > bestScore) {
         bestScore = score;
         best = item;
@@ -338,11 +385,14 @@ function buildMatcher(wikidataItems) {
 }
 
 function writeWikidataTable(wikidataItems) {
-  const rows = wikidataItems.map(({ normalizedName, compactName: _compactName, ...item }) => item);
+  const rows = wikidataItems.map(({
+    normalizedName, compactName: _compactName, normalizedAliases, compactAliases, ...item
+  }) => item);
   const jsonPromise = writeFile('data/wikidata-protected-areas.json', JSON.stringify(rows, null, 2), 'utf8');
 
   const csvRows = rows.map((r) => ({
     ...r,
+    aliases: r.aliases.join('; '),
     partOf: r.partOf.join('; '),
     locatedInAdminTerritorialEntity: r.locatedInAdminTerritorialEntity.join('; '),
     state: r.state.join('; '),

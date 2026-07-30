@@ -10,7 +10,9 @@
 //
 // A wikilink match alone is weak evidence (the lead of a wildlife sanctuary
 // article mentions plenty of places that aren't its state), so confidence is
-// tiered by *where* the matching link sits in the lead:
+// tiered by *where* the matching link sits in the lead, after first narrowing
+// to the most specific --target-types tier found anywhere in the lead (see
+// below):
 //   high   - the very first wikilink in the lead resolves to a matching item
 //   medium - some later wikilink resolves to a matching item (still unique)
 //   low    - multiple, disagreeing matching items found (ambiguous)
@@ -28,15 +30,25 @@
 //     --qs-output data/wikidata-protected-areas.state.qs.txt \
 //     --property P131 \
 //     --property-label state \
-//     --target-types Q12443800,Q467745 \
+//     --target-types Q105626471,Q1149652,Q467745,Q12443800 \
 //     --filter-column state
 //
 // Flags:
 //   --input            required. Source CSV.
 //   --output           required. Enriched CSV (all input columns + suggestion columns + quickstatement).
 //   --property         required. Wikidata property ID to fill in, e.g. P131.
-//   --target-types     required. Comma-separated QIDs; a linked article's item must be an
-//                       instance of (transitively, via P31/P279*) one of these to count as a match.
+//   --target-types     required. Comma-separated QIDs, ordered from most specific to least
+//                       specific (e.g. for P131: subdistrict, district, then union territory/
+//                       state -- Q105626471,Q1149652,Q467745,Q12443800). A linked article's
+//                       item must be an instance of (transitively, via P31/P279*) one of these,
+//                       or itself a transitive subclass (via P279*) of one, to count as a match.
+//                       Tiers are tried from most specific to least specific: if the most
+//                       specific tier found in the lead has more than one distinct matching
+//                       item (ambiguous), the next less-specific tier is tried instead, and so
+//                       on -- an unambiguous state match beats an ambiguous district match.
+//                       Only if every tier is ambiguous does the most specific tier's ambiguity
+//                       get reported (as 'low' confidence). Position in the lead is only used
+//                       to break ties/set high-vs-medium confidence within whichever tier wins.
 //   --property-label   Column-name prefix for the suggestion columns (default: --property, lowercased).
 //   --id-column         Column holding the row's Wikidata QID (default: wikidataId).
 //   --wiki-url-column  Column holding the row's enwiki URL (default: enwikiUrl). When empty for a
@@ -145,13 +157,45 @@ async function mwBatchedTitleQuery(titles, extraParams) {
   return pageByOriginal;
 }
 
+// Strips every {{...}} template transclusion via balanced brace counting --
+// a plain regex can't handle templates nesting inside templates (e.g. an
+// infobox containing {{convert|...}}), so unlike the other cleanup helpers
+// here this has to walk the string. Also drops <ref>...</ref>/<ref .../>,
+// which templates can't nest inside so a regex suffices for those.
+function stripTemplatesAndRefs(wikitext) {
+  const withoutRefs = wikitext
+    .replace(/<ref[^>]*\/>/gi, '')
+    .replace(/<ref[^>]*>[\s\S]*?<\/ref>/gi, '');
+  let out = '';
+  let depth = 0;
+  for (let i = 0; i < withoutRefs.length; i += 1) {
+    if (withoutRefs[i] === '{' && withoutRefs[i + 1] === '{') {
+      depth += 1;
+      i += 1;
+    } else if (depth > 0 && withoutRefs[i] === '}' && withoutRefs[i + 1] === '}') {
+      depth -= 1;
+      i += 1;
+    } else if (depth === 0) {
+      out += withoutRefs[i];
+    }
+  }
+  return out;
+}
+
+// The lead section's wikitext starts with an infobox template, which isn't
+// part of the visible prose a reader encounters -- wikilinks inside its
+// fields (location, map captions, etc) shouldn't count as "wikilinks in the
+// lead" for the order-based confidence tiering below, and infobox junk
+// shouldn't leak into the QA sentence either, so templates/refs are stripped
+// once here rather than by each downstream consumer.
 async function fetchLeadWikitexts(titles) {
   const pages = await mwBatchedTitleQuery(titles, {
     prop: 'revisions', rvslots: 'main', rvprop: 'content', rvsection: '0',
   });
   const result = new Map();
   for (const [title, page] of pages) {
-    result.set(title, page?.revisions?.[0]?.slots?.main?.['*'] ?? null);
+    const wikitext = page?.revisions?.[0]?.slots?.main?.['*'] ?? null;
+    result.set(title, wikitext != null ? stripTemplatesAndRefs(wikitext) : null);
   }
   return result;
 }
@@ -181,9 +225,19 @@ async function resolveEnwikiTitlesForQids(qids) {
 
 // One batched SPARQL query rather than one per candidate: VALUES over every
 // candidate QID at once, checked against a transitive P31/P279* walk to the
-// target types, so this generalizes to type hierarchies deeper than a flat
-// P31 (e.g. "country" subclasses) without needing per-property special-casing.
+// target types (or, since an item can itself be a class rather than an
+// instance -- e.g. a Wikidata item for a whole class of subdivisions -- a
+// plain transitive P279* walk too), so this generalizes to type hierarchies
+// deeper than a flat P31 without needing per-property special-casing.
+//
+// `targetTypes` is ordered from most specific to least (e.g. subdistrict,
+// district, then state/UT for P131): when a candidate matches more than one
+// tier -- which happens for items classified at multiple levels -- only the
+// most specific (lowest-index) tier is kept, recorded as `tier` on the result
+// so callers can prefer specific matches over broad ones regardless of which
+// bound first.
 async function fetchTransitiveTypeMatches(qids, targetTypes) {
+  const tierByType = new Map(targetTypes.map((qid, tier) => [qid, tier]));
   const result = new Map();
   const batches = chunksOf(qids, 200);
   for (let i = 0; i < batches.length; i += 1) {
@@ -192,18 +246,20 @@ async function fetchTransitiveTypeMatches(qids, targetTypes) {
     const query = `SELECT ?item ?itemLabel ?matchedType ?matchedTypeLabel WHERE {
       VALUES ?item { ${values} }
       VALUES ?matchedType { ${types} }
-      ?item wdt:P31/wdt:P279* ?matchedType .
+      ?item (wdt:P31/wdt:P279*|wdt:P279*) ?matchedType .
       SERVICE wikibase:label { bd:serviceParam wikibase:language "en". }
     }`;
     const json = await fetchJson(`${SPARQL_ENDPOINT}?query=${encodeURIComponent(query)}`);
     for (const b of json.results.bindings) {
       const qid = b.item.value.replace('http://www.wikidata.org/entity/', '');
-      if (result.has(qid)) continue;
       const matchedType = b.matchedType.value.replace('http://www.wikidata.org/entity/', '');
+      const tier = tierByType.get(matchedType);
+      if (result.has(qid) && result.get(qid).tier <= tier) continue;
       result.set(qid, {
         label: b.itemLabel?.value ?? qid,
         matchedType,
         matchedTypeLabel: b.matchedTypeLabel?.value ?? matchedType,
+        tier,
       });
     }
     if (i < batches.length - 1) await sleep(BATCH_DELAY_MS);
@@ -233,13 +289,11 @@ function extractWikilinksInOrder(wikitext) {
 }
 
 // Best-effort wikitext -> plain text cleanup for a short snippet (a single
-// sentence), not a full wikitext renderer: strips refs, templates, bold/italic
-// markup and turns [[title|display]]/[[title]] links into their display text.
+// sentence), not a full wikitext renderer: refs/templates are already gone
+// (stripped in fetchLeadWikitexts), so this just handles bold/italic markup
+// and turns [[title|display]]/[[title]] links into their display text.
 function cleanWikitextSnippet(text) {
   return text
-    .replace(/<ref[^>]*\/>/gi, '')
-    .replace(/<ref[^>]*>[\s\S]*?<\/ref>/gi, '')
-    .replace(/\{\{[^{}]*\}\}/g, '')
     .replace(/'''''|'''|''/g, '')
     .replace(/\[\[[^\]|#]+(?:#[^\]|]*)?\|([^\]]*)\]\]/g, '$1')
     .replace(/\[\[([^\]|#]+)(?:#[^\]|]*)?\]\]/g, '$1')
@@ -253,7 +307,7 @@ function cleanWikitextSnippet(text) {
 // design (e.g. abbreviations like "U.S." can split early) -- this is a QA aid
 // for a human to sanity-check a suggestion against, not a citation engine.
 function sentenceContaining(wikitext, index) {
-  const sentenceEnd = /[.!?](?=\s|$)/g;
+  const sentenceEnd = /[.!?](?=\s|$|[<{[])/g;
   let start = 0;
   let match;
   while ((match = sentenceEnd.exec(wikitext))) {
@@ -324,9 +378,25 @@ async function main() {
     const title = rowTitles[i];
     const linkInfo = title ? linksByTitle.get(title) : null;
     const links = linkInfo?.titles ?? [];
-    const candidates = links
+    const matchingLinks = links
       .map((linkTitle, order) => ({ linkTitle, order, qid: qidByLinkedTitle.get(linkTitle) ?? null }))
       .filter((c) => c.qid && typeMatchByQid.has(c.qid));
+    // Try tiers from most specific to least specific (e.g. district before
+    // state for P131): the first tier with a single distinct matching item
+    // wins outright, even if a more specific tier exists but is itself
+    // ambiguous -- an unambiguous state match beats an ambiguous district
+    // match. Only if every tier is ambiguous do we fall back to reporting
+    // the most specific tier's ambiguity (as before this fallback existed).
+    const tiersPresent = [...new Set(matchingLinks.map((c) => typeMatchByQid.get(c.qid).tier))].sort((a, b) => a - b);
+    let candidates = [];
+    for (const tier of tiersPresent) {
+      const atTier = matchingLinks.filter((c) => typeMatchByQid.get(c.qid).tier === tier);
+      if (candidates.length === 0) candidates = atTier;
+      if (new Set(atTier.map((c) => c.qid)).size === 1) {
+        candidates = atTier;
+        break;
+      }
+    }
 
     let suggestedQid = null;
     let suggestedLabel = null;
@@ -347,16 +417,20 @@ async function main() {
       const chosenIndex = linkInfo.firstIndexByTitle.get(chosen.linkTitle);
       const wikitext = wikitextByTitle.get(title);
       if (wikitext != null && chosenIndex != null) suggestedSentence = sentenceContaining(wikitext, chosenIndex);
+      const skippedTiers = tiersPresent.filter((t) => t < match.tier);
+      const fallbackPrefix = skippedTiers.length
+        ? `more specific tier${skippedTiers.length > 1 ? 's were' : ' was'} ambiguous, falling back to "${match.matchedTypeLabel}"; `
+        : '';
       if (distinctQids.size > 1) {
         confidence = 'low';
         const distinctLabelled = [...distinctQids].map((qid) => `"${typeMatchByQid.get(qid).label}" (${qid})`).join(', ');
-        evidence = `ambiguous: lead links to ${distinctQids.size} different matching items (${distinctLabelled}); using the first, "${chosen.linkTitle}" (${chosen.qid})`;
+        evidence = `${fallbackPrefix}ambiguous: lead links to ${distinctQids.size} different matching items (${distinctLabelled}); using the first, "${chosen.linkTitle}" (${chosen.qid})`;
       } else if (chosen.order === 0) {
         confidence = 'high';
-        evidence = `1st wikilink in the lead, "${chosen.linkTitle}" (${chosen.qid}), is an instance of "${match.matchedTypeLabel}" (${match.matchedType})`;
+        evidence = `${fallbackPrefix}1st wikilink in the lead, "${chosen.linkTitle}" (${chosen.qid}), is an instance of "${match.matchedTypeLabel}" (${match.matchedType})`;
       } else {
         confidence = 'medium';
-        evidence = `wikilink #${chosen.order + 1} in the lead, "${chosen.linkTitle}" (${chosen.qid}), is an instance of "${match.matchedTypeLabel}" (${match.matchedType})`;
+        evidence = `${fallbackPrefix}wikilink #${chosen.order + 1} in the lead, "${chosen.linkTitle}" (${chosen.qid}), is an instance of "${match.matchedTypeLabel}" (${match.matchedType})`;
       }
     }
 

@@ -158,7 +158,7 @@ function computeKPIs() {
 function renderKPIs() {
   const { total, final, draftOnly, none, matchedCount, unmatchedPaCount, unmatchedRecordCount } = computeKPIs();
   document.getElementById('stat-total').textContent = total.toLocaleString();
-  document.getElementById('stat-total').closest('.stat-tile').classList.toggle('stat-tile--active', Boolean(paTypeFilter || paStateFilter));
+  document.querySelector('.filter-hero').classList.toggle('filter-hero--active', Boolean(paTypeFilter || paStateFilter));
   document.getElementById('stat-final').textContent = final.toLocaleString();
   document.getElementById('stat-draft').textContent = draftOnly.toLocaleString();
   document.getElementById('stat-none').textContent = none.toLocaleString();
@@ -768,6 +768,16 @@ function initFilterEvents() {
   document.getElementById('reset-filters').addEventListener('click', () => {
     searchInput.value = '';
     searchTerm = '';
+    document.getElementById('pa-type-filter').value = '';
+    paTypeFilter = '';
+    document.getElementById('pa-state-filter').value = '';
+    paStateFilter = '';
+    table.refreshFilter();
+    renderKPIs();
+    renderQaList();
+    renderNoCoordList();
+  });
+  document.getElementById('reset-pa-filters').addEventListener('click', () => {
     document.getElementById('pa-type-filter').value = '';
     paTypeFilter = '';
     document.getElementById('pa-state-filter').value = '';

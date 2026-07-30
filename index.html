@@ -28,21 +28,27 @@
   </header>
 
   <main>
+    <section class="filter-hero" aria-label="Protected area filter">
+      <div class="filter-hero-row">
+        <div class="filter-hero-heading">
+          <span class="stat-label">Protected areas in India</span>
+          <span class="stat-value stat-value-lg" id="stat-total">&ndash;</span>
+          <span class="stat-note">tracked via Wikidata, filtered below</span>
+        </div>
+        <div class="filter-hero-controls">
+          <select id="pa-state-filter" class="type-filter-select" aria-label="Filter by state">
+            <option value="">All states</option>
+          </select>
+          <select id="pa-type-filter" class="type-filter-select" aria-label="Filter by protected area type">
+            <option value="">All types</option>
+          </select>
+          <button class="btn btn-sm" id="reset-pa-filters" type="button">Reset filter</button>
+        </div>
+      </div>
+    </section>
+
     <section class="kpi-section" aria-label="Key metrics">
       <div class="stat-tile-row">
-        <div class="stat-tile stat-tile-filter">
-          <span class="stat-label">Protected areas in India</span>
-          <div class="stat-filter-row">
-            <select id="pa-state-filter" class="type-filter-select" aria-label="Filter by state">
-              <option value="">All states</option>
-            </select>
-            <select id="pa-type-filter" class="type-filter-select" aria-label="Filter by protected area type">
-              <option value="">All types</option>
-            </select>
-          </div>
-          <span class="stat-value" id="stat-total">&ndash;</span>
-          <span class="stat-note">tracked via Wikidata</span>
-        </div>
         <div class="stat-tile">
           <span class="stat-label"><i class="dot dot-final" aria-hidden="true"></i>Final ESZ notified</span>
           <span class="stat-value" id="stat-final">&ndash;</span>

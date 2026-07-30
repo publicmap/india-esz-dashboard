@@ -57,9 +57,57 @@ npm run update   # fetch -> parse -> clean -> enrich:wikidata -> enrich:archive 
 
 Runs weekly via `.github/workflows/update.yml`; the dashboard (`index.html`) is redeployed to GitHub Pages afterwards by `.github/workflows/pages.yml`. Enable Pages once under repo Settings &rarr; Pages &rarr; Source: "GitHub Actions".
 
+`npm run update` is just those steps chained together. Each can also be run on its own,
+which is useful when re-running only the part affected by a correction (see
+[Contributing corrections](#contributing-corrections) below) instead of the whole
+pipeline:
+
+| # | Command | Reads | Writes | What it does |
+| - | --- | --- | --- | --- |
+| 1 | `npm run fetch` | https://moef.gov.in/esz-notifications | `data/raw/moef-esz-notifications-table.html` | Scrapes the raw MoEF ESZ notifications table HTML |
+| 2 | `npm run parse` | `data/raw/moef-esz-notifications-table.html` | `data/moef-esz-notifications.json` | Parses the table markup into one structured record per Draft/Final notification |
+| 3 | `npm run clean` | `data/moef-esz-notifications.json`, `data/corrections.csv` | `data/moef-esz-notifications.json` | Applies manual corrections, splits multi-park notifications into one record per area, canonicalizes names/types |
+| 4 | `npm run enrich:wikidata` | `data/moef-esz-notifications.json`, live Wikidata SPARQL | `data/wikidata-protected-areas.{csv,json}`, `data/moef-esz-notifications.{csv,json}` (+ `wikidataId`/`matchConfidence`), `data/enrichment-cache.csv` | Fetches the full Wikidata list of Indian protected areas and links each notification to its Wikidata item |
+| 5 | `npm run enrich:archive` | `data/moef-esz-notifications.json`, archive.org search | `data/moef-esz-notifications.{csv,json}` (+ `notificationArchiveLink`), `data/enrichment-cache.csv` | Looks up each notification's official gazette scan on archive.org |
+| 6 | `npm run enrich:allmaps` | `data/enrichment-cache.csv` | `data/enrichment-cache.csv` (+ Allmaps fields) | Adds Allmaps IIIF georeferencing links for toposheet scans found in step 5 |
+| 7 | `npm run build:geojson` | `data/wikidata-protected-areas.json`, `data/moef-esz-notifications.json` | `data/protected-areas.geojson` | Builds the point-feature GeoJSON (PA location + ESZ status) used by the dashboard map |
+| 8 | `npm run build:atlas` | `data/protected-areas.geojson` | `data/amche-atlas.json` | Builds the [amche-atlas](https://github.com/publicmap/amche-atlas/blob/dev/docs/API.md) config (PA points + live OSM-relation boundary layers) |
+
+Steps 4–6 cache their lookups in `data/enrichment-cache.csv`, so re-running them after
+the first full run is fast — only new/changed notifications are re-fetched.
+
 Outputs, all in `data/`:
 - `moef-esz-notifications.{csv,json}` — one row per protected area per notification, with a `wikidataId` join key
 - `wikidata-protected-areas.{csv,json}` — full Wikidata list of Indian protected areas
 - `protected-areas.geojson` — PA point locations with ESZ status, used by the dashboard map
 - `amche-atlas.json` — custom [amche-atlas](https://github.com/publicmap/amche-atlas/blob/dev/docs/API.md) config (PA points + OSM-relation boundary layers)
 - `enrichment-cache.csv` — persistent cache of Wikidata/archive.org lookups so repeat runs are fast
+
+## Contributing corrections
+
+This is scraped and joined data from a government site and Wikidata, so it's imperfect —
+corrections are welcome via pull request. Depending on what's wrong, fix it at a
+different point in the pipeline rather than editing the generated `data/*.json`/`*.csv`
+outputs directly, since those get overwritten the next time the pipeline runs:
+
+- **A MoEF notification's protected area name, state, or type is wrong or garbled**
+  (e.g. a mis-scraped name, a multi-park notification that didn't split correctly) —
+  add a row to [`data/corrections.csv`](data/corrections.csv) keyed by the *exact*
+  `paName`/`state` as they currently appear in `data/moef-esz-notifications.json`, with
+  `correctPaName`/`correctState`/`correctPaType` set to the fix (leave a column blank to
+  leave that field alone). Applied by `scripts/clean-moef-data.js`. Re-run `npm run
+  clean` (or the full pipeline from step 3 onward) to verify.
+- **A Wikidata field is wrong or missing** (state, admin territorial entity, coordinates,
+  IUCN category, etc.) — fix it at the source: edit the item on
+  [wikidata.org](https://www.wikidata.org/), then re-run `npm run enrich:wikidata` (or
+  `npm run update`) to pull the fix back into this repo. For rows missing a `state` or
+  `locatedInAdminTerritorialEntity` value, `npm run suggest:missing-state` /
+  `npm run suggest:missing-located-in` can suggest one by reading the item's Wikipedia
+  article — see [`scripts/plugins/README.md`](scripts/plugins/README.md) for that
+  workflow before batch-editing Wikidata.
+- **A gazette/archive.org or toposheet link is wrong** — the `toposheet page` column in
+  [`data/enrichment-cache.csv`](data/enrichment-cache.csv) is a manual override read by
+  `scripts/enrich-allmaps.js`; other archive fields are safe to blank out to force
+  `npm run enrich:archive` to re-look them up on the next run.
+- **Something else** (pipeline bug, dashboard bug, new feature) — open an issue or PR as
+  usual.
