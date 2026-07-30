@@ -369,7 +369,7 @@
   },
   {
     "moefSNo": 13,
-    "state": "Andaman and Nicobar",
+    "state": "Andaman and Nicobar Islands",
     "protectedAreaName": "Union Territory of Andaman and Nicobar Islands",
     "protectedAreaType": "National Park",
     "notificationStatus": "Draft",
@@ -774,7 +774,7 @@
   },
   {
     "moefSNo": 11,
-    "state": "Andaman and Nicobar",
+    "state": "Andaman and Nicobar Islands",
     "protectedAreaName": "Areas in the Union Territory of Andaman and Nicobar Island",
     "protectedAreaType": null,
     "notificationStatus": "Final",
@@ -790,7 +790,7 @@
   },
   {
     "moefSNo": 14,
-    "state": "Andaman and Nicobar",
+    "state": "Andaman and Nicobar Islands",
     "protectedAreaName": "Cuthbert Bay Wildlife Sanctuary",
     "protectedAreaType": "Wildlife Sanctuary",
     "notificationStatus": "Draft",
@@ -806,7 +806,7 @@
   },
   {
     "moefSNo": 12,
-    "state": "Andaman and Nicobar",
+    "state": "Andaman and Nicobar Islands",
     "protectedAreaName": "Cuthbert Bay Wildlife Sanctuary",
     "protectedAreaType": "Wildlife Sanctuary",
     "notificationStatus": "Final",
@@ -822,7 +822,7 @@
   },
   {
     "moefSNo": 15,
-    "state": "Andaman and Nicobar",
+    "state": "Andaman and Nicobar Islands",
     "protectedAreaName": "Saddle Peak National Park",
     "protectedAreaType": "National Park",
     "notificationStatus": "Draft",
@@ -838,7 +838,7 @@
   },
   {
     "moefSNo": 13,
-    "state": "Andaman and Nicobar",
+    "state": "Andaman and Nicobar Islands",
     "protectedAreaName": "Saddle Peak National Park",
     "protectedAreaType": "National Park",
     "notificationStatus": "Final",
@@ -854,7 +854,7 @@
   },
   {
     "moefSNo": 16,
-    "state": "Andaman and Nicobar",
+    "state": "Andaman and Nicobar Islands",
     "protectedAreaName": "Mount Harriet National Park",
     "protectedAreaType": "National Park",
     "notificationStatus": "Draft",
@@ -870,7 +870,7 @@
   },
   {
     "moefSNo": 14,
-    "state": "Andaman and Nicobar",
+    "state": "Andaman and Nicobar Islands",
     "protectedAreaName": "Mount Harriet National Park",
     "protectedAreaType": "National Park",
     "notificationStatus": "Final",
@@ -886,7 +886,7 @@
   },
   {
     "moefSNo": 17,
-    "state": "Andaman and Nicobar",
+    "state": "Andaman and Nicobar Islands",
     "protectedAreaName": "Campbell Bay National Park",
     "protectedAreaType": "National Park",
     "notificationStatus": "Draft",
@@ -902,7 +902,7 @@
   },
   {
     "moefSNo": 17,
-    "state": "Andaman and Nicobar",
+    "state": "Andaman and Nicobar Islands",
     "protectedAreaName": "Andaman & Nicobar Islands",
     "protectedAreaType": "National Park",
     "notificationStatus": "Draft",
@@ -918,7 +918,7 @@
   },
   {
     "moefSNo": 15,
-    "state": "Andaman and Nicobar",
+    "state": "Andaman and Nicobar Islands",
     "protectedAreaName": "Mount Harriet National Park",
     "protectedAreaType": "National Park",
     "notificationStatus": "Final",
@@ -934,7 +934,7 @@
   },
   {
     "moefSNo": 18,
-    "state": "Andaman and Nicobar",
+    "state": "Andaman and Nicobar Islands",
     "protectedAreaName": "Galathea Bay National Park",
     "protectedAreaType": "National Park",
     "notificationStatus": "Draft",
@@ -950,7 +950,7 @@
   },
   {
     "moefSNo": 18,
-    "state": "Andaman and Nicobar",
+    "state": "Andaman and Nicobar Islands",
     "protectedAreaName": "Andaman & Nicobar Islands",
     "protectedAreaType": "National Park",
     "notificationStatus": "Draft",
@@ -966,7 +966,7 @@
   },
   {
     "moefSNo": 16,
-    "state": "Andaman and Nicobar",
+    "state": "Andaman and Nicobar Islands",
     "protectedAreaName": "Galathea Bay National Park",
     "protectedAreaType": "National Park",
     "notificationStatus": "Final",
@@ -982,7 +982,7 @@
   },
   {
     "moefSNo": 16,
-    "state": "Andaman and Nicobar",
+    "state": "Andaman and Nicobar Islands",
     "protectedAreaName": "Andaman & Nicobar Islands",
     "protectedAreaType": "National Park",
     "notificationStatus": "Final",
@@ -998,7 +998,7 @@
   },
   {
     "moefSNo": 19,
-    "state": "Andaman and Nicobar",
+    "state": "Andaman and Nicobar Islands",
     "protectedAreaName": "Mahatma Gandhi Marine (Wandoor) National Park",
     "protectedAreaType": "National Park",
     "notificationStatus": "Draft",
@@ -1014,7 +1014,7 @@
   },
   {
     "moefSNo": 17,
-    "state": "Andaman and Nicobar",
+    "state": "Andaman and Nicobar Islands",
     "protectedAreaName": "Mahatma Gandhi Marine National Park",
     "protectedAreaType": "National Park",
     "notificationStatus": "Final",
@@ -2283,7 +2283,7 @@
   },
   {
     "moefSNo": 66,
-    "state": "Chattisgarh",
+    "state": "Chhattisgarh",
     "protectedAreaName": "Barnawapara Wildlife",
     "protectedAreaType": "Wildlife Sanctuary",
     "notificationStatus": "Draft",
@@ -2293,13 +2293,13 @@
     "maps": [],
     "notificationUploadDate": "24/02/2016",
     "orderNumber": "S.O.251(E)",
-    "wikidataId": null,
-    "matchConfidence": "none",
+    "wikidataId": "Q104879966",
+    "matchConfidence": "exact",
     "notificationArchiveLink": null
   },
   {
     "moefSNo": 41,
-    "state": "Chattisgarh",
+    "state": "Chhattisgarh",
     "protectedAreaName": "Barnawapara Wildlife Sanctuary",
     "protectedAreaType": "Wildlife Sanctuary",
     "notificationStatus": "Final",
@@ -2309,13 +2309,13 @@
     "maps": [],
     "notificationUploadDate": "11/10/2024",
     "orderNumber": "S.O. 2201 (E)",
-    "wikidataId": null,
-    "matchConfidence": "none",
+    "wikidataId": "Q104879966",
+    "matchConfidence": "exact",
     "notificationArchiveLink": "https://archive.org/details/in.gazette.central.e.2017-07-12.177413"
   },
   {
     "moefSNo": 67,
-    "state": "Chattisgarh",
+    "state": "Chhattisgarh",
     "protectedAreaName": "Pamed Wildlife Sanctuary",
     "protectedAreaType": "Wildlife Sanctuary",
     "notificationStatus": "Draft",
@@ -2325,13 +2325,13 @@
     "maps": [],
     "notificationUploadDate": "25/02/2016",
     "orderNumber": "S. O. 252(E)",
-    "wikidataId": null,
-    "matchConfidence": "none",
+    "wikidataId": "Q130974386",
+    "matchConfidence": "exact",
     "notificationArchiveLink": null
   },
   {
     "moefSNo": 42,
-    "state": "Chattisgarh",
+    "state": "Chhattisgarh",
     "protectedAreaName": "Pamed Wildlife Sanctuary",
     "protectedAreaType": "Wildlife Sanctuary",
     "notificationStatus": "Final",
@@ -2341,13 +2341,13 @@
     "maps": [],
     "notificationUploadDate": "24/07/2017",
     "orderNumber": "S.O. 2273 (E)",
-    "wikidataId": null,
-    "matchConfidence": "none",
+    "wikidataId": "Q130974386",
+    "matchConfidence": "exact",
     "notificationArchiveLink": "https://archive.org/details/in.gazette.central.e.2017-07-20.177550"
   },
   {
     "moefSNo": 68,
-    "state": "Chattisgarh",
+    "state": "Chhattisgarh",
     "protectedAreaName": "Gomarda Wildlife Sanctuary",
     "protectedAreaType": "Wildlife Sanctuary",
     "notificationStatus": "Draft",
@@ -2357,13 +2357,13 @@
     "maps": [],
     "notificationUploadDate": "11/03/2016",
     "orderNumber": "S.O.570(E)",
-    "wikidataId": null,
-    "matchConfidence": "none",
+    "wikidataId": "Q130974367",
+    "matchConfidence": "fuzzy",
     "notificationArchiveLink": null
   },
   {
     "moefSNo": 69,
-    "state": "Chattisgarh",
+    "state": "Chhattisgarh",
     "protectedAreaName": "Semarsot Wildlife Sanctuary",
     "protectedAreaType": "Wildlife Sanctuary",
     "notificationStatus": "Draft",
@@ -2373,13 +2373,13 @@
     "maps": [],
     "notificationUploadDate": "30/03/2016",
     "orderNumber": "S.O. 1165(E)",
-    "wikidataId": null,
-    "matchConfidence": "none",
+    "wikidataId": "Q130974396",
+    "matchConfidence": "exact",
     "notificationArchiveLink": "https://archive.org/details/in.gazette.central.e.2016-03-21.168739"
   },
   {
     "moefSNo": 70,
-    "state": "Chattisgarh",
+    "state": "Chhattisgarh",
     "protectedAreaName": "Badalkhol Wildlife Sanctuary",
     "protectedAreaType": "Wildlife Sanctuary",
     "notificationStatus": "Draft",
@@ -2389,13 +2389,13 @@
     "maps": [],
     "notificationUploadDate": "05/04/2016",
     "orderNumber": "S.O. 1246(E)",
-    "wikidataId": null,
-    "matchConfidence": "none",
+    "wikidataId": "Q130974349",
+    "matchConfidence": "exact",
     "notificationArchiveLink": "https://archive.org/details/in.gazette.central.e.2016-03-29.168869"
   },
   {
     "moefSNo": 71,
-    "state": "Chattisgarh",
+    "state": "Chhattisgarh",
     "protectedAreaName": "Bhoramdeo Wildlife Sanctuary",
     "protectedAreaType": "Wildlife Sanctuary",
     "notificationStatus": "Draft",
@@ -2405,13 +2405,13 @@
     "maps": [],
     "notificationUploadDate": "09/10/2023",
     "orderNumber": "S.O. 4381(E)",
-    "wikidataId": null,
-    "matchConfidence": "none",
+    "wikidataId": "Q135350399",
+    "matchConfidence": "fuzzy",
     "notificationArchiveLink": "https://archive.org/details/in.gazette.central.e.2023-10-09.249304"
   },
   {
     "moefSNo": 72,
-    "state": "Chattisgarh",
+    "state": "Chhattisgarh",
     "protectedAreaName": "Udanti Sitanadi Tiger Reserve",
     "protectedAreaType": "Tiger Reserve",
     "notificationStatus": "Draft",
@@ -2421,13 +2421,13 @@
     "maps": [],
     "notificationUploadDate": "29/11/2017",
     "orderNumber": "S.O. 3712(E)",
-    "wikidataId": null,
-    "matchConfidence": "none",
+    "wikidataId": "Q106675711",
+    "matchConfidence": "exact",
     "notificationArchiveLink": "https://archive.org/details/in.gazette.central.e.2017-11-22.180500"
   },
   {
     "moefSNo": 73,
-    "state": "Chattisgarh",
+    "state": "Chhattisgarh",
     "protectedAreaName": "Kanger Valley National Park",
     "protectedAreaType": "National Park",
     "notificationStatus": "Draft",
@@ -2443,7 +2443,7 @@
   },
   {
     "moefSNo": 43,
-    "state": "Chattisgarh",
+    "state": "Chhattisgarh",
     "protectedAreaName": "Kanger Valley Wildlife Sanctuary",
     "protectedAreaType": "Wildlife Sanctuary",
     "notificationStatus": "Final",
@@ -2459,7 +2459,7 @@
   },
   {
     "moefSNo": 74,
-    "state": "Chattisgarh",
+    "state": "Chhattisgarh",
     "protectedAreaName": "Achanakmar WLS",
     "protectedAreaType": "Wildlife Sanctuary",
     "notificationStatus": "Draft",
@@ -2469,13 +2469,13 @@
     "maps": [],
     "notificationUploadDate": "01/05/2018",
     "orderNumber": "S.O. 1654(E)",
-    "wikidataId": null,
-    "matchConfidence": "none",
+    "wikidataId": "Q4673468",
+    "matchConfidence": "exact",
     "notificationArchiveLink": null
   },
   {
     "moefSNo": 44,
-    "state": "Chattisgarh",
+    "state": "Chhattisgarh",
     "protectedAreaName": "Achanakmar Wildlife Sanctuary",
     "protectedAreaType": "Wildlife Sanctuary",
     "notificationStatus": "Final",
@@ -2485,13 +2485,13 @@
     "maps": [],
     "notificationUploadDate": "17/10/2019",
     "orderNumber": "S.O. 3654(E)",
-    "wikidataId": null,
-    "matchConfidence": "none",
+    "wikidataId": "Q4673468",
+    "matchConfidence": "exact",
     "notificationArchiveLink": "https://archive.org/details/in.gazette.central.e.2019-10-10.213250"
   },
   {
     "moefSNo": 75,
-    "state": "Dadra Nagar Haveli",
+    "state": "Dadra and Nagar Haveli and Daman and Diu",
     "protectedAreaName": "Dadra Nagar Haveli",
     "protectedAreaType": null,
     "notificationStatus": "Draft",
@@ -2507,7 +2507,7 @@
   },
   {
     "moefSNo": 45,
-    "state": "Dadra Nagar Haveli",
+    "state": "Dadra and Nagar Haveli and Daman and Diu",
     "protectedAreaName": "Dadra and Nagar Haveli WLS",
     "protectedAreaType": "Wildlife Sanctuary",
     "notificationStatus": "Final",
@@ -13086,8 +13086,8 @@
     "maps": [],
     "notificationUploadDate": "06/08/2018",
     "orderNumber": "S.O. 3688(E)",
-    "wikidataId": "Q22771835",
-    "matchConfidence": "exact",
+    "wikidataId": "Q5617576",
+    "matchConfidence": "fuzzy",
     "notificationArchiveLink": "https://archive.org/details/in.gazette.central.e.2018-07-27.188079"
   },
   {
@@ -13102,8 +13102,8 @@
     "maps": [],
     "notificationUploadDate": "09/01/2019",
     "orderNumber": "S.O. 08(E)",
-    "wikidataId": "Q22771835",
-    "matchConfidence": "exact",
+    "wikidataId": "Q5617576",
+    "matchConfidence": "fuzzy",
     "notificationArchiveLink": null
   },
   {

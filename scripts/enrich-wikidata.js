@@ -25,24 +25,26 @@ const USER_AGENT = 'india-esz-dashboard-bot/1.0 (https://github.com/publicmap/in
 // explicit, curated allowlist of the P31 types actually observed among
 // Indian Q473972-descendant items (checked via a one-off exploratory query),
 // expressed as a UNION so each branch can use the P31 index.
+//
+// Deliberately excluded (not protected areas of interest for this dashboard,
+// even though they're Q473972 descendants): Q7315273 (forest reserve),
+// Q16966008 (protected forest), Q3427688 (Reserved forests and protected
+// forests of India), Q158454 (biosphere reserve), Q126476600 (Biodiversity
+// Heritage Site), Q5162999 (conservation reserve). An item typed *only* as
+// one of these is dropped from the list entirely; one also typed as e.g.
+// national park/sanctuary still comes in via that other branch.
 const PROTECTED_AREA_TYPES = [
   'Q473972', // protected area
   'Q1377575', // wildlife refuge (used for Indian wildlife sanctuaries)
   'Q46169', // national park
   'Q2714144', // bird sanctuary
-  'Q7315273', // forest reserve
   'Q179049', // nature reserve
-  'Q158454', // biosphere reserve
   'Q5533772', // Tiger reserve of India
   'Q1533036', // animal sanctuary
-  'Q126476600', // Biodiversity Heritage Site
-  'Q5162999', // conservation reserve
   'Q2828718', // protected area of India
   'Q19683138', // Ramsar site
-  'Q16966008', // protected forest
   'Q108059873', // wildlife conservation area
   'Q728904', // nature park
-  'Q3427688', // Reserved forests and protected forests of India
   'Q1125269', // Indian National Parks and Wildlife Sanctuaries
   'Q29553', // sanctuary
 ];

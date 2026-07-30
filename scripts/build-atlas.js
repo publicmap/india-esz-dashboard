@@ -5,10 +5,14 @@
 // Two kinds of layers are generated:
 //   1. A single `geojson` layer of every protected area point (from
 //      data/protected-areas.geojson), colored by ESZ notification status.
-//   2. One `overpass` layer per protected area that has an OSM relation ID,
-//      which resolves the actual PA boundary polygon live via the Overpass
-//      API (`relation(<id>); out geom;`) rather than us having to fetch and
-//      re-host the geometry ourselves.
+//   2. One `osm` dynamic layer (see "Dynamic layer shortcuts" in the API
+//      docs above) per OSM relation ID on a protected area, which resolves
+//      the actual PA boundary polygon once via the Overpass API rather than
+//      us having to fetch and re-host the geometry ourselves. Note: only
+//      `initiallyChecked`/`opacity` survive amche-atlas's dynamic-layer
+//      expansion today, so the custom `title`/`style`/`tags`/etc. below are
+//      inert until that layer type gains config passthrough -- kept in place
+//      for when it does.
 //
 // NOTE: assumes this repo is published at github.com/publicmap/india-esz-dashboard
 // (matches the local `Github/publicmap/` checkout path and sibling amche-atlas
@@ -59,6 +63,7 @@ async function main() {
       'circle-radius': ['interpolate', ['linear'], ['zoom'], 4, 3, 10, 8],
       'circle-stroke-color': '#111827',
       'circle-stroke-width': 0.5,
+      'text-field': ['get', 'name'],
     },
     inspect: {
       id: 'wikidataId',
@@ -72,26 +77,37 @@ async function main() {
   for (const feature of geojson.features) {
     const props = feature.properties;
     const relationIds = props.osmRelationIds || [];
-    if (relationIds.length === 0) continue;
-
-    const query = `${relationIds.map((id) => `relation(${id});`).join('\n')}\nout geom;`;
-    boundaryLayers.push({
-      id: `pa-boundary-${props.wikidataId}`,
-      type: 'overpass',
-      title: `${props.name} (boundary)`,
-      description: `${STATUS_LABEL[props.eszStatus]}${props.state ? ` &middot; ${props.state}` : ''}`,
-      tags: [props.state, STATUS_LABEL[props.eszStatus]].filter(Boolean),
-      query,
-      initiallyChecked: props.eszStatus !== 'none',
-      attribution: '&copy; OpenStreetMap contributors (via Overpass API)',
-      style: {
-        'line-color': STATUS_COLOR[props.eszStatus],
-        'line-width': 2,
-        'fill-color': STATUS_COLOR[props.eszStatus],
-        'fill-opacity': 0.15,
-      },
-    });
+    for (const relationId of relationIds) {
+      // The `osm` dynamic layer shorthand resolves a single OSM element by
+      // reference -- its `id` doubles as both the layer's unique id and the
+      // `<node|way|relation>/<id>` reference passed to the Overpass API.
+      boundaryLayers.push({
+        id: `relation/${relationId}`,
+        type: 'osm',
+        title: `${props.name} (boundary)`,
+        description: `${STATUS_LABEL[props.eszStatus]}${props.state ? ` &middot; ${props.state}` : ''}`,
+        tags: [props.state, STATUS_LABEL[props.eszStatus]].filter(Boolean),
+        initiallyChecked: props.eszStatus !== 'none',
+        attribution: '&copy; OpenStreetMap contributors (via Overpass API)',
+        style: {
+          'line-color': STATUS_COLOR[props.eszStatus],
+          'line-width': 2,
+          'fill-color': STATUS_COLOR[props.eszStatus],
+          'fill-opacity': 0.15,
+          'text-field': ['get', 'name'],
+        },
+      });
+    }
   }
+
+  const satelliteLayer = {
+    id: 'mapbox-satellite',
+    type: 'raster-style-layer',
+    title: 'Satellite',
+    styleLayer: 'mapbox-satellite',
+    initiallyChecked: true,
+    attribution: 'Mapbox Satellite',
+  };
 
   const atlas = {
     name: 'MoEF ESZ Notifications',
@@ -99,7 +115,7 @@ async function main() {
     center: [82, 22],
     zoom: 4.2,
     inspect: pointsLayer.inspect,
-    layers: [pointsLayer, ...boundaryLayers],
+    layers: [pointsLayer, ...boundaryLayers, satelliteLayer],
   };
 
   await writeFile('data/amche-atlas.json', JSON.stringify(atlas, null, 2), 'utf8');

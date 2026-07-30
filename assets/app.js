@@ -1,10 +1,10 @@
-// Dashboard logic: loads the three published data files, computes KPIs,
+// Dashboard logic: loads a single pre-joined data file, computes KPIs,
 // renders the MapLibre map + grouped/filterable notification table (via
 // Tabulator), and wires up CSV export. No build step -- dependencies are
 // loaded as ES modules straight from a CDN.
 
-import { registerCorrectionProtocol } from 'https://cdn.jsdelivr.net/npm/@india-boundary-corrector/maplibre-protocol@0.2.2/+esm';
 import { TabulatorFull as Tabulator } from 'https://unpkg.com/tabulator-tables@6.3.1/dist/js/tabulator_esm.min.js';
+import { Protocol as PmtilesProtocol } from 'https://cdn.jsdelivr.net/npm/pmtiles@4.4.1/+esm';
 
 const GITHUB_RAW_ATLAS_URL = 'https://raw.githubusercontent.com/publicmap/india-esz-dashboard/main/data/amche-atlas.json';
 const AMCHE_ATLAS_BASE = 'https://amche.in/dev/';
@@ -12,19 +12,60 @@ const WIKIPEDIA_SUMMARY_API = 'https://en.wikipedia.org/api/rest_v1/page/summary
 
 const STATUS_COLOR = { final: '#0ca30c', draft: '#fab219', none: '#898781' };
 
-let moefRecords = [];
-let wikidataPAs = [];
-let paGeojson = null;
-let filteredRecords = [];
-let featuresByWikidataId = new Map();
-let wikidataById = new Map();
+// India-boundary correction, drawn as vector line layers instead of
+// india-boundary-corrector's own maplibre-protocol package (which rewrites
+// every OSM raster tile through a canvas decode/mask/re-encode pipeline --
+// the thing that made the map take ~10s to become usable). The underlying
+// PMTiles dataset (published as data.pmtiles.gz, despite that name it is NOT
+// gzip-compressed -- it's a plain PMTiles v3 archive) is vector data:
+// LineString layers named to-add-<suffix>/to-del-<suffix>. The PMTiles
+// library fetches only the byte ranges (tile directory + the handful of
+// tiles in view) it needs via HTTP range requests, so this costs a couple of
+// small requests instead of a multi-megabyte upfront fetch.
+//
+// Styling below reproduces (as plain line layers rather than canvas draws)
+// the "osm-carto" style published by @india-boundary-corrector/layer-configs
+// for this exact basemap (tile.openstreetmap.org): a wide halo in the
+// basemap's own boundary-line color erases OSM's line (drawn along the
+// to-del-* geometry, at width*delWidthFactor), then the corrected boundary
+// is redrawn on top (along to-add-*, at width, dashed) -- international
+// border as "osm", state borders as "osm-internal". Dash patterns are our
+// own approximation (upstream's dash units are canvas pixels; MapLibre's
+// line-dasharray is in multiples of line width, so the numbers don't carry
+// over 1:1) of the same dash-dot international / dashed internal look.
+const BOUNDARY_CORRECTIONS_PMTILES_URL = 'https://cdn.jsdelivr.net/npm/@india-boundary-corrector/data@0.2.2/india_boundary_corrections.pmtiles.gz';
+// Upstream's own "osm-carto" config gates this at startZoom 4 (matching how
+// coarse OSM's own raster boundary line is at low zoom); we start at 0
+// instead since our map's default view (zoom 3.6, the whole country) would
+// otherwise show no correction at all -- verified the PMTiles data actually
+// has to-add-osm/to-del-osm features at every zoom from 0 up, so this is a
+// visibility choice, not a data availability one.
+const BOUNDARY_MIN_ZOOM = 0;
+const BOUNDARY_WIDTH_STOPS = [3, 0.7, 4, 1.0, 10, 3.75]; // [zoom, width, zoom, width, ...] at widthFraction 1
+const BOUNDARY_LINE_STYLES = [
+  { color: 'rgb(200, 180, 200)', layerSuffix: 'osm', widthFraction: 1, delWidthFactor: 1.5 },
+  { color: 'rgb(160, 120, 160)', layerSuffix: 'osm', widthFraction: 0.333, dashArray: [3, 1.5, 1, 1.5], delWidthFactor: 0 },
+  { color: 'rgb(200, 180, 200)', layerSuffix: 'osm-internal', widthFraction: 0.45, delWidthFactor: 1.5 },
+  { color: 'rgb(160, 120, 160)', layerSuffix: 'osm-internal', widthFraction: 0.15, dashArray: [2, 1], delWidthFactor: 1.5 },
+];
 
-// Per-protected-area (by wikidataId, or state+name when unmatched) record of
-// whether a Final and/or Draft notification exists -- drives the "PA has
-// both, hide the draft by default" collapsing behaviour in the table.
-const paStatusMap = new Map();
-// PA keys the user has manually toggled open to reveal their collapsed draft row(s).
-const openDraftGroups = new Set();
+// The dashboard's one data dependency: data/full-join.json, built by
+// scripts/build-full-join.js. It's a full outer join between the Wikidata
+// protected area list and the MoEF ESZ notification records -- one entry per
+// protected area (keyed by wikidataId, or by state+name for MoEF records
+// MoEF/Wikidata matching couldn't resolve), each with its notification
+// history nested and every field the map/popups need already attached. This
+// is the only thing fetched over the network to render the table and map;
+// the per-source CSV/JSON/GeoJSON exports linked from the toolbar are
+// downloaded directly from GitHub instead of being loaded by the page.
+let paEntries = [];
+// Keyed by entry.paKey (== wikidataId when matched, else the state+name
+// fallback key) -- the join key shared with each flattened table row's
+// `_paKey`, used to look up a PA's aggregate status/metadata from a row or a
+// map feature without re-scanning the full entry list.
+let entryByPaKey = new Map();
+let tableRecords = [];
+let filteredRecords = [];
 let searchTerm = '';
 
 // Top-down PA-type filter driven by the "Protected areas in India" dropdown --
@@ -40,8 +81,9 @@ function matchesTypeFilter(type) {
   return type === paTypeFilter;
 }
 
-// Same idea, for the "State" dropdown. Wikidata PAs carry `state` as an array
-// (a handful span multiple states); MoEF records carry it as a single string.
+// Same idea, for the "State" dropdown. Every PA entry carries `state` as an
+// array (a handful of Wikidata PAs span multiple states); flattened table
+// rows carry a single-string `state` sourced from the notification itself.
 const UNSPECIFIED_STATE = '__unspecified__';
 let paStateFilter = '';
 
@@ -53,106 +95,61 @@ function matchesStateFilter(state) {
 }
 
 async function loadData() {
-  const [moefRes, wdRes, geoRes] = await Promise.all([
-    fetch('data/moef-esz-notifications.json'),
-    fetch('data/wikidata-protected-areas.json'),
-    fetch('data/protected-areas.geojson'),
-  ]);
-  moefRecords = await moefRes.json();
-  wikidataPAs = await wdRes.json();
-  paGeojson = await geoRes.json();
-  featuresByWikidataId = new Map(paGeojson.features.map((f) => [f.properties.wikidataId, f]));
-  wikidataById = new Map(wikidataPAs.map((w) => [w.wikidataId, w]));
+  const res = await fetch('data/full-join.json');
+  paEntries = await res.json();
+  entryByPaKey = new Map(paEntries.map((e) => [e.paKey, e]));
 }
 
-// Attaches internal grouping fields to each record and builds paStatusMap.
-// _paKey groups a PA's notification records even when it has no wikidataId
-// (fallback to state+name); _typeGroup gives the handful of type-less
-// records a group to sit in without touching the real protectedAreaType field.
-function preprocessRecords() {
-  for (const r of moefRecords) {
-    r._paKey = r.wikidataId || `${r.state}::${r.protectedAreaName}`;
-    r._typeGroup = r.protectedAreaType || 'Unspecified type';
-    const info = paStatusMap.get(r._paKey) || { hasFinal: false, hasDraft: false };
-    if (r.notificationStatus === 'Final') info.hasFinal = true;
-    if (r.notificationStatus === 'Draft') info.hasDraft = true;
-    paStatusMap.set(r._paKey, info);
+// Flattens the joined PA entries into one row per notification record (for
+// PAs with no notifications at all, a single synthetic "not notified" row) --
+// the shape the table (and CSV export) has always worked with.
+function buildTableRecords() {
+  const rows = [];
+  for (const entry of paEntries) {
+    if (entry.notifications.length === 0) {
+      rows.push({
+        _paKey: entry.paKey,
+        _typeGroup: entry.protectedAreaType || 'Unspecified type',
+        wikidataId: entry.wikidataId,
+        protectedAreaName: entry.name,
+        protectedAreaType: entry.protectedAreaType,
+        state: entry.state,
+        notificationStatus: null,
+        notificationDate: null,
+        orderNumber: null,
+        notificationPdfLink: null,
+        notificationArchiveLink: null,
+        moefSNo: null,
+      });
+      continue;
+    }
+    for (const n of entry.notifications) {
+      rows.push({
+        ...n,
+        _paKey: entry.paKey,
+        _typeGroup: n.protectedAreaType || 'Unspecified type',
+        wikidataId: entry.wikidataId,
+      });
+    }
   }
+  return rows;
 }
 
-// The other side of the full join: Wikidata PAs that no MoEF notification
-// references at all (paStatusMap has no entry for their wikidataId). These
-// have no rows in moefRecords, so the table would otherwise omit them even
-// though the map (and the KPIs above) already count them as "not notified".
-function computeNoNotificationPAs() {
-  return wikidataPAs
-    .filter((pa) => !paStatusMap.has(pa.wikidataId))
-    .map((pa) => ({
-      _paKey: pa.wikidataId,
-      _typeGroup: pa.protectedAreaType || 'Unspecified type',
-      wikidataId: pa.wikidataId,
-      protectedAreaName: pa.wikidataLabel,
-      protectedAreaType: pa.protectedAreaType,
-      state: pa.state,
-      notificationStatus: null,
-      notificationDate: null,
-      orderNumber: null,
-      notificationPdfLink: null,
-      notificationArchiveLink: null,
-      moefSNo: null,
-    }));
-}
-
-// Returns one entry per distinct protected area referenced only by MoEF
-// notifications with no wikidataId (grouped by state+name, same as
-// paStatusMap's fallback key) -- the "right-hand" side of the full join that
-// Wikidata doesn't know about yet.
-function computeUnmatchedPAs() {
-  const map = new Map();
-  for (const r of moefRecords) {
-    if (r.wikidataId) continue;
-    if (!matchesTypeFilter(r.protectedAreaType)) continue;
-    if (!matchesStateFilter(r.state)) continue;
-    const key = r._paKey;
-    const entry = map.get(key) || {
-      state: r.state, protectedAreaName: r.protectedAreaName, protectedAreaType: r.protectedAreaType,
-      recordCount: 0, statuses: new Set(),
-    };
-    entry.recordCount += 1;
-    if (r.notificationStatus) entry.statuses.add(r.notificationStatus);
-    map.set(key, entry);
-  }
-  return [...map.values()].sort((a, b) => (a.state || '').localeCompare(b.state || '') || a.protectedAreaName.localeCompare(b.protectedAreaName));
-}
-
-// Full outer join between the Wikidata PA list and the MoEF notifications:
-// every Wikidata PA, plus every distinct PA that MoEF references but
-// Wikidata doesn't (yet) know about, each counted once and classified by its
-// best notification status.
+// Full outer join KPIs: every PA entry (Wikidata-listed or MoEF-only) counted
+// once and classified by its precomputed eszStatus.
 function computeKPIs() {
-  let final = 0, draftOnly = 0, none = 0, matchedCount = 0;
-  for (const pa of wikidataPAs) {
-    if (!matchesTypeFilter(pa.protectedAreaType)) continue;
-    if (!matchesStateFilter(pa.state)) continue;
-    matchedCount += 1;
-    const info = paStatusMap.get(pa.wikidataId);
-    if (!info) { none += 1; continue; }
-    if (info.hasFinal) final += 1;
-    else if (info.hasDraft) draftOnly += 1;
+  let final = 0, draftOnly = 0, none = 0, matchedCount = 0, unmatchedPaCount = 0, unmatchedRecordCount = 0;
+  for (const entry of paEntries) {
+    if (!matchesTypeFilter(entry.protectedAreaType)) continue;
+    if (!matchesStateFilter(entry.state)) continue;
+    if (entry.wikidataId) matchedCount += 1;
+    else { unmatchedPaCount += 1; unmatchedRecordCount += entry.notifications.length; }
+    if (entry.eszStatus === 'final') final += 1;
+    else if (entry.eszStatus === 'draft') draftOnly += 1;
     else none += 1;
   }
-
-  const unmatchedPAs = computeUnmatchedPAs();
-  for (const pa of unmatchedPAs) {
-    if (pa.statuses.has('Final')) final += 1;
-    else if (pa.statuses.has('Draft')) draftOnly += 1;
-    else none += 1;
-  }
-
-  const total = matchedCount + unmatchedPAs.length;
-  const unmatchedRecordCount = moefRecords.filter((r) => !r.wikidataId && matchesTypeFilter(r.protectedAreaType) && matchesStateFilter(r.state)).length;
-
-  return { total, final, draftOnly, none, matchedCount, unmatchedPaCount: unmatchedPAs.length, unmatchedRecordCount };
+  const total = matchedCount + unmatchedPaCount;
+  return { total, final, draftOnly, none, matchedCount, unmatchedPaCount, unmatchedRecordCount };
 }
 
 function renderKPIs() {
@@ -182,6 +179,23 @@ function renderKPIs() {
     `The latter have no known location, so they're left off the map, but are included in the KPIs above, the table, and downloads below. See the QA list below to help match them.`;
 }
 
+// PA entries with no wikidataId -- the "right-hand" side of the full join
+// that Wikidata doesn't know about yet.
+function computeUnmatchedPAs() {
+  return paEntries
+    .filter((entry) => !entry.wikidataId)
+    .filter((entry) => matchesTypeFilter(entry.protectedAreaType))
+    .filter((entry) => matchesStateFilter(entry.state))
+    .map((entry) => ({
+      state: entry.state[0] || '',
+      protectedAreaName: entry.name,
+      protectedAreaType: entry.protectedAreaType,
+      recordCount: entry.notifications.length,
+      statuses: [...new Set(entry.notifications.map((n) => n.notificationStatus).filter(Boolean))],
+    }))
+    .sort((a, b) => (a.state || '').localeCompare(b.state || '') || a.protectedAreaName.localeCompare(b.protectedAreaName));
+}
+
 function unmatchedRowHtml(pa) {
   const statuses = [...pa.statuses].sort().join(', ') || '–';
   return `
@@ -200,29 +214,27 @@ function renderQaList() {
   document.getElementById('qa-table-body').innerHTML = unmatchedPAs.map(unmatchedRowHtml).join('');
 }
 
-// Wikidata PAs with no coordinateLatitude/Longitude -- these can't be placed
-// on the map (they're absent from paGeojson/featuresByWikidataId) even
-// though they're counted in the KPIs and listed in the table.
+// Wikidata-matched PA entries with no coordinate -- these can't be placed on
+// the map even though they're counted in the KPIs and listed in the table.
 function computeNoCoordinatePAs() {
-  return wikidataPAs
-    .filter((pa) => !featuresByWikidataId.has(pa.wikidataId))
-    .filter((pa) => matchesTypeFilter(pa.protectedAreaType))
-    .filter((pa) => matchesStateFilter(pa.state))
+  return paEntries
+    .filter((entry) => entry.wikidataId && entry.coordinateLatitude == null)
+    .filter((entry) => matchesTypeFilter(entry.protectedAreaType))
+    .filter((entry) => matchesStateFilter(entry.state))
     .sort((a, b) => {
       const s = stateAsString(a.state).localeCompare(stateAsString(b.state));
       if (s) return s;
-      return (a.wikidataLabel || '').localeCompare(b.wikidataLabel || '');
+      return (a.name || '').localeCompare(b.name || '');
     });
 }
 
-function noCoordRowHtml(pa) {
-  const state = Array.isArray(pa.state) ? pa.state.join(', ') : (pa.state || '');
+function noCoordRowHtml(entry) {
   return `
     <tr>
-      <td>${escapeHtml(state)}</td>
-      <td>${escapeHtml(pa.wikidataLabel || '')}</td>
-      <td>${escapeHtml(pa.protectedAreaType || '')}</td>
-      <td><a href="${pa.wikidataUrl}" target="_blank" rel="noopener">Edit on Wikidata</a></td>
+      <td>${escapeHtml(stateAsString(entry.state))}</td>
+      <td>${escapeHtml(entry.name || '')}</td>
+      <td>${escapeHtml(entry.protectedAreaType || '')}</td>
+      <td><a href="${entry.wikidataUrl}" target="_blank" rel="noopener">Edit on Wikidata</a></td>
     </tr>`;
 }
 
@@ -237,32 +249,20 @@ function initAtlasLink() {
   document.getElementById('open-atlas-link').href = url;
 }
 
-// MapLibre's GeoJSON source encodes array/object properties as JSON
-// strings when tiling internally, but returns plain arrays for small
-// untiled sources -- handle either shape defensively.
-function asArray(value) {
-  if (Array.isArray(value)) return value;
-  if (typeof value === 'string') {
-    try { return JSON.parse(value); } catch { return []; }
-  }
-  return [];
-}
-
 function escapeHtml(value) {
   return String(value).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 }
 
-// Builds the initial (synchronous) popup markup from Wikidata-sourced info
-// only -- name, image/banner, IUCN category/area, and identity links.
-// Deliberately omits notification status/date/PDF/archive links since those
-// are already shown in the table row for this PA.
+// Builds the initial (synchronous) popup markup from the PA entry's
+// Wikidata-sourced fields -- name, image/banner, IUCN category/area, and
+// identity links. Deliberately omits notification status/date/PDF/archive
+// links since those are already shown in the table row for this PA.
 function buildPopupHtml(p) {
-  const wd = p.wikidataId ? wikidataById.get(p.wikidataId) : null;
-  const bannerUrl = wd && (wd.pageBanner || wd.image);
+  const bannerUrl = p.pageBanner || p.image;
 
   const meta = [];
-  if (wd && wd.iucnCategory) meta.push(escapeHtml(wd.iucnCategory.replace(/^IUCN category [IVXLC]+:\s*/, '')));
-  if (wd && wd.area) meta.push(`${wd.area.toLocaleString()} km&sup2;`);
+  if (p.iucnCategory) meta.push(escapeHtml(p.iucnCategory.replace(/^IUCN category [IVXLC]+:\s*/, '')));
+  if (p.area) meta.push(`${p.area.toLocaleString()} km&sup2;`);
   if (p.state) meta.push(escapeHtml(p.state));
 
   const links = [];
@@ -271,7 +271,7 @@ function buildPopupHtml(p) {
     links.push(`<a href="${p.wikidataUrl}" target="_blank" rel="noopener">Edit on Wikidata</a>`);
   }
   if (p.enwikiUrl) links.push(`<a href="${p.enwikiUrl}" target="_blank" rel="noopener">Wikipedia</a>`);
-  const osmIds = asArray(p.osmRelationIds);
+  const osmIds = p.osmRelationIds || [];
   if (osmIds.length) {
     const atlasUrl = `${AMCHE_ATLAS_BASE}?layers=osm:relation/${osmIds[0]}`;
     links.push(`<a href="${atlasUrl}" target="_blank" rel="noopener">View boundary in amche-atlas</a>`);
@@ -374,9 +374,7 @@ function highlightTableRow(wikidataId) {
 
 let map;
 function initMap() {
-  // Registers the ibc:// protocol so OSM's raster tiles render India's
-  // official boundaries instead of the internationally-disputed ones.
-  registerCorrectionProtocol(maplibregl);
+  maplibregl.addProtocol('pmtiles', new PmtilesProtocol().tile);
 
   map = new maplibregl.Map({
     container: 'map',
@@ -385,7 +383,7 @@ function initMap() {
       sources: {
         osm: {
           type: 'raster',
-          tiles: ['ibc://https://tile.openstreetmap.org/{z}/{x}/{y}.png'],
+          tiles: ['https://tile.openstreetmap.org/{z}/{x}/{y}.png'],
           tileSize: 256,
           maxzoom: 19,
           attribution: '&copy; <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a> contributors',
@@ -400,7 +398,8 @@ function initMap() {
   map.addControl(new maplibregl.NavigationControl({ showCompass: false }), 'top-right');
 
   map.on('load', () => {
-    map.addSource('protected-areas', { type: 'geojson', data: paGeojson });
+    addBoundaryCorrectionLayers();
+    map.addSource('protected-areas', { type: 'geojson', data: allFeatureCollection() });
     map.addLayer({
       id: 'protected-areas-circles',
       type: 'circle',
@@ -442,6 +441,91 @@ function initMap() {
   });
 }
 
+function boundaryWidthExpression(multiplier) {
+  const expr = ['interpolate', ['linear'], ['zoom']];
+  for (let i = 0; i < BOUNDARY_WIDTH_STOPS.length; i += 2) {
+    expr.push(BOUNDARY_WIDTH_STOPS[i], BOUNDARY_WIDTH_STOPS[i + 1] * multiplier);
+  }
+  return expr;
+}
+
+// Adds the corrected India boundary as vector line layers (see the styling
+// constants above), sourced straight from the india-boundary-corrector
+// PMTiles dataset via the `pmtiles://` protocol -- no raster tile rewriting.
+function addBoundaryCorrectionLayers() {
+  map.addSource('india-boundary-corrections', {
+    type: 'vector',
+    url: `pmtiles://${BOUNDARY_CORRECTIONS_PMTILES_URL}`,
+  });
+
+  let n = 0;
+  for (const style of BOUNDARY_LINE_STYLES) {
+    if (style.delWidthFactor > 0) {
+      map.addLayer({
+        id: `ibc-del-${n++}`,
+        type: 'line',
+        source: 'india-boundary-corrections',
+        'source-layer': `to-del-${style.layerSuffix}`,
+        minzoom: BOUNDARY_MIN_ZOOM,
+        paint: {
+          'line-color': style.color,
+          'line-width': boundaryWidthExpression(style.widthFraction * style.delWidthFactor),
+        },
+      });
+    }
+    map.addLayer({
+      id: `ibc-add-${n++}`,
+      type: 'line',
+      source: 'india-boundary-corrections',
+      'source-layer': `to-add-${style.layerSuffix}`,
+      minzoom: BOUNDARY_MIN_ZOOM,
+      paint: {
+        'line-color': style.color,
+        'line-width': boundaryWidthExpression(style.widthFraction),
+        ...(style.dashArray ? { 'line-dasharray': style.dashArray } : {}),
+      },
+    });
+  }
+}
+
+// Builds a GeoJSON point feature straight from a PA entry's already-joined
+// fields -- the map never needs to look anything up in a separate payload.
+function entryToFeature(entry) {
+  return {
+    type: 'Feature',
+    geometry: { type: 'Point', coordinates: [entry.coordinateLongitude, entry.coordinateLatitude] },
+    properties: {
+      wikidataId: entry.wikidataId,
+      wikidataUrl: entry.wikidataUrl,
+      name: entry.name,
+      protectedAreaType: entry.protectedAreaType,
+      state: entry.state[0] || null,
+      iucnCategory: entry.iucnCategory,
+      area: entry.area,
+      pageBanner: entry.pageBanner,
+      image: entry.image,
+      osmRelationIds: entry.osmRelationIds,
+      enwikiUrl: entry.enwikiUrl,
+      eszStatus: entry.eszStatus,
+      notificationCount: entry.notifications.length,
+      notificationStatus: entry.latest ? entry.latest.status : null,
+      notificationDate: entry.latest ? entry.latest.date : null,
+      orderNumber: entry.latest ? entry.latest.orderNumber : null,
+      notificationPdfLink: entry.latest ? entry.latest.pdfLink : null,
+      notificationArchiveLink: entry.latest ? entry.latest.archiveLink : null,
+    },
+  };
+}
+
+// Every mappable PA entry, unfiltered -- used as the map source's initial
+// data before the table (and its filters) has finished building.
+function allFeatureCollection() {
+  return {
+    type: 'FeatureCollection',
+    features: paEntries.filter((entry) => entry.coordinateLatitude != null).map(entryToFeature),
+  };
+}
+
 // One PA can have multiple notification records (redraft/amendment); dedupe
 // by wikidataId so the map doesn't stack duplicate markers.
 function filteredFeatureCollection() {
@@ -449,10 +533,10 @@ function filteredFeatureCollection() {
   const features = [];
   for (const r of filteredRecords) {
     if (!r.wikidataId || seen.has(r.wikidataId)) continue;
-    const feature = featuresByWikidataId.get(r.wikidataId);
-    if (!feature) continue;
+    const entry = entryByPaKey.get(r._paKey);
+    if (!entry || entry.coordinateLatitude == null) continue;
     seen.add(r.wikidataId);
-    features.push(feature);
+    features.push(entryToFeature(entry));
   }
   return { type: 'FeatureCollection', features };
 }
@@ -484,8 +568,8 @@ function updateMapFilter() {
 // Alphabetical by state/type/PA name so groups render in a stable, scannable
 // order; within a PA, Final rows sort ahead of Draft rows (most recent first).
 // Notification records carry `state` as a single string; synthetic
-// no-notification rows (built from wikidataPAs) carry it as an array --
-// normalize to a sortable/searchable string either way.
+// no-notification rows carry it as an array -- normalize to a
+// sortable/searchable string either way.
 function stateAsString(state) {
   return Array.isArray(state) ? state.join(', ') : (state || '');
 }
@@ -510,6 +594,9 @@ function sortInitialRecords(records) {
 // immediately below it in the flat table. draftVisibilityFilter is what
 // actually hides/shows the Draft row; this button just flips openDraftGroups
 // and asks the table to re-filter.
+// PA keys the user has manually toggled open to reveal their collapsed draft row(s).
+const openDraftGroups = new Set();
+
 function statusFormatter(cell) {
   const rowData = cell.getRow().getData();
   const status = cell.getValue();
@@ -525,8 +612,8 @@ function statusFormatter(cell) {
   pill.appendChild(document.createTextNode(status || 'Not notified'));
   wrap.appendChild(pill);
 
-  const info = paStatusMap.get(rowData._paKey);
-  if (status === 'Final' && info && info.hasDraft) {
+  const entry = entryByPaKey.get(rowData._paKey);
+  if (status === 'Final' && entry && entry.hasDraft) {
     const paKey = rowData._paKey;
     const btn = document.createElement('button');
     btn.type = 'button';
@@ -573,8 +660,8 @@ function linksFormatter(cell) {
 // toggled open) so it can be styled as visually nested under its Final row.
 function rowFormatter(row) {
   const data = row.getData();
-  const info = paStatusMap.get(data._paKey);
-  const isNestedDraft = data.notificationStatus === 'Draft' && Boolean(info && info.hasFinal);
+  const entry = entryByPaKey.get(data._paKey);
+  const isNestedDraft = data.notificationStatus === 'Draft' && Boolean(entry && entry.hasFinal);
   row.getElement().classList.toggle('nested-draft-row', isNestedDraft);
 }
 
@@ -582,8 +669,8 @@ function rowFormatter(row) {
 // user toggled that PA's "View draft" button open.
 function draftVisibilityFilter(rowData) {
   if (rowData.notificationStatus !== 'Draft') return true;
-  const info = paStatusMap.get(rowData._paKey);
-  if (!info || !info.hasFinal) return true;
+  const entry = entryByPaKey.get(rowData._paKey);
+  if (!entry || !entry.hasFinal) return true;
   return openDraftGroups.has(rowData._paKey);
 }
 
@@ -605,13 +692,8 @@ function stateFilter(rowData) {
 }
 
 let table;
-let tableRecords = [];
 
 function initTable() {
-  // Full outer join for the table too: every MoEF notification record, plus
-  // one synthetic "not notified" row per Wikidata PA that no notification
-  // references, so the table lists every PA the map (and KPIs) show.
-  tableRecords = [...moefRecords, ...computeNoNotificationPAs()];
   table = new Tabulator('#notifications-table', {
     data: sortInitialRecords(tableRecords),
     layout: 'fitColumns',
@@ -648,8 +730,9 @@ function initTable() {
 
   table.on('rowMouseEnter', (e, row) => {
     if (selectedWikidataId) return; // a row/marker is selected -- hover is suspended until cleared
-    const feature = featuresByWikidataId.get(row.getData().wikidataId);
-    if (!feature) return;
+    const entry = entryByPaKey.get(row.getData()._paKey);
+    if (!entry || entry.coordinateLatitude == null) return;
+    const feature = entryToFeature(entry);
     focusFeature(feature);
     openPopupForFeature(feature);
   });
@@ -658,8 +741,9 @@ function initTable() {
     closePopup();
   });
   table.on('rowClick', (e, row) => {
-    const feature = featuresByWikidataId.get(row.getData().wikidataId);
-    if (!feature) return;
+    const entry = entryByPaKey.get(row.getData()._paKey);
+    if (!entry || entry.coordinateLatitude == null) return;
+    const feature = entryToFeature(entry);
     focusFeature(feature, { zoom: 10 });
     openPopupForFeature(feature);
     selectedWikidataId = feature.properties.wikidataId;
@@ -688,13 +772,11 @@ function exportFilteredCsv() {
   URL.revokeObjectURL(url);
 }
 
-// Union of PA types across both the Wikidata list and MoEF notifications, so
-// the dropdown covers types even when a PA has no notification record (and
-// therefore wouldn't otherwise appear via moefRecords alone).
+// Union of PA types across all joined entries, so the dropdown covers types
+// even when a PA has no notification record.
 function collectProtectedAreaTypes() {
   const types = new Set();
-  for (const pa of wikidataPAs) if (pa.protectedAreaType) types.add(pa.protectedAreaType);
-  for (const r of moefRecords) if (r.protectedAreaType) types.add(r.protectedAreaType);
+  for (const entry of paEntries) if (entry.protectedAreaType) types.add(entry.protectedAreaType);
   return [...types].sort();
 }
 
@@ -714,7 +796,7 @@ function initTypeFilter() {
     opt.textContent = type;
     select.appendChild(opt);
   }
-  const hasUnspecified = wikidataPAs.some((pa) => !pa.protectedAreaType) || moefRecords.some((r) => !r.protectedAreaType);
+  const hasUnspecified = paEntries.some((entry) => !entry.protectedAreaType);
   if (hasUnspecified) {
     const opt = document.createElement('option');
     opt.value = UNSPECIFIED_TYPE;
@@ -724,12 +806,11 @@ function initTypeFilter() {
   select.addEventListener('change', () => setPaTypeFilter(select.value));
 }
 
-// Same idea as collectProtectedAreaTypes, but flattening the WD `state`
-// arrays (a few PAs span multiple states) alongside MoEF's single-string field.
+// Same idea as collectProtectedAreaTypes, but flattening each entry's `state`
+// array (a few PAs span multiple states).
 function collectStates() {
   const states = new Set();
-  for (const pa of wikidataPAs) for (const s of Array.isArray(pa.state) ? pa.state : []) states.add(s);
-  for (const r of moefRecords) if (r.state) states.add(r.state);
+  for (const entry of paEntries) for (const s of entry.state) states.add(s);
   return [...states].sort();
 }
 
@@ -749,7 +830,7 @@ function initStateFilter() {
     opt.textContent = state;
     select.appendChild(opt);
   }
-  const hasUnspecified = wikidataPAs.some((pa) => !Array.isArray(pa.state) || pa.state.length === 0);
+  const hasUnspecified = paEntries.some((entry) => entry.state.length === 0);
   if (hasUnspecified) {
     const opt = document.createElement('option');
     opt.value = UNSPECIFIED_STATE;
@@ -792,7 +873,7 @@ function initFilterEvents() {
 
 async function main() {
   await loadData();
-  preprocessRecords();
+  tableRecords = buildTableRecords();
   initTypeFilter();
   initStateFilter();
   renderKPIs();

@@ -19,22 +19,34 @@ async function loadCorrections() {
   const text = await readFile(CORRECTIONS_PATH, 'utf8');
   const rows = parse(text, { columns: true, skip_empty_lines: true });
   const map = new Map();
+  const stateOnlyMap = new Map();
   for (const row of rows) {
     const { paName, state, correctPaName, correctState, correctPaType } = row;
-    if (!paName || !state) continue;
+    if (!state) continue;
+    if (!paName) {
+      // State-only correction: applies to every record with this state,
+      // regardless of protected area name.
+      stateOnlyMap.set(state, correctState || state);
+      continue;
+    }
     map.set(`${paName}${state}`, {
       correctPaName: correctPaName || paName,
       correctState: correctState || state,
       correctPaType: correctPaType || null,
     });
   }
-  return map;
+  return { map, stateOnlyMap };
 }
 
 function applyCorrection(corrections, name, state) {
-  const hit = corrections.get(`${name}${state}`);
-  if (!hit) return { name, state, type: null };
-  return { name: hit.correctPaName, state: hit.correctState, type: hit.correctPaType };
+  const nameHit = corrections.map.get(`${name}${state}`);
+  const stateOverride = corrections.stateOnlyMap.get(state);
+  if (!nameHit && !stateOverride) return { name, state, type: null };
+  return {
+    name: nameHit ? nameHit.correctPaName : name,
+    state: stateOverride ?? (nameHit ? nameHit.correctState : state),
+    type: nameHit ? nameHit.correctPaType : null,
+  };
 }
 
 function cleanRecord(record, corrections) {
@@ -72,7 +84,7 @@ async function main() {
   await writeFile('data/moef-esz-notifications.csv', stringify(csvRows, { header: true }), 'utf8');
 
   const splitCount = cleaned.length - records.length;
-  const correctedCount = records.filter((r) => corrections.has(`${r.protectedAreaName}${r.state}`)).length;
+  const correctedCount = records.filter((r) => corrections.map.has(`${r.protectedAreaName}${r.state}`) || corrections.stateOnlyMap.has(r.state)).length;
   const remainingMultiLooking = cleaned.filter((r) => /\s+and\s+|,/i.test(r.protectedAreaName)).length;
 
   console.log(`Cleaned ${records.length} records -> ${cleaned.length} records (+${splitCount} from multi-park expansion).`);

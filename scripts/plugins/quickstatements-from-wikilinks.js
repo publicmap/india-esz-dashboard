@@ -23,6 +23,16 @@
 // statement it isn't reasonably sure of, since these are edits to live
 // Wikidata, applied at a human's discretion, not automatically.
 //
+// If no wikilink in the lead resolves *directly* to a matching item, each
+// remaining wikilink's own P131 (administrative parent) is checked instead --
+// e.g. a wildlife sanctuary's lead links to "Bikaner" (a city, Q200718), which
+// isn't itself a district/state, but Q200718's P131 points to "Bikaner
+// district" (Q778996), which is. This indirect evidence is inherently weaker
+// than a direct link, so it's capped at 'medium' confidence even for the
+// first wikilink in the lead (never 'high'), though it can still be 'low' if
+// ambiguous. The suggested value in this case is the P131 parent, not the
+// wikilink's own item.
+//
 // Usage:
 //   node scripts/plugins/quickstatements-from-wikilinks.js \
 //     --input data/wikidata-protected-areas.csv \
@@ -267,6 +277,53 @@ async function fetchTransitiveTypeMatches(qids, targetTypes) {
   return result;
 }
 
+// Batched lookup of each qid's P131 (located in the administrative territorial
+// entity) value(s), used as a fallback when a wikilink's own item doesn't
+// directly match a target type -- its P131 parent might (see the header
+// comment). A qid can have more than one P131 statement (e.g. disputed or
+// dual-level administration), so all are returned and the caller picks
+// whichever parent matches.
+async function fetchP131Parents(qids) {
+  const result = new Map();
+  const batches = chunksOf(qids, 200);
+  for (let i = 0; i < batches.length; i += 1) {
+    const values = batches[i].map((qid) => `wd:${qid}`).join(' ');
+    const query = `SELECT ?item ?parent WHERE {
+      VALUES ?item { ${values} }
+      ?item wdt:P131 ?parent .
+    }`;
+    const json = await fetchJson(`${SPARQL_ENDPOINT}?query=${encodeURIComponent(query)}`);
+    for (const b of json.results.bindings) {
+      const qid = b.item.value.replace('http://www.wikidata.org/entity/', '');
+      const parent = b.parent.value.replace('http://www.wikidata.org/entity/', '');
+      if (!result.has(qid)) result.set(qid, []);
+      result.get(qid).push(parent);
+    }
+    if (i < batches.length - 1) await sleep(BATCH_DELAY_MS);
+  }
+  return result;
+}
+
+// Given a set of candidate wikilinks (each with a resolved qid) and a way to
+// look up the tier its qid matched at, applies the same "most-specific
+// unambiguous tier wins" rule used for both direct and P131-fallback matches
+// (see header comment): tiers are tried from most specific to least, and the
+// first tier with a single distinct matching qid wins outright, even if a
+// more specific tier exists but is itself ambiguous.
+function pickCandidates(matchingLinks, tierOf) {
+  const tiersPresent = [...new Set(matchingLinks.map(tierOf))].sort((a, b) => a - b);
+  let candidates = [];
+  for (const tier of tiersPresent) {
+    const atTier = matchingLinks.filter((c) => tierOf(c) === tier);
+    if (candidates.length === 0) candidates = atTier;
+    if (new Set(atTier.map((c) => c.qid)).size === 1) {
+      candidates = atTier;
+      break;
+    }
+  }
+  return { candidates, tiersPresent };
+}
+
 // Returns wikilink targets in first-occurrence order, plus the wikitext
 // character offset of each title's first occurrence (used later to pull out
 // the sentence a chosen link came from). A Map preserves insertion order, so
@@ -374,29 +431,46 @@ async function main() {
   const typeMatchByQid = await fetchTransitiveTypeMatches(allCandidateQids, targetTypes);
   console.log(`${typeMatchByQid.size} candidate items matched a target type.`);
 
+  // Fallback: for candidate items that didn't directly match a target type,
+  // check whether their own P131 (administrative parent) does instead (see
+  // header comment for the Bikaner / Bikaner district example).
+  const qidsNeedingP131Fallback = allCandidateQids.filter((qid) => !typeMatchByQid.has(qid));
+  const indirectMatchByQid = new Map();
+  if (qidsNeedingP131Fallback.length) {
+    console.log(`Checking P131 parents for ${qidsNeedingP131Fallback.length} candidate items with no direct type match...`);
+    const p131ParentsByQid = await fetchP131Parents(qidsNeedingP131Fallback);
+    const allParentQids = [...new Set([...p131ParentsByQid.values()].flat())];
+    const parentTypeMatchByQid = allParentQids.length
+      ? await fetchTransitiveTypeMatches(allParentQids, targetTypes)
+      : new Map();
+    for (const [qid, parentQids] of p131ParentsByQid) {
+      let best = null;
+      for (const parentQid of parentQids) {
+        const match = parentTypeMatchByQid.get(parentQid);
+        if (match && (!best || match.tier < best.tier)) best = { ...match, viaQid: parentQid };
+      }
+      if (best) indirectMatchByQid.set(qid, best);
+    }
+    console.log(`${indirectMatchByQid.size} candidate items matched a target type via their P131 parent.`);
+  }
+
   const enriched = toProcess.map((row, i) => {
     const title = rowTitles[i];
     const linkInfo = title ? linksByTitle.get(title) : null;
     const links = linkInfo?.titles ?? [];
-    const matchingLinks = links
-      .map((linkTitle, order) => ({ linkTitle, order, qid: qidByLinkedTitle.get(linkTitle) ?? null }))
-      .filter((c) => c.qid && typeMatchByQid.has(c.qid));
-    // Try tiers from most specific to least specific (e.g. district before
-    // state for P131): the first tier with a single distinct matching item
-    // wins outright, even if a more specific tier exists but is itself
-    // ambiguous -- an unambiguous state match beats an ambiguous district
-    // match. Only if every tier is ambiguous do we fall back to reporting
-    // the most specific tier's ambiguity (as before this fallback existed).
-    const tiersPresent = [...new Set(matchingLinks.map((c) => typeMatchByQid.get(c.qid).tier))].sort((a, b) => a - b);
-    let candidates = [];
-    for (const tier of tiersPresent) {
-      const atTier = matchingLinks.filter((c) => typeMatchByQid.get(c.qid).tier === tier);
-      if (candidates.length === 0) candidates = atTier;
-      if (new Set(atTier.map((c) => c.qid)).size === 1) {
-        candidates = atTier;
-        break;
-      }
-    }
+    const linksWithQid = links.map((linkTitle, order) => ({ linkTitle, order, qid: qidByLinkedTitle.get(linkTitle) ?? null }));
+
+    // Try direct matches first (most specific --target-types tier wins, same
+    // ambiguous-tier fallback rule as before); only if nothing at all matches
+    // directly do we fall back to checking wikilinks' P131 parents instead.
+    const directLinks = linksWithQid.filter((c) => c.qid && typeMatchByQid.has(c.qid));
+    const direct = pickCandidates(directLinks, (c) => typeMatchByQid.get(c.qid).tier);
+    const indirectLinks = direct.candidates.length ? [] : linksWithQid.filter((c) => c.qid && indirectMatchByQid.has(c.qid));
+    const indirect = pickCandidates(indirectLinks, (c) => indirectMatchByQid.get(c.qid).tier);
+
+    const usingIndirect = direct.candidates.length === 0 && indirect.candidates.length > 0;
+    const { candidates, tiersPresent } = usingIndirect ? indirect : direct;
+    const matchFor = (qid) => (usingIndirect ? indirectMatchByQid.get(qid) : typeMatchByQid.get(qid));
 
     let suggestedQid = null;
     let suggestedLabel = null;
@@ -406,13 +480,13 @@ async function main() {
       ? 'no enwiki article found for this item'
       : links.length === 0
         ? 'no wikilinks found in the lead section'
-        : 'no wikilink in the lead resolved to a matching item';
+        : 'no wikilink in the lead (or their P131 administrative parent) resolved to a matching item';
 
     if (candidates.length > 0) {
       const chosen = candidates[0];
       const distinctQids = new Set(candidates.map((c) => c.qid));
-      const match = typeMatchByQid.get(chosen.qid);
-      suggestedQid = chosen.qid;
+      const match = matchFor(chosen.qid);
+      suggestedQid = usingIndirect ? match.viaQid : chosen.qid;
       suggestedLabel = match.label;
       const chosenIndex = linkInfo.firstIndexByTitle.get(chosen.linkTitle);
       const wikitext = wikitextByTitle.get(title);
@@ -421,16 +495,20 @@ async function main() {
       const fallbackPrefix = skippedTiers.length
         ? `more specific tier${skippedTiers.length > 1 ? 's were' : ' was'} ambiguous, falling back to "${match.matchedTypeLabel}"; `
         : '';
+      const viaSuffix = usingIndirect ? ` via its P131 parent, "${match.label}" (${match.viaQid})` : '';
       if (distinctQids.size > 1) {
         confidence = 'low';
-        const distinctLabelled = [...distinctQids].map((qid) => `"${typeMatchByQid.get(qid).label}" (${qid})`).join(', ');
-        evidence = `${fallbackPrefix}ambiguous: lead links to ${distinctQids.size} different matching items (${distinctLabelled}); using the first, "${chosen.linkTitle}" (${chosen.qid})`;
-      } else if (chosen.order === 0) {
+        const distinctLabelled = [...distinctQids].map((qid) => `"${matchFor(qid).label}" (${qid})`).join(', ');
+        evidence = `${fallbackPrefix}ambiguous: lead links to ${distinctQids.size} different matching items (${distinctLabelled}); using the first, "${chosen.linkTitle}" (${chosen.qid})${viaSuffix}`;
+      } else if (chosen.order === 0 && !usingIndirect) {
         confidence = 'high';
         evidence = `${fallbackPrefix}1st wikilink in the lead, "${chosen.linkTitle}" (${chosen.qid}), is an instance of "${match.matchedTypeLabel}" (${match.matchedType})`;
       } else {
+        // Capped at 'medium', even for a 1st-wikilink indirect (via-P131)
+        // match: that's inherently weaker evidence than a direct match (see
+        // header comment), so it never earns 'high' confidence.
         confidence = 'medium';
-        evidence = `${fallbackPrefix}wikilink #${chosen.order + 1} in the lead, "${chosen.linkTitle}" (${chosen.qid}), is an instance of "${match.matchedTypeLabel}" (${match.matchedType})`;
+        evidence = `${fallbackPrefix}wikilink #${chosen.order + 1} in the lead, "${chosen.linkTitle}" (${chosen.qid}), is an instance of "${match.matchedTypeLabel}" (${match.matchedType})${viaSuffix}`;
       }
     }
 

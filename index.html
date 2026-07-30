@@ -1,31 +1,92 @@
 <!doctype html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>MoEF ESZ Notification Tracker</title>
-  <meta name="description" content="Status of Eco-Sensitive Zone (ESZ) notifications for protected areas of India, tracked from MoEFCC and cross-referenced with Wikidata." />
-  <link rel="icon" href="data:," />
+  <title>India ESZ Dashboard</title>
+  <meta name="description"
+    content="Status of Eco-Sensitive Zone (ESZ) notifications for protected areas of India, tracked from MoEFCC and cross-referenced with Wikidata." />
+  <meta name="theme-color" content="#12352a" />
+  <link rel="icon"
+    href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext x='50' y='72' font-size='72' text-anchor='middle'%3E%F0%9F%90%86%3C/text%3E%3C/svg%3E" />
   <link rel="stylesheet" href="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.css" />
   <link rel="stylesheet" href="https://unpkg.com/tabulator-tables@6.3.1/dist/css/tabulator_simple.min.css" />
   <link rel="stylesheet" href="assets/style.css" />
 </head>
+
 <body>
   <header class="site-header">
+    <div class="canopy-layer" aria-hidden="true">
+      <span class="firefly firefly-1"></span>
+      <span class="firefly firefly-2"></span>
+      <span class="firefly firefly-3"></span>
+      <span class="firefly firefly-4"></span>
+      <span class="firefly firefly-5"></span>
+      <svg class="drifting-leaf leaf-1" viewBox="0 0 40 40">
+        <path d="M20 2C10 6 4 16 4 26c0 7 6 12 16 12s16-5 16-12C36 16 30 6 20 2z" />
+        <path d="M20 4v32" stroke="rgba(0,0,0,0.25)" stroke-width="1" fill="none" />
+      </svg>
+      <svg class="drifting-leaf leaf-2" viewBox="0 0 40 40">
+        <path d="M20 2C10 6 4 16 4 26c0 7 6 12 16 12s16-5 16-12C36 16 30 6 20 2z" />
+        <path d="M20 4v32" stroke="rgba(0,0,0,0.25)" stroke-width="1" fill="none" />
+      </svg>
+      <svg class="drifting-leaf leaf-3" viewBox="0 0 40 40">
+        <path d="M20 2C10 6 4 16 4 26c0 7 6 12 16 12s16-5 16-12C36 16 30 6 20 2z" />
+        <path d="M20 4v32" stroke="rgba(0,0,0,0.25)" stroke-width="1" fill="none" />
+      </svg>
+      <svg class="flying-bird bird-1" viewBox="0 0 32 14">
+        <path d="M1 8C5 -2 12 -2 16 6 20 -2 27 -2 31 8" fill="none" stroke="currentColor" stroke-width="2.4"
+          stroke-linecap="round" />
+      </svg>
+      <svg class="flying-bird bird-2" viewBox="0 0 32 14">
+        <path d="M1 8C5 -2 12 -2 16 6 20 -2 27 -2 31 8" fill="none" stroke="currentColor" stroke-width="2.4"
+          stroke-linecap="round" />
+      </svg>
+      <svg class="flying-bird bird-3" viewBox="0 0 32 14">
+        <path d="M1 8C5 -2 12 -2 16 6 20 -2 27 -2 31 8" fill="none" stroke="currentColor" stroke-width="2.4"
+          stroke-linecap="round" />
+      </svg>
+    </div>
     <div class="header-inner">
-      <h1>MoEF ESZ Notification Tracker</h1>
+      <p class="header-kicker">Eco&#8288;&mdash;&#8288;Sensitive Zones &middot; Wildlife of India</p>
+      <h1>India ESZ <em>Dashboard</em></h1>
       <p class="subtitle">
         Status of Eco-Sensitive Zone (ESZ) notifications around India's protected areas,
-        mirrored weekly from <a href="https://www.moef.gov.in/esz-notifications" target="_blank" rel="noopener">moef.gov.in</a>
-        and cross-referenced with <a href="https://www.wikidata.org/wiki/Q473972" target="_blank" rel="noopener">Wikidata</a>.
+        mirrored weekly from <a href="https://www.moef.gov.in/esz-notifications" target="_blank"
+          rel="noopener">moef.gov.in</a>
+        and cross-referenced with <a href="https://www.wikidata.org/wiki/Q473972" target="_blank"
+          rel="noopener">Wikidata</a>.
       </p>
       <div class="header-links">
-        <a class="btn btn-primary" id="open-atlas-link" href="#" target="_blank" rel="noopener">Explore in amche-atlas &rarr;</a>
-        <a class="btn" href="https://github.com/publicmap/india-esz-dashboard" target="_blank" rel="noopener">GitHub repo</a>
-        <a class="btn" href="https://github.com/publicmap/india-esz-dashboard#readme" target="_blank" rel="noopener">About ESZs</a>
+        <a class="btn btn-primary" id="open-atlas-link" href="#" target="_blank" rel="noopener">Explore in amche-atlas
+          &rarr;</a>
+        <a class="btn" href="https://github.com/publicmap/india-esz-dashboard" target="_blank" rel="noopener">GitHub
+          repo</a>
+        <a class="btn" href="https://github.com/publicmap/india-esz-dashboard#readme" target="_blank"
+          rel="noopener">About ESZs</a>
+        <button class="btn ambient-toggle" id="ambient-toggle" type="button" aria-pressed="false">
+          <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true">
+            <path d="M4 9v6h4l6 5V4L8 9H4z" fill="currentColor" />
+            <path class="sound-wave" d="M16.5 8.5a5 5 0 010 7" stroke="currentColor" stroke-width="1.6" fill="none"
+              stroke-linecap="round" />
+            <path class="sound-wave sound-wave-2" d="M19 6a8.5 8.5 0 010 12" stroke="currentColor" stroke-width="1.6"
+              fill="none" stroke-linecap="round" />
+          </svg>
+          <span>Forest sounds</span>
+        </button>
       </div>
     </div>
+    <svg class="canopy-divider" viewBox="0 0 1440 60" preserveAspectRatio="none" aria-hidden="true">
+      <path
+        d="M0,32 C120,60 240,4 360,28 C480,52 600,10 720,26 C840,42 960,6 1080,24 C1200,42 1320,8 1440,30 L1440,60 L0,60 Z" />
+    </svg>
   </header>
+  <audio id="ambient-audio" preload="none" loop>
+    <source
+      src="https://commons.wikimedia.org/wiki/Special:FilePath/Scaly-breasted_Illadopsis_(Illadopsis_albipectus)_(022A-WA03044X0044-0015M0).ogg"
+      type="audio/ogg" />
+  </audio>
 
   <main>
     <section class="filter-hero" aria-label="Protected area filter">
@@ -49,17 +110,17 @@
 
     <section class="kpi-section" aria-label="Key metrics">
       <div class="stat-tile-row">
-        <div class="stat-tile">
+        <div class="stat-tile stat-tile-final">
           <span class="stat-label"><i class="dot dot-final" aria-hidden="true"></i>Final ESZ notified</span>
           <span class="stat-value" id="stat-final">&ndash;</span>
           <span class="stat-note" id="stat-final-pct">&ndash;</span>
         </div>
-        <div class="stat-tile">
+        <div class="stat-tile stat-tile-draft">
           <span class="stat-label"><i class="dot dot-draft" aria-hidden="true"></i>Draft ESZ notified</span>
           <span class="stat-value" id="stat-draft">&ndash;</span>
           <span class="stat-note" id="stat-draft-pct">&ndash;</span>
         </div>
-        <div class="stat-tile">
+        <div class="stat-tile stat-tile-none">
           <span class="stat-label"><i class="dot dot-none" aria-hidden="true"></i>Not yet notified</span>
           <span class="stat-value" id="stat-none">&ndash;</span>
           <span class="stat-note" id="stat-none-pct">&ndash;</span>
@@ -67,7 +128,8 @@
       </div>
 
       <div class="progress-wrap">
-        <div class="progress-bar" id="progress-bar" role="img" aria-label="Share of protected areas by ESZ notification status">
+        <div class="progress-bar" id="progress-bar" role="img"
+          aria-label="Share of protected areas by ESZ notification status">
           <div class="segment segment-final" id="seg-final"></div>
           <div class="segment segment-draft" id="seg-draft"></div>
           <div class="segment segment-none" id="seg-none"></div>
@@ -127,7 +189,8 @@
               <button class="btn btn-sm" id="export-filtered" type="button">Export filtered view (CSV)</button>
             </div>
           </div>
-          <p class="table-hint">Where a protected area has a final notification, its earlier drafts are hidden by default &mdash; use the "View draft" toggle on the Final row to reveal them just below it.</p>
+          <p class="table-hint">Where a protected area has a final notification, its earlier drafts are hidden by
+            default &mdash; use the "View draft" toggle on the Final row to reveal them just below it.</p>
           <div class="table-wrap">
             <div id="notifications-table"></div>
           </div>
@@ -135,12 +198,14 @@
 
         <div class="map-panel">
           <div id="map"></div>
-          <p class="map-hint">Click a point for details. Points are protected areas with a known Wikidata location; boundary outlines (where available via OpenStreetMap) can be opened in amche-atlas from the popup.</p>
+          <p class="map-hint">Click a point for details. Points are protected areas with a known Wikidata location;
+            boundary outlines (where available via OpenStreetMap) can be opened in amche-atlas from the popup.</p>
 
           <details class="qa-panel">
             <summary>Protected areas without a Wikidata coordinate (<span id="nocoord-count">&ndash;</span>)</summary>
             <p class="qa-instructions">
-              These protected areas are listed in Wikidata but have no coordinate location, so they can't be placed on the
+              These protected areas are listed in Wikidata but have no coordinate location, so they can't be placed on
+              the
               map above (they're still counted in the KPIs and listed in the table). Use the edit link to add a
               <code>coordinate location</code> statement on Wikidata.
             </p>
@@ -164,14 +229,66 @@
   </main>
 
   <footer class="site-footer">
+    <svg class="canopy-divider canopy-divider-footer" viewBox="0 0 1440 60" preserveAspectRatio="none"
+      aria-hidden="true">
+      <path
+        d="M0,30 C120,8 240,44 360,26 C480,8 600,50 720,32 C840,14 960,48 1080,28 C1200,8 1320,42 1440,28 L1440,0 L0,0 Z" />
+    </svg>
     <p>
       Data updated weekly via GitHub Actions. Source: MoEFCC ESZ notification list, Wikidata, archive.org
-      <a href="https://archive.org/details/gazetteofindia" target="_blank" rel="noopener">Gazette of India</a> collection.
-      See the <a href="https://github.com/publicmap/india-esz-dashboard" target="_blank" rel="noopener">repository</a> for the data pipeline and full methodology.
+      <a href="https://archive.org/details/gazetteofindia" target="_blank" rel="noopener">Gazette of India</a>
+      collection.
+      See the <a href="https://github.com/publicmap/india-esz-dashboard" target="_blank" rel="noopener">repository</a>
+      for the data pipeline and full methodology.
     </p>
   </footer>
 
   <script src="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.js"></script>
   <script type="module" src="assets/app.js"></script>
+  <script>
+    (() => {
+      const audio = document.getElementById('ambient-audio');
+      const toggle = document.getElementById('ambient-toggle');
+      const TARGET_VOLUME = 0.32;
+      const FADE_MS = 3200;
+      let fading = null;
+      let started = false;
+
+      function fadeTo(target, duration) {
+        if (fading) cancelAnimationFrame(fading);
+        const startVol = audio.volume;
+        const startTime = performance.now();
+        function step(now) {
+          const t = Math.min(1, (now - startTime) / duration);
+          audio.volume = startVol + (target - startVol) * t;
+          if (t < 1) fading = requestAnimationFrame(step);
+          else if (target === 0) audio.pause();
+        }
+        fading = requestAnimationFrame(step);
+      }
+
+      function startAmbience() {
+        if (started) return;
+        started = true;
+        audio.volume = 0;
+        audio.play().then(() => fadeTo(TARGET_VOLUME, FADE_MS)).catch(() => { started = false; });
+        toggle.setAttribute('aria-pressed', 'true');
+        toggle.classList.add('is-playing');
+      }
+
+      function stopAmbience() {
+        started = false;
+        fadeTo(0, 900);
+        toggle.setAttribute('aria-pressed', 'false');
+        toggle.classList.remove('is-playing');
+      }
+
+      toggle.addEventListener('click', () => {
+        if (started) stopAmbience();
+        else startAmbience();
+      });
+    })();
+  </script>
 </body>
+
 </html>

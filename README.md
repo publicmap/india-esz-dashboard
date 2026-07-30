@@ -52,7 +52,7 @@ proposed eco-sensitive zone.
 
 ```
 npm install
-npm run update   # fetch -> parse -> clean -> enrich:wikidata -> enrich:archive -> enrich:allmaps -> build:geojson -> build:atlas
+npm run update   # fetch -> parse -> clean -> enrich:wikidata -> enrich:archive -> enrich:allmaps -> build:geojson -> build:full-join -> build:atlas
 ```
 
 Runs weekly via `.github/workflows/update.yml`; the dashboard (`index.html`) is redeployed to GitHub Pages afterwards by `.github/workflows/pages.yml`. Enable Pages once under repo Settings &rarr; Pages &rarr; Source: "GitHub Actions".
@@ -70,8 +70,9 @@ pipeline:
 | 4 | `npm run enrich:wikidata` | `data/moef-esz-notifications.json`, live Wikidata SPARQL | `data/wikidata-protected-areas.{csv,json}`, `data/moef-esz-notifications.{csv,json}` (+ `wikidataId`/`matchConfidence`), `data/enrichment-cache.csv` | Fetches the full Wikidata list of Indian protected areas and links each notification to its Wikidata item |
 | 5 | `npm run enrich:archive` | `data/moef-esz-notifications.json`, archive.org search | `data/moef-esz-notifications.{csv,json}` (+ `notificationArchiveLink`), `data/enrichment-cache.csv` | Looks up each notification's official gazette scan on archive.org |
 | 6 | `npm run enrich:allmaps` | `data/enrichment-cache.csv` | `data/enrichment-cache.csv` (+ Allmaps fields) | Adds Allmaps IIIF georeferencing links for toposheet scans found in step 5 |
-| 7 | `npm run build:geojson` | `data/wikidata-protected-areas.json`, `data/moef-esz-notifications.json` | `data/protected-areas.geojson` | Builds the point-feature GeoJSON (PA location + ESZ status) used by the dashboard map |
-| 8 | `npm run build:atlas` | `data/protected-areas.geojson` | `data/amche-atlas.json` | Builds the [amche-atlas](https://github.com/publicmap/amche-atlas/blob/dev/docs/API.md) config (PA points + live OSM-relation boundary layers) |
+| 7 | `npm run build:geojson` | `data/wikidata-protected-areas.json`, `data/moef-esz-notifications.json` | `data/protected-areas.geojson` | Builds the point-feature GeoJSON (PA location + ESZ status) |
+| 8 | `npm run build:full-join` | `data/wikidata-protected-areas.json`, `data/moef-esz-notifications.json` | `data/full-join.json` | Builds the full outer join of Wikidata PAs and MoEF notifications (keyed by `wikidataId`, falling back to state+name for unmatched records) with a precomputed representative notification per PA &mdash; the single file `index.html`/`assets/app.js` load to render the table and map |
+| 9 | `npm run build:atlas` | `data/protected-areas.geojson` | `data/amche-atlas.json` | Builds the [amche-atlas](https://github.com/publicmap/amche-atlas/blob/dev/docs/API.md) config (PA points + live OSM-relation boundary layers) |
 
 Steps 4–6 cache their lookups in `data/enrichment-cache.csv`, so re-running them after
 the first full run is fast — only new/changed notifications are re-fetched.
@@ -79,7 +80,8 @@ the first full run is fast — only new/changed notifications are re-fetched.
 Outputs, all in `data/`:
 - `moef-esz-notifications.{csv,json}` — one row per protected area per notification, with a `wikidataId` join key
 - `wikidata-protected-areas.{csv,json}` — full Wikidata list of Indian protected areas
-- `protected-areas.geojson` — PA point locations with ESZ status, used by the dashboard map
+- `protected-areas.geojson` — PA point locations with ESZ status
+- `full-join.json` — full outer join of the two above, one entry per protected area with its notification history nested; this is what the dashboard actually loads (downloadable CSV/JSON/GeoJSON links on the page still point at the individual files above)
 - `amche-atlas.json` — custom [amche-atlas](https://github.com/publicmap/amche-atlas/blob/dev/docs/API.md) config (PA points + OSM-relation boundary layers)
 - `enrichment-cache.csv` — persistent cache of Wikidata/archive.org lookups so repeat runs are fast
 
@@ -97,6 +99,12 @@ outputs directly, since those get overwritten the next time the pipeline runs:
   `correctPaName`/`correctState`/`correctPaType` set to the fix (leave a column blank to
   leave that field alone). Applied by `scripts/clean-moef-data.js`. Re-run `npm run
   clean` (or the full pipeline from step 3 onward) to verify.
+- **A state name is wrong or inconsistent everywhere it appears** (e.g. an old/misspelled
+  state name used across many notifications) — add a row to
+  [`data/corrections.csv`](data/corrections.csv) with `paName`/`correctPaName`/
+  `correctPaType` left blank, just `state` (the exact value to match) and `correctState`
+  (the fix). This renames the state on *every* MoEF record with that state, instead of
+  needing one row per protected area.
 - **A Wikidata field is wrong or missing** (state, admin territorial entity, coordinates,
   IUCN category, etc.) — fix it at the source: edit the item on
   [wikidata.org](https://www.wikidata.org/), then re-run `npm run enrich:wikidata` (or
