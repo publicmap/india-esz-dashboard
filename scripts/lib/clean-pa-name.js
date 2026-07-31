@@ -4,8 +4,10 @@
 // ", <state name>" looks exactly like a comma-separated second PA otherwise).
 import { INDIAN_STATE_AND_UT_NAMES } from './indian-states.js';
 
+// Source notification text sometimes writes state names with "&" instead of
+// "and" (e.g. "Andaman & Nicobar Islands"), so match either.
 const STATE_SUFFIX_PATTERN = new RegExp(
-  `,\\s*(${INDIAN_STATE_AND_UT_NAMES.map((s) => s.replace(/ /g, '\\s+')).join('|')})\\.?\\s*$`,
+  `,\\s*(${INDIAN_STATE_AND_UT_NAMES.map((s) => s.replace(/ and /g, ' (?:and|&) ').replace(/ /g, '\\s+')).join('|')})\\.?\\s*$`,
   'i',
 );
 
