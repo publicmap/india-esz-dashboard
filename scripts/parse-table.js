@@ -67,18 +67,18 @@ function stripBoilerplate(name) {
   return cleanText(name.replace(NOTIFICATION_BOILERPLATE_PREFIX, ''));
 }
 
-function extractProtectedAreaName($, cell, fallbackText) {
-  const anchors = $(cell).find('a[title]').toArray();
-  for (const a of anchors) {
+function extractProtectedAreaName($, anchors, fallbackText) {
+  const titledAnchors = anchors.filter((a) => $(a).attr('title'));
+  for (const a of titledAnchors) {
     const title = cleanText($(a).attr('title') || '');
     if (CLICK_TITLE_PREFIX.test(title)) {
       const name = stripBoilerplate(title.replace(CLICK_TITLE_PREFIX, ''));
       if (name) return name;
     }
   }
-  const firstAnchorWithHref = $(cell).find('a[href]').toArray()
-    .find((a) => !/\.pdf$/i.test($(a).attr('href') || ''));
-  const firstPdfAnchorText = stripBoilerplate(cleanText($(cell).find('a[href$=".pdf" i]').first().text()));
+  const firstAnchorWithHref = anchors.find((a) => !/\.pdf$/i.test($(a).attr('href') || ''));
+  const firstPdfAnchor = anchors.find((a) => /\.pdf$/i.test($(a).attr('href') || ''));
+  const firstPdfAnchorText = stripBoilerplate(cleanText(firstPdfAnchor ? $(firstPdfAnchor).text() : ''));
   if (firstPdfAnchorText) return firstPdfAnchorText;
   if (firstAnchorWithHref) {
     const t = stripBoilerplate(cleanText($(firstAnchorWithHref).text()));
@@ -95,18 +95,15 @@ function extractProtectedAreaName($, cell, fallbackText) {
   );
 }
 
-function extractPdfLinks($, cell) {
-  return $(cell)
-    .find('a[href$=".pdf" i]')
-    .toArray()
+function extractPdfLinks($, anchors) {
+  return anchors
+    .filter((a) => /\.pdf$/i.test($(a).attr('href') || ''))
     .map((a) => resolveUrl($(a).attr('href')))
     .filter(Boolean);
 }
 
-function extractMaps($, cell) {
-  return $(cell)
-    .find('a[href]')
-    .toArray()
+function extractMaps($, anchors) {
+  return anchors
     .filter((a) => !/\.pdf$/i.test($(a).attr('href') || ''))
     .map((a) => ({
       title: cleanText($(a).text()) || null,
@@ -176,28 +173,108 @@ function resolveRowCells($, tr, currentState) {
   return null;
 }
 
+// A Final cell sometimes has one or more amendment notifications tacked on
+// after the original (e.g. "14. S.O. 652(E) ... Mount Harriet ...(3.00 MB)
+// <p>S.O. No. 6014(E) ... Amendment ...</p>"), wrapped in their own <p> (or,
+// occasionally, just separated by <br><br> with no wrapping element at all).
+// Rather than special-case that markup, split the cell's flattened text at
+// each order-number occurrence and reattach each anchor to the segment whose
+// text it falls within, found by walking the anchors' own text through the
+// flattened text in document order.
+function splitCellIntoNotifications($, cell, text) {
+  const orderMatches = [...text.matchAll(new RegExp(ORDER_NUMBER_RE, 'gi'))];
+  const allAnchors = $(cell).find('a').toArray();
+  if (orderMatches.length <= 1) {
+    return [{ text, anchors: allAnchors }];
+  }
+
+  let cursor = 0;
+  const anchorPositions = allAnchors.map((a) => {
+    const t = cleanText($(a).text());
+    let index = t ? text.indexOf(t, cursor) : -1;
+    if (index === -1) index = cursor;
+    cursor = index + t.length;
+    return { anchor: a, index };
+  });
+
+  const rawSegments = orderMatches.map((m, i) => {
+    const start = i === 0 ? 0 : m.index;
+    const end = i + 1 < orderMatches.length ? orderMatches[i + 1].index : text.length;
+    return {
+      text: text.slice(start, end),
+      anchors: anchorPositions.filter((ap) => ap.index >= start && ap.index < end).map((ap) => ap.anchor),
+    };
+  });
+
+  // An order-number match with no anchor of its own isn't a distinct
+  // notification -- it's a citation embedded within a previous segment's
+  // own anchor/title text (e.g. a Malayalam-version cell's disclaimer
+  // referencing the English-language order it supersedes: "...vide
+  // S.O.No.2634(E) dated 05.08.2020..." inside one big anchor). Fold it
+  // back into the segment it's actually part of.
+  const segments = [];
+  for (const seg of rawSegments) {
+    if (seg.anchors.length === 0 && segments.length > 0) {
+      segments[segments.length - 1].text += ` ${seg.text}`;
+    } else {
+      segments.push({ ...seg });
+    }
+  }
+  return segments.map((seg) => ({ ...seg, text: cleanText(seg.text) }));
+}
+
+// A non-primary segment isn't always a literal amendment -- it can be a
+// later, standalone re-issue of the same status (e.g. a second "Final
+// Notification" superseding the first, or a "Re-Draft Notification") tacked
+// on in the same cell. Trust whatever notification-type word the segment
+// itself uses rather than assuming "Amendment".
+function detectSegmentStatus(text, fallbackStatus) {
+  if (/\bamendment/i.test(text)) return 'Amendment';
+  if (/\bfinal\b/i.test(text)) return 'Final';
+  if (/\bdraft\b/i.test(text)) return 'Draft';
+  return fallbackStatus;
+}
+
+// The upload-date cell for a Final notification with N embedded amendments
+// occasionally lists N dates joined with "and" (e.g. "05/10/2016 and
+// 22/12/2022"), in the same order as the notifications in the adjacent cell.
+// Only trust that pairing when the count actually matches the segment count;
+// otherwise keep the raw text attached to the primary notification only
+// rather than guessing which segment a date belongs to.
+function splitUploadDates(uploadDateText, segmentCount) {
+  if (isEffectivelyEmpty(uploadDateText)) return new Array(segmentCount).fill(null);
+  const parts = uploadDateText.split(/\s+and\s+/i).map(cleanText).filter(Boolean);
+  if (parts.length === segmentCount) return parts;
+  return [cleanText(uploadDateText), ...new Array(segmentCount - 1).fill(null)];
+}
+
 function parseNotificationCell($, cell, { state, status, uploadDateText }) {
   const text = cleanText($(cell).text());
-  if (isEffectivelyEmpty(text)) return null;
+  if (isEffectivelyEmpty(text)) return [];
 
-  // The protected area name is sometimes only fully spelled out (with its
-  // type, e.g. "... Wildlife Sanctuary") in the anchor's title attribute, not
-  // in the cell's own visible text -- classify against both.
-  const protectedAreaName = extractProtectedAreaName($, cell, text);
+  const segments = splitCellIntoNotifications($, cell, text);
+  const uploadDates = splitUploadDates(uploadDateText, segments.length);
 
-  return {
-    moefSNo: extractMoefSNo(text),
-    state,
-    protectedAreaName,
-    protectedAreaType: classifyProtectedAreaType(`${protectedAreaName} ${text}`),
-    notificationStatus: status,
-    notificationDate: extractNotificationDate(text),
-    notificationSummary: text,
-    notificationPdfLink: extractPdfLinks($, cell)[0] ?? null,
-    maps: extractMaps($, cell),
-    notificationUploadDate: isEffectivelyEmpty(uploadDateText) ? null : cleanText(uploadDateText),
-    orderNumber: extractOrderNumber(text),
-  };
+  return segments.map((segment, i) => {
+    // The protected area name is sometimes only fully spelled out (with its
+    // type, e.g. "... Wildlife Sanctuary") in the anchor's title attribute,
+    // not in the segment's own visible text -- classify against both.
+    const protectedAreaName = extractProtectedAreaName($, segment.anchors, segment.text);
+
+    return {
+      moefSNo: extractMoefSNo(segment.text),
+      state,
+      protectedAreaName,
+      protectedAreaType: classifyProtectedAreaType(`${protectedAreaName} ${segment.text}`),
+      notificationStatus: i === 0 ? status : detectSegmentStatus(segment.text, 'Amendment'),
+      notificationDate: extractNotificationDate(segment.text),
+      notificationSummary: segment.text,
+      notificationPdfLink: extractPdfLinks($, segment.anchors)[0] ?? null,
+      maps: extractMaps($, segment.anchors),
+      notificationUploadDate: uploadDates[i],
+      orderNumber: extractOrderNumber(segment.text),
+    };
+  });
 }
 
 async function main() {
@@ -221,19 +298,19 @@ async function main() {
 
     const [draftCell, draftDateCell, finalCell, finalDateCell] = cells;
 
-    const draftRecord = parseNotificationCell($, draftCell, {
+    const draftRecords = parseNotificationCell($, draftCell, {
       state: currentState,
       status: 'Draft',
       uploadDateText: $(draftDateCell).text(),
     });
-    if (draftRecord) records.push(draftRecord);
+    records.push(...draftRecords);
 
-    const finalRecord = parseNotificationCell($, finalCell, {
+    const finalRecords = parseNotificationCell($, finalCell, {
       state: currentState,
       status: 'Final',
       uploadDateText: $(finalDateCell).text(),
     });
-    if (finalRecord) records.push(finalRecord);
+    records.push(...finalRecords);
   });
 
   await writeFile('data/moef-esz-notifications.json', JSON.stringify(records, null, 2), 'utf8');
