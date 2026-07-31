@@ -10,15 +10,28 @@
 // client never has to cross-reference three separate payloads to render.
 
 import { readFile, writeFile } from 'node:fs/promises';
+import { loadCache } from './lib/enrichment-cache.js';
 
 function pickLatest(notifications, status) {
   const relevant = notifications.filter((n) => n.notificationStatus === status);
   return relevant.sort((a, b) => (b.notificationDate || '').localeCompare(a.notificationDate || ''))[0] || null;
 }
 
+// Same composite key enrich-allmaps.js keys "allmaps editor" (the Allmaps
+// georeferencing-editor link) by -- a multi-park notification is one gazette
+// PDF but each park's toposheet/annexure can sit on a different page, so the
+// georeferencing link is per (orderNumber, notificationDate, protectedAreaName),
+// not per notification alone.
+function findGeoreferencingLink(cache, orderNumber, notificationDate, protectedAreaName) {
+  const row = cache.find((r) => r.orderNumber === orderNumber && r.notificationDate === notificationDate
+    && r.protectedAreaName === protectedAreaName);
+  return row?.['allmaps editor'] || null;
+}
+
 async function main() {
   const wikidataPAs = JSON.parse(await readFile('data/wikidata-protected-areas.json', 'utf8'));
   const moefRecords = JSON.parse(await readFile('data/moef-esz-notifications.json', 'utf8'));
+  const enrichmentCache = await loadCache('data/enrichment-cache.csv');
 
   const notificationsByWikidataId = new Map();
   const unmatchedByKey = new Map();
@@ -34,6 +47,7 @@ async function main() {
       orderNumber: r.orderNumber,
       notificationPdfLink: r.notificationPdfLink,
       notificationArchiveLink: r.notificationArchiveLink,
+      georeferencingLink: findGeoreferencingLink(enrichmentCache, r.orderNumber, r.notificationDate, r.protectedAreaName),
     };
     if (r.wikidataId) {
       const list = notificationsByWikidataId.get(r.wikidataId) || [];

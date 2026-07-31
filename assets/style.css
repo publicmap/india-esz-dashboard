@@ -164,7 +164,89 @@ a { color: var(--accent-strong); }
   animation: fade-up 0.6s ease 0.16s both;
 }
 .subtitle a { color: #fff3d1; text-decoration-color: rgba(255, 243, 209, 0.5); }
-.header-links { display: flex; gap: 0.6rem; flex-wrap: wrap; animation: fade-up 0.6s ease 0.24s both; }
+.header-links { position: relative; z-index: 3; display: flex; gap: 0.6rem; flex-wrap: wrap; animation: fade-up 0.6s ease 0.24s both; }
+
+/* ---------- hero aggregate stats ---------- */
+.hero-stats-block { margin-top: 2rem; animation: fade-up 0.6s ease 0.32s both; }
+.hero-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 0.9rem;
+}
+.hero-stat {
+  position: relative;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: var(--radius-md);
+  padding: 1.15rem 1.3rem 1.3rem;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow: 0 14px 30px -18px rgba(0, 0, 0, 0.45);
+  transition: transform 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
+}
+.hero-stat:hover { transform: translateY(-3px); background: rgba(255, 255, 255, 0.16); box-shadow: 0 18px 36px -16px rgba(0, 0, 0, 0.5); }
+.hero-stat-primary {
+  background: linear-gradient(160deg, rgba(255, 215, 122, 0.3), rgba(255, 255, 255, 0.09) 65%);
+  border-color: rgba(255, 215, 122, 0.55);
+}
+.hero-stat-primary:hover { background: linear-gradient(160deg, rgba(255, 215, 122, 0.38), rgba(255, 255, 255, 0.14) 65%); }
+.hero-stat-icon {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffd77a;
+  margin-bottom: 0.5rem;
+}
+.hero-stat-icon svg { width: 100%; height: 100%; }
+.hero-stat-primary .hero-stat-icon { color: #fff3d1; }
+.hero-stat-value {
+  display: block;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 2.4rem;
+  line-height: 1;
+  color: #fffaf0;
+}
+.hero-stat-label {
+  display: block;
+  margin-top: 0.32rem;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  color: #ffe9c2;
+}
+.hero-stat-label sup { color: #ffd77a; }
+.hero-stat-note {
+  display: block;
+  margin-top: 0.2rem;
+  font-size: 0.76rem;
+  color: rgba(255, 250, 240, 0.72);
+}
+.hero-stat-progress {
+  margin-top: 0.75rem;
+  height: 8px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.2);
+  overflow: hidden;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+.hero-stat-progress-fill {
+  height: 100%;
+  width: 0%;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #ffb84d, #ffe9a8);
+  transition: width 900ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+.hero-stats-footnote {
+  margin: 0.65rem 0 0;
+  font-size: 0.74rem;
+  color: rgba(255, 250, 240, 0.6);
+}
+@media (max-width: 640px) {
+  .hero-stats { grid-template-columns: repeat(2, 1fr); }
+}
 
 .canopy-layer { position: absolute; inset: 0; z-index: 1; pointer-events: none; overflow: hidden; }
 .flying-bird {
@@ -256,6 +338,51 @@ a { color: var(--accent-strong); }
   color: #2b1a05;
   border-color: transparent;
 }
+
+/* ---------- download dropdown ---------- */
+.dropdown { position: relative; }
+.dropdown-toggle .dropdown-caret { transition: transform 0.18s ease; }
+.dropdown.is-open .dropdown-toggle .dropdown-caret { transform: rotate(180deg); }
+.dropdown-menu {
+  position: absolute;
+  top: calc(100% + 0.5rem);
+  left: 0;
+  z-index: 20;
+  display: flex;
+  flex-direction: column;
+  min-width: 220px;
+  padding: 0.4rem;
+  background: var(--surface-1);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-soft);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-4px);
+  transition: opacity 0.16s ease, transform 0.16s ease, visibility 0.16s;
+}
+.dropdown.is-open .dropdown-menu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+.dropdown-item {
+  display: block;
+  width: 100%;
+  padding: 0.5rem 0.7rem;
+  border: none;
+  border-radius: var(--radius-sm, 8px);
+  background: none;
+  color: var(--text-primary);
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-align: left;
+  text-decoration: none;
+  cursor: pointer;
+  font-family: inherit;
+}
+.dropdown-item:hover, .dropdown-item:focus-visible { background: color-mix(in srgb, var(--accent-2) 12%, transparent); }
+.dropdown-item + .dropdown-item { margin-top: 0.1rem; }
 
 main { max-width: 1180px; margin: 0 auto; padding: 1.5rem 1.25rem 2.5rem; }
 
@@ -427,7 +554,7 @@ section { margin-bottom: 2.25rem; }
   border-radius: 3px;
   padding: 0.05rem 0.3rem;
 }
-.qa-table-wrap { max-height: 320px; }
+.qa-table-wrap { max-height: 320px; overflow-y: auto; overflow-x: auto; }
 .qa-table {
   width: 100%;
   border-collapse: collapse;
@@ -478,7 +605,6 @@ section { margin-bottom: 2.25rem; }
   }
   .map-panel { position: sticky; top: 1rem; }
   #map { height: calc(100vh - 220px); }
-  .table-panel .table-wrap { max-height: calc(100vh - 220px); }
 }
 
 #map {
@@ -500,18 +626,6 @@ section { margin-bottom: 2.25rem; }
 }
 .popup-title { font-weight: 700; font-family: var(--font-display); margin: 0 0 0.35rem; }
 .popup-row { font-size: 0.85rem; color: var(--text-secondary); margin: 0.15rem 0; }
-.popup-meta { font-size: 0.78rem; }
-.popup-extract:empty { display: none; }
-.popup-links { margin-top: 0.5rem; display: flex; gap: 0.6rem; flex-wrap: wrap; font-size: 0.82rem; }
-.popup-banner {
-  display: block;
-  width: calc(100% + 2rem);
-  max-width: none;
-  height: 130px;
-  object-fit: cover;
-  margin: -0.85rem -1rem 0.6rem;
-  border-radius: var(--radius-md) var(--radius-md) 0 0;
-}
 
 .map-hover-popup {
   pointer-events: none;
@@ -535,16 +649,12 @@ section { margin-bottom: 2.25rem; }
   margin-bottom: 0.6rem;
 }
 .result-count { font-size: 0.85rem; color: var(--text-secondary); }
-.export-buttons { display: flex; gap: 0.4rem; align-items: center; flex-wrap: wrap; }
-.export-label { font-size: 0.8rem; color: var(--text-muted); margin-right: 0.15rem; }
 
-.table-wrap {
-  overflow-x: auto;
+.accordion-wrap {
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
-  max-height: 520px;
-  overflow-y: auto;
   box-shadow: var(--shadow-soft);
+  overflow: hidden;
 }
 
 .status-cell {
@@ -559,47 +669,315 @@ section { margin-bottom: 2.25rem; }
   font-size: 0.78rem;
 }
 
-/* Tabulator theme -- reskin the default "simple" theme to match the site's
-   surface/border/text variables (incl. dark mode). tabulator_simple.min.css
-   sets its colors via 2-4 chained class selectors (e.g.
-   ".tabulator .tabulator-header .tabulator-col"), so overrides below match
-   those same chains -- a single-class selector loses the specificity fight
-   and silently no-ops (e.g. white-on-white header text in dark mode). */
-.tabulator {
-  background: transparent;
+/* ---------- state accordion ---------- */
+.pa-accordion { background: var(--surface-1); }
+.state-row { border-bottom: 1px solid var(--gridline); }
+.state-row:last-child { border-bottom: none; }
+
+/* The collapsed state row (name, count, combined progress) gets its own
+   fixed dark theme, independent of the page's light/dark toggle -- same
+   "photo-strip" treatment as a collapsed .pa-card below. Once a state is
+   expanded, its body (.state-row-body / .pa-type-group) reverts to the
+   normal themed surface, since that content is read as detail, not browsed. */
+.state-row-header {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.6rem 0.9rem;
+  padding: 0.85rem 1.1rem;
+  background: #16241d;
   border: none;
-  font-family: inherit;
-  font-size: 0.85rem;
-  color: var(--text-primary);
+  color: #f5ecd7;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
 }
-.tabulator .tabulator-header {
-  background-color: var(--accent-strong);
-  border-bottom: 1px solid var(--border);
-  color: #fdf7e6;
+.state-row-header:hover { background: #1b2c22; }
+.state-row-chevron {
+  flex: none;
+  display: inline-block;
+  color: rgba(245, 236, 216, 0.68);
+  transition: transform 0.18s ease;
 }
-.tabulator .tabulator-header .tabulator-col { background: var(--accent-strong); border-right: none; }
-.tabulator-col-title { color: #fdf7e6; font-weight: 700; }
-.tabulator-row,
-.tabulator-row.tabulator-row-even {
-  background-color: var(--surface-1);
-  border-bottom: 1px solid var(--gridline);
+.state-row-header[aria-expanded="true"] .state-row-chevron { transform: rotate(90deg); color: #7fd4ab; }
+.state-row-name {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.05rem;
+  flex: none;
+  transition: color 0.18s ease;
 }
-.tabulator-row { cursor: pointer; }
-.tabulator-row.tabulator-selectable:hover { background-color: color-mix(in srgb, var(--accent) 8%, transparent); }
-.tabulator-row.selected-row,
-.tabulator-row.selected-row:hover {
-  background-color: color-mix(in srgb, var(--accent) 16%, transparent);
-  box-shadow: inset 3px 0 0 var(--accent);
+/* An open state gets a visibly heavier header -- brighter accent-tinted
+   background, a left accent bar, and a bolder/brighter title -- so it's
+   unmistakable at a glance which state(s) are currently expanded. */
+.state-row-header[aria-expanded="true"] {
+  background: #1f3327;
+  box-shadow: inset 3px 0 0 #4fb787;
 }
-.tabulator-row .tabulator-cell { border-right: none; color: var(--text-primary); padding: 0.55rem 0.75rem; }
-.tabulator-row.nested-draft-row {
-  background-color: var(--page-plane);
+.state-row-header[aria-expanded="true"]:hover { background: #24392c; }
+.state-row-header[aria-expanded="true"] .state-row-name {
+  color: #9fe6c4;
+  font-size: 1.12rem;
 }
-.tabulator-row.nested-draft-row .tabulator-cell:first-child {
-  box-shadow: inset 3px 0 0 var(--status-draft);
+.state-row-count { font-size: 0.8rem; color: rgba(245, 236, 216, 0.68); flex: none; }
+
+/* Progress blocks (state-level and per-type) share one fixed width and are
+   pushed flush against the same right padding in both contexts, so their
+   bars line up exactly regardless of how much text sits to their left. The
+   meta line sits above the bar in both. */
+.state-row-progress,
+.pa-type-progress {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 0.3rem;
+  flex: none;
+  width: 180px;
+  margin-left: auto;
+}
+.state-row-progress .chip-bar,
+.pa-type-progress .chip-bar {
+  width: 100%;
+}
+/* Thinner than the state-level bar so the hierarchy (state rolls up several
+   type groups) reads visually, not just from position/indent. */
+.pa-type-progress .chip-bar { height: 4px; }
+.state-row-progress-meta { font-size: 0.78rem; color: rgba(245, 236, 216, 0.68); white-space: nowrap; text-align: right; }
+
+.chip-bar {
+  display: flex;
+  height: 6px;
+  border-radius: 999px;
+  overflow: hidden;
+  background: var(--gridline);
+}
+.chip-bar-final { background: var(--status-final); }
+.chip-bar-draft { background: var(--status-draft); }
+.chip-bar-none { background: var(--status-none); }
+
+/* The whole expanded state row -- type groups, their progress bars, and the
+   PA cards within -- keeps the same fixed dark "photo-strip" theme as the
+   collapsed header, independent of the page's light/dark toggle, so a state
+   doesn't flash from a dark header into a light body when opened. Only a
+   card's own expanded detail view (read as body text, not browsed) reverts
+   to the normal themed surface -- see .pa-card.is-expanded below. */
+.state-row-body { background: #0e1a14; color: #f5ecd7; }
+.state-row:not(.is-open) .state-row-body { display: none; }
+.state-row-body .chip-bar { background: rgba(245, 236, 216, 0.14); }
+.state-row-body .pa-type-progress-meta { color: rgba(245, 236, 216, 0.68); }
+.state-row-body .pa-type-count { color: rgba(245, 236, 216, 0.55); }
+
+/* .pa-type-group is a <section>, which the global `section` rule below gives
+   a 2.25rem bottom margin -- override to 0 so type groups sit flush against
+   each other (separated only by the border-top) and the last one doesn't
+   leave a large gap before the next state row. */
+.pa-type-group { position: relative; margin-bottom: 0; padding: 0.9rem 1.1rem 1.2rem 1rem; border-top: 1px solid rgba(245, 236, 216, 0.1); border-left: 3px solid transparent; }
+.state-row-body .pa-type-group:first-child { border-top: none; }
+.pa-type-group--tiger { background: linear-gradient(120deg, rgba(240, 149, 74, 0.14), transparent 65%); border-left-color: rgba(240, 149, 74, 0.55); }
+.pa-type-group--np { background: linear-gradient(120deg, rgba(79, 183, 135, 0.14), transparent 65%); border-left-color: rgba(79, 183, 135, 0.55); }
+.pa-type-group--bird-sanctuary { background: linear-gradient(120deg, rgba(90, 169, 230, 0.14), transparent 65%); border-left-color: rgba(90, 169, 230, 0.55); }
+.pa-type-group--wildlife-sanctuary { background: linear-gradient(120deg, rgba(240, 193, 75, 0.14), transparent 65%); border-left-color: rgba(240, 193, 75, 0.55); }
+.pa-type-group--other { background: linear-gradient(120deg, rgba(139, 130, 104, 0.14), transparent 65%); border-left-color: rgba(139, 130, 104, 0.5); }
+
+.pa-type-header {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.4rem 1rem;
+  margin: 0 0 0.7rem;
+}
+.pa-type-title {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 0.98rem;
+  font-weight: 600;
+  flex: none;
+}
+.pa-type-icon {
+  flex: none;
+  width: 26px;
+  height: 26px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+}
+.pa-type-icon svg { width: 15px; height: 15px; }
+.pa-type-group--tiger .pa-type-icon { background: rgba(240, 149, 74, 0.22); color: #f0954a; }
+.pa-type-group--np .pa-type-icon { background: rgba(79, 183, 135, 0.22); color: #4fb787; }
+.pa-type-group--bird-sanctuary .pa-type-icon { background: rgba(90, 169, 230, 0.22); color: #5aa9e6; }
+.pa-type-group--wildlife-sanctuary .pa-type-icon { background: rgba(240, 193, 75, 0.22); color: #f0c14b; }
+.pa-type-group--other .pa-type-icon { background: rgba(139, 130, 104, 0.22); color: #b5ab8f; }
+.pa-type-count { color: var(--text-muted); font-weight: 400; font-size: 0.85em; }
+.pa-type-progress-meta { font-size: 0.75rem; color: var(--text-muted); white-space: nowrap; text-align: right; }
+
+/* ---------- PA card list ---------- */
+/* Each PA is a full-width row (not a tile), laid out horizontally so a
+   thumbnail + name + area + status fit in one compact line. */
+.pa-card-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
 }
 
-.draft-toggle { padding: 0.15rem 0.5rem; font-size: 0.72rem; }
+.pa-card {
+  position: relative;
+  display: flex;
+  align-items: stretch;
+  gap: 0;
+  padding: 0;
+  background: var(--surface-1);
+  border: 1px solid var(--border);
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+.pa-card:hover { transform: translateX(2px); box-shadow: var(--shadow-soft); }
+.pa-card.is-selected { box-shadow: 0 0 0 2px var(--accent); }
+
+/* Collapsed rows get their own fixed dark theme (independent of the page's
+   light/dark toggle) -- a deliberate photo-strip look, not the paper-toned
+   surface the rest of the UI uses. The expanded detail view below keeps the
+   normal themed surface since it's read as body text/links, not browsed.
+   Corners are square and the border carries no per-status colour -- the
+   notification status is already stated as text on the right (see
+   .pa-card-status), so a coloured accent here would just be redundant. */
+.pa-card:not(.is-expanded) {
+  background: #16241d;
+  color: #f5ecd7;
+  border-color: rgba(245, 236, 216, 0.14);
+}
+.pa-card:not(.is-expanded) .pa-card-right { color: rgba(245, 236, 216, 0.68); }
+
+.pa-card-thumb {
+  flex: none;
+  align-self: stretch;
+  width: 68px;
+  background: #0e1a14;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+.pa-card-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.pa-card-thumb-placeholder {
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--text-muted);
+}
+.pa-card-body {
+  flex: 1 1 auto;
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.55rem 0.8rem;
+}
+.pa-card-name {
+  flex: 1 1 auto;
+  min-width: 0;
+  font-size: 0.88rem;
+  line-height: 1.25;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.pa-card-right {
+  flex: none;
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  font-size: 0.78rem;
+  color: var(--text-secondary);
+}
+.pa-card-area { white-space: nowrap; }
+.pa-card-status { white-space: nowrap; }
+
+/* an expanded card switches to the vertical detail layout, and -- unlike its
+   collapsed state -- must reset back to the normal themed surface/text
+   colour, since it would otherwise inherit the fixed dark-mode text colour
+   set on .state-row-body above and blend into its own light-mode background. */
+.pa-card.is-expanded {
+  display: block;
+  cursor: default;
+  background: var(--surface-1);
+  color: var(--text-primary);
+}
+.pa-card.is-expanded:hover { transform: none; }
+
+.pa-card-collapse {
+  position: absolute;
+  top: 0.6rem;
+  right: 0.6rem;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: 1px solid var(--border);
+  background: var(--surface-1);
+  color: var(--text-secondary);
+  font-size: 1.1rem;
+  line-height: 1;
+  cursor: pointer;
+}
+.pa-card-collapse:hover { background: var(--page-plane); }
+
+.pa-detail-grid {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: 1.1rem;
+  padding: 1rem 1.2rem 0.4rem;
+}
+@media (max-width: 720px) {
+  .pa-detail-grid { grid-template-columns: 1fr; }
+}
+.pa-detail-media { border-radius: var(--radius-md); overflow: hidden; background: var(--page-plane); min-height: 120px; display: flex; flex-direction: column; align-items: center; }
+.pa-detail-media a { display: block; }
+.pa-detail-image { width: 120px; height: 120px; display: block; object-fit: cover; }
+.pa-detail-media a + a { border-top: 1px solid var(--border); }
+.pa-commons-mosaic {
+  width: 126px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 3px;
+  margin-top: 3px;
+}
+.pa-commons-mosaic:empty { display: none; margin-top: 0; }
+.pa-commons-mosaic a { width: 40px; height: 40px; }
+.pa-commons-mosaic img { width: 100%; height: 100%; display: block; object-fit: cover; }
+.pa-detail-title { margin: 0 0 0.3rem; font-family: var(--font-display); font-size: 1.15rem; }
+.pa-detail-meta { margin: 0 0 0.3rem; font-size: 0.82rem; color: var(--text-secondary); }
+.pa-detail-links { margin: 0 0 0.5rem; font-size: 0.85rem; display: flex; gap: 0.6rem; flex-wrap: wrap; }
+.pa-detail-excerpt { font-size: 0.85rem; line-height: 1.55; color: var(--text-secondary); margin: 0; }
+.pa-detail-excerpt:empty { display: none; }
+
+.pa-notification-heading {
+  margin: 0.6rem 1.2rem 0.4rem;
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--text-muted);
+}
+.pa-notification-list { list-style: none; margin: 0; padding: 0 1.2rem 1rem; display: flex; flex-direction: column; gap: 0.4rem; }
+.pa-notification-row {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  flex-wrap: wrap;
+  font-size: 0.82rem;
+  padding: 0.4rem 0.6rem;
+  border: 1px solid var(--gridline);
+  border-radius: var(--radius-md);
+  background: var(--surface-1);
+}
+.pa-notification-date { color: var(--text-secondary); }
+.pa-notification-links { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+.pa-detail-empty { margin: 0 1.2rem 1rem; font-size: 0.85rem; color: var(--text-muted); }
 
 /* ---------- footer ---------- */
 .site-footer {
@@ -624,4 +1002,5 @@ section { margin-bottom: 2.25rem; }
   .filter-hero-controls .type-filter-select { flex: 1 1 auto; }
   #map { height: 380px; }
   .ambient-toggle span { display: none; }
+  .state-row-progress, .pa-type-progress { width: 100%; }
 }

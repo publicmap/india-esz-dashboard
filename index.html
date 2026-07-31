@@ -11,7 +11,6 @@
   <link rel="icon"
     href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext x='50' y='72' font-size='72' text-anchor='middle'%3E%F0%9F%90%86%3C/text%3E%3C/svg%3E" />
   <link rel="stylesheet" href="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.css" />
-  <link rel="stylesheet" href="https://unpkg.com/tabulator-tables@6.3.1/dist/css/tabulator_simple.min.css" />
   <link rel="stylesheet" href="assets/style.css" />
 </head>
 
@@ -63,6 +62,34 @@
           &rarr;</a>
         <a class="btn" href="https://github.com/publicmap/india-esz-dashboard" target="_blank" rel="noopener">GitHub
           repo</a>
+        <div class="dropdown" id="download-dropdown">
+          <button class="btn dropdown-toggle" id="download-toggle" type="button" aria-haspopup="true"
+            aria-expanded="false">
+            <svg viewBox="0 0 24 24" width="15" height="15" aria-hidden="true" fill="none" stroke="currentColor"
+              stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 3v12" />
+              <path d="M7 10l5 5 5-5" />
+              <path d="M4 19h16" />
+            </svg>
+            <span>Download</span>
+            <svg class="dropdown-caret" viewBox="0 0 24 24" width="12" height="12" aria-hidden="true" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M6 9l6 6 6-6" />
+            </svg>
+          </button>
+          <div class="dropdown-menu" id="download-menu" role="menu" aria-labelledby="download-toggle">
+            <a class="dropdown-item" role="menuitem" href="data/moef-esz-notifications.csv" download>Notifications
+              (CSV)</a>
+            <a class="dropdown-item" role="menuitem" href="data/moef-esz-notifications.json" download>Notifications
+              (JSON)</a>
+            <a class="dropdown-item" role="menuitem" href="data/wikidata-protected-areas.csv" download>Protected areas
+              (CSV)</a>
+            <a class="dropdown-item" role="menuitem" href="data/protected-areas.geojson" download>Protected areas
+              (GeoJSON)</a>
+            <button class="dropdown-item" role="menuitem" id="export-filtered" type="button">Filtered table view
+              (CSV)</button>
+          </div>
+        </div>
         <a class="btn" href="https://github.com/publicmap/india-esz-dashboard#readme" target="_blank"
           rel="noopener">About ESZs</a>
         <button class="btn ambient-toggle" id="ambient-toggle" type="button" aria-pressed="false">
@@ -75,6 +102,72 @@
           </svg>
           <span>Forest sounds</span>
         </button>
+      </div>
+
+      <div class="hero-stats-block">
+        <div class="hero-stats" aria-label="Nationwide Eco-Sensitive Zone notification progress">
+          <div class="hero-stat hero-stat-primary">
+            <div class="hero-stat-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"
+                stroke-linejoin="round">
+                <path d="M12 3l7 3v6c0 4.5-3 8-7 9-4-1-7-4.5-7-9V6l7-3z" />
+                <path d="M8.5 12.3l2.3 2.3 4.7-4.9" />
+              </svg>
+            </div>
+            <span class="hero-stat-value" id="hero-stat-overall-value">&ndash;</span>
+            <span class="hero-stat-label">Of States/UTs Completed ESZ Notification<sup>*</sup></span>
+            <span class="hero-stat-note" id="hero-stat-overall-note">&ndash;</span>
+            <div class="hero-stat-progress">
+              <div class="hero-stat-progress-fill" id="hero-stat-overall-bar"></div>
+            </div>
+          </div>
+          <div class="hero-stat">
+            <div class="hero-stat-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="currentColor">
+                <ellipse cx="12" cy="15.5" rx="5.2" ry="4.3" />
+                <ellipse cx="5.6" cy="9.5" rx="1.9" ry="2.5" transform="rotate(-18 5.6 9.5)" />
+                <ellipse cx="10.2" cy="6.2" rx="2" ry="2.7" transform="rotate(-6 10.2 6.2)" />
+                <ellipse cx="14.8" cy="6.2" rx="2" ry="2.7" transform="rotate(6 14.8 6.2)" />
+                <ellipse cx="18.4" cy="9.5" rx="1.9" ry="2.5" transform="rotate(18 18.4 9.5)" />
+              </svg>
+            </div>
+            <span class="hero-stat-value" id="hero-stat-tiger-value">&ndash;</span>
+            <span class="hero-stat-label">Tiger Reserves</span>
+            <span class="hero-stat-note" id="hero-stat-tiger-note">&ndash;</span>
+            <div class="hero-stat-progress">
+              <div class="hero-stat-progress-fill" id="hero-stat-tiger-bar"></div>
+            </div>
+          </div>
+          <div class="hero-stat">
+            <div class="hero-stat-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"
+                stroke-linejoin="round">
+                <path d="M2 19l6.5-10 4 6 2-3L21 19H2z" />
+                <circle cx="17" cy="6" r="2" />
+              </svg>
+            </div>
+            <span class="hero-stat-value" id="hero-stat-np-value">&ndash;</span>
+            <span class="hero-stat-label">National Parks</span>
+            <span class="hero-stat-note" id="hero-stat-np-note">&ndash;</span>
+            <div class="hero-stat-progress">
+              <div class="hero-stat-progress-fill" id="hero-stat-np-bar"></div>
+            </div>
+          </div>
+          <div class="hero-stat">
+            <div class="hero-stat-icon" aria-hidden="true">
+              <svg viewBox="0 0 32 14" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round">
+                <path d="M1 8C5 -2 12 -2 16 6 20 -2 27 -2 31 8" />
+              </svg>
+            </div>
+            <span class="hero-stat-value" id="hero-stat-sanctuary-value">&ndash;</span>
+            <span class="hero-stat-label">Sanctuaries</span>
+            <span class="hero-stat-note" id="hero-stat-sanctuary-note">&ndash;</span>
+            <div class="hero-stat-progress">
+              <div class="hero-stat-progress-fill" id="hero-stat-sanctuary-bar"></div>
+            </div>
+          </div>
+        </div>
+        <p class="hero-stats-footnote">* Includes draft notifications not yet finalised</p>
       </div>
     </div>
     <svg class="canopy-divider" viewBox="0 0 1440 60" preserveAspectRatio="none" aria-hidden="true">
@@ -89,110 +182,26 @@
   </audio>
 
   <main>
-    <section class="filter-hero" aria-label="Protected area filter">
-      <div class="filter-hero-row">
-        <div class="filter-hero-heading">
-          <span class="stat-label">Protected areas in India</span>
-          <span class="stat-value stat-value-lg" id="stat-total">&ndash;</span>
-          <span class="stat-note">tracked via Wikidata, filtered below</span>
-        </div>
-        <div class="filter-hero-controls">
-          <select id="pa-state-filter" class="type-filter-select" aria-label="Filter by state">
-            <option value="">All states</option>
-          </select>
-          <select id="pa-type-filter" class="type-filter-select" aria-label="Filter by protected area type">
-            <option value="">All types</option>
-          </select>
-          <button class="btn btn-sm" id="reset-pa-filters" type="button">Reset filter</button>
-        </div>
-      </div>
-    </section>
-
-    <section class="kpi-section" aria-label="Key metrics">
-      <div class="stat-tile-row">
-        <div class="stat-tile stat-tile-final">
-          <span class="stat-label"><i class="dot dot-final" aria-hidden="true"></i>Final ESZ notified</span>
-          <span class="stat-value" id="stat-final">&ndash;</span>
-          <span class="stat-note" id="stat-final-pct">&ndash;</span>
-        </div>
-        <div class="stat-tile stat-tile-draft">
-          <span class="stat-label"><i class="dot dot-draft" aria-hidden="true"></i>Draft ESZ notified</span>
-          <span class="stat-value" id="stat-draft">&ndash;</span>
-          <span class="stat-note" id="stat-draft-pct">&ndash;</span>
-        </div>
-        <div class="stat-tile stat-tile-none">
-          <span class="stat-label"><i class="dot dot-none" aria-hidden="true"></i>Not yet notified</span>
-          <span class="stat-value" id="stat-none">&ndash;</span>
-          <span class="stat-note" id="stat-none-pct">&ndash;</span>
-        </div>
-      </div>
-
-      <div class="progress-wrap">
-        <div class="progress-bar" id="progress-bar" role="img"
-          aria-label="Share of protected areas by ESZ notification status">
-          <div class="segment segment-final" id="seg-final"></div>
-          <div class="segment segment-draft" id="seg-draft"></div>
-          <div class="segment segment-none" id="seg-none"></div>
-        </div>
-        <div class="progress-legend">
-          <span class="legend-item"><i class="dot dot-final" aria-hidden="true"></i>Final</span>
-          <span class="legend-item"><i class="dot dot-draft" aria-hidden="true"></i>Draft only</span>
-          <span class="legend-item"><i class="dot dot-none" aria-hidden="true"></i>Not yet notified</span>
-        </div>
-      </div>
-      <p class="caveat" id="match-caveat"></p>
-
-      <details class="qa-panel">
-        <summary>QA: protected areas not yet matched to Wikidata (<span id="qa-count">&ndash;</span>)</summary>
-        <p class="qa-instructions">
-          These protected area names and states come from MoEF ESZ notifications but couldn't be automatically
-          matched to a Wikidata item &mdash; usually a spelling variant, a notification covering multiple parks,
-          or an item genuinely missing from Wikidata. To fix one, add a row to
-          <a href="data/corrections.csv" target="_blank" rel="noopener"><code>data/corrections.csv</code></a>
-          with columns <code>paName, state, correctPaName, correctState, correctPaType</code> &mdash; the
-          <code>paName</code>/<code>state</code> as they appear below, and the corrected values to re-run the join
-          with &mdash; then open a pull request against the
-          <a href="https://github.com/publicmap/india-esz-dashboard" target="_blank" rel="noopener">repo</a>.
-        </p>
-        <div class="table-wrap qa-table-wrap">
-          <table class="qa-table">
-            <thead>
-              <tr>
-                <th>State</th>
-                <th>Protected area (as parsed)</th>
-                <th>Type</th>
-                <th>Notification records</th>
-                <th>Status seen</th>
-              </tr>
-            </thead>
-            <tbody id="qa-table-body"></tbody>
-          </table>
-        </div>
-      </details>
-    </section>
-
     <section class="explorer-section" aria-label="Notification explorer">
       <div class="explorer-grid">
         <div class="table-panel">
           <div class="table-toolbar">
             <div class="search-group">
               <input type="search" id="filter-search" placeholder="Search protected area, state, type..." />
+              <select id="pa-state-filter" class="type-filter-select" aria-label="Filter by state">
+                <option value="">All states</option>
+              </select>
+              <select id="pa-type-filter" class="type-filter-select" aria-label="Filter by protected area type">
+                <option value="">All types</option>
+              </select>
               <button class="btn btn-sm" id="reset-filters" type="button">Reset filters</button>
             </div>
             <span id="result-count" class="result-count"></span>
-            <div class="export-buttons">
-              <span class="export-label">Download:</span>
-              <a class="btn btn-sm" href="data/moef-esz-notifications.csv">Notifications CSV</a>
-              <a class="btn btn-sm" href="data/moef-esz-notifications.json">JSON</a>
-              <a class="btn btn-sm" href="data/wikidata-protected-areas.csv">PAs CSV</a>
-              <a class="btn btn-sm" href="data/protected-areas.geojson">GeoJSON</a>
-              <button class="btn btn-sm" id="export-filtered" type="button">Export filtered view (CSV)</button>
-            </div>
           </div>
-          <p class="table-hint">Where a protected area has a final notification, its earlier drafts are hidden by
-            default &mdash; use the "View draft" toggle on the Final row to reveal them just below it.</p>
-          <div class="table-wrap">
-            <div id="notifications-table"></div>
+          <p class="table-hint">Click a state to see its protected areas, grouped by type and size; click a card for
+            its full notification history.</p>
+          <div class="accordion-wrap">
+            <div id="pa-accordion" class="pa-accordion"></div>
           </div>
         </div>
 
@@ -220,6 +229,34 @@
                   </tr>
                 </thead>
                 <tbody id="nocoord-table-body"></tbody>
+              </table>
+            </div>
+          </details>
+
+          <details class="qa-panel">
+            <summary>QA: protected areas not yet matched to Wikidata (<span id="qa-count">&ndash;</span>)</summary>
+            <p class="qa-instructions">
+              These protected area names and states come from MoEF ESZ notifications but couldn't be automatically
+              matched to a Wikidata item &mdash; usually a spelling variant, a notification covering multiple parks,
+              or an item genuinely missing from Wikidata. To fix one, add a row to
+              <a href="data/corrections.csv" target="_blank" rel="noopener"><code>data/corrections.csv</code></a>
+              with columns <code>paName, state, correctPaName, correctState, correctPaType</code> &mdash; the
+              <code>paName</code>/<code>state</code> as they appear below, and the corrected values to re-run the join
+              with &mdash; then open a pull request against the
+              <a href="https://github.com/publicmap/india-esz-dashboard" target="_blank" rel="noopener">repo</a>.
+            </p>
+            <div class="table-wrap qa-table-wrap">
+              <table class="qa-table">
+                <thead>
+                  <tr>
+                    <th>State</th>
+                    <th>Protected area (as parsed)</th>
+                    <th>Type</th>
+                    <th>Notification records</th>
+                    <th>Status seen</th>
+                  </tr>
+                </thead>
+                <tbody id="qa-table-body"></tbody>
               </table>
             </div>
           </details>

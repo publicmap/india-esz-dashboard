@@ -2,18 +2,17 @@
 
 A frontend dashboard to show current status of ESZ notifications by the Ministry of Environment Forests & Climate Change (MoEFCC), Government of India. **[Live dashboard &rarr;](https://publicmap.github.io/india-esz-dashboard/)**
 
-Features:
+**Features**
 
-- Mirror the ESZ notification table on https://www.moef.gov.in/esz-notifications updated weekly
-- Master list of protected areas in India with ESZ notification status in CSV format
+- Mirror the ESZ notification HTML table on https://www.moef.gov.in/esz-notifications, updated weekly. [View](data/raw/moef-esz-notifications-table.html)
 - Interactive map dashboard showing:
     - KPIs for total protected areas vs. draft/final ESZ notification coverage
     - Protected area locations colored by ESZ notification status, with a filterable/sortable notification table
     - PA boundaries (where mapped on OpenStreetMap) explorable via a custom [amche-atlas](https://amche.in/dev/) atlas
 - Download the notification list and protected area list as CSV/JSON, and protected area locations as GeoJSON
+- Conflation with protected area data on wikidata.org
 
-
-**About Eco-Sensitive Zones (ESZs)**
+## About Eco-Sensitive Zones (ESZs)
 
 ESZs are designated buffer areas around protected habitats like national parks and wildlife sanctuaries. They act as shock absorbers to minimize human impact on fragile ecosystems, typically spanning up to 10 kilometers, though boundaries remain site-specific
 
@@ -23,9 +22,12 @@ Source: [Wikipedia](https://en.wikipedia.org/wiki/Eco-sensitive_zone)
 
 **About ESZ Notifications**
 
+>![ESZ notification status of protected areas in India](img/pib-moefcc-note.png)<br>
+Source: [PIB, Ministry of Environment Forests & Climate Change, Government of India](https://www.pib.gov.in/newsite/PrintRelease.aspx?relid=126299&reg=48&lang=2)
+
 - 2002: The Indian Board for Wildlife proposed 10km buffer zones under the Environment Protection Act of 1986 to insulate national parks and sanctuaries
 - 2004: The Goa Foundation filed a landmark case [(PIL Writ Petition 460/2004)](https://indiankanoon.org/doc/81576067/) in the Supreme Court of India demanding action against authorities for failing to notify ESZs around protected wildlife areas
-- 2006: Supreme Court of India directs all State/UTs to define ESZ around protected areas within 4 weeks
+- 2006: Supreme Court of India directs all State/UTs to define ESZ around protected areas within 4 weeks failing which a [10km ESZ will apply](https://www.pib.gov.in/newsite/PrintRelease.aspx?relid=126299&reg=48&lang=2)
 - 2011: [Guidelines for declaration of ESZ](https://cpc.parivesh.nic.in/writereaddata/Guidelines_for_EcoSensitive_Zones_around_Protected_Areas.pdf) pulbished by MoEFCC outlining procedures to State/UTs to demarcate and notify ESZ with the following details:
 ```
 (i) Delineation of the physical boundaries on a topo-sheet with precise

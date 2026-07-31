@@ -5382,8 +5382,8 @@
   {
     "moefSNo": 75,
     "state": "Dadra and Nagar Haveli and Daman and Diu",
-    "protectedAreaName": "Dadra Nagar Haveli",
-    "protectedAreaType": null,
+    "protectedAreaName": "Dadra and Nagar Haveli WLS",
+    "protectedAreaType": "Wildlife Sanctuary",
     "notificationStatus": "Draft",
     "notificationDate": "2014-11-17",
     "notificationSummary": "75. S.O. 2927 [17.11.2014] Draft ESZ Notification on Dadra & Nagar Haveli(1 MB)",
@@ -5736,8 +5736,8 @@
     "maps": [],
     "notificationUploadDate": null,
     "orderNumber": "S.O. No. 3026(E)",
-    "wikidataId": null,
-    "matchConfidence": "none"
+    "wikidataId": "Q4941423",
+    "matchConfidence": "exact"
   },
   {
     "moefSNo": 83,
@@ -14326,8 +14326,8 @@
     "maps": [],
     "notificationUploadDate": "09/07/2015",
     "orderNumber": "S.O. 3103",
-    "wikidataId": "Q5657472",
-    "matchConfidence": "fuzzy"
+    "wikidataId": null,
+    "matchConfidence": "none"
   },
   {
     "moefSNo": 245,

@@ -1,9 +1,8 @@
 // Dashboard logic: loads a single pre-joined data file, computes KPIs,
-// renders the MapLibre map + grouped/filterable notification table (via
-// Tabulator), and wires up CSV export. No build step -- dependencies are
-// loaded as ES modules straight from a CDN.
+// renders the MapLibre map + a state-by-state accordion of protected-area
+// cards (grouped by type, then by size), and wires up CSV export. No build
+// step -- dependencies are loaded as ES modules straight from a CDN.
 
-import { TabulatorFull as Tabulator } from 'https://unpkg.com/tabulator-tables@6.3.1/dist/js/tabulator_esm.min.js';
 import { Protocol as PmtilesProtocol } from 'https://cdn.jsdelivr.net/npm/pmtiles@4.4.1/+esm';
 
 const GITHUB_RAW_ATLAS_URL = 'https://raw.githubusercontent.com/publicmap/india-esz-dashboard/main/data/amche-atlas.json';
@@ -55,23 +54,25 @@ const BOUNDARY_LINE_STYLES = [
 // protected area (keyed by wikidataId, or by state+name for MoEF records
 // MoEF/Wikidata matching couldn't resolve), each with its notification
 // history nested and every field the map/popups need already attached. This
-// is the only thing fetched over the network to render the table and map;
+// is the only thing fetched over the network to render the accordion and map;
 // the per-source CSV/JSON/GeoJSON exports linked from the toolbar are
 // downloaded directly from GitHub instead of being loaded by the page.
 let paEntries = [];
 // Keyed by entry.paKey (== wikidataId when matched, else the state+name
-// fallback key) -- the join key shared with each flattened table row's
-// `_paKey`, used to look up a PA's aggregate status/metadata from a row or a
-// map feature without re-scanning the full entry list.
+// fallback key) -- used to look up a PA's aggregate status/metadata from a
+// card element's data-pa-key or a map feature without re-scanning the full
+// entry list.
 let entryByPaKey = new Map();
-let tableRecords = [];
-let filteredRecords = [];
+// The subset of paEntries passing the current type/state/search filters --
+// the single source of truth the accordion, the map, and CSV export all
+// render from.
+let filteredEntries = [];
 let searchTerm = '';
 
 // Top-down PA-type filter driven by the "Protected areas in India" dropdown --
-// applies to the KPIs, the QA unmatched list, the table, and (via the table's
-// filtered records) the map. '' means no filter; UNSPECIFIED_TYPE is a
-// sentinel for records/PAs with no protectedAreaType at all.
+// applies to the KPIs, the QA unmatched list, the accordion, and the map.
+// '' means no filter; UNSPECIFIED_TYPE is a sentinel for entries with no
+// protectedAreaType at all.
 const UNSPECIFIED_TYPE = '__unspecified__';
 let paTypeFilter = '';
 
@@ -82,8 +83,7 @@ function matchesTypeFilter(type) {
 }
 
 // Same idea, for the "State" dropdown. Every PA entry carries `state` as an
-// array (a handful of Wikidata PAs span multiple states); flattened table
-// rows carry a single-string `state` sourced from the notification itself.
+// array (a handful of Wikidata PAs span multiple states).
 const UNSPECIFIED_STATE = '__unspecified__';
 let paStateFilter = '';
 
@@ -100,20 +100,18 @@ async function loadData() {
   entryByPaKey = new Map(paEntries.map((e) => [e.paKey, e]));
 }
 
-// Flattens the joined PA entries into one row per notification record (for
-// PAs with no notifications at all, a single synthetic "not notified" row) --
-// the shape the table (and CSV export) has always worked with.
-function buildTableRecords() {
+// Flattens PA entries into one row per notification record (for PAs with no
+// notifications at all, a single synthetic "not notified" row) -- the shape
+// the CSV export has always worked with.
+function flattenEntriesToRows(entries) {
   const rows = [];
-  for (const entry of paEntries) {
+  for (const entry of entries) {
     if (entry.notifications.length === 0) {
       rows.push({
-        _paKey: entry.paKey,
-        _typeGroup: entry.protectedAreaType || 'Unspecified type',
         wikidataId: entry.wikidataId,
         protectedAreaName: entry.name,
         protectedAreaType: entry.protectedAreaType,
-        state: entry.state,
+        state: stateAsString(entry.state),
         notificationStatus: null,
         notificationDate: null,
         orderNumber: null,
@@ -124,59 +122,82 @@ function buildTableRecords() {
       continue;
     }
     for (const n of entry.notifications) {
-      rows.push({
-        ...n,
-        _paKey: entry.paKey,
-        _typeGroup: n.protectedAreaType || 'Unspecified type',
-        wikidataId: entry.wikidataId,
-      });
+      rows.push({ ...n, wikidataId: entry.wikidataId });
     }
   }
   return rows;
 }
 
-// Full outer join KPIs: every PA entry (Wikidata-listed or MoEF-only) counted
-// once and classified by its precomputed eszStatus.
-function computeKPIs() {
-  let final = 0, draftOnly = 0, none = 0, matchedCount = 0, unmatchedPaCount = 0, unmatchedRecordCount = 0;
-  for (const entry of paEntries) {
-    if (!matchesTypeFilter(entry.protectedAreaType)) continue;
-    if (!matchesStateFilter(entry.state)) continue;
-    if (entry.wikidataId) matchedCount += 1;
-    else { unmatchedPaCount += 1; unmatchedRecordCount += entry.notifications.length; }
-    if (entry.eszStatus === 'final') final += 1;
-    else if (entry.eszStatus === 'draft') draftOnly += 1;
-    else none += 1;
-  }
-  const total = matchedCount + unmatchedPaCount;
-  return { total, final, draftOnly, none, matchedCount, unmatchedPaCount, unmatchedRecordCount };
+// Full-text search across a PA's name/state/type and its notifications'
+// order numbers -- the entry-based equivalent of the old flat table's
+// per-row search filter.
+function matchesSearch(entry) {
+  if (!searchTerm) return true;
+  const orderNumbers = entry.notifications.map((n) => n.orderNumber || '').join(' ');
+  const haystack = `${entry.name || ''} ${stateAsString(entry.state)} ${entry.protectedAreaType || ''} ${orderNumbers}`.toLowerCase();
+  return haystack.includes(searchTerm);
 }
 
-function renderKPIs() {
-  const { total, final, draftOnly, none, matchedCount, unmatchedPaCount, unmatchedRecordCount } = computeKPIs();
-  document.getElementById('stat-total').textContent = total.toLocaleString();
-  document.querySelector('.filter-hero').classList.toggle('filter-hero--active', Boolean(paTypeFilter || paStateFilter));
-  document.getElementById('stat-final').textContent = final.toLocaleString();
-  document.getElementById('stat-draft').textContent = draftOnly.toLocaleString();
-  document.getElementById('stat-none').textContent = none.toLocaleString();
+function computeFilteredEntries() {
+  return paEntries.filter((entry) => matchesTypeFilter(entry.protectedAreaType)
+    && matchesStateFilter(entry.state) && matchesSearch(entry));
+}
 
-  const pct = (n) => `${(total ? (n / total) * 100 : 0).toFixed(1)}%`;
-  document.getElementById('stat-final-pct').textContent = `${pct(final)} of protected areas`;
-  document.getElementById('stat-draft-pct').textContent = `${pct(draftOnly)} of protected areas`;
-  document.getElementById('stat-none-pct').textContent = `${pct(none)} of protected areas`;
+// Hero stat categories for the header banner. "Sanctuaries" combines
+// Wildlife and Bird sanctuaries, since MoEF/Wikidata track them as separate
+// protectedAreaType values but the hero treats them as one headline figure.
+const HERO_STAT_GROUPS = [
+  { key: 'tiger', label: 'Tiger Reserves', match: (type) => type === 'Tiger Reserve' },
+  { key: 'np', label: 'National Parks', match: (type) => type === 'National Park' },
+  { key: 'sanctuary', label: 'Sanctuaries', match: (type) => type === 'Wildlife Sanctuary' || type === 'Bird Sanctuary' },
+];
 
-  document.getElementById('seg-final').style.width = pct(final);
-  document.getElementById('seg-draft').style.width = pct(draftOnly);
-  document.getElementById('seg-none').style.width = pct(none);
+// Per-state/UT rollup: a state counts as "fully notified" only once every
+// protected area with a foothold there (entry.state can list more than one)
+// has a final or draft ESZ -- a stricter, more legible headline than the
+// nationwide per-PA percentage, since a state can't hide a handful of
+// stragglers behind a large notified majority.
+function computeStateNotificationStats() {
+  const byState = new Map();
+  for (const entry of paEntries) {
+    for (const state of entry.state) {
+      if (!state) continue;
+      const rec = byState.get(state) || { total: 0, notified: 0 };
+      rec.total += 1;
+      if (entry.eszStatus === 'final' || entry.eszStatus === 'draft') rec.notified += 1;
+      byState.set(state, rec);
+    }
+  }
+  let fullyNotified = 0;
+  for (const rec of byState.values()) {
+    if (rec.total > 0 && rec.notified === rec.total) fullyNotified += 1;
+  }
+  return { fullyNotified, totalStates: byState.size };
+}
 
-  const filterBits = [];
-  if (paStateFilter) filterBits.push(`state "${paStateFilter === UNSPECIFIED_STATE ? 'Unspecified state' : paStateFilter}"`);
-  if (paTypeFilter) filterBits.push(`type "${paTypeFilter === UNSPECIFIED_TYPE ? 'Unspecified type' : paTypeFilter}"`);
-  const filterNote = filterBits.length ? ` matching ${filterBits.join(' and ')}` : '';
-  document.getElementById('match-caveat').textContent =
-    `Statistics above are a full join of ${matchedCount.toLocaleString()} Wikidata protected areas${filterNote} and ${unmatchedPaCount.toLocaleString()} additional protected areas ` +
-    `(from ${unmatchedRecordCount.toLocaleString()} MoEF notification records) that aren't in the Wikidata list yet -- ${total.toLocaleString()} protected areas in total. ` +
-    `The latter have no known location, so they're left off the map, but are included in the KPIs above, the table, and downloads below. See the QA list below to help match them.`;
+// Hero stats are a fixed nationwide headline -- always computed from the
+// full unfiltered dataset, not the type/state dropdowns.
+function renderHeroStats() {
+  const setTile = (key, counts, unitLabel) => {
+    const notified = counts.final + counts.draft;
+    const pct = counts.total ? (notified / counts.total) * 100 : 0;
+    document.getElementById(`hero-stat-${key}-value`).textContent = `${pct.toFixed(0)}%`;
+    document.getElementById(`hero-stat-${key}-note`).textContent =
+      `${notified.toLocaleString()} of ${counts.total.toLocaleString()} ${unitLabel} notified`;
+    document.getElementById(`hero-stat-${key}-bar`).style.width = `${pct}%`;
+  };
+
+  const { fullyNotified, totalStates } = computeStateNotificationStats();
+  const statePct = totalStates ? (fullyNotified / totalStates) * 100 : 0;
+  document.getElementById('hero-stat-overall-value').textContent = `${statePct.toFixed(0)}%`;
+  document.getElementById('hero-stat-overall-note').textContent =
+    `${fullyNotified.toLocaleString()} of ${totalStates.toLocaleString()} states/UTs fully notified`;
+  document.getElementById('hero-stat-overall-bar').style.width = `${statePct}%`;
+
+  for (const group of HERO_STAT_GROUPS) {
+    const entries = paEntries.filter((entry) => group.match(entry.protectedAreaType));
+    setTile(group.key, statusCounts(entries), group.label);
+  }
 }
 
 // PA entries with no wikidataId -- the "right-hand" side of the full join
@@ -215,7 +236,7 @@ function renderQaList() {
 }
 
 // Wikidata-matched PA entries with no coordinate -- these can't be placed on
-// the map even though they're counted in the KPIs and listed in the table.
+// the map even though they're counted in the KPIs and listed in the accordion.
 function computeNoCoordinatePAs() {
   return paEntries
     .filter((entry) => entry.wikidataId && entry.coordinateLatitude == null)
@@ -253,85 +274,21 @@ function escapeHtml(value) {
   return String(value).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 }
 
-// Builds the initial (synchronous) popup markup from the PA entry's
-// Wikidata-sourced fields -- name, image/banner, IUCN category/area, and
-// identity links. Deliberately omits notification status/date/PDF/archive
-// links since those are already shown in the table row for this PA.
+// Builds the popup markup for a map marker -- just the PA name and its
+// latest ESZ status. Full detail (images, excerpt, links, notification
+// history) now lives in that PA's card in the accordion below; clicking a
+// marker opens (and scrolls to) that card via revealCard.
 function buildPopupHtml(p) {
-  const bannerUrl = p.pageBanner || p.image;
-
-  const meta = [];
-  if (p.iucnCategory) meta.push(escapeHtml(p.iucnCategory.replace(/^IUCN category [IVXLC]+:\s*/, '')));
-  if (p.area) meta.push(`${p.area.toLocaleString()} km&sup2;`);
-  if (p.state) meta.push(escapeHtml(p.state));
-
-  const links = [];
-  if (p.wikidataUrl) {
-    links.push(`<a href="${p.wikidataUrl}" target="_blank" rel="noopener">View on Wikidata</a>`);
-    links.push(`<a href="${p.wikidataUrl}" target="_blank" rel="noopener">Edit on Wikidata</a>`);
-  }
-  if (p.enwikiUrl) links.push(`<a href="${p.enwikiUrl}" target="_blank" rel="noopener">Wikipedia</a>`);
-  const osmIds = p.osmRelationIds || [];
-  if (osmIds.length) {
-    const atlasUrl = `${AMCHE_ATLAS_BASE}?layers=osm:relation/${osmIds[0]}`;
-    links.push(`<a href="${atlasUrl}" target="_blank" rel="noopener">View boundary in amche-atlas</a>`);
-  }
-
+  const dotClass = p.eszStatus === 'final' ? 'dot-final' : p.eszStatus === 'draft' ? 'dot-draft' : 'dot-none';
+  const statusLabel = p.notificationStatus || 'Not notified';
   return `
-    ${bannerUrl ? `<img class="popup-banner" src="${bannerUrl}" alt="" loading="lazy" />` : ''}
     <p class="popup-title">${escapeHtml(p.name || '')}</p>
-    ${meta.length ? `<p class="popup-row popup-meta">${meta.join(' &middot; ')}</p>` : ''}
-    <p class="popup-row popup-extract" data-extract-for="${p.wikidataId || ''}">${p.enwikiUrl ? 'Loading Wikipedia summary&hellip;' : ''}</p>
-    <div class="popup-links">${links.join(' &middot; ')}</div>
+    <p class="popup-row status-pill"><i class="dot ${dotClass}" aria-hidden="true"></i>${escapeHtml(statusLabel)}</p>
   `;
-}
-
-// Tracks the most recently requested enrichment so a slow/late response for
-// a popup the user has since closed/replaced doesn't clobber the new one.
-let popupEnrichmentId = 0;
-
-async function enrichPopupWithWikipedia(p) {
-  if (!p.enwikiUrl) return;
-  const requestId = ++popupEnrichmentId;
-  const title = decodeURIComponent(p.enwikiUrl.split('/').pop());
-
-  let summary;
-  try {
-    const res = await fetch(`${WIKIPEDIA_SUMMARY_API}${encodeURIComponent(title)}`);
-    if (!res.ok) throw new Error(`Wikipedia summary request failed: ${res.status}`);
-    summary = await res.json();
-  } catch {
-    summary = null;
-  }
-
-  if (requestId !== popupEnrichmentId || !activePopup) return;
-  const popupEl = activePopup.getElement();
-  if (!popupEl) return;
-  const extractEl = popupEl.querySelector(`.popup-extract[data-extract-for="${p.wikidataId || ''}"]`);
-  if (!extractEl) return;
-
-  if (!summary) { extractEl.remove(); return; }
-
-  extractEl.textContent = summary.extract || '';
-  if (!extractEl.textContent) extractEl.remove();
-
-  if (!popupEl.querySelector('.popup-banner')) {
-    const thumbUrl = summary.originalimage?.source || summary.thumbnail?.source;
-    if (thumbUrl) {
-      const img = document.createElement('img');
-      img.className = 'popup-banner';
-      img.alt = '';
-      img.loading = 'lazy';
-      img.src = thumbUrl;
-      popupEl.querySelector('.maplibregl-popup-content')?.insertBefore(img, popupEl.querySelector('.maplibregl-popup-content').firstChild);
-    }
-  }
-  activePopup.setLngLat(activePopup.getLngLat()); // force reflow so MapLibre repositions for new content height
 }
 
 function openPopupForFeature(feature) {
   showPopup(feature.geometry.coordinates, buildPopupHtml(feature.properties));
-  enrichPopupWithWikipedia(feature.properties);
 }
 
 let activePopup = null;
@@ -344,32 +301,39 @@ function closePopup() {
 
 function clearSelection() {
   selectedWikidataId = null;
-  highlightTableRow(null);
+  highlightCard(null);
 }
 
 function showPopup(coordinates, html) {
   closePopup();
-  activePopup = new maplibregl.Popup({ maxWidth: '300px' }).setLngLat(coordinates).setHTML(html).addTo(map);
+  // focusAfterOpen defaults to true, which calls .focus() on the popup DOM
+  // node -- the browser then scrolls that (possibly off-screen) node into
+  // view. Harmless for a click, but this popup also opens on every PA-row
+  // *hover* (onCardHoverEnter), so left at its default it yanked the page's
+  // scroll position around on every row the mouse crossed.
+  activePopup = new maplibregl.Popup({ maxWidth: '300px', focusAfterOpen: false }).setLngLat(coordinates).setHTML(html).addTo(map);
   // Closing the popup (via its "x" button, or being replaced/removed
   // programmatically) is what ends a selection -- keep the two in sync.
   activePopup.on('close', clearSelection);
 }
 
-// Pans/flies the map to a PA feature. Pass `zoom` to fly in (table row
-// click); omit it to just re-center at the current zoom (table row hover).
+// Pans/flies the map to a PA feature. Pass `zoom` to fly in (card click);
+// omit it to just re-center at the current zoom (card hover).
 function focusFeature(feature, { zoom } = {}) {
   const center = feature.geometry.coordinates;
   if (zoom != null) map.flyTo({ center, zoom, essential: true });
   else map.panTo(center, { duration: 300 });
 }
 
-function highlightTableRow(wikidataId) {
-  if (!table) return;
-  for (const row of table.getRows()) row.getElement().classList.remove('selected-row');
-  if (!wikidataId) return;
-  const rows = table.getRows().filter((row) => row.getData().wikidataId === wikidataId);
-  rows.forEach((row) => row.getElement().classList.add('selected-row'));
-  if (rows.length) rows[0].getElement().scrollIntoView({ behavior: 'smooth', block: 'center' });
+// Highlights every card for a given PA (a handful of multi-state PAs get one
+// card per state) -- the accordion equivalent of the old table's selected-row
+// styling.
+function highlightCard(paKey) {
+  document.querySelectorAll('#pa-accordion .pa-card.is-selected').forEach((el) => el.classList.remove('is-selected'));
+  if (!paKey) return;
+  for (const el of document.querySelectorAll('#pa-accordion .pa-card')) {
+    if (el.dataset.paKey === paKey) el.classList.add('is-selected');
+  }
 }
 
 let map;
@@ -422,7 +386,8 @@ function initMap() {
       const f = e.features[0];
       openPopupForFeature(f);
       selectedWikidataId = f.properties.wikidataId;
-      highlightTableRow(selectedWikidataId);
+      highlightCard(selectedWikidataId);
+      revealCard(selectedWikidataId);
     });
     map.on('mouseenter', 'protected-areas-circles', () => { map.getCanvas().style.cursor = 'pointer'; });
     map.on('mouseleave', 'protected-areas-circles', () => {
@@ -518,7 +483,7 @@ function entryToFeature(entry) {
 }
 
 // Every mappable PA entry, unfiltered -- used as the map source's initial
-// data before the table (and its filters) has finished building.
+// data before the accordion (and its filters) has finished building.
 function allFeatureCollection() {
   return {
     type: 'FeatureCollection',
@@ -526,24 +491,16 @@ function allFeatureCollection() {
   };
 }
 
-// One PA can have multiple notification records (redraft/amendment); dedupe
-// by wikidataId so the map doesn't stack duplicate markers.
 function filteredFeatureCollection() {
-  const seen = new Set();
-  const features = [];
-  for (const r of filteredRecords) {
-    if (!r.wikidataId || seen.has(r.wikidataId)) continue;
-    const entry = entryByPaKey.get(r._paKey);
-    if (!entry || entry.coordinateLatitude == null) continue;
-    seen.add(r.wikidataId);
-    features.push(entryToFeature(entry));
-  }
-  return { type: 'FeatureCollection', features };
+  return {
+    type: 'FeatureCollection',
+    features: filteredEntries.filter((entry) => entry.coordinateLatitude != null).map(entryToFeature),
+  };
 }
 
 let fitBoundsTimer = null;
 
-// Keeps the map markers in sync with the table's active filters, closing
+// Keeps the map markers in sync with the accordion's active filters, closing
 // any selection the filter drops and flying to fit the remaining markers.
 // The fit is debounced so typing in the search box doesn't fly the map on
 // every keystroke.
@@ -574,181 +531,558 @@ function stateAsString(state) {
   return Array.isArray(state) ? state.join(', ') : (state || '');
 }
 
-function sortInitialRecords(records) {
-  const statusRank = { Final: 0, Draft: 1 };
-  return [...records].sort((a, b) => {
-    const s = stateAsString(a.state).localeCompare(stateAsString(b.state));
-    if (s) return s;
-    const t = (a._typeGroup || '').localeCompare(b._typeGroup || '');
-    if (t) return t;
-    const n = (a.protectedAreaName || '').localeCompare(b.protectedAreaName || '');
-    if (n) return n;
-    const sr = (statusRank[a.notificationStatus] ?? 2) - (statusRank[b.notificationStatus] ?? 2);
-    if (sr) return sr;
-    return (b.notificationDate || '').localeCompare(a.notificationDate || '');
-  });
-}
+// ---------------------------------------------------------------------------
+// State accordion: groups filteredEntries by state -> PA type, each type's
+// PAs sorted by descending area, and renders it as an expandable list of PA
+// cards. Each state's body HTML is only (re)built while that state is open,
+// so filtering doesn't have to materialize ~800 cards' worth of DOM on every
+// keystroke.
 
-// Shows the Final/Draft pill, plus -- for a Final row whose PA also has a
-// Draft -- a toggle button that reveals that (otherwise-hidden) Draft row
-// immediately below it in the flat table. draftVisibilityFilter is what
-// actually hides/shows the Draft row; this button just flips openDraftGroups
-// and asks the table to re-filter.
-// PA keys the user has manually toggled open to reveal their collapsed draft row(s).
-const openDraftGroups = new Set();
+const UNSPECIFIED_STATE_LABEL = 'Unspecified state';
 
-function statusFormatter(cell) {
-  const rowData = cell.getRow().getData();
-  const status = cell.getValue();
-
-  const wrap = document.createElement('span');
-  wrap.className = 'status-cell';
-
-  const pill = document.createElement('span');
-  pill.className = 'status-pill';
-  const dot = document.createElement('i');
-  dot.className = `dot ${status === 'Final' ? 'dot-final' : status === 'Draft' ? 'dot-draft' : 'dot-none'}`;
-  pill.appendChild(dot);
-  pill.appendChild(document.createTextNode(status || 'Not notified'));
-  wrap.appendChild(pill);
-
-  const entry = entryByPaKey.get(rowData._paKey);
-  if (status === 'Final' && entry && entry.hasDraft) {
-    const paKey = rowData._paKey;
-    const btn = document.createElement('button');
-    btn.type = 'button';
-    btn.className = 'btn btn-sm draft-toggle';
-    btn.textContent = openDraftGroups.has(paKey) ? 'Hide draft' : 'View draft';
-    btn.addEventListener('click', (e) => {
-      e.stopPropagation();
-      const nowOpen = !openDraftGroups.has(paKey);
-      if (nowOpen) openDraftGroups.add(paKey);
-      else openDraftGroups.delete(paKey);
-      btn.textContent = nowOpen ? 'Hide draft' : 'View draft';
-      table.refreshFilter();
-    });
-    wrap.appendChild(btn);
+function statusCounts(entries) {
+  let final = 0, draft = 0, none = 0;
+  for (const e of entries) {
+    if (e.eszStatus === 'final') final += 1;
+    else if (e.eszStatus === 'draft') draft += 1;
+    else none += 1;
   }
-  return wrap;
+  return { final, draft, none, total: entries.length };
 }
 
-function anchorEl(href, label) {
-  const a = document.createElement('a');
-  a.href = href;
-  a.target = '_blank';
-  a.rel = 'noopener';
-  a.textContent = label;
-  return a;
+// Groups by protectedAreaType, sorted with a fixed type order (see
+// PA_TYPE_ORDER below) and "Unspecified type" last.
+function groupByType(entries) {
+  const types = new Map();
+  for (const entry of entries) {
+    const type = entry.protectedAreaType || 'Unspecified type';
+    const list = types.get(type) || [];
+    list.push(entry);
+    types.set(type, list);
+  }
+  return types;
 }
 
-function linksFormatter(cell) {
-  const r = cell.getRow().getData();
-  const wrap = document.createElement('span');
-  const anchors = [];
-  if (r.notificationPdfLink) anchors.push(anchorEl(r.notificationPdfLink, 'PDF'));
-  if (r.notificationArchiveLink) anchors.push(anchorEl(r.notificationArchiveLink, 'Archive'));
-  if (r.wikidataId) anchors.push(anchorEl(`https://www.wikidata.org/wiki/${r.wikidataId}`, 'Wikidata'));
-  if (!anchors.length) { wrap.textContent = '–'; return wrap; }
-  anchors.forEach((a, i) => {
-    if (i) wrap.appendChild(document.createTextNode(' · '));
-    wrap.appendChild(a);
+// Display order for type groups within a state -- reserve/park types before
+// sanctuaries, rather than alphabetical (which would put Bird before Tiger).
+const PA_TYPE_ORDER = ['Tiger Reserve', 'National Park', 'Bird Sanctuary', 'Wildlife Sanctuary'];
+
+function sortTypeNames(typeMap) {
+  return [...typeMap.keys()].sort((a, b) => {
+    if (a === 'Unspecified type') return b === 'Unspecified type' ? 0 : 1;
+    if (b === 'Unspecified type') return -1;
+    const ai = PA_TYPE_ORDER.indexOf(a);
+    const bi = PA_TYPE_ORDER.indexOf(b);
+    if (ai === -1 && bi === -1) return a.localeCompare(b);
+    if (ai === -1) return 1;
+    if (bi === -1) return -1;
+    return ai - bi;
   });
-  return wrap;
 }
 
-// Marks a revealed Draft row (one whose PA also has a Final row, currently
-// toggled open) so it can be styled as visually nested under its Final row.
-function rowFormatter(row) {
-  const data = row.getData();
-  const entry = entryByPaKey.get(data._paKey);
-  const isNestedDraft = data.notificationStatus === 'Draft' && Boolean(entry && entry.hasFinal);
-  row.getElement().classList.toggle('nested-draft-row', isNestedDraft);
+// Areas with an unknown size sort last, regardless of direction.
+function sortEntriesByAreaDesc(entries) {
+  return [...entries].sort((a, b) => {
+    if (a.area == null && b.area == null) return (a.name || '').localeCompare(b.name || '');
+    if (a.area == null) return 1;
+    if (b.area == null) return -1;
+    return b.area - a.area;
+  });
 }
 
-// Hides a Draft row when its PA also has a Final notification, unless the
-// user toggled that PA's "View draft" button open.
-function draftVisibilityFilter(rowData) {
-  if (rowData.notificationStatus !== 'Draft') return true;
-  const entry = entryByPaKey.get(rowData._paKey);
-  if (!entry || !entry.hasFinal) return true;
-  return openDraftGroups.has(rowData._paKey);
+// A PA spanning multiple states (a handful in the dataset) gets one card
+// under each of its states, same as it always got one map marker regardless.
+function buildStateGroups(entries) {
+  const states = new Map();
+  for (const entry of entries) {
+    const stateList = entry.state.length ? entry.state : [UNSPECIFIED_STATE_LABEL];
+    for (const state of stateList) {
+      const list = states.get(state) || [];
+      list.push(entry);
+      states.set(state, list);
+    }
+  }
+  return states;
 }
 
-function searchFilter(rowData) {
-  if (!searchTerm) return true;
-  const haystack = `${rowData.protectedAreaName || ''} ${stateAsString(rowData.state)} ${rowData.protectedAreaType || ''} ${rowData.orderNumber || ''}`.toLowerCase();
-  return haystack.includes(searchTerm);
+function sortStateNames(states) {
+  return [...states.keys()].sort((a, b) => {
+    if (a === UNSPECIFIED_STATE_LABEL) return b === UNSPECIFIED_STATE_LABEL ? 0 : 1;
+    if (b === UNSPECIFIED_STATE_LABEL) return -1;
+    return a.localeCompare(b);
+  });
 }
 
-// Driven by the top "Protected areas in India" dropdowns -- kept as plain row
-// filters (rather than the State/Type columns' header filters) so that each
-// is the single source of truth for KPIs, table, and map alike.
-function typeFilter(rowData) {
-  return matchesTypeFilter(rowData.protectedAreaType);
+function chipBarHtml(counts) {
+  const pct = (n) => (counts.total ? (n / counts.total) * 100 : 0);
+  return `
+    <span class="chip-bar">
+      <i class="chip-bar-seg chip-bar-final" style="width:${pct(counts.final)}%"></i>
+      <i class="chip-bar-seg chip-bar-draft" style="width:${pct(counts.draft)}%"></i>
+      <i class="chip-bar-seg chip-bar-none" style="width:${pct(counts.none)}%"></i>
+    </span>`;
 }
 
-function stateFilter(rowData) {
-  return matchesStateFilter(rowData.state);
+function progressPct(counts) {
+  return counts.total ? Math.round((counts.final / counts.total) * 100) : 0;
 }
 
-let table;
+// "N% ESZ notified" -- the collapsed state row's combined progress, with no
+// status breakdown (that only shows once a type group is expanded, see
+// progressMetaHtml below).
+function progressPctHtml(counts) {
+  return `${progressPct(counts)}% ESZ notified`;
+}
 
-function initTable() {
-  table = new Tabulator('#notifications-table', {
-    data: sortInitialRecords(tableRecords),
-    layout: 'fitColumns',
-    rowFormatter,
-    columns: [
-      { title: 'State', field: 'state', width: 150, formatter: (cell) => escapeHtml(stateAsString(cell.getValue())) },
-      { title: 'Protected area', field: 'protectedAreaName', minWidth: 220 },
-      { title: 'Type', field: 'protectedAreaType', width: 170 },
-      {
-        title: 'Status',
-        field: 'notificationStatus',
-        formatter: statusFormatter,
-        width: 110,
-      },
-      { title: 'Date', field: 'notificationDate', width: 100 },
-      { title: 'S.O. number', field: 'orderNumber', width: 120 },
-      { title: 'Links', field: 'moefSNo', formatter: linksFormatter, headerSort: false, minWidth: 170 },
-    ],
-  });
+// "N% ESZ notified · X Final, Y Draft, Z Unknown" -- used by each expanded
+// type group's progress.
+function progressMetaHtml(counts) {
+  return `${progressPct(counts)}% ESZ notified &middot; ${counts.final} Final, ${counts.draft} Draft, ${counts.none} Unknown`;
+}
 
-  table.on('tableBuilt', () => {
-    table.addFilter(draftVisibilityFilter);
-    table.addFilter(typeFilter);
-    table.addFilter(stateFilter);
-    table.addFilter(searchFilter);
-  });
+function stateHeaderHtml(stateName, entries) {
+  const isOpen = openStates.has(stateName);
+  const counts = statusCounts(entries);
+  return `
+    <button type="button" class="state-row-header" data-state="${escapeHtml(stateName)}" aria-expanded="${isOpen}">
+      <span class="state-row-chevron" aria-hidden="true">&#9656;</span>
+      <span class="state-row-name">${escapeHtml(stateName)}</span>
+      <span class="state-row-count">${entries.length} protected area${entries.length === 1 ? '' : 's'}</span>
+      <span class="state-row-progress">
+        <span class="state-row-progress-meta">${progressPctHtml(counts)}</span>
+        ${chipBarHtml(counts)}
+      </span>
+    </button>`;
+}
 
-  table.on('dataFiltered', (filters, rows) => {
-    filteredRecords = rows.map((row) => row.getData());
-    updateMapFilter();
-    document.getElementById('result-count').textContent =
-      `${filteredRecords.length.toLocaleString()} of ${tableRecords.length.toLocaleString()} rows`;
-  });
+// Icon + subtle accent colour per protected-area type, so type groups within
+// an expanded state read at a glance instead of as identical grey sections.
+// "modifier" drives the .pa-type-group--<modifier> background tint in CSS.
+const PA_TYPE_META = {
+  'Tiger Reserve': {
+    modifier: 'tiger',
+    icon: `<svg viewBox="0 0 24 24" fill="currentColor"><ellipse cx="12" cy="15.5" rx="5.2" ry="4.3"/><ellipse cx="5.6" cy="9.5" rx="1.9" ry="2.5" transform="rotate(-18 5.6 9.5)"/><ellipse cx="10.2" cy="6.2" rx="2" ry="2.7" transform="rotate(-6 10.2 6.2)"/><ellipse cx="14.8" cy="6.2" rx="2" ry="2.7" transform="rotate(6 14.8 6.2)"/><ellipse cx="18.4" cy="9.5" rx="1.9" ry="2.5" transform="rotate(18 18.4 9.5)"/></svg>`,
+  },
+  'National Park': {
+    modifier: 'np',
+    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 19l6.5-10 4 6 2-3L21 19H2z"/><circle cx="17" cy="6" r="2"/></svg>`,
+  },
+  'Bird Sanctuary': {
+    modifier: 'bird-sanctuary',
+    icon: `<svg viewBox="0 0 32 14" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M1 8C5 -2 12 -2 16 6 20 -2 27 -2 31 8"/></svg>`,
+  },
+  'Wildlife Sanctuary': {
+    modifier: 'wildlife-sanctuary',
+    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20c0-9 5-15 15-16-1 10-7 15-16 16z"/><path d="M6 18c3-4 7-7 12-9"/></svg>`,
+  },
+};
+const PA_TYPE_META_DEFAULT = {
+  modifier: 'other',
+  icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s7-6.5 7-11.5A7 7 0 0 0 5 9.5C5 14.5 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.4"/></svg>`,
+};
 
-  table.on('rowMouseEnter', (e, row) => {
-    if (selectedWikidataId) return; // a row/marker is selected -- hover is suspended until cleared
-    const entry = entryByPaKey.get(row.getData()._paKey);
-    if (!entry || entry.coordinateLatitude == null) return;
-    const feature = entryToFeature(entry);
-    focusFeature(feature);
-    openPopupForFeature(feature);
+function paTypeMeta(type) {
+  return PA_TYPE_META[type] || PA_TYPE_META_DEFAULT;
+}
+
+// Card thumbnails are small (~40px) but there can be hundreds on screen at
+// once, so requesting Commons' full-resolution originals for all of them
+// gets the burst rate-limited (429) by Wikimedia. Commons' Special:FilePath
+// endpoint can render a downscaled thumbnail itself via a `width` param --
+// ask for that instead of the original.
+function commonsThumbnailUrl(url, width) {
+  if (!url) return url;
+  try {
+    const u = new URL(url);
+    if (!/(^|\.)wikimedia\.org$/.test(u.hostname) || !u.pathname.includes('Special:FilePath')) return url;
+    u.searchParams.set('width', String(width));
+    return u.toString();
+  } catch {
+    return url;
+  }
+}
+
+// Clicking a wiki-sourced thumbnail should land on the Commons/Wikipedia file
+// description page (which has attribution/license info), not the raw image
+// file -- so translate Special:FilePath and upload.wikimedia.org URLs into
+// their corresponding File: page.
+function commonsFilePageUrl(url) {
+  if (!url) return url;
+  try {
+    const u = new URL(url);
+    if (!/(^|\.)wikimedia\.org$/.test(u.hostname) && !/(^|\.)wikipedia\.org$/.test(u.hostname)) return url;
+    const fpMatch = u.pathname.match(/Special:FilePath\/(.+)$/);
+    if (fpMatch) return `https://commons.wikimedia.org/wiki/File:${decodeURIComponent(fpMatch[1])}`;
+    const upMatch = u.pathname.match(/\/wikipedia\/([^/]+)\/(?:thumb\/)?[0-9a-f]\/[0-9a-f]{2}\/([^/]+?)(?:\/\d+px-[^/]+)?$/);
+    if (upMatch) {
+      const [, project, filename] = upMatch;
+      const host = project === 'commons' ? 'commons.wikimedia.org' : `${project}.wikipedia.org`;
+      return `https://${host}/wiki/File:${decodeURIComponent(filename)}`;
+    }
+    return url;
+  } catch {
+    return url;
+  }
+}
+
+// Wikipedia's summary API instead returns already-thumbnailed upload.wikimedia.org
+// URLs (.../thumb/x/xx/Name.ext/300px-Name.ext) rather than Special:FilePath links,
+// so resizing means swapping the "NNNpx-" segment for our own width.
+function wikimediaThumbUrl(url, width) {
+  if (!url) return url;
+  try {
+    const u = new URL(url);
+    if (!/(^|\.)wikimedia\.org$/.test(u.hostname)) return url;
+    const m = u.pathname.match(/^(.*\/thumb\/.*\/)\d+px-([^/]+)$/);
+    if (!m) return commonsThumbnailUrl(url, width);
+    u.pathname = `${m[1]}${width}px-${m[2]}`;
+    return u.toString();
+  } catch {
+    return url;
+  }
+}
+
+function eszStatusLabel(status) {
+  return status === 'final' ? 'Final' : status === 'draft' ? 'Draft' : 'Not notified';
+}
+
+function cardCompactInnerHtml(entry) {
+  const thumb = commonsThumbnailUrl(entry.pageBanner || entry.image, 140);
+  const initial = (entry.protectedAreaType || entry.name || '?').charAt(0);
+  return `
+    <div class="pa-card-thumb">
+      ${thumb ? `<img src="${thumb}" alt="" loading="lazy" />` : `<span class="pa-card-thumb-placeholder" aria-hidden="true">${escapeHtml(initial)}</span>`}
+    </div>
+    <div class="pa-card-body">
+      <span class="pa-card-name">${escapeHtml(entry.name || '')}</span>
+      <span class="pa-card-right">
+        ${entry.area ? `<span class="pa-card-area">${entry.area.toLocaleString()} km&sup2;</span>` : ''}
+        <span class="pa-card-status status-pill"><i class="dot dot-${entry.eszStatus}" aria-hidden="true"></i>${eszStatusLabel(entry.eszStatus)}</span>
+      </span>
+    </div>`;
+}
+
+function cardOuterHtml(entry) {
+  return `
+    <div class="pa-card" data-pa-key="${escapeHtml(entry.paKey)}" tabindex="0" role="button" aria-expanded="false" title="${escapeHtml(entry.name || '')}">
+      ${cardCompactInnerHtml(entry)}
+    </div>`;
+}
+
+function notificationRowHtml(n) {
+  const dotClass = n.notificationStatus === 'Final' ? 'dot-final' : n.notificationStatus === 'Draft' ? 'dot-draft' : 'dot-none';
+  const links = [];
+  if (n.orderNumber && n.notificationPdfLink) links.push(`<a href="${n.notificationPdfLink}" target="_blank" rel="noopener">${escapeHtml(n.orderNumber)}</a>`);
+  else if (n.orderNumber) links.push(escapeHtml(n.orderNumber));
+  if (n.notificationArchiveLink) links.push(`<a href="${n.notificationArchiveLink}" target="_blank" rel="noopener">Archive</a>`);
+  if (n.georeferencingLink) links.push(`<a href="${n.georeferencingLink}" target="_blank" rel="noopener">Georeference</a>`);
+  return `
+    <li class="pa-notification-row">
+      <span class="status-pill"><i class="dot ${dotClass}" aria-hidden="true"></i>${escapeHtml(n.notificationStatus || 'Not notified')}</span>
+      <span class="pa-notification-date">${escapeHtml(n.notificationDate || '–')}</span>
+      <span class="pa-notification-links">${links.join(' &middot; ') || '–'}</span>
+    </li>`;
+}
+
+function notificationListHtml(entry) {
+  const sorted = [...entry.notifications].sort((a, b) => (b.notificationDate || '').localeCompare(a.notificationDate || ''));
+  if (!sorted.length) return `<p class="pa-detail-empty">No ESZ notification on record yet.</p>`;
+  return `<ul class="pa-notification-list">${sorted.map(notificationRowHtml).join('')}</ul>`;
+}
+
+function detailHtml(entry) {
+  const thumb = entry.pageBanner || entry.image;
+  const meta = [];
+  if (entry.iucnCategory) meta.push(escapeHtml(entry.iucnCategory.replace(/^IUCN category [IVXLC]+:\s*/, '')));
+  if (entry.area) meta.push(`${entry.area.toLocaleString()} km&sup2;`);
+  const stateLabel = stateAsString(entry.state);
+  if (stateLabel) meta.push(escapeHtml(stateLabel));
+
+  const links = [];
+  if (entry.wikidataUrl) links.push(`<a href="${entry.wikidataUrl}" target="_blank" rel="noopener">Wikidata</a>`);
+  if (entry.enwikiUrl) links.push(`<a href="${entry.enwikiUrl}" target="_blank" rel="noopener">Wikipedia</a>`);
+  const osmIds = entry.osmRelationIds || [];
+  if (osmIds.length) links.push(`<a href="${AMCHE_ATLAS_BASE}?layers=osm:relation/${osmIds[0]}" target="_blank" rel="noopener">Boundary in amche-atlas</a>`);
+
+  return `
+    <button type="button" class="pa-card-collapse" aria-label="Collapse">&times;</button>
+    <div class="pa-detail-grid">
+      <div class="pa-detail-media">
+        ${thumb ? `<a href="${commonsFilePageUrl(thumb)}" target="_blank" rel="noopener"><img class="pa-detail-image" src="${commonsThumbnailUrl(thumb, 120)}" alt="" loading="lazy" /></a>` : ''}
+        ${entry.wikidataId ? `<div class="pa-commons-mosaic" aria-label="More images from Wikimedia Commons"></div>` : ''}
+      </div>
+      <div class="pa-detail-body">
+        <h3 class="pa-detail-title">${escapeHtml(entry.name || '')}</h3>
+        ${meta.length ? `<p class="pa-detail-meta">${meta.join(' &middot; ')}</p>` : ''}
+        ${links.length ? `<p class="pa-detail-links">${links.join(' &middot; ')}</p>` : ''}
+        <p class="pa-detail-excerpt">${entry.enwikiUrl ? 'Loading Wikipedia summary&hellip;' : ''}</p>
+      </div>
+    </div>
+    <h4 class="pa-notification-heading">ESZ notification history</h4>
+    ${notificationListHtml(entry)}`;
+}
+
+// Wikipedia summary fetched once per PA and cached, since collapsing then
+// re-expanding a card (or a filter change re-rendering an open state) would
+// otherwise re-fetch it.
+const excerptCache = new Map();
+
+async function loadExcerpt(entry, cardEl) {
+  if (!entry.enwikiUrl || !entry.wikidataId) return;
+  let result = excerptCache.get(entry.wikidataId);
+  if (result === undefined) {
+    const title = decodeURIComponent(entry.enwikiUrl.split('/').pop());
+    let summary = null;
+    try {
+      const res = await fetch(`${WIKIPEDIA_SUMMARY_API}${encodeURIComponent(title)}`);
+      if (res.ok) summary = await res.json();
+    } catch { /* leave summary null */ }
+    result = summary ? {
+      extract: summary.extract || '',
+      imageUrl: summary.originalimage?.source || summary.thumbnail?.source || null,
+      thumbUrl: summary.thumbnail?.source || summary.originalimage?.source || null,
+    } : null;
+    excerptCache.set(entry.wikidataId, result);
+  }
+  applyExcerpt(cardEl, result);
+}
+
+function applyExcerpt(cardEl, result) {
+  const excerptEl = cardEl.querySelector('.pa-detail-excerpt');
+  if (!excerptEl) return; // card was collapsed/re-rendered before the fetch resolved
+  if (!result || !result.extract) { excerptEl.remove(); return; }
+  excerptEl.textContent = result.extract;
+  const media = cardEl.querySelector('.pa-detail-media');
+  if (result.imageUrl && media && !media.querySelector('img')) {
+    const link = document.createElement('a');
+    link.href = commonsFilePageUrl(result.imageUrl);
+    link.target = '_blank';
+    link.rel = 'noopener';
+    const img = document.createElement('img');
+    img.className = 'pa-detail-image';
+    img.loading = 'lazy';
+    img.alt = '';
+    img.src = wikimediaThumbUrl(result.thumbUrl, 120);
+    link.appendChild(img);
+    media.insertBefore(link, media.firstChild);
+  }
+}
+
+// The Commons category (Wikidata P373) isn't in the pre-built data files, so
+// it's fetched live per PA the first time its card is expanded, then cached
+// (both the category lookup and the resulting image list) so re-expanding
+// doesn't repeat either API round trip.
+const commonsCategoryCache = new Map();
+const commonsMosaicCache = new Map();
+
+async function fetchCommonsCategory(wikidataId) {
+  if (commonsCategoryCache.has(wikidataId)) return commonsCategoryCache.get(wikidataId);
+  let category = null;
+  try {
+    const res = await fetch(`https://www.wikidata.org/w/api.php?action=wbgetclaims&entity=${wikidataId}&property=P373&format=json&origin=*`);
+    if (res.ok) {
+      const json = await res.json();
+      category = json.claims?.P373?.[0]?.mainsnak?.datavalue?.value ?? null;
+    }
+  } catch { /* leave category null */ }
+  commonsCategoryCache.set(wikidataId, category);
+  return category;
+}
+
+async function fetchCommonsCategoryImages(category, limit = 12) {
+  if (commonsMosaicCache.has(category)) return commonsMosaicCache.get(category);
+  let images = [];
+  try {
+    const url = `https://commons.wikimedia.org/w/api.php?action=query&generator=categorymembers&gcmtitle=${encodeURIComponent(`Category:${category}`)}&gcmtype=file&gcmlimit=${limit}&prop=imageinfo&iiprop=url&iiurlwidth=40&format=json&origin=*`;
+    const res = await fetch(url);
+    if (res.ok) {
+      const json = await res.json();
+      images = Object.values(json.query?.pages ?? {})
+        .filter((p) => p.imageinfo?.[0])
+        .map((p) => ({
+          thumbUrl: p.imageinfo[0].thumburl || p.imageinfo[0].url,
+          pageUrl: `https://commons.wikimedia.org/wiki/${encodeURIComponent(p.title.replace(/ /g, '_'))}`,
+        }));
+    }
+  } catch { /* leave images empty */ }
+  commonsMosaicCache.set(category, images);
+  return images;
+}
+
+async function loadCommonsMosaic(entry, cardEl) {
+  if (!entry.wikidataId) return;
+  const category = await fetchCommonsCategory(entry.wikidataId);
+  // Card may have collapsed, or a re-render (filter change) may have replaced
+  // this element, while the category lookup above was in flight.
+  let mosaicEl = cardEl.querySelector('.pa-commons-mosaic');
+  if (!category) { mosaicEl?.remove(); return; }
+  const images = await fetchCommonsCategoryImages(category);
+  mosaicEl = cardEl.querySelector('.pa-commons-mosaic');
+  if (!mosaicEl) return;
+  if (!images.length) { mosaicEl.remove(); return; }
+  mosaicEl.innerHTML = images.map((img) => `
+    <a href="${img.pageUrl}" target="_blank" rel="noopener">
+      <img src="${img.thumbUrl}" alt="" loading="lazy" />
+    </a>`).join('');
+}
+
+function typeGroupHtml(type, entries) {
+  const sorted = sortEntriesByAreaDesc(entries);
+  const counts = statusCounts(entries);
+  const meta = paTypeMeta(type);
+  return `
+    <section class="pa-type-group pa-type-group--${meta.modifier}">
+      <div class="pa-type-header">
+        <h3 class="pa-type-title">
+          <span class="pa-type-icon" aria-hidden="true">${meta.icon}</span>
+          ${escapeHtml(type)} <span class="pa-type-count">(${entries.length})</span>
+        </h3>
+        <span class="pa-type-progress">
+          <span class="pa-type-progress-meta">${progressMetaHtml(counts)}</span>
+          ${chipBarHtml(counts)}
+        </span>
+      </div>
+      <div class="pa-card-list">${sorted.map(cardOuterHtml).join('')}</div>
+    </section>`;
+}
+
+function stateRowHtml(stateName, entries) {
+  const isOpen = openStates.has(stateName);
+  const typeMap = groupByType(entries);
+  const bodyHtml = isOpen ? sortTypeNames(typeMap).map((t) => typeGroupHtml(t, typeMap.get(t))).join('') : '';
+  return `
+    <div class="state-row${isOpen ? ' is-open' : ''}" data-state-row="${escapeHtml(stateName)}">
+      ${stateHeaderHtml(stateName, entries)}
+      <div class="state-row-body">${bodyHtml}</div>
+    </div>`;
+}
+
+// State names currently expanded -- survives across re-renders (filter
+// changes, card expand/collapse) the same way openDraftGroups used to for
+// the old table's draft-reveal toggle.
+const openStates = new Set();
+// PA keys whose card is currently showing its full detail panel.
+const expandedCards = new Set();
+const accordionEl = document.getElementById('pa-accordion');
+
+function renderAccordion() {
+  const groups = buildStateGroups(filteredEntries);
+  const stateNames = sortStateNames(groups);
+  accordionEl.innerHTML = stateNames.map((name) => stateRowHtml(name, groups.get(name))).join('');
+
+  for (const paKey of expandedCards) {
+    const cardEl = [...accordionEl.querySelectorAll('.pa-card')].find((el) => el.dataset.paKey === paKey);
+    if (cardEl) toggleCard(cardEl, true, { syncMap: false });
+  }
+  highlightCard(selectedWikidataId);
+}
+
+function selectEntryOnMap(entry) {
+  if (!entry.wikidataId || entry.coordinateLatitude == null) { closePopup(); return; }
+  const feature = entryToFeature(entry);
+  focusFeature(feature, { zoom: 10 });
+  openPopupForFeature(feature);
+  selectedWikidataId = feature.properties.wikidataId;
+  highlightCard(selectedWikidataId);
+}
+
+function toggleCard(cardEl, shouldExpand, { syncMap = true } = {}) {
+  const paKey = cardEl.dataset.paKey;
+  const entry = entryByPaKey.get(paKey);
+  if (!entry) return;
+  if (shouldExpand) {
+    expandedCards.add(paKey);
+    cardEl.classList.add('is-expanded');
+    cardEl.setAttribute('aria-expanded', 'true');
+    cardEl.innerHTML = detailHtml(entry);
+    loadExcerpt(entry, cardEl);
+    loadCommonsMosaic(entry, cardEl);
+    if (syncMap) selectEntryOnMap(entry);
+  } else {
+    expandedCards.delete(paKey);
+    cardEl.classList.remove('is-expanded');
+    cardEl.setAttribute('aria-expanded', 'false');
+    cardEl.innerHTML = cardCompactInnerHtml(entry);
+    if (selectedWikidataId === entry.wikidataId) closePopup();
+  }
+}
+
+function toggleState(stateName) {
+  if (openStates.has(stateName)) openStates.delete(stateName);
+  else openStates.add(stateName);
+  renderAccordion();
+}
+
+// Opens a PA's state section(s), scrolls to its card, and expands its detail
+// -- used when a map marker is clicked (the marker's own click handler
+// already flew the map/opened the popup, so map sync is skipped here).
+function revealCard(paKey) {
+  const entry = entryByPaKey.get(paKey);
+  if (!entry) return;
+  const states = entry.state.length ? entry.state : [UNSPECIFIED_STATE_LABEL];
+  let changed = false;
+  for (const state of states) {
+    if (!openStates.has(state)) { openStates.add(state); changed = true; }
+  }
+  if (changed) renderAccordion();
+  const cardEl = [...accordionEl.querySelectorAll('.pa-card')].find((el) => el.dataset.paKey === paKey);
+  if (!cardEl) return;
+  cardEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  if (!cardEl.classList.contains('is-expanded')) toggleCard(cardEl, true, { syncMap: false });
+}
+
+function onCardHoverEnter(cardEl) {
+  if (selectedWikidataId) return; // a card/marker is selected -- hover is suspended until cleared
+  const entry = entryByPaKey.get(cardEl.dataset.paKey);
+  if (!entry || entry.coordinateLatitude == null) return;
+  const feature = entryToFeature(entry);
+  focusFeature(feature);
+  openPopupForFeature(feature);
+}
+
+function onCardHoverLeave() {
+  if (selectedWikidataId) return;
+  closePopup();
+}
+
+function initAccordionEvents() {
+  accordionEl.addEventListener('click', (e) => {
+    if (e.target.closest('.pa-card-collapse')) {
+      const card = e.target.closest('.pa-card');
+      if (card) toggleCard(card, false);
+      return;
+    }
+    const card = e.target.closest('.pa-card');
+    if (card) { toggleCard(card, !card.classList.contains('is-expanded')); return; }
+    const header = e.target.closest('.state-row-header');
+    if (header) toggleState(header.dataset.state);
   });
-  table.on('rowMouseLeave', () => {
-    if (selectedWikidataId) return;
-    closePopup();
+  accordionEl.addEventListener('keydown', (e) => {
+    if (e.key !== 'Enter' && e.key !== ' ') return;
+    const card = e.target.closest('.pa-card');
+    if (card && e.target === card) {
+      e.preventDefault();
+      toggleCard(card, !card.classList.contains('is-expanded'));
+    }
   });
-  table.on('rowClick', (e, row) => {
-    const entry = entryByPaKey.get(row.getData()._paKey);
-    if (!entry || entry.coordinateLatitude == null) return;
-    const feature = entryToFeature(entry);
-    focusFeature(feature, { zoom: 10 });
-    openPopupForFeature(feature);
-    selectedWikidataId = feature.properties.wikidataId;
-    highlightTableRow(selectedWikidataId);
+  // mouseenter/mouseleave don't bubble, so delegation uses mouseover/mouseout
+  // with a relatedTarget check to only fire once per card boundary crossing.
+  accordionEl.addEventListener('mouseover', (e) => {
+    const card = e.target.closest('.pa-card');
+    if (card && !card.contains(e.relatedTarget)) onCardHoverEnter(card);
   });
+  accordionEl.addEventListener('mouseout', (e) => {
+    const card = e.target.closest('.pa-card');
+    if (card && !card.contains(e.relatedTarget)) onCardHoverLeave();
+  });
+}
+
+function applyFilters() {
+  filteredEntries = computeFilteredEntries();
+  renderAccordion();
+  updateMapFilter();
+  document.getElementById('result-count').textContent =
+    `${filteredEntries.length.toLocaleString()} of ${paEntries.length.toLocaleString()} protected areas`;
 }
 
 function csvEscape(value) {
@@ -760,7 +1094,7 @@ function csvEscape(value) {
 function exportFilteredCsv() {
   const columns = ['moefSNo', 'state', 'protectedAreaName', 'protectedAreaType', 'notificationStatus', 'notificationDate', 'orderNumber', 'notificationPdfLink', 'notificationArchiveLink', 'wikidataId'];
   const rows = [columns.join(',')];
-  for (const r of filteredRecords) {
+  for (const r of flattenEntriesToRows(filteredEntries)) {
     rows.push(columns.map((c) => csvEscape(r[c])).join(','));
   }
   const blob = new Blob([rows.join('\n')], { type: 'text/csv;charset=utf-8;' });
@@ -782,8 +1116,7 @@ function collectProtectedAreaTypes() {
 
 function setPaTypeFilter(value) {
   paTypeFilter = value;
-  table.refreshFilter();
-  renderKPIs();
+  applyFilters();
   renderQaList();
   renderNoCoordList();
 }
@@ -816,8 +1149,7 @@ function collectStates() {
 
 function setPaStateFilter(value) {
   paStateFilter = value;
-  table.refreshFilter();
-  renderKPIs();
+  applyFilters();
   renderQaList();
   renderNoCoordList();
 }
@@ -840,11 +1172,34 @@ function initStateFilter() {
   select.addEventListener('change', () => setPaStateFilter(select.value));
 }
 
+function initDownloadDropdown() {
+  const dropdown = document.getElementById('download-dropdown');
+  const toggle = document.getElementById('download-toggle');
+  const closeDropdown = () => {
+    dropdown.classList.remove('is-open');
+    toggle.setAttribute('aria-expanded', 'false');
+  };
+  toggle.addEventListener('click', (e) => {
+    e.stopPropagation();
+    const isOpen = dropdown.classList.toggle('is-open');
+    toggle.setAttribute('aria-expanded', String(isOpen));
+  });
+  dropdown.querySelectorAll('.dropdown-item').forEach((item) => {
+    item.addEventListener('click', closeDropdown);
+  });
+  document.addEventListener('click', (e) => {
+    if (!dropdown.contains(e.target)) closeDropdown();
+  });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeDropdown();
+  });
+}
+
 function initFilterEvents() {
   const searchInput = document.getElementById('filter-search');
   searchInput.addEventListener('input', () => {
     searchTerm = searchInput.value.trim().toLowerCase();
-    table.refreshFilter();
+    applyFilters();
   });
   document.getElementById('reset-filters').addEventListener('click', () => {
     searchInput.value = '';
@@ -853,18 +1208,7 @@ function initFilterEvents() {
     paTypeFilter = '';
     document.getElementById('pa-state-filter').value = '';
     paStateFilter = '';
-    table.refreshFilter();
-    renderKPIs();
-    renderQaList();
-    renderNoCoordList();
-  });
-  document.getElementById('reset-pa-filters').addEventListener('click', () => {
-    document.getElementById('pa-type-filter').value = '';
-    paTypeFilter = '';
-    document.getElementById('pa-state-filter').value = '';
-    paStateFilter = '';
-    table.refreshFilter();
-    renderKPIs();
+    applyFilters();
     renderQaList();
     renderNoCoordList();
   });
@@ -873,16 +1217,17 @@ function initFilterEvents() {
 
 async function main() {
   await loadData();
-  tableRecords = buildTableRecords();
   initTypeFilter();
   initStateFilter();
-  renderKPIs();
+  renderHeroStats();
   renderQaList();
   renderNoCoordList();
   initAtlasLink();
   initMap();
-  initTable();
+  initAccordionEvents();
+  applyFilters();
   initFilterEvents();
+  initDownloadDropdown();
 }
 
 main().catch((err) => {
