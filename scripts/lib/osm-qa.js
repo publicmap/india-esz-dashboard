@@ -21,6 +21,11 @@
 //       - Objects with no match at all on either side
 import { osmKey } from './osm-cache.js';
 import { normalizeName, similarity } from './name-match.js';
+import {
+  reviewOnlyDetails,
+  p402RemovalQuickStatements,
+  coordinateCorrectionQuickStatements,
+} from './quickstatements.js';
 
 // Strips everything but letters/digits (no generic-PA-word stripping,
 // unlike normalizeName). Exists solely to catch names that differ only in
@@ -279,6 +284,12 @@ export async function crossReferenceOsm(wikidataItems, osmCache) {
         osmUrl: feature.osmUrl,
         distanceToBoundary: fmtDistance(boundaryDistance),
         distanceToCentroid: fmtDistance(centroidDistance),
+        // Not rendered as a table column (see qa-log.js's column-driven
+        // render) -- carried only so coordinateCorrectionQuickStatements can
+        // emit a P625 value without re-deriving it from the formatted
+        // distance strings above.
+        centroidLat: feature.centroidLat ?? null,
+        centroidLon: feature.centroidLon ?? null,
       });
     }
   }
@@ -300,42 +311,59 @@ export async function crossReferenceOsm(wikidataItems, osmCache) {
       description: 'No OSM object references this wikidata id via P402, and no OSM object tags this id back -- likely missing from OSM entirely, or mapped without a wikidata tag.',
       columns: ['wikidataId', 'wikidataLabel'],
       rows: unmatchedWikidata.map((i) => ({ wikidataId: i.wikidataId, wikidataLabel: i.wikidataLabel })),
+      quickStatements: reviewOnlyDetails(
+        'No Wikidata edit applies -- this is a gap on the OSM side (the boundary either isn\'t mapped at all, or is mapped without a `wikidata` tag). Map it or add the tag on OpenStreetMap; nothing to fix on Wikidata itself.',
+      ),
     },
     {
       title: 'OSM wikidata tag outdated',
       description: 'OSM `wikidata` tag value is a redirect, deleted, or not found in our fetched Indian protected-area list.',
       columns: ['wikidata', 'osmType', 'osmId', 'osmUrl', 'name', 'detail'],
       rows: osmWikidataOutdated,
+      quickStatements: reviewOnlyDetails(
+        'The fix here is an edit to OpenStreetMap\'s `wikidata` tag, not to Wikidata -- QuickStatements can\'t help. When the detail column says "Redirects to X, which IS in our list", retag the OSM object to X. When Wikidata\'s side of a redirect needs cleanup instead (e.g. a genuine duplicate item), merge the items on Wikidata by hand -- QuickStatements doesn\'t do merges either.',
+      ),
     },
     {
       title: 'Wikidata P402 (OSM relation) outdated',
       description: 'Wikidata\'s own OSM-relation-id claim (P402) does not resolve cleanly against the OSM cache.',
       columns: ['wikidataId', 'wikidataLabel', 'osmRelationId', 'detail'],
       rows: wikidataOsmOutdated,
+      quickStatements: p402RemovalQuickStatements(wikidataOsmOutdated),
     },
     {
       title: 'Wikidata coordinate outside OSM polygon',
       description: 'The matched pair\'s Wikidata coordinate (P625) falls outside the OSM boundary geometry.',
       columns: ['wikidataId', 'wikidataLabel', 'osmUrl', 'distanceToBoundary', 'distanceToCentroid'],
       rows: coordinateOutsidePolygon,
+      quickStatements: coordinateCorrectionQuickStatements(coordinateOutsidePolygon),
     },
     {
       title: 'Low name-match confidence',
       description: `Matched pair (by id) whose names score below ${LOW_CONFIDENCE_NAME_SCORE} similarity -- the id link may itself be wrong on one side.`,
       columns: ['wikidataId', 'wikidataLabel', 'osmUrl', 'osmName', 'matchSource', 'nameScore'],
       rows: lowConfidenceMatches,
+      quickStatements: reviewOnlyDetails(
+        'No mechanical fix -- a low name-similarity score on an id-based match just means one side\'s id could be mistyped/miskeyed, not which side. Check whether Wikidata\'s P402 or OSM\'s `wikidata` tag is the wrong one (see the two P402/wikidata-tag-outdated sections above) before editing either.',
+      ),
     },
     {
       title: 'Ambiguous OSM wikidata-tag matches',
       description: 'More than one OSM object tags the same wikidata id.',
       columns: ['wikidataId', 'wikidataLabel', 'pickedOsmUrl', 'otherOsmUrls', 'detail'],
       rows: ambiguousMatches,
+      quickStatements: reviewOnlyDetails(
+        'No Wikidata edit applies -- this is a many-OSM-objects-to-one-wikidata-id conflict, resolved by retagging the wrong OSM object(s) with the correct id (or removing the tag if it\'s simply a duplicate boundary on OSM). Requires picking which OSM object is the real one first.',
+      ),
     },
     {
       title: 'OSM objects without a wikidata tag',
       description: 'In-scope OSM boundaries (protected_area/national_park) that carry no `wikidata` tag at all -- candidates for manual tagging.',
       columns: ['osmType', 'osmId', 'osmUrl', 'name'],
       rows: osmWithoutWikidataTag,
+      quickStatements: reviewOnlyDetails(
+        'No Wikidata edit applies -- add the `wikidata` tag on the OpenStreetMap object once you\'ve identified the matching Wikidata item.',
+      ),
     },
   ];
 

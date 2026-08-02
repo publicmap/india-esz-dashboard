@@ -1,6 +1,6 @@
 # Protected-area QA log
 
-Generated 2026-08-02T07:29:23.969Z by `scripts/enrich-wikidata.js`.
+Generated 2026-08-02T18:34:08.089Z by `scripts/enrich-wikidata.js`.
 
 ## Wikidata ↔ Wikipedia joins
 
@@ -8,11 +8,11 @@ Cross-referenced against 745 records from `data/wikipedia/{national-parks,wildli
 
 ### Summary
 
-- **Wikidata protectedAreaType corrected from Wikipedia**: 49
-- **Wikidata item matched by multiple Wikipedia entries**: 62
-- **Fuzzy Wikidata<->Wikipedia matches**: 53
-- **Wikipedia entries with no Wikidata match (added to master list)**: 183
-- **Wikidata items with no Wikipedia match**: 56
+- **Wikidata protectedAreaType corrected from Wikipedia**: 48
+- **Wikidata item matched by multiple Wikipedia entries**: 63
+- **Fuzzy Wikidata<->Wikipedia matches**: 54
+- **Wikipedia entries with no Wikidata match (added to master list)**: 181
+- **Wikidata items with no Wikipedia match**: 55
 
 ### Wikidata protectedAreaType corrected from Wikipedia
 
@@ -27,7 +27,6 @@ Wikidata's P31-derived type disagreed with the matched Wikipedia entry's -- corr
 | Q2989176 | Orang National Park | National Park | Tiger Reserve | tiger-reserves | https://en.wikipedia.org/wiki/Orang_National_Park | exact |
 | Q2428291 | Valmiki National Park | National Park | Tiger Reserve | tiger-reserves | https://en.wikipedia.org/wiki/Valmiki_National_Park | exact |
 | Q1427976 | Indravati National Park | National Park | Tiger Reserve | tiger-reserves | https://en.wikipedia.org/wiki/Indravati_National_Park | exact |
-| Q60398704 | Marine Sanctuary (Gulf of Kutch) | Wildlife Sanctuary | National Park | national-parks | https://en.wikipedia.org/wiki/Marine_National_Park,_Gulf_of_Kutch | exact |
 | Q111181101 | Limber Wildlife Sanctuary | Wildlife Sanctuary | National Park | national-parks | https://en.wikipedia.org/wiki/Kazinag_National_Park | exact |
 | Q665110 | Bandipur National Park | National Park | Tiger Reserve | tiger-reserves | https://en.wikipedia.org/wiki/Bandipur_National_Park | exact |
 | Q548153 | Periyar National Park | National Park | Tiger Reserve | tiger-reserves | https://en.wikipedia.org/wiki/Periyar_National_Park | exact |
@@ -39,7 +38,7 @@ Wikidata's P31-derived type disagreed with the matched Wikipedia entry's -- corr
 | Q1858071 | Panna National Park | National Park | Tiger Reserve | tiger-reserves | https://en.wikipedia.org/wiki/Panna_National_Park | exact |
 | Q2720864 | Pench National Park | National Park | Tiger Reserve | tiger-reserves | https://en.wikipedia.org/wiki/Pench_Tiger_Reserve | fuzzy |
 | Q733659 | Satpura National Park | National Park | Tiger Reserve | tiger-reserves | https://en.wikipedia.org/wiki/Satpura_Tiger_Reserve | exact |
-| Q106674048 | Nawegaon Wildlife Sanctuary | Wildlife Sanctuary | Tiger Reserve | tiger-reserves | https://en.wikipedia.org/wiki/Navegaon_National_Park | fuzzy |
+| Q763034 | Nawegaon National Park | National Park | Tiger Reserve | tiger-reserves | https://en.wikipedia.org/wiki/Navegaon_National_Park | fuzzy |
 | Q106674990 | Bhitarkanika Wildlife Sanctuary | Wildlife Sanctuary | National Park | national-parks | https://en.wikipedia.org/wiki/Bhitarkanika_National_Park | exact |
 | Q61529 | Simlipal National Park | National Park | Tiger Reserve | tiger-reserves | https://en.wikipedia.org/wiki/Simlipal_National_Park | exact |
 | Q1466242 | Ranthambore National Park | National Park | Tiger Reserve | tiger-reserves | https://en.wikipedia.org/wiki/Ranthambore_National_Park | exact |
@@ -70,6 +69,68 @@ Wikidata's P31-derived type disagreed with the matched Wikipedia entry's -- corr
 | Q5101326 | Chintamoni Kar Bird Sanctuary | Bird Sanctuary | Wildlife Sanctuary | wildlife-sanctuaries | https://en.wikipedia.org/wiki/Chintamoni_Kar_Bird_Sanctuary | exact |
 | Q1520200 | Nagarhole National Park | National Park | Tiger Reserve | tiger-reserves | https://en.wikipedia.org/wiki/Nagarhole_National_Park | exact |
 
+<details>
+<summary>QuickStatements: how to fix this on Wikidata</summary>
+
+Adds the Wikipedia-confirmed `instance of` (P31) value. Does **not** remove the old P31 value -- some items legitimately hold more than one (e.g. a Tiger Reserve that is also a National Park); remove the stale one by hand only if it truly no longer applies.
+
+Lines are in table order -- cross-check each against the `matchConfidence` column above before running; a `fuzzy` row is less certain than an `exact` one and deserves a closer look first.
+
+Paste as a new batch at <https://quickstatements.toolforge.org/> (mode: v1, tab-separated) -- review every line first; these are suggestions, not verified edits:
+
+```
+Q1815612	P31	Q5533772	S143	Q328	S854	"https://en.wikipedia.org/wiki/Namdapha_National_Park"
+Q192764	P31	Q5533772	S143	Q328	S854	"https://en.wikipedia.org/wiki/Kaziranga_National_Park"
+Q506511	P31	Q5533772	S143	Q328	S854	"https://en.wikipedia.org/wiki/Manas_National_Park"
+Q2989157	P31	Q5533772	S143	Q328	S854	"https://en.wikipedia.org/wiki/Nameri_National_Park"
+Q2989176	P31	Q5533772	S143	Q328	S854	"https://en.wikipedia.org/wiki/Orang_National_Park"
+Q2428291	P31	Q5533772	S143	Q328	S854	"https://en.wikipedia.org/wiki/Valmiki_National_Park"
+Q1427976	P31	Q5533772	S143	Q328	S854	"https://en.wikipedia.org/wiki/Indravati_National_Park"
+Q111181101	P31	Q46169	S143	Q328	S854	"https://en.wikipedia.org/wiki/Kazinag_National_Park"
+Q665110	P31	Q5533772	S143	Q328	S854	"https://en.wikipedia.org/wiki/Bandipur_National_Park"
+Q548153	P31	Q5533772	S143	Q328	S854	"https://en.wikipedia.org/wiki/Periyar_National_Park"
+Q806310	P31	Q5533772	S143	Q328	S854	"https://en.wikipedia.org/wiki/Bandhavgarh_National_Park"
+Q5557523	P31	Q46169	S143	Q328	S854	"https://en.wikipedia.org/wiki/Ghughua_Fossil_Park"
+Q1480481	P31	Q5533772	S143	Q328	S854	"https://en.wikipedia.org/wiki/Kanha_Tiger_Reserve"
+Q1143016	P31	Q46169	S143	Q328	S854	"https://en.wikipedia.org/wiki/Kuno_National_Park"
+Q2604975	P31	Q5533772	S143	Q328	S854	"https://en.wikipedia.org/wiki/Madhav_National_Park"
+Q1858071	P31	Q5533772	S143	Q328	S854	"https://en.wikipedia.org/wiki/Panna_National_Park"
+Q2720864	P31	Q5533772	S143	Q328	S854	"https://en.wikipedia.org/wiki/Pench_Tiger_Reserve"
+Q733659	P31	Q5533772	S143	Q328	S854	"https://en.wikipedia.org/wiki/Satpura_Tiger_Reserve"
+Q763034	P31	Q5533772	S143	Q328	S854	"https://en.wikipedia.org/wiki/Navegaon_National_Park"
+Q106674990	P31	Q46169	S143	Q328	S854	"https://en.wikipedia.org/wiki/Bhitarkanika_National_Park"
+Q61529	P31	Q5533772	S143	Q328	S854	"https://en.wikipedia.org/wiki/Simlipal_National_Park"
+Q1466242	P31	Q5533772	S143	Q328	S854	"https://en.wikipedia.org/wiki/Ranthambore_National_Park"
+Q2372700	P31	Q5533772	S143	Q328	S854	"https://en.wikipedia.org/wiki/Mudumalai_National_Park"
+Q253455	P31	Q5533772	S143	Q328	S854	"https://en.wikipedia.org/wiki/Dudhwa_National_Park"
+Q949297	P31	Q5533772	S143	Q328	S854	"https://en.wikipedia.org/wiki/Jim_Corbett_National_Park"
+Q181933	P31	Q5533772	S143	Q328	S854	"https://en.wikipedia.org/wiki/Rajaji_National_Park"
+Q532440	P31	Q5533772	S143	Q328	S854	"https://en.wikipedia.org/wiki/Sundarbans_National_Park"
+Q17014014	P31	Q1377575	S143	Q328	S854	"https://en.wikipedia.org/wiki/Kolleru_Wildlife_Sanctuary"
+Q22231355	P31	Q5533772	S143	Q328	S854	"https://en.wikipedia.org/wiki/Kamlang_Wildlife_Sanctuary"
+Q4673468	P31	Q5533772	S143	Q328	S854	"https://en.wikipedia.org/wiki/Achanakmar_Wildlife_Sanctuary"
+Q7786671	P31	Q2714144	S143	Q328	S854	"https://en.wikipedia.org/wiki/Thol_Lake_Bird_Sanctuary"
+Q4900541	P31	Q5533772	S143	Q328	S854	"https://en.wikipedia.org/wiki/Bhadra_Wildlife_Sanctuary"
+Q106684744	P31	Q5533772	S143	Q328	S854	"https://en.wikipedia.org/wiki/Biligiriranga_Hills"
+Q5215675	P31	Q1377575	S143	Q328	S854	"https://en.wikipedia.org/wiki/Dandeli_Wildlife_Sanctuary"
+Q3523324	P31	Q1377575	S143	Q328	S854	"https://en.wikipedia.org/wiki/Karimpuzha_Wildlife_Sanctuary"
+Q48731965	P31	Q5533772	S143	Q328	S854	"https://en.wikipedia.org/wiki/Veerangana_Durgavati_Wildlife_Sanctuary"
+Q4944241	P31	Q5533772	S143	Q328	S854	"https://en.wikipedia.org/wiki/Bor_Wildlife_Sanctuary"
+Q19808294	P31	Q1377575	S143	Q328	S854	"https://en.wikipedia.org/wiki/Nandur_Madhmeshwar_Bird_Sanctuary"
+Q123399066	P31	Q1377575	S143	Q328	S854	"https://en.wikipedia.org/wiki/Bandh_Baretha"
+Q121754153	P31	Q5533772	S143	Q328	S854	"https://en.wikipedia.org/wiki/Ramgarh_Vishdhari_Wildlife_Sanctuary"
+Q5609778	P31	Q5533772	S143	Q328	S854	"https://en.wikipedia.org/wiki/Srivilliputhur-Megamalai_Tiger_Reserve"
+Q3696260	P31	Q1377575	S143	Q328	S854	"https://en.wikipedia.org/wiki/Kodaikanal_Wildlife_Sanctuary"
+Q6379588	P31	Q5533772	S143	Q328	S854	"https://en.wikipedia.org/wiki/Kawal_Wildlife_Sanctuary"
+Q48729855	P31	Q1377575	S143	Q328	S854	"https://en.wikipedia.org/wiki/Parvati_Arga_Wildlife_Sanctuary"
+Q7293072	P31	Q5533772	S143	Q328	S854	"https://en.wikipedia.org/wiki/Ranipur_Wildlife_Sanctuary"
+Q7408881	P31	Q2714144	S143	Q328	S854	"https://en.wikipedia.org/wiki/Samaspur_Bird_Sanctuary"
+Q5101326	P31	Q1377575	S143	Q328	S854	"https://en.wikipedia.org/wiki/Chintamoni_Kar_Bird_Sanctuary"
+Q1520200	P31	Q5533772	S143	Q328	S854	"https://en.wikipedia.org/wiki/Nagarhole_National_Park"
+```
+
+</details>
+
 ### Wikidata item matched by multiple Wikipedia entries
 
 More than one Wikipedia entry (possibly from different lists) matched the same Wikidata item.
@@ -87,8 +148,9 @@ More than one Wikipedia entry (possibly from different lists) matched the same W
 | Q2989176 | Orang National Park | Orang National Park [national-parks] (National Park); Orang Tiger Reserve [tiger-reserves] (Tiger Reserve) | More than one Wikipedia entry matched the same Wikidata item -- either a genuine reclassification (fine) or a wrong fuzzy match on one of them (review). |
 | Q2428291 | Valmiki National Park | Valmiki National Park [national-parks] (National Park); Valmiki Wildlife Sanctuary [wildlife-sanctuaries] (Wildlife Sanctuary); Valmiki Tiger Reserve [tiger-reserves] (Tiger Reserve) | More than one Wikipedia entry matched the same Wikidata item -- either a genuine reclassification (fine) or a wrong fuzzy match on one of them (review). |
 | Q1427976 | Indravati National Park | Indravati National Park(Kutru) [national-parks] (National Park); Indravati Tiger Reserve [tiger-reserves] (Tiger Reserve) | More than one Wikipedia entry matched the same Wikidata item -- either a genuine reclassification (fine) or a wrong fuzzy match on one of them (review). |
+| Q2397554 | Bhagwan Mahaveer Sanctuary and Mollem National Park | Mollem National Park [national-parks] (National Park); Bhagwan Mahavir Sanctuary [wildlife-sanctuaries] (Wildlife Sanctuary) | More than one Wikipedia entry matched the same Wikidata item -- either a genuine reclassification (fine) or a wrong fuzzy match on one of them (review). |
 | Q337028 | Gir National Park | Gir Forest National Park [national-parks] (National Park); Gir Wildlife Sanctuary [wildlife-sanctuaries] (Wildlife Sanctuary) | More than one Wikipedia entry matched the same Wikidata item -- either a genuine reclassification (fine) or a wrong fuzzy match on one of them (review). |
-| Q60398704 | Marine Sanctuary (Gulf of Kutch) | Marine National Park(Gulf of Kutch) [national-parks] (National Park); Marine Wildlife Sanctuary [wildlife-sanctuaries] (Wildlife Sanctuary) | More than one Wikipedia entry matched the same Wikidata item -- either a genuine reclassification (fine) or a wrong fuzzy match on one of them (review). |
+| Q2724481 | Marine National Park, Gulf of Kutch | Marine National Park(Gulf of Kutch) [national-parks] (National Park); Marine Wildlife Sanctuary [wildlife-sanctuaries] (Wildlife Sanctuary) | More than one Wikipedia entry matched the same Wikidata item -- either a genuine reclassification (fine) or a wrong fuzzy match on one of them (review). |
 | Q2985156 | Kalesar National Park | Kalesar National Park [national-parks] (National Park); Kalesar Wildlife Sanctuary [wildlife-sanctuaries] (Wildlife Sanctuary) | More than one Wikipedia entry matched the same Wikidata item -- either a genuine reclassification (fine) or a wrong fuzzy match on one of them (review). |
 | Q111181101 | Limber Wildlife Sanctuary | Kazinag National Park [national-parks] (National Park); Limber Wildlife Sanctuary [wildlife-sanctuaries] (Wildlife Sanctuary) | More than one Wikipedia entry matched the same Wikidata item -- either a genuine reclassification (fine) or a wrong fuzzy match on one of them (review). |
 | Q665110 | Bandipur National Park | Bandipur National Park [national-parks] (National Park); Bandipur Tiger Reserve [tiger-reserves] (Tiger Reserve) | More than one Wikipedia entry matched the same Wikidata item -- either a genuine reclassification (fine) or a wrong fuzzy match on one of them (review). |
@@ -100,7 +162,7 @@ More than one Wikipedia entry (possibly from different lists) matched the same W
 | Q2720864 | Pench National Park | Pench National Park [national-parks] (National Park); Pench Wildlife Sanctuary [wildlife-sanctuaries] (Wildlife Sanctuary); Pench (M.P.) Tiger Reserve [tiger-reserves] (Tiger Reserve) | More than one Wikipedia entry matched the same Wikidata item -- either a genuine reclassification (fine) or a wrong fuzzy match on one of them (review). |
 | Q3092341 | Sanjay National Park | Sanjay National Park [national-parks] (National Park); Sanjay Dubri Wildlife Sanctuary [wildlife-sanctuaries] (Wildlife Sanctuary) | More than one Wikipedia entry matched the same Wikidata item -- either a genuine reclassification (fine) or a wrong fuzzy match on one of them (review). |
 | Q733659 | Satpura National Park | Satpura National Park [national-parks] (National Park); Satpura Tiger Reserve [tiger-reserves] (Tiger Reserve) | More than one Wikipedia entry matched the same Wikidata item -- either a genuine reclassification (fine) or a wrong fuzzy match on one of them (review). |
-| Q106674048 | Nawegaon Wildlife Sanctuary | Nawegaon National Park [national-parks] (National Park); Nawegaon Wildlife Sanctuary [wildlife-sanctuaries] (Wildlife Sanctuary); Nawegaon–Nagzira Tiger Reserve [tiger-reserves] (Tiger Reserve) | More than one Wikipedia entry matched the same Wikidata item -- either a genuine reclassification (fine) or a wrong fuzzy match on one of them (review). |
+| Q763034 | Nawegaon National Park | Nawegaon National Park [national-parks] (National Park); Nawegaon Wildlife Sanctuary [wildlife-sanctuaries] (Wildlife Sanctuary); Nawegaon–Nagzira Tiger Reserve [tiger-reserves] (Tiger Reserve) | More than one Wikipedia entry matched the same Wikidata item -- either a genuine reclassification (fine) or a wrong fuzzy match on one of them (review). |
 | Q2639563 | Tadoba-Andhari Tiger Reserve | Tadoba Andhari National Park [national-parks] (National Park); Andhari Wildlife Sanctuary [wildlife-sanctuaries] (Wildlife Sanctuary); Tadoba-Andhari Tiger Reserve [tiger-reserves] (Tiger Reserve) | More than one Wikipedia entry matched the same Wikidata item -- either a genuine reclassification (fine) or a wrong fuzzy match on one of them (review). |
 | Q106674990 | Bhitarkanika Wildlife Sanctuary | Bhitarkanika National Park [national-parks] (National Park); Bhitarkanika Wildlife Sanctuary [wildlife-sanctuaries] (Wildlife Sanctuary) | More than one Wikipedia entry matched the same Wikidata item -- either a genuine reclassification (fine) or a wrong fuzzy match on one of them (review). |
 | Q61529 | Simlipal National Park | Simlipal National Park [national-parks] (National Park); Simlipal Wildlife Sanctuary [wildlife-sanctuaries] (Wildlife Sanctuary); Similipal Tiger Reserve [tiger-reserves] (Tiger Reserve) | More than one Wikipedia entry matched the same Wikidata item -- either a genuine reclassification (fine) or a wrong fuzzy match on one of them (review). |
@@ -139,6 +201,13 @@ More than one Wikipedia entry (possibly from different lists) matched the same W
 | Q7193996 | Pilibhit Tiger Reserve | Pilibhit Wildlife Sanctuary [wildlife-sanctuaries] (Wildlife Sanctuary); Pilibhit Tiger Reserve [tiger-reserves] (Tiger Reserve) | More than one Wikipedia entry matched the same Wikidata item -- either a genuine reclassification (fine) or a wrong fuzzy match on one of them (review). |
 | Q7293072 | Ranipur  Wildlife Sanctuary | Ranipur Wildlife Sanctuary [wildlife-sanctuaries] (Wildlife Sanctuary); Ranipur Tiger Reserve [tiger-reserves] (Tiger Reserve) | More than one Wikipedia entry matched the same Wikidata item -- either a genuine reclassification (fine) or a wrong fuzzy match on one of them (review). |
 
+<details>
+<summary>QuickStatements: how to fix this on Wikidata</summary>
+
+No single correct edit -- this is either a genuine reclassification (the Wikidata item legitimately covers what Wikipedia now splits across multiple articles/types, in which case the protectedAreaType correction above already handles it) or a wrong fuzzy match pulling an unrelated Wikipedia entry onto this item (in which case the fix is on the *matching* side, not a Wikidata edit -- see the "Fuzzy Wikidata<->Wikipedia matches" and "Wikidata items with no Wikipedia match" sections, since a wrongly-absorbed entry usually shows up there as the real item's missed match).
+
+</details>
+
 ### Fuzzy Wikidata<->Wikipedia matches
 
 Matched by fuzzy name/state similarity rather than an exact name match -- worth a human sanity check.
@@ -151,12 +220,13 @@ Matched by fuzzy name/state similarity rather than an exact name match -- worth 
 | Q770855 | South Button Island National Park | South Sentinel Island Wildlife Sanctuary | wildlife-sanctuaries | Andaman and Nicobar Islands |
 | Q96401141 | Rajiv Gandhi National Park | Rajiv Gandhi National Park (Rameswaram) | national-parks | Andhra Pradesh |
 | Q1427976 | Indravati National Park | Indravati National Park(Kutru) | national-parks | Chhattisgarh |
+| Q2397554 | Bhagwan Mahaveer Sanctuary and Mollem National Park | Bhagwan Mahavir Sanctuary | wildlife-sanctuaries | Goa |
 | Q2667857 | Salim Ali National Park | City Forest National Park(Salim Ali) | national-parks | Jammu and Kashmir |
 | Q3330156 | Pampadum Shola National Park | Pambadum Shola National Park | national-parks | Kerala |
 | Q5557523 | Ghughua Fossil Park | Ghughua Fossil National Park | national-parks | Madhya Pradesh |
 | Q2720864 | Pench National Park | Pench (M.P.) Tiger Reserve | tiger-reserves | Madhya Pradesh |
 | Q3092341 | Sanjay National Park | Sanjay Dubri Wildlife Sanctuary | wildlife-sanctuaries | Madhya Pradesh |
-| Q106674048 | Nawegaon Wildlife Sanctuary | Nawegaon–Nagzira Tiger Reserve | tiger-reserves | Maharashtra |
+| Q763034 | Nawegaon National Park | Nawegaon–Nagzira Tiger Reserve | tiger-reserves | Maharashtra |
 | Q648907 | Sanjay Gandhi National Park | Sanjay Gandhi National Park(Borivili) | national-parks | Maharashtra |
 | Q2639563 | Tadoba-Andhari Tiger Reserve | Andhari Wildlife Sanctuary | wildlife-sanctuaries | Maharashtra |
 | Q3364480 | Shirui National Park | Shiroi National Park | national-parks | Manipur |
@@ -199,6 +269,13 @@ Matched by fuzzy name/state similarity rather than an exact name match -- worth 
 | Q7461463 | Shahayadri Tiger reserve | Sahyadri Tiger Reserve | tiger-reserves | Maharashtra |
 | Q131465770 | Guru Ghasidas - Tamor Pingla Tiger Reserve | Guru Ghasidas–Tamor Pingla Tiger Reserve | tiger-reserves | Chhattisgarh |
 
+<details>
+<summary>QuickStatements: how to fix this on Wikidata</summary>
+
+No mechanical fix -- the type/URL correction from this match (if any) is already reflected in the "protectedAreaType corrected" section above. If a row here turns out to be the *wrong* Wikidata item for this Wikipedia entry, the correct item is often sitting in the "Wikidata items with no Wikipedia match" section below (unmatched because this fuzzy match took its Wikipedia entry) -- fix it there instead of here.
+
+</details>
+
 ### Wikipedia entries with no Wikidata match (added to master list)
 
 No Wikidata item matched this Wikipedia entry by name/state -- added to the master protected-area list as a new entry with a synthetic `WIKIPEDIA:...` id instead of a Wikidata QID.
@@ -206,7 +283,6 @@ No Wikidata item matched this Wikipedia entry by name/state -- added to the mast
 | protectedAreaName | protectedAreaType | state | wikipediaSource | wikipediaUrl |
 | --- | --- | --- | --- | --- |
 | Guru Ghasidas National Park(Sanjay) | National Park | Chhattisgarh | national-parks | https://en.wikipedia.org/wiki/Guru_Ghasidas_-_Tamor_Pingla_Tiger_Reserve |
-| Mollem National Park | National Park | Goa | national-parks | https://en.wikipedia.org/wiki/Mollem_National_Park |
 | Blackbuck National Park(Velavadar) | National Park | Gujarat | national-parks | https://en.wikipedia.org/wiki/Blackbuck_National_Park,_Velavadar |
 | Anshi National Park | National Park | Karnataka | national-parks | https://en.wikipedia.org/wiki/Anshi_National_Park |
 | Nagarhole National Park(Rajiv Gandhi) | National Park | Karnataka | national-parks | https://en.wikipedia.org/wiki/Nagarhole_National_Park |
@@ -305,7 +381,6 @@ No Wikidata item matched this Wikipedia entry by name/state -- added to the mast
 | City Birds Wildlife Sanctuary | Bird Sanctuary | Chandigarh | wildlife-sanctuaries | https://en.wikipedia.org/wiki/Parrot_Bird_Sanctuary,_Chandigarh |
 | Dadra and Nagar Haveli Wildlife Sanctuary | Wildlife Sanctuary | Dadra Nagar Haveli and Daman and Diu | wildlife-sanctuaries | https://en.wikipedia.org/wiki/Dadra_and_Nagar_Haveli_Wildlife_Sanctuary |
 | Fudam Bird Sanctuary | Bird Sanctuary | Dadra Nagar Haveli and Daman and Diu | wildlife-sanctuaries | https://en.wikipedia.org/wiki/Fudam_Bird_Sanctuary |
-| Bhagwan Mahavir Sanctuary | Wildlife Sanctuary | Goa | wildlife-sanctuaries | https://en.wikipedia.org/wiki/Bhagwan_Mahavir_Sanctuary |
 | Kais Wildlife Sanctuary | Wildlife Sanctuary | Himachal Pradesh | wildlife-sanctuaries | https://en.wikipedia.org/wiki/Kais_Wildlife_Sanctuary?action=edit&redlink=1 |
 | Khokhan Wildlife Sanctuary | Wildlife Sanctuary | Himachal Pradesh | wildlife-sanctuaries | https://en.wikipedia.org/wiki/Khokhan_Wildlife_Sanctuary?action=edit&redlink=1 |
 | Lippa Asrang Wildlife Sanctuary | Wildlife Sanctuary | Himachal Pradesh | wildlife-sanctuaries | https://en.wikipedia.org/wiki/Lippa_Asrang_Wildlife_Sanctuary?action=edit&redlink=1 |
@@ -389,76 +464,1192 @@ No Wikidata item matched this Wikipedia entry by name/state -- added to the mast
 | Mukandra Hills Tiger Reserve | Tiger Reserve | Rajasthan | tiger-reserves | https://en.wikipedia.org/wiki/Mukandra_Hills_Tiger_Reserve |
 | Dholpur-Karauli Tiger Reserve | Tiger Reserve | Rajasthan | tiger-reserves | https://en.wikipedia.org/wiki/Dholpur—Karauli_Tiger_Reserve?action=edit&redlink=1 |
 
+<details>
+<summary>QuickStatements: how to fix this on Wikidata</summary>
+
+One `CREATE` block per new master-list entry -- makes a brand-new Wikidata item (label, instance-of, country, state, and the enwiki sitelink) sourced to the Wikipedia article that had no Wikidata item at all. **Search by name on Wikidata first before running any of these** -- this list comes from name/state matching against the fetched Indian-protected-area set, which can miss an existing item that's simply typed/labelled outside that set (e.g. missing `P17` India, or a P31 subclass this dashboard doesn't query for).
+
+Paste as a new batch at <https://quickstatements.toolforge.org/> (mode: v1, tab-separated) -- review every line first; these are suggestions, not verified edits:
+
+```
+CREATE
+LAST	Len	"Guru Ghasidas National Park(Sanjay)"
+LAST	P31	Q46169	S143	Q328	S854	"https://en.wikipedia.org/wiki/Guru_Ghasidas_-_Tamor_Pingla_Tiger_Reserve"
+LAST	P17	Q668
+LAST	P131	Q1168	S143	Q328	S854	"https://en.wikipedia.org/wiki/Guru_Ghasidas_-_Tamor_Pingla_Tiger_Reserve"
+LAST	Senwiki	"Guru Ghasidas - Tamor Pingla Tiger Reserve"
+CREATE
+LAST	Len	"Blackbuck National Park(Velavadar)"
+LAST	P31	Q46169	S143	Q328	S854	"https://en.wikipedia.org/wiki/Blackbuck_National_Park,_Velavadar"
+LAST	P17	Q668
+LAST	P131	Q1061	S143	Q328	S854	"https://en.wikipedia.org/wiki/Blackbuck_National_Park,_Velavadar"
+LAST	Senwiki	"Blackbuck National Park, Velavadar"
+CREATE
+LAST	Len	"Anshi National Park"
+LAST	P31	Q46169	S143	Q328	S854	"https://en.wikipedia.org/wiki/Anshi_National_Park"
+LAST	P17	Q668
+LAST	P131	Q1185	S143	Q328	S854	"https://en.wikipedia.org/wiki/Anshi_National_Park"
+LAST	Senwiki	"Anshi National Park"
+CREATE
+LAST	Len	"Nagarhole National Park(Rajiv Gandhi)"
+LAST	P31	Q46169	S143	Q328	S854	"https://en.wikipedia.org/wiki/Nagarhole_National_Park"
+LAST	P17	Q668
+LAST	P131	Q1185	S143	Q328	S854	"https://en.wikipedia.org/wiki/Nagarhole_National_Park"
+LAST	Senwiki	"Nagarhole National Park"
+CREATE
+LAST	Len	"Pench National Park(Jawaharlal Nehru)"
+LAST	P31	Q46169	S143	Q328
+LAST	P17	Q668
+LAST	P131	Q1191	S143	Q328
+CREATE
+LAST	Len	"AK National Park"
+LAST	P31	Q46169	S143	Q328	S854	"https://en.wikipedia.org/wiki/AK_National_Park?action=edit&redlink=1"
+LAST	P17	Q668
+LAST	P131	Q1195	S143	Q328	S854	"https://en.wikipedia.org/wiki/AK_National_Park?action=edit&redlink=1"
+LAST	Senwiki	"AK National Park"
+CREATE
+LAST	Len	"Mukundara Hills National Park"
+LAST	P31	Q46169	S143	Q328	S854	"https://en.wikipedia.org/wiki/Mukundara_Hills_National_Park"
+LAST	P17	Q668
+LAST	P131	Q1437	S143	Q328	S854	"https://en.wikipedia.org/wiki/Mukundara_Hills_National_Park"
+LAST	Senwiki	"Mukundara Hills National Park"
+CREATE
+LAST	Len	"Barren Island Wildlife Sanctuary"
+LAST	P31	Q1377575	S143	Q328	S854	"https://en.wikipedia.org/wiki/Barren_Island_(Andaman_Islands)"
+LAST	P17	Q668
+LAST	P131	Q40888	S143	Q328	S854	"https://en.wikipedia.org/wiki/Barren_Island_(Andaman_Islands)"
+LAST	Senwiki	"Barren Island (Andaman Islands)"
+CREATE
+LAST	Len	"Battimalv Island Wildlife Sanctuary"
+LAST	P31	Q1377575	S143	Q328	S854	"https://en.wikipedia.org/wiki/Battimalv_Island_Wildlife_Sanctuary?action=edit&redlink=1"
+LAST	P17	Q668
+LAST	P131	Q40888	S143	Q328	S854	"https://en.wikipedia.org/wiki/Battimalv_Island_Wildlife_Sanctuary?action=edit&redlink=1"
+LAST	Senwiki	"Battimalv Island Wildlife Sanctuary"
+CREATE
+LAST	Len	"Belle Island Wildlife Sanctuary"
+LAST	P31	Q1377575	S143	Q328	S854	"https://en.wikipedia.org/wiki/Belle_Island_Wildlife_Sanctuary?action=edit&redlink=1"
+LAST	P17	Q668
+LAST	P131	Q40888	S143	Q328	S854	"https://en.wikipedia.org/wiki/Belle_Island_Wildlife_Sanctuary?action=edit&redlink=1"
+LAST	Senwiki	"Belle Island Wildlife Sanctuary"
+CREATE
+LAST	Len	"Benett Island Wildlife Sanctuary"
+LAST	P31	Q1377575	S143	Q328	S854	"https://en.wikipedia.org/wiki/Benett_Island_Wildlife_Sanctuary?action=edit&redlink=1"
+LAST	P17	Q668
+LAST	P131	Q40888	S143	Q328	S854	"https://en.wikipedia.org/wiki/Benett_Island_Wildlife_Sanctuary?action=edit&redlink=1"
+LAST	Senwiki	"Benett Island Wildlife Sanctuary"
+CREATE
+LAST	Len	"Bingham Island Wildlife Sanctuary"
+LAST	P31	Q1377575	S143	Q328	S854	"https://en.wikipedia.org/wiki/Bingham_Island_Wildlife_Sanctuary?action=edit&redlink=1"
+LAST	P17	Q668
+LAST	P131	Q40888	S143	Q328	S854	"https://en.wikipedia.org/wiki/Bingham_Island_Wildlife_Sanctuary?action=edit&redlink=1"
+LAST	Senwiki	"Bingham Island Wildlife Sanctuary"
+CREATE
+LAST	Len	"Blister Island Wildlife Sanctuary"
+LAST	P31	Q1377575	S143	Q328	S854	"https://en.wikipedia.org/wiki/Blister_Island_Wildlife_Sanctuary?action=edit&redlink=1"
+LAST	P17	Q668
+LAST	P131	Q40888	S143	Q328	S854	"https://en.wikipedia.org/wiki/Blister_Island_Wildlife_Sanctuary?action=edit&redlink=1"
+LAST	Senwiki	"Blister Island Wildlife Sanctuary"
+CREATE
+LAST	Len	"Bluff Island Wildlife Sanctuary"
+LAST	P31	Q1377575	S143	Q328	S854	"https://en.wikipedia.org/wiki/Bluff_Island_Wildlife_Sanctuary?action=edit&redlink=1"
+LAST	P17	Q668
+LAST	P131	Q40888	S143	Q328	S854	"https://en.wikipedia.org/wiki/Bluff_Island_Wildlife_Sanctuary?action=edit&redlink=1"
+LAST	Senwiki	"Bluff Island Wildlife Sanctuary"
+CREATE
+LAST	Len	"Bondoville Island Wildlife Sanctuary"
+LAST	P31	Q1377575	S143	Q328	S854	"https://en.wikipedia.org/wiki/Bondoville_Island_Wildlife_Sanctuary?action=edit&redlink=1"
+LAST	P17	Q668
+LAST	P131	Q40888	S143	Q328	S854	"https://en.wikipedia.org/wiki/Bondoville_Island_Wildlife_Sanctuary?action=edit&redlink=1"
+LAST	Senwiki	"Bondoville Island Wildlife Sanctuary"
+CREATE
+LAST	Len	"Brush Island Wildlife Sanctuary"
+LAST	P31	Q1377575	S143	Q328	S854	"https://en.wikipedia.org/wiki/Brush_Island_Wildlife_Sanctuary?action=edit&redlink=1"
+LAST	P17	Q668
+LAST	P131	Q40888	S143	Q328	S854	"https://en.wikipedia.org/wiki/Brush_Island_Wildlife_Sanctuary?action=edit&redlink=1"
+LAST	Senwiki	"Brush Island Wildlife Sanctuary"
+CREATE
+LAST	Len	"Buchanan Island Wildlife Sanctuary"
+LAST	P31	Q1377575	S143	Q328	S854	"https://en.wikipedia.org/wiki/Buchanan_Island_Wildlife_Sanctuary?action=edit&redlink=1"
+LAST	P17	Q668
+LAST	P131	Q40888	S143	Q328	S854	"https://en.wikipedia.org/wiki/Buchanan_Island_Wildlife_Sanctuary?action=edit&redlink=1"
+LAST	Senwiki	"Buchanan Island Wildlife Sanctuary"
+CREATE
+LAST	Len	"Chanel Island Wildlife Sanctuary"
+LAST	P31	Q1377575	S143	Q328	S854	"https://en.wikipedia.org/wiki/Chanel_Island_Wildlife_Sanctuary?action=edit&redlink=1"
+LAST	P17	Q668
+LAST	P131	Q40888	S143	Q328	S854	"https://en.wikipedia.org/wiki/Chanel_Island_Wildlife_Sanctuary?action=edit&redlink=1"
+LAST	Senwiki	"Chanel Island Wildlife Sanctuary"
+CREATE
+LAST	Len	"Cinque Islands Wildlife Sanctuary"
+LAST	P31	Q1377575	S143	Q328	S854	"https://en.wikipedia.org/wiki/Cinque_Islands_Wildlife_Sanctuary?action=edit&redlink=1"
+LAST	P17	Q668
+LAST	P131	Q40888	S143	Q328	S854	"https://en.wikipedia.org/wiki/Cinque_Islands_Wildlife_Sanctuary?action=edit&redlink=1"
+LAST	Senwiki	"Cinque Islands Wildlife Sanctuary"
+CREATE
+LAST	Len	"Clyde Island Wildlife Sanctuary"
+LAST	P31	Q1377575	S143	Q328	S854	"https://en.wikipedia.org/wiki/Clyde_Island_Wildlife_Sanctuary?action=edit&redlink=1"
+LAST	P17	Q668
+LAST	P131	Q40888	S143	Q328	S854	"https://en.wikipedia.org/wiki/Clyde_Island_Wildlife_Sanctuary?action=edit&redlink=1"
+LAST	Senwiki	"Clyde Island Wildlife Sanctuary"
+CREATE
+LAST	Len	"Cone Island Wildlife Sanctuary"
+LAST	P31	Q1377575	S143	Q328	S854	"https://en.wikipedia.org/wiki/Cone_Island_Wildlife_Sanctuary?action=edit&redlink=1"
+LAST	P17	Q668
+LAST	P131	Q40888	S143	Q328	S854	"https://en.wikipedia.org/wiki/Cone_Island_Wildlife_Sanctuary?action=edit&redlink=1"
+LAST	Senwiki	"Cone Island Wildlife Sanctuary"
+CREATE
+LAST	Len	"Curlew (B.P.) Island Wildlife Sanctuary"
+LAST	P31	Q1377575	S143	Q328	S854	"https://en.wikipedia.org/wiki/Curlew_(B.P.)_Island_Wildlife_Sanctuary?action=edit&redlink=1"
+LAST	P17	Q668
+LAST	P131	Q40888	S143	Q328	S854	"https://en.wikipedia.org/wiki/Curlew_(B.P.)_Island_Wildlife_Sanctuary?action=edit&redlink=1"
+LAST	Senwiki	"Curlew (B.P.) Island Wildlife Sanctuary"
+CREATE
+LAST	Len	"Curlew Island Wildlife Sanctuary"
+LAST	P31	Q1377575	S143	Q328	S854	"https://en.wikipedia.org/wiki/Curlew_Island_Wildlife_Sanctuary?action=edit&redlink=1"
+LAST	P17	Q668
+LAST	P131	Q40888	S143	Q328	S854	"https://en.wikipedia.org/wiki/Curlew_Island_Wildlife_Sanctuary?action=edit&redlink=1"
+LAST	Senwiki	"Curlew Island Wildlife Sanctuary"
+CREATE
+LAST	Len	"Defence Island Wildlife Sanctuary"
+LAST	P31	Q1377575	S143	Q328	S854	"https://en.wikipedia.org/wiki/Defence_Island_Wildlife_Sanctuary"
+LAST	P17	Q668
+LAST	P131	Q40888	S143	Q328	S854	"https://en.wikipedia.org/wiki/Defence_Island_Wildlife_Sanctuary"
+LAST	Senwiki	"Defence Island Wildlife Sanctuary"
+CREATE
+LAST	Len	"Dot Island Wildlife Sanctuary"
+LAST	P31	Q1377575	S143	Q328	S854	"https://en.wikipedia.org/wiki/Dot_Island_Wildlife_Sanctuary?action=edit&redlink=1"
+LAST	P17	Q668
+LAST	P131	Q40888	S143	Q328	S854	"https://en.wikipedia.org/wiki/Dot_Island_Wildlife_Sanctuary?action=edit&redlink=1"
+LAST	Senwiki	"Dot Island Wildlife Sanctuary"
+CREATE
+LAST	Len	"Dottrell Island Wildlife Sanctuary"
+LAST	P31	Q1377575	S143	Q328	S854	"https://en.wikipedia.org/wiki/Dottrell_Island_Wildlife_Sanctuary?action=edit&redlink=1"
+LAST	P17	Q668
+LAST	P131	Q40888	S143	Q328	S854	"https://en.wikipedia.org/wiki/Dottrell_Island_Wildlife_Sanctuary?action=edit&redlink=1"
+LAST	Senwiki	"Dottrell Island Wildlife Sanctuary"
+CREATE
+LAST	Len	"Duncan Island Wildlife Sanctuary"
+LAST	P31	Q1377575	S143	Q328	S854	"https://en.wikipedia.org/wiki/Duncan_Island_Wildlife_Sanctuary?action=edit&redlink=1"
+LAST	P17	Q668
+LAST	P131	Q40888	S143	Q328	S854	"https://en.wikipedia.org/wiki/Duncan_Island_Wildlife_Sanctuary?action=edit&redlink=1"
+LAST	Senwiki	"Duncan Island Wildlife Sanctuary"
+CREATE
+LAST	Len	"East Island Wildlife Sanctuary"
+LAST	P31	Q1377575	S143	Q328	S854	"https://en.wikipedia.org/wiki/East_Island_Wildlife_Sanctuary?action=edit&redlink=1"
+LAST	P17	Q668
+LAST	P131	Q40888	S143	Q328	S854	"https://en.wikipedia.org/wiki/East_Island_Wildlife_Sanctuary?action=edit&redlink=1"
+LAST	Senwiki	"East Island Wildlife Sanctuary"
+CREATE
+LAST	Len	"East of Inglis Island Wildlife Sanctuary"
+LAST	P31	Q1377575	S143	Q328	S854	"https://en.wikipedia.org/wiki/East_of_Inglis_Island_Wildlife_Sanctuary?action=edit&redlink=1"
+LAST	P17	Q668
+LAST	P131	Q40888	S143	Q328	S854	"https://en.wikipedia.org/wiki/East_of_Inglis_Island_Wildlife_Sanctuary?action=edit&redlink=1"
+LAST	Senwiki	"East of Inglis Island Wildlife Sanctuary"
+CREATE
+LAST	Len	"Egg Island Wildlife Sanctuary"
+LAST	P31	Q1377575	S143	Q328	S854	"https://en.wikipedia.org/wiki/Egg_Island_Wildlife_Sanctuary?action=edit&redlink=1"
+LAST	P17	Q668
+LAST	P131	Q40888	S143	Q328	S854	"https://en.wikipedia.org/wiki/Egg_Island_Wildlife_Sanctuary?action=edit&redlink=1"
+LAST	Senwiki	"Egg Island Wildlife Sanctuary"
+CREATE
+LAST	Len	"Entrance Island Wildlife Sanctuary"
+LAST	P31	Q1377575	S143	Q328	S854	"https://en.wikipedia.org/wiki/Entrance_Island_Wildlife_Sanctuary?action=edit&redlink=1"
+LAST	P17	Q668
+LAST	P131	Q40888	S143	Q328	S854	"https://en.wikipedia.org/wiki/Entrance_Island_Wildlife_Sanctuary?action=edit&redlink=1"
+LAST	Senwiki	"Entrance Island Wildlife Sanctuary"
+CREATE
+LAST	Len	"Flat Island Wildlife Sanctuary"
+LAST	P31	Q1377575	S143	Q328	S854	"https://en.wikipedia.org/wiki/Flat_Island_Wildlife_Sanctuary"
+LAST	P17	Q668
+LAST	P131	Q40888	S143	Q328	S854	"https://en.wikipedia.org/wiki/Flat_Island_Wildlife_Sanctuary"
+LAST	Senwiki	"Flat Island Wildlife Sanctuary"
+CREATE
+LAST	Len	"Gander Island Wildlife Sanctuary"
+LAST	P31	Q1377575	S143	Q328	S854	"https://en.wikipedia.org/wiki/Gander_Island_Wildlife_Sanctuary?action=edit&redlink=1"
+LAST	P17	Q668
+LAST	P131	Q40888	S143	Q328	S854	"https://en.wikipedia.org/wiki/Gander_Island_Wildlife_Sanctuary?action=edit&redlink=1"
+LAST	Senwiki	"Gander Island Wildlife Sanctuary"
+CREATE
+LAST	Len	"Girjan Island Wildlife Sanctuary"
+LAST	P31	Q1377575	S143	Q328	S854	"https://en.wikipedia.org/wiki/Girjan_Island_Wildlife_Sanctuary?action=edit&redlink=1"
+LAST	P17	Q668
+LAST	P131	Q40888	S143	Q328	S854	"https://en.wikipedia.org/wiki/Girjan_Island_Wildlife_Sanctuary?action=edit&redlink=1"
+LAST	Senwiki	"Girjan Island Wildlife Sanctuary"
+CREATE
+LAST	Len	"Goose Island Wildlife Sanctuary"
+LAST	P31	Q1377575	S143	Q328	S854	"https://en.wikipedia.org/wiki/Goose_Island_Wildlife_Sanctuary?action=edit&redlink=1"
+LAST	P17	Q668
+LAST	P131	Q40888	S143	Q328	S854	"https://en.wikipedia.org/wiki/Goose_Island_Wildlife_Sanctuary?action=edit&redlink=1"
+LAST	Senwiki	"Goose Island Wildlife Sanctuary"
+CREATE
+LAST	Len	"Hump Island Wildlife Sanctuary"
+LAST	P31	Q1377575	S143	Q328	S854	"https://en.wikipedia.org/wiki/Hump_Island_Wildlife_Sanctuary?action=edit&redlink=1"
+LAST	P17	Q668
+LAST	P131	Q40888	S143	Q328	S854	"https://en.wikipedia.org/wiki/Hump_Island_Wildlife_Sanctuary?action=edit&redlink=1"
+LAST	Senwiki	"Hump Island Wildlife Sanctuary"
+CREATE
+LAST	Len	"Interview Island Wildlife Sanctuary"
+LAST	P31	Q1377575	S143	Q328	S854	"https://en.wikipedia.org/wiki/Interview_Island"
+LAST	P17	Q668
+LAST	P131	Q40888	S143	Q328	S854	"https://en.wikipedia.org/wiki/Interview_Island"
+LAST	Senwiki	"Interview Island"
+CREATE
+LAST	Len	"James Island Wildlife Sanctuary"
+LAST	P31	Q1377575	S143	Q328	S854	"https://en.wikipedia.org/wiki/James_Island_Wildlife_Sanctuary?action=edit&redlink=1"
+LAST	P17	Q668
+LAST	P131	Q40888	S143	Q328	S854	"https://en.wikipedia.org/wiki/James_Island_Wildlife_Sanctuary?action=edit&redlink=1"
+LAST	Senwiki	"James Island Wildlife Sanctuary"
+CREATE
+LAST	Len	"Jungle Island Wildlife Sanctuary"
+LAST	P31	Q1377575	S143	Q328	S854	"https://en.wikipedia.org/wiki/Jungle_Island_Wildlife_Sanctuary?action=edit&redlink=1"
+LAST	P17	Q668
+LAST	P131	Q40888	S143	Q328	S854	"https://en.wikipedia.org/wiki/Jungle_Island_Wildlife_Sanctuary?action=edit&redlink=1"
+LAST	Senwiki	"Jungle Island Wildlife Sanctuary"
+CREATE
+LAST	Len	"Kyd Island Wildlife Sanctuary"
+LAST	P31	Q1377575	S143	Q328	S854	"https://en.wikipedia.org/wiki/Kyd_Island_Wildlife_Sanctuary?action=edit&redlink=1"
+LAST	P17	Q668
+LAST	P131	Q40888	S143	Q328	S854	"https://en.wikipedia.org/wiki/Kyd_Island_Wildlife_Sanctuary?action=edit&redlink=1"
+LAST	Senwiki	"Kyd Island Wildlife Sanctuary"
+CREATE
+LAST	Len	"Landfall Island Wildlife Sanctuary"
+LAST	P31	Q1377575	S143	Q328	S854	"https://en.wikipedia.org/wiki/Landfall_Island_Wildlife_Sanctuary?action=edit&redlink=1"
+LAST	P17	Q668
+LAST	P131	Q40888	S143	Q328	S854	"https://en.wikipedia.org/wiki/Landfall_Island_Wildlife_Sanctuary?action=edit&redlink=1"
+LAST	Senwiki	"Landfall Island Wildlife Sanctuary"
+CREATE
+LAST	Len	"Latouche Island Wildlife Sanctuary"
+LAST	P31	Q1377575	S143	Q328	S854	"https://en.wikipedia.org/wiki/Latouche_Island_Wildlife_Sanctuary?action=edit&redlink=1"
+LAST	P17	Q668
+LAST	P131	Q40888	S143	Q328	S854	"https://en.wikipedia.org/wiki/Latouche_Island_Wildlife_Sanctuary?action=edit&redlink=1"
+LAST	Senwiki	"Latouche Island Wildlife Sanctuary"
+CREATE
+LAST	Len	"Lohabarrack Wildlife Sanctuary"
+LAST	P31	Q1377575	S143	Q328	S854	"https://en.wikipedia.org/wiki/Lohabarrack_Wildlife_Sanctuary?action=edit&redlink=1"
+LAST	P17	Q668
+LAST	P131	Q40888	S143	Q328	S854	"https://en.wikipedia.org/wiki/Lohabarrack_Wildlife_Sanctuary?action=edit&redlink=1"
+LAST	Senwiki	"Lohabarrack Wildlife Sanctuary"
+CREATE
+LAST	Len	"Mangrove Island Wildlife Sanctuary"
+LAST	P31	Q1377575	S143	Q328	S854	"https://en.wikipedia.org/wiki/Mangrove_Island_Wildlife_Sanctuary?action=edit&redlink=1"
+LAST	P17	Q668
+LAST	P131	Q40888	S143	Q328	S854	"https://en.wikipedia.org/wiki/Mangrove_Island_Wildlife_Sanctuary?action=edit&redlink=1"
+LAST	Senwiki	"Mangrove Island Wildlife Sanctuary"
+CREATE
+LAST	Len	"Mask Island Wildlife Sanctuary"
+LAST	P31	Q1377575	S143	Q328	S854	"https://en.wikipedia.org/wiki/Mask_Island_Wildlife_Sanctuary?action=edit&redlink=1"
+LAST	P17	Q668
+LAST	P131	Q40888	S143	Q328	S854	"https://en.wikipedia.org/wiki/Mask_Island_Wildlife_Sanctuary?action=edit&redlink=1"
+LAST	Senwiki	"Mask Island Wildlife Sanctuary"
+CREATE
+LAST	Len	"Mayo Island Wildlife Sanctuary"
+LAST	P31	Q1377575	S143	Q328	S854	"https://en.wikipedia.org/wiki/Mayo_Island_Wildlife_Sanctuary?action=edit&redlink=1"
+LAST	P17	Q668
+LAST	P131	Q40888	S143	Q328	S854	"https://en.wikipedia.org/wiki/Mayo_Island_Wildlife_Sanctuary?action=edit&redlink=1"
+LAST	Senwiki	"Mayo Island Wildlife Sanctuary"
+CREATE
+LAST	Len	"Megapode Island Wildlife Sanctuary"
+LAST	P31	Q1377575	S143	Q328	S854	"https://en.wikipedia.org/wiki/Megapode_Island_Wildlife_Sanctuary?action=edit&redlink=1"
+LAST	P17	Q668
+LAST	P131	Q40888	S143	Q328	S854	"https://en.wikipedia.org/wiki/Megapode_Island_Wildlife_Sanctuary?action=edit&redlink=1"
+LAST	Senwiki	"Megapode Island Wildlife Sanctuary"
+CREATE
+LAST	Len	"Montogemery Island Wildlife Sanctuary"
+LAST	P31	Q1377575	S143	Q328	S854	"https://en.wikipedia.org/wiki/Montogemery_Island_Wildlife_Sanctuary?action=edit&redlink=1"
+LAST	P17	Q668
+LAST	P131	Q40888	S143	Q328	S854	"https://en.wikipedia.org/wiki/Montogemery_Island_Wildlife_Sanctuary?action=edit&redlink=1"
+LAST	Senwiki	"Montogemery Island Wildlife Sanctuary"
+CREATE
+LAST	Len	"Narcondam Island Wildlife Sanctuary"
+LAST	P31	Q1377575	S143	Q328	S854	"https://en.wikipedia.org/wiki/Narcondam_Island"
+LAST	P17	Q668
+LAST	P131	Q40888	S143	Q328	S854	"https://en.wikipedia.org/wiki/Narcondam_Island"
+LAST	Senwiki	"Narcondam Island"
+CREATE
+LAST	Len	"North Island Wildlife Sanctuary"
+LAST	P31	Q1377575	S143	Q328	S854	"https://en.wikipedia.org/wiki/North_Island_Wildlife_Sanctuary?action=edit&redlink=1"
+LAST	P17	Q668
+LAST	P131	Q40888	S143	Q328	S854	"https://en.wikipedia.org/wiki/North_Island_Wildlife_Sanctuary?action=edit&redlink=1"
+LAST	Senwiki	"North Island Wildlife Sanctuary"
+CREATE
+LAST	Len	"North Reef Island Wildlife Sanctuary"
+LAST	P31	Q1377575	S143	Q328	S854	"https://en.wikipedia.org/wiki/North_Reef_Island_Wildlife_Sanctuary?action=edit&redlink=1"
+LAST	P17	Q668
+LAST	P131	Q40888	S143	Q328	S854	"https://en.wikipedia.org/wiki/North_Reef_Island_Wildlife_Sanctuary?action=edit&redlink=1"
+LAST	Senwiki	"North Reef Island Wildlife Sanctuary"
+CREATE
+LAST	Len	"Oliver Island Wildlife Sanctuary"
+LAST	P31	Q1377575	S143	Q328	S854	"https://en.wikipedia.org/wiki/Oliver_Island_Wildlife_Sanctuary?action=edit&redlink=1"
+LAST	P17	Q668
+LAST	P131	Q40888	S143	Q328	S854	"https://en.wikipedia.org/wiki/Oliver_Island_Wildlife_Sanctuary?action=edit&redlink=1"
+LAST	Senwiki	"Oliver Island Wildlife Sanctuary"
+CREATE
+LAST	Len	"Orchid Island Wildlife Sanctuary"
+LAST	P31	Q1377575	S143	Q328	S854	"https://en.wikipedia.org/wiki/Orchid_Island_Wildlife_Sanctuary?action=edit&redlink=1"
+LAST	P17	Q668
+LAST	P131	Q40888	S143	Q328	S854	"https://en.wikipedia.org/wiki/Orchid_Island_Wildlife_Sanctuary?action=edit&redlink=1"
+LAST	Senwiki	"Orchid Island Wildlife Sanctuary"
+CREATE
+LAST	Len	"Ox Island Wildlife Sanctuary"
+LAST	P31	Q1377575	S143	Q328	S854	"https://en.wikipedia.org/wiki/Ox_Island_Wildlife_Sanctuary?action=edit&redlink=1"
+LAST	P17	Q668
+LAST	P131	Q40888	S143	Q328	S854	"https://en.wikipedia.org/wiki/Ox_Island_Wildlife_Sanctuary?action=edit&redlink=1"
+LAST	Senwiki	"Ox Island Wildlife Sanctuary"
+CREATE
+LAST	Len	"Oyster Island‑I Wildlife Sanctuary"
+LAST	P31	Q1377575	S143	Q328	S854	"https://en.wikipedia.org/wiki/Oyster_Island‑I_Wildlife_Sanctuary?action=edit&redlink=1"
+LAST	P17	Q668
+LAST	P131	Q40888	S143	Q328	S854	"https://en.wikipedia.org/wiki/Oyster_Island‑I_Wildlife_Sanctuary?action=edit&redlink=1"
+LAST	Senwiki	"Oyster Island‑I Wildlife Sanctuary"
+CREATE
+LAST	Len	"Oyster Island‑II Wildlife Sanctuary"
+LAST	P31	Q1377575	S143	Q328	S854	"https://en.wikipedia.org/wiki/Oyster_Island‑II_Wildlife_Sanctuary?action=edit&redlink=1"
+LAST	P17	Q668
+LAST	P131	Q40888	S143	Q328	S854	"https://en.wikipedia.org/wiki/Oyster_Island‑II_Wildlife_Sanctuary?action=edit&redlink=1"
+LAST	Senwiki	"Oyster Island‑II Wildlife Sanctuary"
+CREATE
+LAST	Len	"Paget Island Wildlife Sanctuary"
+LAST	P31	Q1377575	S143	Q328	S854	"https://en.wikipedia.org/wiki/Paget_Island_Wildlife_Sanctuary?action=edit&redlink=1"
+LAST	P17	Q668
+LAST	P131	Q40888	S143	Q328	S854	"https://en.wikipedia.org/wiki/Paget_Island_Wildlife_Sanctuary?action=edit&redlink=1"
+LAST	Senwiki	"Paget Island Wildlife Sanctuary"
+CREATE
+LAST	Len	"Parkinson Island Wildlife Sanctuary"
+LAST	P31	Q1377575	S143	Q328	S854	"https://en.wikipedia.org/wiki/Parkinson_Island_Wildlife_Sanctuary?action=edit&redlink=1"
+LAST	P17	Q668
+LAST	P131	Q40888	S143	Q328	S854	"https://en.wikipedia.org/wiki/Parkinson_Island_Wildlife_Sanctuary?action=edit&redlink=1"
+LAST	Senwiki	"Parkinson Island Wildlife Sanctuary"
+CREATE
+LAST	Len	"Passage Island Wildlife Sanctuary"
+LAST	P31	Q1377575	S143	Q328	S854	"https://en.wikipedia.org/wiki/Passage_Island_Wildlife_Sanctuary?action=edit&redlink=1"
+LAST	P17	Q668
+LAST	P131	Q40888	S143	Q328	S854	"https://en.wikipedia.org/wiki/Passage_Island_Wildlife_Sanctuary?action=edit&redlink=1"
+LAST	Senwiki	"Passage Island Wildlife Sanctuary"
+CREATE
+LAST	Len	"Patric Island Wildlife Sanctuary"
+LAST	P31	Q1377575	S143	Q328	S854	"https://en.wikipedia.org/wiki/Patric_Island_Wildlife_Sanctuary?action=edit&redlink=1"
+LAST	P17	Q668
+LAST	P131	Q40888	S143	Q328	S854	"https://en.wikipedia.org/wiki/Patric_Island_Wildlife_Sanctuary?action=edit&redlink=1"
+LAST	Senwiki	"Patric Island Wildlife Sanctuary"
+CREATE
+LAST	Len	"Peacock Island Wildlife Sanctuary"
+LAST	P31	Q1377575	S143	Q328	S854	"https://en.wikipedia.org/wiki/Peacock_Island_Wildlife_Sanctuary?action=edit&redlink=1"
+LAST	P17	Q668
+LAST	P131	Q40888	S143	Q328	S854	"https://en.wikipedia.org/wiki/Peacock_Island_Wildlife_Sanctuary?action=edit&redlink=1"
+LAST	Senwiki	"Peacock Island Wildlife Sanctuary"
+CREATE
+LAST	Len	"Pitman Island Wildlife Sanctuary"
+LAST	P31	Q1377575	S143	Q328	S854	"https://en.wikipedia.org/wiki/Pitman_Island_Wildlife_Sanctuary?action=edit&redlink=1"
+LAST	P17	Q668
+LAST	P131	Q40888	S143	Q328	S854	"https://en.wikipedia.org/wiki/Pitman_Island_Wildlife_Sanctuary?action=edit&redlink=1"
+LAST	Senwiki	"Pitman Island Wildlife Sanctuary"
+CREATE
+LAST	Len	"Point Island Wildlife Sanctuary"
+LAST	P31	Q1377575	S143	Q328	S854	"https://en.wikipedia.org/wiki/Point_Island_Wildlife_Sanctuary?action=edit&redlink=1"
+LAST	P17	Q668
+LAST	P131	Q40888	S143	Q328	S854	"https://en.wikipedia.org/wiki/Point_Island_Wildlife_Sanctuary?action=edit&redlink=1"
+LAST	Senwiki	"Point Island Wildlife Sanctuary"
+CREATE
+LAST	Len	"Potanma Islands Wildlife Sanctuary"
+LAST	P31	Q1377575	S143	Q328	S854	"https://en.wikipedia.org/wiki/Potanma_Islands_Wildlife_Sanctuary?action=edit&redlink=1"
+LAST	P17	Q668
+LAST	P131	Q40888	S143	Q328	S854	"https://en.wikipedia.org/wiki/Potanma_Islands_Wildlife_Sanctuary?action=edit&redlink=1"
+LAST	Senwiki	"Potanma Islands Wildlife Sanctuary"
+CREATE
+LAST	Len	"Ranger Island Wildlife Sanctuary"
+LAST	P31	Q1377575	S143	Q328	S854	"https://en.wikipedia.org/wiki/Ranger_Island_Wildlife_Sanctuary?action=edit&redlink=1"
+LAST	P17	Q668
+LAST	P131	Q40888	S143	Q328	S854	"https://en.wikipedia.org/wiki/Ranger_Island_Wildlife_Sanctuary?action=edit&redlink=1"
+LAST	Senwiki	"Ranger Island Wildlife Sanctuary"
+CREATE
+LAST	Len	"Reef Island Wildlife Sanctuary"
+LAST	P31	Q1377575	S143	Q328	S854	"https://en.wikipedia.org/wiki/Reef_Island_Wildlife_Sanctuary?action=edit&redlink=1"
+LAST	P17	Q668
+LAST	P131	Q40888	S143	Q328	S854	"https://en.wikipedia.org/wiki/Reef_Island_Wildlife_Sanctuary?action=edit&redlink=1"
+LAST	Senwiki	"Reef Island Wildlife Sanctuary"
+CREATE
+LAST	Len	"Roper Island Wildlife Sanctuary"
+LAST	P31	Q1377575	S143	Q328	S854	"https://en.wikipedia.org/wiki/Roper_Island_Wildlife_Sanctuary?action=edit&redlink=1"
+LAST	P17	Q668
+LAST	P131	Q40888	S143	Q328	S854	"https://en.wikipedia.org/wiki/Roper_Island_Wildlife_Sanctuary?action=edit&redlink=1"
+LAST	Senwiki	"Roper Island Wildlife Sanctuary"
+CREATE
+LAST	Len	"Ross Island Wildlife Sanctuary"
+LAST	P31	Q1377575	S143	Q328	S854	"https://en.wikipedia.org/wiki/Ross_Island_Wildlife_Sanctuary?action=edit&redlink=1"
+LAST	P17	Q668
+LAST	P131	Q40888	S143	Q328	S854	"https://en.wikipedia.org/wiki/Ross_Island_Wildlife_Sanctuary?action=edit&redlink=1"
+LAST	Senwiki	"Ross Island Wildlife Sanctuary"
+CREATE
+LAST	Len	"Rowe Island Wildlife Sanctuary"
+LAST	P31	Q1377575	S143	Q328	S854	"https://en.wikipedia.org/wiki/Rowe_Island_Wildlife_Sanctuary?action=edit&redlink=1"
+LAST	P17	Q668
+LAST	P131	Q40888	S143	Q328	S854	"https://en.wikipedia.org/wiki/Rowe_Island_Wildlife_Sanctuary?action=edit&redlink=1"
+LAST	Senwiki	"Rowe Island Wildlife Sanctuary"
+CREATE
+LAST	Len	"Sandy Island Wildlife Sanctuary"
+LAST	P31	Q1377575	S143	Q328	S854	"https://en.wikipedia.org/wiki/Sandy_Island_Wildlife_Sanctuary?action=edit&redlink=1"
+LAST	P17	Q668
+LAST	P131	Q40888	S143	Q328	S854	"https://en.wikipedia.org/wiki/Sandy_Island_Wildlife_Sanctuary?action=edit&redlink=1"
+LAST	Senwiki	"Sandy Island Wildlife Sanctuary"
+CREATE
+LAST	Len	"Sea Serpent Island Wildlife Sanctuary"
+LAST	P31	Q1377575	S143	Q328	S854	"https://en.wikipedia.org/wiki/Sea_Serpent_Island_Wildlife_Sanctuary?action=edit&redlink=1"
+LAST	P17	Q668
+LAST	P131	Q40888	S143	Q328	S854	"https://en.wikipedia.org/wiki/Sea_Serpent_Island_Wildlife_Sanctuary?action=edit&redlink=1"
+LAST	Senwiki	"Sea Serpent Island Wildlife Sanctuary"
+CREATE
+LAST	Len	"Shark Island Wildlife Sanctuary"
+LAST	P31	Q1377575	S143	Q328	S854	"https://en.wikipedia.org/wiki/Shark_Island_Wildlife_Sanctuary?action=edit&redlink=1"
+LAST	P17	Q668
+LAST	P131	Q40888	S143	Q328	S854	"https://en.wikipedia.org/wiki/Shark_Island_Wildlife_Sanctuary?action=edit&redlink=1"
+LAST	Senwiki	"Shark Island Wildlife Sanctuary"
+CREATE
+LAST	Len	"Shearme Island Wildlife Sanctuary"
+LAST	P31	Q1377575	S143	Q328	S854	"https://en.wikipedia.org/wiki/Shearme_Island_Wildlife_Sanctuary?action=edit&redlink=1"
+LAST	P17	Q668
+LAST	P131	Q40888	S143	Q328	S854	"https://en.wikipedia.org/wiki/Shearme_Island_Wildlife_Sanctuary?action=edit&redlink=1"
+LAST	Senwiki	"Shearme Island Wildlife Sanctuary"
+CREATE
+LAST	Len	"Sir Hugh Rose Island Wildlife Sanctuary"
+LAST	P31	Q1377575	S143	Q328	S854	"https://en.wikipedia.org/wiki/Sir_Hugh_Rose_Island_Wildlife_Sanctuary?action=edit&redlink=1"
+LAST	P17	Q668
+LAST	P131	Q40888	S143	Q328	S854	"https://en.wikipedia.org/wiki/Sir_Hugh_Rose_Island_Wildlife_Sanctuary?action=edit&redlink=1"
+LAST	Senwiki	"Sir Hugh Rose Island Wildlife Sanctuary"
+CREATE
+LAST	Len	"Sisters Island Wildlife Sanctuary"
+LAST	P31	Q1377575	S143	Q328	S854	"https://en.wikipedia.org/wiki/Sisters_Island_Wildlife_Sanctuary?action=edit&redlink=1"
+LAST	P17	Q668
+LAST	P131	Q40888	S143	Q328	S854	"https://en.wikipedia.org/wiki/Sisters_Island_Wildlife_Sanctuary?action=edit&redlink=1"
+LAST	Senwiki	"Sisters Island Wildlife Sanctuary"
+CREATE
+LAST	Len	"Snake Island‑I Wildlife Sanctuary"
+LAST	P31	Q1377575	S143	Q328	S854	"https://en.wikipedia.org/wiki/Snake_Island‑I_Wildlife_Sanctuary?action=edit&redlink=1"
+LAST	P17	Q668
+LAST	P131	Q40888	S143	Q328	S854	"https://en.wikipedia.org/wiki/Snake_Island‑I_Wildlife_Sanctuary?action=edit&redlink=1"
+LAST	Senwiki	"Snake Island‑I Wildlife Sanctuary"
+CREATE
+LAST	Len	"Snake Island‑II Wildlife Sanctuary"
+LAST	P31	Q1377575	S143	Q328	S854	"https://en.wikipedia.org/wiki/Snake_Island‑II_Wildlife_Sanctuary?action=edit&redlink=1"
+LAST	P17	Q668
+LAST	P131	Q40888	S143	Q328	S854	"https://en.wikipedia.org/wiki/Snake_Island‑II_Wildlife_Sanctuary?action=edit&redlink=1"
+LAST	Senwiki	"Snake Island‑II Wildlife Sanctuary"
+CREATE
+LAST	Len	"South Reef Island Wildlife Sanctuary"
+LAST	P31	Q1377575	S143	Q328	S854	"https://en.wikipedia.org/wiki/South_Reef_Island_Wildlife_Sanctuary?action=edit&redlink=1"
+LAST	P17	Q668
+LAST	P131	Q40888	S143	Q328	S854	"https://en.wikipedia.org/wiki/South_Reef_Island_Wildlife_Sanctuary?action=edit&redlink=1"
+LAST	Senwiki	"South Reef Island Wildlife Sanctuary"
+CREATE
+LAST	Len	"Spike Island‑I Wildlife Sanctuary"
+LAST	P31	Q1377575	S143	Q328	S854	"https://en.wikipedia.org/wiki/Spike_Island‑I_Wildlife_Sanctuary?action=edit&redlink=1"
+LAST	P17	Q668
+LAST	P131	Q40888	S143	Q328	S854	"https://en.wikipedia.org/wiki/Spike_Island‑I_Wildlife_Sanctuary?action=edit&redlink=1"
+LAST	Senwiki	"Spike Island‑I Wildlife Sanctuary"
+CREATE
+LAST	Len	"Spike Island‑II Wildlife Sanctuary"
+LAST	P31	Q1377575	S143	Q328	S854	"https://en.wikipedia.org/wiki/Spike_Island‑II_Wildlife_Sanctuary?action=edit&redlink=1"
+LAST	P17	Q668
+LAST	P131	Q40888	S143	Q328	S854	"https://en.wikipedia.org/wiki/Spike_Island‑II_Wildlife_Sanctuary?action=edit&redlink=1"
+LAST	Senwiki	"Spike Island‑II Wildlife Sanctuary"
+CREATE
+LAST	Len	"Stoat Island Wildlife Sanctuary"
+LAST	P31	Q1377575	S143	Q328	S854	"https://en.wikipedia.org/wiki/Stoat_Island_Wildlife_Sanctuary?action=edit&redlink=1"
+LAST	P17	Q668
+LAST	P131	Q40888	S143	Q328	S854	"https://en.wikipedia.org/wiki/Stoat_Island_Wildlife_Sanctuary?action=edit&redlink=1"
+LAST	Senwiki	"Stoat Island Wildlife Sanctuary"
+CREATE
+LAST	Len	"Surat Island Wildlife Sanctuary"
+LAST	P31	Q1377575	S143	Q328	S854	"https://en.wikipedia.org/wiki/Surat_Island_Wildlife_Sanctuary?action=edit&redlink=1"
+LAST	P17	Q668
+LAST	P131	Q40888	S143	Q328	S854	"https://en.wikipedia.org/wiki/Surat_Island_Wildlife_Sanctuary?action=edit&redlink=1"
+LAST	Senwiki	"Surat Island Wildlife Sanctuary"
+CREATE
+LAST	Len	"Swamp Island Wildlife Sanctuary"
+LAST	P31	Q1377575	S143	Q328	S854	"https://en.wikipedia.org/wiki/Swamp_Island_Wildlife_Sanctuary?action=edit&redlink=1"
+LAST	P17	Q668
+LAST	P131	Q40888	S143	Q328	S854	"https://en.wikipedia.org/wiki/Swamp_Island_Wildlife_Sanctuary?action=edit&redlink=1"
+LAST	Senwiki	"Swamp Island Wildlife Sanctuary"
+CREATE
+LAST	Len	"Table (Delgarno) Island Wildlife Sanctuary"
+LAST	P31	Q1377575	S143	Q328	S854	"https://en.wikipedia.org/wiki/Table_(Delgarno)_Island_Wildlife_Sanctuary?action=edit&redlink=1"
+LAST	P17	Q668
+LAST	P131	Q40888	S143	Q328	S854	"https://en.wikipedia.org/wiki/Table_(Delgarno)_Island_Wildlife_Sanctuary?action=edit&redlink=1"
+LAST	Senwiki	"Table (Delgarno) Island Wildlife Sanctuary"
+CREATE
+LAST	Len	"Table (Excelsior) Island Wildlife Sanctuary"
+LAST	P31	Q1377575	S143	Q328	S854	"https://en.wikipedia.org/wiki/Table_(Excelsior)_Island_Wildlife_Sanctuary?action=edit&redlink=1"
+LAST	P17	Q668
+LAST	P131	Q40888	S143	Q328	S854	"https://en.wikipedia.org/wiki/Table_(Excelsior)_Island_Wildlife_Sanctuary?action=edit&redlink=1"
+LAST	Senwiki	"Table (Excelsior) Island Wildlife Sanctuary"
+CREATE
+LAST	Len	"Talabaicha Island Wildlife Sanctuary"
+LAST	P31	Q1377575	S143	Q328	S854	"https://en.wikipedia.org/wiki/Talabaicha_Island_Wildlife_Sanctuary?action=edit&redlink=1"
+LAST	P17	Q668
+LAST	P131	Q40888	S143	Q328	S854	"https://en.wikipedia.org/wiki/Talabaicha_Island_Wildlife_Sanctuary?action=edit&redlink=1"
+LAST	Senwiki	"Talabaicha Island Wildlife Sanctuary"
+CREATE
+LAST	Len	"Temple Island Wildlife Sanctuary"
+LAST	P31	Q1377575	S143	Q328	S854	"https://en.wikipedia.org/wiki/Temple_Island_Wildlife_Sanctuary?action=edit&redlink=1"
+LAST	P17	Q668
+LAST	P131	Q40888	S143	Q328	S854	"https://en.wikipedia.org/wiki/Temple_Island_Wildlife_Sanctuary?action=edit&redlink=1"
+LAST	Senwiki	"Temple Island Wildlife Sanctuary"
+CREATE
+LAST	Len	"Tillongchang Island Wildlife Sanctuary"
+LAST	P31	Q1377575	S143	Q328	S854	"https://en.wikipedia.org/wiki/Tillongchang_Island_Wildlife_Sanctuary?action=edit&redlink=1"
+LAST	P17	Q668
+LAST	P131	Q40888	S143	Q328	S854	"https://en.wikipedia.org/wiki/Tillongchang_Island_Wildlife_Sanctuary?action=edit&redlink=1"
+LAST	Senwiki	"Tillongchang Island Wildlife Sanctuary"
+CREATE
+LAST	Len	"Tree Island Wildlife Sanctuary"
+LAST	P31	Q1377575	S143	Q328	S854	"https://en.wikipedia.org/wiki/Tree_Island_Wildlife_Sanctuary?action=edit&redlink=1"
+LAST	P17	Q668
+LAST	P131	Q40888	S143	Q328	S854	"https://en.wikipedia.org/wiki/Tree_Island_Wildlife_Sanctuary?action=edit&redlink=1"
+LAST	Senwiki	"Tree Island Wildlife Sanctuary"
+CREATE
+LAST	Len	"Trilby Island Wildlife Sanctuary"
+LAST	P31	Q1377575	S143	Q328	S854	"https://en.wikipedia.org/wiki/Trilby_Island_Wildlife_Sanctuary?action=edit&redlink=1"
+LAST	P17	Q668
+LAST	P131	Q40888	S143	Q328	S854	"https://en.wikipedia.org/wiki/Trilby_Island_Wildlife_Sanctuary?action=edit&redlink=1"
+LAST	Senwiki	"Trilby Island Wildlife Sanctuary"
+CREATE
+LAST	Len	"Tuft Island Wildlife Sanctuary"
+LAST	P31	Q1377575	S143	Q328	S854	"https://en.wikipedia.org/wiki/Tuft_Island_Wildlife_Sanctuary?action=edit&redlink=1"
+LAST	P17	Q668
+LAST	P131	Q40888	S143	Q328	S854	"https://en.wikipedia.org/wiki/Tuft_Island_Wildlife_Sanctuary?action=edit&redlink=1"
+LAST	Senwiki	"Tuft Island Wildlife Sanctuary"
+CREATE
+LAST	Len	"Turtle Islands Wildlife Sanctuary"
+LAST	P31	Q1377575	S143	Q328	S854	"https://en.wikipedia.org/wiki/Turtle_Islands_Wildlife_Sanctuary"
+LAST	P17	Q668
+LAST	P131	Q40888	S143	Q328	S854	"https://en.wikipedia.org/wiki/Turtle_Islands_Wildlife_Sanctuary"
+LAST	Senwiki	"Turtle Islands Wildlife Sanctuary"
+CREATE
+LAST	Len	"West Island Wildlife Sanctuary"
+LAST	P31	Q1377575	S143	Q328	S854	"https://en.wikipedia.org/wiki/West_Island_Wildlife_Sanctuary?action=edit&redlink=1"
+LAST	P17	Q668
+LAST	P131	Q40888	S143	Q328	S854	"https://en.wikipedia.org/wiki/West_Island_Wildlife_Sanctuary?action=edit&redlink=1"
+LAST	Senwiki	"West Island Wildlife Sanctuary"
+CREATE
+LAST	Len	"Wharf Island Wildlife Sanctuary"
+LAST	P31	Q1377575	S143	Q328	S854	"https://en.wikipedia.org/wiki/Wharf_Island_Wildlife_Sanctuary?action=edit&redlink=1"
+LAST	P17	Q668
+LAST	P131	Q40888	S143	Q328	S854	"https://en.wikipedia.org/wiki/Wharf_Island_Wildlife_Sanctuary?action=edit&redlink=1"
+LAST	Senwiki	"Wharf Island Wildlife Sanctuary"
+CREATE
+LAST	Len	"White Cliff Island Wildlife Sanctuary"
+LAST	P31	Q1377575	S143	Q328	S854	"https://en.wikipedia.org/wiki/White_Cliff_Island_Wildlife_Sanctuary?action=edit&redlink=1"
+LAST	P17	Q668
+LAST	P131	Q40888	S143	Q328	S854	"https://en.wikipedia.org/wiki/White_Cliff_Island_Wildlife_Sanctuary?action=edit&redlink=1"
+LAST	Senwiki	"White Cliff Island Wildlife Sanctuary"
+CREATE
+LAST	Len	"Kanwarjheel Wildlife Sanctuary"
+LAST	P31	Q1377575	S143	Q328	S854	"https://en.wikipedia.org/wiki/Kanwarjheel_Wildlife_Sanctuary"
+LAST	P17	Q668
+LAST	P131	Q1165	S143	Q328	S854	"https://en.wikipedia.org/wiki/Kanwarjheel_Wildlife_Sanctuary"
+LAST	Senwiki	"Kanwarjheel Wildlife Sanctuary"
+CREATE
+LAST	Len	"City Birds Wildlife Sanctuary"
+LAST	P31	Q2714144	S143	Q328	S854	"https://en.wikipedia.org/wiki/Parrot_Bird_Sanctuary,_Chandigarh"
+LAST	P17	Q668
+LAST	P131	Q43433	S143	Q328	S854	"https://en.wikipedia.org/wiki/Parrot_Bird_Sanctuary,_Chandigarh"
+LAST	Senwiki	"Parrot Bird Sanctuary, Chandigarh"
+CREATE
+LAST	Len	"Dadra and Nagar Haveli Wildlife Sanctuary"
+LAST	P31	Q1377575	S143	Q328	S854	"https://en.wikipedia.org/wiki/Dadra_and_Nagar_Haveli_Wildlife_Sanctuary"
+LAST	P17	Q668
+LAST	P131	Q77997266	S143	Q328	S854	"https://en.wikipedia.org/wiki/Dadra_and_Nagar_Haveli_Wildlife_Sanctuary"
+LAST	Senwiki	"Dadra and Nagar Haveli Wildlife Sanctuary"
+CREATE
+LAST	Len	"Fudam Bird Sanctuary"
+LAST	P31	Q2714144	S143	Q328	S854	"https://en.wikipedia.org/wiki/Fudam_Bird_Sanctuary"
+LAST	P17	Q668
+LAST	P131	Q77997266	S143	Q328	S854	"https://en.wikipedia.org/wiki/Fudam_Bird_Sanctuary"
+LAST	Senwiki	"Fudam Bird Sanctuary"
+CREATE
+LAST	Len	"Kais Wildlife Sanctuary"
+LAST	P31	Q1377575	S143	Q328	S854	"https://en.wikipedia.org/wiki/Kais_Wildlife_Sanctuary?action=edit&redlink=1"
+LAST	P17	Q668
+LAST	P131	Q1177	S143	Q328	S854	"https://en.wikipedia.org/wiki/Kais_Wildlife_Sanctuary?action=edit&redlink=1"
+LAST	Senwiki	"Kais Wildlife Sanctuary"
+CREATE
+LAST	Len	"Khokhan Wildlife Sanctuary"
+LAST	P31	Q1377575	S143	Q328	S854	"https://en.wikipedia.org/wiki/Khokhan_Wildlife_Sanctuary?action=edit&redlink=1"
+LAST	P17	Q668
+LAST	P131	Q1177	S143	Q328	S854	"https://en.wikipedia.org/wiki/Khokhan_Wildlife_Sanctuary?action=edit&redlink=1"
+LAST	Senwiki	"Khokhan Wildlife Sanctuary"
+CREATE
+LAST	Len	"Lippa Asrang Wildlife Sanctuary"
+LAST	P31	Q1377575	S143	Q328	S854	"https://en.wikipedia.org/wiki/Lippa_Asrang_Wildlife_Sanctuary?action=edit&redlink=1"
+LAST	P17	Q668
+LAST	P131	Q1177	S143	Q328	S854	"https://en.wikipedia.org/wiki/Lippa_Asrang_Wildlife_Sanctuary?action=edit&redlink=1"
+LAST	Senwiki	"Lippa Asrang Wildlife Sanctuary"
+CREATE
+LAST	Len	"Sainj Wildlife Sanctuary"
+LAST	P31	Q1377575	S143	Q328	S854	"https://en.wikipedia.org/wiki/Sainj_Wildlife_Sanctuary?action=edit&redlink=1"
+LAST	P17	Q668
+LAST	P131	Q1177	S143	Q328	S854	"https://en.wikipedia.org/wiki/Sainj_Wildlife_Sanctuary?action=edit&redlink=1"
+LAST	Senwiki	"Sainj Wildlife Sanctuary"
+CREATE
+LAST	Len	"Shikari Devi Wildlife Sanctuary"
+LAST	P31	Q1377575	S143	Q328	S854	"https://en.wikipedia.org/wiki/Shikari_Devi_Wildlife_Sanctuary?action=edit&redlink=1"
+LAST	P17	Q668
+LAST	P131	Q1177	S143	Q328	S854	"https://en.wikipedia.org/wiki/Shikari_Devi_Wildlife_Sanctuary?action=edit&redlink=1"
+LAST	Senwiki	"Shikari Devi Wildlife Sanctuary"
+CREATE
+LAST	Len	"Shimla Wildlife Sanctuary"
+LAST	P31	Q1377575	S143	Q328	S854	"https://en.wikipedia.org/wiki/Shimla_Wildlife_Sanctuary?action=edit&redlink=1"
+LAST	P17	Q668
+LAST	P131	Q1177	S143	Q328	S854	"https://en.wikipedia.org/wiki/Shimla_Wildlife_Sanctuary?action=edit&redlink=1"
+LAST	Senwiki	"Shimla Wildlife Sanctuary"
+CREATE
+LAST	Len	"Tundah Wildlife Sanctuary"
+LAST	P31	Q1377575	S143	Q328	S854	"https://en.wikipedia.org/wiki/Tundah_Wildlife_Sanctuary?action=edit&redlink=1"
+LAST	P17	Q668
+LAST	P131	Q1177	S143	Q328	S854	"https://en.wikipedia.org/wiki/Tundah_Wildlife_Sanctuary?action=edit&redlink=1"
+LAST	Senwiki	"Tundah Wildlife Sanctuary"
+CREATE
+LAST	Len	"Jasrota Wildlife Sanctuary"
+LAST	P31	Q1377575	S143	Q328	S854	"https://en.wikipedia.org/wiki/Jasrota_Wildlife_Sanctuary?action=edit&redlink=1"
+LAST	P17	Q668
+LAST	P131	Q66278313	S143	Q328	S854	"https://en.wikipedia.org/wiki/Jasrota_Wildlife_Sanctuary?action=edit&redlink=1"
+LAST	Senwiki	"Jasrota Wildlife Sanctuary"
+CREATE
+LAST	Len	"Nandini Wildlife Sanctuary"
+LAST	P31	Q1377575	S143	Q328	S854	"https://en.wikipedia.org/wiki/Nandini_Wildlife_Sanctuary?action=edit&redlink=1"
+LAST	P17	Q668
+LAST	P131	Q66278313	S143	Q328	S854	"https://en.wikipedia.org/wiki/Nandini_Wildlife_Sanctuary?action=edit&redlink=1"
+LAST	Senwiki	"Nandini Wildlife Sanctuary"
+CREATE
+LAST	Len	"Ramnagar Rakha Wildlife Sanctuary"
+LAST	P31	Q1377575	S143	Q328	S854	"https://en.wikipedia.org/wiki/Ramnagar_Rakha_Wildlife_Sanctuary?action=edit&redlink=1"
+LAST	P17	Q668
+LAST	P131	Q66278313	S143	Q328	S854	"https://en.wikipedia.org/wiki/Ramnagar_Rakha_Wildlife_Sanctuary?action=edit&redlink=1"
+LAST	Senwiki	"Ramnagar Rakha Wildlife Sanctuary"
+CREATE
+LAST	Len	"Surinsar-Mansar Wildlife Sanctuary"
+LAST	P31	Q1377575	S143	Q328	S854	"https://en.wikipedia.org/wiki/Mansar-Surinsar_Wildlife_Sanctuary"
+LAST	P17	Q668
+LAST	P131	Q66278313	S143	Q328	S854	"https://en.wikipedia.org/wiki/Mansar-Surinsar_Wildlife_Sanctuary"
+LAST	Senwiki	"Mansar-Surinsar Wildlife Sanctuary"
+CREATE
+LAST	Len	"Tata Kutti Wildlife Sanctuary"
+LAST	P31	Q1377575	S143	Q328	S854	"https://en.wikipedia.org/wiki/Tratte_Koot"
+LAST	P17	Q668
+LAST	P131	Q66278313	S143	Q328	S854	"https://en.wikipedia.org/wiki/Tratte_Koot"
+LAST	Senwiki	"Tratte Koot"
+CREATE
+LAST	Len	"Gautam Budha Wildlife Sanctuary"
+LAST	P31	Q1377575	S143	Q328	S854	"https://en.wikipedia.org/wiki/Gautam_Budha_Wildlife_Sanctuary"
+LAST	P17	Q668
+LAST	P131	Q1184	S143	Q328	S854	"https://en.wikipedia.org/wiki/Gautam_Budha_Wildlife_Sanctuary"
+LAST	Senwiki	"Gautam Budha Wildlife Sanctuary"
+CREATE
+LAST	Len	"Parasnath Wildlife Sanctuary"
+LAST	P31	Q1377575	S143	Q328	S854	"https://en.wikipedia.org/wiki/Parasnath_Wildlife_Sanctuary?action=edit&redlink=1"
+LAST	P17	Q668
+LAST	P131	Q1184	S143	Q328	S854	"https://en.wikipedia.org/wiki/Parasnath_Wildlife_Sanctuary?action=edit&redlink=1"
+LAST	Senwiki	"Parasnath Wildlife Sanctuary"
+CREATE
+LAST	Len	"Udhwa Lake Wildlife Sanctuary"
+LAST	P31	Q1377575	S143	Q328	S854	"https://en.wikipedia.org/wiki/Udhwa_Lake_Wildlife_Sanctuary?action=edit&redlink=1"
+LAST	P17	Q668
+LAST	P131	Q1184	S143	Q328	S854	"https://en.wikipedia.org/wiki/Udhwa_Lake_Wildlife_Sanctuary?action=edit&redlink=1"
+LAST	Senwiki	"Udhwa Lake Wildlife Sanctuary"
+CREATE
+LAST	Len	"Adichunchunagiri Wildlife Sanctuary"
+LAST	P31	Q1377575	S143	Q328	S854	"https://en.wikipedia.org/wiki/Adichunchanagiri_Peacock_Wildlife_Sanctuary"
+LAST	P17	Q668
+LAST	P131	Q1185	S143	Q328	S854	"https://en.wikipedia.org/wiki/Adichunchanagiri_Peacock_Wildlife_Sanctuary"
+LAST	Senwiki	"Adichunchanagiri Peacock Wildlife Sanctuary"
+CREATE
+LAST	Len	"Arsikere Sloth Bear Wildlife Sanctuary"
+LAST	P31	Q1377575	S143	Q328	S854	"https://en.wikipedia.org/wiki/Arsikere_Sloth_Bear_Wildlife_Sanctuary?action=edit&redlink=1"
+LAST	P17	Q668
+LAST	P131	Q1185	S143	Q328	S854	"https://en.wikipedia.org/wiki/Arsikere_Sloth_Bear_Wildlife_Sanctuary?action=edit&redlink=1"
+LAST	Senwiki	"Arsikere Sloth Bear Wildlife Sanctuary"
+CREATE
+LAST	Len	"Bankapura Wolf Wildlife Sanctuary"
+LAST	P31	Q1377575	S143	Q328	S854	"https://en.wikipedia.org/wiki/Bankapura_Wolf_Wildlife_Sanctuary?action=edit&redlink=1"
+LAST	P17	Q668
+LAST	P131	Q1185	S143	Q328	S854	"https://en.wikipedia.org/wiki/Bankapura_Wolf_Wildlife_Sanctuary?action=edit&redlink=1"
+LAST	Senwiki	"Bankapura Wolf Wildlife Sanctuary"
+CREATE
+LAST	Len	"Bhimgad Wildlife Sanctuary"
+LAST	P31	Q1377575	S143	Q328	S854	"https://en.wikipedia.org/wiki/Bhimgad_Wildlife_Sanctuary"
+LAST	P17	Q668
+LAST	P131	Q1185	S143	Q328	S854	"https://en.wikipedia.org/wiki/Bhimgad_Wildlife_Sanctuary"
+LAST	Senwiki	"Bhimgad Wildlife Sanctuary"
+CREATE
+LAST	Len	"Cauvery Extension Wildlife Sanctuary"
+LAST	P31	Q1377575	S143	Q328	S854	"https://en.wikipedia.org/wiki/Cauvery_Extension_Wildlife_Sanctuary?action=edit&redlink=1"
+LAST	P17	Q668
+LAST	P131	Q1185	S143	Q328	S854	"https://en.wikipedia.org/wiki/Cauvery_Extension_Wildlife_Sanctuary?action=edit&redlink=1"
+LAST	Senwiki	"Cauvery Extension Wildlife Sanctuary"
+CREATE
+LAST	Len	"Gudekote Extension Wildlife Sanctuary"
+LAST	P31	Q1377575	S143	Q328	S854	"https://en.wikipedia.org/wiki/Gudekote_Extension_Wildlife_Sanctuary?action=edit&redlink=1"
+LAST	P17	Q668
+LAST	P131	Q1185	S143	Q328	S854	"https://en.wikipedia.org/wiki/Gudekote_Extension_Wildlife_Sanctuary?action=edit&redlink=1"
+LAST	Senwiki	"Gudekote Extension Wildlife Sanctuary"
+CREATE
+LAST	Len	"Kamasandra Wildlife Sanctuary"
+LAST	P31	Q1377575	S143	Q328	S854	"https://en.wikipedia.org/wiki/Kamasandra_Wildlife_Sanctuary?action=edit&redlink=1"
+LAST	P17	Q668
+LAST	P131	Q1185	S143	Q328	S854	"https://en.wikipedia.org/wiki/Kamasandra_Wildlife_Sanctuary?action=edit&redlink=1"
+LAST	Senwiki	"Kamasandra Wildlife Sanctuary"
+CREATE
+LAST	Len	"Rangayyanadurga Wildlife Sanctuary"
+LAST	P31	Q1377575	S143	Q328	S854	"https://en.wikipedia.org/wiki/Rangayyanadurga_Four-horned_antelope_Wildlife_Sanctuary"
+LAST	P17	Q668
+LAST	P131	Q1185	S143	Q328	S854	"https://en.wikipedia.org/wiki/Rangayyanadurga_Four-horned_antelope_Wildlife_Sanctuary"
+LAST	Senwiki	"Rangayyanadurga Four-horned antelope Wildlife Sanctuary"
+CREATE
+LAST	Len	"Sharavati Valley Wildlife Sanctuary"
+LAST	P31	Q1377575	S143	Q328	S854	"https://en.wikipedia.org/wiki/Sharavathi_LTM_Wildlife_Sanctuary"
+LAST	P17	Q668
+LAST	P131	Q1185	S143	Q328	S854	"https://en.wikipedia.org/wiki/Sharavathi_LTM_Wildlife_Sanctuary"
+LAST	Senwiki	"Sharavathi LTM Wildlife Sanctuary"
+CREATE
+LAST	Len	"Uttaregudda Wildlife Sanctuary"
+LAST	P31	Q1377575	S143	Q328	S854	"https://en.wikipedia.org/wiki/Uttaregudda_Wildlife_Sanctuary?action=edit&redlink=1"
+LAST	P17	Q668
+LAST	P131	Q1185	S143	Q328	S854	"https://en.wikipedia.org/wiki/Uttaregudda_Wildlife_Sanctuary?action=edit&redlink=1"
+LAST	Senwiki	"Uttaregudda Wildlife Sanctuary"
+CREATE
+LAST	Len	"Aralam Butterfly Sanctuary"
+LAST	P31	Q1377575	S143	Q328	S854	"https://en.wikipedia.org/wiki/Aralam_Butterfly_Sanctuary"
+LAST	P17	Q668
+LAST	P131	Q1186	S143	Q328	S854	"https://en.wikipedia.org/wiki/Aralam_Butterfly_Sanctuary"
+LAST	Senwiki	"Aralam Butterfly Sanctuary"
+CREATE
+LAST	Len	"Changthang Cold Desert Wildlife Sanctuary"
+LAST	P31	Q1377575	S143	Q328	S854	"https://en.wikipedia.org/wiki/Changthang_Cold_Desert_Wildlife_Sanctuary"
+LAST	P17	Q668
+LAST	P131	Q200667	S143	Q328	S854	"https://en.wikipedia.org/wiki/Changthang_Cold_Desert_Wildlife_Sanctuary"
+LAST	Senwiki	"Changthang Cold Desert Wildlife Sanctuary"
+CREATE
+LAST	Len	"Karakoram Wildlife Sanctuary"
+LAST	P31	Q1377575	S143	Q328	S854	"https://en.wikipedia.org/wiki/Karakoram_Wildlife_Sanctuary"
+LAST	P17	Q668
+LAST	P131	Q200667	S143	Q328	S854	"https://en.wikipedia.org/wiki/Karakoram_Wildlife_Sanctuary"
+LAST	Senwiki	"Karakoram Wildlife Sanctuary"
+CREATE
+LAST	Len	"Pitti"
+LAST	P31	Q1377575	S143	Q328	S854	"https://en.wikipedia.org/wiki/Pitti_Wildlife_Sanctuary?action=edit&redlink=1"
+LAST	P17	Q668
+LAST	P131	Q26927	S143	Q328	S854	"https://en.wikipedia.org/wiki/Pitti_Wildlife_Sanctuary?action=edit&redlink=1"
+LAST	Senwiki	"Pitti Wildlife Sanctuary"
+CREATE
+LAST	Len	"Dr. Bhimrao Ambedkar Wildlife Sanctuary"
+LAST	P31	Q1377575	S143	Q328	S854	"https://en.wikipedia.org/wiki/Dr._Bhimrao_Ambedkar_Wildlife_Sanctuary"
+LAST	P17	Q668
+LAST	P131	Q1188	S143	Q328	S854	"https://en.wikipedia.org/wiki/Dr._Bhimrao_Ambedkar_Wildlife_Sanctuary"
+LAST	Senwiki	"Dr. Bhimrao Ambedkar Wildlife Sanctuary"
+CREATE
+LAST	Len	"Gangau Wildlife Sanctuary"
+LAST	P31	Q1377575	S143	Q328	S854	"https://en.wikipedia.org/wiki/Gangau_Wildlife_Sanctuary?action=edit&redlink=1"
+LAST	P17	Q668
+LAST	P131	Q1188	S143	Q328	S854	"https://en.wikipedia.org/wiki/Gangau_Wildlife_Sanctuary?action=edit&redlink=1"
+LAST	Senwiki	"Gangau Wildlife Sanctuary"
+CREATE
+LAST	Len	"Karmajhiri Wildlife Sanctuary"
+LAST	P31	Q1377575	S143	Q328	S854	"https://en.wikipedia.org/wiki/Karmajhiri_Wildlife_Sanctuary?action=edit&redlink=1"
+LAST	P17	Q668
+LAST	P131	Q1188	S143	Q328	S854	"https://en.wikipedia.org/wiki/Karmajhiri_Wildlife_Sanctuary?action=edit&redlink=1"
+LAST	Senwiki	"Karmajhiri Wildlife Sanctuary"
+CREATE
+LAST	Len	"Omkareshwar Wildlife Sanctuary"
+LAST	P31	Q1377575	S143	Q328
+LAST	P17	Q668
+LAST	P131	Q1188	S143	Q328
+CREATE
+LAST	Len	"Pachmarhi Wildlife Sanctuary"
+LAST	P31	Q1377575	S143	Q328	S854	"https://en.wikipedia.org/wiki/Pachmarhi_Biosphere_Reserve"
+LAST	P17	Q668
+LAST	P131	Q1188	S143	Q328	S854	"https://en.wikipedia.org/wiki/Pachmarhi_Biosphere_Reserve"
+LAST	Senwiki	"Pachmarhi Biosphere Reserve"
+CREATE
+LAST	Len	"Sailana Wildlife Sanctuary"
+LAST	P31	Q1377575	S143	Q328	S854	"https://en.wikipedia.org/wiki/Sailana_Wildlife_Sanctuary?action=edit&redlink=1"
+LAST	P17	Q668
+LAST	P131	Q1188	S143	Q328	S854	"https://en.wikipedia.org/wiki/Sailana_Wildlife_Sanctuary?action=edit&redlink=1"
+LAST	Senwiki	"Sailana Wildlife Sanctuary"
+CREATE
+LAST	Len	"Bhamragarh Wildlife Sanctuary"
+LAST	P31	Q1377575	S143	Q328	S854	"https://en.wikipedia.org/wiki/Bhamragarh_Wildlife_Sanctuary?action=edit&redlink=1"
+LAST	P17	Q668
+LAST	P131	Q1191	S143	Q328	S854	"https://en.wikipedia.org/wiki/Bhamragarh_Wildlife_Sanctuary?action=edit&redlink=1"
+LAST	Senwiki	"Bhamragarh Wildlife Sanctuary"
+CREATE
+LAST	Len	"Deolgaon‑Rehkuri Wildlife Sanctuary"
+LAST	P31	Q1377575	S143	Q328	S854	"https://en.wikipedia.org/wiki/Deolgaon‑Rehkuri_Wildlife_Sanctuary?action=edit&redlink=1"
+LAST	P17	Q668
+LAST	P131	Q1191	S143	Q328	S854	"https://en.wikipedia.org/wiki/Deolgaon‑Rehkuri_Wildlife_Sanctuary?action=edit&redlink=1"
+LAST	Senwiki	"Deolgaon‑Rehkuri Wildlife Sanctuary"
+CREATE
+LAST	Len	"Gautala Wildlife Sanctuary"
+LAST	P31	Q1377575	S143	Q328	S854	"https://en.wikipedia.org/wiki/Gautala_Wildlife_Sanctuary"
+LAST	P17	Q668
+LAST	P131	Q1191	S143	Q328	S854	"https://en.wikipedia.org/wiki/Gautala_Wildlife_Sanctuary"
+LAST	Senwiki	"Gautala Wildlife Sanctuary"
+CREATE
+LAST	Len	"Isapur Wildlife Sanctuary"
+LAST	P31	Q1377575	S143	Q328	S854	"https://en.wikipedia.org/wiki/Isapur_Wildlife_Sanctuary?action=edit&redlink=1"
+LAST	P17	Q668
+LAST	P131	Q1191	S143	Q328	S854	"https://en.wikipedia.org/wiki/Isapur_Wildlife_Sanctuary?action=edit&redlink=1"
+LAST	Senwiki	"Isapur Wildlife Sanctuary"
+CREATE
+LAST	Len	"Katepurna Wildlife Sanctuary"
+LAST	P31	Q1377575	S143	Q328	S854	"https://en.wikipedia.org/wiki/Katepurna_Wildlife_Sanctuary?action=edit&redlink=1"
+LAST	P17	Q668
+LAST	P131	Q1191	S143	Q328	S854	"https://en.wikipedia.org/wiki/Katepurna_Wildlife_Sanctuary?action=edit&redlink=1"
+LAST	Senwiki	"Katepurna Wildlife Sanctuary"
+CREATE
+LAST	Len	"Malvan Wildlife Sanctuary"
+LAST	P31	Q1377575	S143	Q328	S854	"https://en.wikipedia.org/wiki/Malvan_Wildlife_Sanctuary?action=edit&redlink=1"
+LAST	P17	Q668
+LAST	P131	Q1191	S143	Q328	S854	"https://en.wikipedia.org/wiki/Malvan_Wildlife_Sanctuary?action=edit&redlink=1"
+LAST	Senwiki	"Malvan Wildlife Sanctuary"
+CREATE
+LAST	Len	"Mansingdeo Wildlife Sanctuary"
+LAST	P31	Q1377575	S143	Q328	S854	"https://en.wikipedia.org/wiki/Mansingdeo_Wildlife_Sanctuary?action=edit&redlink=1"
+LAST	P17	Q668
+LAST	P131	Q1191	S143	Q328	S854	"https://en.wikipedia.org/wiki/Mansingdeo_Wildlife_Sanctuary?action=edit&redlink=1"
+LAST	Senwiki	"Mansingdeo Wildlife Sanctuary"
+CREATE
+LAST	Len	"Naigaon Mayur Wildlife Sanctuary"
+LAST	P31	Q1377575	S143	Q328	S854	"https://en.wikipedia.org/wiki/Naigaon_Mayur_Wildlife_Sanctuary?action=edit&redlink=1"
+LAST	P17	Q668
+LAST	P131	Q1191	S143	Q328	S854	"https://en.wikipedia.org/wiki/Naigaon_Mayur_Wildlife_Sanctuary?action=edit&redlink=1"
+LAST	Senwiki	"Naigaon Mayur Wildlife Sanctuary"
+CREATE
+LAST	Len	"New Bor Wildlife Sanctuary"
+LAST	P31	Q1377575	S143	Q328	S854	"https://en.wikipedia.org/wiki/New_Bor_Wildlife_Sanctuary?action=edit&redlink=1"
+LAST	P17	Q668
+LAST	P131	Q1191	S143	Q328	S854	"https://en.wikipedia.org/wiki/New_Bor_Wildlife_Sanctuary?action=edit&redlink=1"
+LAST	Senwiki	"New Bor Wildlife Sanctuary"
+CREATE
+LAST	Len	"New Maldhok Bird (Gangewadi) Wildlife Sanctuary"
+LAST	P31	Q2714144	S143	Q328	S854	"https://en.wikipedia.org/wiki/New_Maldhok_Bird_(Gangewadi)_Wildlife_Sanctuary?action=edit&redlink=1"
+LAST	P17	Q668
+LAST	P131	Q1191	S143	Q328	S854	"https://en.wikipedia.org/wiki/New_Maldhok_Bird_(Gangewadi)_Wildlife_Sanctuary?action=edit&redlink=1"
+LAST	Senwiki	"New Maldhok Bird (Gangewadi) Wildlife Sanctuary"
+CREATE
+LAST	Len	"Sudhagad Wildlife Sanctuary"
+LAST	P31	Q1377575	S143	Q328	S854	"https://en.wikipedia.org/wiki/Sudhagad_Wildlife_Sanctuary?action=edit&redlink=1"
+LAST	P17	Q668
+LAST	P131	Q1191	S143	Q328	S854	"https://en.wikipedia.org/wiki/Sudhagad_Wildlife_Sanctuary?action=edit&redlink=1"
+LAST	Senwiki	"Sudhagad Wildlife Sanctuary"
+CREATE
+LAST	Len	"Tamhini Wildlife Sanctuary"
+LAST	P31	Q1377575	S143	Q328	S854	"https://en.wikipedia.org/wiki/Tamhini_Wildlife_Sanctuary?action=edit&redlink=1"
+LAST	P17	Q668
+LAST	P131	Q1191	S143	Q328	S854	"https://en.wikipedia.org/wiki/Tamhini_Wildlife_Sanctuary?action=edit&redlink=1"
+LAST	Senwiki	"Tamhini Wildlife Sanctuary"
+CREATE
+LAST	Len	"Thane Creek Wildlife Sanctuary"
+LAST	P31	Q1377575	S143	Q328	S854	"https://en.wikipedia.org/wiki/Thane_Creek_Wildlife_Sanctuary?action=edit&redlink=1"
+LAST	P17	Q668
+LAST	P131	Q1191	S143	Q328	S854	"https://en.wikipedia.org/wiki/Thane_Creek_Wildlife_Sanctuary?action=edit&redlink=1"
+LAST	Senwiki	"Thane Creek Wildlife Sanctuary"
+CREATE
+LAST	Len	"Bunning Wildlife Sanctuary"
+LAST	P31	Q1377575	S143	Q328	S854	"https://en.wikipedia.org/wiki/Bunning_Wildlife_Sanctuary?action=edit&redlink=1"
+LAST	P17	Q668
+LAST	P131	Q1193	S143	Q328	S854	"https://en.wikipedia.org/wiki/Bunning_Wildlife_Sanctuary?action=edit&redlink=1"
+LAST	Senwiki	"Bunning Wildlife Sanctuary"
+CREATE
+LAST	Len	"Kailam Wildlife Sanctuary"
+LAST	P31	Q1377575	S143	Q328	S854	"https://en.wikipedia.org/wiki/Kailam_Wildlife_Sanctuary?action=edit&redlink=1"
+LAST	P17	Q668
+LAST	P131	Q1193	S143	Q328	S854	"https://en.wikipedia.org/wiki/Kailam_Wildlife_Sanctuary?action=edit&redlink=1"
+LAST	Senwiki	"Kailam Wildlife Sanctuary"
+CREATE
+LAST	Len	"Khongjaingamba Ching Wildlife Sanctuary"
+LAST	P31	Q1377575	S143	Q328	S854	"https://en.wikipedia.org/wiki/Khongjaingamba_Ching_Wildlife_Sanctuary?action=edit&redlink=1"
+LAST	P17	Q668
+LAST	P131	Q1193	S143	Q328	S854	"https://en.wikipedia.org/wiki/Khongjaingamba_Ching_Wildlife_Sanctuary?action=edit&redlink=1"
+LAST	Senwiki	"Khongjaingamba Ching Wildlife Sanctuary"
+CREATE
+LAST	Len	"Thinungei Bird Sanctuary"
+LAST	P31	Q2714144	S143	Q328	S854	"https://en.wikipedia.org/wiki/Thinungei_Bird_Sanctuary?action=edit&redlink=1"
+LAST	P17	Q668
+LAST	P131	Q1193	S143	Q328	S854	"https://en.wikipedia.org/wiki/Thinungei_Bird_Sanctuary?action=edit&redlink=1"
+LAST	Senwiki	"Thinungei Bird Sanctuary"
+CREATE
+LAST	Len	"Zeilad Wildlife Sanctuary"
+LAST	P31	Q1377575	S143	Q328	S854	"https://en.wikipedia.org/wiki/Zeilad_Wildlife_Sanctuary?action=edit&redlink=1"
+LAST	P17	Q668
+LAST	P131	Q1193	S143	Q328	S854	"https://en.wikipedia.org/wiki/Zeilad_Wildlife_Sanctuary?action=edit&redlink=1"
+LAST	Senwiki	"Zeilad Wildlife Sanctuary"
+CREATE
+LAST	Len	"Siju Wildlife Sanctuary"
+LAST	P31	Q1377575	S143	Q328	S854	"https://en.wikipedia.org/wiki/Siju_Wildlife_Sanctuary"
+LAST	P17	Q668
+LAST	P131	Q1195	S143	Q328	S854	"https://en.wikipedia.org/wiki/Siju_Wildlife_Sanctuary"
+LAST	Senwiki	"Siju Wildlife Sanctuary"
+CREATE
+LAST	Len	"Badrama Wildlife Sanctuary"
+LAST	P31	Q1377575	S143	Q328	S854	"https://en.wikipedia.org/wiki/Ushakothi_Wildlife_Sanctuary"
+LAST	P17	Q668
+LAST	P131	Q22048	S143	Q328	S854	"https://en.wikipedia.org/wiki/Ushakothi_Wildlife_Sanctuary"
+LAST	Senwiki	"Ushakothi Wildlife Sanctuary"
+CREATE
+LAST	Len	"Chandaka Dampara Wildlife Sanctuary"
+LAST	P31	Q1377575	S143	Q328	S854	"https://en.wikipedia.org/wiki/Chandaka_Elephant_Sanctuary"
+LAST	P17	Q668
+LAST	P131	Q22048	S143	Q328	S854	"https://en.wikipedia.org/wiki/Chandaka_Elephant_Sanctuary"
+LAST	Senwiki	"Chandaka Elephant Sanctuary"
+CREATE
+LAST	Len	"Sunabeda Wildlife Sanctuary"
+LAST	P31	Q1377575	S143	Q328	S854	"https://en.wikipedia.org/wiki/Sunabeda_Wildlife_Sanctuary"
+LAST	P17	Q668
+LAST	P131	Q22048	S143	Q328	S854	"https://en.wikipedia.org/wiki/Sunabeda_Wildlife_Sanctuary"
+LAST	Senwiki	"Sunabeda Wildlife Sanctuary"
+CREATE
+LAST	Len	"Bir Bhadson Wildlife Sanctuary"
+LAST	P31	Q1377575	S143	Q328	S854	"https://en.wikipedia.org/wiki/Bir_Bhadson_Wildlife_Sanctuary?action=edit&redlink=1"
+LAST	P17	Q668
+LAST	P131	Q22424	S143	Q328	S854	"https://en.wikipedia.org/wiki/Bir_Bhadson_Wildlife_Sanctuary?action=edit&redlink=1"
+LAST	Senwiki	"Bir Bhadson Wildlife Sanctuary"
+CREATE
+LAST	Len	"Bir Dosanjh Wildlife Sanctuary"
+LAST	P31	Q1377575	S143	Q328	S854	"https://en.wikipedia.org/wiki/Bir_Dosanjh_Wildlife_Sanctuary?action=edit&redlink=1"
+LAST	P17	Q668
+LAST	P131	Q22424	S143	Q328	S854	"https://en.wikipedia.org/wiki/Bir_Dosanjh_Wildlife_Sanctuary?action=edit&redlink=1"
+LAST	Senwiki	"Bir Dosanjh Wildlife Sanctuary"
+CREATE
+LAST	Len	"Bir Gurdialpura Wildlife Sanctuary"
+LAST	P31	Q1377575	S143	Q328	S854	"https://en.wikipedia.org/wiki/Bir_Gurdialpura_Wildlife_Sanctuary?action=edit&redlink=1"
+LAST	P17	Q668
+LAST	P131	Q22424	S143	Q328	S854	"https://en.wikipedia.org/wiki/Bir_Gurdialpura_Wildlife_Sanctuary?action=edit&redlink=1"
+LAST	Senwiki	"Bir Gurdialpura Wildlife Sanctuary"
+CREATE
+LAST	Len	"Bir Mehaswala Wildlife Sanctuary"
+LAST	P31	Q1377575	S143	Q328	S854	"https://en.wikipedia.org/wiki/Bir_Mehaswala_Wildlife_Sanctuary?action=edit&redlink=1"
+LAST	P17	Q668
+LAST	P131	Q22424	S143	Q328	S854	"https://en.wikipedia.org/wiki/Bir_Mehaswala_Wildlife_Sanctuary?action=edit&redlink=1"
+LAST	Senwiki	"Bir Mehaswala Wildlife Sanctuary"
+CREATE
+LAST	Len	"Bir Motibagh Wildlife Sanctuary"
+LAST	P31	Q1377575	S143	Q328	S854	"https://en.wikipedia.org/wiki/Bir_Motibagh_Wildlife_Sanctuary?action=edit&redlink=1"
+LAST	P17	Q668
+LAST	P131	Q22424	S143	Q328	S854	"https://en.wikipedia.org/wiki/Bir_Motibagh_Wildlife_Sanctuary?action=edit&redlink=1"
+LAST	Senwiki	"Bir Motibagh Wildlife Sanctuary"
+CREATE
+LAST	Len	"Harike Lake Wildlife Sanctuary"
+LAST	P31	Q1377575	S143	Q328	S854	"https://en.wikipedia.org/wiki/Harike_Lake_Wildlife_Sanctuary?action=edit&redlink=1"
+LAST	P17	Q668
+LAST	P131	Q22424	S143	Q328	S854	"https://en.wikipedia.org/wiki/Harike_Lake_Wildlife_Sanctuary?action=edit&redlink=1"
+LAST	Senwiki	"Harike Lake Wildlife Sanctuary"
+CREATE
+LAST	Len	"Jhajjar Bacholi Wildlife Sanctuary"
+LAST	P31	Q1377575	S143	Q328	S854	"https://en.wikipedia.org/wiki/Jhajjar_Bacholi_Wildlife_Sanctuary?action=edit&redlink=1"
+LAST	P17	Q668
+LAST	P131	Q22424	S143	Q328	S854	"https://en.wikipedia.org/wiki/Jhajjar_Bacholi_Wildlife_Sanctuary?action=edit&redlink=1"
+LAST	Senwiki	"Jhajjar Bacholi Wildlife Sanctuary"
+CREATE
+LAST	Len	"Takhni-Rehampur Wildlife Sanctuary"
+LAST	P31	Q1377575	S143	Q328	S854	"https://en.wikipedia.org/wiki/Takhni-Rehampur_Wildlife_Sanctuary?action=edit&redlink=1"
+LAST	P17	Q668
+LAST	P131	Q22424	S143	Q328	S854	"https://en.wikipedia.org/wiki/Takhni-Rehampur_Wildlife_Sanctuary?action=edit&redlink=1"
+LAST	Senwiki	"Takhni-Rehampur Wildlife Sanctuary"
+CREATE
+LAST	Len	"Desert National Sanctuary"
+LAST	P31	Q46169	S143	Q328	S854	"https://en.wikipedia.org/wiki/Desert_National_Park"
+LAST	P17	Q668
+LAST	P131	Q1437	S143	Q328	S854	"https://en.wikipedia.org/wiki/Desert_National_Park"
+LAST	Senwiki	"Desert National Park"
+CREATE
+LAST	Len	"National Chambal Wildlife Sanctuary"
+LAST	P31	Q46169	S143	Q328	S854	"https://en.wikipedia.org/wiki/National_Chambal_Wildlife_Sanctuary"
+LAST	P17	Q668
+LAST	P131	Q1437	S143	Q328	S854	"https://en.wikipedia.org/wiki/National_Chambal_Wildlife_Sanctuary"
+LAST	Senwiki	"National Chambal Wildlife Sanctuary"
+CREATE
+LAST	Len	"Sawai Madhopur Wildlife Sanctuary"
+LAST	P31	Q1377575	S143	Q328	S854	"https://en.wikipedia.org/wiki/Sawai_Madhopur_Wildlife_Sanctuary"
+LAST	P17	Q668
+LAST	P131	Q1437	S143	Q328	S854	"https://en.wikipedia.org/wiki/Sawai_Madhopur_Wildlife_Sanctuary"
+LAST	Senwiki	"Sawai Madhopur Wildlife Sanctuary"
+CREATE
+LAST	Len	"Kalakkad Wildlife Sanctuary"
+LAST	P31	Q1377575	S143	Q328	S854	"https://en.wikipedia.org/wiki/Kalakkad_Mundanthurai_Tiger_Reserve"
+LAST	P17	Q668
+LAST	P131	Q1445	S143	Q328	S854	"https://en.wikipedia.org/wiki/Kalakkad_Mundanthurai_Tiger_Reserve"
+LAST	Senwiki	"Kalakkad Mundanthurai Tiger Reserve"
+CREATE
+LAST	Len	"Megamalai Wildlife Sanctuary"
+LAST	P31	Q1377575	S143	Q328	S854	"https://en.wikipedia.org/wiki/Megamalai_Wildlife_Sanctuary"
+LAST	P17	Q668
+LAST	P131	Q1445	S143	Q328	S854	"https://en.wikipedia.org/wiki/Megamalai_Wildlife_Sanctuary"
+LAST	Senwiki	"Megamalai Wildlife Sanctuary"
+CREATE
+LAST	Len	"Pulicat Lake Bird Sanctuary"
+LAST	P31	Q2714144	S143	Q328	S854	"https://en.wikipedia.org/wiki/Pulicat_Lake_Bird_Sanctuary"
+LAST	P17	Q668
+LAST	P131	Q1445	S143	Q328	S854	"https://en.wikipedia.org/wiki/Pulicat_Lake_Bird_Sanctuary"
+LAST	Senwiki	"Pulicat Lake Bird Sanctuary"
+CREATE
+LAST	Len	"Thanthai Periyar Wildlife Sanctuary"
+LAST	P31	Q1377575	S143	Q328	S854	"https://en.wikipedia.org/wiki/Thanthai_Periyar_Wildlife_Sanctuary"
+LAST	P17	Q668
+LAST	P131	Q1445	S143	Q328	S854	"https://en.wikipedia.org/wiki/Thanthai_Periyar_Wildlife_Sanctuary"
+LAST	Senwiki	"Thanthai Periyar Wildlife Sanctuary"
+CREATE
+LAST	Len	"Eturnagaram Wildlife Sanctuary"
+LAST	P31	Q1377575	S143	Q328	S854	"https://en.wikipedia.org/wiki/Eturnagaram_Wildlife_Sanctuary"
+LAST	P17	Q668
+LAST	P131	Q677037	S143	Q328	S854	"https://en.wikipedia.org/wiki/Eturnagaram_Wildlife_Sanctuary"
+LAST	Senwiki	"Eturnagaram Wildlife Sanctuary"
+CREATE
+LAST	Len	"Manjira Wildlife Sanctuary"
+LAST	P31	Q1377575	S143	Q328	S854	"https://en.wikipedia.org/wiki/Manjira_Wildlife_Sanctuary"
+LAST	P17	Q668
+LAST	P131	Q677037	S143	Q328	S854	"https://en.wikipedia.org/wiki/Manjira_Wildlife_Sanctuary"
+LAST	Senwiki	"Manjira Wildlife Sanctuary"
+CREATE
+LAST	Len	"Dr. Bhimrao Ambedkar Bird Sanctuary"
+LAST	P31	Q2714144	S143	Q328	S854	"https://en.wikipedia.org/wiki/Dr._Bhimrao_Ambedkar_Bird_Sanctuary?action=edit&redlink=1"
+LAST	P17	Q668
+LAST	P131	Q1498	S143	Q328	S854	"https://en.wikipedia.org/wiki/Dr._Bhimrao_Ambedkar_Bird_Sanctuary?action=edit&redlink=1"
+LAST	Senwiki	"Dr. Bhimrao Ambedkar Bird Sanctuary"
+CREATE
+LAST	Len	"National Chambal Wildlife Sanctuary"
+LAST	P31	Q46169	S143	Q328	S854	"https://en.wikipedia.org/wiki/National_Chambal_Wildlife_Sanctuary"
+LAST	P17	Q668
+LAST	P131	Q1498	S143	Q328	S854	"https://en.wikipedia.org/wiki/National_Chambal_Wildlife_Sanctuary"
+LAST	Senwiki	"National Chambal Wildlife Sanctuary"
+CREATE
+LAST	Len	"Sur Sarovar Bird Sanctuary"
+LAST	P31	Q2714144	S143	Q328	S854	"https://en.wikipedia.org/wiki/Sur_Sarovar_Sanctuary"
+LAST	P17	Q668
+LAST	P131	Q1498	S143	Q328	S854	"https://en.wikipedia.org/wiki/Sur_Sarovar_Sanctuary"
+LAST	Senwiki	"Sur Sarovar Sanctuary"
+CREATE
+LAST	Len	"Pakhibitan Wildlife Sanctuary"
+LAST	P31	Q1377575	S143	Q328	S854	"https://en.wikipedia.org/wiki/Pakhibitan_Wildlife_Sanctuary?action=edit&redlink=1"
+LAST	P17	Q668
+LAST	P131	Q1356	S143	Q328	S854	"https://en.wikipedia.org/wiki/Pakhibitan_Wildlife_Sanctuary?action=edit&redlink=1"
+LAST	Senwiki	"Pakhibitan Wildlife Sanctuary"
+CREATE
+LAST	Len	"Pench (MH) Tiger Reserve"
+LAST	P31	Q5533772	S143	Q328	S854	"https://en.wikipedia.org/wiki/Pench_Tiger_Reserve"
+LAST	P17	Q668
+LAST	P131	Q1191	S143	Q328	S854	"https://en.wikipedia.org/wiki/Pench_Tiger_Reserve"
+LAST	Senwiki	"Pench Tiger Reserve"
+CREATE
+LAST	Len	"Sanjay Dhubri Tiger Reserve"
+LAST	P31	Q5533772	S143	Q328	S854	"https://en.wikipedia.org/wiki/Sanjay_National_Park"
+LAST	P17	Q668
+LAST	P131	Q1188	S143	Q328	S854	"https://en.wikipedia.org/wiki/Sanjay_National_Park"
+LAST	Senwiki	"Sanjay National Park"
+CREATE
+LAST	Len	"Mukandra Hills Tiger Reserve"
+LAST	P31	Q5533772	S143	Q328	S854	"https://en.wikipedia.org/wiki/Mukandra_Hills_Tiger_Reserve"
+LAST	P17	Q668
+LAST	P131	Q1437	S143	Q328	S854	"https://en.wikipedia.org/wiki/Mukandra_Hills_Tiger_Reserve"
+LAST	Senwiki	"Mukandra Hills Tiger Reserve"
+CREATE
+LAST	Len	"Dholpur-Karauli Tiger Reserve"
+LAST	P31	Q5533772	S143	Q328	S854	"https://en.wikipedia.org/wiki/Dholpur—Karauli_Tiger_Reserve?action=edit&redlink=1"
+LAST	P17	Q668
+LAST	P131	Q1437	S143	Q328	S854	"https://en.wikipedia.org/wiki/Dholpur—Karauli_Tiger_Reserve?action=edit&redlink=1"
+LAST	Senwiki	"Dholpur—Karauli Tiger Reserve"
+```
+
+</details>
+
 ### Wikidata items with no Wikipedia match
 
-Wikidata item is typed as National Park / Wildlife Sanctuary / Tiger Reserve (categories the three Wikipedia lists cover) but no Wikipedia entry matched it -- possible naming mismatch, or genuinely absent from Wikipedia.
+Wikidata item is typed as National Park / Wildlife Sanctuary / Tiger Reserve (categories the three Wikipedia lists cover) but no Wikipedia entry matched it -- possible naming mismatch, or genuinely absent from Wikipedia. `wikipediaNameMatchState`/`wikipediaNameMatchUrl`, when filled in, point at a Wikipedia entry with the exact same name under a different state (see the QuickStatements note below).
 
-| wikidataId | wikidataLabel | protectedAreaType | state |
-| --- | --- | --- | --- |
-| Q2724481 | Marine National Park, Gulf of Kutch | National Park | Gujarat |
-| Q3631211 | Biligiriranga Hills Tiger Reserve | Tiger Reserve | Karnataka |
-| Q109974038 | Siju Wildlife Sanctuary | Wildlife Sanctuary | Manipur |
-| Q113133799 | Garbhanga Wildlife Sanctuary | Wildlife Sanctuary | Assam |
-| Q115804851 | Dadra and Nagar Haveli Wildlife Sanctuary | Wildlife Sanctuary | Dadra and Nagar Haveli and Daman and Diu |
-| Q3174886 | Govind Pashu Vihar Wildlife Sanctuary | Wildlife Sanctuary | Uttar Pradesh |
-| Q3364416 | Mandla Plant Fossils National Park | National Park | Madhya Pradesh |
-| Q3364473 | Pench Tiger Reserve | Tiger Reserve | Madhya Pradesh |
-| Q2397554 | Bhagwan Mahaveer Sanctuary and Mollem National Park | National Park | Goa |
-| Q4783879 | Aralam Wildlife Sanctuary | Wildlife Sanctuary | Kerala |
-| Q5070917 | Chandaka Elephant Sanctuary | Wildlife Sanctuary | Odisha |
-| Q5215676 | Dandeli Wildlife Sanctuary | Wildlife Sanctuary | Karnataka |
-| Q5224247 | Mukundra Hills Tiger Reserve (MHTR) | Tiger Reserve | Rajasthan |
-| Q5311756 | Dudhwa Tiger Reserve | Tiger Reserve | Uttar Pradesh |
-| Q5405090 | Eturnagaram Wildlife Sanctuary | Wildlife Sanctuary | Andhra Pradesh |
-| Q4208325 | Qazinag National Park | National Park | Jammu and Kashmir |
-| Q7786672 | Thol Wildlife Sanctuary | Wildlife Sanctuary | Gujarat |
-| Q7901902 | Ushakothi Wildlife Sanctuary | Wildlife Sanctuary | Odisha |
-| Q5517624 | Gajner Wildlife Sanctuary | Wildlife Sanctuary | Rajasthan |
-| Q5527862 | Gautala Autramghat Sanctuary | Wildlife Sanctuary | Maharashtra |
-| Q5597433 | Grass Hills National Park | National Park | Tamil Nadu |
-| Q6368141 | Karakoram Wildlife Sanctuary | Wildlife Sanctuary | Jammu and Kashmir |
-| Q6750402 | Manjira Wildlife Sanctuary | Wildlife Sanctuary | Andhra Pradesh |
-| Q6965807 | Narendrapur Wildlife Sanctuary | Wildlife Sanctuary | West Bengal |
-| Q106416493 | Ramanagara Ramdevara Betta Vulture Sanctuary | Wildlife Sanctuary | Karnataka |
-| Q106619912 | Gandhisagar Sanctuary | Wildlife Sanctuary | Madhya Pradesh |
-| Q107324541 | Mehao Wildlife Sanctuary | Wildlife Sanctuary | Arunachal Pradesh |
-| Q55615923 | Kheoni Wildlife Sanctuary | Wildlife Sanctuary | Madhya Pradesh |
-| Q55633284 | Sitabani Wildlife Reserve | Wildlife Sanctuary | Uttarakhand |
-| Q65041648 | Ralamandal Wildlife Sanctuary | Wildlife Sanctuary | Madhya Pradesh |
-| Q65321737 | Karimpuzha Wildlife Sanctuary | Wildlife Sanctuary | Kerala |
-| Q85800682 | Sharavathi LTM Wildlife Sanctuary | Wildlife Sanctuary | Karnataka |
-| Q105581798 | Benog Wildlife Sanctuary | Wildlife Sanctuary | Uttarakhand |
-| Q105806882 | Kottur Elephant Sanctuary and Rehabilitation Centre | Wildlife Sanctuary | Kerala |
-| Q15839097 | Nanda Devi and Valley of Flowers National Parks | National Park | Uttarakhand |
-| Q16253187 | Bankapur Peacock Sanctuary | Wildlife Sanctuary | Karnataka |
-| Q17002953 | Saraswati Wildlife Sanctuary | Wildlife Sanctuary | Haryana |
-| Q17010836 | Achabal Wildlife Sanctuary | Wildlife Sanctuary | Jammu and Kashmir |
-| Q18110132 | Balimela Wildlife Sanctuary | Wildlife Sanctuary | Odisha |
-| Q18126911 | Kondakameru Wildlife Sanctuary | Wildlife Sanctuary | Odisha |
-| Q2580141 | Bhitarkanika National Park | National Park | Odisha |
-| Q763034 | Nawegaon National Park | National Park | Maharashtra |
-| Q880724 | Blackbuck National Park | National Park | Gujarat |
-| Q2979712 | Balpakram National Park | National Park | Meghalaya |
-| Q13116281 | Karian Shola National Park | National Park | Tamil Nadu |
-| Q14205920 | Begur Wildlife Sanctuary | Wildlife Sanctuary | Kerala |
-| Q112252433 | Rangayyanadurga Four–horned antelope Wildlife Sanctuary | Wildlife Sanctuary | Karnataka |
-| Q123439915 | Kudremukh National Park | National Park | Karnataka |
-| Q125881460 | Mansar-Surinsar Wildlife sanctuary | Wildlife Sanctuary | Jammu and Kashmir |
-| Q19881905 | Amangarh Tiger Reserve | Tiger Reserve | Uttar Pradesh |
-| Q26794303 | Changthang Wildlife Sanctuary | Wildlife Sanctuary | Ladakh |
-| Q26794308 | Neyyar Wildlife Reserve | Wildlife Sanctuary | Tamil Nadu |
-| Q26794312 | Shendurney Wildlife Reserve | Wildlife Sanctuary | Kerala |
-| Q28173945 | Khonoma Nature Conservation and Tragopan Sanctuary | Wildlife Sanctuary | Nagaland |
-| Q131123428 | Kodaikanal Wildlife Sanctuary | Wildlife Sanctuary | Tamil Nadu |
-| Q135455927 | Adichunchanagiri Peacock Wildlife Sanctuary | Wildlife Sanctuary | Karnataka |
+| wikidataId | wikidataLabel | protectedAreaType | state | wikipediaNameMatchState | wikipediaNameMatchUrl |
+| --- | --- | --- | --- | --- | --- |
+| Q3631211 | Biligiriranga Hills Tiger Reserve | Tiger Reserve | Karnataka |  |  |
+| Q880724 | Blackbuck National Park | National Park | Gujarat |  |  |
+| Q109974038 | Siju Wildlife Sanctuary | Wildlife Sanctuary | Manipur | Meghalaya | https://en.wikipedia.org/wiki/Siju_Wildlife_Sanctuary |
+| Q113133799 | Garbhanga Wildlife Sanctuary | Wildlife Sanctuary | Assam |  |  |
+| Q115804851 | Dadra and Nagar Haveli Wildlife Sanctuary | Wildlife Sanctuary | Dadra and Nagar Haveli and Daman and Diu | Dadra Nagar Haveli and Daman and Diu | https://en.wikipedia.org/wiki/Dadra_and_Nagar_Haveli_Wildlife_Sanctuary |
+| Q60398704 | Marine Sanctuary (Gulf of Kutch) | Wildlife Sanctuary | Gujarat |  |  |
+| Q3174886 | Govind Pashu Vihar Wildlife Sanctuary | Wildlife Sanctuary | Uttar Pradesh | Uttarakhand | https://en.wikipedia.org/wiki/Govind_Pashu_Vihar_National_Park |
+| Q3364416 | Mandla Plant Fossils National Park | National Park | Madhya Pradesh |  |  |
+| Q3364473 | Pench Tiger Reserve | Tiger Reserve | Madhya Pradesh |  |  |
+| Q4208325 | Qazinag National Park | National Park | Jammu and Kashmir |  |  |
+| Q4783879 | Aralam Wildlife Sanctuary | Wildlife Sanctuary | Kerala |  |  |
+| Q5070917 | Chandaka Elephant Sanctuary | Wildlife Sanctuary | Odisha |  |  |
+| Q5215676 | Dandeli Wildlife Sanctuary | Wildlife Sanctuary | Karnataka |  |  |
+| Q5224247 | Mukundra Hills Tiger Reserve (MHTR) | Tiger Reserve | Rajasthan |  |  |
+| Q5311756 | Dudhwa Tiger Reserve | Tiger Reserve | Uttar Pradesh |  |  |
+| Q5405090 | Eturnagaram Wildlife Sanctuary | Wildlife Sanctuary | Andhra Pradesh | Telangana | https://en.wikipedia.org/wiki/Eturnagaram_Wildlife_Sanctuary |
+| Q5517624 | Gajner Wildlife Sanctuary | Wildlife Sanctuary | Rajasthan |  |  |
+| Q5527862 | Gautala Autramghat Sanctuary | Wildlife Sanctuary | Maharashtra |  |  |
+| Q5597433 | Grass Hills National Park | National Park | Tamil Nadu |  |  |
+| Q6368141 | Karakoram Wildlife Sanctuary | Wildlife Sanctuary | Jammu and Kashmir | Ladakh | https://en.wikipedia.org/wiki/Karakoram_Wildlife_Sanctuary |
+| Q6750402 | Manjira Wildlife Sanctuary | Wildlife Sanctuary | Andhra Pradesh | Telangana | https://en.wikipedia.org/wiki/Manjira_Wildlife_Sanctuary |
+| Q6965807 | Narendrapur Wildlife Sanctuary | Wildlife Sanctuary | West Bengal |  |  |
+| Q7786672 | Thol Wildlife Sanctuary | Wildlife Sanctuary | Gujarat |  |  |
+| Q7901902 | Ushakothi Wildlife Sanctuary | Wildlife Sanctuary | Odisha |  |  |
+| Q15839097 | Nanda Devi and Valley of Flowers National Parks | National Park | Uttarakhand |  |  |
+| Q16253187 | Bankapur Peacock Sanctuary | Wildlife Sanctuary | Karnataka |  |  |
+| Q17002953 | Saraswati Wildlife Sanctuary | Wildlife Sanctuary | Haryana |  |  |
+| Q17010836 | Achabal Wildlife Sanctuary | Wildlife Sanctuary | Jammu and Kashmir |  |  |
+| Q18110132 | Balimela Wildlife Sanctuary | Wildlife Sanctuary | Odisha |  |  |
+| Q18126911 | Kondakameru Wildlife Sanctuary | Wildlife Sanctuary | Odisha |  |  |
+| Q19881905 | Amangarh Tiger Reserve | Tiger Reserve | Uttar Pradesh |  |  |
+| Q106416493 | Ramanagara Ramdevara Betta Vulture Sanctuary | Wildlife Sanctuary | Karnataka |  |  |
+| Q106619912 | Gandhisagar Sanctuary | Wildlife Sanctuary | Madhya Pradesh |  |  |
+| Q106674048 | Nawegaon Wildlife Sanctuary | Wildlife Sanctuary | Maharashtra |  |  |
+| Q107324541 | Mehao Wildlife Sanctuary | Wildlife Sanctuary | Arunachal Pradesh |  |  |
+| Q55615923 | Kheoni Wildlife Sanctuary | Wildlife Sanctuary | Madhya Pradesh |  |  |
+| Q55633284 | Sitabani Wildlife Reserve | Wildlife Sanctuary | Uttarakhand |  |  |
+| Q65041648 | Ralamandal Wildlife Sanctuary | Wildlife Sanctuary | Madhya Pradesh |  |  |
+| Q65321737 | Karimpuzha Wildlife Sanctuary | Wildlife Sanctuary | Kerala |  |  |
+| Q85800682 | Sharavathi LTM Wildlife Sanctuary | Wildlife Sanctuary | Karnataka |  |  |
+| Q105581798 | Benog Wildlife Sanctuary | Wildlife Sanctuary | Uttarakhand |  |  |
+| Q105806882 | Kottur Elephant Sanctuary and Rehabilitation Centre | Wildlife Sanctuary | Kerala |  |  |
+| Q2580141 | Bhitarkanika National Park | National Park | Odisha |  |  |
+| Q2979712 | Balpakram National Park | National Park | Meghalaya |  |  |
+| Q13116281 | Karian Shola National Park | National Park | Tamil Nadu |  |  |
+| Q14205920 | Begur Wildlife Sanctuary | Wildlife Sanctuary | Kerala |  |  |
+| Q26794303 | Changthang Wildlife Sanctuary | Wildlife Sanctuary | Ladakh |  |  |
+| Q26794308 | Neyyar Wildlife Reserve | Wildlife Sanctuary | Tamil Nadu | Kerala | https://en.wikipedia.org/wiki/Neyyar_Wildlife_Sanctuary |
+| Q26794312 | Shendurney Wildlife Reserve | Wildlife Sanctuary | Kerala |  |  |
+| Q28173945 | Khonoma Nature Conservation and Tragopan Sanctuary | Wildlife Sanctuary | Nagaland |  |  |
+| Q112252433 | Rangayyanadurga Four–horned antelope Wildlife Sanctuary | Wildlife Sanctuary | Karnataka |  |  |
+| Q123439915 | Kudremukh National Park | National Park | Karnataka |  |  |
+| Q125881460 | Mansar-Surinsar Wildlife sanctuary | Wildlife Sanctuary | Jammu and Kashmir |  |  |
+| Q131123428 | Kodaikanal Wildlife Sanctuary | Wildlife Sanctuary | Tamil Nadu |  |  |
+| Q135455927 | Adichunchanagiri Peacock Wildlife Sanctuary | Wildlife Sanctuary | Karnataka |  |  |
+
+<details>
+<summary>QuickStatements: how to fix this on Wikidata</summary>
+
+Where `wikipediaNameMatchState` is filled in, a Wikipedia entry with the *exact same name* exists under a different state -- often because Wikidata's P131 chain is stale (e.g. it still resolves to a pre-2000 undivided state) rather than because these are genuinely two different, coincidentally-named places. This repo's own matcher treats a disagreeing state as a hard veto for exactly that reason (see `scripts/lib/wikidata-match.js`), so confirm the same district/coordinates before applying anything below.
+
+Adds a direct P131 to the state the mismatch points at, rather than removing the existing chain -- if the wrong value is inherited from an intermediate district/tehsil-level P131 rather than set directly on the item, that link needs separate correction by hand.
+
+Paste as a new batch at <https://quickstatements.toolforge.org/> (mode: v1, tab-separated) -- review every line first; these are suggestions, not verified edits:
+
+```
+Q109974038	P131	Q1195	S143	Q328	S854	"https://en.wikipedia.org/wiki/Siju_Wildlife_Sanctuary"
+Q115804851	P131	Q77997266	S143	Q328	S854	"https://en.wikipedia.org/wiki/Dadra_and_Nagar_Haveli_Wildlife_Sanctuary"
+Q3174886	P131	Q1499	S143	Q328	S854	"https://en.wikipedia.org/wiki/Govind_Pashu_Vihar_National_Park"
+Q5405090	P131	Q677037	S143	Q328	S854	"https://en.wikipedia.org/wiki/Eturnagaram_Wildlife_Sanctuary"
+Q6368141	P131	Q200667	S143	Q328	S854	"https://en.wikipedia.org/wiki/Karakoram_Wildlife_Sanctuary"
+Q6750402	P131	Q677037	S143	Q328	S854	"https://en.wikipedia.org/wiki/Manjira_Wildlife_Sanctuary"
+Q26794308	P131	Q1186	S143	Q328	S854	"https://en.wikipedia.org/wiki/Neyyar_Wildlife_Sanctuary"
+```
+
+</details>
 
 ## Wikidata ↔ OSM joins
 
-Cross-referenced against `data/osm/protected-areas.csv` (528 issues flagged).
+Cross-referenced against `data/osm/protected-areas.csv` (524 issues flagged).
 
 ### Summary
 
-- **Wikidata items with no OSM match**: 327
+- **Wikidata items with no OSM match**: 323
 - **OSM wikidata tag outdated**: 39
 - **Wikidata P402 (OSM relation) outdated**: 2
 - **Wikidata coordinate outside OSM polygon**: 139
@@ -472,17 +1663,13 @@ No OSM object references this wikidata id via P402, and no OSM object tags this 
 
 | wikidataId | wikidataLabel |
 | --- | --- |
-| Q16137059 | Munderikadavu Bird Sanctuary |
-| Q16895017 | Mehao Wildlife Sanctuary |
-| Q17126760 | Daroji Sloth Bear Sanctuary |
-| Q60398704 | Marine Sanctuary (Gulf of Kutch) |
-| Q2720864 | Pench National Park |
-| Q7050184 | Noradehi Wildlife Sanctuary |
-| Q7206203 | Pobitora Wildlife Sanctuary |
-| Q7461605 | Shahgarh Landscape |
+| Q6375178 | Katarniaghat Wildlife Sanctuary |
 | Q3595683 | Hazaribagh Wildlife Sanctuary |
 | Q3696260 | Palani Hills Wildlife Sanctuary and National Park |
 | Q3471776 | Hoollongapar Gibbon Sanctuary |
+| Q134457402 | Lachipora Wildlife Sanctuary |
+| Q140306443 | Arial Island Wildlife Sanctuary |
+| Q2720864 | Pench National Park |
 | Q102047437 | Gulmarg Wildlife Sanctuary |
 | Q106675739 | Udanti Wildlife Sanctuary |
 | Q106684744 | Biligiri Rangaswamy Temple Wildlife Sanctuary |
@@ -490,7 +1677,19 @@ No OSM object references this wikidata id via P402, and no OSM object tags this 
 | Q110460281 | Yangoupokpi-Lokchao Wildlife Sanctuary |
 | Q112136896 | Kadalundi–Vallikkunnu Community Reserve |
 | Q113133799 | Garbhanga Wildlife Sanctuary |
-| Q6375178 | Katarniaghat Wildlife Sanctuary |
+| Q7050184 | Noradehi Wildlife Sanctuary |
+| Q7206203 | Pobitora Wildlife Sanctuary |
+| Q7285897 | Rajbari National Park |
+| Q7461605 | Shahgarh Landscape |
+| Q16137059 | Munderikadavu Bird Sanctuary |
+| Q16895017 | Mehao Wildlife Sanctuary |
+| Q17126760 | Daroji Sloth Bear Sanctuary |
+| Q60398704 | Marine Sanctuary (Gulf of Kutch) |
+| Q253455 | Dudhwa National Park |
+| Q1785732 | Koyna Wildlife Sanctuary |
+| Q1815612 | Namdapha National Park |
+| Q2340037 | Buxa Tiger Reserve |
+| Q2667857 | Salim Ali National Park |
 | Q3895706 | Nagarjunsagar-Srisailam Tiger Reserve |
 | Q3364416 | Mandla Plant Fossils National Park |
 | Q3364473 | Pench Tiger Reserve |
@@ -498,11 +1697,7 @@ No OSM object references this wikidata id via P402, and no OSM object tags this 
 | Q3457187 | Dampa Tiger Reserve |
 | Q3523324 | Karimpuzha National Park |
 | Q3696259 | Chandoli National Park |
-| Q253455 | Dudhwa National Park |
-| Q1785732 | Koyna Wildlife Sanctuary |
-| Q1815612 | Namdapha National Park |
-| Q2340037 | Buxa Tiger Reserve |
-| Q2667857 | Salim Ali National Park |
+| Q4208325 | Qazinag National Park |
 | Q4682873 | Adina Deer Park |
 | Q4691449 | Agasthyavanam Biological Park |
 | Q4941109 | Bonal Bird Sanctuary |
@@ -511,15 +1706,8 @@ No OSM object references this wikidata id via P402, and no OSM object tags this 
 | Q5215675 | Dandeli National Park |
 | Q5215676 | Dandeli Wildlife Sanctuary |
 | Q5311756 | Dudhwa Tiger Reserve |
-| Q4208325 | Qazinag National Park |
-| Q7285897 | Rajbari National Park |
-| Q7461463 | Shahayadri Tiger reserve |
-| Q7697281 | Telineelapuram and Telukunchi Bird Sanctuaries |
-| Q7786672 | Thol Wildlife Sanctuary |
-| Q7809473 | Tiruvidaimarudur Conservation Reserve |
 | Q5517624 | Gajner Wildlife Sanctuary |
 | Q5597433 | Grass Hills National Park |
-| Q6165901 | Jawahar Deer Park |
 | Q6368141 | Karakoram Wildlife Sanctuary |
 | Q6443537 | Kumarakom Bird Sanctuary |
 | Q6729590 | Magadi Bird Sanctuary |
@@ -527,8 +1715,28 @@ No OSM object references this wikidata id via P402, and no OSM object tags this 
 | Q6796837 | Mayani Bird Sanctuary |
 | Q6963221 | Nandhaur Wildlife Sanctuary |
 | Q6965807 | Narendrapur Wildlife Sanctuary |
-| Q105944439 | Khijadia Bird Sanctuary |
-| Q106240301 | Nandankanan Wildlife Sanctuary |
+| Q7461463 | Shahayadri Tiger reserve |
+| Q7697281 | Telineelapuram and Telukunchi Bird Sanctuaries |
+| Q7786672 | Thol Wildlife Sanctuary |
+| Q7809473 | Tiruvidaimarudur Conservation Reserve |
+| Q15234037 | Kas Plateau Reserved Forest |
+| Q15839097 | Nanda Devi and Valley of Flowers National Parks |
+| Q16155392 | Bhindawas Wildlife Sanctuary |
+| Q16253187 | Bankapur Peacock Sanctuary |
+| Q16887542 | Netravali Wildlife Sanctuary |
+| Q16894577 | Mandagadde Bird Sanctuary |
+| Q16896392 | Pangolakha Wildlife Sanctuary |
+| Q16948098 | Kanwar Sanctuary |
+| Q17002774 | Abubshahar Wildlife Sanctuary |
+| Q17002953 | Saraswati Wildlife Sanctuary |
+| Q17010836 | Achabal Wildlife Sanctuary |
+| Q17052151 | Dumna Nature Reserve Park |
+| Q17564493 | Bordoibam Bilmukh Bird Sanctuary |
+| Q18110132 | Balimela Wildlife Sanctuary |
+| Q18126911 | Kondakameru Wildlife Sanctuary |
+| Q18357307 | Uppalapadu Bird Sanctuary |
+| Q19881905 | Amangarh Tiger Reserve |
+| Q19894392 | Naina Devi Himalayan Bird Conservation Reserve |
 | Q106258797 | Rabdentse Bird Sanctuary |
 | Q106416493 | Ramanagara Ramdevara Betta Vulture Sanctuary |
 | Q106513464 | Ghosu Bird Sanctuary |
@@ -554,27 +1762,10 @@ No OSM object references this wikidata id via P402, and no OSM object tags this 
 | Q104879966 | Barnawapara Wildlife sanctuary |
 | Q105581798 | Benog Wildlife Sanctuary |
 | Q105806882 | Kottur Elephant Sanctuary and Rehabilitation Centre |
-| Q15234037 | Kas Plateau Reserved Forest |
-| Q15839097 | Nanda Devi and Valley of Flowers National Parks |
-| Q16155392 | Bhindawas Wildlife Sanctuary |
-| Q16253187 | Bankapur Peacock Sanctuary |
-| Q16887542 | Netravali Wildlife Sanctuary |
-| Q16894577 | Mandagadde Bird Sanctuary |
-| Q16896392 | Pangolakha Wildlife Sanctuary |
-| Q16948098 | Kanwar Sanctuary |
-| Q17002774 | Abubshahar Wildlife Sanctuary |
-| Q17002953 | Saraswati Wildlife Sanctuary |
-| Q17010836 | Achabal Wildlife Sanctuary |
-| Q17052151 | Dumna Nature Reserve Park |
-| Q17076761 | Najafgarh drain bird sanctuary |
-| Q17564493 | Bordoibam Bilmukh Bird Sanctuary |
-| Q18110132 | Balimela Wildlife Sanctuary |
-| Q18126911 | Kondakameru Wildlife Sanctuary |
-| Q18357307 | Uppalapadu Bird Sanctuary |
+| Q105944439 | Khijadia Bird Sanctuary |
+| Q106240301 | Nandankanan Wildlife Sanctuary |
 | Q1766106 | Kudremukh National Park |
 | Q2429161 | Melghat Tiger Reserve |
-| Q134457402 | Lachipora Wildlife Sanctuary |
-| Q140306443 | Arial Island Wildlife Sanctuary |
 | Q7786671 | Thol Lake |
 | Q2979712 | Balpakram National Park |
 | Q13116281 | Karian Shola National Park |
@@ -582,6 +1773,12 @@ No OSM object references this wikidata id via P402, and no OSM object tags this 
 | Q14618939 | Nambor Wildlife Sanctuary |
 | Q14623369 | Bherjan-Borajan-Padumoni Wildlife Sanctuary |
 | Q15203562 | Bornadi Wildlife Sanctuary |
+| Q22948452 | Ervadi Dargah Sharif |
+| Q26794308 | Neyyar Wildlife Reserve |
+| Q26794312 | Shendurney Wildlife Reserve |
+| Q28173945 | Khonoma Nature Conservation and Tragopan Sanctuary |
+| Q38251694 | Sumin Reserve Forest |
+| Q39057492 | Nilambur Elephant Reserve |
 | Q111169695 | Tirthan Wildlife Sanctuary |
 | Q111181702 | Singphan Wildlife Sanctuary |
 | Q111181960 | Talra Wildlife Sanctuary |
@@ -593,22 +1790,13 @@ No OSM object references this wikidata id via P402, and no OSM object tags this 
 | Q124393199 | Anandanagar Forest |
 | Q127499823 | Amrabad Tiger Reserve |
 | Q130974183 | Yordi Rabe Supse Wildlife Sanctuary |
-| Q135650177 | Rajauli Wildlife Sanctuary |
+| Q130974358 | Bhairamgarh Wildlife Sanctuary |
 | Q135838331 | Chandratal Wildlife Sanctuary |
 | Q137368881 | Selbagre Hoolock Gibbon Reserve |
 | Q137596744 | Kanhargaon Wildlife Sanctuary |
 | Q137596748 | Wan Wildlife Sanctuary |
 | Q137801052 | Pranhita Wildlife Sanctuary |
 | Q37564 | Kadalundi Bird Sanctuary |
-| Q19881905 | Amangarh Tiger Reserve |
-| Q19894392 | Naina Devi Himalayan Bird Conservation Reserve |
-| Q22948452 | Ervadi Dargah Sharif |
-| Q26794308 | Neyyar Wildlife Reserve |
-| Q26794312 | Shendurney Wildlife Reserve |
-| Q28173945 | Khonoma Nature Conservation and Tragopan Sanctuary |
-| Q38251694 | Sumin Reserve Forest |
-| Q39057492 | Nilambur Elephant Reserve |
-| Q130974358 | Bhairamgarh Wildlife Sanctuary |
 | Q131007942 | Kamala Wildlife Sanctuary |
 | Q131007944 | Ringba-Roba Wildlife Sanctuary |
 | Q134484578 | Satajaan Bird Sanctuary |
@@ -616,8 +1804,8 @@ No OSM object references this wikidata id via P402, and no OSM object tags this 
 | Q134984377 | Sikhna Jwhwlao National Park |
 | Q135350399 | Bhoramdev Wildlife Sanctuary |
 | Q135419116 | Kappatagudda Wildlife Sanctuary |
+| Q135650177 | Rajauli Wildlife Sanctuary |
 | WIKIPEDIA:chhattisgarh:guru-ghasidas-national-park-sanjay | Guru Ghasidas National Park(Sanjay) |
-| WIKIPEDIA:goa:mollem-national-park | Mollem National Park |
 | WIKIPEDIA:gujarat:blackbuck-national-park-velavadar | Blackbuck National Park(Velavadar) |
 | WIKIPEDIA:karnataka:anshi-national-park | Anshi National Park |
 | WIKIPEDIA:karnataka:nagarhole-national-park-rajiv-gandhi | Nagarhole National Park(Rajiv Gandhi) |
@@ -716,7 +1904,6 @@ No OSM object references this wikidata id via P402, and no OSM object tags this 
 | WIKIPEDIA:chandigarh:city-birds-wildlife-sanctuary | City Birds Wildlife Sanctuary |
 | WIKIPEDIA:dadra-nagar-haveli-and-daman-and-diu:dadra-and-nagar-haveli-wildlife-sanctuary | Dadra and Nagar Haveli Wildlife Sanctuary |
 | WIKIPEDIA:dadra-nagar-haveli-and-daman-and-diu:fudam-bird-sanctuary | Fudam Bird Sanctuary |
-| WIKIPEDIA:goa:bhagwan-mahavir-sanctuary | Bhagwan Mahavir Sanctuary |
 | WIKIPEDIA:himachal-pradesh:kais-wildlife-sanctuary | Kais Wildlife Sanctuary |
 | WIKIPEDIA:himachal-pradesh:khokhan-wildlife-sanctuary | Khokhan Wildlife Sanctuary |
 | WIKIPEDIA:himachal-pradesh:lippa-asrang-wildlife-sanctuary | Lippa Asrang Wildlife Sanctuary |
@@ -800,6 +1987,13 @@ No OSM object references this wikidata id via P402, and no OSM object tags this 
 | WIKIPEDIA:rajasthan:mukandra-hills-tiger-reserve | Mukandra Hills Tiger Reserve |
 | WIKIPEDIA:rajasthan:dholpur-karauli-tiger-reserve | Dholpur-Karauli Tiger Reserve |
 
+<details>
+<summary>QuickStatements: how to fix this on Wikidata</summary>
+
+No Wikidata edit applies -- this is a gap on the OSM side (the boundary either isn't mapped at all, or is mapped without a `wikidata` tag). Map it or add the tag on OpenStreetMap; nothing to fix on Wikidata itself.
+
+</details>
+
 ### OSM wikidata tag outdated
 
 OSM `wikidata` tag value is a redirect, deleted, or not found in our fetched Indian protected-area list.
@@ -846,6 +2040,13 @@ OSM `wikidata` tag value is a redirect, deleted, or not found in our fetched Ind
 | Q2211959 | relation | 3531450 | https://www.openstreetmap.org/relation/3531450 | सगरमाथा राष्ट्रिय निकुञ्ज | Valid Wikidata item, but not present in our fetched Indian protected-area list (check its P31 type / P17 country, or it may genuinely not be a protected area). |
 | Q140089593 | relation | 21075759 | https://www.openstreetmap.org/relation/21075759 | Bhimalpur Forest | Valid Wikidata item, but not present in our fetched Indian protected-area list (check its P31 type / P17 country, or it may genuinely not be a protected area). |
 
+<details>
+<summary>QuickStatements: how to fix this on Wikidata</summary>
+
+The fix here is an edit to OpenStreetMap's `wikidata` tag, not to Wikidata -- QuickStatements can't help. When the detail column says "Redirects to X, which IS in our list", retag the OSM object to X. When Wikidata's side of a redirect needs cleanup instead (e.g. a genuine duplicate item), merge the items on Wikidata by hand -- QuickStatements doesn't do merges either.
+
+</details>
+
 ### Wikidata P402 (OSM relation) outdated
 
 Wikidata's own OSM-relation-id claim (P402) does not resolve cleanly against the OSM cache.
@@ -855,6 +2056,20 @@ Wikidata's own OSM-relation-id claim (P402) does not resolve cleanly against the
 | Q102047437 | Gulmarg Wildlife Sanctuary | 15876412 | Relation not found in OSM cache (deleted/renumbered on OSM, or outside the query bbox). |
 | Q135826470 | West Sunderban Wildlife Sanctuary | 678835645 | Relation not found in OSM cache (deleted/renumbered on OSM, or outside the query bbox). |
 
+<details>
+<summary>QuickStatements: how to fix this on Wikidata</summary>
+
+Removes the stale P402 (OpenStreetMap Relation identifier) value. If the detail column shows the relation now belongs to a different OSM object entirely, add the corrected relation id by hand instead of just removing this one (`Qid	P402	"<new-relation-id>"`).
+
+Paste as a new batch at <https://quickstatements.toolforge.org/> (mode: v1, tab-separated) -- review every line first; these are suggestions, not verified edits:
+
+```
+Q102047437	-P402	"15876412"
+Q135826470	-P402	"678835645"
+```
+
+</details>
+
 ### Wikidata coordinate outside OSM polygon
 
 The matched pair's Wikidata coordinate (P625) falls outside the OSM boundary geometry.
@@ -862,27 +2077,41 @@ The matched pair's Wikidata coordinate (P625) falls outside the OSM boundary geo
 | wikidataId | wikidataLabel | osmUrl | distanceToBoundary | distanceToCentroid |
 | --- | --- | --- | --- | --- |
 | Q337028 | Gir National Park | https://www.openstreetmap.org/relation/21061186 | 928 m | 5.00 km |
+| Q5073423 | Chapramari Wildlife Sanctuary | https://www.openstreetmap.org/way/668960167 | 1.50 km | 3.02 km |
+| Q5618257 | Gumti Wildlife Sanctuary | https://www.openstreetmap.org/relation/9264786 | 40.86 km | 48.60 km |
+| Q6187899 | Jessore Sloth Bear Sanctuary | https://www.openstreetmap.org/relation/9308456 | 19.95 km | 31.74 km |
+| Q6382549 | Kedarnath Wildlife Sanctuary | https://www.openstreetmap.org/relation/3014915 | 25.70 km | 42.37 km |
 | Q1544213 | Great Himalayan National Park | https://www.openstreetmap.org/relation/8815513 | 8.18 km | 30.75 km |
-| Q16902313 | Umred Karhandla Wildlife Sanctuary | https://www.openstreetmap.org/way/321130160 | 1.28 km | 2.07 km |
-| Q17033744 | Talley Valley Wildlife Sanctuary | https://www.openstreetmap.org/way/668128310 | 396 m | 14.11 km |
-| Q18343586 | Gautam Budha Wildlife Sanctuary | https://www.openstreetmap.org/way/667689530 | 19.43 km | 40.09 km |
-| Q19808294 | Nandur Madhmeshwar Bird Sanctuary | https://www.openstreetmap.org/way/682827513 | 3.43 km | 10.75 km |
-| Q21997171 | Parrot Bird Sanctuary Chandigarh | https://www.openstreetmap.org/way/129553511 | 343 m | 436 m |
+| Q4807241 | Askot Musk Deer Sanctuary | https://www.openstreetmap.org/relation/9424049 | 1.38 km | 17.94 km |
+| Q880724 | Blackbuck National Park | https://www.openstreetmap.org/way/143357444 | 2.33 km | 5.60 km |
+| Q969593 | Kasu Brahmananda Reddy National Park | https://www.openstreetmap.org/way/28268610 | 174 m | 1.09 km |
+| Q130974238 | Barela Bird Sanctuary | https://www.openstreetmap.org/way/668838321 | 485 m | 2.77 km |
+| Q135012839 | Kwangtung Island Wildlife Sanctuary | https://www.openstreetmap.org/way/227814013 | 36.72 km | 36.93 km |
 | Q2639563 | Tadoba-Andhari Tiger Reserve | https://www.openstreetmap.org/way/679249389 | 1.04 km | 2.81 km |
 | Q2724481 | Marine National Park, Gulf of Kutch | https://www.openstreetmap.org/relation/8334753 | 9.61 km | 8.52 km |
 | Q2726467 | Kutch Bustard Sanctuary | https://www.openstreetmap.org/way/679583523 | 3.70 km | 4.62 km |
 | Q2730580 | Khijadiya Bird Sanctuary | https://www.openstreetmap.org/way/669203977 | 2.82 km | 4.30 km |
 | Q2989176 | Orang National Park | https://www.openstreetmap.org/relation/1665597 | 2.53 km | 7.40 km |
+| Q115804851 | Dadra and Nagar Haveli Wildlife Sanctuary | https://www.openstreetmap.org/way/677741385 | 155 m | 980 m |
 | Q6772512 | Thattekad Bird Sanctuary | https://www.openstreetmap.org/way/677289011 | 47.59 km | 48.89 km |
 | Q6826847 | Mhadei Wildlife Sanctuary | https://www.openstreetmap.org/relation/19059002 | 94 m | 3.12 km |
 | Q6965894 | Nargu Wildlife Sanctuary | https://www.openstreetmap.org/way/667924651 | 2.89 km | 12.55 km |
-| Q4807241 | Askot Musk Deer Sanctuary | https://www.openstreetmap.org/relation/9424049 | 1.38 km | 17.94 km |
-| Q115804851 | Dadra and Nagar Haveli Wildlife Sanctuary | https://www.openstreetmap.org/way/677741385 | 155 m | 980 m |
-| Q5073423 | Chapramari Wildlife Sanctuary | https://www.openstreetmap.org/way/668960167 | 1.50 km | 3.02 km |
-| Q5618257 | Gumti Wildlife Sanctuary | https://www.openstreetmap.org/relation/9264786 | 40.86 km | 48.60 km |
-| Q6187899 | Jessore Sloth Bear Sanctuary | https://www.openstreetmap.org/relation/9308456 | 19.95 km | 31.74 km |
-| Q6382549 | Kedarnath Wildlife Sanctuary | https://www.openstreetmap.org/relation/3014915 | 25.70 km | 42.37 km |
+| Q3092341 | Sanjay National Park | https://www.openstreetmap.org/relation/9268491 | 12.05 km | 33.29 km |
+| Q16902313 | Umred Karhandla Wildlife Sanctuary | https://www.openstreetmap.org/way/321130160 | 1.28 km | 2.07 km |
+| Q17033744 | Talley Valley Wildlife Sanctuary | https://www.openstreetmap.org/way/668128310 | 396 m | 14.11 km |
+| Q18343586 | Gautam Budha Wildlife Sanctuary | https://www.openstreetmap.org/way/667689530 | 19.43 km | 40.09 km |
+| Q19808294 | Nandur Madhmeshwar Bird Sanctuary | https://www.openstreetmap.org/way/682827513 | 3.43 km | 10.75 km |
+| Q21997171 | Parrot Bird Sanctuary Chandigarh | https://www.openstreetmap.org/way/129553511 | 343 m | 436 m |
 | Q65091528 | Gudekote Wildlife Sanctuary | https://www.openstreetmap.org/relation/9330957 | 38.90 km | 44.83 km |
+| Q548153 | Periyar National Park | https://www.openstreetmap.org/way/681439743 | 9.36 km | 19.88 km |
+| Q1207543 | Indian Wild Ass Sanctuary | https://www.openstreetmap.org/way/669217186 | 2.01 km | 39.37 km |
+| Q1427976 | Indravati National Park | https://www.openstreetmap.org/relation/2123530 | 31.63 km | 55.75 km |
+| Q1544313 | Rani Jhansi Marine National Park | https://www.openstreetmap.org/way/680484087 | 48.43 km | 58.78 km |
+| Q2253195 | Koothankulam Bird Sanctuary | https://www.openstreetmap.org/relation/9334908 | 8.79 km | 9.80 km |
+| Q2428291 | Valmiki National Park | https://www.openstreetmap.org/relation/2640059 | 25.23 km | 38.51 km |
+| Q2663264 | Betla National Park | https://www.openstreetmap.org/way/667664511 | 6.28 km | 21.34 km |
+| Q2669063 | Vansda National Park | https://www.openstreetmap.org/way/143366077 | 2.76 km | 5.12 km |
+| Q2757724 | Jambughoda Wildlife Sanctuary | https://www.openstreetmap.org/way/272087816 | 257 m | 6.26 km |
 | Q2985193 | Singalila National Park | https://www.openstreetmap.org/relation/9258262 | 968 m | 3.33 km |
 | Q2985390 | Mukurthi National Park | https://www.openstreetmap.org/relation/21130861 | 1.49 km | 3.61 km |
 | Q2985788 | Neora Valley National Park | https://www.openstreetmap.org/way/666282774 | 453 m | 5.05 km |
@@ -895,15 +2124,7 @@ The matched pair's Wikidata coordinate (P625) falls outside the OSM boundary geo
 | Q3595858 | Wayanad Wildlife Sanctuary | https://www.openstreetmap.org/relation/9399178 | 36.37 km | 42.06 km |
 | Q3635045 | Binsar Wildlife Sanctuary | https://www.openstreetmap.org/relation/9298034 | 34.79 km | 41.05 km |
 | Q3846171 | Ranganthittu Bird Sanctuary | https://www.openstreetmap.org/relation/9329660 | 2.64 km | 5.61 km |
-| Q548153 | Periyar National Park | https://www.openstreetmap.org/way/681439743 | 9.36 km | 19.88 km |
-| Q1207543 | Indian Wild Ass Sanctuary | https://www.openstreetmap.org/way/669217186 | 2.01 km | 39.37 km |
-| Q1427976 | Indravati National Park | https://www.openstreetmap.org/relation/2123530 | 31.63 km | 55.75 km |
-| Q1544313 | Rani Jhansi Marine National Park | https://www.openstreetmap.org/way/680484087 | 48.43 km | 58.78 km |
-| Q2253195 | Koothankulam Bird Sanctuary | https://www.openstreetmap.org/relation/9334908 | 8.79 km | 9.80 km |
-| Q2428291 | Valmiki National Park | https://www.openstreetmap.org/relation/2640059 | 25.23 km | 38.51 km |
-| Q2663264 | Betla National Park | https://www.openstreetmap.org/way/667664511 | 6.28 km | 21.34 km |
-| Q2669063 | Vansda National Park | https://www.openstreetmap.org/way/143366077 | 2.76 km | 5.12 km |
-| Q2757724 | Jambughoda Wildlife Sanctuary | https://www.openstreetmap.org/way/272087816 | 257 m | 6.26 km |
+| Q4251269 | Bakhira Sanctuary | https://www.openstreetmap.org/relation/1765046 | 298 m | 3.46 km |
 | Q4783879 | Aralam Wildlife Sanctuary | https://www.openstreetmap.org/way/677209471 | 4.74 km | 8.16 km |
 | Q4851306 | Ballabhpur Wildlife Sanctuary | https://www.openstreetmap.org/way/678820920 | 541 m | 1.45 km |
 | Q4860066 | Barda Wildlife Sanctuary | https://www.openstreetmap.org/way/667545586 | 1.38 km | 6.68 km |
@@ -913,20 +2134,6 @@ The matched pair's Wikidata coordinate (P625) falls outside the OSM boundary geo
 | Q5102342 | Chitrangudi Bird Sanctuary | https://www.openstreetmap.org/way/671122257 | 1.14 km | 1.60 km |
 | Q5224247 | Mukundra Hills Tiger Reserve (MHTR) | https://www.openstreetmap.org/relation/9477404 | 162 m | 17.64 km |
 | Q5405090 | Eturnagaram Wildlife Sanctuary | https://www.openstreetmap.org/way/670957979 | 719 m | 7.88 km |
-| Q4251269 | Bakhira Sanctuary | https://www.openstreetmap.org/relation/1765046 | 298 m | 3.46 km |
-| Q7293023 | Ranibennur Blackbuck Sanctuary | https://www.openstreetmap.org/relation/9446246 | 373 m | 6.50 km |
-| Q7399055 | Sagareshwar Wildlife Sanctuary | https://www.openstreetmap.org/way/265054632 | 53 m | 1.26 km |
-| Q7402708 | Sajnekhali Wildlife Sanctuary | https://www.openstreetmap.org/relation/13617704 | 22.11 km | 33.02 km |
-| Q7408557 | Saman Bird Sanctuary | https://www.openstreetmap.org/way/668669680 | 1.12 km | 2.29 km |
-| Q7416307 | Sandi Bird Sanctuary | https://www.openstreetmap.org/way/668654892 | 7.60 km | 9.09 km |
-| Q7450103 | Senchal Wildlife Sanctuary | https://www.openstreetmap.org/way/678848509 | 181 m | 2.50 km |
-| Q7494223 | Shendurney Wildlife Sanctuary | https://www.openstreetmap.org/relation/17744486 | 3.99 km | 8.86 km |
-| Q7497442 | Shingba Rhododendron Sanctuary | https://www.openstreetmap.org/way/668997428 | 4.78 km | 9.08 km |
-| Q7531584 | Sita Mata Wildlife Sanctuary | https://www.openstreetmap.org/way/667134094 | 7.83 km | 19.07 km |
-| Q7559997 | Someshwara Wildlife Sanctuary | https://www.openstreetmap.org/relation/9328427 | 8.71 km | 24.35 km |
-| Q7844042 | Trishna Wildlife Sanctuary | https://www.openstreetmap.org/way/666506794 | 11.67 km | 17.52 km |
-| Q7929607 | Vikramshila Gangetic Dolphin Sanctuary | https://www.openstreetmap.org/way/668848106 | 12 m | 3.41 km |
-| Q8050448 | Yawal Wildlife Sanctuary | https://www.openstreetmap.org/way/679320215 | 494 m | 11.77 km |
 | Q5520164 | Gamgul Siyabehi Wildlife Sanctuary | https://www.openstreetmap.org/relation/9290782 | 8.66 km | 16.93 km |
 | Q5520717 | Gandhi Sagar Sanctuary | https://www.openstreetmap.org/relation/9309950 | 6.95 km | 15.19 km |
 | Q5589844 | Govind Pashu Vihar National Park and Sanctuary | https://www.openstreetmap.org/relation/8777786 | 2.52 km | 8.26 km |
@@ -942,15 +2149,19 @@ The matched pair's Wikidata coordinate (P625) falls outside the OSM boundary geo
 | Q6959133 | Nagzira Wildlife Sanctuary | https://www.openstreetmap.org/way/670043200 | 473 m | 9.60 km |
 | Q6982793 | Nawabganj Bird Sanctuary | https://www.openstreetmap.org/relation/8452444 | 83 m | 699 m |
 | Q7180496 | Phansad Wildlife Sanctuary | https://www.openstreetmap.org/way/670197606 | 2.71 km | 12.13 km |
-| Q106257541 | Kitam bird sanctuary | https://www.openstreetmap.org/way/668999183 | 1.49 km | 2.31 km |
-| Q107313635 | Itanagar Wildlife Sanctuary | https://www.openstreetmap.org/way/677458098 | 5.22 km | 11.39 km |
-| Q48727189 | Malabar Wildlife Sanctuary | https://www.openstreetmap.org/way/677907120 | 30.85 km | 33.98 km |
-| Q48729855 | Parvati Arga Bird Sanctuary | https://www.openstreetmap.org/relation/9302381 | 140 m | 998 m |
-| Q60744029 | Mookambika Wildlife Sanctuary | https://www.openstreetmap.org/way/670548929 | 11.45 km | 24.74 km |
-| Q61363881 | Nongkhyllem Wildlife Sanctuary | https://www.openstreetmap.org/way/666517430 | 2.65 km | 6.86 km |
-| Q65090978 | Ken Gharial Sanctuary | https://www.openstreetmap.org/way/669401054 | 631 m | 2.52 km |
-| Q65321737 | Karimpuzha Wildlife Sanctuary | https://www.openstreetmap.org/relation/21130775 | 504 m | 12.79 km |
-| Q85800682 | Sharavathi LTM Wildlife Sanctuary | https://www.openstreetmap.org/way/670641254 | 7.20 km | 27.12 km |
+| Q7293023 | Ranibennur Blackbuck Sanctuary | https://www.openstreetmap.org/relation/9446246 | 373 m | 6.50 km |
+| Q7399055 | Sagareshwar Wildlife Sanctuary | https://www.openstreetmap.org/way/265054632 | 53 m | 1.26 km |
+| Q7402708 | Sajnekhali Wildlife Sanctuary | https://www.openstreetmap.org/relation/13617704 | 22.11 km | 33.02 km |
+| Q7408557 | Saman Bird Sanctuary | https://www.openstreetmap.org/way/668669680 | 1.12 km | 2.29 km |
+| Q7416307 | Sandi Bird Sanctuary | https://www.openstreetmap.org/way/668654892 | 7.60 km | 9.09 km |
+| Q7450103 | Senchal Wildlife Sanctuary | https://www.openstreetmap.org/way/678848509 | 181 m | 2.50 km |
+| Q7494223 | Shendurney Wildlife Sanctuary | https://www.openstreetmap.org/relation/17744486 | 3.99 km | 8.86 km |
+| Q7497442 | Shingba Rhododendron Sanctuary | https://www.openstreetmap.org/way/668997428 | 4.78 km | 9.08 km |
+| Q7531584 | Sita Mata Wildlife Sanctuary | https://www.openstreetmap.org/way/667134094 | 7.83 km | 19.07 km |
+| Q7559997 | Someshwara Wildlife Sanctuary | https://www.openstreetmap.org/relation/9328427 | 8.71 km | 24.35 km |
+| Q7844042 | Trishna Wildlife Sanctuary | https://www.openstreetmap.org/way/666506794 | 11.67 km | 17.52 km |
+| Q7929607 | Vikramshila Gangetic Dolphin Sanctuary | https://www.openstreetmap.org/way/668848106 | 12 m | 3.41 km |
+| Q8050448 | Yawal Wildlife Sanctuary | https://www.openstreetmap.org/way/679320215 | 494 m | 11.77 km |
 | Q15276427 | Sessa Orchid Sanctuary | https://www.openstreetmap.org/way/677464198 | 5.35 km | 9.77 km |
 | Q15723901 | Kuldiha Wildlife Sanctuary | https://www.openstreetmap.org/way/669795314 | 2.65 km | 14.72 km |
 | Q15982945 | Kaimoor Sanctuary | https://www.openstreetmap.org/way/668643371 | 4.61 km | 33.32 km |
@@ -959,13 +2170,15 @@ The matched pair's Wikidata coordinate (P625) falls outside the OSM boundary geo
 | Q17002923 | Nahar Wildlife Sanctuary | https://www.openstreetmap.org/way/668500132 | 446 m | 856 m |
 | Q17067959 | Kugti Sanctuary | https://www.openstreetmap.org/way/667934530 | 7.82 km | 20.82 km |
 | Q17082192 | Patna Bird Sanctuary | https://www.openstreetmap.org/way/668735342 | 3.02 km | 3.41 km |
+| Q106257541 | Kitam bird sanctuary | https://www.openstreetmap.org/way/668999183 | 1.49 km | 2.31 km |
+| Q107313635 | Itanagar Wildlife Sanctuary | https://www.openstreetmap.org/way/677458098 | 5.22 km | 11.39 km |
+| Q60744029 | Mookambika Wildlife Sanctuary | https://www.openstreetmap.org/way/670548929 | 11.45 km | 24.74 km |
+| Q61363881 | Nongkhyllem Wildlife Sanctuary | https://www.openstreetmap.org/way/666517430 | 2.65 km | 6.86 km |
+| Q65090978 | Ken Gharial Sanctuary | https://www.openstreetmap.org/way/669401054 | 631 m | 2.52 km |
+| Q65321737 | Karimpuzha Wildlife Sanctuary | https://www.openstreetmap.org/relation/21130775 | 504 m | 12.79 km |
+| Q85800682 | Sharavathi LTM Wildlife Sanctuary | https://www.openstreetmap.org/way/670641254 | 7.20 km | 27.12 km |
 | Q1858071 | Panna National Park | https://www.openstreetmap.org/way/160695615 | 277 m | 14.27 km |
 | Q2226064 | Sathyamangalam Tiger Reserve | https://www.openstreetmap.org/relation/4192204 | 54.40 km | 72.65 km |
-| Q880724 | Blackbuck National Park | https://www.openstreetmap.org/way/143357444 | 2.33 km | 5.60 km |
-| Q969593 | Kasu Brahmananda Reddy National Park | https://www.openstreetmap.org/way/28268610 | 174 m | 1.09 km |
-| Q3092341 | Sanjay National Park | https://www.openstreetmap.org/relation/9268491 | 12.05 km | 33.29 km |
-| Q130974238 | Barela Bird Sanctuary | https://www.openstreetmap.org/way/668838321 | 485 m | 2.77 km |
-| Q135012839 | Kwangtung Island Wildlife Sanctuary | https://www.openstreetmap.org/way/227814013 | 36.72 km | 36.93 km |
 | Q2928293 | Bura Chapori Wildlife Sanctuary | https://www.openstreetmap.org/way/178119226 | 121 m | 2.11 km |
 | Q2985156 | Kalesar National Park | https://www.openstreetmap.org/way/666664869 | 743 m | 6.27 km |
 | Q13111992 | Chulannur Peafowl Sanctuary | https://www.openstreetmap.org/way/677290520 | 730 m | 1.37 km |
@@ -974,6 +2187,15 @@ The matched pair's Wikidata coordinate (P625) falls outside the OSM boundary geo
 | Q15198953 | Bhimbandh Wildlife Sanctuary | https://www.openstreetmap.org/way/668864873 | 5.79 km | 17.58 km |
 | Q15232550 | Kaimur Wildlife Sanctuary | https://www.openstreetmap.org/way/668769113 | 8.90 km | 38.07 km |
 | Q15233552 | Kanjirankulam Bird Sanctuary | https://www.openstreetmap.org/way/671207570 | 2.55 km | 2.98 km |
+| Q19895392 | Pranahita Wildlife Sanctuary | https://www.openstreetmap.org/relation/9331660 | 992 m | 8.68 km |
+| Q19895529 | Purna Wildlife Sanctuary | https://www.openstreetmap.org/way/669197063 | 1.21 km | 8.90 km |
+| Q22080908 | Simbalbara National Park | https://www.openstreetmap.org/way/666725799 | 209 m | 3.02 km |
+| Q24906034 | Sri Penusila Narasimha Wildlife Sanctuary | https://www.openstreetmap.org/way/671119721 | 18.45 km | 47.38 km |
+| Q28174315 | Kapilasa Wildlife Sanctuary | https://www.openstreetmap.org/way/669764918 | 127 m | 4.59 km |
+| Q31708100 | Kottiyoor Wildlife Sanctuary | https://www.openstreetmap.org/way/677210306 | 1.61 km | 5.22 km |
+| Q31708488 | Inderkilla National Park | https://www.openstreetmap.org/way/666695328 | 3.49 km | 10.64 km |
+| Q48727189 | Malabar Wildlife Sanctuary | https://www.openstreetmap.org/way/677907120 | 30.85 km | 33.98 km |
+| Q48729855 | Parvati Arga Bird Sanctuary | https://www.openstreetmap.org/relation/9302381 | 140 m | 998 m |
 | Q112252264 | Bukkapatna Chinkara Wildlife Sanctuary | https://www.openstreetmap.org/relation/19925050 | 2.18 km | 4.65 km |
 | Q112252433 | Rangayyanadurga Four–horned antelope Wildlife Sanctuary | https://www.openstreetmap.org/relation/9447282 | 12.52 km | 14.92 km |
 | Q112252443 | Ramadevarabetta Vulture Sanctuary | https://www.openstreetmap.org/way/670763955 | 228 m | 640 m |
@@ -983,16 +2205,7 @@ The matched pair's Wikidata coordinate (P625) falls outside the OSM boundary geo
 | Q130974135 | Mussoorie Wildlife Sanctuary | https://www.openstreetmap.org/way/681258821 | 376 m | 1.94 km |
 | Q130974254 | Nakti Dam Wildlife Sanctuary | https://www.openstreetmap.org/way/668879024 | 4.36 km | 5.90 km |
 | Q130974349 | Badalkhol Wildlife Sanctuary | https://www.openstreetmap.org/way/669633370 | 209.38 km | 218.74 km |
-| Q135483626 | Panpatha Wildlife Sanctuary | https://www.openstreetmap.org/relation/15695895 | 10.01 km | 20.40 km |
-| Q135622961 | Sakkarakottai Bird Sanctuary | https://www.openstreetmap.org/way/671203113 | 3.20 km | 5.71 km |
 | Q135798492 | Bir Aishvan Wildlife Sanctuary | https://www.openstreetmap.org/way/202540707 | 3.47 km | 4.54 km |
-| Q19895392 | Pranahita Wildlife Sanctuary | https://www.openstreetmap.org/relation/9331660 | 992 m | 8.68 km |
-| Q19895529 | Purna Wildlife Sanctuary | https://www.openstreetmap.org/way/669197063 | 1.21 km | 8.90 km |
-| Q22080908 | Simbalbara National Park | https://www.openstreetmap.org/way/666725799 | 209 m | 3.02 km |
-| Q24906034 | Sri Penusila Narasimha Wildlife Sanctuary | https://www.openstreetmap.org/way/671119721 | 18.45 km | 47.38 km |
-| Q28174315 | Kapilasa Wildlife Sanctuary | https://www.openstreetmap.org/way/669764918 | 127 m | 4.59 km |
-| Q31708100 | Kottiyoor Wildlife Sanctuary | https://www.openstreetmap.org/way/677210306 | 1.61 km | 5.22 km |
-| Q31708488 | Inderkilla National Park | https://www.openstreetmap.org/way/666695328 | 3.49 km | 10.64 km |
 | Q131123428 | Kodaikanal Wildlife Sanctuary | https://www.openstreetmap.org/relation/9336901 | 17.74 km | 36.37 km |
 | Q131939336 | Girnar Wildlife Sanctuary | https://www.openstreetmap.org/relation/9078468 | 3.62 km | 11.76 km |
 | Q132068974 | Orchha Wildlife Sanctuary | https://www.openstreetmap.org/way/680764132 | 723 m | 5.75 km |
@@ -1000,6 +2213,159 @@ The matched pair's Wikidata coordinate (P625) falls outside the OSM boundary geo
 | Q135404149 | Narsinghgarh Wildlife Sanctuary | https://www.openstreetmap.org/way/669504729 | 35 m | 4.74 km |
 | Q135404156 | Kibber Wildlife Sanctuary | https://www.openstreetmap.org/relation/4144891 | 18.05 km | 38.28 km |
 | Q135412386 | Pualreng Wildlife Sanctuary | https://www.openstreetmap.org/way/663161490 | 690 m | 5.34 km |
+| Q135483626 | Panpatha Wildlife Sanctuary | https://www.openstreetmap.org/relation/15695895 | 10.01 km | 20.40 km |
+| Q135622961 | Sakkarakottai Bird Sanctuary | https://www.openstreetmap.org/way/671203113 | 3.20 km | 5.71 km |
+
+<details>
+<summary>QuickStatements: how to fix this on Wikidata</summary>
+
+Moves P625 to the OSM boundary's centroid. Check the `distanceToBoundary`/`distanceToCentroid` columns first -- a large distance can mean the Wikidata coordinate is simply wrong (apply this), or that it correctly points at one specific feature/landmark inside a much larger OSM-mapped boundary, in which case OSM is right and this statement should be skipped.
+
+Paste as a new batch at <https://quickstatements.toolforge.org/> (mode: v1, tab-separated) -- review every line first; these are suggestions, not verified edits:
+
+```
+Q337028	P625	@21.091728/70.785779	S248	Q936	S854	"https://www.openstreetmap.org/relation/21061186"
+Q5073423	P625	@26.899861/88.843723	S248	Q936	S854	"https://www.openstreetmap.org/way/668960167"
+Q5618257	P625	@23.649137/91.788542	S248	Q936	S854	"https://www.openstreetmap.org/relation/9264786"
+Q6187899	P625	@24.421379/72.497685	S248	Q936	S854	"https://www.openstreetmap.org/relation/9308456"
+Q6382549	P625	@30.609156/79.188307	S248	Q936	S854	"https://www.openstreetmap.org/relation/3014915"
+Q1544213	P625	@31.797128/77.625759	S248	Q936	S854	"https://www.openstreetmap.org/relation/8815513"
+Q4807241	P625	@29.995644/80.534943	S248	Q936	S854	"https://www.openstreetmap.org/relation/9424049"
+Q880724	P625	@22.043654/72.053189	S248	Q936	S854	"https://www.openstreetmap.org/way/143357444"
+Q969593	P625	@17.420444/78.420298	S248	Q936	S854	"https://www.openstreetmap.org/way/28268610"
+Q130974238	P625	@25.764852/85.552952	S248	Q936	S854	"https://www.openstreetmap.org/way/668838321"
+Q135012839	P625	@13.169071/92.795173	S248	Q936	S854	"https://www.openstreetmap.org/way/227814013"
+Q2639563	P625	@20.241771/79.427277	S248	Q936	S854	"https://www.openstreetmap.org/way/679249389"
+Q2724481	P625	@22.474676/69.699210	S248	Q936	S854	"https://www.openstreetmap.org/relation/8334753"
+Q2726467	P625	@23.182508/68.735610	S248	Q936	S854	"https://www.openstreetmap.org/way/679583523"
+Q2730580	P625	@22.547592/70.149901	S248	Q936	S854	"https://www.openstreetmap.org/way/669203977"
+Q2989176	P625	@26.552520/92.322565	S248	Q936	S854	"https://www.openstreetmap.org/relation/1665597"
+Q115804851	P625	@20.281397/73.097356	S248	Q936	S854	"https://www.openstreetmap.org/way/677741385"
+Q6772512	P625	@10.130402/76.717059	S248	Q936	S854	"https://www.openstreetmap.org/way/677289011"
+Q6826847	P625	@15.577911/74.199219	S248	Q936	S854	"https://www.openstreetmap.org/relation/19059002"
+Q6965894	P625	@31.979147/76.983837	S248	Q936	S854	"https://www.openstreetmap.org/way/667924651"
+Q3092341	P625	@23.899215/81.973908	S248	Q936	S854	"https://www.openstreetmap.org/relation/9268491"
+Q16902313	P625	@20.840831/79.492006	S248	Q936	S854	"https://www.openstreetmap.org/way/321130160"
+Q17033744	P625	@27.571168/94.038206	S248	Q936	S854	"https://www.openstreetmap.org/way/668128310"
+Q18343586	P625	@24.420136/85.186433	S248	Q936	S854	"https://www.openstreetmap.org/way/667689530"
+Q19808294	P625	@20.022816/74.108966	S248	Q936	S854	"https://www.openstreetmap.org/way/682827513"
+Q21997171	P625	@30.728874/76.779848	S248	Q936	S854	"https://www.openstreetmap.org/way/129553511"
+Q65091528	P625	@14.850454/76.647434	S248	Q936	S854	"https://www.openstreetmap.org/relation/9330957"
+Q548153	P625	@9.450035/77.307083	S248	Q936	S854	"https://www.openstreetmap.org/way/681439743"
+Q1207543	P625	@23.370231/71.248274	S248	Q936	S854	"https://www.openstreetmap.org/way/669217186"
+Q1427976	P625	@19.123259/80.517858	S248	Q936	S854	"https://www.openstreetmap.org/relation/2123530"
+Q1544313	P625	@12.146547/93.059269	S248	Q936	S854	"https://www.openstreetmap.org/way/680484087"
+Q2253195	P625	@8.492886/77.759759	S248	Q936	S854	"https://www.openstreetmap.org/relation/9334908"
+Q2428291	P625	@27.407260/84.118091	S248	Q936	S854	"https://www.openstreetmap.org/relation/2640059"
+Q2663264	P625	@23.699534/84.149362	S248	Q936	S854	"https://www.openstreetmap.org/way/667664511"
+Q2669063	P625	@20.778905/73.459582	S248	Q936	S854	"https://www.openstreetmap.org/way/143366077"
+Q2757724	P625	@22.406051/73.673200	S248	Q936	S854	"https://www.openstreetmap.org/way/272087816"
+Q2985193	P625	@27.130594/88.036854	S248	Q936	S854	"https://www.openstreetmap.org/relation/9258262"
+Q2985390	P625	@11.273363/76.507403	S248	Q936	S854	"https://www.openstreetmap.org/relation/21130861"
+Q2985788	P625	@27.065710/88.750549	S248	Q936	S854	"https://www.openstreetmap.org/way/666282774"
+Q3091867	P625	@9.980887/77.247863	S248	Q936	S854	"https://www.openstreetmap.org/way/666719511"
+Q3174875	P625	@25.465844/90.361055	S248	Q936	S854	"https://www.openstreetmap.org/way/110534257"
+Q3174886	P625	@31.111580/78.348270	S248	Q936	S854	"https://www.openstreetmap.org/relation/9424123"
+Q3333420	P625	@10.200585/77.207420	S248	Q936	S854	"https://www.openstreetmap.org/relation/15036911"
+Q3364480	P625	@25.100797/94.454754	S248	Q936	S854	"https://www.openstreetmap.org/way/678447674"
+Q3490050	P625	@26.911998/92.474454	S248	Q936	S854	"https://www.openstreetmap.org/way/668979382"
+Q3595858	P625	@11.906738/76.084061	S248	Q936	S854	"https://www.openstreetmap.org/relation/9399178"
+Q3635045	P625	@29.699218/79.755280	S248	Q936	S854	"https://www.openstreetmap.org/relation/9298034"
+Q3846171	P625	@12.403074/76.701575	S248	Q936	S854	"https://www.openstreetmap.org/relation/9329660"
+Q4251269	P625	@26.903278/83.139013	S248	Q936	S854	"https://www.openstreetmap.org/relation/1765046"
+Q4783879	P625	@11.945488/75.857355	S248	Q936	S854	"https://www.openstreetmap.org/way/677209471"
+Q4851306	P625	@23.684016/87.667220	S248	Q936	S854	"https://www.openstreetmap.org/way/678820920"
+Q4860066	P625	@21.803062/69.737931	S248	Q936	S854	"https://www.openstreetmap.org/way/667545586"
+Q4955532	P625	@12.023314/75.875587	S248	Q936	S854	"https://www.openstreetmap.org/way/670556892"
+Q5054715	P625	@12.214678/77.457116	S248	Q936	S854	"https://www.openstreetmap.org/relation/9329112"
+Q5070917	P625	@20.347935/85.673471	S248	Q936	S854	"https://www.openstreetmap.org/way/669747799"
+Q5102342	P625	@9.336220/78.481351	S248	Q936	S854	"https://www.openstreetmap.org/way/671122257"
+Q5224247	P625	@24.972967/75.724789	S248	Q936	S854	"https://www.openstreetmap.org/relation/9477404"
+Q5405090	P625	@18.371903/80.262850	S248	Q936	S854	"https://www.openstreetmap.org/way/670957979"
+Q5520164	P625	@32.871588/75.889128	S248	Q936	S854	"https://www.openstreetmap.org/relation/9290782"
+Q5520717	P625	@24.674621/75.600575	S248	Q936	S854	"https://www.openstreetmap.org/relation/9309950"
+Q5589844	P625	@31.171287/78.265628	S248	Q936	S854	"https://www.openstreetmap.org/relation/8777786"
+Q5599356	P625	@17.829493/75.871314	S248	Q936	S854	"https://www.openstreetmap.org/way/474162403"
+Q5617576	P625	@9.095544/78.697079	S248	Q936	S854	"https://www.openstreetmap.org/relation/415570"
+Q6344663	P625	@25.298972/83.018299	S248	Q936	S854	"https://www.openstreetmap.org/relation/6594441"
+Q6372473	P625	@19.691799/83.099771	S248	Q936	S854	"https://www.openstreetmap.org/way/678260731"
+Q6372818	P625	@18.881519/73.117762	S248	Q936	S854	"https://www.openstreetmap.org/relation/21066180"
+Q6379588	P625	@19.214977/78.829649	S248	Q936	S854	"https://www.openstreetmap.org/way/670975581"
+Q6437498	P625	@15.794539/80.904915	S248	Q936	S854	"https://www.openstreetmap.org/relation/20066333"
+Q6746838	P625	@32.243787/77.124095	S248	Q936	S854	"https://www.openstreetmap.org/way/667906690"
+Q6807544	P625	@8.554418/77.221104	S248	Q936	S854	"https://www.openstreetmap.org/relation/9469924"
+Q6959133	P625	@21.290143/80.064214	S248	Q936	S854	"https://www.openstreetmap.org/way/670043200"
+Q6982793	P625	@26.614511/80.657823	S248	Q936	S854	"https://www.openstreetmap.org/relation/8452444"
+Q7180496	P625	@18.408330/72.966196	S248	Q936	S854	"https://www.openstreetmap.org/way/670197606"
+Q7293023	P625	@14.673256/75.655866	S248	Q936	S854	"https://www.openstreetmap.org/relation/9446246"
+Q7399055	P625	@17.144327/74.369410	S248	Q936	S854	"https://www.openstreetmap.org/way/265054632"
+Q7402708	P625	@22.008869/88.821398	S248	Q936	S854	"https://www.openstreetmap.org/relation/13617704"
+Q7408557	P625	@27.016070/79.181191	S248	Q936	S854	"https://www.openstreetmap.org/way/668669680"
+Q7416307	P625	@27.314436/79.973279	S248	Q936	S854	"https://www.openstreetmap.org/way/668654892"
+Q7450103	P625	@26.987554/88.289389	S248	Q936	S854	"https://www.openstreetmap.org/way/678848509"
+Q7494223	P625	@8.888820/77.171280	S248	Q936	S854	"https://www.openstreetmap.org/relation/17744486"
+Q7497442	P625	@27.759867/88.729464	S248	Q936	S854	"https://www.openstreetmap.org/way/668997428"
+Q7531584	P625	@24.217554/74.506067	S248	Q936	S854	"https://www.openstreetmap.org/way/667134094"
+Q7559997	P625	@13.526865/75.054049	S248	Q936	S854	"https://www.openstreetmap.org/relation/9328427"
+Q7844042	P625	@23.271090/91.363505	S248	Q936	S854	"https://www.openstreetmap.org/way/666506794"
+Q7929607	P625	@25.286670/86.998080	S248	Q936	S854	"https://www.openstreetmap.org/way/668848106"
+Q8050448	P625	@21.346697/75.768808	S248	Q936	S854	"https://www.openstreetmap.org/way/679320215"
+Q15276427	P625	@27.112738/92.488599	S248	Q936	S854	"https://www.openstreetmap.org/way/677464198"
+Q15723901	P625	@21.415438/86.611469	S248	Q936	S854	"https://www.openstreetmap.org/way/669795314"
+Q15982945	P625	@24.687118/82.738241	S248	Q936	S854	"https://www.openstreetmap.org/way/668643371"
+Q16894124	P625	@23.799294/93.253017	S248	Q936	S854	"https://www.openstreetmap.org/way/662960902"
+Q16979364	P625	@8.394958/77.403658	S248	Q936	S854	"https://www.openstreetmap.org/relation/9336178"
+Q17002923	P625	@28.413792/76.404194	S248	Q936	S854	"https://www.openstreetmap.org/way/668500132"
+Q17067959	P625	@32.473979/76.719475	S248	Q936	S854	"https://www.openstreetmap.org/way/667934530"
+Q17082192	P625	@27.528140/78.313236	S248	Q936	S854	"https://www.openstreetmap.org/way/668735342"
+Q106257541	P625	@27.110077/88.353731	S248	Q936	S854	"https://www.openstreetmap.org/way/668999183"
+Q107313635	P625	@27.161330/93.629864	S248	Q936	S854	"https://www.openstreetmap.org/way/677458098"
+Q60744029	P625	@13.806470/74.851166	S248	Q936	S854	"https://www.openstreetmap.org/way/670548929"
+Q61363881	P625	@25.872324/91.777413	S248	Q936	S854	"https://www.openstreetmap.org/way/666517430"
+Q65090978	P625	@24.881046/80.053954	S248	Q936	S854	"https://www.openstreetmap.org/way/669401054"
+Q65321737	P625	@11.312065/76.465466	S248	Q936	S854	"https://www.openstreetmap.org/relation/21130775"
+Q85800682	P625	@14.092393/74.787827	S248	Q936	S854	"https://www.openstreetmap.org/way/670641254"
+Q1858071	P625	@24.618780/79.940624	S248	Q936	S854	"https://www.openstreetmap.org/way/160695615"
+Q2226064	P625	@11.645353/77.103914	S248	Q936	S854	"https://www.openstreetmap.org/relation/4192204"
+Q2928293	P625	@26.531273/92.703495	S248	Q936	S854	"https://www.openstreetmap.org/way/178119226"
+Q2985156	P625	@30.386802/77.536994	S248	Q936	S854	"https://www.openstreetmap.org/way/666664869"
+Q13111992	P625	@10.723577/76.480706	S248	Q936	S854	"https://www.openstreetmap.org/way/677290520"
+Q14229383	P625	@31.972609/77.887966	S248	Q936	S854	"https://www.openstreetmap.org/way/114792469"
+Q14623377	P625	@27.110693/94.623635	S248	Q936	S854	"https://www.openstreetmap.org/way/677511689"
+Q15198953	P625	@25.110175/86.393907	S248	Q936	S854	"https://www.openstreetmap.org/way/668864873"
+Q15232550	P625	@24.747823/83.677464	S248	Q936	S854	"https://www.openstreetmap.org/way/668769113"
+Q15233552	P625	@9.359787/78.478932	S248	Q936	S854	"https://www.openstreetmap.org/way/671207570"
+Q19895392	P625	@18.955512/79.868868	S248	Q936	S854	"https://www.openstreetmap.org/relation/9331660"
+Q19895529	P625	@20.932065/73.617589	S248	Q936	S854	"https://www.openstreetmap.org/way/669197063"
+Q22080908	P625	@30.438783/77.504454	S248	Q936	S854	"https://www.openstreetmap.org/way/666725799"
+Q24906034	P625	@14.405992/79.303762	S248	Q936	S854	"https://www.openstreetmap.org/way/671119721"
+Q28174315	P625	@20.667757/85.814142	S248	Q936	S854	"https://www.openstreetmap.org/way/669764918"
+Q31708100	P625	@11.894606/75.904085	S248	Q936	S854	"https://www.openstreetmap.org/way/677210306"
+Q31708488	P625	@32.264127/77.304255	S248	Q936	S854	"https://www.openstreetmap.org/way/666695328"
+Q48727189	P625	@11.590315/75.967658	S248	Q936	S854	"https://www.openstreetmap.org/way/677907120"
+Q48729855	P625	@26.932554/82.160028	S248	Q936	S854	"https://www.openstreetmap.org/relation/9302381"
+Q112252264	P625	@13.656898/76.704282	S248	Q936	S854	"https://www.openstreetmap.org/relation/19925050"
+Q112252433	P625	@14.612971/76.228281	S248	Q936	S854	"https://www.openstreetmap.org/relation/9447282"
+Q112252443	P625	@12.757328/77.305477	S248	Q936	S854	"https://www.openstreetmap.org/way/670763955"
+Q122363298	P625	@11.134185/77.385922	S248	Q936	S854	"https://www.openstreetmap.org/relation/19924762"
+Q123399066	P625	@26.802808/77.375893	S248	Q936	S854	"https://www.openstreetmap.org/relation/9435774"
+Q125881460	P625	@32.763809/75.078994	S248	Q936	S854	"https://www.openstreetmap.org/way/668486755"
+Q130974135	P625	@30.482692/78.013785	S248	Q936	S854	"https://www.openstreetmap.org/way/681258821"
+Q130974254	P625	@24.847233/86.448418	S248	Q936	S854	"https://www.openstreetmap.org/way/668879024"
+Q130974349	P625	@22.927424/83.828578	S248	Q936	S854	"https://www.openstreetmap.org/way/669633370"
+Q135798492	P625	@30.227151/75.884003	S248	Q936	S854	"https://www.openstreetmap.org/way/202540707"
+Q131123428	P625	@10.237782/77.502280	S248	Q936	S854	"https://www.openstreetmap.org/relation/9336901"
+Q131939336	P625	@21.515624/70.540125	S248	Q936	S854	"https://www.openstreetmap.org/relation/9078468"
+Q132068974	P625	@25.301730/78.619419	S248	Q936	S854	"https://www.openstreetmap.org/way/680764132"
+Q132126728	P625	@24.469302/82.088294	S248	Q936	S854	"https://www.openstreetmap.org/way/669274355"
+Q135404149	P625	@23.661480/77.090851	S248	Q936	S854	"https://www.openstreetmap.org/way/669504729"
+Q135404156	P625	@32.531791/78.220195	S248	Q936	S854	"https://www.openstreetmap.org/relation/4144891"
+Q135412386	P625	@24.176736/92.865857	S248	Q936	S854	"https://www.openstreetmap.org/way/663161490"
+Q135483626	P625	@23.862888/81.053102	S248	Q936	S854	"https://www.openstreetmap.org/relation/15695895"
+Q135622961	P625	@9.338399/78.825129	S248	Q936	S854	"https://www.openstreetmap.org/way/671203113"
+```
+
+</details>
 
 ### Low name-match confidence
 
@@ -1007,26 +2373,33 @@ Matched pair (by id) whose names score below 0.5 similarity -- the id link may i
 
 | wikidataId | wikidataLabel | osmUrl | osmName | matchSource | nameScore |
 | --- | --- | --- | --- | --- | --- |
+| Q880724 | Blackbuck National Park | https://www.openstreetmap.org/way/143357444 | Blackbuck National Park Velavadar | osm-wikidata-tag | 0.47 |
 | Q7499351 | Shivaram Wildlife Sanctuary | https://www.openstreetmap.org/way/670977220 | Lanja Madugu Siwaram WLS | osm-wikidata-tag | 0.25 |
 | Q2731635 | Gaga Wildlife Sanctuary | https://www.openstreetmap.org/relation/9282949 | Gaga (Great Indian Bustard) WLS | osm-wikidata-tag | 0.16 |
 | Q5070917 | Chandaka Elephant Sanctuary | https://www.openstreetmap.org/way/669747799 |  | osm-wikidata-tag | 0.00 |
+| Q6750402 | Manjira Wildlife Sanctuary | https://www.openstreetmap.org/way/670962706 | Manjeera Crocodile WLS | osm-wikidata-tag | 0.33 |
 | Q7531584 | Sita Mata Wildlife Sanctuary | https://www.openstreetmap.org/way/667134094 |  | osm-wikidata-tag | 0.00 |
 | Q7901902 | Ushakothi Wildlife Sanctuary | https://www.openstreetmap.org/way/669809270 | Badrama WLS | osm-wikidata-tag | 0.11 |
 | Q12988826 | Vallanadu Wildlife Sanctuary | https://www.openstreetmap.org/way/671212129 | Vallanadu Blackbuck WLS | osm-wikidata-tag | 0.47 |
-| Q6750402 | Manjira Wildlife Sanctuary | https://www.openstreetmap.org/way/670962706 | Manjeera Crocodile WLS | osm-wikidata-tag | 0.33 |
-| Q85846882 | Pant Wildlife Sanctuary | https://www.openstreetmap.org/way/668763979 | Pant (Rajgir) WLS | osm-wikidata-tag | 0.36 |
 | Q15650265 | Nalbana Bird Sanctuary | https://www.openstreetmap.org/way/86140211 | Chilikha (Nalabana) WLS | osm-wikidata-tag | 0.41 |
 | Q19361617 | Amchang Wildlife Sanctuary | https://www.openstreetmap.org/relation/9447819 |  | osm-wikidata-tag | 0.00 |
-| Q880724 | Blackbuck National Park | https://www.openstreetmap.org/way/143357444 | Blackbuck National Park Velavadar | osm-wikidata-tag | 0.47 |
+| Q85846882 | Pant Wildlife Sanctuary | https://www.openstreetmap.org/way/668763979 | Pant (Rajgir) WLS | osm-wikidata-tag | 0.36 |
 | Q112252433 | Rangayyanadurga Four–horned antelope Wildlife Sanctuary | https://www.openstreetmap.org/relation/9447282 | Rangayyanadurga WLS | osm-wikidata-tag | 0.42 |
 | Q125881460 | Mansar-Surinsar Wildlife sanctuary | https://www.openstreetmap.org/way/668486755 | Surinsar Mansar WLS | osm-wikidata-tag | 0.47 |
 | Q130974349 | Badalkhol Wildlife Sanctuary | https://www.openstreetmap.org/way/669633370 |  | osm-wikidata-tag | 0.00 |
-| Q135483626 | Panpatha Wildlife Sanctuary | https://www.openstreetmap.org/relation/15695895 |  | osm-wikidata-tag | 0.00 |
-| Q137254449 | Baltal Thajwas Wildlife Sanctuary | https://www.openstreetmap.org/way/676588330 | Thajwas - Baltal Wildlife Sanctuary | osm-wikidata-tag | 0.29 |
-| Q137699192 | Surha Tal Bird Sanctuary | https://www.openstreetmap.org/way/668732919 | Jai Prakash Narayan (Surhatal) Bird WLS | osm-wikidata-tag | 0.21 |
 | Q130974367 | Gomardha Wildlife Sanctuary | https://www.openstreetmap.org/way/669576115 | Sarangarh-Gomardha WLS | osm-wikidata-tag | 0.44 |
 | Q130974386 | Pamed Wildlife Sanctuary | https://www.openstreetmap.org/way/669572140 | Pamed Wild Buffalo WLS | osm-wikidata-tag | 0.28 |
+| Q137254449 | Baltal Thajwas Wildlife Sanctuary | https://www.openstreetmap.org/way/676588330 | Thajwas - Baltal Wildlife Sanctuary | osm-wikidata-tag | 0.29 |
+| Q137699192 | Surha Tal Bird Sanctuary | https://www.openstreetmap.org/way/668732919 | Jai Prakash Narayan (Surhatal) Bird WLS | osm-wikidata-tag | 0.21 |
 | Q130974396 | Semarsot Wildlife Sanctuary | https://www.openstreetmap.org/way/669578162 |  | osm-wikidata-tag | 0.00 |
+| Q135483626 | Panpatha Wildlife Sanctuary | https://www.openstreetmap.org/relation/15695895 |  | osm-wikidata-tag | 0.00 |
+
+<details>
+<summary>QuickStatements: how to fix this on Wikidata</summary>
+
+No mechanical fix -- a low name-similarity score on an id-based match just means one side's id could be mistyped/miskeyed, not which side. Check whether Wikidata's P402 or OSM's `wikidata` tag is the wrong one (see the two P402/wikidata-tag-outdated sections above) before editing either.
+
+</details>
 
 ### Ambiguous OSM wikidata-tag matches
 
@@ -1035,6 +2408,13 @@ More than one OSM object tags the same wikidata id.
 | wikidataId | wikidataLabel | pickedOsmUrl | otherOsmUrls | detail |
 | --- | --- | --- | --- | --- |
 | Q337028 | Gir National Park | https://www.openstreetmap.org/relation/21061186 | https://www.openstreetmap.org/relation/9403363 | Multiple OSM objects tag this same wikidata id -- picked the relation (or first) arbitrarily; verify which is the primary boundary. |
+
+<details>
+<summary>QuickStatements: how to fix this on Wikidata</summary>
+
+No Wikidata edit applies -- this is a many-OSM-objects-to-one-wikidata-id conflict, resolved by retagging the wrong OSM object(s) with the correct id (or removing the tag if it's simply a duplicate boundary on OSM). Requires picking which OSM object is the real one first.
+
+</details>
 
 ### OSM objects without a wikidata tag
 
@@ -1252,3 +2632,10 @@ In-scope OSM boundaries (protected_area/national_park) that carry no `wikidata` 
 | way | 637356886 | https://www.openstreetmap.org/way/637356886 | Belle Island WLS |
 | relation | 9474607 | https://www.openstreetmap.org/relation/9474607 | Dudhwa Tiger Reserve |
 | relation | 21128925 | https://www.openstreetmap.org/relation/21128925 | Parambikulam Tiger Reserve ESZ (Proposed) |
+
+<details>
+<summary>QuickStatements: how to fix this on Wikidata</summary>
+
+No Wikidata edit applies -- add the `wikidata` tag on the OpenStreetMap object once you've identified the matching Wikidata item.
+
+</details>

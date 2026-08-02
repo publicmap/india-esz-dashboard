@@ -194,12 +194,22 @@ function computeStateNotificationDetails() {
   for (const entry of paEntries) {
     for (const state of entry.state) {
       if (!state) continue;
-      const rec = byState.get(state) || { state, total: 0, notified: 0, latestDate: null };
+      const rec = byState.get(state) || {
+        state, total: 0, final: 0, notified: 0,
+        latestDate: null, latestOrderNumber: null, latestPdfLink: null, latestArchiveLink: null,
+      };
       rec.total += 1;
+      if (entry.eszStatus === 'final') rec.final += 1;
       if (entry.eszStatus === 'final' || entry.eszStatus === 'draft') {
         rec.notified += 1;
-        const d = entry.latest && entry.latest.date;
-        if (d && (!rec.latestDate || d > rec.latestDate)) rec.latestDate = d;
+        const latest = entry.latest;
+        const d = latest && latest.date;
+        if (d && (!rec.latestDate || d > rec.latestDate)) {
+          rec.latestDate = d;
+          rec.latestOrderNumber = latest.orderNumber || null;
+          rec.latestPdfLink = latest.pdfLink || null;
+          rec.latestArchiveLink = latest.archiveLink || null;
+        }
       }
       byState.set(state, rec);
     }
@@ -207,18 +217,34 @@ function computeStateNotificationDetails() {
   const rows = [...byState.values()].map((rec) => ({
     ...rec,
     pct: rec.total ? (rec.notified / rec.total) * 100 : 0,
+    // "completed": every PA notified, final or draft. "allFinal": the
+    // stricter subset of completed states where every one of those
+    // notifications has actually reached Final (no drafts left).
     completed: rec.total > 0 && rec.notified === rec.total,
+    allFinal: rec.total > 0 && rec.final === rec.total,
   }));
-  // Completed states first (most recently completed on top), then
+  // Completed states first (earliest completion year on top), then
   // in-progress states by how close they are to completion, then states with
   // no notifications at all, alphabetically within each group.
   rows.sort((a, b) => {
     if (a.completed !== b.completed) return a.completed ? -1 : 1;
-    if (a.completed) return (b.latestDate || '').localeCompare(a.latestDate || '');
+    if (a.completed) return (a.latestDate || '').localeCompare(b.latestDate || '');
     if (b.pct !== a.pct) return b.pct - a.pct;
     return a.state.localeCompare(b.state);
   });
   return rows;
+}
+
+// Four mutually-informative headline counts for the states/UTs KPI modal:
+// allFinal and completed are nested (every allFinal state is also
+// completed), while inProgress/notStarted partition the remainder, so all
+// four together explain how `completed` breaks down.
+function summarizeStateRows(rows) {
+  const allFinal = rows.filter((r) => r.allFinal).length;
+  const completed = rows.filter((r) => r.completed).length;
+  const inProgress = rows.filter((r) => !r.completed && r.notified > 0).length;
+  const notStarted = rows.filter((r) => r.notified === 0).length;
+  return { total: rows.length, allFinal, completed, inProgress, notStarted };
 }
 
 // Hero stats are a fixed nationwide headline -- always computed from the
@@ -254,6 +280,16 @@ function renderHeroStats() {
 // the live paEntries on every open, so it always reflects the current
 // (unfiltered) nationwide dataset the hero tiles themselves summarize.
 
+// Renders a notification's order number (the "S.O. ..." gazette reference)
+// as a link to its PDF where one is known -- falls back to the archive.org
+// scan if there's no direct MoEF PDF link, or plain text if neither exists.
+function orderNumberLinkHtml(latest) {
+  if (!latest || !latest.orderNumber) return '–';
+  const label = escapeHtml(latest.orderNumber);
+  const href = latest.pdfLink || latest.archiveLink;
+  return href ? `<a href="${escapeHtml(href)}" target="_blank" rel="noopener">${label}</a>` : label;
+}
+
 function kpiPctBarCellHtml(pct) {
   return `<span class="kpi-table-pct-cell">${pct.toFixed(0)}%
     <span class="kpi-table-pct-bar"><span class="kpi-table-pct-fill" style="width:${pct}%"></span></span>
@@ -261,9 +297,114 @@ function kpiPctBarCellHtml(pct) {
 }
 
 // Body for the primary "States/UTs completed" tile: every state/UT the join
-// touches, sorted completed-first (most recently completed on top), then by
+// touches, sorted completed-first (earliest completion year on top), then by
 // how close the rest are to completion -- each row showing the year it was
 // completed in, or the date of its most recent notification otherwise.
+// Static explainer -- condensed from README.md's "About Eco-Sensitive Zones"
+// section -- shown at the top of the states/UTs KPI modal so a first-time
+// reader has context for what "ESZ notification" means before diving into
+// the state-by-state breakdown.
+const ESZ_INTRO_HTML = `
+  <details class="kpi-intro">
+    <summary>About Eco-Sensitive Zones (ESZs)</summary>
+    <p class="section-intro">
+      ESZs are designated buffer areas around protected habitats like national parks and wildlife
+      sanctuaries. They act as shock absorbers to minimize human impact on fragile ecosystems,
+      typically spanning up to 10 kilometers, though boundaries remain site-specific. Declaring an
+      ESZ creates a transition zone -- regulating and managing activities around a protected area --
+      from areas of high protection to areas of lesser protection.
+    </p>
+    <div class="kpi-intro-media">
+      <a class="kpi-intro-image-link" href="assets/img/pib-moefcc-note.png" target="_blank" rel="noopener">
+        <img class="kpi-intro-image" src="assets/img/pib-moefcc-note.png"
+          alt="ESZ notification status of protected areas in India, PIB/MoEFCC note" loading="lazy" />
+      </a>
+      <ol class="kpi-timeline">
+        <li><strong>2002</strong> &mdash; The Indian Board for Wildlife proposed 10km buffer zones under the
+          Environment Protection Act of 1986 to insulate national parks and sanctuaries.</li>
+        <li><strong>2004</strong> &mdash; The Goa Foundation filed a landmark case (PIL Writ Petition 460/2004) in
+          the Supreme Court demanding action against authorities for failing to notify ESZs.</li>
+        <li><strong>2006</strong> &mdash; Supreme Court directs all States/UTs to define ESZs within 4 weeks,
+          failing which a 10km ESZ would apply by default.</li>
+        <li><strong>2011</strong> &mdash; MoEFCC publishes guidelines for declaration of ESZs, outlining the
+          procedure States/UTs must follow to demarcate and notify one.</li>
+        <li><strong>2012</strong> &mdash; Citing lack of progress, the Central Empowered Committee recommends an
+          interim 100m&ndash;2000m safety zone based on protected area size.</li>
+        <li><strong>2022</strong> &mdash; Supreme Court mandates a minimum 1km ESZ around all protected areas.</li>
+        <li><strong>2023</strong> &mdash; Supreme Court relaxes its 2022 order, allowing the minimum ESZ to be
+          protected-area-specific rather than a uniform distance.</li>
+      </ol>
+    </div>
+    <p class="kpi-intro-source">Source: <a href="https://www.pib.gov.in/newsite/PrintRelease.aspx?relid=126299&amp;reg=48&amp;lang=2"
+      target="_blank" rel="noopener">PIB, Ministry of Environment Forests &amp; Climate Change, Government of India</a>,
+      <a href="https://en.wikipedia.org/wiki/Eco-sensitive_zone" target="_blank" rel="noopener">Wikipedia</a>.</p>
+  </details>`;
+
+// Bucket keys double as the data-bucket-<kebab> attribute name each table
+// row carries (see renderStateKpiModalBody) -- clicking a tile filters the
+// table to rows whose matching attribute is "true" (see initKpiStateBucketFilter).
+const STATE_BUCKETS = [
+  { key: 'allFinal', attr: 'bucketAllFinal', variant: 'stat-tile-final', label: '100% Final notification', note: 'Every PA has a Final ESZ' },
+  { key: 'completed', attr: 'bucketCompleted', variant: 'stat-tile-draft', label: '100% Final + Draft', note: 'Every PA notified (Final or Draft)' },
+  { key: 'inProgress', attr: 'bucketInProgress', variant: '', label: 'In progress', note: 'Some, but not all, PAs notified' },
+  { key: 'notStarted', attr: 'bucketNotStarted', variant: 'stat-tile-none', label: '0% progress', note: 'No PA notified yet' },
+];
+
+function renderStateSummaryTilesHtml(rows) {
+  const s = summarizeStateRows(rows);
+  const valueByKey = { allFinal: s.allFinal, completed: s.completed, inProgress: s.inProgress, notStarted: s.notStarted };
+  const tiles = STATE_BUCKETS.map(({ key, variant, label, note }) => `
+    <button type="button" class="stat-tile ${variant}" data-bucket="${key}"
+      title="Click to filter the table below to these states/UTs; click again to clear">
+      <span class="stat-value">${valueByKey[key].toLocaleString()}</span>
+      <span class="stat-label">${label}</span>
+      <span class="stat-note">${note}</span>
+    </button>`).join('');
+  return `<div class="stat-tile-row kpi-summary-tiles" id="kpi-summary-tiles">${tiles}</div>
+    <p class="kpi-filter-status" id="kpi-filter-status" hidden></p>`;
+}
+
+// Wires the four summary tiles as a toggleable filter over the state table
+// rows below them -- clicking a tile hides every row not in that bucket;
+// clicking the same tile again (or the "Clear filter" button it reveals)
+// restores the full list.
+function initKpiStateBucketFilter() {
+  const tilesWrap = document.getElementById('kpi-summary-tiles');
+  const tbody = document.getElementById('kpi-state-tbody');
+  const statusEl = document.getElementById('kpi-filter-status');
+  if (!tilesWrap || !tbody || !statusEl) return;
+  let activeBucket = null;
+
+  function applyFilter() {
+    const bucket = STATE_BUCKETS.find((b) => b.key === activeBucket);
+    let visible = 0;
+    tbody.querySelectorAll('tr').forEach((tr) => {
+      const show = !bucket || tr.dataset[bucket.attr] === 'true';
+      tr.hidden = !show;
+      if (show) visible += 1;
+    });
+    tilesWrap.querySelectorAll('.stat-tile').forEach((btn) => {
+      btn.classList.toggle('is-active', btn.dataset.bucket === activeBucket);
+    });
+    if (bucket) {
+      statusEl.hidden = false;
+      statusEl.innerHTML = `Showing <strong>${visible}</strong> state${visible === 1 ? '' : 's'}/UT${visible === 1 ? '' : 's'}
+        matching &ldquo;${escapeHtml(bucket.label)}&rdquo;. <button type="button" id="kpi-filter-clear">Clear filter</button>`;
+      document.getElementById('kpi-filter-clear').addEventListener('click', () => { activeBucket = null; applyFilter(); });
+    } else {
+      statusEl.hidden = true;
+      statusEl.innerHTML = '';
+    }
+  }
+
+  tilesWrap.addEventListener('click', (e) => {
+    const btn = e.target.closest('.stat-tile[data-bucket]');
+    if (!btn) return;
+    activeBucket = activeBucket === btn.dataset.bucket ? null : btn.dataset.bucket;
+    applyFilter();
+  });
+}
+
 function renderStateKpiModalBody(rows) {
   const completedCount = rows.filter((r) => r.completed).length;
   const summary = `
@@ -273,27 +414,36 @@ function renderStateKpiModalBody(rows) {
   const body = rows.map((r, i) => {
     const statusClass = r.completed ? 'dot-final' : r.notified ? 'dot-draft' : 'dot-none';
     const statusLabel = r.completed ? 'Completed' : r.notified ? 'In progress' : 'Not started';
-    const dateCell = r.completed
-      ? `Completed ${r.latestDate ? r.latestDate.slice(0, 4) : '–'}`
+    const yearOrDate = r.completed
+      ? `Completed ${r.latestDate ? escapeHtml(r.latestDate.slice(0, 4)) : ''}`
       : r.latestDate
-        ? `Latest notification ${formatNotificationDate(r.latestDate)}`
+        ? `Latest notification ${escapeHtml(formatNotificationDate(r.latestDate))}`
         : 'No notifications yet';
-    return `<tr>
+    const orderLink = orderNumberLinkHtml({
+      orderNumber: r.latestOrderNumber, pdfLink: r.latestPdfLink, archiveLink: r.latestArchiveLink,
+    });
+    const dateCell = r.latestOrderNumber ? `${yearOrDate} &middot; ${orderLink}` : yearOrDate;
+    const inProgress = !r.completed && r.notified > 0;
+    const notStarted = r.notified === 0;
+    return `<tr data-bucket-all-final="${r.allFinal}" data-bucket-completed="${r.completed}"
+        data-bucket-in-progress="${inProgress}" data-bucket-not-started="${notStarted}">
       <td class="kpi-table-rank">${i + 1}</td>
       <td>${escapeHtml(r.state)}</td>
       <td><span class="status-pill"><i class="dot ${statusClass}" aria-hidden="true"></i>${statusLabel}</span></td>
       <td>${kpiPctBarCellHtml(r.pct)}</td>
       <td>${r.notified.toLocaleString()} / ${r.total.toLocaleString()}</td>
-      <td>${escapeHtml(dateCell)}</td>
+      <td>${dateCell}</td>
     </tr>`;
   }).join('');
-  return `${summary}
+  return `${ESZ_INTRO_HTML}
+    ${renderStateSummaryTilesHtml(rows)}
+    ${summary}
     <div class="kpi-table-wrap">
       <table class="kpi-table">
         <thead><tr>
           <th>#</th><th>State / UT</th><th>Status</th><th>Progress</th><th>PAs notified</th><th>Completion / latest notification</th>
         </tr></thead>
-        <tbody>${body}</tbody>
+        <tbody id="kpi-state-tbody">${body}</tbody>
       </table>
     </div>`;
 }
@@ -320,11 +470,11 @@ function renderPaGroupKpiModalBody(entries, unitLabel) {
       <span>${counts.total.toLocaleString()} ${unitLabel} total</span>
     </div>`;
   const body = sorted.map((entry) => `<tr>
-      <td>${escapeHtml(entry.name || '')}</td>
+      <td>${paTitleLinksHtml(entry)}</td>
       <td>${escapeHtml(stateAsString(entry.state))}</td>
       <td><span class="status-pill"><i class="dot dot-${entry.eszStatus}" aria-hidden="true"></i>${eszStatusLabel(entry.eszStatus)}</span></td>
       <td>${entry.latest ? escapeHtml(formatNotificationDate(entry.latest.date)) : '–'}</td>
-      <td>${entry.latest && entry.latest.orderNumber ? escapeHtml(entry.latest.orderNumber) : '–'}</td>
+      <td>${orderNumberLinkHtml(entry.latest)}</td>
     </tr>`).join('');
   return `${summary}
     <div class="kpi-table-wrap">
@@ -387,6 +537,7 @@ function openKpiModal(key) {
   document.getElementById('kpi-modal-title').textContent = title;
   document.getElementById('kpi-modal-subtitle').textContent = subtitle;
   document.getElementById('kpi-modal-body').innerHTML = body;
+  if (key === 'overall') initKpiStateBucketFilter();
 
   const overlay = document.getElementById('kpi-modal-overlay');
   overlay.hidden = false;
@@ -1275,6 +1426,40 @@ const DOC_ICON = {
   layers: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.5 3 8.2l9 4.7 9-4.7-9-4.7z"/><path d="M3 12.2l9 4.7 9-4.7"/><path d="M3 16.2l9 4.7 9-4.7"/></svg>',
 };
 
+// Simplified marks for Wikidata (three data bars) and OpenStreetMap (pin in
+// a circle) -- monoline, single-color renditions matching DOC_ICON's style
+// rather than the full-color trademarked logos.
+const WIKIDATA_LOGO = '<svg viewBox="0 0 24 24" fill="currentColor"><rect x="2" y="10" width="5" height="9"/><rect x="9.5" y="4" width="5" height="15"/><rect x="17" y="7" width="5" height="12"/></svg>';
+const OSM_LOGO = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9.3"/><path d="M12 6.7c-2.1 0-3.7 1.6-3.7 3.6 0 2.7 3.7 6.4 3.7 6.4s3.7-3.7 3.7-6.4c0-2-1.6-3.6-3.7-3.6z" fill="currentColor" stroke="none"/></svg>';
+
+// Guessed Wikipedia URL for a PA with no confirmed enwikiUrl -- same
+// space-to-underscore convention Wikipedia itself uses for page titles, so
+// the link at least lands on the right page if one exists under this exact
+// name, and otherwise on Wikipedia's own "create this page" prompt.
+function guessedWikipediaUrl(name) {
+  return `https://en.wikipedia.org/wiki/${encodeURIComponent((name || '').trim().replace(/\s+/g, '_'))}`;
+}
+
+// Protected area title linked to its Wikipedia page -- styled as a Wikipedia
+// "redlink" (class pa-title-link-new) when we have no confirmed enwikiUrl,
+// same as Wikipedia does for an article that doesn't exist yet -- plus small
+// Wikidata/OSM logo links when this PA has a matching item/relation.
+function paTitleLinksHtml(entry) {
+  const name = escapeHtml(entry.name || '');
+  const hasWikipedia = !!entry.enwikiUrl;
+  const wikiHref = entry.enwikiUrl || guessedWikipediaUrl(entry.name);
+  const titleLink = `<a class="pa-title-link${hasWikipedia ? '' : ' pa-title-link-new'}" href="${wikiHref}" target="_blank" rel="noopener">${name}</a>`;
+  const badges = [];
+  if (entry.wikidataUrl) {
+    badges.push(`<a class="pa-title-logo pa-title-logo-wikidata" href="${entry.wikidataUrl}" target="_blank" rel="noopener" title="View on Wikidata" aria-label="View on Wikidata">${WIKIDATA_LOGO}</a>`);
+  }
+  const osmId = (entry.osmRelationIds || [])[0];
+  if (osmId) {
+    badges.push(`<a class="pa-title-logo pa-title-logo-osm" href="https://www.openstreetmap.org/relation/${osmId}" target="_blank" rel="noopener" title="View on OpenStreetMap" aria-label="View on OpenStreetMap">${OSM_LOGO}</a>`);
+  }
+  return `<span class="pa-title-with-logos">${titleLink}${badges.length ? `<span class="pa-title-logos">${badges.join('')}</span>` : ''}</span>`;
+}
+
 function notificationTypeLabel(status) {
   return NOTIFICATION_TYPE_LABEL[status] || status || 'Not notified';
 }
@@ -1356,8 +1541,6 @@ function detailHtml(entry) {
   if (stateLabel) meta.push(escapeHtml(stateLabel));
 
   const links = [];
-  if (entry.wikidataUrl) links.push(`<a href="${entry.wikidataUrl}" target="_blank" rel="noopener">Wikidata</a>`);
-  if (entry.enwikiUrl) links.push(`<a href="${entry.enwikiUrl}" target="_blank" rel="noopener">Wikipedia</a>`);
   const osmIds = entry.osmRelationIds || [];
   if (osmIds.length) links.push(`<a href="${AMCHE_ATLAS_BASE}?layers=osm:relation/${osmIds[0]}" target="_blank" rel="noopener">Boundary in amche-atlas</a>`);
 
@@ -1369,7 +1552,7 @@ function detailHtml(entry) {
         ${entry.wikidataId ? `<div class="pa-commons-mosaic" aria-label="More images from Wikimedia Commons"></div>` : ''}
       </div>
       <div class="pa-detail-body">
-        <h3 class="pa-detail-title">${escapeHtml(entry.name || '')}</h3>
+        <h3 class="pa-detail-title">${paTitleLinksHtml(entry)}</h3>
         ${meta.length ? `<p class="pa-detail-meta">${meta.join(' &middot; ')}</p>` : ''}
         ${links.length ? `<p class="pa-detail-links">${links.join(' &middot; ')}</p>` : ''}
         <p class="pa-detail-excerpt">${entry.enwikiUrl ? 'Loading Wikipedia summary&hellip;' : ''}</p>

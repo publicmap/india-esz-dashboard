@@ -24,9 +24,15 @@
 //   - Wikipedia entries with no Wikidata match (added to the master list)
 //   - Wikidata items typed as National Park/Wildlife Sanctuary/Tiger Reserve
 //     with no matching Wikipedia entry (possible gap on either side)
-import { buildMatcher } from './wikidata-match.js';
+import { buildMatcher, normalizeState, statesAgree } from './wikidata-match.js';
 import { normalizeName, compactName } from './name-match.js';
 import { isMoreSpecificType } from './protected-area-type.js';
+import {
+  reviewOnlyDetails,
+  protectedAreaTypeQuickStatements,
+  newMasterListEntryQuickStatements,
+  noWikipediaMatchQuickStatements,
+} from './quickstatements.js';
 
 // The three Wikipedia lists only cover these three type categories -- a
 // Wikidata item typed e.g. "Bird Sanctuary" or "Biosphere Reserve" is
@@ -180,15 +186,44 @@ export function crossReferenceWikipedia(wikidataItems, wikipediaRecords) {
 
   const newEntries = unmatchedWikipedia.map(toMasterListEntry);
 
+  // Index every Wikipedia record (matched or not) by normalized name, so a
+  // "no Wikipedia match" Wikidata item can be checked for a same-name entry
+  // under a *different* state -- a strong, common signal of a stale P131
+  // chain on the Wikidata side (see the "Wikidata items with no Wikipedia
+  // match" section below), rather than the name genuinely being absent from
+  // Wikipedia.
+  const wikipediaRecordsByNormName = new Map();
+  for (const record of wikipediaRecords) {
+    const key = normalizeName(record.protectedAreaName);
+    if (!key) continue;
+    if (!wikipediaRecordsByNormName.has(key)) wikipediaRecordsByNormName.set(key, []);
+    wikipediaRecordsByNormName.get(key).push(record);
+  }
+
   const matchedItemTypes = new Set(matchesByItem.keys());
   const wikidataGaps = wikidataItems
     .filter((item) => WIKIPEDIA_COVERED_TYPES.has(item.protectedAreaType) && !matchedItemTypes.has(item))
-    .map((item) => ({
-      wikidataId: item.wikidataId,
-      wikidataLabel: item.wikidataLabel,
-      protectedAreaType: item.protectedAreaType,
-      state: (item.state || []).join('; '),
-    }));
+    .map((item) => {
+      const itemStates = (item.state || []).map(normalizeState);
+      const sameNameDifferentState = (wikipediaRecordsByNormName.get(item.normalizedName) || [])
+        .find((r) => r.state && !itemStates.some((s) => statesAgree(s, normalizeState(r.state))));
+      return {
+        wikidataId: item.wikidataId,
+        wikidataLabel: item.wikidataLabel,
+        protectedAreaType: item.protectedAreaType,
+        state: (item.state || []).join('; '),
+        wikipediaNameMatchState: sameNameDifferentState?.state ?? '',
+        wikipediaNameMatchUrl: sameNameDifferentState?.wikipediaUrl ?? '',
+      };
+    });
+
+  const newEntryRows = unmatchedWikipedia.map((r) => ({
+    protectedAreaName: r.protectedAreaName,
+    protectedAreaType: r.protectedAreaType,
+    state: r.state ?? '',
+    wikipediaSource: r.wikipediaSource,
+    wikipediaUrl: r.wikipediaUrl ?? '',
+  }));
 
   const sections = [
     {
@@ -196,36 +231,39 @@ export function crossReferenceWikipedia(wikidataItems, wikipediaRecords) {
       description: 'Wikidata\'s P31-derived type disagreed with the matched Wikipedia entry\'s -- corrected in favor of Wikipedia (more actively maintained for these three categories).',
       columns: ['wikidataId', 'wikidataLabel', 'oldType', 'newType', 'wikipediaSource', 'wikipediaUrl', 'matchConfidence'],
       rows: correctedType,
+      quickStatements: protectedAreaTypeQuickStatements(correctedType),
     },
     {
       title: 'Wikidata item matched by multiple Wikipedia entries',
       description: 'More than one Wikipedia entry (possibly from different lists) matched the same Wikidata item.',
       columns: ['wikidataId', 'wikidataLabel', 'matchedEntries', 'detail'],
       rows: multiSourceMatches,
+      quickStatements: reviewOnlyDetails(
+        'No single correct edit -- this is either a genuine reclassification (the Wikidata item legitimately covers what Wikipedia now splits across multiple articles/types, in which case the protectedAreaType correction above already handles it) or a wrong fuzzy match pulling an unrelated Wikipedia entry onto this item (in which case the fix is on the *matching* side, not a Wikidata edit -- see the "Fuzzy Wikidata<->Wikipedia matches" and "Wikidata items with no Wikipedia match" sections, since a wrongly-absorbed entry usually shows up there as the real item\'s missed match).',
+      ),
     },
     {
       title: 'Fuzzy Wikidata<->Wikipedia matches',
       description: 'Matched by fuzzy name/state similarity rather than an exact name match -- worth a human sanity check.',
       columns: ['wikidataId', 'wikidataLabel', 'wikipediaName', 'wikipediaSource', 'wikipediaState'],
       rows: fuzzyMatches,
+      quickStatements: reviewOnlyDetails(
+        'No mechanical fix -- the type/URL correction from this match (if any) is already reflected in the "protectedAreaType corrected" section above. If a row here turns out to be the *wrong* Wikidata item for this Wikipedia entry, the correct item is often sitting in the "Wikidata items with no Wikipedia match" section below (unmatched because this fuzzy match took its Wikipedia entry) -- fix it there instead of here.',
+      ),
     },
     {
       title: 'Wikipedia entries with no Wikidata match (added to master list)',
       description: 'No Wikidata item matched this Wikipedia entry by name/state -- added to the master protected-area list as a new entry with a synthetic `WIKIPEDIA:...` id instead of a Wikidata QID.',
       columns: ['protectedAreaName', 'protectedAreaType', 'state', 'wikipediaSource', 'wikipediaUrl'],
-      rows: unmatchedWikipedia.map((r) => ({
-        protectedAreaName: r.protectedAreaName,
-        protectedAreaType: r.protectedAreaType,
-        state: r.state ?? '',
-        wikipediaSource: r.wikipediaSource,
-        wikipediaUrl: r.wikipediaUrl ?? '',
-      })),
+      rows: newEntryRows,
+      quickStatements: newMasterListEntryQuickStatements(newEntryRows),
     },
     {
       title: 'Wikidata items with no Wikipedia match',
-      description: 'Wikidata item is typed as National Park / Wildlife Sanctuary / Tiger Reserve (categories the three Wikipedia lists cover) but no Wikipedia entry matched it -- possible naming mismatch, or genuinely absent from Wikipedia.',
-      columns: ['wikidataId', 'wikidataLabel', 'protectedAreaType', 'state'],
+      description: 'Wikidata item is typed as National Park / Wildlife Sanctuary / Tiger Reserve (categories the three Wikipedia lists cover) but no Wikipedia entry matched it -- possible naming mismatch, or genuinely absent from Wikipedia. `wikipediaNameMatchState`/`wikipediaNameMatchUrl`, when filled in, point at a Wikipedia entry with the exact same name under a different state (see the QuickStatements note below).',
+      columns: ['wikidataId', 'wikidataLabel', 'protectedAreaType', 'state', 'wikipediaNameMatchState', 'wikipediaNameMatchUrl'],
       rows: wikidataGaps,
+      quickStatements: noWikipediaMatchQuickStatements(wikidataGaps),
     },
   ];
 

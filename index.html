@@ -52,10 +52,11 @@
       <h1>India ESZ <em>Dashboard</em></h1>
       <p class="subtitle">
         Status of Eco-Sensitive Zone (ESZ) notifications around India's protected areas,
-        mirrored weekly from <a href="https://www.moef.gov.in/esz-notifications" target="_blank"
-          rel="noopener">moef.gov.in</a>
-        and cross-referenced with <a href="https://www.wikidata.org/wiki/Q473972" target="_blank"
-          rel="noopener">Wikidata</a>.
+        updated weekly from <a href="https://www.moef.gov.in/esz-notifications" target="_blank" rel="noopener">Ministry
+          Of Environments, Forest & Climate Change</a>
+        and linked with citizen contributed data from <a href="https://www.wikidata.org/wiki/Q473972" target="_blank"
+          rel="noopener">Wikidata</a> & <a href="https://www.openstreetmap.org/" target="_blank"
+          rel="noopener">OpenStreetMap</a>.
       </p>
       <div class="header-links">
         <a class="btn btn-primary" id="open-atlas-link" href="#" target="_blank" rel="noopener">Explore in amche-atlas
@@ -90,8 +91,6 @@
               (CSV)</button>
           </div>
         </div>
-        <a class="btn" href="https://github.com/publicmap/india-esz-dashboard#readme" target="_blank"
-          rel="noopener">About ESZs</a>
         <button class="btn ambient-toggle" id="ambient-toggle" type="button" aria-pressed="false">
           <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true">
             <path d="M4 9v6h4l6 5V4L8 9H4z" fill="currentColor" />
@@ -106,8 +105,8 @@
 
       <div class="hero-stats-block">
         <div class="hero-stats" aria-label="Nationwide Eco-Sensitive Zone notification progress">
-          <div class="hero-stat hero-stat-primary" id="hero-stat-overall" data-kpi="overall" role="button"
-            tabindex="0" aria-haspopup="dialog" title="View state/UT breakdown">
+          <div class="hero-stat hero-stat-primary" id="hero-stat-overall" data-kpi="overall" role="button" tabindex="0"
+            aria-haspopup="dialog" title="View state/UT breakdown">
             <div class="hero-stat-icon" aria-hidden="true">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"
                 stroke-linejoin="round">
@@ -122,8 +121,8 @@
               <div class="hero-stat-progress-fill" id="hero-stat-overall-bar"></div>
             </div>
           </div>
-          <div class="hero-stat" id="hero-stat-tiger" data-kpi="tiger" role="button" tabindex="0"
-            aria-haspopup="dialog" title="View tiger reserve breakdown">
+          <div class="hero-stat" id="hero-stat-tiger" data-kpi="tiger" role="button" tabindex="0" aria-haspopup="dialog"
+            title="View tiger reserve breakdown">
             <div class="hero-stat-icon" aria-hidden="true">
               <svg viewBox="0 0 24 24" fill="currentColor">
                 <ellipse cx="12" cy="15.5" rx="5.2" ry="4.3" />
@@ -220,18 +219,18 @@
             </div>
             <span class="result-status">
               <span id="result-count" class="result-count"></span>
-              <button class="result-clear-btn" id="reset-filters" type="button" hidden
-                title="Clear all filters" aria-label="Clear all filters">
-                <svg viewBox="0 0 24 24" width="13" height="13" aria-hidden="true" fill="none"
-                  stroke="currentColor" stroke-width="2.2" stroke-linecap="round">
+              <button class="result-clear-btn" id="reset-filters" type="button" hidden title="Clear all filters"
+                aria-label="Clear all filters">
+                <svg viewBox="0 0 24 24" width="13" height="13" aria-hidden="true" fill="none" stroke="currentColor"
+                  stroke-width="2.2" stroke-linecap="round">
                   <path d="M5 5l14 14M19 5L5 19" />
                 </svg>
               </button>
             </span>
-            <button class="btn btn-sm data-filters-toggle" id="data-filters-toggle" type="button"
-              aria-expanded="false" aria-controls="advanced-search-panel">
-              <svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true" fill="none"
-                stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <button class="btn btn-sm data-filters-toggle" id="data-filters-toggle" type="button" aria-expanded="false"
+              aria-controls="advanced-search-panel">
+              <svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true" fill="none" stroke="currentColor"
+                stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M4 6h16M7 12h10M10 18h4" />
               </svg>
               <span>Data filters</span>

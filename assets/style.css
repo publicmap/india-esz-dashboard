@@ -374,7 +374,72 @@ a { color: var(--accent-strong); }
   overflow: hidden;
   flex: none;
 }
-.kpi-table-pct-fill { height: 100%; border-radius: 999px; background: var(--status-final); }
+.kpi-table-pct-fill { display: block; height: 100%; border-radius: 999px; background: var(--status-final); }
+
+.kpi-intro {
+  margin: 0 0 1.3rem;
+  padding: 0.9rem 1.1rem;
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--accent-gold);
+  border-radius: var(--radius-md);
+  background: var(--page-plane);
+}
+.kpi-intro summary {
+  cursor: pointer;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1rem;
+  color: var(--text-primary);
+}
+.kpi-intro .section-intro { margin-top: 0.6rem; }
+.kpi-intro-media {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.2rem;
+  align-items: flex-start;
+  margin: 0.9rem 0;
+}
+.kpi-intro-image-link { flex: none; display: block; width: 100%; max-width: 260px; }
+.kpi-intro-image {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-soft);
+}
+.kpi-timeline {
+  flex: 1 1 260px;
+  min-width: 240px;
+  margin: 0;
+  padding-left: 1.1rem;
+  font-size: 0.84rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+.kpi-timeline li { margin-bottom: 0.4rem; }
+.kpi-timeline strong { color: var(--accent-strong); font-family: var(--font-display); }
+.kpi-intro-source { margin: 0.4rem 0 0; font-size: 0.74rem; color: var(--text-muted); }
+
+.kpi-summary-tiles { margin: 0 0 0.6rem; }
+.kpi-filter-status {
+  margin: 0 0 1.1rem;
+  font-size: 0.82rem;
+  color: var(--text-secondary);
+}
+.kpi-filter-status strong { color: var(--text-primary); }
+.kpi-filter-status button {
+  margin-left: 0.4rem;
+  padding: 0.15rem 0.6rem;
+  font-size: 0.76rem;
+  font-weight: 600;
+  color: var(--accent);
+  background: none;
+  border: 1px solid var(--accent);
+  border-radius: 999px;
+  cursor: pointer;
+}
+.kpi-filter-status button:hover { background: color-mix(in srgb, var(--accent) 12%, transparent); }
 
 body.modal-open { overflow: hidden; }
 
@@ -590,6 +655,19 @@ section { margin-bottom: 2.25rem; }
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 .stat-tile:hover { transform: translateY(-3px); box-shadow: var(--shadow-lift); }
+button.stat-tile {
+  width: 100%;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
+}
+button.stat-tile:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+button.stat-tile.is-active {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 2px color-mix(in srgb, var(--accent) 40%, transparent), var(--shadow-lift);
+}
 .stat-tile-final { background: linear-gradient(160deg, color-mix(in srgb, var(--status-final) 12%, var(--surface-1)), var(--surface-1) 70%); border-color: color-mix(in srgb, var(--status-final) 35%, var(--border)); }
 .stat-tile-draft { background: linear-gradient(160deg, color-mix(in srgb, var(--status-draft) 16%, var(--surface-1)), var(--surface-1) 70%); border-color: color-mix(in srgb, var(--status-draft) 35%, var(--border)); }
 .stat-tile-none { background: linear-gradient(160deg, color-mix(in srgb, var(--status-none) 14%, var(--surface-1)), var(--surface-1) 70%); border-color: color-mix(in srgb, var(--status-none) 30%, var(--border)); }
@@ -1285,6 +1363,20 @@ section { margin-bottom: 2.25rem; }
 .pa-detail-links { margin: 0 0 0.5rem; font-size: 0.85rem; display: flex; gap: 0.6rem; flex-wrap: wrap; }
 .pa-detail-excerpt { font-size: 0.85rem; line-height: 1.55; color: var(--text-secondary); margin: 0; }
 .pa-detail-excerpt:empty { display: none; }
+
+/* Protected area title linked to Wikipedia, with Wikidata/OSM logo links --
+   used in both the accordion detail card title and the KPI group modal
+   tables (see paTitleLinksHtml in app.js). */
+.pa-title-with-logos { display: inline-flex; align-items: center; gap: 0.4rem; flex-wrap: wrap; white-space: normal; }
+.pa-title-link { color: inherit; text-decoration: none; border-bottom: 1px solid color-mix(in srgb, currentColor 35%, transparent); }
+.pa-title-link:hover { border-bottom-color: currentColor; }
+/* Wikipedia "redlink" styling for a title with no confirmed article. */
+.pa-title-link-new { color: var(--accent-3); }
+.pa-title-link-new:hover { color: var(--accent-3); }
+.pa-title-logos { display: inline-flex; align-items: center; gap: 0.3rem; }
+.pa-title-logo { display: inline-flex; color: var(--text-muted); opacity: 0.75; transition: opacity 0.15s, color 0.15s; }
+.pa-title-logo:hover { opacity: 1; color: var(--accent); }
+.pa-title-logo svg { width: 13px; height: 13px; }
 
 .pa-notification-heading {
   margin: 0.6rem 1.2rem 0.4rem;

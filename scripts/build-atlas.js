@@ -87,7 +87,7 @@ async function main() {
         title: `${props.name} (boundary)`,
         description: `${STATUS_LABEL[props.eszStatus]}${props.state ? ` &middot; ${props.state}` : ''}`,
         tags: [props.state, STATUS_LABEL[props.eszStatus]].filter(Boolean),
-        initiallyChecked: props.eszStatus !== 'none',
+        initiallyChecked: false,
         attribution: '&copy; OpenStreetMap contributors (via Overpass API)',
         style: {
           'line-color': STATUS_COLOR[props.eszStatus],
@@ -100,13 +100,14 @@ async function main() {
     }
   }
 
+  const indiaEszLayer = {
+    id: 'india-esz',
+    initiallyChecked: true,
+  };
+
   const satelliteLayer = {
     id: 'mapbox-satellite',
-    type: 'raster-style-layer',
-    title: 'Satellite',
-    styleLayer: 'mapbox-satellite',
     initiallyChecked: true,
-    attribution: 'Mapbox Satellite',
   };
 
   const atlas = {
@@ -115,7 +116,7 @@ async function main() {
     center: [82, 22],
     zoom: 4.2,
     inspect: pointsLayer.inspect,
-    layers: [pointsLayer, ...boundaryLayers, satelliteLayer],
+    layers: [pointsLayer, ...boundaryLayers, indiaEszLayer, satelliteLayer],
   };
 
   await writeFile('data/amche-atlas.json', JSON.stringify(atlas, null, 2), 'utf8');

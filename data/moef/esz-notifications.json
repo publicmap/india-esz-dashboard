@@ -12,7 +12,7 @@
     "notificationUploadDate": "09/01/2014",
     "orderNumber": "S.O. 22",
     "wikidataId": "Q3532790",
-    "matchConfidence": "fuzzy"
+    "matchConfidence": "exact"
   },
   {
     "moefSNo": 1,
@@ -27,7 +27,7 @@
     "notificationUploadDate": "29/07/2015",
     "orderNumber": "S.O. 1736",
     "wikidataId": "Q3532790",
-    "matchConfidence": "fuzzy"
+    "matchConfidence": "exact"
   },
   {
     "moefSNo": 2,
@@ -41,8 +41,8 @@
     "maps": [],
     "notificationUploadDate": "14/01/2016",
     "orderNumber": "SO 3127(E)",
-    "wikidataId": null,
-    "matchConfidence": "none"
+    "wikidataId": "Q17087471",
+    "matchConfidence": "exact"
   },
   {
     "moefSNo": 2,
@@ -56,8 +56,8 @@
     "maps": [],
     "notificationUploadDate": "26/05/2017",
     "orderNumber": "S.O. 1567 (E)",
-    "wikidataId": null,
-    "matchConfidence": "none"
+    "wikidataId": "Q17087471",
+    "matchConfidence": "exact"
   },
   {
     "moefSNo": 3,
@@ -456,8 +456,8 @@
     ],
     "notificationUploadDate": "27/04/2016",
     "orderNumber": "S.O 1498(E)",
-    "wikidataId": null,
-    "matchConfidence": "none"
+    "wikidataId": "Q140306443",
+    "matchConfidence": "exact"
   },
   {
     "moefSNo": 13,
@@ -476,8 +476,8 @@
     ],
     "notificationUploadDate": "27/04/2016",
     "orderNumber": "S.O 1498(E)",
-    "wikidataId": null,
-    "matchConfidence": "none"
+    "wikidataId": "Q135350428",
+    "matchConfidence": "exact"
   },
   {
     "moefSNo": 13,
@@ -576,8 +576,8 @@
     ],
     "notificationUploadDate": "27/04/2016",
     "orderNumber": "S.O 1498(E)",
-    "wikidataId": null,
-    "matchConfidence": "none"
+    "wikidataId": "WIKIPEDIA:andaman-and-nicobar-islands:bingham-island-wildlife-sanctuary",
+    "matchConfidence": "fuzzy"
   },
   {
     "moefSNo": 13,
@@ -596,8 +596,8 @@
     ],
     "notificationUploadDate": "27/04/2016",
     "orderNumber": "S.O 1498(E)",
-    "wikidataId": null,
-    "matchConfidence": "none"
+    "wikidataId": "WIKIPEDIA:andaman-and-nicobar-islands:blister-island-wildlife-sanctuary",
+    "matchConfidence": "fuzzy"
   },
   {
     "moefSNo": 13,
@@ -636,8 +636,8 @@
     ],
     "notificationUploadDate": "27/04/2016",
     "orderNumber": "S.O 1498(E)",
-    "wikidataId": null,
-    "matchConfidence": "none"
+    "wikidataId": "WIKIPEDIA:andaman-and-nicobar-islands:bondoville-island-wildlife-sanctuary",
+    "matchConfidence": "fuzzy"
   },
   {
     "moefSNo": 13,
@@ -676,8 +676,8 @@
     ],
     "notificationUploadDate": "27/04/2016",
     "orderNumber": "S.O 1498(E)",
-    "wikidataId": null,
-    "matchConfidence": "none"
+    "wikidataId": "WIKIPEDIA:andaman-and-nicobar-islands:buchanan-island-wildlife-sanctuary",
+    "matchConfidence": "fuzzy"
   },
   {
     "moefSNo": 13,
@@ -716,8 +716,8 @@
     ],
     "notificationUploadDate": "27/04/2016",
     "orderNumber": "S.O 1498(E)",
-    "wikidataId": null,
-    "matchConfidence": "none"
+    "wikidataId": "WIKIPEDIA:andaman-and-nicobar-islands:cinque-islands-wildlife-sanctuary",
+    "matchConfidence": "fuzzy"
   },
   {
     "moefSNo": 13,
@@ -816,8 +816,8 @@
     ],
     "notificationUploadDate": "27/04/2016",
     "orderNumber": "S.O 1498(E)",
-    "wikidataId": null,
-    "matchConfidence": "none"
+    "wikidataId": "WIKIPEDIA:andaman-and-nicobar-islands:defence-island-wildlife-sanctuary",
+    "matchConfidence": "fuzzy"
   },
   {
     "moefSNo": 13,
@@ -936,8 +936,8 @@
     ],
     "notificationUploadDate": "27/04/2016",
     "orderNumber": "S.O 1498(E)",
-    "wikidataId": null,
-    "matchConfidence": "none"
+    "wikidataId": "WIKIPEDIA:andaman-and-nicobar-islands:entrance-island-wildlife-sanctuary",
+    "matchConfidence": "fuzzy"
   },
   {
     "moefSNo": 13,
@@ -1076,8 +1076,8 @@
     ],
     "notificationUploadDate": "27/04/2016",
     "orderNumber": "S.O 1498(E)",
-    "wikidataId": null,
-    "matchConfidence": "none"
+    "wikidataId": "WIKIPEDIA:andaman-and-nicobar-islands:interview-island-wildlife-sanctuary",
+    "matchConfidence": "fuzzy"
   },
   {
     "moefSNo": 13,
@@ -1136,8 +1136,8 @@
     ],
     "notificationUploadDate": "27/04/2016",
     "orderNumber": "S.O 1498(E)",
-    "wikidataId": null,
-    "matchConfidence": "none"
+    "wikidataId": "Q135012839",
+    "matchConfidence": "exact"
   },
   {
     "moefSNo": 13,
@@ -1176,8 +1176,8 @@
     ],
     "notificationUploadDate": "27/04/2016",
     "orderNumber": "S.O 1498(E)",
-    "wikidataId": null,
-    "matchConfidence": "none"
+    "wikidataId": "WIKIPEDIA:andaman-and-nicobar-islands:landfall-island-wildlife-sanctuary",
+    "matchConfidence": "fuzzy"
   },
   {
     "moefSNo": 13,
@@ -1196,8 +1196,8 @@
     ],
     "notificationUploadDate": "27/04/2016",
     "orderNumber": "S.O 1498(E)",
-    "wikidataId": null,
-    "matchConfidence": "none"
+    "wikidataId": "WIKIPEDIA:andaman-and-nicobar-islands:latouche-island-wildlife-sanctuary",
+    "matchConfidence": "fuzzy"
   },
   {
     "moefSNo": 13,
@@ -1216,8 +1216,8 @@
     ],
     "notificationUploadDate": "27/04/2016",
     "orderNumber": "S.O 1498(E)",
-    "wikidataId": null,
-    "matchConfidence": "none"
+    "wikidataId": "WIKIPEDIA:andaman-and-nicobar-islands:mangrove-island-wildlife-sanctuary",
+    "matchConfidence": "fuzzy"
   },
   {
     "moefSNo": 13,
@@ -1276,8 +1276,8 @@
     ],
     "notificationUploadDate": "27/04/2016",
     "orderNumber": "S.O 1498(E)",
-    "wikidataId": null,
-    "matchConfidence": "none"
+    "wikidataId": "WIKIPEDIA:andaman-and-nicobar-islands:megapode-island-wildlife-sanctuary",
+    "matchConfidence": "fuzzy"
   },
   {
     "moefSNo": 13,
@@ -1316,8 +1316,8 @@
     ],
     "notificationUploadDate": "27/04/2016",
     "orderNumber": "S.O 1498(E)",
-    "wikidataId": null,
-    "matchConfidence": "none"
+    "wikidataId": "WIKIPEDIA:andaman-and-nicobar-islands:narcondam-island-wildlife-sanctuary",
+    "matchConfidence": "fuzzy"
   },
   {
     "moefSNo": 13,
@@ -1356,8 +1356,8 @@
     ],
     "notificationUploadDate": "27/04/2016",
     "orderNumber": "S.O 1498(E)",
-    "wikidataId": null,
-    "matchConfidence": "none"
+    "wikidataId": "WIKIPEDIA:andaman-and-nicobar-islands:north-reef-island-wildlife-sanctuary",
+    "matchConfidence": "fuzzy"
   },
   {
     "moefSNo": 13,
@@ -1516,8 +1516,8 @@
     ],
     "notificationUploadDate": "27/04/2016",
     "orderNumber": "S.O 1498(E)",
-    "wikidataId": null,
-    "matchConfidence": "none"
+    "wikidataId": "WIKIPEDIA:andaman-and-nicobar-islands:parkinson-island-wildlife-sanctuary",
+    "matchConfidence": "fuzzy"
   },
   {
     "moefSNo": 13,
@@ -1536,8 +1536,8 @@
     ],
     "notificationUploadDate": "27/04/2016",
     "orderNumber": "S.O 1498(E)",
-    "wikidataId": null,
-    "matchConfidence": "none"
+    "wikidataId": "WIKIPEDIA:andaman-and-nicobar-islands:passage-island-wildlife-sanctuary",
+    "matchConfidence": "fuzzy"
   },
   {
     "moefSNo": 13,
@@ -1596,8 +1596,8 @@
     ],
     "notificationUploadDate": "27/04/2016",
     "orderNumber": "S.O 1498(E)",
-    "wikidataId": null,
-    "matchConfidence": "none"
+    "wikidataId": "WIKIPEDIA:andaman-and-nicobar-islands:peacock-island-wildlife-sanctuary",
+    "matchConfidence": "fuzzy"
   },
   {
     "moefSNo": 13,
@@ -1776,8 +1776,8 @@
     ],
     "notificationUploadDate": "27/04/2016",
     "orderNumber": "S.O 1498(E)",
-    "wikidataId": null,
-    "matchConfidence": "none"
+    "wikidataId": "WIKIPEDIA:andaman-and-nicobar-islands:sea-serpent-island-wildlife-sanctuary",
+    "matchConfidence": "fuzzy"
   },
   {
     "moefSNo": 13,
@@ -1816,8 +1816,8 @@
     ],
     "notificationUploadDate": "27/04/2016",
     "orderNumber": "S.O 1498(E)",
-    "wikidataId": null,
-    "matchConfidence": "none"
+    "wikidataId": "WIKIPEDIA:andaman-and-nicobar-islands:shearme-island-wildlife-sanctuary",
+    "matchConfidence": "fuzzy"
   },
   {
     "moefSNo": 13,
@@ -1836,8 +1836,8 @@
     ],
     "notificationUploadDate": "27/04/2016",
     "orderNumber": "S.O 1498(E)",
-    "wikidataId": null,
-    "matchConfidence": "none"
+    "wikidataId": "WIKIPEDIA:andaman-and-nicobar-islands:sir-hugh-rose-island-wildlife-sanctuary",
+    "matchConfidence": "fuzzy"
   },
   {
     "moefSNo": 13,
@@ -1856,8 +1856,8 @@
     ],
     "notificationUploadDate": "27/04/2016",
     "orderNumber": "S.O 1498(E)",
-    "wikidataId": null,
-    "matchConfidence": "none"
+    "wikidataId": "WIKIPEDIA:andaman-and-nicobar-islands:sisters-island-wildlife-sanctuary",
+    "matchConfidence": "fuzzy"
   },
   {
     "moefSNo": 13,
@@ -1876,8 +1876,8 @@
     ],
     "notificationUploadDate": "27/04/2016",
     "orderNumber": "S.O 1498(E)",
-    "wikidataId": null,
-    "matchConfidence": "none"
+    "wikidataId": "WIKIPEDIA:andaman-and-nicobar-islands:snake-island-i-wildlife-sanctuary",
+    "matchConfidence": "fuzzy"
   },
   {
     "moefSNo": 13,
@@ -1896,8 +1896,8 @@
     ],
     "notificationUploadDate": "27/04/2016",
     "orderNumber": "S.O 1498(E)",
-    "wikidataId": null,
-    "matchConfidence": "none"
+    "wikidataId": "WIKIPEDIA:andaman-and-nicobar-islands:snake-island-i-wildlife-sanctuary",
+    "matchConfidence": "fuzzy"
   },
   {
     "moefSNo": 13,
@@ -1936,8 +1936,8 @@
     ],
     "notificationUploadDate": "27/04/2016",
     "orderNumber": "S.O 1498(E)",
-    "wikidataId": null,
-    "matchConfidence": "none"
+    "wikidataId": "WIKIPEDIA:andaman-and-nicobar-islands:south-reef-island-wildlife-sanctuary",
+    "matchConfidence": "fuzzy"
   },
   {
     "moefSNo": 13,
@@ -1996,8 +1996,8 @@
     ],
     "notificationUploadDate": "27/04/2016",
     "orderNumber": "S.O 1498(E)",
-    "wikidataId": null,
-    "matchConfidence": "none"
+    "wikidataId": "WIKIPEDIA:andaman-and-nicobar-islands:spike-island-i-wildlife-sanctuary",
+    "matchConfidence": "fuzzy"
   },
   {
     "moefSNo": 13,
@@ -2096,8 +2096,8 @@
     ],
     "notificationUploadDate": "27/04/2016",
     "orderNumber": "S.O 1498(E)",
-    "wikidataId": null,
-    "matchConfidence": "none"
+    "wikidataId": "WIKIPEDIA:andaman-and-nicobar-islands:table-excelsior-island-wildlife-sanctuary",
+    "matchConfidence": "fuzzy"
   },
   {
     "moefSNo": 13,
@@ -2116,8 +2116,8 @@
     ],
     "notificationUploadDate": "27/04/2016",
     "orderNumber": "S.O 1498(E)",
-    "wikidataId": null,
-    "matchConfidence": "none"
+    "wikidataId": "WIKIPEDIA:andaman-and-nicobar-islands:talabaicha-island-wildlife-sanctuary",
+    "matchConfidence": "fuzzy"
   },
   {
     "moefSNo": 13,
@@ -2296,8 +2296,8 @@
     ],
     "notificationUploadDate": "27/04/2016",
     "orderNumber": "S.O 1498(E)",
-    "wikidataId": null,
-    "matchConfidence": "none"
+    "wikidataId": "WIKIPEDIA:andaman-and-nicobar-islands:white-cliff-island-wildlife-sanctuary",
+    "matchConfidence": "fuzzy"
   },
   {
     "moefSNo": 11,
@@ -2371,8 +2371,8 @@
     "maps": [],
     "notificationUploadDate": "05/10/2016",
     "orderNumber": "S.O. 3099(E)",
-    "wikidataId": null,
-    "matchConfidence": "none"
+    "wikidataId": "Q140306443",
+    "matchConfidence": "exact"
   },
   {
     "moefSNo": 11,
@@ -2386,8 +2386,8 @@
     "maps": [],
     "notificationUploadDate": "05/10/2016",
     "orderNumber": "S.O. 3099(E)",
-    "wikidataId": null,
-    "matchConfidence": "none"
+    "wikidataId": "Q135350428",
+    "matchConfidence": "exact"
   },
   {
     "moefSNo": 11,
@@ -2461,8 +2461,8 @@
     "maps": [],
     "notificationUploadDate": "05/10/2016",
     "orderNumber": "S.O. 3099(E)",
-    "wikidataId": null,
-    "matchConfidence": "none"
+    "wikidataId": "WIKIPEDIA:andaman-and-nicobar-islands:bingham-island-wildlife-sanctuary",
+    "matchConfidence": "fuzzy"
   },
   {
     "moefSNo": 11,
@@ -2476,8 +2476,8 @@
     "maps": [],
     "notificationUploadDate": "05/10/2016",
     "orderNumber": "S.O. 3099(E)",
-    "wikidataId": null,
-    "matchConfidence": "none"
+    "wikidataId": "WIKIPEDIA:andaman-and-nicobar-islands:blister-island-wildlife-sanctuary",
+    "matchConfidence": "fuzzy"
   },
   {
     "moefSNo": 11,
@@ -2506,8 +2506,8 @@
     "maps": [],
     "notificationUploadDate": "05/10/2016",
     "orderNumber": "S.O. 3099(E)",
-    "wikidataId": null,
-    "matchConfidence": "none"
+    "wikidataId": "WIKIPEDIA:andaman-and-nicobar-islands:bondoville-island-wildlife-sanctuary",
+    "matchConfidence": "fuzzy"
   },
   {
     "moefSNo": 11,
@@ -2536,8 +2536,8 @@
     "maps": [],
     "notificationUploadDate": "05/10/2016",
     "orderNumber": "S.O. 3099(E)",
-    "wikidataId": null,
-    "matchConfidence": "none"
+    "wikidataId": "WIKIPEDIA:andaman-and-nicobar-islands:buchanan-island-wildlife-sanctuary",
+    "matchConfidence": "fuzzy"
   },
   {
     "moefSNo": 11,
@@ -2566,8 +2566,8 @@
     "maps": [],
     "notificationUploadDate": "05/10/2016",
     "orderNumber": "S.O. 3099(E)",
-    "wikidataId": null,
-    "matchConfidence": "none"
+    "wikidataId": "WIKIPEDIA:andaman-and-nicobar-islands:cinque-islands-wildlife-sanctuary",
+    "matchConfidence": "fuzzy"
   },
   {
     "moefSNo": 11,
@@ -2641,8 +2641,8 @@
     "maps": [],
     "notificationUploadDate": "05/10/2016",
     "orderNumber": "S.O. 3099(E)",
-    "wikidataId": null,
-    "matchConfidence": "none"
+    "wikidataId": "WIKIPEDIA:andaman-and-nicobar-islands:defence-island-wildlife-sanctuary",
+    "matchConfidence": "fuzzy"
   },
   {
     "moefSNo": 11,
@@ -2731,8 +2731,8 @@
     "maps": [],
     "notificationUploadDate": "05/10/2016",
     "orderNumber": "S.O. 3099(E)",
-    "wikidataId": null,
-    "matchConfidence": "none"
+    "wikidataId": "WIKIPEDIA:andaman-and-nicobar-islands:entrance-island-wildlife-sanctuary",
+    "matchConfidence": "fuzzy"
   },
   {
     "moefSNo": 11,
@@ -2836,8 +2836,8 @@
     "maps": [],
     "notificationUploadDate": "05/10/2016",
     "orderNumber": "S.O. 3099(E)",
-    "wikidataId": null,
-    "matchConfidence": "none"
+    "wikidataId": "WIKIPEDIA:andaman-and-nicobar-islands:interview-island-wildlife-sanctuary",
+    "matchConfidence": "fuzzy"
   },
   {
     "moefSNo": 11,
@@ -2881,8 +2881,8 @@
     "maps": [],
     "notificationUploadDate": "05/10/2016",
     "orderNumber": "S.O. 3099(E)",
-    "wikidataId": null,
-    "matchConfidence": "none"
+    "wikidataId": "Q135012839",
+    "matchConfidence": "exact"
   },
   {
     "moefSNo": 11,
@@ -2911,8 +2911,8 @@
     "maps": [],
     "notificationUploadDate": "05/10/2016",
     "orderNumber": "S.O. 3099(E)",
-    "wikidataId": null,
-    "matchConfidence": "none"
+    "wikidataId": "WIKIPEDIA:andaman-and-nicobar-islands:landfall-island-wildlife-sanctuary",
+    "matchConfidence": "fuzzy"
   },
   {
     "moefSNo": 11,
@@ -2926,8 +2926,8 @@
     "maps": [],
     "notificationUploadDate": "05/10/2016",
     "orderNumber": "S.O. 3099(E)",
-    "wikidataId": null,
-    "matchConfidence": "none"
+    "wikidataId": "WIKIPEDIA:andaman-and-nicobar-islands:latouche-island-wildlife-sanctuary",
+    "matchConfidence": "fuzzy"
   },
   {
     "moefSNo": 11,
@@ -2941,8 +2941,8 @@
     "maps": [],
     "notificationUploadDate": "05/10/2016",
     "orderNumber": "S.O. 3099(E)",
-    "wikidataId": null,
-    "matchConfidence": "none"
+    "wikidataId": "WIKIPEDIA:andaman-and-nicobar-islands:mangrove-island-wildlife-sanctuary",
+    "matchConfidence": "fuzzy"
   },
   {
     "moefSNo": 11,
@@ -2986,8 +2986,8 @@
     "maps": [],
     "notificationUploadDate": "05/10/2016",
     "orderNumber": "S.O. 3099(E)",
-    "wikidataId": null,
-    "matchConfidence": "none"
+    "wikidataId": "WIKIPEDIA:andaman-and-nicobar-islands:megapode-island-wildlife-sanctuary",
+    "matchConfidence": "fuzzy"
   },
   {
     "moefSNo": 11,
@@ -3016,8 +3016,8 @@
     "maps": [],
     "notificationUploadDate": "05/10/2016",
     "orderNumber": "S.O. 3099(E)",
-    "wikidataId": null,
-    "matchConfidence": "none"
+    "wikidataId": "WIKIPEDIA:andaman-and-nicobar-islands:narcondam-island-wildlife-sanctuary",
+    "matchConfidence": "fuzzy"
   },
   {
     "moefSNo": 11,
@@ -3046,8 +3046,8 @@
     "maps": [],
     "notificationUploadDate": "05/10/2016",
     "orderNumber": "S.O. 3099(E)",
-    "wikidataId": null,
-    "matchConfidence": "none"
+    "wikidataId": "WIKIPEDIA:andaman-and-nicobar-islands:north-reef-island-wildlife-sanctuary",
+    "matchConfidence": "fuzzy"
   },
   {
     "moefSNo": 11,
@@ -3166,8 +3166,8 @@
     "maps": [],
     "notificationUploadDate": "05/10/2016",
     "orderNumber": "S.O. 3099(E)",
-    "wikidataId": null,
-    "matchConfidence": "none"
+    "wikidataId": "WIKIPEDIA:andaman-and-nicobar-islands:parkinson-island-wildlife-sanctuary",
+    "matchConfidence": "fuzzy"
   },
   {
     "moefSNo": 11,
@@ -3181,8 +3181,8 @@
     "maps": [],
     "notificationUploadDate": "05/10/2016",
     "orderNumber": "S.O. 3099(E)",
-    "wikidataId": null,
-    "matchConfidence": "none"
+    "wikidataId": "WIKIPEDIA:andaman-and-nicobar-islands:passage-island-wildlife-sanctuary",
+    "matchConfidence": "fuzzy"
   },
   {
     "moefSNo": 11,
@@ -3226,8 +3226,8 @@
     "maps": [],
     "notificationUploadDate": "05/10/2016",
     "orderNumber": "S.O. 3099(E)",
-    "wikidataId": null,
-    "matchConfidence": "none"
+    "wikidataId": "WIKIPEDIA:andaman-and-nicobar-islands:peacock-island-wildlife-sanctuary",
+    "matchConfidence": "fuzzy"
   },
   {
     "moefSNo": 11,
@@ -3361,8 +3361,8 @@
     "maps": [],
     "notificationUploadDate": "05/10/2016",
     "orderNumber": "S.O. 3099(E)",
-    "wikidataId": null,
-    "matchConfidence": "none"
+    "wikidataId": "WIKIPEDIA:andaman-and-nicobar-islands:sea-serpent-island-wildlife-sanctuary",
+    "matchConfidence": "fuzzy"
   },
   {
     "moefSNo": 11,
@@ -3391,8 +3391,8 @@
     "maps": [],
     "notificationUploadDate": "05/10/2016",
     "orderNumber": "S.O. 3099(E)",
-    "wikidataId": null,
-    "matchConfidence": "none"
+    "wikidataId": "WIKIPEDIA:andaman-and-nicobar-islands:shearme-island-wildlife-sanctuary",
+    "matchConfidence": "fuzzy"
   },
   {
     "moefSNo": 11,
@@ -3406,8 +3406,8 @@
     "maps": [],
     "notificationUploadDate": "05/10/2016",
     "orderNumber": "S.O. 3099(E)",
-    "wikidataId": null,
-    "matchConfidence": "none"
+    "wikidataId": "WIKIPEDIA:andaman-and-nicobar-islands:sir-hugh-rose-island-wildlife-sanctuary",
+    "matchConfidence": "fuzzy"
   },
   {
     "moefSNo": 11,
@@ -3421,8 +3421,8 @@
     "maps": [],
     "notificationUploadDate": "05/10/2016",
     "orderNumber": "S.O. 3099(E)",
-    "wikidataId": null,
-    "matchConfidence": "none"
+    "wikidataId": "WIKIPEDIA:andaman-and-nicobar-islands:sisters-island-wildlife-sanctuary",
+    "matchConfidence": "fuzzy"
   },
   {
     "moefSNo": 11,
@@ -3436,8 +3436,8 @@
     "maps": [],
     "notificationUploadDate": "05/10/2016",
     "orderNumber": "S.O. 3099(E)",
-    "wikidataId": null,
-    "matchConfidence": "none"
+    "wikidataId": "WIKIPEDIA:andaman-and-nicobar-islands:snake-island-i-wildlife-sanctuary",
+    "matchConfidence": "fuzzy"
   },
   {
     "moefSNo": 11,
@@ -3451,8 +3451,8 @@
     "maps": [],
     "notificationUploadDate": "05/10/2016",
     "orderNumber": "S.O. 3099(E)",
-    "wikidataId": null,
-    "matchConfidence": "none"
+    "wikidataId": "WIKIPEDIA:andaman-and-nicobar-islands:snake-island-i-wildlife-sanctuary",
+    "matchConfidence": "fuzzy"
   },
   {
     "moefSNo": 11,
@@ -3481,8 +3481,8 @@
     "maps": [],
     "notificationUploadDate": "05/10/2016",
     "orderNumber": "S.O. 3099(E)",
-    "wikidataId": null,
-    "matchConfidence": "none"
+    "wikidataId": "WIKIPEDIA:andaman-and-nicobar-islands:south-reef-island-wildlife-sanctuary",
+    "matchConfidence": "fuzzy"
   },
   {
     "moefSNo": 11,
@@ -3526,8 +3526,8 @@
     "maps": [],
     "notificationUploadDate": "05/10/2016",
     "orderNumber": "S.O. 3099(E)",
-    "wikidataId": null,
-    "matchConfidence": "none"
+    "wikidataId": "WIKIPEDIA:andaman-and-nicobar-islands:spike-island-i-wildlife-sanctuary",
+    "matchConfidence": "fuzzy"
   },
   {
     "moefSNo": 11,
@@ -3601,8 +3601,8 @@
     "maps": [],
     "notificationUploadDate": "05/10/2016",
     "orderNumber": "S.O. 3099(E)",
-    "wikidataId": null,
-    "matchConfidence": "none"
+    "wikidataId": "WIKIPEDIA:andaman-and-nicobar-islands:table-excelsior-island-wildlife-sanctuary",
+    "matchConfidence": "fuzzy"
   },
   {
     "moefSNo": 11,
@@ -3616,8 +3616,8 @@
     "maps": [],
     "notificationUploadDate": "05/10/2016",
     "orderNumber": "S.O. 3099(E)",
-    "wikidataId": null,
-    "matchConfidence": "none"
+    "wikidataId": "WIKIPEDIA:andaman-and-nicobar-islands:talabaicha-island-wildlife-sanctuary",
+    "matchConfidence": "fuzzy"
   },
   {
     "moefSNo": 11,
@@ -3751,8 +3751,8 @@
     "maps": [],
     "notificationUploadDate": "05/10/2016",
     "orderNumber": "S.O. 3099(E)",
-    "wikidataId": null,
-    "matchConfidence": "none"
+    "wikidataId": "WIKIPEDIA:andaman-and-nicobar-islands:white-cliff-island-wildlife-sanctuary",
+    "matchConfidence": "fuzzy"
   },
   {
     "moefSNo": 14,
@@ -4011,8 +4011,8 @@
     ],
     "notificationUploadDate": "28/10/2015",
     "orderNumber": "S.O. 2538",
-    "wikidataId": null,
-    "matchConfidence": "none"
+    "wikidataId": "Q17033744",
+    "matchConfidence": "exact"
   },
   {
     "moefSNo": 22,
@@ -4026,8 +4026,8 @@
     "maps": [],
     "notificationUploadDate": null,
     "orderNumber": "S.O. 3101(E)",
-    "wikidataId": null,
-    "matchConfidence": "none"
+    "wikidataId": "Q85755050",
+    "matchConfidence": "exact"
   },
   {
     "moefSNo": 23,
@@ -4311,8 +4311,8 @@
     "maps": [],
     "notificationUploadDate": "6/11/2015",
     "orderNumber": "S.O. 2600",
-    "wikidataId": null,
-    "matchConfidence": "none"
+    "wikidataId": "Q2989176",
+    "matchConfidence": "exact"
   },
   {
     "moefSNo": 36,
@@ -4386,8 +4386,8 @@
     "maps": [],
     "notificationUploadDate": "11/04/2016",
     "orderNumber": "SO 3236(E)",
-    "wikidataId": null,
-    "matchConfidence": "none"
+    "wikidataId": "Q3217688",
+    "matchConfidence": "exact"
   },
   {
     "moefSNo": 39,
@@ -4716,8 +4716,8 @@
     "maps": [],
     "notificationUploadDate": "02/09/2015",
     "orderNumber": "S.O. 2386",
-    "wikidataId": null,
-    "matchConfidence": "none"
+    "wikidataId": "Q130974238",
+    "matchConfidence": "exact"
   },
   {
     "moefSNo": 30,
@@ -4731,8 +4731,8 @@
     "maps": [],
     "notificationUploadDate": "08/10/2024",
     "orderNumber": "S.O. 3517(E)",
-    "wikidataId": null,
-    "matchConfidence": "none"
+    "wikidataId": "Q130974238",
+    "matchConfidence": "exact"
   },
   {
     "moefSNo": null,
@@ -4746,8 +4746,8 @@
     "maps": [],
     "notificationUploadDate": null,
     "orderNumber": "S .O. No. 4337(E)",
-    "wikidataId": null,
-    "matchConfidence": "none"
+    "wikidataId": "Q130974238",
+    "matchConfidence": "exact"
   },
   {
     "moefSNo": 54,
@@ -4791,8 +4791,8 @@
     "maps": [],
     "notificationUploadDate": "18/02/2015",
     "orderNumber": "S.O. No 274",
-    "wikidataId": null,
-    "matchConfidence": "none"
+    "wikidataId": "Q15232550",
+    "matchConfidence": "exact"
   },
   {
     "moefSNo": 32,
@@ -4912,7 +4912,7 @@
     "notificationUploadDate": "26/04/2016",
     "orderNumber": "S.O. 1361(E)",
     "wikidataId": "Q18343586",
-    "matchConfidence": "fuzzy"
+    "matchConfidence": "exact"
   },
   {
     "moefSNo": 35,
@@ -4927,7 +4927,7 @@
     "notificationUploadDate": "19/12/2024",
     "orderNumber": "S.O. 2200 (E)",
     "wikidataId": "Q18343586",
-    "matchConfidence": "fuzzy"
+    "matchConfidence": "exact"
   },
   {
     "moefSNo": null,
@@ -4942,7 +4942,7 @@
     "notificationUploadDate": null,
     "orderNumber": "S .O. No. 5383(E)",
     "wikidataId": "Q18343586",
-    "matchConfidence": "fuzzy"
+    "matchConfidence": "exact"
   },
   {
     "moefSNo": 60,
@@ -5121,8 +5121,8 @@
     "maps": [],
     "notificationUploadDate": "10/09/2015",
     "orderNumber": "S.O. 2045",
-    "wikidataId": null,
-    "matchConfidence": "none"
+    "wikidataId": "Q21997171",
+    "matchConfidence": "exact"
   },
   {
     "moefSNo": 39,
@@ -5136,8 +5136,8 @@
     "maps": [],
     "notificationUploadDate": "12/01/2017",
     "orderNumber": "S. O. 69 (E)",
-    "wikidataId": null,
-    "matchConfidence": "none"
+    "wikidataId": "Q21997171",
+    "matchConfidence": "exact"
   },
   {
     "moefSNo": 65,
@@ -5331,8 +5331,8 @@
     "maps": [],
     "notificationUploadDate": "01/05/2018",
     "orderNumber": null,
-    "wikidataId": null,
-    "matchConfidence": "none"
+    "wikidataId": "Q1723746",
+    "matchConfidence": "exact"
   },
   {
     "moefSNo": 43,
@@ -5346,8 +5346,8 @@
     "maps": [],
     "notificationUploadDate": "17/10/2019",
     "orderNumber": "S.O. 3653(E)",
-    "wikidataId": null,
-    "matchConfidence": "none"
+    "wikidataId": "Q1723746",
+    "matchConfidence": "exact"
   },
   {
     "moefSNo": 74,
@@ -5391,8 +5391,8 @@
     "maps": [],
     "notificationUploadDate": "02/01/2014",
     "orderNumber": "S.O. 2927",
-    "wikidataId": null,
-    "matchConfidence": "none"
+    "wikidataId": "Q115804851",
+    "matchConfidence": "exact"
   },
   {
     "moefSNo": 45,
@@ -5406,8 +5406,8 @@
     "maps": [],
     "notificationUploadDate": "21/09/2015",
     "orderNumber": "S.O. 2413",
-    "wikidataId": null,
-    "matchConfidence": "none"
+    "wikidataId": "Q115804851",
+    "matchConfidence": "exact"
   },
   {
     "moefSNo": 76,
@@ -5632,7 +5632,7 @@
     "notificationUploadDate": "24/03/2014",
     "orderNumber": "S.O. 635",
     "wikidataId": "Q2397554",
-    "matchConfidence": "fuzzy"
+    "matchConfidence": "exact"
   },
   {
     "moefSNo": 81,
@@ -5647,7 +5647,7 @@
     "notificationUploadDate": "24/03/2014",
     "orderNumber": "S.O. 635",
     "wikidataId": "Q2397554",
-    "matchConfidence": "fuzzy"
+    "matchConfidence": "exact"
   },
   {
     "moefSNo": 51,
@@ -5662,7 +5662,7 @@
     "notificationUploadDate": "23/08/2024",
     "orderNumber": "S.O. No. 221",
     "wikidataId": "Q2397554",
-    "matchConfidence": "fuzzy"
+    "matchConfidence": "exact"
   },
   {
     "moefSNo": null,
@@ -5677,7 +5677,7 @@
     "notificationUploadDate": null,
     "orderNumber": "S.O. No. 3513(E)",
     "wikidataId": "Q2397554",
-    "matchConfidence": "fuzzy"
+    "matchConfidence": "exact"
   },
   {
     "moefSNo": null,
@@ -5692,7 +5692,7 @@
     "notificationUploadDate": null,
     "orderNumber": "S .O. No. 3548 (E)",
     "wikidataId": "Q2397554",
-    "matchConfidence": "fuzzy"
+    "matchConfidence": "exact"
   },
   {
     "moefSNo": 82,
@@ -5751,8 +5751,8 @@
     "maps": [],
     "notificationUploadDate": "04/04/2016",
     "orderNumber": "S.O. 353 (E)",
-    "wikidataId": null,
-    "matchConfidence": "none"
+    "wikidataId": "Q2724481",
+    "matchConfidence": "exact"
   },
   {
     "moefSNo": 83,
@@ -5766,8 +5766,8 @@
     "maps": [],
     "notificationUploadDate": "04/04/2016",
     "orderNumber": "S.O. 353 (E)",
-    "wikidataId": null,
-    "matchConfidence": "none"
+    "wikidataId": "Q2724481",
+    "matchConfidence": "exact"
   },
   {
     "moefSNo": 53,
@@ -5781,8 +5781,8 @@
     "maps": [],
     "notificationUploadDate": "06/09/2013",
     "orderNumber": "S.O. 2561",
-    "wikidataId": null,
-    "matchConfidence": "none"
+    "wikidataId": "Q2724481",
+    "matchConfidence": "exact"
   },
   {
     "moefSNo": 53,
@@ -5796,8 +5796,8 @@
     "maps": [],
     "notificationUploadDate": "06/09/2013",
     "orderNumber": "S.O. 2561",
-    "wikidataId": null,
-    "matchConfidence": "none"
+    "wikidataId": "Q2724481",
+    "matchConfidence": "exact"
   },
   {
     "moefSNo": 84,
@@ -5931,8 +5931,8 @@
     "maps": [],
     "notificationUploadDate": null,
     "orderNumber": "S.O. No. 5313(E)",
-    "wikidataId": null,
-    "matchConfidence": "none"
+    "wikidataId": "Q19895529",
+    "matchConfidence": "exact"
   },
   {
     "moefSNo": null,
@@ -5991,8 +5991,8 @@
     "maps": [],
     "notificationUploadDate": null,
     "orderNumber": "S.O. No. 5316(E)",
-    "wikidataId": null,
-    "matchConfidence": "none"
+    "wikidataId": "Q2669063",
+    "matchConfidence": "exact"
   },
   {
     "moefSNo": null,
@@ -6051,7 +6051,7 @@
     "maps": [],
     "notificationUploadDate": null,
     "orderNumber": "S.O. 3202",
-    "wikidataId": "Q7786671",
+    "wikidataId": "Q7786672",
     "matchConfidence": "exact"
   },
   {
@@ -6066,7 +6066,7 @@
     "maps": [],
     "notificationUploadDate": null,
     "orderNumber": "S.O. 421",
-    "wikidataId": "Q7786671",
+    "wikidataId": "Q7786672",
     "matchConfidence": "exact"
   },
   {
@@ -6261,8 +6261,8 @@
     "maps": [],
     "notificationUploadDate": "18/01/2016",
     "orderNumber": "SO 67(E)",
-    "wikidataId": null,
-    "matchConfidence": "none"
+    "wikidataId": "Q880724",
+    "matchConfidence": "exact"
   },
   {
     "moefSNo": 65,
@@ -6381,8 +6381,8 @@
     "maps": [],
     "notificationUploadDate": "10/02/2017",
     "orderNumber": "S. O. 351 (E)",
-    "wikidataId": null,
-    "matchConfidence": "none"
+    "wikidataId": "Q6187899",
+    "matchConfidence": "exact"
   },
   {
     "moefSNo": 68,
@@ -6396,8 +6396,8 @@
     "maps": [],
     "notificationUploadDate": "02/11/2017",
     "orderNumber": "S.O. 3342(E)",
-    "wikidataId": null,
-    "matchConfidence": "none"
+    "wikidataId": "Q6187899",
+    "matchConfidence": "exact"
   },
   {
     "moefSNo": 101,
@@ -6456,8 +6456,8 @@
     "maps": [],
     "notificationUploadDate": "18/03/2019",
     "orderNumber": "S.O. 1316(E)",
-    "wikidataId": null,
-    "matchConfidence": "none"
+    "wikidataId": "Q2757724",
+    "matchConfidence": "fuzzy"
   },
   {
     "moefSNo": 103,
@@ -6726,8 +6726,8 @@
     "maps": [],
     "notificationUploadDate": null,
     "orderNumber": "S.O. 1447",
-    "wikidataId": null,
-    "matchConfidence": "none"
+    "wikidataId": "Q17002798",
+    "matchConfidence": "fuzzy"
   },
   {
     "moefSNo": 79,
@@ -6742,7 +6742,7 @@
     "notificationUploadDate": "24/11/2016",
     "orderNumber": "S.O. 3516(E)",
     "wikidataId": "Q17002798",
-    "matchConfidence": "fuzzy"
+    "matchConfidence": "exact"
   },
   {
     "moefSNo": 113,
@@ -7016,8 +7016,8 @@
     ],
     "notificationUploadDate": "09/12/2015",
     "orderNumber": "SO 3233(E)",
-    "wikidataId": null,
-    "matchConfidence": "none"
+    "wikidataId": "WIKIPEDIA:himachal-pradesh:lippa-asrang-wildlife-sanctuary",
+    "matchConfidence": "exact"
   },
   {
     "moefSNo": null,
@@ -7036,8 +7036,8 @@
     ],
     "notificationUploadDate": "13/02/2026",
     "orderNumber": "S.O. No. 119 (E)",
-    "wikidataId": null,
-    "matchConfidence": "none"
+    "wikidataId": "WIKIPEDIA:himachal-pradesh:lippa-asrang-wildlife-sanctuary",
+    "matchConfidence": "exact"
   },
   {
     "moefSNo": 122,
@@ -7151,8 +7151,8 @@
     "maps": [],
     "notificationUploadDate": "28/12/2020",
     "orderNumber": "S.O. 4697(E)",
-    "wikidataId": null,
-    "matchConfidence": "none"
+    "wikidataId": "Q22080908",
+    "matchConfidence": "exact"
   },
   {
     "moefSNo": 87,
@@ -7166,8 +7166,8 @@
     "maps": [],
     "notificationUploadDate": "13/01/2022",
     "orderNumber": "S.O.172(E)",
-    "wikidataId": null,
-    "matchConfidence": "none"
+    "wikidataId": "Q22080908",
+    "matchConfidence": "exact"
   },
   {
     "moefSNo": 128,
@@ -7181,8 +7181,8 @@
     "maps": [],
     "notificationUploadDate": "30/12/2015",
     "orderNumber": "SO 3332(E)",
-    "wikidataId": null,
-    "matchConfidence": "none"
+    "wikidataId": "Q6738481",
+    "matchConfidence": "fuzzy"
   },
   {
     "moefSNo": 88,
@@ -7286,8 +7286,8 @@
     "maps": [],
     "notificationUploadDate": "04/03/2016",
     "orderNumber": "S.O. 573(E)",
-    "wikidataId": null,
-    "matchConfidence": "none"
+    "wikidataId": "WIKIPEDIA:himachal-pradesh:khokhan-wildlife-sanctuary",
+    "matchConfidence": "exact"
   },
   {
     "moefSNo": 114,
@@ -7301,8 +7301,8 @@
     "maps": [],
     "notificationUploadDate": "28/12/2020",
     "orderNumber": "S.O. 4698(E)",
-    "wikidataId": null,
-    "matchConfidence": "none"
+    "wikidataId": "WIKIPEDIA:himachal-pradesh:khokhan-wildlife-sanctuary",
+    "matchConfidence": "exact"
   },
   {
     "moefSNo": 91,
@@ -7316,8 +7316,8 @@
     "maps": [],
     "notificationUploadDate": "12/01/2022",
     "orderNumber": "S.O.152(E)",
-    "wikidataId": null,
-    "matchConfidence": "none"
+    "wikidataId": "WIKIPEDIA:himachal-pradesh:khokhan-wildlife-sanctuary",
+    "matchConfidence": "exact"
   },
   {
     "moefSNo": 115,
@@ -7376,8 +7376,8 @@
     "maps": [],
     "notificationUploadDate": "04/03/2016",
     "orderNumber": "S.O. 609(E)",
-    "wikidataId": null,
-    "matchConfidence": "none"
+    "wikidataId": "WIKIPEDIA:himachal-pradesh:shikari-devi-wildlife-sanctuary",
+    "matchConfidence": "exact"
   },
   {
     "moefSNo": 116,
@@ -7391,8 +7391,8 @@
     "maps": [],
     "notificationUploadDate": "18/01/2021",
     "orderNumber": "S.O. 123(E)",
-    "wikidataId": null,
-    "matchConfidence": "none"
+    "wikidataId": "WIKIPEDIA:himachal-pradesh:shikari-devi-wildlife-sanctuary",
+    "matchConfidence": "exact"
   },
   {
     "moefSNo": 93,
@@ -7406,8 +7406,8 @@
     "maps": [],
     "notificationUploadDate": "05/01/2022",
     "orderNumber": "S.O.41(E)",
-    "wikidataId": null,
-    "matchConfidence": "none"
+    "wikidataId": "WIKIPEDIA:himachal-pradesh:shikari-devi-wildlife-sanctuary",
+    "matchConfidence": "exact"
   },
   {
     "moefSNo": 117,
@@ -7481,8 +7481,8 @@
     "maps": [],
     "notificationUploadDate": "28/04/2016",
     "orderNumber": "S.O 1441(E)",
-    "wikidataId": null,
-    "matchConfidence": "none"
+    "wikidataId": "WIKIPEDIA:himachal-pradesh:kais-wildlife-sanctuary",
+    "matchConfidence": "exact"
   },
   {
     "moefSNo": 119,
@@ -7496,8 +7496,8 @@
     "maps": [],
     "notificationUploadDate": "09/02/2021",
     "orderNumber": "S.O. 566(E)",
-    "wikidataId": null,
-    "matchConfidence": "none"
+    "wikidataId": "WIKIPEDIA:himachal-pradesh:kais-wildlife-sanctuary",
+    "matchConfidence": "exact"
   },
   {
     "moefSNo": 95,
@@ -7511,8 +7511,8 @@
     "maps": [],
     "notificationUploadDate": "10/12/2021",
     "orderNumber": "S.O.4793(E)",
-    "wikidataId": null,
-    "matchConfidence": "none"
+    "wikidataId": "WIKIPEDIA:himachal-pradesh:kais-wildlife-sanctuary",
+    "matchConfidence": "exact"
   },
   {
     "moefSNo": 120,
@@ -7706,8 +7706,8 @@
     "maps": [],
     "notificationUploadDate": "03/08/2017",
     "orderNumber": "S.O. 2404 (E)",
-    "wikidataId": null,
-    "matchConfidence": "none"
+    "wikidataId": "Q137027173",
+    "matchConfidence": "exact"
   },
   {
     "moefSNo": 101,
@@ -7721,8 +7721,8 @@
     "maps": [],
     "notificationUploadDate": "01/02/2022",
     "orderNumber": "S.O.409(E)",
-    "wikidataId": null,
-    "matchConfidence": "none"
+    "wikidataId": "WIKIPEDIA:himachal-pradesh:tundah-wildlife-sanctuary",
+    "matchConfidence": "exact"
   },
   {
     "moefSNo": 102,
@@ -7916,8 +7916,8 @@
     "maps": [],
     "notificationUploadDate": "22/08/2016",
     "orderNumber": "S.O. 2628(E)",
-    "wikidataId": null,
-    "matchConfidence": "none"
+    "wikidataId": "Q1544213",
+    "matchConfidence": "exact"
   },
   {
     "moefSNo": 133,
@@ -7961,8 +7961,8 @@
     "maps": [],
     "notificationUploadDate": "30/03/2016",
     "orderNumber": "S.O. 1167(E)",
-    "wikidataId": null,
-    "matchConfidence": "none"
+    "wikidataId": "WIKIPEDIA:jammu-and-kashmir:ramnagar-rakha-wildlife-sanctuary",
+    "matchConfidence": "fuzzy"
   },
   {
     "moefSNo": 106,
@@ -7976,8 +7976,8 @@
     "maps": [],
     "notificationUploadDate": "03/06/2021",
     "orderNumber": "S.O. 2128(E)",
-    "wikidataId": null,
-    "matchConfidence": "none"
+    "wikidataId": "WIKIPEDIA:jammu-and-kashmir:ramnagar-rakha-wildlife-sanctuary",
+    "matchConfidence": "fuzzy"
   },
   {
     "moefSNo": 135,
@@ -7991,8 +7991,8 @@
     "maps": [],
     "notificationUploadDate": "16/10/2020",
     "orderNumber": "S.O. 3582(E)",
-    "wikidataId": null,
-    "matchConfidence": "none"
+    "wikidataId": "WIKIPEDIA:jammu-and-kashmir:ramnagar-rakha-wildlife-sanctuary",
+    "matchConfidence": "fuzzy"
   },
   {
     "moefSNo": 136,
@@ -8006,8 +8006,8 @@
     "maps": [],
     "notificationUploadDate": "06/05/2016",
     "orderNumber": "S.O. 1567(E)",
-    "wikidataId": null,
-    "matchConfidence": "none"
+    "wikidataId": "WIKIPEDIA:jammu-and-kashmir:nandini-wildlife-sanctuary",
+    "matchConfidence": "exact"
   },
   {
     "moefSNo": 136,
@@ -8021,8 +8021,8 @@
     "maps": [],
     "notificationUploadDate": "27/07/2021",
     "orderNumber": "S.O. 2918(E)",
-    "wikidataId": null,
-    "matchConfidence": "none"
+    "wikidataId": "WIKIPEDIA:jammu-and-kashmir:nandini-wildlife-sanctuary",
+    "matchConfidence": "exact"
   },
   {
     "moefSNo": 137,
@@ -8036,8 +8036,8 @@
     "maps": [],
     "notificationUploadDate": "26/07/2017",
     "orderNumber": "S.O. 2274 (E)",
-    "wikidataId": null,
-    "matchConfidence": "none"
+    "wikidataId": "WIKIPEDIA:jammu-and-kashmir:surinsar-mansar-wildlife-sanctuary",
+    "matchConfidence": "exact"
   },
   {
     "moefSNo": 137,
@@ -8051,8 +8051,8 @@
     "maps": [],
     "notificationUploadDate": "18/01/2021",
     "orderNumber": "S.O. 122(E)",
-    "wikidataId": null,
-    "matchConfidence": "none"
+    "wikidataId": "WIKIPEDIA:jammu-and-kashmir:surinsar-mansar-wildlife-sanctuary",
+    "matchConfidence": "exact"
   },
   {
     "moefSNo": 107,
@@ -8066,8 +8066,8 @@
     "maps": [],
     "notificationUploadDate": "17/01/2022",
     "orderNumber": "S.O.210(E)",
-    "wikidataId": null,
-    "matchConfidence": "none"
+    "wikidataId": "WIKIPEDIA:jammu-and-kashmir:surinsar-mansar-wildlife-sanctuary",
+    "matchConfidence": "exact"
   },
   {
     "moefSNo": 138,
@@ -8081,8 +8081,8 @@
     "maps": [],
     "notificationUploadDate": "13/11/2017",
     "orderNumber": "S.O. 3530(E)",
-    "wikidataId": null,
-    "matchConfidence": "none"
+    "wikidataId": "WIKIPEDIA:jammu-and-kashmir:jasrota-wildlife-sanctuary",
+    "matchConfidence": "exact"
   },
   {
     "moefSNo": 108,
@@ -8096,8 +8096,8 @@
     "maps": [],
     "notificationUploadDate": "30/10/2019",
     "orderNumber": "S.O. 3871(E)",
-    "wikidataId": null,
-    "matchConfidence": "none"
+    "wikidataId": "WIKIPEDIA:jammu-and-kashmir:jasrota-wildlife-sanctuary",
+    "matchConfidence": "exact"
   },
   {
     "moefSNo": 139,
@@ -8576,8 +8576,8 @@
     "maps": [],
     "notificationUploadDate": "20/02/2018",
     "orderNumber": "S.O. 624(E)",
-    "wikidataId": null,
-    "matchConfidence": "none"
+    "wikidataId": "WIKIPEDIA:jharkhand:udhwa-lake-wildlife-sanctuary",
+    "matchConfidence": "fuzzy"
   },
   {
     "moefSNo": 117,
@@ -8606,8 +8606,8 @@
     "maps": [],
     "notificationUploadDate": "03/05/2018",
     "orderNumber": null,
-    "wikidataId": null,
-    "matchConfidence": "none"
+    "wikidataId": "WIKIPEDIA:jharkhand:gautam-budha-wildlife-sanctuary",
+    "matchConfidence": "fuzzy"
   },
   {
     "moefSNo": 118,
@@ -8621,8 +8621,8 @@
     "maps": [],
     "notificationUploadDate": "13/08/2019",
     "orderNumber": "S.O. 2796(E)",
-    "wikidataId": null,
-    "matchConfidence": "none"
+    "wikidataId": "WIKIPEDIA:jharkhand:gautam-budha-wildlife-sanctuary",
+    "matchConfidence": "fuzzy"
   },
   {
     "moefSNo": 150,
@@ -8666,8 +8666,8 @@
     "maps": [],
     "notificationUploadDate": "08/03/2018",
     "orderNumber": "S.O. 798(E)",
-    "wikidataId": null,
-    "matchConfidence": "none"
+    "wikidataId": "WIKIPEDIA:jharkhand:parasnath-wildlife-sanctuary",
+    "matchConfidence": "exact"
   },
   {
     "moefSNo": 151,
@@ -8696,8 +8696,8 @@
     "maps": [],
     "notificationUploadDate": "13/08/2019",
     "orderNumber": "S.O. 2795(E)",
-    "wikidataId": null,
-    "matchConfidence": "none"
+    "wikidataId": "WIKIPEDIA:jharkhand:parasnath-wildlife-sanctuary",
+    "matchConfidence": "exact"
   },
   {
     "moefSNo": 120,
@@ -8831,8 +8831,8 @@
     "maps": [],
     "notificationUploadDate": "02/11/2015",
     "orderNumber": "S.O. 2609",
-    "wikidataId": null,
-    "matchConfidence": "none"
+    "wikidataId": "Q17126760",
+    "matchConfidence": "exact"
   },
   {
     "moefSNo": 124,
@@ -8846,8 +8846,8 @@
     "maps": [],
     "notificationUploadDate": "03/10/2019",
     "orderNumber": "S.O. 3528(E)",
-    "wikidataId": null,
-    "matchConfidence": "none"
+    "wikidataId": "Q17126760",
+    "matchConfidence": "exact"
   },
   {
     "moefSNo": 155,
@@ -8861,8 +8861,8 @@
     "maps": [],
     "notificationUploadDate": "26/09/2018",
     "orderNumber": "S.O. 4893(E)",
-    "wikidataId": null,
-    "matchConfidence": "none"
+    "wikidataId": "Q17126760",
+    "matchConfidence": "exact"
   },
   {
     "moefSNo": 156,
@@ -9026,8 +9026,8 @@
     "maps": [],
     "notificationUploadDate": "14/03/2023",
     "orderNumber": "S.O. 1197(E)",
-    "wikidataId": null,
-    "matchConfidence": "none"
+    "wikidataId": "Q85800682",
+    "matchConfidence": "exact"
   },
   {
     "moefSNo": 130,
@@ -9041,7 +9041,7 @@
     "maps": [],
     "notificationUploadDate": "28/11/2023",
     "orderNumber": "S.O. 4950(E)",
-    "wikidataId": "Q85800682",
+    "wikidataId": "WIKIPEDIA:karnataka:sharavati-valley-wildlife-sanctuary",
     "matchConfidence": "fuzzy"
   },
   {
@@ -9056,7 +9056,7 @@
     "maps": [],
     "notificationUploadDate": "08/01/2015",
     "orderNumber": "S.O. 4894(E)",
-    "wikidataId": "Q85800682",
+    "wikidataId": "WIKIPEDIA:karnataka:sharavati-valley-wildlife-sanctuary",
     "matchConfidence": "fuzzy"
   },
   {
@@ -9191,8 +9191,8 @@
     "maps": [],
     "notificationUploadDate": "09/08/2023",
     "orderNumber": "SO 3565(E)",
-    "wikidataId": null,
-    "matchConfidence": "none"
+    "wikidataId": "WIKIPEDIA:karnataka:bhimgad-wildlife-sanctuary",
+    "matchConfidence": "exact"
   },
   {
     "moefSNo": 166,
@@ -9206,8 +9206,8 @@
     "maps": [],
     "notificationUploadDate": "14/03/2023",
     "orderNumber": "S.O. 1226(E)",
-    "wikidataId": null,
-    "matchConfidence": "none"
+    "wikidataId": "Q65091528",
+    "matchConfidence": "exact"
   },
   {
     "moefSNo": 134,
@@ -9221,8 +9221,8 @@
     "maps": [],
     "notificationUploadDate": "25/11/2023",
     "orderNumber": "S.O. 4747 (E)",
-    "wikidataId": null,
-    "matchConfidence": "none"
+    "wikidataId": "Q65091528",
+    "matchConfidence": "exact"
   },
   {
     "moefSNo": 167,
@@ -9416,8 +9416,8 @@
     "maps": [],
     "notificationUploadDate": "11/04/2016",
     "orderNumber": "S.O. 1275(E)",
-    "wikidataId": null,
-    "matchConfidence": "none"
+    "wikidataId": "Q137699195",
+    "matchConfidence": "exact"
   },
   {
     "moefSNo": 140,
@@ -9431,8 +9431,8 @@
     "maps": [],
     "notificationUploadDate": "14/01/2025",
     "orderNumber": "S.O. 3084 (E)",
-    "wikidataId": null,
-    "matchConfidence": "none"
+    "wikidataId": "Q137699195",
+    "matchConfidence": "exact"
   },
   {
     "moefSNo": null,
@@ -9446,8 +9446,8 @@
     "maps": [],
     "notificationUploadDate": null,
     "orderNumber": "S .O. No. 115(E)",
-    "wikidataId": null,
-    "matchConfidence": "none"
+    "wikidataId": "Q137699195",
+    "matchConfidence": "exact"
   },
   {
     "moefSNo": 173,
@@ -9656,8 +9656,8 @@
     "maps": [],
     "notificationUploadDate": "25/11/2019",
     "orderNumber": "S.O. 4152(E)",
-    "wikidataId": null,
-    "matchConfidence": "none"
+    "wikidataId": "Q3631211",
+    "matchConfidence": "exact"
   },
   {
     "moefSNo": 178,
@@ -9671,8 +9671,8 @@
     "maps": [],
     "notificationUploadDate": "26/09/2018",
     "orderNumber": null,
-    "wikidataId": null,
-    "matchConfidence": "none"
+    "wikidataId": "Q3631211",
+    "matchConfidence": "exact"
   },
   {
     "moefSNo": 179,
@@ -9806,8 +9806,8 @@
     "maps": [],
     "notificationUploadDate": "8/11/2016",
     "orderNumber": "S.O. 3369 (E)",
-    "wikidataId": null,
-    "matchConfidence": "none"
+    "wikidataId": "WIKIPEDIA:karnataka:anshi-national-park",
+    "matchConfidence": "exact"
   },
   {
     "moefSNo": 182,
@@ -9821,8 +9821,8 @@
     "maps": [],
     "notificationUploadDate": "31/07/2017",
     "orderNumber": "S.O. 2323 (E)",
-    "wikidataId": null,
-    "matchConfidence": "none"
+    "wikidataId": "Q1520200",
+    "matchConfidence": "exact"
   },
   {
     "moefSNo": 183,
@@ -10856,8 +10856,8 @@
     "maps": [],
     "notificationUploadDate": "05/04/2016",
     "orderNumber": "S.O. 1245(E)",
-    "wikidataId": null,
-    "matchConfidence": "none"
+    "wikidataId": "WIKIPEDIA:madhya-pradesh:sailana-wildlife-sanctuary",
+    "matchConfidence": "exact"
   },
   {
     "moefSNo": 160,
@@ -10871,8 +10871,8 @@
     "maps": [],
     "notificationUploadDate": "12/10/2020",
     "orderNumber": "S.O. 3496(E)",
-    "wikidataId": null,
-    "matchConfidence": "none"
+    "wikidataId": "WIKIPEDIA:madhya-pradesh:sailana-wildlife-sanctuary",
+    "matchConfidence": "exact"
   },
   {
     "moefSNo": 212,
@@ -11111,8 +11111,8 @@
     "maps": [],
     "notificationUploadDate": "11/04/2016",
     "orderNumber": "S.O. 1277(E)",
-    "wikidataId": null,
-    "matchConfidence": "none"
+    "wikidataId": "WIKIPEDIA:madhya-pradesh:sanjay-dhubri-tiger-reserve",
+    "matchConfidence": "fuzzy"
   },
   {
     "moefSNo": 167,
@@ -11141,8 +11141,8 @@
     "maps": [],
     "notificationUploadDate": "24/12/2024",
     "orderNumber": "S.O. 2811",
-    "wikidataId": null,
-    "matchConfidence": "none"
+    "wikidataId": "WIKIPEDIA:madhya-pradesh:sanjay-dhubri-tiger-reserve",
+    "matchConfidence": "fuzzy"
   },
   {
     "moefSNo": null,
@@ -11171,8 +11171,8 @@
     "maps": [],
     "notificationUploadDate": null,
     "orderNumber": "S .O. No. 5468(E)",
-    "wikidataId": null,
-    "matchConfidence": "none"
+    "wikidataId": "WIKIPEDIA:madhya-pradesh:sanjay-dhubri-tiger-reserve",
+    "matchConfidence": "fuzzy"
   },
   {
     "moefSNo": 218,
@@ -11456,7 +11456,7 @@
     "maps": [],
     "notificationUploadDate": null,
     "orderNumber": "S.O. 3345(E)",
-    "wikidataId": "Q55615923",
+    "wikidataId": "Q106618190",
     "matchConfidence": "exact"
   },
   {
@@ -11471,7 +11471,7 @@
     "maps": [],
     "notificationUploadDate": "16/05/2018",
     "orderNumber": "S.O. 1902(E)",
-    "wikidataId": "Q55615923",
+    "wikidataId": "Q106618190",
     "matchConfidence": "exact"
   },
   {
@@ -11681,8 +11681,8 @@
     "maps": [],
     "notificationUploadDate": "13/11/2021",
     "orderNumber": "S.O. 1193(E)",
-    "wikidataId": null,
-    "matchConfidence": "none"
+    "wikidataId": "WIKIPEDIA:madhya-pradesh:sailana-wildlife-sanctuary",
+    "matchConfidence": "exact"
   },
   {
     "moefSNo": 181,
@@ -11696,7 +11696,7 @@
     "maps": [],
     "notificationUploadDate": "02/11/2023",
     "orderNumber": "S.O. 4799(E)",
-    "wikidataId": "Q65041648",
+    "wikidataId": "Q106618225",
     "matchConfidence": "exact"
   },
   {
@@ -11711,8 +11711,8 @@
     "maps": [],
     "notificationUploadDate": "14/04/2020",
     "orderNumber": "S.O. 4616(E)",
-    "wikidataId": null,
-    "matchConfidence": "none"
+    "wikidataId": "WIKIPEDIA:madhya-pradesh:sailana-wildlife-sanctuary",
+    "matchConfidence": "exact"
   },
   {
     "moefSNo": 233,
@@ -11876,8 +11876,8 @@
     "maps": [],
     "notificationUploadDate": "21/09/2015",
     "orderNumber": "S.O. 1558",
-    "wikidataId": null,
-    "matchConfidence": "none"
+    "wikidataId": "WIKIPEDIA:maharashtra:gautala-wildlife-sanctuary",
+    "matchConfidence": "exact"
   },
   {
     "moefSNo": 184,
@@ -12071,8 +12071,8 @@
     "maps": [],
     "notificationUploadDate": "09/12/2015",
     "orderNumber": "SO 3224(E)",
-    "wikidataId": null,
-    "matchConfidence": "none"
+    "wikidataId": "WIKIPEDIA:maharashtra:bhamragarh-wildlife-sanctuary",
+    "matchConfidence": "exact"
   },
   {
     "moefSNo": 189,
@@ -12086,8 +12086,8 @@
     "maps": [],
     "notificationUploadDate": "01/05/2017",
     "orderNumber": "S.O. 1175(E)",
-    "wikidataId": null,
-    "matchConfidence": "none"
+    "wikidataId": "WIKIPEDIA:maharashtra:bhamragarh-wildlife-sanctuary",
+    "matchConfidence": "exact"
   },
   {
     "moefSNo": 242,
@@ -12491,8 +12491,8 @@
     "maps": [],
     "notificationUploadDate": "24/02/2016",
     "orderNumber": "S.O. 119(E)",
-    "wikidataId": null,
-    "matchConfidence": "none"
+    "wikidataId": "Q23581251",
+    "matchConfidence": "exact"
   },
   {
     "moefSNo": 200,
@@ -12506,8 +12506,8 @@
     "maps": [],
     "notificationUploadDate": "23/08/2024",
     "orderNumber": "S.O. 2202 (E)",
-    "wikidataId": null,
-    "matchConfidence": "none"
+    "wikidataId": "Q23581251",
+    "matchConfidence": "exact"
   },
   {
     "moefSNo": null,
@@ -12521,8 +12521,8 @@
     "maps": [],
     "notificationUploadDate": null,
     "orderNumber": "S .O. No. 3445(E)",
-    "wikidataId": null,
-    "matchConfidence": "none"
+    "wikidataId": "Q23581251",
+    "matchConfidence": "exact"
   },
   {
     "moefSNo": 252,
@@ -12536,8 +12536,8 @@
     "maps": [],
     "notificationUploadDate": "28/03/2016",
     "orderNumber": "S.O. 1150(E)",
-    "wikidataId": null,
-    "matchConfidence": "none"
+    "wikidataId": "WIKIPEDIA:maharashtra:pench-mh-tiger-reserve",
+    "matchConfidence": "fuzzy"
   },
   {
     "moefSNo": 252,
@@ -12551,8 +12551,8 @@
     "maps": [],
     "notificationUploadDate": "28/03/2016",
     "orderNumber": "S.O. 1150(E)",
-    "wikidataId": null,
-    "matchConfidence": "none"
+    "wikidataId": "WIKIPEDIA:maharashtra:mansingdeo-wildlife-sanctuary",
+    "matchConfidence": "fuzzy"
   },
   {
     "moefSNo": 201,
@@ -12566,8 +12566,8 @@
     "maps": [],
     "notificationUploadDate": "19/09/2017",
     "orderNumber": "S.O. 3029 (E)",
-    "wikidataId": null,
-    "matchConfidence": "none"
+    "wikidataId": "WIKIPEDIA:maharashtra:pench-mh-tiger-reserve",
+    "matchConfidence": "fuzzy"
   },
   {
     "moefSNo": 201,
@@ -12581,8 +12581,8 @@
     "maps": [],
     "notificationUploadDate": "19/09/2017",
     "orderNumber": "S.O. 3029 (E)",
-    "wikidataId": null,
-    "matchConfidence": "none"
+    "wikidataId": "WIKIPEDIA:maharashtra:mansingdeo-wildlife-sanctuary",
+    "matchConfidence": "fuzzy"
   },
   {
     "moefSNo": 253,
@@ -12671,8 +12671,8 @@
     "maps": [],
     "notificationUploadDate": "16/08/2017",
     "orderNumber": "S.O. 2567",
-    "wikidataId": null,
-    "matchConfidence": "none"
+    "wikidataId": "WIKIPEDIA:maharashtra:tamhini-wildlife-sanctuary",
+    "matchConfidence": "exact"
   },
   {
     "moefSNo": 204,
@@ -12686,8 +12686,8 @@
     "maps": [],
     "notificationUploadDate": "1/03/2021",
     "orderNumber": "S.O.918(E)",
-    "wikidataId": null,
-    "matchConfidence": "none"
+    "wikidataId": "WIKIPEDIA:maharashtra:tamhini-wildlife-sanctuary",
+    "matchConfidence": "exact"
   },
   {
     "moefSNo": 255,
@@ -12701,8 +12701,8 @@
     "maps": [],
     "notificationUploadDate": "11/02/2020",
     "orderNumber": "S.O. 461(E)",
-    "wikidataId": null,
-    "matchConfidence": "none"
+    "wikidataId": "WIKIPEDIA:maharashtra:tamhini-wildlife-sanctuary",
+    "matchConfidence": "exact"
   },
   {
     "moefSNo": 256,
@@ -12896,8 +12896,8 @@
     "maps": [],
     "notificationUploadDate": "15/11/2019",
     "orderNumber": "S.O. 4025(E)",
-    "wikidataId": null,
-    "matchConfidence": "none"
+    "wikidataId": "WIKIPEDIA:maharashtra:thane-creek-wildlife-sanctuary",
+    "matchConfidence": "fuzzy"
   },
   {
     "moefSNo": 209,
@@ -12911,8 +12911,8 @@
     "maps": [],
     "notificationUploadDate": "21/10/2021",
     "orderNumber": "S.O.4293(E)",
-    "wikidataId": null,
-    "matchConfidence": "none"
+    "wikidataId": "WIKIPEDIA:maharashtra:thane-creek-wildlife-sanctuary",
+    "matchConfidence": "fuzzy"
   },
   {
     "moefSNo": 263,
@@ -12926,8 +12926,8 @@
     "maps": [],
     "notificationUploadDate": "03/05/2021",
     "orderNumber": "S.O. 1719(E)",
-    "wikidataId": null,
-    "matchConfidence": "none"
+    "wikidataId": "WIKIPEDIA:maharashtra:thane-creek-wildlife-sanctuary",
+    "matchConfidence": "fuzzy"
   },
   {
     "moefSNo": 264,
@@ -12941,8 +12941,8 @@
     "maps": [],
     "notificationUploadDate": "25/11/2019",
     "orderNumber": "S.O. 4153(E)",
-    "wikidataId": null,
-    "matchConfidence": "none"
+    "wikidataId": "WIKIPEDIA:maharashtra:naigaon-mayur-wildlife-sanctuary",
+    "matchConfidence": "exact"
   },
   {
     "moefSNo": 210,
@@ -12956,8 +12956,8 @@
     "maps": [],
     "notificationUploadDate": "15/09/2020",
     "orderNumber": "S.O. 3034(E)",
-    "wikidataId": null,
-    "matchConfidence": "none"
+    "wikidataId": "WIKIPEDIA:maharashtra:naigaon-mayur-wildlife-sanctuary",
+    "matchConfidence": "exact"
   },
   {
     "moefSNo": 265,
@@ -13061,8 +13061,8 @@
     "maps": [],
     "notificationUploadDate": "13/03/2020",
     "orderNumber": "S.O. 1017(E)",
-    "wikidataId": null,
-    "matchConfidence": "none"
+    "wikidataId": "WIKIPEDIA:maharashtra:katepurna-wildlife-sanctuary",
+    "matchConfidence": "exact"
   },
   {
     "moefSNo": 213,
@@ -13076,8 +13076,8 @@
     "maps": [],
     "notificationUploadDate": "15/03/2021",
     "orderNumber": "S.O.1196(E)",
-    "wikidataId": null,
-    "matchConfidence": "none"
+    "wikidataId": "WIKIPEDIA:maharashtra:katepurna-wildlife-sanctuary",
+    "matchConfidence": "exact"
   },
   {
     "moefSNo": 268,
@@ -13151,8 +13151,8 @@
     "maps": [],
     "notificationUploadDate": "06/10/2015",
     "orderNumber": "S.O. 2385 (E)",
-    "wikidataId": null,
-    "matchConfidence": "none"
+    "wikidataId": "WIKIPEDIA:manipur:kailam-wildlife-sanctuary",
+    "matchConfidence": "exact"
   },
   {
     "moefSNo": 216,
@@ -13166,8 +13166,8 @@
     "maps": [],
     "notificationUploadDate": "02/11/2016",
     "orderNumber": "S. O. 3307 (E)",
-    "wikidataId": null,
-    "matchConfidence": "none"
+    "wikidataId": "WIKIPEDIA:manipur:kailam-wildlife-sanctuary",
+    "matchConfidence": "exact"
   },
   {
     "moefSNo": 271,
@@ -13211,8 +13211,8 @@
     "maps": [],
     "notificationUploadDate": "06/10/2015",
     "orderNumber": "S.O. 2599",
-    "wikidataId": null,
-    "matchConfidence": "none"
+    "wikidataId": "WIKIPEDIA:manipur:zeilad-wildlife-sanctuary",
+    "matchConfidence": "exact"
   },
   {
     "moefSNo": 218,
@@ -13226,8 +13226,8 @@
     "maps": [],
     "notificationUploadDate": "02/11/2016",
     "orderNumber": "S. O. 3309",
-    "wikidataId": null,
-    "matchConfidence": "none"
+    "wikidataId": "WIKIPEDIA:manipur:zeilad-wildlife-sanctuary",
+    "matchConfidence": "exact"
   },
   {
     "moefSNo": null,
@@ -13241,8 +13241,8 @@
     "maps": [],
     "notificationUploadDate": null,
     "orderNumber": "S .O. No. 3880(E)",
-    "wikidataId": null,
-    "matchConfidence": "none"
+    "wikidataId": "WIKIPEDIA:manipur:zeilad-wildlife-sanctuary",
+    "matchConfidence": "exact"
   },
   {
     "moefSNo": 273,
@@ -13256,8 +13256,8 @@
     "maps": [],
     "notificationUploadDate": "09/12/2015",
     "orderNumber": "SO 3237(E)",
-    "wikidataId": null,
-    "matchConfidence": "none"
+    "wikidataId": "WIKIPEDIA:manipur:bunning-wildlife-sanctuary",
+    "matchConfidence": "exact"
   },
   {
     "moefSNo": 219,
@@ -13271,8 +13271,8 @@
     "maps": [],
     "notificationUploadDate": "08/10/2024",
     "orderNumber": "S.O. 4028 (E)",
-    "wikidataId": null,
-    "matchConfidence": "none"
+    "wikidataId": "WIKIPEDIA:manipur:bunning-wildlife-sanctuary",
+    "matchConfidence": "exact"
   },
   {
     "moefSNo": null,
@@ -13286,8 +13286,8 @@
     "maps": [],
     "notificationUploadDate": null,
     "orderNumber": "S .O. No. 4274(E)",
-    "wikidataId": null,
-    "matchConfidence": "none"
+    "wikidataId": "WIKIPEDIA:manipur:bunning-wildlife-sanctuary",
+    "matchConfidence": "exact"
   },
   {
     "moefSNo": 274,
@@ -13721,8 +13721,8 @@
     "maps": [],
     "notificationUploadDate": "12/06/2015",
     "orderNumber": "S.O. 1161",
-    "wikidataId": null,
-    "matchConfidence": "none"
+    "wikidataId": "WIKIPEDIA:odisha:chandaka-dampara-wildlife-sanctuary",
+    "matchConfidence": "exact"
   },
   {
     "moefSNo": 232,
@@ -13736,8 +13736,8 @@
     "maps": [],
     "notificationUploadDate": "31/08/2024",
     "orderNumber": "S.O. 2906(E)",
-    "wikidataId": null,
-    "matchConfidence": "none"
+    "wikidataId": "WIKIPEDIA:odisha:chandaka-dampara-wildlife-sanctuary",
+    "matchConfidence": "exact"
   },
   {
     "moefSNo": null,
@@ -13751,8 +13751,8 @@
     "maps": [],
     "notificationUploadDate": null,
     "orderNumber": "S .O. No. 3591(E)",
-    "wikidataId": null,
-    "matchConfidence": "none"
+    "wikidataId": "WIKIPEDIA:odisha:chandaka-dampara-wildlife-sanctuary",
+    "matchConfidence": "exact"
   },
   {
     "moefSNo": 289,
@@ -13856,8 +13856,8 @@
     "maps": [],
     "notificationUploadDate": "09/12/2015",
     "orderNumber": "SO 3234(E)",
-    "wikidataId": null,
-    "matchConfidence": "none"
+    "wikidataId": "WIKIPEDIA:odisha:sunabeda-wildlife-sanctuary",
+    "matchConfidence": "exact"
   },
   {
     "moefSNo": 235,
@@ -13901,7 +13901,7 @@
     "maps": [],
     "notificationUploadDate": "05/12/2023",
     "orderNumber": "S.O. No. 3974(E)",
-    "wikidataId": "Q2580141",
+    "wikidataId": "Q106674990",
     "matchConfidence": "exact"
   },
   {
@@ -13916,7 +13916,7 @@
     "maps": [],
     "notificationUploadDate": "09/07/2015",
     "orderNumber": "S.O. 1601",
-    "wikidataId": "Q2580141",
+    "wikidataId": "Q106674990",
     "matchConfidence": "exact"
   },
   {
@@ -13946,7 +13946,7 @@
     "maps": [],
     "notificationUploadDate": "23/02/2022",
     "orderNumber": "S.O. 821(E)",
-    "wikidataId": "Q2580141",
+    "wikidataId": "Q106674990",
     "matchConfidence": "exact"
   },
   {
@@ -14041,8 +14041,8 @@
     "maps": [],
     "notificationUploadDate": "21/05/2018",
     "orderNumber": "S.O. 1875(E)",
-    "wikidataId": null,
-    "matchConfidence": "none"
+    "wikidataId": "WIKIPEDIA:odisha:badrama-wildlife-sanctuary",
+    "matchConfidence": "exact"
   },
   {
     "moefSNo": 295,
@@ -14146,8 +14146,8 @@
     "maps": [],
     "notificationUploadDate": "01/08/2019",
     "orderNumber": "S.O. 2681(E)",
-    "wikidataId": null,
-    "matchConfidence": "none"
+    "wikidataId": "Q15725165",
+    "matchConfidence": "exact"
   },
   {
     "moefSNo": 241,
@@ -14161,8 +14161,8 @@
     "maps": [],
     "notificationUploadDate": "15/09/2020",
     "orderNumber": "S.O.3029 (E)",
-    "wikidataId": null,
-    "matchConfidence": "none"
+    "wikidataId": "Q15725165",
+    "matchConfidence": "exact"
   },
   {
     "moefSNo": 299,
@@ -14191,7 +14191,7 @@
     "maps": [],
     "notificationUploadDate": "06/09/2023",
     "orderNumber": "S.O. 3974(E)",
-    "wikidataId": "Q2580141",
+    "wikidataId": "Q106674990",
     "matchConfidence": "exact"
   },
   {
@@ -14206,8 +14206,8 @@
     "maps": [],
     "notificationUploadDate": "28/09/2015",
     "orderNumber": "S.O. 1261",
-    "wikidataId": null,
-    "matchConfidence": "none"
+    "wikidataId": "WIKIPEDIA:punjab:bir-dosanjh-wildlife-sanctuary",
+    "matchConfidence": "exact"
   },
   {
     "moefSNo": 242,
@@ -14221,8 +14221,8 @@
     "maps": [],
     "notificationUploadDate": "14/01/2025",
     "orderNumber": "S.O. 2480(E)",
-    "wikidataId": null,
-    "matchConfidence": "none"
+    "wikidataId": "WIKIPEDIA:punjab:bir-dosanjh-wildlife-sanctuary",
+    "matchConfidence": "exact"
   },
   {
     "moefSNo": null,
@@ -14236,8 +14236,8 @@
     "maps": [],
     "notificationUploadDate": null,
     "orderNumber": "S .O. No. 150(E)",
-    "wikidataId": null,
-    "matchConfidence": "none"
+    "wikidataId": "WIKIPEDIA:punjab:bir-dosanjh-wildlife-sanctuary",
+    "matchConfidence": "exact"
   },
   {
     "moefSNo": 301,
@@ -14281,8 +14281,8 @@
     "maps": [],
     "notificationUploadDate": "09/07/2015",
     "orderNumber": "S.O. 1454 (E)",
-    "wikidataId": null,
-    "matchConfidence": "none"
+    "wikidataId": "WIKIPEDIA:punjab:bir-motibagh-wildlife-sanctuary",
+    "matchConfidence": "exact"
   },
   {
     "moefSNo": 244,
@@ -14296,8 +14296,8 @@
     "maps": [],
     "notificationUploadDate": "17/03/2016",
     "orderNumber": "S.O. 1055(E)",
-    "wikidataId": null,
-    "matchConfidence": "none"
+    "wikidataId": "WIKIPEDIA:punjab:bir-motibagh-wildlife-sanctuary",
+    "matchConfidence": "exact"
   },
   {
     "moefSNo": null,
@@ -14311,8 +14311,8 @@
     "maps": [],
     "notificationUploadDate": "05/12/2023",
     "orderNumber": "S.O. No. 3144(E)",
-    "wikidataId": null,
-    "matchConfidence": "none"
+    "wikidataId": "WIKIPEDIA:punjab:bir-motibagh-wildlife-sanctuary",
+    "matchConfidence": "exact"
   },
   {
     "moefSNo": 303,
@@ -14326,8 +14326,8 @@
     "maps": [],
     "notificationUploadDate": "09/07/2015",
     "orderNumber": "S.O. 3103",
-    "wikidataId": null,
-    "matchConfidence": "none"
+    "wikidataId": "WIKIPEDIA:punjab:harike-lake-wildlife-sanctuary",
+    "matchConfidence": "fuzzy"
   },
   {
     "moefSNo": 245,
@@ -14356,8 +14356,8 @@
     "maps": [],
     "notificationUploadDate": "09/07/2015",
     "orderNumber": "S.O. 3104",
-    "wikidataId": null,
-    "matchConfidence": "none"
+    "wikidataId": "WIKIPEDIA:punjab:jhajjar-bacholi-wildlife-sanctuary",
+    "matchConfidence": "fuzzy"
   },
   {
     "moefSNo": 246,
@@ -14371,8 +14371,8 @@
     "maps": [],
     "notificationUploadDate": "21/03/2017",
     "orderNumber": "S.O. 839 (E)",
-    "wikidataId": null,
-    "matchConfidence": "none"
+    "wikidataId": "WIKIPEDIA:punjab:jhajjar-bacholi-wildlife-sanctuary",
+    "matchConfidence": "fuzzy"
   },
   {
     "moefSNo": 305,
@@ -14431,8 +14431,8 @@
     "maps": [],
     "notificationUploadDate": "29/07/2015",
     "orderNumber": "S.O. 1657",
-    "wikidataId": null,
-    "matchConfidence": "none"
+    "wikidataId": "WIKIPEDIA:punjab:bir-gurdialpura-wildlife-sanctuary",
+    "matchConfidence": "fuzzy"
   },
   {
     "moefSNo": 248,
@@ -14446,8 +14446,8 @@
     "maps": [],
     "notificationUploadDate": "21/07/2016 & 25/11/2023",
     "orderNumber": "S.O. 2275(E)",
-    "wikidataId": null,
-    "matchConfidence": "none"
+    "wikidataId": "WIKIPEDIA:punjab:bir-gurdialpura-wildlife-sanctuary",
+    "matchConfidence": "fuzzy"
   },
   {
     "moefSNo": null,
@@ -14461,8 +14461,8 @@
     "maps": [],
     "notificationUploadDate": null,
     "orderNumber": "S.O. No. 4446(E)",
-    "wikidataId": null,
-    "matchConfidence": "none"
+    "wikidataId": "WIKIPEDIA:punjab:bir-gurdialpura-wildlife-sanctuary",
+    "matchConfidence": "fuzzy"
   },
   {
     "moefSNo": 307,
@@ -14536,8 +14536,8 @@
     "maps": [],
     "notificationUploadDate": "14/10/2015",
     "orderNumber": "S.O. 2080 (E)",
-    "wikidataId": null,
-    "matchConfidence": "none"
+    "wikidataId": "WIKIPEDIA:punjab:takhni-rehampur-wildlife-sanctuary",
+    "matchConfidence": "fuzzy"
   },
   {
     "moefSNo": 251,
@@ -14551,8 +14551,8 @@
     "maps": [],
     "notificationUploadDate": "05/12/2016",
     "orderNumber": "S.O. 3597(E)",
-    "wikidataId": null,
-    "matchConfidence": "none"
+    "wikidataId": "WIKIPEDIA:punjab:takhni-rehampur-wildlife-sanctuary",
+    "matchConfidence": "fuzzy"
   },
   {
     "moefSNo": 310,
@@ -14566,8 +14566,8 @@
     "maps": [],
     "notificationUploadDate": "21/09/2015",
     "orderNumber": "S.O. 2384",
-    "wikidataId": null,
-    "matchConfidence": "none"
+    "wikidataId": "WIKIPEDIA:punjab:bir-mehaswala-wildlife-sanctuary",
+    "matchConfidence": "fuzzy"
   },
   {
     "moefSNo": 252,
@@ -14581,8 +14581,8 @@
     "maps": [],
     "notificationUploadDate": "10/02/2016",
     "orderNumber": "S. O. 350 (E)",
-    "wikidataId": null,
-    "matchConfidence": "none"
+    "wikidataId": "WIKIPEDIA:punjab:bir-mehaswala-wildlife-sanctuary",
+    "matchConfidence": "fuzzy"
   },
   {
     "moefSNo": 311,
@@ -14596,8 +14596,8 @@
     "maps": [],
     "notificationUploadDate": "17/06/2015",
     "orderNumber": "S.O.1394",
-    "wikidataId": null,
-    "matchConfidence": "none"
+    "wikidataId": "WIKIPEDIA:punjab:bir-bhadson-wildlife-sanctuary",
+    "matchConfidence": "exact"
   },
   {
     "moefSNo": 253,
@@ -14611,8 +14611,8 @@
     "maps": [],
     "notificationUploadDate": "28/07/2016 & 25/11/2023",
     "orderNumber": "S.O. 2483(E)",
-    "wikidataId": null,
-    "matchConfidence": "none"
+    "wikidataId": "WIKIPEDIA:punjab:bir-bhadson-wildlife-sanctuary",
+    "matchConfidence": "exact"
   },
   {
     "moefSNo": null,
@@ -14626,8 +14626,8 @@
     "maps": [],
     "notificationUploadDate": null,
     "orderNumber": "S.O. No. 4422(E)",
-    "wikidataId": null,
-    "matchConfidence": "none"
+    "wikidataId": "WIKIPEDIA:punjab:bir-bhadson-wildlife-sanctuary",
+    "matchConfidence": "exact"
   },
   {
     "moefSNo": 312,
@@ -15316,8 +15316,8 @@
     "maps": [],
     "notificationUploadDate": "19/04/2016",
     "orderNumber": "S.O.3122(E)",
-    "wikidataId": null,
-    "matchConfidence": "none"
+    "wikidataId": "Q3326008",
+    "matchConfidence": "exact"
   },
   {
     "moefSNo": 270,
@@ -15331,8 +15331,8 @@
     "maps": [],
     "notificationUploadDate": "25/11/2020",
     "orderNumber": "S.O.4047(E)",
-    "wikidataId": null,
-    "matchConfidence": "none"
+    "wikidataId": "Q3326008",
+    "matchConfidence": "exact"
   },
   {
     "moefSNo": 328,
@@ -15346,8 +15346,8 @@
     "maps": [],
     "notificationUploadDate": "10/06/2019",
     "orderNumber": "S.O. 1917(E)",
-    "wikidataId": null,
-    "matchConfidence": "none"
+    "wikidataId": "Q3326008",
+    "matchConfidence": "exact"
   },
   {
     "moefSNo": 329,
@@ -15391,8 +15391,8 @@
     "maps": [],
     "notificationUploadDate": "13/01/2020",
     "orderNumber": "S.O. 174(E)",
-    "wikidataId": null,
-    "matchConfidence": "none"
+    "wikidataId": "WIKIPEDIA:rajasthan:mukundara-hills-national-park",
+    "matchConfidence": "fuzzy"
   },
   {
     "moefSNo": 272,
@@ -15406,8 +15406,8 @@
     "maps": [],
     "notificationUploadDate": "01/12/2020",
     "orderNumber": "S.O.4268(E)",
-    "wikidataId": null,
-    "matchConfidence": "none"
+    "wikidataId": "WIKIPEDIA:rajasthan:mukundara-hills-national-park",
+    "matchConfidence": "fuzzy"
   },
   {
     "moefSNo": 331,
@@ -16321,8 +16321,8 @@
     "maps": [],
     "notificationUploadDate": "25/09/2018",
     "orderNumber": "S.O. 4774(E)",
-    "wikidataId": null,
-    "matchConfidence": "none"
+    "wikidataId": "WIKIPEDIA:tamil-nadu:megamalai-wildlife-sanctuary",
+    "matchConfidence": "exact"
   },
   {
     "moefSNo": 295,
@@ -16336,8 +16336,8 @@
     "maps": [],
     "notificationUploadDate": "17/10/2019",
     "orderNumber": "S.O. 3651(E)",
-    "wikidataId": null,
-    "matchConfidence": "none"
+    "wikidataId": "WIKIPEDIA:tamil-nadu:megamalai-wildlife-sanctuary",
+    "matchConfidence": "exact"
   },
   {
     "moefSNo": 356,
@@ -16396,8 +16396,8 @@
     "maps": [],
     "notificationUploadDate": "11/02/2020",
     "orderNumber": "S.O. 410(E)",
-    "wikidataId": null,
-    "matchConfidence": "none"
+    "wikidataId": "Q5614058",
+    "matchConfidence": "fuzzy"
   },
   {
     "moefSNo": 297,
@@ -16411,8 +16411,8 @@
     "maps": [],
     "notificationUploadDate": "11/02/2020",
     "orderNumber": "S.O. 410(E)",
-    "wikidataId": null,
-    "matchConfidence": "none"
+    "wikidataId": "Q5614058",
+    "matchConfidence": "fuzzy"
   },
   {
     "moefSNo": 358,
@@ -16621,8 +16621,8 @@
     "maps": [],
     "notificationUploadDate": "11/02/2020",
     "orderNumber": "S.O. 411(E)",
-    "wikidataId": null,
-    "matchConfidence": "none"
+    "wikidataId": "Q5614058",
+    "matchConfidence": "fuzzy"
   },
   {
     "moefSNo": 304,
@@ -16636,8 +16636,8 @@
     "maps": [],
     "notificationUploadDate": "11/02/2020",
     "orderNumber": "S.O. 411(E)",
-    "wikidataId": null,
-    "matchConfidence": "none"
+    "wikidataId": "Q5614058",
+    "matchConfidence": "fuzzy"
   },
   {
     "moefSNo": 365,
@@ -16711,8 +16711,8 @@
     "maps": [],
     "notificationUploadDate": "10/09/2015",
     "orderNumber": "S.O. 2046",
-    "wikidataId": null,
-    "matchConfidence": "none"
+    "wikidataId": "WIKIPEDIA:telangana:eturnagaram-wildlife-sanctuary",
+    "matchConfidence": "exact"
   },
   {
     "moefSNo": 368,
@@ -16726,8 +16726,8 @@
     "maps": [],
     "notificationUploadDate": "02/01/2015",
     "orderNumber": "S.O. 2926",
-    "wikidataId": null,
-    "matchConfidence": "none"
+    "wikidataId": "Q19895392",
+    "matchConfidence": "exact"
   },
   {
     "moefSNo": 369,
@@ -16771,8 +16771,8 @@
     "maps": [],
     "notificationUploadDate": "11/05/2017",
     "orderNumber": "S.O. 1432 (E)",
-    "wikidataId": null,
-    "matchConfidence": "none"
+    "wikidataId": "WIKIPEDIA:telangana:manjira-wildlife-sanctuary",
+    "matchConfidence": "fuzzy"
   },
   {
     "moefSNo": 371,
@@ -16966,8 +16966,8 @@
     "maps": [],
     "notificationUploadDate": "22/06/2018",
     "orderNumber": "S.O. 2145(E)",
-    "wikidataId": null,
-    "matchConfidence": "none"
+    "wikidataId": "Q7499351",
+    "matchConfidence": "exact"
   },
   {
     "moefSNo": 378,
@@ -17011,8 +17011,8 @@
     "maps": [],
     "notificationUploadDate": "30/12/2015",
     "orderNumber": "SO 3238(E)",
-    "wikidataId": null,
-    "matchConfidence": "none"
+    "wikidataId": "Q5618257",
+    "matchConfidence": "exact"
   },
   {
     "moefSNo": 313,
@@ -17026,8 +17026,8 @@
     "maps": [],
     "notificationUploadDate": "15/11/2019",
     "orderNumber": "S.O. 4076(E)",
-    "wikidataId": null,
-    "matchConfidence": "none"
+    "wikidataId": "Q5618257",
+    "matchConfidence": "exact"
   },
   {
     "moefSNo": 379,
@@ -17041,14 +17041,14 @@
     "maps": [],
     "notificationUploadDate": "07/06/2018",
     "orderNumber": "S.O. 2201(E)",
-    "wikidataId": null,
-    "matchConfidence": "none"
+    "wikidataId": "Q5618257",
+    "matchConfidence": "exact"
   },
   {
     "moefSNo": 380,
     "state": "Tripura",
-    "protectedAreaName": "Trishna Wildlife Sanctuary, Rajbari National Park",
-    "protectedAreaType": "National Park",
+    "protectedAreaName": "Trishna Wildlife Sanctuary",
+    "protectedAreaType": "Wildlife Sanctuary",
     "notificationStatus": "Draft",
     "notificationDate": "2018-09-11",
     "notificationSummary": "380. S.O. 4776(E) [11.09.2018] Draft Notification declaring Eco Sensitive Zone around Trishna Wildlife Sanctuary,(2.84 MB), Tripura.",
@@ -17071,29 +17071,14 @@
     "maps": [],
     "notificationUploadDate": "25/09/2018",
     "orderNumber": "S.O. 4776(E)",
-    "wikidataId": "Q7844042",
-    "matchConfidence": "exact"
-  },
-  {
-    "moefSNo": 380,
-    "state": "Tripura",
-    "protectedAreaName": "Rajbari National Park",
-    "protectedAreaType": "National Park",
-    "notificationStatus": "Draft",
-    "notificationDate": "2018-09-11",
-    "notificationSummary": "380. S.O. 4776(E) [11.09.2018] Draft Notification declaring Eco Sensitive Zone around Trishna Wildlife Sanctuary,(2.84 MB), Tripura.",
-    "notificationPdfLink": "https://moef.gov.in/uploads/2018/11/trishna.pdf",
-    "maps": [],
-    "notificationUploadDate": "25/09/2018",
-    "orderNumber": "S.O. 4776(E)",
-    "wikidataId": "Q7844042",
+    "wikidataId": "Q7285897",
     "matchConfidence": "exact"
   },
   {
     "moefSNo": 314,
     "state": "Tripura",
-    "protectedAreaName": "Trishna Wildlife Sanctuary, Rajbari National Park",
-    "protectedAreaType": "National Park",
+    "protectedAreaName": "Trishna Wildlife Sanctuary",
+    "protectedAreaType": "Wildlife Sanctuary",
     "notificationStatus": "Final",
     "notificationDate": "2019-11-11",
     "notificationSummary": "314. S.O. 4077(E) [11.11.2019] Final Notification declaring Eco Sensitive Zone around Trishna Wildlife Sanctuary, Tripura(1.96 MB)",
@@ -17116,29 +17101,14 @@
     "maps": [],
     "notificationUploadDate": "15/11/2019",
     "orderNumber": "S.O. 4077(E)",
-    "wikidataId": "Q7844042",
-    "matchConfidence": "exact"
-  },
-  {
-    "moefSNo": 314,
-    "state": "Tripura",
-    "protectedAreaName": "Rajbari National Park",
-    "protectedAreaType": "National Park",
-    "notificationStatus": "Final",
-    "notificationDate": "2019-11-11",
-    "notificationSummary": "314. S.O. 4077(E) [11.11.2019] Final Notification declaring Eco Sensitive Zone around Trishna Wildlife Sanctuary, Tripura(1.96 MB)",
-    "notificationPdfLink": "https://moef.gov.in/uploads/2019/11/trishna.pdf",
-    "maps": [],
-    "notificationUploadDate": "15/11/2019",
-    "orderNumber": "S.O. 4077(E)",
-    "wikidataId": "Q7844042",
+    "wikidataId": "Q7285897",
     "matchConfidence": "exact"
   },
   {
     "moefSNo": 381,
     "state": "Tripura",
-    "protectedAreaName": "Sepahijala Wildlife Sanctuary, Clouded Leopard National Park",
-    "protectedAreaType": "National Park",
+    "protectedAreaName": "Sepahijala Wildlife Sanctuary",
+    "protectedAreaType": "Wildlife Sanctuary",
     "notificationStatus": "Draft",
     "notificationDate": "2020-07-24",
     "notificationSummary": "381. S.O. 2437(E) [24.07.2020] Draft Notification declaring Eco Sensitive Zone around Sepahijala Wildlife Sanctuary(1.96 KB), Tripura.",
@@ -17161,29 +17131,14 @@
     "maps": [],
     "notificationUploadDate": "28/07/2020",
     "orderNumber": "S.O. 2437(E)",
-    "wikidataId": "Q7525566",
-    "matchConfidence": "exact"
-  },
-  {
-    "moefSNo": 381,
-    "state": "Tripura",
-    "protectedAreaName": "Clouded Leopard National Park",
-    "protectedAreaType": "National Park",
-    "notificationStatus": "Draft",
-    "notificationDate": "2020-07-24",
-    "notificationSummary": "381. S.O. 2437(E) [24.07.2020] Draft Notification declaring Eco Sensitive Zone around Sepahijala Wildlife Sanctuary(1.96 KB), Tripura.",
-    "notificationPdfLink": "https://moef.gov.in/uploads/2019/10/spehajila.pdf",
-    "maps": [],
-    "notificationUploadDate": "28/07/2020",
-    "orderNumber": "S.O. 2437(E)",
-    "wikidataId": "Q7525566",
+    "wikidataId": "Q5135742",
     "matchConfidence": "exact"
   },
   {
     "moefSNo": 315,
     "state": "Tripura",
-    "protectedAreaName": "Sepahijala Wildlife Sanctuary, Clouded Leopard National Park",
-    "protectedAreaType": "National Park",
+    "protectedAreaName": "Sepahijala Wildlife Sanctuary",
+    "protectedAreaType": "Wildlife Sanctuary",
     "notificationStatus": "Final",
     "notificationDate": "2021-02-19",
     "notificationSummary": "315. S.O.789(E) [19.02.2021] Final Notification declaring Eco Sensitive Zone around Sepahijala Wildlife Sanctuary included clouded leopard national park(1.44 MB) Tripura.",
@@ -17206,22 +17161,7 @@
     "maps": [],
     "notificationUploadDate": "22/02/2021",
     "orderNumber": "S.O.789(E)",
-    "wikidataId": "Q7525566",
-    "matchConfidence": "exact"
-  },
-  {
-    "moefSNo": 315,
-    "state": "Tripura",
-    "protectedAreaName": "Clouded Leopard National Park",
-    "protectedAreaType": "National Park",
-    "notificationStatus": "Final",
-    "notificationDate": "2021-02-19",
-    "notificationSummary": "315. S.O.789(E) [19.02.2021] Final Notification declaring Eco Sensitive Zone around Sepahijala Wildlife Sanctuary included clouded leopard national park(1.44 MB) Tripura.",
-    "notificationPdfLink": "https://moef.gov.in/uploads/2021/02/sephajila.pdf",
-    "maps": [],
-    "notificationUploadDate": "22/02/2021",
-    "orderNumber": "S.O.789(E)",
-    "wikidataId": "Q7525566",
+    "wikidataId": "Q5135742",
     "matchConfidence": "exact"
   },
   {
@@ -17431,8 +17371,8 @@
     "maps": [],
     "notificationUploadDate": "06/02/2018",
     "orderNumber": "S.O. 548(E)",
-    "wikidataId": null,
-    "matchConfidence": "none"
+    "wikidataId": "Q4807241",
+    "matchConfidence": "exact"
   },
   {
     "moefSNo": 320,
@@ -17446,8 +17386,8 @@
     "maps": [],
     "notificationUploadDate": "10/12/2021",
     "orderNumber": "S.O.4929(E)",
-    "wikidataId": null,
-    "matchConfidence": "none"
+    "wikidataId": "Q4807241",
+    "matchConfidence": "exact"
   },
   {
     "moefSNo": 390,
@@ -17626,8 +17566,8 @@
     "maps": [],
     "notificationUploadDate": "24/02/2016",
     "orderNumber": "S.O. 248(E)",
-    "wikidataId": null,
-    "matchConfidence": "none"
+    "wikidataId": "Q6982793",
+    "matchConfidence": "exact"
   },
   {
     "moefSNo": 326,
@@ -17641,8 +17581,8 @@
     "maps": [],
     "notificationUploadDate": "06/09/2019",
     "orderNumber": "S.O. 3153(E)",
-    "wikidataId": null,
-    "matchConfidence": "none"
+    "wikidataId": "Q6982793",
+    "matchConfidence": "exact"
   },
   {
     "moefSNo": 396,
@@ -17866,8 +17806,8 @@
     "maps": [],
     "notificationUploadDate": "09/02/2018",
     "orderNumber": "S.O. 480(E)",
-    "wikidataId": null,
-    "matchConfidence": "none"
+    "wikidataId": "Q137699192",
+    "matchConfidence": "exact"
   },
   {
     "moefSNo": 333,
@@ -17881,8 +17821,8 @@
     "maps": [],
     "notificationUploadDate": "15/03/2019",
     "orderNumber": "S.O. 1315(E)",
-    "wikidataId": null,
-    "matchConfidence": "none"
+    "wikidataId": "Q137699192",
+    "matchConfidence": "exact"
   },
   {
     "moefSNo": 404,
@@ -17956,8 +17896,8 @@
     "maps": [],
     "notificationUploadDate": "01/05/2018",
     "orderNumber": "S.O. 1653(E)",
-    "wikidataId": null,
-    "matchConfidence": "none"
+    "wikidataId": "WIKIPEDIA:uttar-pradesh:national-chambal-wildlife-sanctuary",
+    "matchConfidence": "exact"
   },
   {
     "moefSNo": 336,
@@ -17971,8 +17911,8 @@
     "maps": [],
     "notificationUploadDate": "15/06/2020",
     "orderNumber": "S.O. 1876(E)",
-    "wikidataId": null,
-    "matchConfidence": "none"
+    "wikidataId": "WIKIPEDIA:uttar-pradesh:national-chambal-wildlife-sanctuary",
+    "matchConfidence": "exact"
   },
   {
     "moefSNo": 407,
@@ -18016,8 +17956,8 @@
     "maps": [],
     "notificationUploadDate": "01/05/2018",
     "orderNumber": "S.O. 1728(E)",
-    "wikidataId": null,
-    "matchConfidence": "none"
+    "wikidataId": "WIKIPEDIA:uttar-pradesh:sur-sarovar-bird-sanctuary",
+    "matchConfidence": "fuzzy"
   },
   {
     "moefSNo": 338,
@@ -18031,8 +17971,8 @@
     "maps": [],
     "notificationUploadDate": "16/10/2019",
     "orderNumber": "S.O. 3649(E)",
-    "wikidataId": null,
-    "matchConfidence": "none"
+    "wikidataId": "WIKIPEDIA:uttar-pradesh:sur-sarovar-bird-sanctuary",
+    "matchConfidence": "fuzzy"
   },
   {
     "moefSNo": 409,

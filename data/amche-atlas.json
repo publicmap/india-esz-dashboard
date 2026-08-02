@@ -88,7 +88,7 @@
         "Rajasthan",
         "Final ESZ notified"
       ],
-      "initiallyChecked": true,
+      "initiallyChecked": false,
       "attribution": "&copy; OpenStreetMap contributors (via Overpass API)",
       "style": {
         "line-color": "#0ca30c",
@@ -132,7 +132,7 @@
         "Madhya Pradesh",
         "Final ESZ notified"
       ],
-      "initiallyChecked": true,
+      "initiallyChecked": false,
       "attribution": "&copy; OpenStreetMap contributors (via Overpass API)",
       "style": {
         "line-color": "#0ca30c",
@@ -154,271 +154,7 @@
         "Himachal Pradesh",
         "Draft ESZ notified"
       ],
-      "initiallyChecked": true,
-      "attribution": "&copy; OpenStreetMap contributors (via Overpass API)",
-      "style": {
-        "line-color": "#fab219",
-        "line-width": 2,
-        "fill-color": "#fab219",
-        "fill-opacity": 0.15,
-        "text-field": [
-          "get",
-          "name"
-        ]
-      }
-    },
-    {
-      "id": "relation/9282503",
-      "type": "osm",
-      "title": "Mount Manipur National Park (boundary)",
-      "description": "Final ESZ notified &middot; Andaman and Nicobar Islands",
-      "tags": [
-        "Andaman and Nicobar Islands",
-        "Final ESZ notified"
-      ],
-      "initiallyChecked": true,
-      "attribution": "&copy; OpenStreetMap contributors (via Overpass API)",
-      "style": {
-        "line-color": "#0ca30c",
-        "line-width": 2,
-        "fill-color": "#0ca30c",
-        "fill-opacity": 0.15,
-        "text-field": [
-          "get",
-          "name"
-        ]
-      }
-    },
-    {
-      "id": "relation/9474608",
-      "type": "osm",
-      "title": "Pilibhit Tiger Reserve (boundary)",
-      "description": "Not yet notified &middot; Uttar Pradesh",
-      "tags": [
-        "Uttar Pradesh",
-        "Not yet notified"
-      ],
       "initiallyChecked": false,
-      "attribution": "&copy; OpenStreetMap contributors (via Overpass API)",
-      "style": {
-        "line-color": "#898781",
-        "line-width": 2,
-        "fill-color": "#898781",
-        "fill-opacity": 0.15,
-        "text-field": [
-          "get",
-          "name"
-        ]
-      }
-    },
-    {
-      "id": "relation/15876412",
-      "type": "osm",
-      "title": "Gulmarg Wildlife Sanctuary (boundary)",
-      "description": "Final ESZ notified &middot; Jammu and Kashmir",
-      "tags": [
-        "Jammu and Kashmir",
-        "Final ESZ notified"
-      ],
-      "initiallyChecked": true,
-      "attribution": "&copy; OpenStreetMap contributors (via Overpass API)",
-      "style": {
-        "line-color": "#0ca30c",
-        "line-width": 2,
-        "fill-color": "#0ca30c",
-        "fill-opacity": 0.15,
-        "text-field": [
-          "get",
-          "name"
-        ]
-      }
-    },
-    {
-      "id": "relation/15036911",
-      "type": "osm",
-      "title": "Anamudi Shola National Park (boundary)",
-      "description": "Draft ESZ notified &middot; Kerala",
-      "tags": [
-        "Kerala",
-        "Draft ESZ notified"
-      ],
-      "initiallyChecked": true,
-      "attribution": "&copy; OpenStreetMap contributors (via Overpass API)",
-      "style": {
-        "line-color": "#fab219",
-        "line-width": 2,
-        "fill-color": "#fab219",
-        "fill-opacity": 0.15,
-        "text-field": [
-          "get",
-          "name"
-        ]
-      }
-    },
-    {
-      "id": "relation/11279548",
-      "type": "osm",
-      "title": "Parambikulam Tiger Reserve (boundary)",
-      "description": "Draft ESZ notified &middot; Kerala",
-      "tags": [
-        "Kerala",
-        "Draft ESZ notified"
-      ],
-      "initiallyChecked": true,
-      "attribution": "&copy; OpenStreetMap contributors (via Overpass API)",
-      "style": {
-        "line-color": "#fab219",
-        "line-width": 2,
-        "fill-color": "#fab219",
-        "fill-opacity": 0.15,
-        "text-field": [
-          "get",
-          "name"
-        ]
-      }
-    },
-    {
-      "id": "relation/9483703",
-      "type": "osm",
-      "title": "Kaziranga National Park (boundary)",
-      "description": "Not yet notified &middot; Assam",
-      "tags": [
-        "Assam",
-        "Not yet notified"
-      ],
-      "initiallyChecked": false,
-      "attribution": "&copy; OpenStreetMap contributors (via Overpass API)",
-      "style": {
-        "line-color": "#898781",
-        "line-width": 2,
-        "fill-color": "#898781",
-        "fill-opacity": 0.15,
-        "text-field": [
-          "get",
-          "name"
-        ]
-      }
-    },
-    {
-      "id": "relation/9282556",
-      "type": "osm",
-      "title": "Saddle Peak National Park (boundary)",
-      "description": "Final ESZ notified &middot; Andaman and Nicobar Islands",
-      "tags": [
-        "Andaman and Nicobar Islands",
-        "Final ESZ notified"
-      ],
-      "initiallyChecked": true,
-      "attribution": "&copy; OpenStreetMap contributors (via Overpass API)",
-      "style": {
-        "line-color": "#0ca30c",
-        "line-width": 2,
-        "fill-color": "#0ca30c",
-        "fill-opacity": 0.15,
-        "text-field": [
-          "get",
-          "name"
-        ]
-      }
-    },
-    {
-      "id": "relation/4148317",
-      "type": "osm",
-      "title": "Eravikulam National Park (boundary)",
-      "description": "Draft ESZ notified &middot; Kerala",
-      "tags": [
-        "Kerala",
-        "Draft ESZ notified"
-      ],
-      "initiallyChecked": true,
-      "attribution": "&copy; OpenStreetMap contributors (via Overpass API)",
-      "style": {
-        "line-color": "#fab219",
-        "line-width": 2,
-        "fill-color": "#fab219",
-        "fill-opacity": 0.15,
-        "text-field": [
-          "get",
-          "name"
-        ]
-      }
-    },
-    {
-      "id": "relation/3895850",
-      "type": "osm",
-      "title": "Khangchendzonga National Park (boundary)",
-      "description": "Final ESZ notified &middot; Sikkim",
-      "tags": [
-        "Sikkim",
-        "Final ESZ notified"
-      ],
-      "initiallyChecked": true,
-      "attribution": "&copy; OpenStreetMap contributors (via Overpass API)",
-      "style": {
-        "line-color": "#0ca30c",
-        "line-width": 2,
-        "fill-color": "#0ca30c",
-        "fill-opacity": 0.15,
-        "text-field": [
-          "get",
-          "name"
-        ]
-      }
-    },
-    {
-      "id": "relation/17746132",
-      "type": "osm",
-      "title": "Kalakkad Mundanthurai Tiger Reserve (boundary)",
-      "description": "Not yet notified &middot; Tamil Nadu",
-      "tags": [
-        "Tamil Nadu",
-        "Not yet notified"
-      ],
-      "initiallyChecked": false,
-      "attribution": "&copy; OpenStreetMap contributors (via Overpass API)",
-      "style": {
-        "line-color": "#898781",
-        "line-width": 2,
-        "fill-color": "#898781",
-        "fill-opacity": 0.15,
-        "text-field": [
-          "get",
-          "name"
-        ]
-      }
-    },
-    {
-      "id": "relation/415570",
-      "type": "osm",
-      "title": "Gulf of Mannar Marine National Park (boundary)",
-      "description": "Final ESZ notified &middot; Tamil Nadu",
-      "tags": [
-        "Tamil Nadu",
-        "Final ESZ notified"
-      ],
-      "initiallyChecked": true,
-      "attribution": "&copy; OpenStreetMap contributors (via Overpass API)",
-      "style": {
-        "line-color": "#0ca30c",
-        "line-width": 2,
-        "fill-color": "#0ca30c",
-        "fill-opacity": 0.15,
-        "text-field": [
-          "get",
-          "name"
-        ]
-      }
-    },
-    {
-      "id": "relation/9466769",
-      "type": "osm",
-      "title": "Sariska Tiger Reserve (boundary)",
-      "description": "Draft ESZ notified &middot; Rajasthan",
-      "tags": [
-        "Rajasthan",
-        "Draft ESZ notified"
-      ],
-      "initiallyChecked": true,
       "attribution": "&copy; OpenStreetMap contributors (via Overpass API)",
       "style": {
         "line-color": "#fab219",
@@ -462,7 +198,7 @@
         "Madhya Pradesh",
         "Final ESZ notified"
       ],
-      "initiallyChecked": true,
+      "initiallyChecked": false,
       "attribution": "&copy; OpenStreetMap contributors (via Overpass API)",
       "style": {
         "line-color": "#0ca30c",
@@ -506,7 +242,271 @@
         "Odisha",
         "Draft ESZ notified"
       ],
-      "initiallyChecked": true,
+      "initiallyChecked": false,
+      "attribution": "&copy; OpenStreetMap contributors (via Overpass API)",
+      "style": {
+        "line-color": "#fab219",
+        "line-width": 2,
+        "fill-color": "#fab219",
+        "fill-opacity": 0.15,
+        "text-field": [
+          "get",
+          "name"
+        ]
+      }
+    },
+    {
+      "id": "relation/9282503",
+      "type": "osm",
+      "title": "Mount Manipur National Park (boundary)",
+      "description": "Final ESZ notified &middot; Andaman and Nicobar Islands",
+      "tags": [
+        "Andaman and Nicobar Islands",
+        "Final ESZ notified"
+      ],
+      "initiallyChecked": false,
+      "attribution": "&copy; OpenStreetMap contributors (via Overpass API)",
+      "style": {
+        "line-color": "#0ca30c",
+        "line-width": 2,
+        "fill-color": "#0ca30c",
+        "fill-opacity": 0.15,
+        "text-field": [
+          "get",
+          "name"
+        ]
+      }
+    },
+    {
+      "id": "relation/15876412",
+      "type": "osm",
+      "title": "Gulmarg Wildlife Sanctuary (boundary)",
+      "description": "Final ESZ notified &middot; Jammu and Kashmir",
+      "tags": [
+        "Jammu and Kashmir",
+        "Final ESZ notified"
+      ],
+      "initiallyChecked": false,
+      "attribution": "&copy; OpenStreetMap contributors (via Overpass API)",
+      "style": {
+        "line-color": "#0ca30c",
+        "line-width": 2,
+        "fill-color": "#0ca30c",
+        "fill-opacity": 0.15,
+        "text-field": [
+          "get",
+          "name"
+        ]
+      }
+    },
+    {
+      "id": "relation/9474608",
+      "type": "osm",
+      "title": "Pilibhit Tiger Reserve (boundary)",
+      "description": "Not yet notified &middot; Uttar Pradesh",
+      "tags": [
+        "Uttar Pradesh",
+        "Not yet notified"
+      ],
+      "initiallyChecked": false,
+      "attribution": "&copy; OpenStreetMap contributors (via Overpass API)",
+      "style": {
+        "line-color": "#898781",
+        "line-width": 2,
+        "fill-color": "#898781",
+        "fill-opacity": 0.15,
+        "text-field": [
+          "get",
+          "name"
+        ]
+      }
+    },
+    {
+      "id": "relation/9483703",
+      "type": "osm",
+      "title": "Kaziranga National Park (boundary)",
+      "description": "Not yet notified &middot; Assam",
+      "tags": [
+        "Assam",
+        "Not yet notified"
+      ],
+      "initiallyChecked": false,
+      "attribution": "&copy; OpenStreetMap contributors (via Overpass API)",
+      "style": {
+        "line-color": "#898781",
+        "line-width": 2,
+        "fill-color": "#898781",
+        "fill-opacity": 0.15,
+        "text-field": [
+          "get",
+          "name"
+        ]
+      }
+    },
+    {
+      "id": "relation/9282556",
+      "type": "osm",
+      "title": "Saddle Peak National Park (boundary)",
+      "description": "Final ESZ notified &middot; Andaman and Nicobar Islands",
+      "tags": [
+        "Andaman and Nicobar Islands",
+        "Final ESZ notified"
+      ],
+      "initiallyChecked": false,
+      "attribution": "&copy; OpenStreetMap contributors (via Overpass API)",
+      "style": {
+        "line-color": "#0ca30c",
+        "line-width": 2,
+        "fill-color": "#0ca30c",
+        "fill-opacity": 0.15,
+        "text-field": [
+          "get",
+          "name"
+        ]
+      }
+    },
+    {
+      "id": "relation/4148317",
+      "type": "osm",
+      "title": "Eravikulam National Park (boundary)",
+      "description": "Draft ESZ notified &middot; Kerala",
+      "tags": [
+        "Kerala",
+        "Draft ESZ notified"
+      ],
+      "initiallyChecked": false,
+      "attribution": "&copy; OpenStreetMap contributors (via Overpass API)",
+      "style": {
+        "line-color": "#fab219",
+        "line-width": 2,
+        "fill-color": "#fab219",
+        "fill-opacity": 0.15,
+        "text-field": [
+          "get",
+          "name"
+        ]
+      }
+    },
+    {
+      "id": "relation/3895850",
+      "type": "osm",
+      "title": "Khangchendzonga National Park (boundary)",
+      "description": "Final ESZ notified &middot; Sikkim",
+      "tags": [
+        "Sikkim",
+        "Final ESZ notified"
+      ],
+      "initiallyChecked": false,
+      "attribution": "&copy; OpenStreetMap contributors (via Overpass API)",
+      "style": {
+        "line-color": "#0ca30c",
+        "line-width": 2,
+        "fill-color": "#0ca30c",
+        "fill-opacity": 0.15,
+        "text-field": [
+          "get",
+          "name"
+        ]
+      }
+    },
+    {
+      "id": "relation/15036911",
+      "type": "osm",
+      "title": "Anamudi Shola National Park (boundary)",
+      "description": "Draft ESZ notified &middot; Kerala",
+      "tags": [
+        "Kerala",
+        "Draft ESZ notified"
+      ],
+      "initiallyChecked": false,
+      "attribution": "&copy; OpenStreetMap contributors (via Overpass API)",
+      "style": {
+        "line-color": "#fab219",
+        "line-width": 2,
+        "fill-color": "#fab219",
+        "fill-opacity": 0.15,
+        "text-field": [
+          "get",
+          "name"
+        ]
+      }
+    },
+    {
+      "id": "relation/11279548",
+      "type": "osm",
+      "title": "Parambikulam Tiger Reserve (boundary)",
+      "description": "Draft ESZ notified &middot; Kerala",
+      "tags": [
+        "Kerala",
+        "Draft ESZ notified"
+      ],
+      "initiallyChecked": false,
+      "attribution": "&copy; OpenStreetMap contributors (via Overpass API)",
+      "style": {
+        "line-color": "#fab219",
+        "line-width": 2,
+        "fill-color": "#fab219",
+        "fill-opacity": 0.15,
+        "text-field": [
+          "get",
+          "name"
+        ]
+      }
+    },
+    {
+      "id": "relation/17746132",
+      "type": "osm",
+      "title": "Kalakkad Mundanthurai Tiger Reserve (boundary)",
+      "description": "Not yet notified &middot; Tamil Nadu",
+      "tags": [
+        "Tamil Nadu",
+        "Not yet notified"
+      ],
+      "initiallyChecked": false,
+      "attribution": "&copy; OpenStreetMap contributors (via Overpass API)",
+      "style": {
+        "line-color": "#898781",
+        "line-width": 2,
+        "fill-color": "#898781",
+        "fill-opacity": 0.15,
+        "text-field": [
+          "get",
+          "name"
+        ]
+      }
+    },
+    {
+      "id": "relation/415570",
+      "type": "osm",
+      "title": "Gulf of Mannar Marine National Park (boundary)",
+      "description": "Final ESZ notified &middot; Tamil Nadu",
+      "tags": [
+        "Tamil Nadu",
+        "Final ESZ notified"
+      ],
+      "initiallyChecked": false,
+      "attribution": "&copy; OpenStreetMap contributors (via Overpass API)",
+      "style": {
+        "line-color": "#0ca30c",
+        "line-width": 2,
+        "fill-color": "#0ca30c",
+        "fill-opacity": 0.15,
+        "text-field": [
+          "get",
+          "name"
+        ]
+      }
+    },
+    {
+      "id": "relation/9466769",
+      "type": "osm",
+      "title": "Sariska Tiger Reserve (boundary)",
+      "description": "Draft ESZ notified &middot; Rajasthan",
+      "tags": [
+        "Rajasthan",
+        "Draft ESZ notified"
+      ],
+      "initiallyChecked": false,
       "attribution": "&copy; OpenStreetMap contributors (via Overpass API)",
       "style": {
         "line-color": "#fab219",
@@ -564,12 +564,12 @@
       }
     },
     {
+      "id": "india-esz",
+      "initiallyChecked": true
+    },
+    {
       "id": "mapbox-satellite",
-      "type": "raster-style-layer",
-      "title": "Satellite",
-      "styleLayer": "mapbox-satellite",
-      "initiallyChecked": true,
-      "attribution": "Mapbox Satellite"
+      "initiallyChecked": true
     }
   ]
 }

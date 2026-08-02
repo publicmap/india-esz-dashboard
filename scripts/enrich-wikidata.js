@@ -85,7 +85,100 @@ const PROTECTED_AREA_TYPE_UNION = PROTECTED_AREA_TYPES
 // range but useless/misleading as "the state" of one specific sanctuary
 // inside it, so buildMatcher's caller only accepts the fallback when it is
 // unambiguous (exactly one distinct state).
+//
+// A district/taluk reorganized into a new state (Uttarakhand out of Uttar
+// Pradesh in 2000, Telangana out of Andhra Pradesh in 2014, the 2019 J&K/
+// Ladakh split, ...) typically ends up with *two* P131 statements: the old
+// state (now superseded, usually qualified with a P582 end-time) and the
+// new one. A plain `wdt:P131+` walk uses Wikidata's "truthy" statement
+// selection, which only drops the superseded one when an editor has also
+// gone back and demoted its rank below the current statement's -- easy to
+// forget, since adding the end-time qualifier is the part editors actually
+// do when recording a reorg. Relying on rank alone silently lets the stale
+// state slip through as if it still applied (see e.g.
+// https://www.wikidata.org/wiki/Q1773437, Uttarkashi district, which
+// carries both a `preferred`-rank current P131 and a `normal`-rank P582-
+// qualified historical one -- the qualifier is the actual signal, the rank
+// happening to differ is not something every item's editors bother with).
+//
+// Checking every hop of every item's chain against qualifiers (rather than
+// just trusting `wdt:P131+`'s rank-based "truthy" shortcut) is too expensive
+// to do for all ~600 items in the single main SPARQL_QUERY below -- tried
+// that, WDQS 504-timed-out. Since an ambiguous chain (more than one
+// resolved state) is rare (one genuinely-multi-state case in the current
+// data, plus however many stale-reorg ones this is meant to catch), it's
+// far cheaper to run the main query as before (fast, rank-only) and then
+// re-resolve *only* the handful of items whose `state` came back ambiguous
+// through STATE_HOP_PATTERN, scoped to just those ids via a `VALUES`
+// clause -- see refineAmbiguousStates below.
 const STATE_TYPES = ['Q12443800', 'Q467745'];
+
+// Walks zero-or-more ordinary (fast, truthy) P131 hops from `startVar`, then
+// one *explicit*, statement-level final hop into `resultVar` that's dropped
+// whenever it carries a P582 (end time) qualifier or a deprecated rank --
+// i.e. whenever it's been superseded. `startVar` is never itself
+// state-typed for either of this function's two call sites (an item is
+// never its own state; see refineAmbiguousStates below), so unlike the
+// original wdt:P131+/wdt:P131* walk this deliberately does NOT also treat
+// `startVar` itself as a candidate result -- tried that as a `UNION` arm,
+// but combining a `BIND(startVar AS resultVar)` arm with the hop arm here
+// tickles what looks like a Blazegraph (Wikidata Query Service) planner bug
+// when `startVar` comes from an outer `VALUES` clause: instead of yielding
+// zero rows for the BIND arm (correct, since an item is never state-typed),
+// it spuriously joined in *every* state/UT-typed item in Wikidata. Isolating
+// each UNION arm individually confirmed both are correct alone; only the
+// combination misbehaves, so the union'd BIND arm was dropped rather than
+// worked around.
+function stateHopPattern(startVar, resultVar) {
+  const v = resultVar.slice(1);
+  return `
+    ${startVar} wdt:P131* ?${v}Mid_ .
+    ?${v}Mid_ p:P131 ?${v}Stmt_ .
+    ?${v}Stmt_ ps:P131 ${resultVar} ;
+      wikibase:rank ?${v}Rank_ .
+    FILTER(?${v}Rank_ != wikibase:DeprecatedRank)
+    FILTER NOT EXISTS { ?${v}Stmt_ pq:P582 ?${v}End_ }`;
+}
+
+// Re-resolves `state` for just the given wikidataIds, using the same
+// STATE_TYPES walk as the main query but through STATE_HOP_PATTERN's
+// qualifier/rank-aware final hop instead of a plain `wdt:P131+`. Scoped to
+// a small `VALUES ?item {...}` list, so -- unlike folding this into
+// SPARQL_QUERY itself -- it stays cheap regardless of how expensive the
+// per-hop qualifier check is. Returns a Map(wikidataId -> string[] of
+// distinct current state/UT labels); an id with no entry means the
+// qualifier-aware walk found nothing (caller should keep its original
+// value rather than treat that as "no state").
+async function refineAmbiguousStates(wikidataIds) {
+  if (wikidataIds.length === 0) return new Map();
+  const query = `
+SELECT ?item (GROUP_CONCAT(DISTINCT ?resolvedStateLabel; separator="; ") AS ?states) WHERE {
+  VALUES ?item { wd:${wikidataIds.join(' wd:')} }
+  ${stateHopPattern('?item', '?resolvedState_')}
+  ?resolvedState_ wdt:P31 ?stateType .
+  VALUES ?stateType { wd:${STATE_TYPES.join(' wd:')} }
+  ?resolvedState_ rdfs:label ?resolvedStateLabel .
+  FILTER(LANG(?resolvedStateLabel)="en")
+}
+GROUP BY ?item
+`;
+  const url = `${SPARQL_ENDPOINT}?query=${encodeURIComponent(query)}`;
+  const res = await fetch(url, {
+    headers: { Accept: 'application/sparql-results+json', 'User-Agent': USER_AGENT },
+  });
+  if (!res.ok) {
+    console.warn(`refineAmbiguousStates: SPARQL query failed (${res.status}), keeping original ambiguous state values for ${wikidataIds.length} item(s).`);
+    return new Map();
+  }
+  const json = await res.json();
+  const result = new Map();
+  for (const b of json.results.bindings) {
+    const qid = b.item.value.replace('http://www.wikidata.org/entity/', '');
+    const states = b.states?.value ? b.states.value.split('; ').filter(Boolean) : [];
+    if (states.length > 0) result.set(qid, states);
+  }
+  return result;
+}
 
 const SPARQL_QUERY = `
 SELECT ?item ?itemLabel
@@ -167,7 +260,7 @@ async function fetchWikidataProtectedAreas() {
   if (!res.ok) throw new Error(`SPARQL query failed: ${res.status} ${await res.text()}`);
   const json = await res.json();
 
-  return json.results.bindings.map((b) => {
+  const items = json.results.bindings.map((b) => {
     const coord = parseWktPoint(b.coord?.value);
     const wikidataLabel = b.itemLabel?.value ?? null;
     const directState = splitConcat(b.resolvedState?.value);
@@ -200,6 +293,10 @@ async function fetchWikidataProtectedAreas() {
       worldHeritageSiteId: b.worldHeritageSiteId?.value ?? null,
       locatedInAdminTerritorialEntity: splitConcat(b.adminEntity?.value),
       state,
+      // Ambiguous (>1) only ever comes from the direct P131 walk -- the
+      // partOf-fallback branch above already refuses to assign a state at
+      // all when it's ambiguous, so there's nothing there to refine.
+      directStateAmbiguous: directState.length > 1,
       coordinateLatitude: coord?.lat ?? null,
       coordinateLongitude: coord?.lon ?? null,
       significantPlace: splitConcat(b.significantPlace?.value),
@@ -212,6 +309,29 @@ async function fetchWikidataProtectedAreas() {
       enwikiUrl: b.enwikiUrl?.value ?? null,
     };
   });
+
+  // See the comment above refineAmbiguousStates: re-check just the items
+  // whose fast/rank-only resolution above found more than one state, since
+  // that's exactly the shape a reorganized-but-not-rank-cleaned-up P131
+  // chain produces. Most surviving ambiguity is genuine (a protected area
+  // that really does span more than one state), so this only narrows
+  // `state` down when the qualifier-aware re-check disagrees with the fast
+  // pass -- it never invents a state the fast pass didn't already find.
+  const ambiguousItems = items.filter((item) => item.directStateAmbiguous);
+  if (ambiguousItems.length > 0) {
+    console.log(`Re-checking ${ambiguousItems.length} item(s) with an ambiguous P131 state chain for a superseded (reorganized) value...`);
+    const refined = await refineAmbiguousStates(ambiguousItems.map((item) => item.wikidataId));
+    let narrowedCount = 0;
+    for (const item of ambiguousItems) {
+      const refinedState = refined.get(item.wikidataId);
+      if (refinedState && refinedState.length < item.state.length) narrowedCount += 1;
+      if (refinedState) item.state = refinedState;
+    }
+    console.log(`  narrowed ${narrowedCount} of ${ambiguousItems.length} to a single current state (rest are genuinely multi-state, or the re-check found nothing so the original value was kept).`);
+  }
+
+  for (const item of items) delete item.directStateAmbiguous;
+  return items;
 }
 
 function writeWikidataTable(wikidataItems) {
