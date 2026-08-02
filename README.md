@@ -22,7 +22,7 @@ Source: [Wikipedia](https://en.wikipedia.org/wiki/Eco-sensitive_zone)
 
 **About ESZ Notifications**
 
->![ESZ notification status of protected areas in India](img/pib-moefcc-note.png)<br>
+>![ESZ notification status of protected areas in India](assets/img/pib-moefcc-note.png)<br>
 Source: [PIB, Ministry of Environment Forests & Climate Change, Government of India](https://www.pib.gov.in/newsite/PrintRelease.aspx?relid=126299&reg=48&lang=2)
 
 - 2002: The Indian Board for Wildlife proposed 10km buffer zones under the Environment Protection Act of 1986 to insulate national parks and sanctuaries
@@ -49,12 +49,13 @@ proposed eco-sensitive zone.
 - 2012: Due to lack of progress on ESZ identification, [CEC reccomends a safety zone of 100m-2000m metres](https://hash-cookies.s3.amazonaws.com/CEC%20buffer%20zones%20report%2020.9.2012.pdf) in the interim based on protected area size
 ```
 - 2022: [Supreme Court mandates a minimum 1km ESZ](https://api.sci.gov.in/supremecourt/1995/2997/2997_1995_5_1501_36130_Order_03-Jun-2022.pdf) around all protected areas
+- 2023: [Supreme Court relaxes 2022 order to define minimum ESZ](https://api.sci.gov.in/supremecourt/1995/2997/2997_1995_8_1501_43924_Judgement_26-Apr-2023.pdf) to be protected area specific citing uniform minimums being impossible to implement.
 
 ## Data pipeline
 
 ```
 npm install
-npm run update   # fetch -> parse -> clean -> enrich:wikidata -> enrich:archive -> enrich:allmaps -> build:geojson -> build:full-join -> build:atlas
+npm run update   # fetch -> parse -> clean -> enrich:osm -> enrich:wikidata -> enrich:archive -> enrich:allmaps -> build:geojson -> build:full-join -> build:atlas
 ```
 
 Runs weekly via `.github/workflows/update.yml`; the dashboard (`index.html`) is redeployed to GitHub Pages afterwards by `.github/workflows/pages.yml`. Enable Pages once under repo Settings &rarr; Pages &rarr; Source: "GitHub Actions".
@@ -66,26 +67,30 @@ pipeline:
 
 | # | Command | Reads | Writes | What it does |
 | - | --- | --- | --- | --- |
-| 1 | `npm run fetch` | https://moef.gov.in/esz-notifications | `data/raw/moef-esz-notifications-table.html` | Scrapes the raw MoEF ESZ notifications table HTML |
-| 2 | `npm run parse` | `data/raw/moef-esz-notifications-table.html` | `data/moef-esz-notifications.json` | Parses the table markup into one structured record per Draft/Final notification |
-| 3 | `npm run clean` | `data/moef-esz-notifications.json`, `data/corrections.csv` | `data/moef-esz-notifications.json` | Applies manual corrections, splits multi-park notifications into one record per area, canonicalizes names/types |
-| 4 | `npm run enrich:wikidata` | `data/moef-esz-notifications.json`, live Wikidata SPARQL | `data/wikidata-protected-areas.{csv,json}`, `data/moef-esz-notifications.{csv,json}` (+ `wikidataId`/`matchConfidence`), `data/enrichment-cache.csv` | Fetches the full Wikidata list of Indian protected areas and links each notification to its Wikidata item |
-| 5 | `npm run enrich:archive` | `data/moef-esz-notifications.json`, archive.org search | `data/moef-esz-notifications.{csv,json}` (+ `notificationArchiveLink`), `data/enrichment-cache.csv` | Looks up each notification's official gazette scan on archive.org |
+| 1 | `npm run fetch` | https://moef.gov.in/esz-notifications, three Wikipedia protected-area list pages | `data/raw/moef-esz-notifications-table.html`, `data/raw/{national-parks,wildlife-sanctuaries,tiger-reserves}-table.html` | Scrapes the raw MoEF ESZ notifications table HTML, plus the Wikipedia national parks/wildlife sanctuaries/tiger reserves list tables (each combined from that page's per-state sub-tables into one table) |
+| 2 | `npm run parse` | the raw tables from step 1 | `data/moef/esz-notifications.json`, `data/wikipedia/{national-parks,wildlife-sanctuaries,tiger-reserves}.{csv,json}` | Parses the MoEF table into one structured record per Draft/Final notification (`parse:moef`) and the three Wikipedia tables into one structured record per protected area (`parse:wikipedia`) |
+| 3 | `npm run clean` | `data/moef/esz-notifications.json`, `data/corrections.csv` | `data/moef/esz-notifications.json` | Applies manual corrections, splits multi-park notifications into one record per area, canonicalizes names/types |
+| 4 | `npm run enrich:wikidata` | `data/moef/esz-notifications.json`, live Wikidata SPARQL, `data/wikipedia/{national-parks,wildlife-sanctuaries,tiger-reserves}.json`, `data/osm/protected-areas.csv` (if present) | `data/wikidata/protected-areas.{csv,json}`, `data/wikidata/qa-log.md`, `data/moef/esz-notifications.{csv,json}` (+ `wikidataId`/`matchConfidence`), `data/enrichment-cache.csv` | Fetches the full Wikidata list of Indian protected areas; cross-references it against the three Wikipedia lists to correct outdated `protectedAreaType` categorization and add any protected area Wikipedia has that Wikidata doesn't (building `data/wikidata/protected-areas.json` as the master PA list); cross-references OSM boundaries by `wikidata` tag; links each MoEF notification to its master-list item |
+| 5 | `npm run enrich:archive` | `data/moef/esz-notifications.json`, archive.org search | `data/moef/esz-notifications.{csv,json}` (+ `notificationArchiveLink`), `data/enrichment-cache.csv` | Looks up each notification's official gazette scan on archive.org |
 | 6 | `npm run enrich:allmaps` | `data/enrichment-cache.csv` | `data/enrichment-cache.csv` (+ Allmaps fields) | Adds Allmaps IIIF georeferencing links for toposheet scans found in step 5 |
-| 7 | `npm run build:geojson` | `data/wikidata-protected-areas.json`, `data/moef-esz-notifications.json` | `data/protected-areas.geojson` | Builds the point-feature GeoJSON (PA location + ESZ status) |
-| 8 | `npm run build:full-join` | `data/wikidata-protected-areas.json`, `data/moef-esz-notifications.json` | `data/full-join.json` | Builds the full outer join of Wikidata PAs and MoEF notifications (keyed by `wikidataId`, falling back to state+name for unmatched records) with a precomputed representative notification per PA &mdash; the single file `index.html`/`assets/app.js` load to render the table and map |
+| 7 | `npm run build:geojson` | `data/wikidata/protected-areas.json`, `data/moef/esz-notifications.json` | `data/protected-areas.geojson` | Builds the point-feature GeoJSON (PA location + ESZ status) |
+| 8 | `npm run build:full-join` | `data/wikidata/protected-areas.json`, `data/moef/esz-notifications.json` | `data/full-join.json` | Builds the full outer join of Wikidata PAs and MoEF notifications (keyed by `wikidataId`, falling back to state+name for unmatched records) with a precomputed representative notification per PA &mdash; the single file `index.html`/`assets/app.js` load to render the table and map |
 | 9 | `npm run build:atlas` | `data/protected-areas.geojson` | `data/amche-atlas.json` | Builds the [amche-atlas](https://github.com/publicmap/amche-atlas/blob/dev/docs/API.md) config (PA points + live OSM-relation boundary layers) |
 
 Steps 4–6 cache their lookups in `data/enrichment-cache.csv`, so re-running them after
 the first full run is fast — only new/changed notifications are re-fetched.
 
-Outputs, all in `data/`:
-- `moef-esz-notifications.{csv,json}` — one row per protected area per notification, with a `wikidataId` join key
-- `wikidata-protected-areas.{csv,json}` — full Wikidata list of Indian protected areas
-- `protected-areas.geojson` — PA point locations with ESZ status
-- `full-join.json` — full outer join of the two above, one entry per protected area with its notification history nested; this is what the dashboard actually loads (downloadable CSV/JSON/GeoJSON links on the page still point at the individual files above)
-- `amche-atlas.json` — custom [amche-atlas](https://github.com/publicmap/amche-atlas/blob/dev/docs/API.md) config (PA points + OSM-relation boundary layers)
-- `enrichment-cache.csv` — persistent cache of Wikidata/archive.org lookups so repeat runs are fast
+Outputs:
+- `data/moef/esz-notifications.{csv,json}` — one row per protected area per notification, with a `wikidataId` join key
+- `data/wikipedia/national-parks.{csv,json}` — one row per national park, from [List of national parks of India](https://en.wikipedia.org/wiki/List_of_national_parks_of_India)
+- `data/wikipedia/wildlife-sanctuaries.{csv,json}` — one row per wildlife sanctuary, from [List of wildlife sanctuaries of India](https://en.wikipedia.org/wiki/List_of_wildlife_sanctuaries_of_India)
+- `data/wikipedia/tiger-reserves.{csv,json}` — one row per tiger reserve (with coordinates), from [Tiger reserves of India](https://en.wikipedia.org/wiki/Tiger_reserves_of_India)
+- `data/wikidata/protected-areas.{csv,json}` — the master protected-area list: every Wikidata item in scope (`protectedAreaType` corrected against the Wikipedia lists where they disagree), plus a `dataSource: "wikipedia"` entry (synthetic `WIKIPEDIA:...` id, no real Wikidata QID) for any Wikipedia protected area with no Wikidata match, cross-referenced with OSM boundary ids where matched
+- `data/wikidata/qa-log.md` — QA report for both cross-reference passes: **Wikidata ↔ Wikipedia joins** (type corrections, multi-matched items, new master-list entries, unmatched items on either side) and **Wikidata ↔ OSM joins** (unmatched items, outdated ids, coordinate/name mismatches) — for manual review
+- `data/protected-areas.geojson` — PA point locations with ESZ status
+- `data/full-join.json` — full outer join of the two above, one entry per protected area with its notification history nested; this is what the dashboard actually loads (downloadable CSV/JSON/GeoJSON links on the page still point at the individual files above)
+- `data/amche-atlas.json` — custom [amche-atlas](https://github.com/publicmap/amche-atlas/blob/dev/docs/API.md) config (PA points + OSM-relation boundary layers)
+- `data/enrichment-cache.csv` — persistent cache of Wikidata/archive.org lookups so repeat runs are fast
 
 ## Contributing corrections
 
@@ -97,7 +102,7 @@ outputs directly, since those get overwritten the next time the pipeline runs:
 - **A MoEF notification's protected area name, state, or type is wrong or garbled**
   (e.g. a mis-scraped name, a multi-park notification that didn't split correctly) —
   add a row to [`data/corrections.csv`](data/corrections.csv) keyed by the *exact*
-  `paName`/`state` as they currently appear in `data/moef-esz-notifications.json`, with
+  `paName`/`state` as they currently appear in `data/moef/esz-notifications.json`, with
   `correctPaName`/`correctState`/`correctPaType` set to the fix (leave a column blank to
   leave that field alone). Applied by `scripts/clean-moef-data.js`. Re-run `npm run
   clean` (or the full pipeline from step 3 onward) to verify.

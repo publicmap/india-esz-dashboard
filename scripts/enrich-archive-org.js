@@ -1,4 +1,4 @@
-// Adds a `notificationArchiveLink` column to data/moef-esz-notifications.json
+// Adds a `notificationArchiveLink` column to data/moef/esz-notifications.json
 // (and .csv) by looking up each record's S.O. order number + date against
 // archive.org's "gazetteofindia" collection. See scripts/lib/archive-org.js
 // for why both the number and the date are needed.
@@ -32,7 +32,7 @@ async function runWithConcurrency(items, worker, concurrency) {
 }
 
 async function main() {
-  const records = JSON.parse(await readFile('data/moef-esz-notifications.json', 'utf8'));
+  const records = JSON.parse(await readFile('data/moef/esz-notifications.json', 'utf8'));
   const cache = await loadCache(CACHE_PATH);
 
   const pending = new Map(); // in-flight/completed lookups this run, keyed by orderNumber|date
@@ -69,9 +69,9 @@ async function main() {
     return { ...record, notificationArchiveLink: result ? result.url : null };
   }, CONCURRENCY);
 
-  await writeFile('data/moef-esz-notifications.json', JSON.stringify(linked, null, 2), 'utf8');
+  await writeFile('data/moef/esz-notifications.json', JSON.stringify(linked, null, 2), 'utf8');
   const csvRows = linked.map((r) => ({ ...r, maps: JSON.stringify(r.maps) }));
-  await writeFile('data/moef-esz-notifications.csv', stringify(csvRows, { header: true }), 'utf8');
+  await writeFile('data/moef/esz-notifications.csv', stringify(csvRows, { header: true }), 'utf8');
   await saveCache(CACHE_PATH, cache);
 
   const found = linked.filter((r) => r.notificationArchiveLink).length;

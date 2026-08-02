@@ -1,16 +1,31 @@
-// Fetches the full Wikidata protected-area list for India as its own
-// standalone table (data/wikidata-protected-areas.{json,csv}), and separately
-// links each MoEF notification record to its Wikidata item by adding a
-// wikidataId + matchConfidence column to data/moef-esz-notifications.{json,csv}
-// (rather than merging the two into one combined table).
+// Fetches the full Wikidata protected-area list for India, cross-references
+// it against the three structured Wikipedia protected-area lists (data/
+// wikipedia/*.json, more actively maintained than Wikidata's own P31 typing)
+// to correct outdated categorization and add any protected area Wikipedia
+// knows about that Wikidata doesn't, and writes the result as the master
+// protected-area table (data/wikidata/protected-areas.{json,csv}). Separately
+// links each MoEF notification record to its Wikidata/master-list item by
+// adding a wikidataId + matchConfidence column to
+// data/moef/esz-notifications.{json,csv} (rather than merging the two into
+// one combined table). QA output from both cross-reference passes (Wikidata
+// <-> Wikipedia, Wikidata <-> OSM) is written to data/wikidata/qa-log.md.
 
 import { readFile, writeFile } from 'node:fs/promises';
 import { stringify } from 'csv-stringify/sync';
 import { classifyProtectedAreaType } from './lib/protected-area-type.js';
-import { INDIAN_STATE_AND_UT_NAMES } from './lib/indian-states.js';
 import { loadCache, saveCache, setWikidataId } from './lib/enrichment-cache.js';
+import { normalizeName, compactName } from './lib/name-match.js';
+import { buildMatcher } from './lib/wikidata-match.js';
+import { loadOsmCache } from './lib/osm-cache.js';
+import { crossReferenceOsm } from './lib/osm-qa.js';
+import { loadWikipediaRecords } from './lib/wikipedia-cache.js';
+import { crossReferenceWikipedia } from './lib/wikipedia-qa.js';
+import { renderQaLog } from './lib/qa-log.js';
 
 const CACHE_PATH = 'data/enrichment-cache.csv';
+const WIKIDATA_JSON_PATH = 'data/wikidata/protected-areas.json';
+const WIKIDATA_CSV_PATH = 'data/wikidata/protected-areas.csv';
+const QA_LOG_PATH = 'data/wikidata/qa-log.md';
 
 const SPARQL_ENDPOINT = 'https://query.wikidata.org/sparql';
 const USER_AGENT = 'india-esz-dashboard-bot/1.0 (https://github.com/publicmap/india-esz-dashboard)';
@@ -46,7 +61,6 @@ const PROTECTED_AREA_TYPES = [
   'Q1533036', // animal sanctuary
   'Q2828718', // protected area of India
   'Q108059873', // wildlife conservation area
-  'Q728904', // nature park
   'Q1125269', // Indian National Parks and Wildlife Sanctuaries
   'Q29553', // sanctuary
 ];
@@ -134,70 +148,6 @@ WHERE {
 GROUP BY ?item ?itemLabel
 `;
 
-const GENERIC_PA_WORDS = [
-  'wildlife sanctuary', 'wild life sanctuary', 'wildlife', 'national park', 'tiger reserve',
-  'bird sanctuary', 'biosphere reserve', 'conservation reserve',
-  'community reserve', 'sanctuary', 'santuary', 'reserve forest', 'reserve', 'forest',
-  'wls', 'np', 'esz', 'eco sensitive zone', 'eco-sensitive zone',
-];
-
-function normalizeName(name) {
-  if (!name) return '';
-  let n = name.toLowerCase();
-  n = n.replace(/&/g, ' and ');
-  n = n.replace(/[-.,()'"]/g, ' ');
-  // Collapse whitespace before phrase-stripping: "&" -> " and " combined with
-  // spacing already around "&" produces double spaces, which breaks the
-  // literal single-space phrases below (e.g. "andaman and nicobar islands").
-  n = n.replace(/\s+/g, ' ').trim();
-  for (const word of [...GENERIC_PA_WORDS, ...INDIAN_STATE_AND_UT_NAMES]) {
-    n = n.replace(new RegExp(`\\b${word}\\b`, 'g'), ' ');
-  }
-  return n.replace(/\s+/g, ' ').trim();
-}
-
-function compactName(normalizedName) {
-  return normalizedName.replace(/\s+/g, '');
-}
-
-// Plain Levenshtein edit distance, used to tolerate the source data's
-// frequent single-letter typos/transpositions (Kambalakonda/Kambalkonda,
-// Venkateswara/Venkateshwara, Narasimha/Narsimha, Nagarjunsagar/Nagarjunasagar...).
-function levenshtein(a, b) {
-  if (a === b) return 0;
-  if (!a.length) return b.length;
-  if (!b.length) return a.length;
-  let prevRow = Array.from({ length: b.length + 1 }, (_, j) => j);
-  for (let i = 1; i <= a.length; i += 1) {
-    const currRow = [i];
-    for (let j = 1; j <= b.length; j += 1) {
-      const cost = a[i - 1] === b[j - 1] ? 0 : 1;
-      currRow[j] = Math.min(prevRow[j] + 1, currRow[j - 1] + 1, prevRow[j - 1] + cost);
-    }
-    prevRow = currRow;
-  }
-  return prevRow[b.length];
-}
-
-function similarity(a, b) {
-  if (!a || !b) return 0;
-  return 1 - levenshtein(a, b) / Math.max(a.length, b.length);
-}
-
-function normalizeState(state) {
-  if (!state) return '';
-  let s = state.toLowerCase();
-  s = s.replace(/&/g, ' and ');
-  s = s.replace(/\b(district|division|state|ut|taluka|block|islands?|community development block|grama panchayat)\b/g, ' ');
-  s = s.replace(/[.,()'"]/g, ' ');
-  return s.replace(/\s+/g, ' ').trim();
-}
-
-function statesAgree(a, b) {
-  if (!a || !b) return false;
-  return a === b || a.includes(b) || b.includes(a);
-}
-
 function parseWktPoint(wkt) {
   if (!wkt) return null;
   const m = wkt.match(/Point\(\s*([-\d.]+)\s+([-\d.]+)\s*\)/);
@@ -264,135 +214,11 @@ async function fetchWikidataProtectedAreas() {
   });
 }
 
-// Prefers a candidate whose state agrees with MoEF's, but -- unlike a plain
-// find-with-fallback -- refuses to silently hand back a candidate whose
-// state is known and DISAGREES just because it's the only one in the
-// bucket. A same-normalized-name collision across unrelated items in
-// different states does happen (e.g. two different sanctuaries both named
-// after the same person, one via a label and one only via an alias), so an
-// exact-name bucket isn't proof they're the same place. Returns null when
-// every candidate with a known state disagrees, so the caller can fall
-// through to the fuzzy tier (which applies the same veto) rather than
-// forcing a wrong match.
-function pickByState(candidates, normMoefState) {
-  const agrees = (c) => c.state.some((a) => statesAgree(normalizeState(a), normMoefState));
-  const exactStateMatch = candidates.find(agrees);
-  if (exactStateMatch) return exactStateMatch;
-  const viable = candidates.filter((c) => c.state.length === 0);
-  return viable[0] ?? null;
-}
-
-// A candidate name that scores against the MoEF name -- either an item's
-// primary label or one of its Wikidata aliases (e.g. "Madei Wildlife
-// Sanctuary" is a registered en alias of Q6826847, whose label is "Mhadei
-// Wildlife Sanctuary" -- close enough by edit distance, but at 5 characters
-// it's too short to clear the no-containment length floor below).
-function scoreCandidateName(normMoefName, candidateName, stateAgrees) {
-  const shorterLen = Math.min(normMoefName.length, candidateName.length);
-  const isContainment = candidateName.includes(normMoefName) || normMoefName.includes(candidateName);
-  if (isContainment) {
-    // No length floor: a short name (e.g. "Nagi" in "Nagi Dam Bird
-    // Sanctuary") appearing verbatim as a whole prefix/suffix of the
-    // other is meaningful regardless of length.
-    const nameScore = shorterLen / Math.max(normMoefName.length, candidateName.length);
-    return nameScore >= (stateAgrees ? 0.5 : 0.7) ? nameScore : null;
-  }
-  // Edit-distance-only matches on short strings are exactly the
-  // coincidence risk ("Tale"/"Kane" scores 0.5, a hypothetical
-  // single-letter-typo 4-letter pair would score 0.75) -- require
-  // enough length that a passing score reflects a real typo, not luck.
-  if (shorterLen < 6) return null;
-  const nameScore = similarity(normMoefName, candidateName);
-  return nameScore >= (stateAgrees ? 0.7 : 0.85) ? nameScore : null;
-}
-
-function buildMatcher(wikidataItems) {
-  const byNormName = new Map();
-  const byCompactName = new Map();
-  const index = (map, key, item) => {
-    if (!key) return;
-    if (!map.has(key)) map.set(key, []);
-    map.get(key).push(item);
-  };
-  for (const item of wikidataItems) {
-    index(byNormName, item.normalizedName, item);
-    index(byCompactName, item.compactName, item);
-    item.normalizedAliases.forEach((n) => index(byNormName, n, item));
-    item.compactAliases.forEach((n) => index(byCompactName, n, item));
-  }
-
-  return function match(moefName, moefState) {
-    const normMoefName = normalizeName(moefName);
-    const compactMoefName = compactName(normMoefName);
-    const normMoefState = normalizeState(moefState);
-    if (!normMoefName) return { item: null, matchConfidence: 'none' };
-
-    const exact = byNormName.get(normMoefName) ?? [];
-    const exactPick = pickByState(exact, normMoefState);
-    if (exactPick) return { item: exactPick, matchConfidence: 'exact' };
-    // Same name once whitespace/hyphens are ignored (e.g. "Eaglenest" vs
-    // "Eagle Nest") -- still an exact match, just a spacing variant.
-    const compactExact = byCompactName.get(compactMoefName) ?? [];
-    const compactExactPick = pickByState(compactExact, normMoefState);
-    if (compactExactPick) return { item: compactExactPick, matchConfidence: 'exact' };
-
-    // Fuzzy tier. Two structurally different kinds of near-match need two
-    // different bars:
-    //  - Containment (one name is a clean, whole substring of the other --
-    //    e.g. "Pulicat" in "Pulicat Lake Bird Sanctuary", "Sri Penusila" in
-    //    "Sri Penusila Narasimha ...") is strong structural evidence even at
-    //    a fairly low length ratio, since the shorter name appears verbatim.
-    //  - A same-length-ish edit-distance match with NO containment (typos:
-    //    Kambalakonda/Kambalkonda, Venkateswara/Venkateshwara) needs a much
-    //    higher similarity bar, because short unrelated words can coincidentally
-    //    score just as "similar" this way -- e.g. "Tale"/"Kane" and
-    //    "Ramnagar"/"Ramsagar" both score >=0.5 despite being different places.
-    // A confirmed state disagreement is a hard veto either way (MoEF's own
-    // state column is independent, reliable ground truth); when Wikidata has
-    // no resolved state for the item at all, both bars are raised instead.
-    // Both kinds of candidate are pooled into one ranking by score (not
-    // "containment always wins"): a containment match can still be a worse
-    // candidate than an edit-distance one when it only explains a weak
-    // fraction of the name (e.g. "Cauvery" contained in "Talacauvery" scores
-    // lower than "Talacauvery" ~ "Talakaveri" by edit distance, correctly).
-    let best = null;
-    let bestScore = 0;
-    for (const item of wikidataItems) {
-      const candidateNames = item.normalizedName
-        ? [item.normalizedName, ...item.normalizedAliases]
-        : item.normalizedAliases;
-      if (candidateNames.length === 0) continue;
-      const stateKnown = item.state.length > 0;
-      const stateAgrees = stateKnown && item.state.some((a) => statesAgree(normalizeState(a), normMoefState));
-      if (stateKnown && !stateAgrees) continue;
-
-      // An item can match through its label or any alias; take whichever
-      // candidate name scores best (e.g. "Madei" vs. an item labelled
-      // "Mhadei" but aliased "Madei Wildlife Sanctuary").
-      let itemBestNameScore = null;
-      for (const candidateName of candidateNames) {
-        const nameScore = scoreCandidateName(normMoefName, candidateName, stateAgrees);
-        if (nameScore !== null && (itemBestNameScore === null || nameScore > itemBestNameScore)) {
-          itemBestNameScore = nameScore;
-        }
-      }
-      if (itemBestNameScore === null) continue;
-
-      const score = itemBestNameScore + (stateAgrees ? 0.25 : 0);
-      if (score > bestScore) {
-        bestScore = score;
-        best = item;
-      }
-    }
-    return best ? { item: best, matchConfidence: 'fuzzy' } : { item: null, matchConfidence: 'none' };
-  };
-}
-
 function writeWikidataTable(wikidataItems) {
   const rows = wikidataItems.map(({
     normalizedName, compactName: _compactName, normalizedAliases, compactAliases, ...item
   }) => item);
-  const jsonPromise = writeFile('data/wikidata-protected-areas.json', JSON.stringify(rows, null, 2), 'utf8');
+  const jsonPromise = writeFile(WIKIDATA_JSON_PATH, JSON.stringify(rows, null, 2), 'utf8');
 
   const csvRows = rows.map((r) => ({
     ...r,
@@ -404,8 +230,16 @@ function writeWikidataTable(wikidataItems) {
     heritageDesignation: r.heritageDesignation.join('; '),
     officialWebsite: r.officialWebsite.join('; '),
     osmRelationIds: r.osmRelationIds.join('; '),
+    osmId: r.osmId ?? '',
+    osmType: r.osmType ?? '',
+    osmUrl: r.osmUrl ?? '',
+    osmName: r.osmName ?? '',
+    osmMatchSource: r.osmMatchSource ?? '',
+    wikipediaUrl: r.wikipediaUrl ?? '',
+    wikipediaSource: r.wikipediaSource ?? '',
+    dataSource: r.dataSource ?? '',
   }));
-  const csvPromise = writeFile('data/wikidata-protected-areas.csv', stringify(csvRows, { header: true }), 'utf8');
+  const csvPromise = writeFile(WIKIDATA_CSV_PATH, stringify(csvRows, { header: true }), 'utf8');
 
   return Promise.all([jsonPromise, csvPromise]);
 }
@@ -426,17 +260,65 @@ async function writeMoefTable(moefRecords, match, cache) {
     };
   });
 
-  await writeFile('data/moef-esz-notifications.json', JSON.stringify(linked, null, 2), 'utf8');
+  await writeFile('data/moef/esz-notifications.json', JSON.stringify(linked, null, 2), 'utf8');
   const csvRows = linked.map((r) => ({ ...r, maps: JSON.stringify(r.maps) }));
-  await writeFile('data/moef-esz-notifications.csv', stringify(csvRows, { header: true }), 'utf8');
+  await writeFile('data/moef/esz-notifications.csv', stringify(csvRows, { header: true }), 'utf8');
   return linked;
 }
 
 async function main() {
-  const moefRecords = JSON.parse(await readFile('data/moef-esz-notifications.json', 'utf8'));
+  const moefRecords = JSON.parse(await readFile('data/moef/esz-notifications.json', 'utf8'));
   const cache = await loadCache(CACHE_PATH);
   const wikidataItems = await fetchWikidataProtectedAreas();
   console.log(`Fetched ${wikidataItems.length} Indian protected areas from Wikidata.`);
+
+  // Wikipedia cross-reference first (may append new master-list entries and
+  // correct protectedAreaType in place), so the OSM cross-reference and the
+  // MoEF matcher below both see the fully merged master list.
+  const wikipediaRecords = await loadWikipediaRecords();
+  let wikipediaGroup;
+  if (wikipediaRecords.length > 0) {
+    console.log(`Loaded ${wikipediaRecords.length} Wikipedia protected-area records from data/wikipedia/.`);
+    const wp = crossReferenceWikipedia(wikidataItems, wikipediaRecords);
+    wikidataItems.push(...wp.newEntries);
+    console.log(`Wikipedia cross-reference: ${wp.stats.matchedCount} Wikidata items matched, ${wp.stats.correctedTypeCount} protectedAreaType corrections, ${wp.stats.newEntryCount} new master-list entries added.`);
+    wikipediaGroup = {
+      title: 'Wikidata ↔ Wikipedia joins',
+      description: `Cross-referenced against ${wp.stats.totalWikipediaRecords} records from \`data/wikipedia/{national-parks,wildlife-sanctuaries,tiger-reserves}.json\`.`,
+      sections: wp.sections,
+    };
+  } else {
+    console.warn('No Wikipedia records found under data/wikipedia/ -- run `npm run fetch && npm run parse:wikipedia` first to enable Wikipedia cross-reference. Skipping.');
+    wikipediaGroup = {
+      title: 'Wikidata ↔ Wikipedia joins',
+      description: 'Skipped -- no records found under `data/wikipedia/`. Run `npm run fetch && npm run parse:wikipedia` first.',
+      sections: [],
+    };
+  }
+
+  const osmCache = await loadOsmCache();
+  let osmGroup;
+  if (osmCache) {
+    console.log(`Loaded ${osmCache.features.length} OSM protected-area features from data/osm/protected-areas.csv.`);
+    const osm = await crossReferenceOsm(wikidataItems, osmCache);
+    console.log(`OSM cross-reference: ${osm.matchedCount} matched, ${osm.unmatchedWikidataCount} Wikidata items with no OSM match.`);
+    osmGroup = {
+      title: 'Wikidata ↔ OSM joins',
+      description: `Cross-referenced against \`data/osm/protected-areas.csv\` (${osm.issueCount} issues flagged).`,
+      sections: osm.sections,
+    };
+  } else {
+    console.warn('OSM cache not found at data/osm/protected-areas.csv -- run `npm run enrich:osm` first to enable OSM cross-reference. Skipping.');
+    osmGroup = {
+      title: 'Wikidata ↔ OSM joins',
+      description: 'Skipped -- no cache found at `data/osm/protected-areas.csv`. Run `npm run enrich:osm` first.',
+      sections: [],
+    };
+  }
+
+  await writeFile(QA_LOG_PATH, renderQaLog([wikipediaGroup, osmGroup], new Date().toISOString()), 'utf8');
+  console.log(`QA log written to ${QA_LOG_PATH}.`);
+
   await writeWikidataTable(wikidataItems);
 
   const match = buildMatcher(wikidataItems);
@@ -446,7 +328,7 @@ async function main() {
   const exact = linked.filter((r) => r.matchConfidence === 'exact').length;
   const fuzzy = linked.filter((r) => r.matchConfidence === 'fuzzy').length;
   const none = linked.filter((r) => r.matchConfidence === 'none').length;
-  console.log(`Linked ${linked.length} MoEF notification records to ${wikidataItems.length} Wikidata protected areas.`);
+  console.log(`Linked ${linked.length} MoEF notification records to ${wikidataItems.length} master protected-area records.`);
   console.log(`  matchConfidence exact: ${exact}`);
   console.log(`  matchConfidence fuzzy: ${fuzzy}`);
   console.log(`  matchConfidence none: ${none}`);

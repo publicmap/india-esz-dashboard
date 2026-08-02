@@ -1,6 +1,6 @@
 # scripts/plugins
 
-Standalone, ad-hoc scripts for filling gaps in `data/wikidata-protected-areas.csv` that
+Standalone, ad-hoc scripts for filling gaps in `data/wikidata/protected-areas.csv` that
 aren't part of the regular `npm run update` pipeline. Run manually, review the output,
 then paste QuickStatements batches in by hand — never applied automatically.
 
@@ -22,7 +22,7 @@ after spot-checking.
 
 ```
 node scripts/plugins/quickstatements-from-wikilinks.js \
-  --input data/wikidata-protected-areas.csv \
+  --input data/wikidata/protected-areas.csv \
   --output data/wikidata-protected-areas.state-suggestions.csv \
   --qs-output data/wikidata-protected-areas.state.qs.txt \
   --property P131 \
@@ -48,7 +48,7 @@ union territory > state:
 
 ```
 node scripts/plugins/quickstatements-from-wikilinks.js \
-  --input data/wikidata-protected-areas.csv \
+  --input data/wikidata/protected-areas.csv \
   --output data/wikidata-protected-areas.locatedInAdminTerritorialEntity-suggestions.csv \
   --qs-output data/wikidata-protected-areas.locatedInAdminTerritorialEntity.qs.txt \
   --property P131 \
@@ -118,4 +118,4 @@ reference to `Q328` (English Wikipedia), recording where the value came from.
    to apply the `high`/`medium` (or whatever `--min-confidence` was set to) edits to
    Wikidata.
 4. Re-run `npm run enrich:wikidata` (or the full `npm run update`) so the newly-filled
-   Wikidata values flow back into `data/wikidata-protected-areas.csv`.
+   Wikidata values flow back into `data/wikidata/protected-areas.csv`.

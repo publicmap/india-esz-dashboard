@@ -28,9 +28,19 @@ function findGeoreferencingLink(cache, orderNumber, notificationDate, protectedA
   return row?.['allmaps editor'] || null;
 }
 
+// Fallback for when a scan hasn't been georeferenced yet (no "allmaps
+// editor" link): the plain Allmaps image viewer for the matched archive.org
+// scan, so a user can at least locate the boundary map page and georeference
+// it themselves.
+function findAllmapsImagesLink(cache, orderNumber, notificationDate, protectedAreaName) {
+  const row = cache.find((r) => r.orderNumber === orderNumber && r.notificationDate === notificationDate
+    && r.protectedAreaName === protectedAreaName);
+  return row?.['allmaps images'] || null;
+}
+
 async function main() {
-  const wikidataPAs = JSON.parse(await readFile('data/wikidata-protected-areas.json', 'utf8'));
-  const moefRecords = JSON.parse(await readFile('data/moef-esz-notifications.json', 'utf8'));
+  const wikidataPAs = JSON.parse(await readFile('data/wikidata/protected-areas.json', 'utf8'));
+  const moefRecords = JSON.parse(await readFile('data/moef/esz-notifications.json', 'utf8'));
   const enrichmentCache = await loadCache('data/enrichment-cache.csv');
 
   const notificationsByWikidataId = new Map();
@@ -48,6 +58,7 @@ async function main() {
       notificationPdfLink: r.notificationPdfLink,
       notificationArchiveLink: r.notificationArchiveLink,
       georeferencingLink: findGeoreferencingLink(enrichmentCache, r.orderNumber, r.notificationDate, r.protectedAreaName),
+      allmapsImagesLink: findAllmapsImagesLink(enrichmentCache, r.orderNumber, r.notificationDate, r.protectedAreaName),
     };
     if (r.wikidataId) {
       const list = notificationsByWikidataId.get(r.wikidataId) || [];

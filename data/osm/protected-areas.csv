@@ -1,0 +1,695 @@
+osmType,osmId,osmUrl,name,nameEn,wikidata,wikipedia,boundary,protectClass,protectionTitle,operator,centroidLat,centroidLon,geometryType
+relation,21133531,https://www.openstreetmap.org/relation/21133531,Asola-Bhatti WLS ESZ,,,,protected_area,6,Eco-Sensitive Zone,,28.462935766641735,77.2192547614587,ST_MultiPolygon
+way,676591830,https://www.openstreetmap.org/way/676591830,Overa-Aru Wildlife Sanctuary,,Q101471239,en:Overa-Aru Wildlife Sanctuary,protected_area,4,,,34.11537970222867,75.25264123861584,ST_MultiPolygon
+way,676562810,https://www.openstreetmap.org/way/676562810,Lachipora WLS,,,,protected_area,4,,,34.2063375289428,74.06186028629386,ST_MultiPolygon
+relation,17946400,https://www.openstreetmap.org/relation/17946400,Hokersar WLS,,Q48724702,,protected_area,4,,,34.09367631398998,74.70976747866368,ST_MultiPolygon
+relation,17007574,https://www.openstreetmap.org/relation/17007574,دیوسائی نیشنل پارک,Deosai National Park,Q2641970,en:Deosai National Park,national_park,2,,,34.99185150548967,75.44652152396858,ST_MultiPolygon
+way,668472257,https://www.openstreetmap.org/way/668472257,Nandni WLS,,,,protected_area,4,,,32.85127442237924,74.95715032342213,ST_MultiPolygon
+way,676600422,https://www.openstreetmap.org/way/676600422,Limber WLS,,Q111181101,en:Limber Wildlife Sanctuary,protected_area,4,,,34.191843965127056,74.16570566190171,ST_MultiPolygon
+way,676588330,https://www.openstreetmap.org/way/676588330,Thajwas - Baltal Wildlife Sanctuary,,Q137254449,en:Baltal Thajwas Wildlife Sanctuary,protected_area,4,,,34.21342411979568,75.38127530326612,ST_MultiPolygon
+relation,15875773,https://www.openstreetmap.org/relation/15875773,Hirapora WLS,,Q17055079,en:Hirpora Wildlife Sanctuary,protected_area,4,,,33.602609859601195,74.62570438525664,ST_MultiPolygon
+way,666695328,https://www.openstreetmap.org/way/666695328,Inderkilla National Park,,Q31708488,en:Inderkilla National Park,national_park,2,,,32.26412668760995,77.30425543048358,ST_MultiPolygon
+relation,13836969,https://www.openstreetmap.org/relation/13836969,دیوا وٹالہ نیشنل پارک,Deva Vatala National Park,,,national_park,2,,,32.90144650606076,74.37119338147797,ST_MultiPolygon
+relation,9290782,https://www.openstreetmap.org/relation/9290782,Gamgul Siyabehi WLS,,Q5520164,,protected_area,4,,,32.87158810780112,75.88912818056471,ST_MultiPolygon
+way,668495014,https://www.openstreetmap.org/way/668495014,Jasrota WLS,,,,protected_area,4,,,32.48535762044989,75.39707180107467,ST_MultiPolygon
+way,126704884,https://www.openstreetmap.org/way/126704884,Dachigam National Park,,Q1156717,,national_park,2,,,34.129257344114244,75.02602089055021,ST_MultiPolygon
+way,676580959,https://www.openstreetmap.org/way/676580959,Rajparian (Daksum) WLS,,Q17138383,en:Rajparian Wildlife Sanctuary,protected_area,4,,,33.65699714159202,75.46894744801124,ST_MultiPolygon
+way,676577119,https://www.openstreetmap.org/way/676577119,Trikuta WLS,,,,protected_area,4,,,33.03559686848178,74.92483428616757,ST_MultiPolygon
+way,668415720,https://www.openstreetmap.org/way/668415720,Ramnagar Rakha WLS,,,,protected_area,4,,,32.779482152375664,74.86475150582355,ST_MultiPolygon
+way,668486755,https://www.openstreetmap.org/way/668486755,Surinsar Mansar WLS,,Q125881460,en:Mansar-Surinsar Lakes Wildlife Sanctuary,protected_area,4,,,32.7638093066886,75.07899384487796,ST_MultiPolygon
+way,668020617,https://www.openstreetmap.org/way/668020617,Kalatop- Khajjiar WLS,,Q6351618,en:Kalatop Khajjiar Sanctuary,protected_area,4,,,32.544312916821035,76.03184808464778,ST_MultiPolygon
+relation,9393690,https://www.openstreetmap.org/relation/9393690,Changthang Wildlife Sanctuary,Changthang Wildlife Sanctuary,Q26794303,en:Changthang Wildlife Sanctuary,protected_area,4,,,33.40250575357751,78.55779771343933,ST_MultiPolygon
+relation,9307207,https://www.openstreetmap.org/relation/9307207,Kathlaur Kushlian WLS,,Q136955738,en:Kathlaur Kushlian Wildlife Sanctuary,protected_area,4,,,32.25276321636779,75.43981709587118,ST_MultiPolygon
+relation,7255815,https://www.openstreetmap.org/relation/7255815,Maharana Pratap Sagar,Pong Dam Lake Wildlife Sanctuary,Q125881279,en:Pong Dam Lake Wildlife Sanctuary,protected_area,4,,,31.997218250610445,76.05431199536007,ST_MultiPolygon
+way,668024889,https://www.openstreetmap.org/way/668024889,Tundah WLS,,,,protected_area,4,,,32.588581122327426,76.50850400178099,ST_MultiPolygon
+way,114783253,https://www.openstreetmap.org/way/114783253,Hemis National Park,Hemis Naional Park,Q1604804,,national_park,2,,,33.70221760631798,77.38665343519632,ST_MultiPolygon
+relation,4144891,https://www.openstreetmap.org/relation/4144891,Kibber WLS,,Q135404156,en:Kibber Wildlife Sanctuary,protected_area,4,,,32.53179125371607,78.22019539177127,ST_MultiPolygon
+relation,12338888,https://www.openstreetmap.org/relation/12338888,อุทยานแห่งชาติน้ำตกแม่สุรินทร์,Namtok Mae Surin National Park,Q6652784,th:อุทยานแห่งชาติน้ำตกแม่สุรินทร์,national_park,2,,"Department of National Parks, Wildlife and Plant Conservation",19.121186205702077,98.0308272757626,ST_MultiPolygon
+way,121006318,https://www.openstreetmap.org/way/121006318,Dihing Patkai WLS,,Q5252276,en:Dehing Patkai National Park,protected_area,4,,,27.348353507467618,95.52939901670977,ST_MultiPolygon
+relation,5944551,https://www.openstreetmap.org/relation/5944551,อุทยานแห่งชาติถ้ำปลา-น้ำตกผาเสื่อ,Tham Pla-Namtok Pha Suea National Park,Q12674971,,national_park,2,,"Department of National Parks, Wildlife and Plant Conservation",19.509379369011125,97.9615164355882,ST_MultiPolygon
+way,667926108,https://www.openstreetmap.org/way/667926108,Kais WLS,,,,protected_area,4,,,32.02034931891636,77.17477641372267,ST_MultiPolygon
+way,667906690,https://www.openstreetmap.org/way/667906690,Manali WLS,,Q6746838,en:Manali Sanctuary,protected_area,4,,,32.243787434612024,77.12409450444618,ST_MultiPolygon
+way,678579869,https://www.openstreetmap.org/way/678579869,Khirganga National Park,,Q31708713,en:Khirganga National Park,national_park,2,,,32.02427861268982,77.60218708260611,ST_MultiPolygon
+relation,9291077,https://www.openstreetmap.org/relation/9291077,Sech Tuan Nala WLS,,Q137008771,en:Sechu Tuan Nala Wildlife Sanctuary,protected_area,4,,,33.01028911207909,76.66032407751128,ST_MultiPolygon
+way,126673985,https://www.openstreetmap.org/way/126673985,Kishtwar National Park,,Q727091,,national_park,2,,,33.56245314528108,76.00880522907188,ST_MultiPolygon
+relation,5944550,https://www.openstreetmap.org/relation/5944550,อุทยานแห่งชาติสาละวิน,Salawin National Park,Q5247288,,national_park,2,,"Department of National Parks, Wildlife and Plant Conservation",18.171178993896188,97.76096552069168,ST_MultiPolygon
+way,679428455,https://www.openstreetmap.org/way/679428455,Mouling National Park,Mouling National Park,Q3143047,,national_park,2,,,28.588438537519895,94.85443359720584,ST_MultiPolygon
+way,668203208,https://www.openstreetmap.org/way/668203208,Mehao WLS,,Q107324541,en:Mehao Wildlife Sanctuary,protected_area,4,,,28.17011335195698,95.92752148403353,ST_MultiPolygon
+way,668132126,https://www.openstreetmap.org/way/668132126,D’Ering Memorial (Lali) WLS,,Q85755050,en:D'Ering Memorial Wildlife Sanctuary,protected_area,4,,,27.964690116105636,95.42739784545756,ST_MultiPolygon
+way,668128310,https://www.openstreetmap.org/way/668128310,Tale Valley WLS,,Q17033744,Talle Valley Wildlife Sanctuary,protected_area,4,,,27.57116791560988,94.03820629060709,ST_MultiPolygon
+way,677464198,https://www.openstreetmap.org/way/677464198,Sessa Orchid WLS,,Q15276427,en:Sessa Orchid Sanctuary,protected_area,4,,,27.112737684219567,92.48859921128317,ST_MultiPolygon
+way,668303776,https://www.openstreetmap.org/way/668303776,Eagle Nest WLS,,Q3471771,,protected_area,4,,,27.066009699193266,92.42157350453346,ST_MultiPolygon
+way,677462582,https://www.openstreetmap.org/way/677462582,Pakhui Tiger Reserve,Pakhui Tiger Reserve,Q7125480,,protected_area,4,,,27.100036211334853,92.85031480923749,ST_MultiPolygon
+way,677458098,https://www.openstreetmap.org/way/677458098,Itanagar WLS,,Q107313635,en:Itanagar Wildlife Sanctuary,protected_area,4,,,27.161330101348977,93.629864003684,ST_MultiPolygon
+way,679536244,https://www.openstreetmap.org/way/679536244,Nameri National Park/Tiger Reserve,,Q2989157,,national_park,2,,,26.968530779661812,92.8297376072559,ST_MultiPolygon
+way,668135085,https://www.openstreetmap.org/way/668135085,Kamlang WLS/Tiger Reserve,,Q22231355,en:Kamlang Wildlife Sanctuary,protected_area,4,,,27.751647703814033,96.5843206026278,ST_MultiPolygon
+way,668124975,https://www.openstreetmap.org/way/668124975,Kane WLS,,Q130974168,en:Kane Wildlife Sanctuary,protected_area,4,,,27.673258534193174,94.63390349290215,ST_MultiPolygon
+relation,9483703,https://www.openstreetmap.org/relation/9483703,Kaziranga National Park,,Q192764,en:Kaziranga National Park,national_park,2,,,26.64080834103373,93.34771339482354,ST_MultiPolygon
+way,668979382,https://www.openstreetmap.org/way/668979382,Sonai Rupai Wildlife Sanctuary (WLS),Sonai Rupai Wildlife Sanctuary (WLS),Q3490050,,protected_area,4,,,26.911998056526205,92.47445374591179,ST_MultiPolygon
+way,668518794,https://www.openstreetmap.org/way/668518794,Lawkhowa WLS,,Q3217688,,protected_area,4,,,26.504354272265626,92.71031797075587,ST_MultiPolygon
+way,677495329,https://www.openstreetmap.org/way/677495329,North Karbi Anglong WLS,,,,protected_area,4,,,26.450355335468537,93.32582775409513,ST_MultiPolygon
+way,120851795,https://www.openstreetmap.org/way/120851795,Dibru-Saikhowa National Park,,Q1209353,,national_park,2,,,27.662306219435173,95.36000709719205,ST_MultiPolygon
+way,677511689,https://www.openstreetmap.org/way/677511689,Pani-Dihing Bird WLS,,Q14623377,en:Pani Dihing Wildlife Sanctuary,protected_area,4,,,27.110692977955786,94.62363497900981,ST_MultiPolygon
+way,178119226,https://www.openstreetmap.org/way/178119226,Burachapori WLS,,Q2928293,en:Bura Chapori Wildlife Sanctuary,protected_area,4,,,26.53127347583245,92.70349454252407,ST_MultiPolygon
+way,681093097,https://www.openstreetmap.org/way/681093097,Zeilad WLS,,,,protected_area,4,,,24.906556979938713,93.36908732471119,ST_MultiPolygon
+way,666320344,https://www.openstreetmap.org/way/666320344,Keibul Lamjao National Park,,Q1737898,,national_park,2,,,24.48486053280716,93.84316725085554,ST_MultiPolygon
+way,666444919,https://www.openstreetmap.org/way/666444919,Rowa Wild Life Sanctuary,,Q7371766,en:Rowa Wildlife Sanctuary,protected_area,4,,,24.292926051795078,92.16562487458934,ST_MultiPolygon
+way,677509353,https://www.openstreetmap.org/way/677509353,Garampani WLS,,Q5521913,en:Garampani Wildlife Sanctuary,protected_area,4,,,26.38651860028613,93.87879780140094,ST_MultiPolygon
+way,678240790,https://www.openstreetmap.org/way/678240790,Fakim WLS,,Q106513444,en:Fakim Wildlife Sanctuary,protected_area,4,,,25.851498945700158,94.97459974770096,ST_MultiPolygon
+way,678242452,https://www.openstreetmap.org/way/678242452,Puliebadze WLS,,Q109974258,en:Pulie Badze Wildlife Sanctuary,protected_area,4,,,25.610251064529482,94.06255321438002,ST_MultiPolygon
+way,678447674,https://www.openstreetmap.org/way/678447674,Sirohi National Park,,Q3364480,en:Shirui National Park,national_park,2,,,25.10079678932041,94.45475436702472,ST_MultiPolygon
+way,663161490,https://www.openstreetmap.org/way/663161490,Pualreng WLS,,Q135412386,en:Pualreng Wildlife Sanctuary,protected_area,4,,,24.176735541216768,92.86585746555673,ST_MultiPolygon
+relation,8756010,https://www.openstreetmap.org/relation/8756010,Intangki National Park,,Q3091771,,national_park,2,,,25.580063968222923,93.4582223141674,ST_MultiPolygon
+way,677489261,https://www.openstreetmap.org/way/677489261,Marat Longri WLS,,Q130661062,en:Marat Longri Wildlife Sanctuary,protected_area,4,,,25.89301077851011,93.28508631851146,ST_MultiPolygon
+way,683044032,https://www.openstreetmap.org/way/683044032,Baghmara Pitcher Plant WLS,,Q116044246,en:Baghmara Pitcher Plant Wildlife Sanctuary,protected_area,4,,,25.19819017188046,90.63866000227802,ST_MultiPolygon
+relation,1665597,https://www.openstreetmap.org/relation/1665597,Orang National Park,,Q2989176,,national_park,2,,,26.552520368603314,92.32256542810097,ST_MultiPolygon
+relation,9300496,https://www.openstreetmap.org/relation/9300496,Barail WLS,,Q19326278,en:Borail Wildlife Sanctuary,protected_area,4,,,25.061148663961326,92.6825539773219,ST_MultiPolygon
+way,666517430,https://www.openstreetmap.org/way/666517430,Nongkhyllem WLS,,Q61363881,en:Nongkhyllem Wildlife Sanctuary,protected_area,4,,,25.872323724610265,91.77741349672701,ST_MultiPolygon
+way,1012210623,https://www.openstreetmap.org/way/1012210623,সাতছড়ি জাতীয় উদ্যান,Satchari National Park,,,protected_area,2,National Park,Forest Department,24.119405195661965,91.45346493425338,ST_MultiPolygon
+way,1012210649,https://www.openstreetmap.org/way/1012210649,ভাওয়াল জাতীয় উদ্যান,Bhawal National Park,,,protected_area,4,National Park,Forest Department,24.10760760659601,90.41472605665433,ST_MultiPolygon
+relation,13551524,https://www.openstreetmap.org/relation/13551524,রামসাগর জাতীয় উদ্যান,Ramsagar National Park,,,protected_area,4,National Park,Forest Department,25.55487932650068,88.6236830036448,ST_MultiPolygon
+way,666514702,https://www.openstreetmap.org/way/666514702,Narpuh WLS,,Q137223381,en:Narpuh Wildlife Sanctuary,protected_area,4,,,25.11628723580223,92.44629417109094,ST_MultiPolygon
+way,681474779,https://www.openstreetmap.org/way/681474779,Jiri-Makru WLS,,Q137223329,en:Jiri-Makru Wildlife Sanctuary,protected_area,4,,,25.20521635914032,93.4220416904481,ST_MultiPolygon
+way,666520643,https://www.openstreetmap.org/way/666520643,Rangapahar WLS,,Q137591486,en:Rangapahar Wildlife Sanctuary,protected_area,4,,,25.855621625999195,93.7193171776668,ST_MultiPolygon
+way,677493281,https://www.openstreetmap.org/way/677493281,East Karbi Anglong WLS,,Q19361520,en:East Karbi-Anglong Wildlife Sanctuary,protected_area,4,,,25.92335714851393,93.38370821310602,ST_MultiPolygon
+relation,13551525,https://www.openstreetmap.org/relation/13551525,নবাবগঞ্জ জাতীয় উদ্যান,Nababganj National Park,,,protected_area,4,National Park,Forest Department,25.42907537249815,89.05147800667675,ST_MultiPolygon
+way,678844487,https://www.openstreetmap.org/way/678844487,Raiganj WLS,,Q7283821,en:Raiganj Wildlife Sanctuary,protected_area,4,,,25.64248279134797,88.12176514659477,ST_MultiPolygon
+way,678848509,https://www.openstreetmap.org/way/678848509,Senchal WLS,,Q7450103,en:Senchal Wildlife Sanctuary,protected_area,4,,,26.987553503566183,88.28938918153065,ST_MultiPolygon
+way,683079843,https://www.openstreetmap.org/way/683079843,Gorumara National Park,,Q2985148,,national_park,2,,,26.749177958801873,88.80901685321328,ST_MultiPolygon
+relation,9462744,https://www.openstreetmap.org/relation/9462744,Buxa WLS,,,,protected_area,4,,,26.72172491267006,89.61809127111029,ST_MultiPolygon
+way,349543531,https://www.openstreetmap.org/way/349543531,Chakrashila WLS,,Q5068408,en:Chakrashila Wildlife Sanctuary,protected_area,4,,,26.330129139878082,90.32755363723953,ST_MultiPolygon
+way,110534257,https://www.openstreetmap.org/way/110534257,Nokrek National Park,,Q3174875,,national_park,2,,,25.46584411853164,90.36105489529693,ST_MultiPolygon
+way,1012210637,https://www.openstreetmap.org/way/1012210637,খাদিমনগর জাতীয় উদ্যান,Khadimnagar National Park,Q16345294,en:Khadim Nagar National Park,protected_area,4,National Park,Forest Department,24.953882322461823,91.94589804908178,ST_MultiPolygon
+way,678830535,https://www.openstreetmap.org/way/678830535,Jorepokhri Salamander WLS,,Q6277572,en:Jore Pokhri Wildlife Sanctuary,protected_area,4,,,26.991235104771253,88.15726073321522,ST_MultiPolygon
+way,668960167,https://www.openstreetmap.org/way/668960167,Chapramari WLS,,Q5073423,en:Chapramari Wildlife Sanctuary,protected_area,4,,,26.89986105115275,88.84372326108642,ST_MultiPolygon
+relation,9462851,https://www.openstreetmap.org/relation/9462851,Jaldapara National Park,,Q3350362,,national_park,2,,,26.67472313485194,89.3229066583148,ST_MultiPolygon
+relation,9447819,https://www.openstreetmap.org/relation/9447819,,,Q19361617,en:Amchang Wildlife Sanctuary,protected_area,4,,,26.173374206665674,91.90136617720583,ST_MultiPolygon
+relation,9471841,https://www.openstreetmap.org/relation/9471841,Manas Tiger Reserve,,,,protected_area,4,,,26.733116076472886,90.61602089392734,ST_MultiPolygon
+way,667650446,https://www.openstreetmap.org/way/667650446,Fambong Lho Wildlife Sanctuary,,Q3471769,fr:Sanctuaire faunique de Fambong Lho,protected_area,4,Wildlife Sanctuary,,27.33144535451671,88.53330857670848,ST_MultiPolygon
+way,677514328,https://www.openstreetmap.org/way/677514328,Deepor Beel WLS,,Q136289030,en:Deepar Beel Wildlife Sanctuary,protected_area,4,,,26.122386437682966,91.64704733744647,ST_MultiPolygon
+way,126713905,https://www.openstreetmap.org/way/126713905,Manas National Park,,Q506511,,national_park,2,,,26.730131187663016,91.00114467539557,ST_MultiPolygon
+way,668983924,https://www.openstreetmap.org/way/668983924,Kyongnosla Alpine WLS,,Q6452052,en:Kyongnosla Alpine Sanctuary,protected_area,4,,,27.396316515520528,88.73740016382183,ST_MultiPolygon
+relation,13604578,https://www.openstreetmap.org/relation/13604578,সিংড়া জাতীয় উদ্যান,Singra National Park,,,protected_area,4,National Park,Forest Department,25.891808731796758,88.56420341476165,ST_MultiPolygon
+way,678834890,https://www.openstreetmap.org/way/678834890,Mahananda WLS,,Q15243705,en:Mahananda Wildlife Sanctuary,protected_area,4,,,26.855087346618067,88.41761729780231,ST_MultiPolygon
+relation,19877145,https://www.openstreetmap.org/relation/19877145,Sikhwna Jwhwlao National Park,,,,protected_area,2,,,26.771045234114098,90.33252181346191,ST_MultiPolygon
+relation,12544896,https://www.openstreetmap.org/relation/12544896,Pangolakha WLS,,,,protected_area,4,,,27.270050125015697,88.8309575711121,ST_MultiPolygon
+way,668995728,https://www.openstreetmap.org/way/668995728,Maenam WLS,,Q17051622,en:Maenam Wildlife Sanctuary,protected_area,4,,,27.362772057703562,88.39775965247901,ST_MultiPolygon
+relation,9258262,https://www.openstreetmap.org/relation/9258262,Singalila National Park,,Q2985193,,national_park,2,,,27.130594215182786,88.03685407421916,ST_MultiPolygon
+way,668997428,https://www.openstreetmap.org/way/668997428,Shingba Rhododendron WLS,,Q7497442,en:Shingba Rhododendron Sanctuary,protected_area,4,,,27.759866883281784,88.72946381154195,ST_MultiPolygon
+way,666282774,https://www.openstreetmap.org/way/666282774,Neora Valley National Park,,Q2985788,,national_park,2,,,27.06571026046942,88.75054938077152,ST_MultiPolygon
+way,668999183,https://www.openstreetmap.org/way/668999183,Kitam Bird WLS,,Q106257541,en:Kitam Bird Sanctuary,protected_area,4,,,27.110076988336534,88.35373139510224,ST_MultiPolygon
+relation,3895850,https://www.openstreetmap.org/relation/3895850,Khangchendzonga National Park,,Q2605019,en:Khangchendzonga National Park,national_park,2,,,27.664856620086134,88.31138847282983,ST_MultiPolygon
+way,311542207,https://www.openstreetmap.org/way/311542207,Yagyadol (Jagdol) Community Forest,,,,protected_area,6,,,27.74061266589518,85.38325991819329,ST_MultiPolygon
+relation,9284290,https://www.openstreetmap.org/relation/9284290,Barsey Rhododendron WLS,,Q16902550,en:Varsey Rhododendron Sanctuary,protected_area,4,,,27.211766346434572,88.1127738227291,ST_MultiPolygon
+relation,15046364,https://www.openstreetmap.org/relation/15046364,मकालु बरुण राष्ट्रिय निकुञ्‍ज,Makalu Barun National Park,,,national_park,2,,,27.729859465894926,87.07127904596948,ST_MultiPolygon
+relation,4815272,https://www.openstreetmap.org/relation/4815272,पर्सा राष्ट्रिय निकुञ्‍ज,Parsa National Park,Q4351857,ne:पर्सा राष्ट्रिय निकुञ्ज,national_park,2,,,27.35339366613468,84.81655764283217,ST_MultiPolygon
+relation,4860664,https://www.openstreetmap.org/relation/4860664,शिवपुरी नागार्जुन राष्ट्रिय निकुञ्‍ज,ShivaPuri Nagarjuna National Park,,,national_park,2,,,27.799580065671794,85.39652118949839,ST_MultiPolygon
+relation,7569314,https://www.openstreetmap.org/relation/7569314,कोशी टप्पु वन्यजन्तु आरक्ष,Koshi Tappu Wildlife Reserve,Q6433109,en:Koshi Tappu Wildlife Reserve,protected_area,4,nature_reserve,,26.6495285928638,86.99657242523098,ST_MultiPolygon
+relation,6083166,https://www.openstreetmap.org/relation/6083166,चितवन राष्ट्रिय निकुञ्‍ज,Chitwan National Park,Q1075023,en:Chitwan National Park,national_park,2,,,27.50164872824338,84.37327793336871,ST_MultiPolygon
+relation,2640060,https://www.openstreetmap.org/relation/2640060,Valmiki WLS/Tiger Reserve,,,,protected_area,4,,,27.368851146545442,84.22002480008894,ST_MultiPolygon
+way,668848106,https://www.openstreetmap.org/way/668848106,Vikramshila Gangetic Dolphin WLS,,Q7929607,en:Vikramshila Gangetic Dolphin Sanctuary,protected_area,4,,,25.286669773177024,86.99808047421605,ST_MultiPolygon
+relation,9285351,https://www.openstreetmap.org/relation/9285351,Udhwa Lake WLS,,,,protected_area,4,,,24.996125083295883,87.81017474133417,ST_MultiPolygon
+way,668850029,https://www.openstreetmap.org/way/668850029,Udaipur WLS,,Q18355976,en:Udaypur Wildlife Sanctuary,protected_area,4,,,26.803220593958603,84.4309917699001,ST_MultiPolygon
+way,668864873,https://www.openstreetmap.org/way/668864873,Bhimbandh WLS,,Q15198953,en:Bhimbandh Wildlife Sanctuary,protected_area,4,,,25.11017508963549,86.39390695972527,ST_MultiPolygon
+way,668877723,https://www.openstreetmap.org/way/668877723,Nagi Dam WLS,,Q104868515,en:Nagi Bird Sanctuary,protected_area,4,,,24.814188503865072,86.40669711779726,ST_MultiPolygon
+way,668763979,https://www.openstreetmap.org/way/668763979,Pant (Rajgir) WLS,,Q85846882,en:Pant Wildlife Sanctuary,protected_area,4,,,24.9923498837226,85.42125327618254,ST_MultiPolygon
+way,669561156,https://www.openstreetmap.org/way/669561156,Koderma WLS,,Q104822465,en:Koderma Wildlife Sanctuary,protected_area,4,,,24.52609528264691,85.59213710085976,ST_MultiPolygon
+way,668838321,https://www.openstreetmap.org/way/668838321,Barela Jheel Salim Ali Bird WLS,,Q130974238,en:Barela Bird Sanctuary,protected_area,4,,,25.764852012467724,85.5529521751868,ST_MultiPolygon
+way,668879024,https://www.openstreetmap.org/way/668879024,Nakti Dam WLS,,Q130974254,en:Nakti Dam Wildlife Sanctuary,protected_area,4,,,24.847233116471532,86.44841838198019,ST_MultiPolygon
+relation,19887410,https://www.openstreetmap.org/relation/19887410,Rajauli Wildlife Sanctuary,,,,protected_area,4,,,24.620429081933075,85.63408033184237,ST_MultiPolygon
+way,155440967,https://www.openstreetmap.org/way/155440967,Hazaribag WLS,,Q5687761,en:Hazaribagh Wildlife Sanctuary,protected_area,4,,,24.136951376140352,85.35768092234103,ST_MultiPolygon
+relation,2640059,https://www.openstreetmap.org/relation/2640059,Valmiki National park,,Q2428291,en:Valmiki National Park,national_park,2,,,27.40726017083055,84.11809142580653,ST_MultiPolygon
+way,155697612,https://www.openstreetmap.org/way/155697612,Kanwarjheel WLS,,Q6365748,en:Kanwar Lake Bird Sanctuary,protected_area,4,,,25.62108280230482,86.13802132026822,ST_MultiPolygon
+way,667689530,https://www.openstreetmap.org/way/667689530,Gautam Buddha WLS,,Q18343586,en:Gautam Budha Wildlife Sanctuary,protected_area,4,,,24.42013609673286,85.18643275517206,ST_MultiPolygon
+relation,6594441,https://www.openstreetmap.org/relation/6594441,,Kachhua WLS,Q6344663,en:Kachhua Sanctuary,protected_area,4,,,25.298972015197663,83.01829912064254,ST_MultiPolygon
+way,668769113,https://www.openstreetmap.org/way/668769113,Kaimur WLS,,Q15232550,en:Kaimur Wildlife Sanctuary,protected_area,4,,,24.747822665335715,83.67746364097776,ST_MultiPolygon
+way,678653439,https://www.openstreetmap.org/way/678653439,Dr. Bhimrao Ambedkar Bird WLS,,,,protected_area,4,,,25.66042175307873,81.48943599284019,ST_MultiPolygon
+way,677840992,https://www.openstreetmap.org/way/677840992,Lawalong WLS,,Q105044248,en:Lawalong Wildlife Sanctuary,protected_area,4,,,24.226476418210954,84.51577584554761,ST_MultiPolygon
+way,668732919,https://www.openstreetmap.org/way/668732919,Jai Prakash Narayan (Surhatal) Bird WLS,,Q137699192,en:Surha Tal Bird Sanctuary,protected_area,4,,,25.840044310985032,84.16945306379748,ST_MultiPolygon
+way,668730043,https://www.openstreetmap.org/way/668730043,Chandraprabha WLS,,Q5071304,en:Chandra Prabha Wildlife Sanctuary,protected_area,4,,,24.93643797120327,83.11980080605949,ST_MultiPolygon
+relation,9301969,https://www.openstreetmap.org/relation/9301969,Ranipur WLS,,Q7293072,en:Ranipur Wildlife Sanctuary,protected_area,4,,,24.96276029609301,81.05904346034987,ST_MultiPolygon
+way,668869624,https://www.openstreetmap.org/way/668869624,Gautam Buddha WLS,,,,protected_area,4,,,24.46020333676574,85.1090748564063,ST_MultiPolygon
+way,669274355,https://www.openstreetmap.org/way/669274355,Son Gharial WLS,,Q132126728,en:Son Gharial Wildlife Sanctuary,protected_area,4,,,24.46930166020322,82.08829385302009,ST_MultiPolygon
+way,669367044,https://www.openstreetmap.org/way/669367044,Bagdara WLS,,Q131995100,en:Bagdara Wildlife Sanctuary,protected_area,4,,,24.610057600320697,82.57862346109142,ST_MultiPolygon
+way,668643371,https://www.openstreetmap.org/way/668643371,Kaimur WLS,,Q15982945,en:Kaimoor Wildlife Sanctuary,protected_area,4,,,24.687117684034654,82.73824142399954,ST_MultiPolygon
+relation,1765046,https://www.openstreetmap.org/relation/1765046,Bakhira WLS,,Q4251269,en:Bakhira Sanctuary,protected_area,4,,,26.903278363199274,83.13901313456941,ST_MultiPolygon
+relation,9302654,https://www.openstreetmap.org/relation/9302654,Sohelwa WLS,,Q7635241,en:Suhelva Sanctuary,protected_area,4,,,27.735712214321396,82.35941263532037,ST_MultiPolygon
+way,677915138,https://www.openstreetmap.org/way/677915138,Panna (Gangau) WLS,,,,protected_area,4,,,24.679686987649728,80.08655614944001,ST_MultiPolygon
+way,668659818,https://www.openstreetmap.org/way/668659818,Samaspur Bird WLS,,Q7408881,en:Samaspur Bird Sanctuary,protected_area,4,,,25.993333937239115,81.39124787276826,ST_MultiPolygon
+relation,9302381,https://www.openstreetmap.org/relation/9302381,Parvati Aranga WLS,,Q48729855,en:Parvati Arga Bird Sanctuary,protected_area,4,,,26.93255430668715,82.16002812236177,ST_MultiPolygon
+relation,1765042,https://www.openstreetmap.org/relation/1765042,Sohagibarwa WLS,,Q7554593,en:Sohagi Barwa Wildlife Sanctuary,protected_area,4,,,27.28715289861052,83.54598261794537,ST_MultiPolygon
+relation,9424049,https://www.openstreetmap.org/relation/9424049,Askot Musk Deer Wildlife Sanctuary,,Q4807241,,protected_area,4,,,29.995644356537845,80.53494288942927,ST_MultiPolygon
+relation,10458351,https://www.openstreetmap.org/relation/10458351,शुक्लाफाँट राष्ट्रिय निकुञ्‍ज,Shukla Phanta National Park,,,national_park,2,,,28.866537329995417,80.24051780222867,ST_MultiPolygon
+way,669401054,https://www.openstreetmap.org/way/669401054,Ken Gharial Sanctuary,,Q65090978,en:Ken Gharial Sanctuary,protected_area,4,,,24.881045755124347,80.05395413231797,ST_MultiPolygon
+relation,8452444,https://www.openstreetmap.org/relation/8452444,Nawabganj WLS,,Q6982793,en:Nawabganj Bird Sanctuary,protected_area,4,,,26.614511236330717,80.65782270651081,ST_MultiPolygon
+relation,9039844,https://www.openstreetmap.org/relation/9039844,Kishanpur WLS,,Q6416552,en:Kishanpur Wildlife Sanctuary,protected_area,4,,,28.300282052546763,80.41509360703998,ST_MultiPolygon
+way,323146126,https://www.openstreetmap.org/way/323146126,ढोरपाटन शिकार आरक्ष,Dhorpatan Hunting Reserve,Q5269784,,protected_area,4,Hunting Reserve,,28.643673548882653,83.00117662175803,ST_MultiPolygon
+relation,8777786,https://www.openstreetmap.org/relation/8777786,Govind Pashu Vihar National Park,,Q5589844,,national_park,2,,,31.17128658533069,78.26562767198742,ST_MultiPolygon
+relation,9474608,https://www.openstreetmap.org/relation/9474608,Pilibhit Tiger Reserve,,Q7193996,en:Pilibhit Tiger Reserve,protected_area,4,,,28.634738569524785,80.02011578499929,ST_MultiPolygon
+relation,1268964,https://www.openstreetmap.org/relation/1268964,लाङ्टाङ् राष्ट्रिय निकुञ्‍ज,Langtang National Park,Q4351267,,national_park,2,,,28.139680093393952,85.56823470910098,ST_MultiPolygon
+way,1124671305,https://www.openstreetmap.org/way/1124671305,अपि नम्पा संरक्षण क्षेत्र,Api Nampa Conservation Area,,,protected_area,6,Conservation Area,,29.919886501932787,80.85275926934926,ST_MultiPolygon
+relation,2713675,https://www.openstreetmap.org/relation/2713675,Gangotri National Park,Gangotri National Park,Q2281202,en:Gangotri National Park,national_park,2,,,31.075505841105265,79.1146251648848,ST_MultiPolygon
+way,677753030,https://www.openstreetmap.org/way/677753030,Rupi Bhaba WLS,,Q136289123,en:Rupi Bhaba Wildlife Sanctuary,protected_area,4,,,31.711183881901555,77.98336250536484,ST_MultiPolygon
+way,667924651,https://www.openstreetmap.org/way/667924651,Nargu WLS,,Q6965894,en:Nargu Wildlife Sanctuary,protected_area,4,,,31.979146520674224,76.98383740297645,ST_MultiPolygon
+way,667701970,https://www.openstreetmap.org/way/667701970,Bandli WLS,,Q123292405,en:Bandli Wildlife Sanctuary,protected_area,4,,,31.450066322126684,76.90882910279612,ST_MultiPolygon
+way,669088005,https://www.openstreetmap.org/way/669088005,Jhajjar Bacholi WLS,,,,protected_area,4,,,31.26495916607692,76.51953771500048,ST_MultiPolygon
+way,669107628,https://www.openstreetmap.org/way/669107628,Nangal WLS,,Q109905245,en:Nangal Wildlife Sanctuary,protected_area,4,,,31.401342647802085,76.37733933027066,ST_MultiPolygon
+way,677724717,https://www.openstreetmap.org/way/677724717,Sukhna Lake WLS,,Q23995986,Sukhna Wildlife Sanctuary,protected_area,4,,,30.772569648383644,76.85047660512092,ST_MultiPolygon
+way,668022081,https://www.openstreetmap.org/way/668022081,Sangla Valley (Rakchham Chitkul) Wildlife Sanctuary,,Q137027173,en:Rakchham Chitkul Wildlife Sanctuary,protected_area,4,,,31.34762171708049,78.39629337739733,ST_MultiPolygon
+way,114792469,https://www.openstreetmap.org/way/114792469,Pin Valley National Park,,Q14229383,,national_park,2,,,31.9726089014736,77.88796643452488,ST_MultiPolygon
+way,162361280,https://www.openstreetmap.org/way/162361280,Sainj Wildlife Sanctuary,,,,protected_area,4,,,31.818706062706763,77.50744670066766,ST_MultiPolygon
+way,667904630,https://www.openstreetmap.org/way/667904630,Khokhan WLS,,,,protected_area,4,,,31.85301846245103,77.08181262404513,ST_MultiPolygon
+way,667870724,https://www.openstreetmap.org/way/667870724,Majathal WLS,,Q6738481,en:Majthal Sanctuary,protected_area,4,,,31.305016608358756,76.96540374708195,ST_MultiPolygon
+way,667918737,https://www.openstreetmap.org/way/667918737,Shikari Devi Wildlife Sanctuary,,,,protected_area,4,,,31.489716657020608,77.16726839739839,ST_MultiPolygon
+relation,9424123,https://www.openstreetmap.org/relation/9424123,Govind Pashu Vihar WLS,,Q3174886,,protected_area,4,,,31.111580432041798,78.34827026943923,ST_MultiPolygon
+way,667860495,https://www.openstreetmap.org/way/667860495,Lippa Assrang WLS,,,,protected_area,4,,,31.677587513271586,78.28157421181993,ST_MultiPolygon
+relation,8815513,https://www.openstreetmap.org/relation/8815513,Great Himalayan National Park,,Q1544213,,national_park,2,,,31.79712787108846,77.62575889621581,ST_MultiPolygon
+way,667877344,https://www.openstreetmap.org/way/667877344,Himalayan Nature Park Kufri,,Q108527080,,protected_area,4,,,31.102401574548928,77.2413861265195,ST_MultiPolygon
+way,667868257,https://www.openstreetmap.org/way/667868257,Chail Wildlife Sanctuary,,Q5067785,en:Chail Sanctuary,protected_area,4,,,30.961122872225413,77.19966172921595,ST_MultiPolygon
+way,669103475,https://www.openstreetmap.org/way/669103475,Bir Bhadson WLS,,,,protected_area,4,,,30.513953235442145,76.2164569610487,ST_MultiPolygon
+way,129553511,https://www.openstreetmap.org/way/129553511,City Bird Sanctuary,City Bird Sanctuary,Q21997171,"Parrot Bird Sanctuary, Chandigarh",protected_area,4,,,30.72887360861117,76.7798477753018,ST_MultiPolygon
+way,668498256,https://www.openstreetmap.org/way/668498256,Morni Hills (Khol-Hi-Raitan) WLS,,Q17002860,en:Khol Hi-Raitan Wildlife Sanctuary,protected_area,4,,,30.704901393153605,76.94268500658487,ST_MultiPolygon
+way,43745290,https://www.openstreetmap.org/way/43745290,Bir Motibagh WLS,,,,protected_area,4,,,30.290713339650903,76.39865851107619,ST_MultiPolygon
+relation,9300145,https://www.openstreetmap.org/relation/9300145,Kalesar WLS,,,,protected_area,4,,,30.36419389492306,77.50166589982511,ST_MultiPolygon
+relation,8815465,https://www.openstreetmap.org/relation/8815465,Rajaji National Park/Tiger Reserve,,Q181933,,national_park,2,,,30.062520530895117,78.11247206746968,ST_MultiPolygon
+way,681258821,https://www.openstreetmap.org/way/681258821,Mussoorie WLS,,Q130974135,en:Mussoorie Wildlife Sanctuary,protected_area,4,,,30.482691852087417,78.01378467639218,ST_MultiPolygon
+way,669084478,https://www.openstreetmap.org/way/669084478,Abohar WLS,,Q110078182,en:Abohar Wildlife Sanctuary,protected_area,4,,,30.02984150098447,74.33183622498427,ST_MultiPolygon
+way,668504384,https://www.openstreetmap.org/way/668504384,Bir Shikargarh WLS,,Q17002798,en:Bir Shikargarh Wildlife Sanctuary,protected_area,4,,,30.770856424181062,76.96678635629243,ST_MultiPolygon
+way,636554073,https://www.openstreetmap.org/way/636554073,Bir Bhunerheri WLS,,Q136707825,en:Bir Bunerheri Wildlife Sanctuary,protected_area,4,,,30.189789682873382,76.46186268995643,ST_MultiPolygon
+way,666664869,https://www.openstreetmap.org/way/666664869,Kalesar National Park,,Q2985156,en:Kalesar National Park,national_park,2,,,30.386802303440515,77.5369937042386,ST_MultiPolygon
+relation,3014915,https://www.openstreetmap.org/relation/3014915,Kedarnath WLS,Kedarnath Wildlife Sanctuary,Q6382549,en:Kedarnath Wildlife Sanctuary,protected_area,4,,,30.609155580384417,79.18830665454273,ST_MultiPolygon
+way,126758723,https://www.openstreetmap.org/way/126758723,Nanda Devi National Park,,Q1648266,,national_park,2,,,30.41106105039245,79.85997308456217,ST_MultiPolygon
+relation,9298034,https://www.openstreetmap.org/relation/9298034,Binsar WLS,,Q3635045,,protected_area,4,,,29.6992180669439,79.75527985165161,ST_MultiPolygon
+way,678758041,https://www.openstreetmap.org/way/678758041,Sonanadi WLS,,Q137699186,en:Sonanadi Wildlife Sanctuary,protected_area,4,,,29.643331830930354,78.65008759637362,ST_MultiPolygon
+way,668611261,https://www.openstreetmap.org/way/668611261,Hastinapur WLS,,Q5680205,en:Hastinapur Wildlife Sanctuary,protected_area,4,,,29.196247341982286,78.08938526115364,ST_MultiPolygon
+way,28208892,https://www.openstreetmap.org/way/28208892,Okhla Bird Sanctuary,,Q7081968,en:Okhla Sanctuary,protected_area,4,,Forest Department Government of Uttar Pradesh,28.558832665799855,77.30773863300513,ST_MultiPolygon
+way,668500132,https://www.openstreetmap.org/way/668500132,Nahar WLS,,Q17002923,en:Nahar Wildlife Sanctuary,protected_area,4,,,28.41379223803267,76.40419352037483,ST_MultiPolygon
+way,667753809,https://www.openstreetmap.org/way/667753809,Daranghati WLS,,Q5222092,en:Daranghati Sanctuary,protected_area,4,,,31.413349436933924,77.85085802798291,ST_MultiPolygon
+way,668065673,https://www.openstreetmap.org/way/668065673,Renuka WLS,,Q7313588,en:Renuka Sanctuary,protected_area,4,,,30.609220267302657,77.45653292099645,ST_MultiPolygon
+relation,9306940,https://www.openstreetmap.org/relation/9306940,Bir Dosanjh WLS,,,,protected_area,4,,,30.425545470732384,76.1458277436982,ST_MultiPolygon
+way,125023407,https://www.openstreetmap.org/way/125023407,Bir Mehaswala WLS,,,,protected_area,4,,,30.366164339770236,76.16762839042478,ST_MultiPolygon
+way,666725799,https://www.openstreetmap.org/way/666725799,Simbalbara National Park,,Q22080908,en:Simbalbara National Park,national_park,2,,,30.438783421411035,77.5044543659227,ST_MultiPolygon
+way,129547191,https://www.openstreetmap.org/way/129547191,Valley of Flowers National Park,Valley of Flowers National Park,Q605897,,national_park,2,,,30.735438010152407,79.63059898528567,ST_MultiPolygon
+relation,16831555,https://www.openstreetmap.org/relation/16831555,Jim Corbett National Park,,Q949297,,protected_area,2,National Park,,29.54976956963808,78.87826086277612,ST_MultiPolygon
+way,668505218,https://www.openstreetmap.org/way/668505218,Khaparwas WLS,,Q17005614,en:Khaparwas Wildlife Sanctuary,protected_area,4,,,28.56379089060723,76.5267736678529,ST_MultiPolygon
+way,202540707,https://www.openstreetmap.org/way/202540707,Bir Aishwan WLS,,Q135798492,en:Bir Aishvan Wildlife Sanctuary,protected_area,4,,,30.227151285437085,75.88400334273966,ST_MultiPolygon
+relation,8334694,https://www.openstreetmap.org/relation/8334694,Desert National Park (Thar),,Q3058213,,national_park,2,,,26.31145924834226,70.53157402688983,ST_MultiPolygon
+way,677299023,https://www.openstreetmap.org/way/677299023,Balaram Ambaji WLS,,Q19833696,en:Balaram Ambaji Wildlife Sanctuary,protected_area,4,Wildlife Reserve,,24.320249224802566,72.7481982290588,ST_MultiPolygon
+way,667108199,https://www.openstreetmap.org/way/667108199,Jaisamand WLS,,Q11927133,en:Jaisamand Wildlife Sanctuary,protected_area,4,,,24.27596273442345,73.90751111076702,ST_MultiPolygon
+way,669101943,https://www.openstreetmap.org/way/669101943,Takhni-Rehmapur WLS,,,,protected_area,4,,,31.660943152011527,75.92836064431403,ST_MultiPolygon
+relation,9308456,https://www.openstreetmap.org/relation/9308456,Jessore WLS,,Q6187899,en:Jessore Sloth Bear Sanctuary,protected_area,4,,,24.421378510968193,72.49768542188667,ST_MultiPolygon
+way,566643547,https://www.openstreetmap.org/way/566643547,Phulwari ki Nal WLS,,Q30593531,en:Phulwari ki Nal Wildlife Sanctuary,protected_area,4,,,24.317338576183307,73.2444038495823,ST_MultiPolygon
+relation,9477458,https://www.openstreetmap.org/relation/9477458,Mukundra Tiger Reserve,,,,protected_area,4,,,24.938342581055625,75.77589059773804,ST_MultiPolygon
+way,668509004,https://www.openstreetmap.org/way/668509004,Chhilchhila WLS,,Q17003846,en:Chhilchhila Wildlife Sanctuary,protected_area,4,,,29.938252064296808,76.68096175151712,ST_MultiPolygon
+way,122077942,https://www.openstreetmap.org/way/122077942,Mount Abu WLS,,Q3326008,en:Mount_Abu,protected_area,4,Wildlife Reserve,,24.614082667159842,72.76001564469843,ST_MultiPolygon
+relation,9309950,https://www.openstreetmap.org/relation/9309950,Gandhi Sagar WLS,,Q5520717,,protected_area,4,,,24.67462100420865,75.6005753992844,ST_MultiPolygon
+relation,9473779,https://www.openstreetmap.org/relation/9473779,Kailadevi WLS,,Q134522768,en:Kailadevi Wildlife Sanctuary,protected_area,4,,,26.215379774710513,76.92003777878335,ST_MultiPolygon
+way,666625141,https://www.openstreetmap.org/way/666625141,Bhainsrodgarh WLS,,Q131612272,en:Bhensrodgarh Wildlife Sanctuary,protected_area,4,,,24.869914098746925,75.51051210947976,ST_MultiPolygon
+way,666529511,https://www.openstreetmap.org/way/666529511,Bassi WLS,,Q4868136,en:Bassi Wildlife Sanctuary,protected_area,4,,,25.00632488069071,74.86895569640885,ST_MultiPolygon
+relation,9399789,https://www.openstreetmap.org/relation/9399789,Ramgarh Vishdhari WLS,,Q121754153,en:Ramgarh Vishdhari Wildlife Sanctuary,protected_area,4,,,25.533618004892865,75.79196646272908,ST_MultiPolygon
+way,317887080,https://www.openstreetmap.org/way/317887080,Todgarh Raoli WLS,,Q24945625,en:Todgarh-Raoli Wildlife Sanctuary,protected_area,4,Wildlife Reserve,,25.675692029454048,73.89194084442332,ST_MultiPolygon
+way,666956858,https://www.openstreetmap.org/way/666956858,Kumbhalgarh Wildlife Sanctuary,,Q6443733,en:Kumbhalgarh Wildlife Sanctuary,protected_area,4,,,25.101864793647923,73.44831873042492,ST_MultiPolygon
+way,676869881,https://www.openstreetmap.org/way/676869881,Tal Chhapper WLS,,Q7678698,en:Tal Chhapar Sanctuary,protected_area,4,,,27.79635325769994,74.4349598987259,ST_MultiPolygon
+way,667026975,https://www.openstreetmap.org/way/667026975,Sajjangarh Wildlife Sanctuary,,Q65068086,en:Sajjangarh Wildlife Sanctuary,protected_area,4,,,24.608290234796513,73.63303703875815,ST_MultiPolygon
+way,667134094,https://www.openstreetmap.org/way/667134094,,,Q7531584,en:Sita Mata Wildlife Sanctuary,protected_area,4,Wildlife Reserve,,24.217553931039845,74.5060669865265,ST_MultiPolygon
+way,667103921,https://www.openstreetmap.org/way/667103921,Darrah WLS,,Q135901958,en:Darrah Wildlife Sanctuary,protected_area,4,,,24.91660521750949,75.79773232212686,ST_MultiPolygon
+relation,9477404,https://www.openstreetmap.org/relation/9477404,Mukundra Hills NP,,Q5224247,en:Mukundara Hills National Park,national_park,2,,,24.972967205641552,75.7247890797014,ST_MultiPolygon
+way,676873553,https://www.openstreetmap.org/way/676873553,Jawahar Sagar WLS,,Q135963448,en:Jawahar Sagar Wildlife Sanctuary,protected_area,4,,,25.007399673128084,75.63554902390074,ST_MultiPolygon
+way,677119465,https://www.openstreetmap.org/way/677119465,Ramsagar WLS,,Q135741931,en:Ramsagar Wildlife Sanctuary,protected_area,4,,,26.56637313824485,77.60018269912443,ST_MultiPolygon
+relation,9435774,https://www.openstreetmap.org/relation/9435774,Bandh Baretha WLS,,Q123399066,en:Bandh Baretha,protected_area,4,,,26.802807819670925,77.3758934776368,ST_MultiPolygon
+way,668738801,https://www.openstreetmap.org/way/668738801,Soor Sarovar Bird WLS,,,,protected_area,4,,,27.24893331558914,77.84877979242845,ST_MultiPolygon
+relation,3494941,https://www.openstreetmap.org/relation/3494941,Ranthambhore National Park,,Q1466242,,national_park,2,,,26.020751706820416,76.49741237090711,ST_MultiPolygon
+way,666526440,https://www.openstreetmap.org/way/666526440,Van Vihar WLS,,Q134721122,en:Van Vihar Wildlife Sanctuary,protected_area,4,,,26.612148601929853,77.74698876423034,ST_MultiPolygon
+way,667114188,https://www.openstreetmap.org/way/667114188,Jamwa Ramgarh Wildlife Sanctuary,,Q134581460,en:Jamwa Ramgarh Wildlife Sanctuary,protected_area,4,Wildlife Reserve,,27.089647591248532,76.11896448027768,ST_MultiPolygon
+relation,9466769,https://www.openstreetmap.org/relation/9466769,Sariska Tiger Reserve,,Q2572177,en:Sariska Tiger Reserve,protected_area,4,,,27.362432274357115,76.4182127965088,ST_MultiPolygon
+way,668654892,https://www.openstreetmap.org/way/668654892,Sandi Bird WLS,,Q7416307,en:Sandi Bird Sanctuary,protected_area,4,,,27.314435703069996,79.97327915500888,ST_MultiPolygon
+way,676891427,https://www.openstreetmap.org/way/676891427,National Chambal WLS,,Q6971439,,protected_area,4,,,26.775713470217223,78.59189639867127,ST_MultiPolygon
+way,667244115,https://www.openstreetmap.org/way/667244115,Nahargarh WLS,,Q134581467,en:Nahargarh Wildlife Sanctuary,protected_area,4,,,26.99680979075662,75.83275412459571,ST_MultiPolygon
+way,669282350,https://www.openstreetmap.org/way/669282350,Ghatigaon WLS,,Q5555916,en:Ghatigaon Wildlife Sanctuary,protected_area,4,,,26.16351090452611,77.91892559234198,ST_MultiPolygon
+way,667257192,https://www.openstreetmap.org/way/667257192,Kesarbagh WLS,,Q135933288,en:Kesarbagh Wildlife Sanctuary,protected_area,4,,,26.662792726262786,77.82814073781257,ST_MultiPolygon
+relation,15743640,https://www.openstreetmap.org/relation/15743640,Keoladeo Ghana National Park,,Q235878,,protected_area,2,Keoladeo Ghana National Park,,27.162429610443223,77.52374632057987,ST_MultiPolygon
+way,668735342,https://www.openstreetmap.org/way/668735342,Patna WLS,,Q17082192,en:Patna Bird Sanctuary,protected_area,4,,,27.528139795506814,78.3132363137898,ST_MultiPolygon
+relation,19892043,https://www.openstreetmap.org/relation/19892043,Sekha WLS,,Q16900034,en:Shekha Bird Sanctuary,protected_area,4,,,27.8629663051205,78.22046717275884,ST_MultiPolygon
+way,668653514,https://www.openstreetmap.org/way/668653514,Lakh Bahosi Bird WLS,,Q6479478,en:Lakh Bahosi Sanctuary,protected_area,4,,,26.917423421115824,79.63047398597858,ST_MultiPolygon
+way,668737483,https://www.openstreetmap.org/way/668737483,Vijay Sagar WLS,,Q7929078,en:Vijai Sagar Wildlife Sanctuary,protected_area,4,,,25.293918175904718,79.91071396012865,ST_MultiPolygon
+relation,9439661,https://www.openstreetmap.org/relation/9439661,National Chambal WLS,,,,protected_area,4,,,26.597979151719326,78.98710991186863,ST_MultiPolygon
+way,669490136,https://www.openstreetmap.org/way/669490136,Karera WLS,,Q17064063,en:Karera Wildlife Sanctuary,protected_area,4,,,25.612468218825807,78.13929932203696,ST_MultiPolygon
+way,679236704,https://www.openstreetmap.org/way/679236704,Madhav National Park,,Q2604975,,national_park,2,,,25.50745016584067,77.77185871832081,ST_MultiPolygon
+way,680764132,https://www.openstreetmap.org/way/680764132,Orchha WLS,,Q132068974,en:Orchha Wildlife Sanctuary,protected_area,4,,,25.30172960353307,78.61941930531003,ST_MultiPolygon
+relation,9397372,https://www.openstreetmap.org/relation/9397372,National Chambal WLS,,,,protected_area,4,,,25.948832383589103,76.8753243635167,ST_MultiPolygon
+way,676622737,https://www.openstreetmap.org/way/676622737,Mahavir Swami WLS,,Q6733577,en:Mahavir Swami Wildlife Sanctuary,protected_area,4,,,24.511609533595465,78.25538365665255,ST_MultiPolygon
+way,160695615,https://www.openstreetmap.org/way/160695615,Panna National Park,,Q1858071,en:Panna National Park,national_park,2,,,24.61878004943057,79.94062441857977,ST_MultiPolygon
+way,669501998,https://www.openstreetmap.org/way/669501998,Veerangana Durgavati Wildlife Sanctuary,,Q48731965,en:Veerangana Durgavati Wildlife Sanctuary,protected_area,4,,,23.53226902606956,79.76157230756134,ST_MultiPolygon
+way,669495393,https://www.openstreetmap.org/way/669495393,Noradehi WLS,,Q17078316,en:Nauradehi Wildlife Sanctuary,protected_area,4,,,23.36077396810468,79.24069136837822,ST_MultiPolygon
+way,669504729,https://www.openstreetmap.org/way/669504729,Narsighgarh WLS,,Q135404149,en:Narsinghgarh Wildlife Sanctuary,protected_area,4,,,23.66147972874505,77.0908505026072,ST_MultiPolygon
+way,669511663,https://www.openstreetmap.org/way/669511663,Kheoni WLS,,Q55615923,en:Kheoni Wildlife Sanctuary,protected_area,4,,,22.85031484406448,76.86575437259114,ST_MultiPolygon
+way,669356832,https://www.openstreetmap.org/way/669356832,Bori WLS,,Q4945104,,protected_area,4,,,22.44062918223752,78.0707005530906,ST_MultiPolygon
+way,669498418,https://www.openstreetmap.org/way/669498418,Ratapani Wildlife Sanctuary,,Q7295480,en:Ratapani Tiger Reserve,protected_area,4,Wildlife Reserve,,22.916460421969315,77.66639075727534,ST_MultiPolygon
+way,669356834,https://www.openstreetmap.org/way/669356834,Satpura National Park,,Q733659,,national_park,2,,,22.510630030144785,78.25974255117139,ST_MultiPolygon
+way,669517798,https://www.openstreetmap.org/way/669517798,Pench WLS,,,,protected_area,4,,,21.826418736823694,79.43850017982612,ST_MultiPolygon
+way,668669680,https://www.openstreetmap.org/way/668669680,Saman Bird WLS,,Q7408557,en:Saman Bird Sanctuary,protected_area,4,,,27.01607045925066,79.18119063518589,ST_MultiPolygon
+way,669514549,https://www.openstreetmap.org/way/669514549,Kuno National Park,,Q1143016,,protected_area,4,National park,,25.755517654648553,77.20198793695972,ST_MultiPolygon
+way,666633877,https://www.openstreetmap.org/way/666633877,Shergarh WLS,,Q134610688,en:Shergarh Wildlife Sanctuary,protected_area,4,,,24.692055332911046,76.51021856866865,ST_MultiPolygon
+way,669498419,https://www.openstreetmap.org/way/669498419,Singhori WLS,,Q136994694,en:Singhori Wildlife Sanctuary,protected_area,4,,,23.171893080293525,78.17295129332692,ST_MultiPolygon
+way,44417026,https://www.openstreetmap.org/way/44417026,Van Vihar National Park,,Q3092357,en:Van Vihar National Park,national_park,2,,,23.230786919151946,77.36639284523707,ST_MultiPolygon
+relation,9323881,https://www.openstreetmap.org/relation/9323881,Mansinghdeo WLS,,,,protected_area,4,,,21.5164589592494,79.16323389790756,ST_MultiPolygon
+way,670036755,https://www.openstreetmap.org/way/670036755,Koka WLS,,Q107283783,en:Koka Wildlife Sanctuary,protected_area,4,,,21.174616520618503,79.80430613363653,ST_MultiPolygon
+relation,9473198,https://www.openstreetmap.org/relation/9473198,Bor Tiger Reserve,,,,protected_area,4,,,20.98710549387488,78.67401527290944,ST_MultiPolygon
+way,670041024,https://www.openstreetmap.org/way/670041024,New Nagzira WLS,,,,protected_area,4,,,21.219432689616024,79.94512873586001,ST_MultiPolygon
+way,679249389,https://www.openstreetmap.org/way/679249389,Tadoba Andhari National Park/Tiger Reserve,,Q2639563,,national_park,2,,,20.24177095769087,79.42727674616216,ST_MultiPolygon
+relation,9473167,https://www.openstreetmap.org/relation/9473167,New Bor WLS,,,,protected_area,4,,,20.98091100852996,78.65534480041705,ST_MultiPolygon
+way,669356833,https://www.openstreetmap.org/way/669356833,Pachmarhi WLS/Tiger Reserve,,,,protected_area,4,,,22.543744509700687,78.40929337175918,ST_MultiPolygon
+way,321130160,https://www.openstreetmap.org/way/321130160,Umred Karhandla WLS,,Q16902313,en:Umred Pauni Karhandla Wildlife Sanctuary,protected_area,4,,,20.840831436513206,79.4920058594726,ST_MultiPolygon
+way,677993168,https://www.openstreetmap.org/way/677993168,Karanja Sohal Blackbuck WLS,,Q85773598,en:Karanja Sohol Wildlife Sanctuary,protected_area,4,,,20.428670182588952,77.50456672478317,ST_MultiPolygon
+way,678195218,https://www.openstreetmap.org/way/678195218,Gugamal National Park,,Q3364450,,national_park,2,,,21.374042018532194,77.11408963288167,ST_MultiPolygon
+way,670226541,https://www.openstreetmap.org/way/670226541,Aner Dam WLS,,Q107404544,en:Aner Dam Wildlife Sanctuary,protected_area,4,,,21.34317828757118,75.04021246251487,ST_MultiPolygon
+way,679320215,https://www.openstreetmap.org/way/679320215,Yawal WLS,,Q8050448,en:Yawal Wildlife Sanctuary,protected_area,4,,,21.3466966652424,75.76880786132836,ST_MultiPolygon
+way,670066259,https://www.openstreetmap.org/way/670066259,Gautala Autramghat WLS,,Q5527862,en:Gautala Autramghat Sanctuary,protected_area,4,,,20.3300014860868,75.10430927673626,ST_MultiPolygon
+way,682827513,https://www.openstreetmap.org/way/682827513,Nandur Madhyameshwar WLS,,Q19808294,en:Nandur Madhmeshwar Bird Sanctuary,protected_area,4,,,20.022815781596382,74.10896551091805,ST_MultiPolygon
+way,669197063,https://www.openstreetmap.org/way/669197063,Purna WLS,,Q19895529,en:Purna Wildlife Sanctuary,protected_area,4,,,20.932064864856102,73.6175894266843,ST_MultiPolygon
+way,143366077,https://www.openstreetmap.org/way/143366077,Vansda National Park,,Q2669063,en:Vansda National Park,national_park,2,,,20.77890450231183,73.45958173530734,ST_MultiPolygon
+way,677741385,https://www.openstreetmap.org/way/677741385,Dadra & Nagar Haveli WLS,,Q115804851,en:Dadra and Nagar Haveli Wildlife Sanctuary,protected_area,4,,,20.2813970879176,73.09735598095516,ST_MultiPolygon
+way,143357444,https://www.openstreetmap.org/way/143357444,Blackbuck National Park Velavadar,,Q880724,en:Blackbuck National Park Velavadar,national_park,2,,,22.04365366436753,72.05318885759065,ST_MultiPolygon
+way,678152666,https://www.openstreetmap.org/way/678152666,Narnala WLS,,,,protected_area,4,,,21.221351599937133,77.0334358919395,ST_MultiPolygon
+way,678195199,https://www.openstreetmap.org/way/678195199,Melghat WLS,,,,protected_area,4,,,21.512031061236453,77.22364269978958,ST_MultiPolygon
+way,666336356,https://www.openstreetmap.org/way/666336356,Dinosaur National Park,,Q135111713,en:Dinosaur Fossils National Park,national_park,2,,,22.34237507068305,74.77835870721036,ST_MultiPolygon
+relation,9473168,https://www.openstreetmap.org/relation/9473168,Bor WLS,,Q4944241,en:Bor Wildlife Sanctuary,protected_area,4,,,20.98536860429566,78.70563352101692,ST_MultiPolygon
+way,677997503,https://www.openstreetmap.org/way/677997503,Katepurna WLS,,,,protected_area,4,,,20.412967549090805,77.16844158026089,ST_MultiPolygon
+way,670265309,https://www.openstreetmap.org/way/670265309,Dhyanganga WLS,,Q137670177,en:Dnyanganga Wildlife Sanctuary,protected_area,4,,,20.553347474445058,76.35840539280905,ST_MultiPolygon
+way,677938771,https://www.openstreetmap.org/way/677938771,Amba Barwa WLS,,Q107410387,en:Amba Barwa Wildlife Sanctuary,protected_area,4,,,21.223744921094944,76.69627465525896,ST_MultiPolygon
+relation,1583399,https://www.openstreetmap.org/relation/1583399,Nal Sarovar WLS,,Q2723560,en:Nal Sarovar Bird Sanctuary,protected_area,4,,,22.769028761928254,72.04115504799273,ST_MultiPolygon
+way,677932817,https://www.openstreetmap.org/way/677932817,Sardarpur WLS,,Q136994418,en:Sardarpur Wildlife Sanctuary,protected_area,4,,,22.735091676237495,74.89863142477682,ST_MultiPolygon
+way,669213621,https://www.openstreetmap.org/way/669213621,Ratanmahal WLS,,Q2769992,en:Ratanmahal Wildlife Sanctuary,protected_area,4,,,22.5546299577558,74.11814869414272,ST_MultiPolygon
+relation,8334753,https://www.openstreetmap.org/relation/8334753,Marine (Gulf of Kachchh) National Park,,Q2724481,,national_park,2,,,22.4746757534533,69.69921015903563,ST_MultiPolygon
+way,679583523,https://www.openstreetmap.org/way/679583523,Lala Great Indian Bustard WLS,,Q2726467,en:Kutch Bustard Sanctuary,protected_area,4,,,23.182507781141886,68.73561002033667,ST_MultiPolygon
+relation,13168938,https://www.openstreetmap.org/relation/13168938,Shoolpaneshwar Wildlife Sanctuary,,Q7500463,,protected_area,4,,,21.73440880276725,73.70242785332906,ST_MultiPolygon
+way,669220103,https://www.openstreetmap.org/way/669220103,Kachchh Desert WLS,,Q17068229,en:Kutch Desert Wildlife Sanctuary,protected_area,4,,,23.916192699239975,70.43820671316445,ST_MultiPolygon
+way,669217186,https://www.openstreetmap.org/way/669217186,Wild Ass WLS,,Q1207543,en:Indian Wild Ass Sanctuary,protected_area,4,,,23.37023092750388,71.24827412158648,ST_MultiPolygon
+way,667553730,https://www.openstreetmap.org/way/667553730,Hingolgadh Nature Reserve WLS,,Q124973261,en:Hingolgadh Sanctuary,protected_area,4,,,22.147612077523217,71.32225422281718,ST_MultiPolygon
+way,669206480,https://www.openstreetmap.org/way/669206480,Rampara WLS,,Q125503789,en:Rampara Sanctuary,protected_area,4,,,22.5325036997637,70.95066807805162,ST_MultiPolygon
+relation,9282949,https://www.openstreetmap.org/relation/9282949,Gaga (Great Indian Bustard) WLS,,Q2731635,en:Gaga Wildlife Sanctuary,protected_area,4,,,22.127616275716782,69.16744140998681,ST_MultiPolygon
+way,677307317,https://www.openstreetmap.org/way/677307317,Narayan Sarovar Sanctuary,,Q6965495,en:Narayan Sarovar Sanctuary,protected_area,4,,,23.605658650114027,68.67859924979928,ST_MultiPolygon
+relation,9078468,https://www.openstreetmap.org/relation/9078468,Girnar WLS,,Q131939336,en:Girnar Wildlife Sanctuary,protected_area,4,,,21.515624131366664,70.54012479387514,ST_MultiPolygon
+way,272087816,https://www.openstreetmap.org/way/272087816,Jambughoda WLS,,Q2757724,en:Jambughoda Wildlife Sanctuary,protected_area,4,Wildlife Sanctuary,,22.40605090015598,73.67319988983989,ST_MultiPolygon
+way,677919318,https://www.openstreetmap.org/way/677919318,Ralamandal Wildlife Sanctuary,,Q65041648,en:Ralamandal Wildlife Sanctuary,protected_area,4,,,22.649537169359387,75.97424073171013,ST_MultiPolygon
+relation,9310818,https://www.openstreetmap.org/relation/9310818,Sailana WLS,,,,protected_area,4,,,23.499080286337882,74.88864897409603,ST_MultiPolygon
+relation,9283027,https://www.openstreetmap.org/relation/9283027,Thol Lake WLS,,Q129176824,en:Thol Lake Bird Sanctuary,protected_area,4,,,23.141473000639678,72.41102129921639,ST_MultiPolygon
+way,669203977,https://www.openstreetmap.org/way/669203977,Khijadiya WLS,,Q2730580,en:Khijadiya Bird Sanctuary,protected_area,4,,,22.547591536192243,70.14990145868664,ST_MultiPolygon
+relation,21061186,https://www.openstreetmap.org/relation/21061186,Gir National Park,,Q337028,en:Gir National Park,national_park,2,,,21.091727518667014,70.78577880412674,ST_MultiPolygon
+way,677300987,https://www.openstreetmap.org/way/677300987,Mitiyala WLS,,Q6881784,en:Mitiyala Wildlife Sanctuary,protected_area,4,,,21.174739020408285,71.2558072072785,ST_MultiPolygon
+relation,21061240,https://www.openstreetmap.org/relation/21061240,Gir WLS ESZ (Proposed),,,,protected_area,6,Eco Sensitive Zone,,21.163728893919497,70.8451217173435,ST_MultiPolygon
+way,678083291,https://www.openstreetmap.org/way/678083291,Radhanagari WLS,,Q2125633,,protected_area,4,,,16.339726286076754,73.93837643353208,ST_MultiPolygon
+way,667545586,https://www.openstreetmap.org/way/667545586,Barda WLS,,Q4860066,en:Barda Wildlife Sanctuary,protected_area,4,,,21.803061554285676,69.7379312325208,ST_MultiPolygon
+way,374269683,https://www.openstreetmap.org/way/374269683,Porbandar Lake WLS,,Q7229958,en:Porbandar Bird Sanctuary,protected_area,4,,,21.63556262017212,69.61861100115755,ST_MultiPolygon
+relation,21061185,https://www.openstreetmap.org/relation/21061185,Paniya Wildlife Sanctuary,,Q125167022,en:Pania Wildlife Sanctuary,protected_area,4,,,21.214004775350606,70.85148214939092,ST_MultiPolygon
+way,677743535,https://www.openstreetmap.org/way/677743535,Fudam WLS,,Q115937502,en:Fudam Bird Sanctuary,protected_area,4,,,20.725542638800597,70.95501599672504,ST_MultiPolygon
+way,678002187,https://www.openstreetmap.org/way/678002187,Malvan Marine Sanctuary,,Q13119963,,protected_area,4,,,16.039449918502108,73.44731846414994,ST_MultiPolygon
+way,265054632,https://www.openstreetmap.org/way/265054632,Sagareshwar WLS,,Q7399055,en:Yashwantrao Chavan Sagareshwar Wildlife Sanctuary,protected_area,4,,,17.144326625985,74.36941019466153,ST_MultiPolygon
+relation,9323916,https://www.openstreetmap.org/relation/9323916,Tamhini WLS,,,,protected_area,4,,,18.43614279991393,73.42213019953239,ST_MultiPolygon
+way,670638962,https://www.openstreetmap.org/way/670638962,Ghataprabha Bird WLS,,Q137252985,en:Ghataprabha Wildlife Sanctuary,protected_area,4,,,16.21934264946835,74.7280739391787,ST_MultiPolygon
+way,106326449,https://www.openstreetmap.org/way/106326449,Yadahalli Chinkara Wildlife Sanctuary,,Q112252408,en:Yadahalli Chinkara Wildlife Sanctuary,protected_area,4,,,16.342489494151483,75.51624943341437,ST_MultiPolygon
+way,474162403,https://www.openstreetmap.org/way/474162403,Great Indian Bustard WLS,,Q5599356,en:Great Indian Bustard Sanctuary,protected_area,4,,,17.829493496654486,75.87131410224865,ST_MultiPolygon
+relation,9403363,https://www.openstreetmap.org/relation/9403363,Gir Wildlife Sanctuary,,Q337028,,protected_area,4,,,21.12778730509437,70.85539836735616,ST_MultiPolygon
+relation,9479789,https://www.openstreetmap.org/relation/9479789,Sahyadri Tiger Reserve,,,,protected_area,4,,,17.403471238197287,73.75370358401842,ST_MultiPolygon
+relation,21066179,https://www.openstreetmap.org/relation/21066179,Karnala Bird Sanctuary ESZ (Proposed),,,,protected_area,6,,,18.914464048854256,73.08847874072629,ST_MultiPolygon
+relation,21057460,https://www.openstreetmap.org/relation/21057460,Tungareshwar Wildlife Sanctuary,,Q60753866,en:Tungareshwar Wildlife Sanctuary,protected_area,4,,,19.393461480870215,72.93042108690372,ST_MultiPolygon
+way,670197606,https://www.openstreetmap.org/way/670197606,Phansad Wildlife Sanctuary,,Q7180496,en:Phansad Wildlife Sanctuary,protected_area,4,,,18.408330474227878,72.96619560853135,ST_MultiPolygon
+relation,21066180,https://www.openstreetmap.org/relation/21066180,Karnala Bird Sanctuary,,Q6372818,en:Karnala Bird Sanctuary,protected_area,4,,,18.88151884054539,73.11776180564114,ST_MultiPolygon
+relation,6245228,https://www.openstreetmap.org/relation/6245228,Sanjay Gandhi National Park,,Q648907,en:Sanjay Gandhi National Park,national_park,2,National Park,Ministry of Environment and Forests,19.23868598906922,72.91609227981523,ST_MultiPolygon
+relation,21057459,https://www.openstreetmap.org/relation/21057459,Tungareshwar WLS ESZ,,,,protected_area,6,,,19.407625847675344,72.9280509738796,ST_MultiPolygon
+relation,21060057,https://www.openstreetmap.org/relation/21060057,Sanjay Gandhi National Park ESZ (Proposed),,,,protected_area,6,Eco Sensitive Zone,,19.21725663611857,72.90483002402027,ST_MultiPolygon
+relation,3963830,https://www.openstreetmap.org/relation/3963830,Tansa WLS,,Q105847575,en:Tansa Wildlife Sanctuary,protected_area,4,Wildlife Sanctuary,,19.614199775399538,73.28880269913,ST_MultiPolygon
+relation,21064758,https://www.openstreetmap.org/relation/21064758,Bhimashankar WLS,,Q854971,en:Bhimashankar Wildlife Sanctuary,protected_area,4,,,19.122235172159975,73.55580687851675,ST_MultiPolygon
+relation,21064608,https://www.openstreetmap.org/relation/21064608,Thane Creek Flamingo Sanctuary ESZ (Proposed),,,,protected_area,6,Eco Sensitive Zone,,19.100936509533593,72.95758827518259,ST_MultiPolygon
+relation,15073373,https://www.openstreetmap.org/relation/15073373,Thane Creek Flamingo Sanctuary,,,,protected_area,4,,,19.1081205273642,72.96364225471913,ST_MultiPolygon
+relation,21057070,https://www.openstreetmap.org/relation/21057070,Tansa WLS ESZ,,,,protected_area,6,Eco Sensitive Zone,,19.625337601494397,73.27821236840323,ST_MultiPolygon
+way,670296587,https://www.openstreetmap.org/way/670296587,Kalsubai Harishchandragad Wildlife Sanctuary,,Q137008662,en:Kalsubai Harishchandragad Wildlife Sanctuary,protected_area,4,,,19.47106716162858,73.76165401090348,ST_MultiPolygon
+relation,21064757,https://www.openstreetmap.org/relation/21064757,Bhimashankar WLS ESZ (Proposed),,,,protected_area,6,,,19.134616392845366,73.59210592900278,ST_MultiPolygon
+way,681702589,https://www.openstreetmap.org/way/681702589,Naigaon Mayur WLS,,,,protected_area,4,,,18.902674954516492,75.59331044173243,ST_MultiPolygon
+relation,8236186,https://www.openstreetmap.org/relation/8236186,Mayureshwar Supe WLS,,Q17072649,en:Mayureshwar Wildlife Sanctuary,protected_area,4,Wildlife Sanctuary,,18.355575711277194,74.36227332112097,ST_MultiPolygon
+way,670061599,https://www.openstreetmap.org/way/670061599,Painganga WLS,,Q113396038,en:Painganga Wildlife Sanctuary,protected_area,4,,,19.583931983065295,78.03845244862094,ST_MultiPolygon
+way,670302748,https://www.openstreetmap.org/way/670302748,Jaikawadi WLS,,Q23581251,en:Jayakwadi Bird Sanctuary,protected_area,4,,,19.544192215168994,75.20855564110494,ST_MultiPolygon
+relation,9447890,https://www.openstreetmap.org/relation/9447890,Yedshi Ramling Ghat WLS,,Q107410544,en:Yedsi Ramling Ghat Wildlife Sanctuary,protected_area,4,,,18.301187681807356,75.93943867040704,ST_MultiPolygon
+way,169119704,https://www.openstreetmap.org/way/169119704,Tipeshwar WLS,,,,protected_area,4,,,19.90719262872202,78.45461146056107,ST_MultiPolygon
+relation,9331660,https://www.openstreetmap.org/relation/9331660,Pranahita WLS,,Q19895392,en:Pranahita Wildlife Sanctuary,protected_area,4,,,18.95551237446809,79.86886752948715,ST_MultiPolygon
+way,28268610,https://www.openstreetmap.org/way/28268610,Kasu Brahmananda Reddy National Park,,Q969593,en:Kasu Brahmananda Reddy National Park,national_park,2,,,17.42044434279447,78.42029826314203,ST_MultiPolygon
+relation,9447947,https://www.openstreetmap.org/relation/9447947,Mahavir Harina Vanasthali National Park,,Q3092314,,national_park,2,,,17.368088636176335,78.60666645637488,ST_MultiPolygon
+way,279040083,https://www.openstreetmap.org/way/279040083,Deolgaon-Rehkuri WLS,,,,protected_area,4,,,18.60126051039635,74.97392901401263,ST_MultiPolygon
+way,670975581,https://www.openstreetmap.org/way/670975581,Kawal WLS/Tiger Reserve,,Q6379588,en:Kawal Wildlife Sanctuary,protected_area,4,,,19.214977335835005,78.82964932063207,ST_MultiPolygon
+way,677983456,https://www.openstreetmap.org/way/677983456,Chaprala WLS,,,,protected_area,4,,,19.623517581078698,79.85117558295944,ST_MultiPolygon
+way,670977220,https://www.openstreetmap.org/way/670977220,Lanja Madugu Siwaram WLS,,Q7499351,en:Shivaram Wildlife Sanctuary,protected_area,4,,,18.679639890407287,79.73375925314674,ST_MultiPolygon
+way,670968855,https://www.openstreetmap.org/way/670968855,Pocharam WLS,,Q7206319,,protected_area,4,,,18.18769077561165,78.24598433700189,ST_MultiPolygon
+way,670176089,https://www.openstreetmap.org/way/670176089,Gangewadi New Great Indian Bustard WLS,,,,protected_area,4,,,17.827566448172604,76.00935782947663,ST_MultiPolygon
+way,683363598,https://www.openstreetmap.org/way/683363598,Nagarjuna Sagar-Srisailam Tiger Reserve,,Q6958578,en:Nagarjunsagar-Srisailam Tiger Reserve,protected_area,4,,,16.07716641712504,78.91280448887841,ST_MultiPolygon
+relation,9332867,https://www.openstreetmap.org/relation/9332867,Kambalakonda WLS,,Q12060948,Kambalakonda Wildlife Sanctuary,protected_area,4,,,17.818392481149317,83.30931736314061,ST_MultiPolygon
+relation,12490378,https://www.openstreetmap.org/relation/12490378,Mrugavani National Park,,Q3092307,,national_park,2,,,17.357887667706976,78.3416809213525,ST_MultiPolygon
+way,670962706,https://www.openstreetmap.org/way/670962706,Manjeera Crocodile WLS,,Q6750402,,protected_area,4,,,17.678412005914524,78.03006472647947,ST_MultiPolygon
+way,677142324,https://www.openstreetmap.org/way/677142324,Nagarjuna Sagar-Srisailam WLS,,,,protected_area,4,,,16.293064836597416,78.87874570282352,ST_MultiPolygon
+way,135417091,https://www.openstreetmap.org/way/135417091,Kolleru WLS,,Q17014014,en:Kolleru Bird Sanctuary,protected_area,4,,,16.643697533896834,81.22531227329013,ST_MultiPolygon
+way,670929257,https://www.openstreetmap.org/way/670929257,Pakhal WLS,,Q120756030,en:Pakhal Wildlife Sanctuary,protected_area,4,,,17.945606238833506,80.09626642011007,ST_MultiPolygon
+relation,9282307,https://www.openstreetmap.org/relation/9282307,Papikonda National Park,,Q18129185,en:Papikonda National Park,national_park,2,,,17.4795198032525,81.46470106911751,ST_MultiPolygon
+way,670872941,https://www.openstreetmap.org/way/670872941,Chincholi WLS,,Q109974015,en:Chincholi Wildlife Sanctuary,protected_area,4,,,17.4988096002388,77.51980347878492,ST_MultiPolygon
+way,681825618,https://www.openstreetmap.org/way/681825618,Nagarjuna Sagar-Srisailam WLS,,,,protected_area,4,,,16.07097933677067,78.93128309710669,ST_MultiPolygon
+way,678265489,https://www.openstreetmap.org/way/678265489,Lakhari Valley WLS,,Q15725165,en:Lakhari Valley Wildlife Sanctuary,protected_area,4,,,19.30156759561888,84.3224089049882,ST_MultiPolygon
+way,669774961,https://www.openstreetmap.org/way/669774961,Kotagarh WLS,,Q51137829,en:Kotgarh Wildlife Sanctuary,protected_area,4,,,19.85927042214799,83.75413204691455,ST_MultiPolygon
+way,678260731,https://www.openstreetmap.org/way/678260731,Karlapat WLS,,Q6372473,en:Karlapat Wildlife Sanctuary,protected_area,4,,,19.691798910264325,83.099771013608,ST_MultiPolygon
+way,682114502,https://www.openstreetmap.org/way/682114502,Sitanadi WLS,,Q24946728,en:Sitanadi Wildlife Sanctuary,protected_area,4,,,20.189832393330573,81.94006920360859,ST_MultiPolygon
+way,670971985,https://www.openstreetmap.org/way/670971985,Kinnersani WLS,,Q6414074,,protected_area,4,,,17.82133131221295,80.60357614253506,ST_MultiPolygon
+relation,14697187,https://www.openstreetmap.org/relation/14697187,Coringa WLS,,Q5170559,,protected_area,4,,,16.817385060143064,82.3000759498229,ST_MultiPolygon
+way,680051181,https://www.openstreetmap.org/way/680051181,Kanger Ghati National Park,Kanger Valley (Ghati) National Park,Q1723746,,national_park,2,,,18.82505115453551,82.02040535905587,ST_MultiPolygon
+way,669780824,https://www.openstreetmap.org/way/669780824,Balukhand Konark WLS,,Q18110145,en:Balukhand-Konark Wildlife Sanctuary,protected_area,4,,,19.85868832917795,86.02728429908876,ST_MultiPolygon
+way,86140211,https://www.openstreetmap.org/way/86140211,Chilikha (Nalabana) WLS,,Q15650265,en:Nalbana Bird Sanctuary,protected_area,4,,,19.694376704303384,85.30774189809436,ST_MultiPolygon
+way,669572140,https://www.openstreetmap.org/way/669572140,Pamed Wild Buffalo WLS,,Q130974386,en:Pamed Wildlife Sanctuary,protected_area,4,,,18.31694811326495,80.85977512110924,ST_MultiPolygon
+way,670957979,https://www.openstreetmap.org/way/670957979,Eturnagaram WLS,,Q5405090,,protected_area,4,,,18.371903134240778,80.26285023813159,ST_MultiPolygon
+relation,2123530,https://www.openstreetmap.org/relation/2123530,Indravati National Park/Tiger Reserve,Indravati National Park,Q1427976,hi:इंद्रावती राष्ट्रीय उद्यान,national_park,2,,,19.123258600324554,80.51785847085142,ST_MultiPolygon
+relation,17086554,https://www.openstreetmap.org/relation/17086554,Ghughua Fossil National Park,,Q5557523,en:Ghughua Fossil Park,protected_area,2,,,23.112995324299927,80.61449343611991,ST_MultiPolygon
+way,670217758,https://www.openstreetmap.org/way/670217758,Bhamragarh WLS,,,,protected_area,4,,,19.546574078435054,80.73870956028101,ST_MultiPolygon
+way,670046834,https://www.openstreetmap.org/way/670046834,Nawegaon WLS,,,,protected_area,4,,,20.992041212753037,80.28421220700041,ST_MultiPolygon
+way,669642430,https://www.openstreetmap.org/way/669642430,Udanti-Sitanadi Tiger Reserve,,,,protected_area,4,Wildlife Reserve,,20.179203321567865,82.15347044730781,ST_MultiPolygon
+way,669785084,https://www.openstreetmap.org/way/669785084,Sunabeda WLS,,Q7638744,en:Sunabeda Wildlife Sanctuary,protected_area,4,,,20.573806642777473,82.45908659374766,ST_MultiPolygon
+relation,9472154,https://www.openstreetmap.org/relation/9472154,Nawegaon-Nagzira Tiger Reserve,,,,protected_area,4,,,21.14271262095054,80.06217600296057,ST_MultiPolygon
+way,307541594,https://www.openstreetmap.org/way/307541594,Nawegaon National Park,,Q763034,,national_park,2,,,20.95859010361646,80.1810001642664,ST_MultiPolygon
+way,669576115,https://www.openstreetmap.org/way/669576115,Sarangarh-Gomardha WLS,,Q130974367,en:Gomardha Wildlife Sanctuary,protected_area,4,,,21.478759871900305,83.13483661746012,ST_MultiPolygon
+way,669786486,https://www.openstreetmap.org/way/669786486,Debrigarh WLS,,Q18111621,en:Debrigarh Wildlife Sanctuary,protected_area,4,,,21.55888723600368,83.65221659587205,ST_MultiPolygon
+way,670043200,https://www.openstreetmap.org/way/670043200,Nagzira WLS,,Q6959133,en:Nagzira,protected_area,4,,,21.29014271036997,80.0642137878599,ST_MultiPolygon
+relation,15588876,https://www.openstreetmap.org/relation/15588876,Kanha Nationalpark,,Q1480481,de:Kanha-Nationalpark,protected_area,2,Kanha Nationalpark,,22.234679596479996,80.74120651292283,ST_MultiPolygon
+relation,15694340,https://www.openstreetmap.org/relation/15694340,Bandhavgarh National Park,,Q806310,,protected_area,2,Bandhavgarh National Park,,23.636576516524876,81.00759133972387,ST_MultiPolygon
+way,666683432,https://www.openstreetmap.org/way/666683432,Guru Ghasidas National Park,,Q131465770,en:Guru Ghasidas - Tamor Pingla Tiger Reserve,national_park,2,,,23.717662483480307,82.2976096841064,ST_MultiPolygon
+way,669648404,https://www.openstreetmap.org/way/669648404,Achanakmar WLS/Tiger Reserve,,Q4673468,en:Achanakmar Wildlife Sanctuary,protected_area,4,,,22.468345127234326,81.74256577009821,ST_MultiPolygon
+relation,15715676,https://www.openstreetmap.org/relation/15715676,Phen WLS,,Q137691018,en:Phen Wildlife Sanctuary,protected_area,4,Phen WLS,,22.367530171496867,81.0286267809588,ST_MultiPolygon
+relation,15695895,https://www.openstreetmap.org/relation/15695895,,,Q135483626,en:Panpatha Wildlife Sanctuary,protected_area,4,Panpatha WLS,,23.86288786191844,81.05310201240358,ST_MultiPolygon
+relation,9312342,https://www.openstreetmap.org/relation/9312342,Sanjay Dubri WLS/Tiger Reserve,,,,protected_area,4,,,23.9847028289553,81.63237508475306,ST_MultiPolygon
+relation,9268491,https://www.openstreetmap.org/relation/9268491,Sanjay National Park/Tiger Reserve,,Q3092341,,national_park,2,,,23.899214892456218,81.97390805039201,ST_MultiPolygon
+way,669567139,https://www.openstreetmap.org/way/669567139,Tamor Pingla WLS,,Q7681640,en:Tamor Pingla Wildlife Sanctuary,protected_area,4,,,23.670339118009856,82.92905991227248,ST_MultiPolygon
+way,669578162,https://www.openstreetmap.org/way/669578162,,,Q130974396,en:Semarsot Wildlife Sanctuary,protected_area,4,,,23.53876565268512,83.5087054187542,ST_MultiPolygon
+way,669556021,https://www.openstreetmap.org/way/669556021,Palkot WLS,,Q85791919,en:Palkot Wildlife Sanctuary,protected_area,4,,,22.8294853587201,84.51574337275802,ST_MultiPolygon
+way,667675149,https://www.openstreetmap.org/way/667675149,Palamau WLS/Tiger Reserve,,Q7126657,en:Palamau Tiger Reserve,protected_area,4,,,23.680864125349938,84.13202581257124,ST_MultiPolygon
+way,669556792,https://www.openstreetmap.org/way/669556792,Parasnath WLS,,,,protected_area,4,,,23.96590017045608,86.13690489376972,ST_MultiPolygon
+way,1396527952,https://www.openstreetmap.org/way/1396527952,Simlipal National Park,,Q61529,en:Simlipal National Park,national_park,2,,,21.799153771811547,86.38076285730679,ST_MultiPolygon
+relation,9285173,https://www.openstreetmap.org/relation/9285173,Mahauadanr WLS,,Q113336061,en:Mahuadanr Wolf Sanctuary,protected_area,4,,,23.489364085994165,84.10972037369535,ST_MultiPolygon
+way,669557559,https://www.openstreetmap.org/way/669557559,Topchanchi WLS,,Q116169552,en:Topchanchi Wildlife Sanctuary,protected_area,4,,,23.935376677795837,86.19061297195951,ST_MultiPolygon
+way,678820920,https://www.openstreetmap.org/way/678820920,Ballavpur Wildlife Sanctuary,,Q4851306,en:Ballabhpur Wildlife Sanctuary,protected_area,4,,,23.684016028882166,87.66721990537447,ST_MultiPolygon
+relation,6325783,https://www.openstreetmap.org/relation/6325783,Dalma WLS,,Q12433409,en:Dalma Wildlife Sanctuary,protected_area,4,,,22.902788603193375,86.20736920782797,ST_MultiPolygon
+way,669795314,https://www.openstreetmap.org/way/669795314,Kuldiha WLS,,Q15723901,en:Kuldiha Wildlife Sanctuary,protected_area,4,,,21.415437816274004,86.61146934489199,ST_MultiPolygon
+relation,19289292,https://www.openstreetmap.org/relation/19289292,Simlipal National Park,,Q61529,en:Simlipal National Park,national_park,2,,,21.799153771811547,86.38076285730679,ST_MultiPolygon
+way,669633370,https://www.openstreetmap.org/way/669633370,,,Q130974349,en:Badalkhol Wildlife Sanctuary,protected_area,4,,,22.92742449663161,83.82857808453895,ST_MultiPolygon
+way,667664511,https://www.openstreetmap.org/way/667664511,Betla National Park,,Q2663264,,national_park,2,,,23.699533750999713,84.14936175620596,ST_MultiPolygon
+way,488724501,https://www.openstreetmap.org/way/488724501,Ramnabagan WLS,,Q7289748,en:Ramnabagan Wildlife Sanctuary,protected_area,4,,,23.252810624124645,87.85092637947798,ST_MultiPolygon
+way,682775618,https://www.openstreetmap.org/way/682775618,Satkosia Tiger Reserve,,Q7426314,en:Satkosia Tiger Reserve,protected_area,4,,,20.576989986800395,84.82247782757995,ST_MultiPolygon
+way,669656035,https://www.openstreetmap.org/way/669656035,Bhitarkanika WLS,,,,protected_area,4,,,20.606606612873396,86.80078135687872,ST_MultiPolygon
+way,669819759,https://www.openstreetmap.org/way/669819759,Hadgarh WLS,,Q18125400,en:Hadgarh Wildlife Sanctuary,protected_area,4,,,21.29406970235438,86.27046609685213,ST_MultiPolygon
+way,669809285,https://www.openstreetmap.org/way/669809285,Khalasuni WLS,,Q129677593,en:Khalasuni Wildlife Sanctuary,protected_area,4,,,21.347060451598608,84.54399241297297,ST_MultiPolygon
+way,669764918,https://www.openstreetmap.org/way/669764918,Kapilash WLS,,Q28174315,en:Kapilasa Wildlife Sanctuary,protected_area,4,,,20.667756829457478,85.8141420500319,ST_MultiPolygon
+way,682775619,https://www.openstreetmap.org/way/682775619,Baisipalli WLS,,Q4848700,en:Baisipalli Wildlife Sanctuary,protected_area,4,,,20.46738479734684,84.68996726835684,ST_MultiPolygon
+way,669747799,https://www.openstreetmap.org/way/669747799,,,Q5070917,en:Chandaka Elephant Sanctuary,protected_area,4,,,20.347935233427393,85.67347086082214,ST_MultiPolygon
+way,669809270,https://www.openstreetmap.org/way/669809270,Badrama WLS,,Q7901902,en:Ushakothi Wildlife Sanctuary,protected_area,4,,,21.43887638609838,84.38201771946193,ST_MultiPolygon
+way,678253328,https://www.openstreetmap.org/way/678253328,Satkosia Gorge WLS,,,,protected_area,4,,,20.604826286211892,84.8561313764687,ST_MultiPolygon
+way,90617098,https://www.openstreetmap.org/way/90617098,Nandankanan Zoological Park,,Q2275145,en:Nandankanan Zoological Park,protected_area,4,,,20.398183706029627,85.81641901432256,ST_MultiPolygon
+relation,8815438,https://www.openstreetmap.org/relation/8815438,Bhitarkanika National Park,,Q2580141,,national_park,2,,,20.685055806075567,86.90586333822908,ST_MultiPolygon
+way,669652446,https://www.openstreetmap.org/way/669652446,Gahirmatha (Marine) WLS,,Q22031428,en:Gahirmatha Marine Sanctuary,protected_area,4,,,20.539301168968652,86.99191100833927,ST_MultiPolygon
+way,22825809,https://www.openstreetmap.org/way/22825809,Lothian Island WLS,,Q6684762,en:Lothian Island Wildlife Sanctuary,protected_area,4,,,21.65897236362548,88.32660130815225,ST_MultiPolygon
+way,1020199995,https://www.openstreetmap.org/way/1020199995,Haliday Island WLS,,,,protected_area,4,,,21.662626030623546,88.63140020468268,ST_MultiPolygon
+relation,19896831,https://www.openstreetmap.org/relation/19896831,Haliday Island Wildlife Sanctuary,,Q5642082,en:Haliday Island Wildlife Sanctuary,protected_area,4,,,21.662626030623546,88.63140020468268,ST_MultiPolygon
+relation,13617704,https://www.openstreetmap.org/relation/13617704,Sajnekhali WLS,,Q7402708,,protected_area,4,,,22.00886873427573,88.82139790964588,ST_MultiPolygon
+way,678835645,https://www.openstreetmap.org/way/678835645,West Sunderban WLS,,Q135826470,,protected_area,4,,,21.682230435951258,88.55300199903859,ST_MultiPolygon
+relation,9466981,https://www.openstreetmap.org/relation/9466981,Sunderban Tiger Reserve,,,,protected_area,4,,,21.84555432854924,88.88759573685219,ST_MultiPolygon
+relation,13256795,https://www.openstreetmap.org/relation/13256795,সুন্দরবন সংরক্ষিত বনাঞ্চল,Sundarbans Reserved Forest,Q42725548,,protected_area,4,,,22.020993110417127,89.47300533728433,ST_MultiPolygon
+relation,18792288,https://www.openstreetmap.org/relation/18792288,Bethuadahari WLS,,Q4898107,en:Bethuadahari Wildlife Sanctuary,protected_area,4,,,23.583267383761033,88.40416436938388,ST_MultiPolygon
+way,666511138,https://www.openstreetmap.org/way/666511138,Sepahijala Wildlife Sanctuary,,Q7525566,en:Sepahijala Wildlife Sanctuary,protected_area,4,,,23.66387484134511,91.31820087389077,ST_MultiPolygon
+way,663556258,https://www.openstreetmap.org/way/663556258,Ngengpui WLS,,Q137224032,en:Ngengpui Wildlife Sanctuary,protected_area,4,,,22.42049844444828,92.77940456660899,ST_MultiPolygon
+way,598388269,https://www.openstreetmap.org/way/598388269,Chintamoni Kar Bird WLS,,Q5101326,en:Chintamoni Kar Bird Sanctuary,protected_area,4,,,22.42980021169822,88.40034600070231,ST_MultiPolygon
+relation,9264786,https://www.openstreetmap.org/relation/9264786,Gomati Wildlife Sanctuary,,Q5618257,en:Gumti Wildlife Sanctuary,protected_area,4,,,23.649137317851896,91.78854233265601,ST_MultiPolygon
+relation,13604447,https://www.openstreetmap.org/relation/13604447,কুয়াকাটা জাতীয় উদ্যান,Kuakata National Park,,,protected_area,2,National Park,Forest Department,21.820997293482563,90.15783340364138,ST_MultiPolygon
+relation,13617703,https://www.openstreetmap.org/relation/13617703,Sunderbans National Park,,Q532440,,national_park,2,,,21.736578643549286,88.86775638498878,ST_MultiPolygon
+way,668973534,https://www.openstreetmap.org/way/668973534,Bibhuti Bhusan WLS,,Q4903011,en:Bibhutibhushan Wildlife Sanctuary,protected_area,4,,,23.185060405714996,88.76184943556774,ST_MultiPolygon
+way,666506794,https://www.openstreetmap.org/way/666506794,Trishna Wildlife Sanctuary,,Q7844042,en:Trishna Wildlife Sanctuary,protected_area,4,,,23.271090129412308,91.36350508016145,ST_MultiPolygon
+way,1012210646,https://www.openstreetmap.org/way/1012210646,বারৈয়াঢালা জাতীয় উদ্যান,Baroiyadhala National Park,,,protected_area,2,National Park,Forest Department,22.72301365395174,91.63428952244547,ST_MultiPolygon
+relation,9262659,https://www.openstreetmap.org/relation/9262659,Tokalo WLS,,Q137144512,en:Tokalo Wildlife Sanctuary,protected_area,4,,,22.036232082095797,92.8974368842361,ST_MultiPolygon
+way,1012210642,https://www.openstreetmap.org/way/1012210642,হিমছড়ি জাতীয় উদ্যান,Himchari National Park,,,protected_area,4,National Park,Forest Department,21.37570412923644,92.053807467666,ST_MultiPolygon
+way,663504914,https://www.openstreetmap.org/way/663504914,Phawngpui Blue Mountain National Park,,Q15266124,,national_park,2,,,22.651519875261258,93.04520707480798,ST_MultiPolygon
+way,662988357,https://www.openstreetmap.org/way/662988357,Khawnglung WLS,,Q137223750,en:Khawnglung Wildlife Sanctuary,protected_area,4,,,23.121251948479816,92.95042182414277,ST_MultiPolygon
+way,663287136,https://www.openstreetmap.org/way/663287136,Thorangtlang WLS,,Q137049264,en:Thorangtlang Wildlife Sanctuary,protected_area,4,,,23.29821674689406,92.53619576835897,ST_MultiPolygon
+way,663102859,https://www.openstreetmap.org/way/663102859,Tawi WLS,,Q137049306,en:Tawi Wildlife Sanctuary,protected_area,4,,,23.53587808537034,92.9455340111579,ST_MultiPolygon
+way,662891522,https://www.openstreetmap.org/way/662891522,Murlen National Park,,Q3334361,,national_park,2,,,23.613483171305433,93.29048034185801,ST_MultiPolygon
+way,160685851,https://www.openstreetmap.org/way/160685851,Talabaicha Island WLS,,,,protected_area,4,,,12.268334323261643,92.74197895733822,ST_MultiPolygon
+way,1012210634,https://www.openstreetmap.org/way/1012210634,নিঝুম দ্বীপ জাতীয় উদ্যান,Nijhum Dweep National Park,,,protected_area,4,National Park,Forest Department,22.07289491613591,91.03739170070064,ST_MultiPolygon
+way,662960902,https://www.openstreetmap.org/way/662960902,Lengteng WLS,,Q16894124,en:Lengteng Wildlife Sanctuary,protected_area,4,,,23.79929443593552,93.25301716375206,ST_MultiPolygon
+relation,9493296,https://www.openstreetmap.org/relation/9493296,Spike II Island WLS,,,,protected_area,4,,,12.27150730694065,92.71096839698053,ST_MultiPolygon
+way,671326176,https://www.openstreetmap.org/way/671326176,Arial Island WLS,,,,protected_area,4,,,12.149305600130461,92.84538424246108,ST_MultiPolygon
+way,520270439,https://www.openstreetmap.org/way/520270439,South Button Island National Park,,Q770855,en:South Button Island National Park,national_park,2,,,12.223743832544296,93.02030482589012,ST_MultiPolygon
+way,520269554,https://www.openstreetmap.org/way/520269554,Middle Button Island National Park,,Q3364465,en:Middle Button Island National Park,national_park,2,,,12.27645503359291,93.02612038517837,ST_MultiPolygon
+way,635154715,https://www.openstreetmap.org/way/635154715,Girjan Island WLS,,,,protected_area,4,,,12.91520776799971,92.9112329004114,ST_MultiPolygon
+way,160685847,https://www.openstreetmap.org/way/160685847,Mangrove Island WLS,,,,protected_area,4,,,12.272196911055003,92.7371876207658,ST_MultiPolygon
+way,160685848,https://www.openstreetmap.org/way/160685848,Stoat Island WLS,,,,protected_area,4,,,12.287229073229318,92.73664038827674,ST_MultiPolygon
+way,218788159,https://www.openstreetmap.org/way/218788159,Cone Island WLS,,,,protected_area,4,,,12.416431440329385,92.86474065050658,ST_MultiPolygon
+way,637079076,https://www.openstreetmap.org/way/637079076,Parkinson Island WLS,,,,protected_area,4,,,12.42320096563194,92.90185200793769,ST_MultiPolygon
+way,218788155,https://www.openstreetmap.org/way/218788155,Oyster Island II WLS,,,,protected_area,4,,,12.409677292446833,92.89822901193882,ST_MultiPolygon
+way,680484087,https://www.openstreetmap.org/way/680484087,Rani Jhansi Marine National Park,,Q1544313,en:Rani Jhansi Marine National Park,national_park,2,,,12.146547153845221,93.05926874919064,ST_MultiPolygon
+way,671327826,https://www.openstreetmap.org/way/671327826,Barren Island WLS,,,,protected_area,4,,,12.279663401619592,93.86187988754686,ST_MultiPolygon
+way,671336735,https://www.openstreetmap.org/way/671336735,Bingham Island WLS,,,,protected_area,4,,,12.257632740083377,92.7171488712035,ST_MultiPolygon
+way,671338949,https://www.openstreetmap.org/way/671338949,Bluff Island WLS,,,,protected_area,4,,,12.247330845377038,92.69770815922053,ST_MultiPolygon
+way,637728672,https://www.openstreetmap.org/way/637728672,Duncan Island WLS,,,,protected_area,4,,,12.015496444767656,92.77378763173319,ST_MultiPolygon
+way,671488794,https://www.openstreetmap.org/way/671488794,East or Inglis Island WLS,,,,protected_area,4,,,12.13989049396023,93.11629930825897,ST_MultiPolygon
+way,520270036,https://www.openstreetmap.org/way/520270036,North Button Island National Park,,Q3364468,,national_park,2,,,12.317263240330925,93.06940856549133,ST_MultiPolygon
+way,227814020,https://www.openstreetmap.org/way/227814020,Oliver Island WLS,,,,protected_area,4,,,12.99945377108687,92.98799395631481,ST_MultiPolygon
+way,632734221,https://www.openstreetmap.org/way/632734221,Oyster Island I WLS,,,,protected_area,4,,,12.99403860439021,92.97365960226071,ST_MultiPolygon
+way,227814016,https://www.openstreetmap.org/way/227814016,Orchid Island WLS,,,,protected_area,4,,,12.940439037688064,92.90171005478093,ST_MultiPolygon
+way,41292224,https://www.openstreetmap.org/way/41292224,Curley (B.P.) Island WLS,,,,protected_area,4,,,12.936390814566062,92.89097971114855,ST_MultiPolygon
+way,22825716,https://www.openstreetmap.org/way/22825716,Snake Island I WLS,,,,protected_area,4,,,12.925356349623979,92.77298680263823,ST_MultiPolygon
+way,380829358,https://www.openstreetmap.org/way/380829358,Sea Serpent Island WLS,,,,protected_area,4,,,12.930504364431167,92.76366411321945,ST_MultiPolygon
+way,671334972,https://www.openstreetmap.org/way/671334972,Benett Island WLS,,,,protected_area,4,,,12.848774367151641,92.71875310954344,ST_MultiPolygon
+way,22825717,https://www.openstreetmap.org/way/22825717,Swamp Island WLS,,,,protected_area,4,,,12.926042416092885,92.87065035913551,ST_MultiPolygon
+way,22825714,https://www.openstreetmap.org/way/22825714,Spike I Island WLS,,,,protected_area,4,,,12.901218556634896,92.75546488635408,ST_MultiPolygon
+way,671339560,https://www.openstreetmap.org/way/671339560,Bondoville Island WLS,,,,protected_area,4,,,12.901218556634896,92.75546488635408,ST_MultiPolygon
+way,671575640,https://www.openstreetmap.org/way/671575640,Roper Island WLS,,,,protected_area,4,,,12.84779738758817,92.76244796308056,ST_MultiPolygon
+way,380829359,https://www.openstreetmap.org/way/380829359,Ranger Island WLS,,,,protected_area,4,,,12.86307205357724,92.7643403610042,ST_MultiPolygon
+way,227814021,https://www.openstreetmap.org/way/227814021,Dot Island WLS,,,,protected_area,4,,,13.023487672601721,92.9479940371101,ST_MultiPolygon
+way,634535419,https://www.openstreetmap.org/way/634535419,Egg Island WLS,,,,protected_area,4,,,12.932193080822344,92.89154298677805,ST_MultiPolygon
+way,634535420,https://www.openstreetmap.org/way/634535420,Dottrell Island WLS,,,,protected_area,4,,,12.928560022458303,92.88744557121032,ST_MultiPolygon
+way,671460527,https://www.openstreetmap.org/way/671460527,Buchanan Island WLS,,,,protected_area,4,,,12.903918284777959,92.78839775835227,ST_MultiPolygon
+way,380829692,https://www.openstreetmap.org/way/380829692,Entrance Island WLS,,,,protected_area,4,,,12.888040882526203,92.78645761555694,ST_MultiPolygon
+way,227942583,https://www.openstreetmap.org/way/227942583,Surat Island WLS,,,,protected_area,4,,,12.893719807114188,92.7507961706122,ST_MultiPolygon
+relation,9339807,https://www.openstreetmap.org/relation/9339807,Interview Island WLS,,,,protected_area,4,,,12.898973296427782,92.68943660185234,ST_MultiPolygon
+way,671578960,https://www.openstreetmap.org/way/671578960,Rowe Island WLS,,,,protected_area,4,,,13.248759001595088,92.83988199656133,ST_MultiPolygon
+way,227942582,https://www.openstreetmap.org/way/227942582,South Reef Island WLS,,,,protected_area,4,,,12.772219278882824,92.655507973669,ST_MultiPolygon
+way,677817638,https://www.openstreetmap.org/way/677817638,Cuthbert Bay WLS,,Q131632374,en:Cuthbert Bay Wildlife Sanctuary,protected_area,4,,,12.70945637115371,92.97220065780158,ST_MultiPolygon
+way,22825707,https://www.openstreetmap.org/way/22825707,Elat Island WLS,,,,protected_area,4,,,12.533465895553375,92.67618566639219,ST_MultiPolygon
+way,227814015,https://www.openstreetmap.org/way/227814015,Hump Island WLS,,,,protected_area,4,,,12.639424574325801,92.70212284659307,ST_MultiPolygon
+way,637393830,https://www.openstreetmap.org/way/637393830,Tuft Island WLS,,,,protected_area,4,,,12.703619626150429,92.7315499677556,ST_MultiPolygon
+way,637393831,https://www.openstreetmap.org/way/637393831,Mask Island WLS,,,,protected_area,4,,,12.732310328039578,92.7264350095176,ST_MultiPolygon
+way,227814014,https://www.openstreetmap.org/way/227814014,Latouche Island WLS,,,,protected_area,4,,,13.093147786310931,92.7297522927607,ST_MultiPolygon
+way,671472630,https://www.openstreetmap.org/way/671472630,Curley Island WLS,,,,protected_area,4,,,13.030035810513782,92.92988477028923,ST_MultiPolygon
+way,633187712,https://www.openstreetmap.org/way/633187712,Goose Island WLS,,,,protected_area,4,,,13.007363271612181,92.90986429135945,ST_MultiPolygon
+way,633187714,https://www.openstreetmap.org/way/633187714,Gander Island WLS,,,,protected_area,4,,,13.003670054575505,92.91157372194644,ST_MultiPolygon
+way,227814013,https://www.openstreetmap.org/way/227814013,Kwangtung Island WLS,,Q135012839,en:Kwangtung Island Wildlife Sanctuary,protected_area,4,,,13.169071177523945,92.79517297999888,ST_MultiPolygon
+way,163696994,https://www.openstreetmap.org/way/163696994,Shark Island WLS,,,,protected_area,4,,,13.201752200981346,92.75580663130243,ST_MultiPolygon
+relation,9493302,https://www.openstreetmap.org/relation/9493302,Paget Island WLS,,,,protected_area,4,,,13.43032030839738,92.83294197850991,ST_MultiPolygon
+way,22825731,https://www.openstreetmap.org/way/22825731,Table (Excelsior) Island WLS,,,,protected_area,4,,,13.433130206411798,93.10002745209742,ST_MultiPolygon
+way,179950337,https://www.openstreetmap.org/way/179950337,Temple Island WLS,,,,protected_area,4,,,13.384748186066778,93.06247547880201,ST_MultiPolygon
+way,671544252,https://www.openstreetmap.org/way/671544252,North Reef Island WLS,,,,protected_area,4,,,13.087654526421153,92.70459531844581,ST_MultiPolygon
+way,671327144,https://www.openstreetmap.org/way/671327144,Bamboo Island WLS,,Q135350428,en:Bamboo Island Wildlife Sanctuary,protected_area,4,,,13.051427289317608,92.93301087331096,ST_MultiPolygon
+way,671337192,https://www.openstreetmap.org/way/671337192,Blister Island WLS,,,,protected_area,4,,,13.043445079385863,92.91686239746674,ST_MultiPolygon
+way,22825728,https://www.openstreetmap.org/way/22825728,Point Island WLS,,,,protected_area,4,,,13.412160806585698,92.8151199940263,ST_MultiPolygon
+way,519075673,https://www.openstreetmap.org/way/519075673,Mayo Island WLS,,,,protected_area,4,,,13.436427902414561,92.87510352431255,ST_MultiPolygon
+way,227942587,https://www.openstreetmap.org/way/227942587,White Cliff Island WLS,,,,protected_area,4,,,13.53773939892991,92.87597216963168,ST_MultiPolygon
+way,671479516,https://www.openstreetmap.org/way/671479516,East Island WLS,,,,protected_area,4,,,13.640242553789474,93.05274341891118,ST_MultiPolygon
+relation,9340852,https://www.openstreetmap.org/relation/9340852,Turtle Islands WLS,,,,protected_area,4,,,13.366105792508177,93.07840748405917,ST_MultiPolygon
+way,227942584,https://www.openstreetmap.org/way/227942584,Ox Island WLS,,,,protected_area,4,,,13.335704890424168,92.9675081556283,ST_MultiPolygon
+way,163696991,https://www.openstreetmap.org/way/163696991,Reef Island WLS,,Q26780739,,protected_area,4,,,13.507391985861256,92.87019853589412,ST_MultiPolygon
+way,228934170,https://www.openstreetmap.org/way/228934170,West Island WLS,,,,protected_area,4,,,13.589786948339162,92.89362527643515,ST_MultiPolygon
+way,227941017,https://www.openstreetmap.org/way/227941017,Peacock Island WLS,,,,protected_area,4,,,13.563528836105814,93.05465609471503,ST_MultiPolygon
+way,22825727,https://www.openstreetmap.org/way/22825727,Table (Delgarno) Island WLS,,,,protected_area,4,,,13.414978602900357,93.09063522653739,ST_MultiPolygon
+way,22825730,https://www.openstreetmap.org/way/22825730,Trilby Island WLS,,,,protected_area,4,,,13.42144149072584,93.06989261074533,ST_MultiPolygon
+way,179950348,https://www.openstreetmap.org/way/179950348,Tree Island WLS,,,,protected_area,4,,,13.43285970924187,93.0781305464892,ST_MultiPolygon
+way,380780143,https://www.openstreetmap.org/way/380780143,Jungle Island WLS,,,,protected_area,4,,,13.342319714985484,93.03752538206219,ST_MultiPolygon
+way,671578292,https://www.openstreetmap.org/way/671578292,Ross Island WLS,,,,protected_area,4,,,13.300310212038116,93.0748820520572,ST_MultiPolygon
+way,671340280,https://www.openstreetmap.org/way/671340280,Brush Island WLS,,,,protected_area,4,,,13.294219178051732,93.0493911814203,ST_MultiPolygon
+way,524572590,https://www.openstreetmap.org/way/524572590,Sir Hugh Ross Island WLS,,,,protected_area,4,,,11.784615405050937,93.08185907701272,ST_MultiPolygon
+relation,9493298,https://www.openstreetmap.org/relation/9493298,Kyd Island WLS,,,,protected_area,4,,,11.95646562105928,92.75250347381863,ST_MultiPolygon
+way,227942580,https://www.openstreetmap.org/way/227942580,Wharf Island WLS,,,,protected_area,4,,,13.33812252830159,93.01470317026384,ST_MultiPolygon
+way,677829141,https://www.openstreetmap.org/way/677829141,North Island WLS,,,,protected_area,4,,,13.31707226691433,93.01934229457567,ST_MultiPolygon
+way,22825734,https://www.openstreetmap.org/way/22825734,Narcondam Island,,Q1965316,,protected_area,4,,,13.447016479296208,94.26378498110465,ST_MultiPolygon
+way,671540966,https://www.openstreetmap.org/way/671540966,Landfall Island WLS,,,,protected_area,4,,,13.653992175077992,93.00741416924136,ST_MultiPolygon
+way,671464082,https://www.openstreetmap.org/way/671464082,Chanel Island WLS,,,,protected_area,4,,,13.662106674710326,93.03076237128576,ST_MultiPolygon
+relation,9282556,https://www.openstreetmap.org/relation/9282556,Saddle Peak National Park,,Q775202,,national_park,2,,,13.163067731000803,93.01723387197897,ST_MultiPolygon
+relation,9282503,https://www.openstreetmap.org/relation/9282503,Mount Harriett National Park,,Q3091762,,national_park,2,,,11.805112652926104,92.75664857076856,ST_MultiPolygon
+way,22825674,https://www.openstreetmap.org/way/22825674,James Island WLS,,,,protected_area,4,,,11.950197622399312,92.72841649067897,ST_MultiPolygon
+way,671573594,https://www.openstreetmap.org/way/671573594,Potanma Island WLS,,,,protected_area,4,,,11.966063571846076,92.74335137153571,ST_MultiPolygon
+way,22825679,https://www.openstreetmap.org/way/22825679,Defence Island WLS,,,,protected_area,4,,,11.953036236429933,92.59966740682647,ST_MultiPolygon
+way,640218730,https://www.openstreetmap.org/way/640218730,Montogemery Island WLS,,,,protected_area,4,,,11.94735056505054,92.56675703103514,ST_MultiPolygon
+relation,9340731,https://www.openstreetmap.org/relation/9340731,Snake Island II WLS,,,,protected_area,4,,,11.637632299962856,92.75475298416218,ST_MultiPolygon
+way,22825651,https://www.openstreetmap.org/way/22825651,Passage Island WLS,,Q28179207,,protected_area,4,,,11.183197309063674,92.67653586028062,ST_MultiPolygon
+way,671580441,https://www.openstreetmap.org/way/671580441,Sandy Island WLS,,,,protected_area,4,,,11.801356643694557,92.5451604605293,ST_MultiPolygon
+way,22825673,https://www.openstreetmap.org/way/22825673,Clyde Island WLS,,,,protected_area,4,,,11.912306355424123,92.59786273673387,ST_MultiPolygon
+way,230733751,https://www.openstreetmap.org/way/230733751,Patric Island WLS,,,,protected_area,4,,,11.978780054690016,92.58334971006718,ST_MultiPolygon
+relation,9493297,https://www.openstreetmap.org/relation/9493297,Pitman Island WLS,,,,protected_area,4,,,11.986002817356862,92.7444682708815,ST_MultiPolygon
+relation,9340726,https://www.openstreetmap.org/relation/9340726,Sisters Island WLS,,,,protected_area,4,,,11.145091231587358,92.72975215279385,ST_MultiPolygon
+way,228933434,https://www.openstreetmap.org/way/228933434,South Sentinel Island WLS,,,,protected_area,4,,,10.978227472139668,92.22244593573086,ST_MultiPolygon
+relation,9426233,https://www.openstreetmap.org/relation/9426233,Tillongchong Island WLS,,,,protected_area,4,,,8.499173792618794,93.6254935891312,ST_MultiPolygon
+relation,9339361,https://www.openstreetmap.org/relation/9339361,Cinque Islands WLS,,,,protected_area,4,,,11.284062626296835,92.70407878299028,ST_MultiPolygon
+relation,10608778,https://www.openstreetmap.org/relation/10608778,Somawatiya Chaithya National Park,,,en:Somawathiya National Park,national_park,2,,,8.215538895885635,81.14819728190975,ST_MultiPolygon
+relation,15434166,https://www.openstreetmap.org/relation/15434166,Wilpattu National Park,,Q3524793,en:Wilpattu National Park,national_park,2,National Park,,8.441162220107291,80.03747521649312,ST_MultiPolygon
+way,671329181,https://www.openstreetmap.org/way/671329181,Batti Malv Island WLS,,,,protected_area,4,,,8.827968529716104,92.85772131210457,ST_MultiPolygon
+relation,5683596,https://www.openstreetmap.org/relation/5683596,Minneriya National Park,Minneriya National Park,Q15253488,en:Minneriya National Park,national_park,2,National Park,,8.015193819414286,80.85055833242265,ST_MultiPolygon
+way,25006292,https://www.openstreetmap.org/way/25006292,Guindy National Park,Guindy National Park,Q648548,en:Guindy National Park,national_park,2,,,12.9994809050312,80.22761321948802,ST_MultiPolygon
+relation,9447282,https://www.openstreetmap.org/relation/9447282,Rangayyanadurga WLS,,Q112252433,en:Rangayyanadurga Four–horned antelope Wildlife Sanctuary,protected_area,4,,,14.612970783911056,76.22828054152545,ST_MultiPolygon
+way,678646971,https://www.openstreetmap.org/way/678646971,Pulicat Bird Sanctuary,,,,protected_area,4,,,13.477831654824723,80.28122468651547,ST_MultiPolygon
+way,671020948,https://www.openstreetmap.org/way/671020948,Pulicat Bird Sanctuary,,Q3532790,en:Pulicat Lake Bird Sanctuary,protected_area,4,,,13.697880023324059,80.15105757843246,ST_MultiPolygon
+way,676783991,https://www.openstreetmap.org/way/676783991,Gundla Brahmeswaram WLS,,Q112193588,en:Gundla Brahmeswaram Wildlife Sanctuary,protected_area,4,,,15.637377697349471,78.76096546262536,ST_MultiPolygon
+way,28234944,https://www.openstreetmap.org/way/28234944,South Brother Island,,Q7566439,en:South Brother Island (Andaman and Nicobar Islands),protected_area,4,,,10.932729794294692,92.61299744371638,ST_MultiPolygon
+way,28235135,https://www.openstreetmap.org/way/28235135,North Brother Island,,Q15262495,en:North Brother Island (Andaman and Nicobar Islands),protected_area,4,,,10.987647970835091,92.66401748549774,ST_MultiPolygon
+relation,20066333,https://www.openstreetmap.org/relation/20066333,Krishna Wild Life Sanctuary,,Q6437498,,protected_area,4,,,15.794539413829195,80.90491475147341,ST_MultiPolygon
+way,671119721,https://www.openstreetmap.org/way/671119721,Sri Penusila Narasimha Wildlife Sanctuary,,Q24906034,en:Sri Penusila Narasimha Wildlife Sanctuary,protected_area,4,,,14.40599151053465,79.30376201374096,ST_MultiPolygon
+relation,9330957,https://www.openstreetmap.org/relation/9330957,Gudekote Sloth Bear WLS,,Q65091528,en:Gudekote Wildlife Sanctuary,protected_area,4,,,14.850453854554424,76.6474344956547,ST_MultiPolygon
+way,449304302,https://www.openstreetmap.org/way/449304302,Jogimatti WLS,,Q124115645,en:Jogimatti Wildlife Sanctuary,protected_area,4,,,14.174278791893174,76.386772444977,ST_MultiPolygon
+way,671047498,https://www.openstreetmap.org/way/671047498,Nellapattu Bird Sanctuary,,Q18128630,en:Nelapattu Bird Sanctuary,protected_area,4,,,13.830118532390893,79.94997004093733,ST_MultiPolygon
+relation,9420649,https://www.openstreetmap.org/relation/9420649,Cauvery North WLS,,Q48724282,en:Cauvery North Wildlife Sanctuary,protected_area,4,,,12.301196600687108,77.77636848835505,ST_MultiPolygon
+way,279532243,https://www.openstreetmap.org/way/279532243,Vedanthangal WLS,,Q2253205,en:Vedanthangal Bird Sanctuary,protected_area,4,,,12.545783000167576,79.8559298355533,ST_MultiPolygon
+relation,19896762,https://www.openstreetmap.org/relation/19896762,Kaluveli Bird Sanctuary,,Q122363296,en:Kaluveli Bird Sanctuary,protected_area,4,,,12.109804110711867,79.85176340215783,ST_MultiPolygon
+way,670763955,https://www.openstreetmap.org/way/670763955,Ramadevarabetta Vulture WLS,,Q112252443,en:Ramadevarabetta Vulture Sanctuary,protected_area,4,,,12.757328363071332,77.30547722997534,ST_MultiPolygon
+relation,8124064,https://www.openstreetmap.org/relation/8124064,Bannerghatta National Park,,Q2588520,en:Bannerghatta National Park,national_park,2,,,12.590678389568081,77.56620752403647,ST_MultiPolygon
+way,671021672,https://www.openstreetmap.org/way/671021672,Rollapadu WLS,,Q17087471,en:Rollapadu Wildlife Sanctuary,protected_area,4,,,15.74752914955245,78.36196221727876,ST_MultiPolygon
+way,278769809,https://www.openstreetmap.org/way/278769809,Rajiv Gandhi National Park,,Q96401141,en:Rajiv Gandhi National Park (Rameswaram),national_park,2,,,14.727081263195299,78.56047802779574,ST_MultiPolygon
+way,671049172,https://www.openstreetmap.org/way/671049172,Sri Lankamalleswara Wildlife Sanctuary,,Q19898458,en:Sri Lankamalleswara Wildlife Sanctuary,protected_area,4,,,14.593240483270938,78.93420766869966,ST_MultiPolygon
+way,678503274,https://www.openstreetmap.org/way/678503274,Karikilli WLS,,Q48730174,en:Karikili Bird Sanctuary,protected_area,4,,,12.599315236688746,79.84339836384231,ST_MultiPolygon
+relation,9329112,https://www.openstreetmap.org/relation/9329112,Cauvery WLS,,Q5054715,en:Cauvery Wildlife Sanctuary,protected_area,4,,,12.21467806748248,77.45711574408814,ST_MultiPolygon
+way,670561818,https://www.openstreetmap.org/way/670561818,Arabithittu WLS,,Q110078183,en:Arabithittu Wildlife Sanctuary,protected_area,4,,,12.325394271669712,76.40719704724985,ST_MultiPolygon
+relation,19925050,https://www.openstreetmap.org/relation/19925050,Bukkapatna Chinkara WLS,,Q112252264,en:Bukkapatna Chinkara Wildlife Sanctuary,protected_area,4,,,13.656897748203804,76.70428195758437,ST_MultiPolygon
+relation,9329660,https://www.openstreetmap.org/relation/9329660,Ranganathittu Bird Sanctuary,,Q3846171,,protected_area,4,,,12.403073851648246,76.7015745393106,ST_MultiPolygon
+relation,9329621,https://www.openstreetmap.org/relation/9329621,Melkote Temple Wildlife Sanctuary,,Q137699195,en:Melkote Temple Wildlife Sanctuary,protected_area,4,,,12.700627778683977,76.66152017547343,ST_MultiPolygon
+relation,9330938,https://www.openstreetmap.org/relation/9330938,Adichunchunagiri WLS,,Q135455927,en:Adichunchanagiri Peacock Wildlife Sanctuary,protected_area,4,,,13.015671106121056,76.75005266815181,ST_MultiPolygon
+relation,5411360,https://www.openstreetmap.org/relation/5411360,Thimlapura WLS,,Q111913930,en:Thimlapura Wildlife Sanctuary,protected_area,4,,,13.37895211733649,77.18560814019904,ST_MultiPolygon
+relation,9328427,https://www.openstreetmap.org/relation/9328427,Someshwara WLS,,Q7559997,,protected_area,4,,,13.526864915967867,75.05404883666506,ST_MultiPolygon
+relation,12154449,https://www.openstreetmap.org/relation/12154449,Nagarahole National Park,Nagarhole National Park,Q1520200,,national_park,2,,,12.06080233033545,76.15373708603093,ST_MultiPolygon
+relation,9329791,https://www.openstreetmap.org/relation/9329791,Bhadra WLS/Tiger Reserve,,Q4900541,,protected_area,4,,,13.550466908904623,75.6310464592236,ST_MultiPolygon
+way,670548929,https://www.openstreetmap.org/way/670548929,Mookambika WLS,,Q60744029,Mookambika Wildlife Sanctuary,protected_area,4,,,13.80646981484938,74.8511656317584,ST_MultiPolygon
+way,670660832,https://www.openstreetmap.org/way/670660832,Pushpagiri WLS,,Q7261843,en:Pushpagiri Wildlife Sanctuary,protected_area,4,,,12.58984304911543,75.67702667186084,ST_MultiPolygon
+relation,9482054,https://www.openstreetmap.org/relation/9482054,Kudremukh National Park,,Q123439915,en:Kudremukh National Park,national_park,2,,,13.24107734564846,75.20758478873267,ST_MultiPolygon
+relation,18900136,https://www.openstreetmap.org/relation/18900136,Cotigao WLS,,Q5175367,,protected_area,4,,,14.98323134914536,74.1991345986394,ST_MultiPolygon
+way,670556892,https://www.openstreetmap.org/way/670556892,Brahmagiri WLS,,Q4955532,Brahmagiri Wildlife Sanctuary,protected_area,4,,,12.023314404918354,75.87558660796046,ST_MultiPolygon
+way,670758009,https://www.openstreetmap.org/way/670758009,Talakaveri WLS,,Q7678819,en:Talakaveri Wildlife Sanctuary,protected_area,4,,,12.358481185602017,75.48335511805332,ST_MultiPolygon
+way,670641254,https://www.openstreetmap.org/way/670641254,Sharavati Valley WLS,,Q85800682,en:Sharavathi LTM Wildlife Sanctuary,protected_area,4,,,14.092393351063095,74.78782661753465,ST_MultiPolygon
+way,670658178,https://www.openstreetmap.org/way/670658178,Gudavi Bird WLS,,Q5614543,en:Gudavi Bird Sanctuary,protected_area,4,,,14.43855954768848,75.01620235045081,ST_MultiPolygon
+relation,9446246,https://www.openstreetmap.org/relation/9446246,Ranebennur Black Buck WLS,,Q7293023,en:Ranibennur Blackbuck Sanctuary,protected_area,4,,,14.673255550481322,75.6558659419268,ST_MultiPolygon
+relation,19618488,https://www.openstreetmap.org/relation/19618488,Bhagwan Mahavir WLS ESZ (South),,,,protected_area,6,Eco Sensitive Zone,,15.313043313071224,74.18373503672956,ST_MultiPolygon
+relation,19700961,https://www.openstreetmap.org/relation/19700961,Cotigao WLS ESZ,,,,protected_area,6,Eco Sensitive Zone,,14.979199010748331,74.1403776589874,ST_MultiPolygon
+relation,19619038,https://www.openstreetmap.org/relation/19619038,Netravali WLS ESZ,,,,protected_area,6,Eco Sensitive Zone,,15.153992531482885,74.20941459483217,ST_MultiPolygon
+relation,19618486,https://www.openstreetmap.org/relation/19618486,Bhagwan Mahavir WLS ESZ (North),,,,protected_area,6,Eco Sensitive Zone,,15.42184867202653,74.20703116709407,ST_MultiPolygon
+relation,19618487,https://www.openstreetmap.org/relation/19618487,Mollem NP ESZ,,,,protected_area,6,Eco Sensitive Zone,,15.351632916467127,74.23743762040982,ST_MultiPolygon
+relation,9469703,https://www.openstreetmap.org/relation/9469703,Bhagwan Mahavir WLS,,,,protected_area,4,,,15.372512060282386,74.22330873641721,ST_MultiPolygon
+way,169478282,https://www.openstreetmap.org/way/169478282,Shettihalli Wildlife Sanctuary,,Q109974510,en:Shettihalli Wildlife Sanctuary,protected_area,4,,,13.83532728953617,75.45745658118912,ST_MultiPolygon
+way,670637936,https://www.openstreetmap.org/way/670637936,Attiveri Bird WLS,,Q4818551,en:Attiveri Bird Sanctuary,protected_area,4,,,15.078419753469191,75.04121744582059,ST_MultiPolygon
+relation,19153153,https://www.openstreetmap.org/relation/19153153,Bhimgad WLS,,Q4901777,,protected_area,4,,,15.56930067762167,74.33309786052351,ST_MultiPolygon
+relation,13414729,https://www.openstreetmap.org/relation/13414729,Kali Tiger Reserve,,Q2373398,,protected_area,4,Tiger Reserve,,15.128954225601673,74.42191661197774,ST_MultiPolygon
+relation,19153509,https://www.openstreetmap.org/relation/19153509,Bhagwan Mahaveer National Park,,Q2397554,,protected_area,2,,,15.338387302896507,74.27872700007146,ST_MultiPolygon
+relation,19618485,https://www.openstreetmap.org/relation/19618485,Mhadei WLS ESZ,,,,protected_area,6,,,15.56743951608662,74.14633184068724,ST_MultiPolygon
+relation,19107893,https://www.openstreetmap.org/relation/19107893,Bondla WLS ESZ,,,,protected_area,6,,,15.43407554978289,74.11053974933053,ST_MultiPolygon
+relation,19705217,https://www.openstreetmap.org/relation/19705217,Bondla WLS,,Q4941423,,protected_area,4,,,15.434997406124124,74.10793337858131,ST_MultiPolygon
+relation,19700103,https://www.openstreetmap.org/relation/19700103,Bhimgad WLS ESZ,,,,protected_area,6,Eco Sensitive Zone,,15.587889064667577,74.37307503091908,ST_MultiPolygon
+relation,19059002,https://www.openstreetmap.org/relation/19059002,Mhadei WLS,,Q6826847,,protected_area,4,,,15.577911386071447,74.19921896982821,ST_MultiPolygon
+relation,19107932,https://www.openstreetmap.org/relation/19107932,Salim Ali Bird Sanctuary,,Q4806672,,protected_area,4,,,15.516421055300125,73.85454820452246,ST_MultiPolygon
+way,677209471,https://www.openstreetmap.org/way/677209471,Aralam WLS,,Q4783879,en:Aralam Butterfly Sanctuary,protected_area,4,,,11.945487696298681,75.85735468428443,ST_MultiPolygon
+way,677290520,https://www.openstreetmap.org/way/677290520,Chulannur Peafowl WLS,,Q13111992,en:Choolannur Pea Fowl Sanctuary,protected_area,4,,,10.723576706679843,76.48070636821542,ST_MultiPolygon
+relation,19698389,https://www.openstreetmap.org/relation/19698389,Kali TR ESZ,,,,protected_area,6,Eco Sensitive Zone,,15.15490919884338,74.52171503007591,ST_MultiPolygon
+way,677907120,https://www.openstreetmap.org/way/677907120,Malabar WLS,,Q48727189,en:Malabar Wildlife Sanctuary,protected_area,4,,,11.590314596871902,75.9676576705841,ST_MultiPolygon
+way,159049291,https://www.openstreetmap.org/way/159049291,Bandipur National Park,,Q665110,en:Bandipur National Park,national_park,2,,,11.77197498690098,76.49604440058528,ST_MultiPolygon
+way,378131783,https://www.openstreetmap.org/way/378131783,Biligiri Ranganatha Swamy Temple (BRT) Wildlife Sanctuary,,Q3631211,en:Biligiriranga Hills,protected_area,4,,,11.932027184768573,77.15756528270863,ST_MultiPolygon
+relation,19107931,https://www.openstreetmap.org/relation/19107931,Salim Ali Bird Sanctuary Eco-sensitive Zone,,,,protected_area,6,,,15.51759901741981,73.86220261400922,ST_MultiPolygon
+way,677910591,https://www.openstreetmap.org/way/677910591,Pitti WLS (Bird),,,,protected_area,4,,,10.775114368408218,72.53427060197495,ST_MultiPolygon
+way,677210306,https://www.openstreetmap.org/way/677210306,Kottiyoor WLS,,Q31708100,en:Kottiyoor Wildlife Sanctuary,protected_area,4,,,11.894605952366378,75.90408543217318,ST_MultiPolygon
+way,677289011,https://www.openstreetmap.org/way/677289011,Thattekad Bird Sanctuary,,Q6772512,en:Thattekad Bird Sanctuary,protected_area,4,,,10.130402437148469,76.7170590974445,ST_MultiPolygon
+relation,9399178,https://www.openstreetmap.org/relation/9399178,Wayanad WLS,,Q3595858,en:Wayanad Wildlife Sanctuary,protected_area,4,,,11.906737770240811,76.08406103368539,ST_MultiPolygon
+way,159049306,https://www.openstreetmap.org/way/159049306,Mudumalai National Park,,Q2372700,,national_park,2,,,11.60619017664656,76.53405450192929,ST_MultiPolygon
+relation,4192204,https://www.openstreetmap.org/relation/4192204,Sathyamangalam WLS/Tiger Reserve,,Q2226064,en:Sathyamangalam Wildlife Sanctuary,protected_area,4,,,11.645353173784152,77.1039143044237,ST_MultiPolygon
+relation,19924762,https://www.openstreetmap.org/relation/19924762,Nanjarayan Bird Sanctuary,,Q122363298,en:Nanjarayan Bird Sanctuary,protected_area,4,,,11.13418481627556,77.38592166087864,ST_MultiPolygon
+way,165070558,https://www.openstreetmap.org/way/165070558,Vaduvoor WLS,,Q7908370,en:Vaduvoor Bird Sanctuary,protected_area,4,,,10.700842003322173,79.31912692290965,ST_MultiPolygon
+relation,19896759,https://www.openstreetmap.org/relation/19896759,Kallaperambur Lake Bird WLS,,Q122363290,,protected_area,4,,,10.796504682075865,79.02888245898764,ST_MultiPolygon
+relation,9335094,https://www.openstreetmap.org/relation/9335094,Vettangudi WLS,,Q7923801,en:Vettangudi Bird Sanctuary,protected_area,4,,,10.108217079658276,78.51463518258834,ST_MultiPolygon
+way,671201903,https://www.openstreetmap.org/way/671201903,Therthangal WLS,,Q135622710,en:Therthangal Bird Sanctuary,protected_area,4,,,9.461194309432376,78.76988069022498,ST_MultiPolygon
+relation,9329557,https://www.openstreetmap.org/relation/9329557,Malai Mahadeshwara WLS,,Q24948250,en:Malai Mahadeshwara Wildlife Sanctuary,protected_area,4,,,11.961291766489053,77.44287077682523,ST_MultiPolygon
+way,678501533,https://www.openstreetmap.org/way/678501533,Oussudu WLS,,,,protected_area,4,,,11.957696337646832,79.74996177667522,ST_MultiPolygon
+way,681857177,https://www.openstreetmap.org/way/681857177,Oussudu WLS,,Q125768557,en:Oussudu Bird Sanctuary,protected_area,4,,,11.95197706592434,79.74182069634658,ST_MultiPolygon
+way,671199074,https://www.openstreetmap.org/way/671199074,Udhayamarthandapuram Lake WLS,,Q7877004,en:Udayamarthandapuram Bird Sanctuary,protected_area,4,,,10.450626479378037,79.55486233207218,ST_MultiPolygon
+way,671269863,https://www.openstreetmap.org/way/671269863,Point Calimere WLS,,Q5614058,,protected_area,4,,,10.305579475776728,79.85150894470604,ST_MultiPolygon
+way,671203113,https://www.openstreetmap.org/way/671203113,Sakkarakottai Bird WLS,,Q135622961,en:Sakkarakottai Bird Sanctuary,protected_area,4,,,9.338399085441027,78.82512916154506,ST_MultiPolygon
+way,671205635,https://www.openstreetmap.org/way/671205635,Srivilliputhur Grizzled Squirrel Wildlife Sanctuary,,Q5609778,en:Grizzled Squirrel Wildlife Sanctuary,protected_area,4,,,9.601207926822925,77.53958764858828,ST_MultiPolygon
+relation,9453214,https://www.openstreetmap.org/relation/9453214,Idukki Wildlife Sanctuary,,Q6808944,en:Idukki Wildlife Sanctuary,protected_area,4,,,9.778558144683887,76.98057514029975,ST_MultiPolygon
+relation,415570,https://www.openstreetmap.org/relation/415570,Gulf of Mannar Marine National Park,,Q5617576,,national_park,2,,,9.095544342828182,78.6970792683989,ST_MultiPolygon
+way,671122257,https://www.openstreetmap.org/way/671122257,Chitrangudi Bird WLS,,Q5102342,en:Chitrangudi Bird Sanctuary,protected_area,4,,,9.336220052071674,78.48135136354783,ST_MultiPolygon
+way,671207570,https://www.openstreetmap.org/way/671207570,Kanjirankulam Birds WLS,,Q15233552,en:Kanjirankulam Bird Sanctuary,protected_area,4,,,9.359787244334845,78.47893233718786,ST_MultiPolygon
+relation,4808018,https://www.openstreetmap.org/relation/4808018,Megamalai WLS,,,,protected_area,4,,,9.790347706296846,77.50028938505406,ST_MultiPolygon
+way,671268852,https://www.openstreetmap.org/way/671268852,Gangaikondan spotted Deer WLS,,Q122363292,en:Gangaikondan Spotted Deer Sanctuary,protected_area,4,,,8.825485530502073,77.7669887093586,ST_MultiPolygon
+relation,17746133,https://www.openstreetmap.org/relation/17746133,Nellai WLS,,Q111181635,,protected_area,4,,,9.14195600962564,77.28275918133552,ST_MultiPolygon
+way,681439743,https://www.openstreetmap.org/way/681439743,Periyar National Park & Tiger Reserve,,Q548153,en:Periyar National Park,national_park,2,,,9.450034760425396,77.30708336553772,ST_MultiPolygon
+way,671212129,https://www.openstreetmap.org/way/671212129,Vallanadu Blackbuck WLS,,Q12988826,en:Vallanadu Wildlife Sanctuary,protected_area,4,,,8.702276943985952,77.8878371376274,ST_MultiPolygon
+relation,9469924,https://www.openstreetmap.org/relation/9469924,Neyyar WLS,,Q6807544,,protected_area,4,,,8.554417678396826,77.22110423899002,ST_MultiPolygon
+way,670875611,https://www.openstreetmap.org/way/670875611,Nugu WLS,,Q110078279,en:Nugu Wildlife Sanctuary,protected_area,4,,,11.930841363301294,76.45040519190401,ST_MultiPolygon
+way,164734503,https://www.openstreetmap.org/way/164734503,Vellode WLS,,Q4122004,en:Vellode Bird Sanctuary,protected_area,4,,,11.251656241245973,77.65185029686769,ST_MultiPolygon
+way,671123410,https://www.openstreetmap.org/way/671123410,Karaivetti Bird WLS,,Q13111039,en:Karaivetti Bird Sanctuary,protected_area,4,,,10.979683069043206,79.04540933707133,ST_MultiPolygon
+way,671213413,https://www.openstreetmap.org/way/671213413,Melaselvanoor - Keelaselvanoor Bird WLS,,Q122363291,en:Melaselvanur-Kilaselvanur Bird Sanctuary,protected_area,4,,,9.220038171826932,78.5570442059729,ST_MultiPolygon
+way,666719511,https://www.openstreetmap.org/way/666719511,Mathikettan Shola National Park,,Q3091867,en:Mathikettan Shola National Park,national_park,2,,,9.980886537840961,77.24786268721189,ST_MultiPolygon
+relation,17746132,https://www.openstreetmap.org/relation/17746132,Kalakkad Mundanthurai Tiger Reserve,,Q3936889,en:Kalakkad Mundanthurai Tiger Reserve,protected_area,4,,,8.623366118575094,77.36538614332159,ST_MultiPolygon
+relation,9334908,https://www.openstreetmap.org/relation/9334908,Koonthankulam-Kadankulam WLS,,Q2253195,en:Koonthankulam Bird Sanctuary,protected_area,4,,,8.492885625460374,77.75975881790528,ST_MultiPolygon
+relation,17744486,https://www.openstreetmap.org/relation/17744486,Shendurney WLS,,Q7494223,,protected_area,4,,,8.888820007796259,77.17127982836396,ST_MultiPolygon
+relation,9336178,https://www.openstreetmap.org/relation/9336178,Kanyakumari WLS,,Q16979364,,protected_area,4,,,8.39495827178354,77.40365844160091,ST_MultiPolygon
+relation,18213394,https://www.openstreetmap.org/relation/18213394,Kataragama Sanctuary,,,,protected_area,4,,,6.414488077106307,81.36967805849163,ST_MultiPolygon
+relation,18213411,https://www.openstreetmap.org/relation/18213411,Katagamuwa Sanctuary,,,,protected_area,4,,,6.396401809501342,81.40535165448398,ST_MultiPolygon
+relation,18136442,https://www.openstreetmap.org/relation/18136442,Kumana National Park,,Q6443439,,national_park,2,,,6.617837725053316,81.68241200539494,ST_MultiPolygon
+relation,18221780,https://www.openstreetmap.org/relation/18221780,Yala National Park - Block 1,,Q1530863,en:Yala National Park,national_park,2,,,6.350180597286327,81.44758320908453,ST_MultiPolygon
+relation,17746631,https://www.openstreetmap.org/relation/17746631,Peppara WLS,,Q6809163,,protected_area,4,,,8.638635364562486,77.1785905023175,ST_MultiPolygon
+relation,18201283,https://www.openstreetmap.org/relation/18201283,Yala National Park - Block 2,,Q1530863,en:Yala National Park,national_park,2,,,6.420147522667628,81.58370719741461,ST_MultiPolygon
+way,677822354,https://www.openstreetmap.org/way/677822354,Galathea Bay WLS,,,,protected_area,4,,,6.802524632431999,93.86182275822786,ST_MultiPolygon
+relation,18304575,https://www.openstreetmap.org/relation/18304575,Yala National Park - Block 4,,Q1530863,en:Yala National Park,national_park,2,,,6.6208120284898015,81.36175753555749,ST_MultiPolygon
+relation,6315786,https://www.openstreetmap.org/relation/6315786,Wasgamuwa National Park,,Q7971410,en:Wasgamuwa National Park,national_park,2,National Park,,7.743621586614799,80.93196130786862,ST_MultiPolygon
+relation,18145225,https://www.openstreetmap.org/relation/18145225,Kudumbigala Panama Sanctuary,,,,protected_area,4,,,6.711571033882826,81.75755010269984,ST_MultiPolygon
+relation,18523072,https://www.openstreetmap.org/relation/18523072,Horton Plains National Park,,Q1630245,en:Horton Plains National Park,national_park,2,National Park,,6.8062464734009795,80.79783765633093,ST_MultiPolygon
+relation,18422607,https://www.openstreetmap.org/relation/18422607,Galoya Valley National Park,,,,national_park,2,,,7.192674326239924,81.4519307313995,ST_MultiPolygon
+relation,18488860,https://www.openstreetmap.org/relation/18488860,Sellakkaoya Sanctuary,,,,protected_area,4,,,7.127990628005621,81.54451146443688,ST_MultiPolygon
+relation,3263607,https://www.openstreetmap.org/relation/3263607,อุทยานแห่งชาติหมู่เกาะสิมิลัน,Mu Ko Similan National Park,Q1371403,,national_park,2,,"Department of National Parks, Wildlife and Plant Conservation",8.62564854269755,97.66524447625396,ST_MultiPolygon
+way,668873994,https://www.openstreetmap.org/way/668873994,Kusheshwar Asthan Bird WLS,,Q135350403,en:Kusheshwar Asthan Bird Sanctuary,protected_area,4,,,25.840961212532473,86.30149109300608,ST_MultiPolygon
+way,1481132992,https://www.openstreetmap.org/way/1481132992,Megapode Island WLS,,,,protected_area,4,,,6.847626979164411,93.7856340455346,ST_MultiPolygon
+relation,20256454,https://www.openstreetmap.org/relation/20256454,Galathea National Park Eco-Sensitive Zone,,,,protected_area,6,,,6.980277717008628,93.84116250117945,ST_MultiPolygon
+relation,14505686,https://www.openstreetmap.org/relation/14505686,Dibang Wildlife Sanctuary,Dibang Wildlife Sanctuary,Q5272213,en:Dibang Wildlife Sanctuary,protected_area,4,,,29.026932079038875,95.97131401225451,ST_MultiPolygon
+way,677823470,https://www.openstreetmap.org/way/677823470,Lohabarrack (Saltwater Crocodile) WLS,,,,protected_area,4,,,11.627124526307776,92.61092967518802,ST_MultiPolygon
+relation,20256538,https://www.openstreetmap.org/relation/20256538,Campbell Bay National Park,,Q2979693,,national_park,2,,,7.108769626453982,93.77129102595188,ST_MultiPolygon
+relation,21115404,https://www.openstreetmap.org/relation/21115404,Koundinya WLS ESZ (Proposed),,,,protected_area,6,Eco-Sensitive Zone,,12.977418324848365,78.60088598453218,ST_MultiPolygon
+relation,10956920,https://www.openstreetmap.org/relation/10956920,Боғи миллии Тоҷикистон,Tajikistan National Park,Q3076575,tg:Боғи миллии Тоҷикистон,national_park,2,,,38.595072749428915,72.7078546530135,ST_MultiPolygon
+relation,11279545,https://www.openstreetmap.org/relation/11279545,Pambadum Shola National Park,,Q3330156,,national_park,2,,,10.141972123503429,77.25979243320079,ST_MultiPolygon
+relation,15036911,https://www.openstreetmap.org/relation/15036911,Anamudi Shola National Park,,Q3333420,,national_park,2,,,10.200585453851106,77.20742032514146,ST_MultiPolygon
+relation,9458668,https://www.openstreetmap.org/relation/9458668,Dhauladhar WLS,,Q136289107,en:Dhauladhar Wildlife Sanctuary,protected_area,4,,,32.26525129977638,76.8886466768144,ST_MultiPolygon
+relation,20256455,https://www.openstreetmap.org/relation/20256455,Galathea National Park,,Q2979723,,national_park,2,,,6.912503925559052,93.8408501439273,ST_MultiPolygon
+relation,21115365,https://www.openstreetmap.org/relation/21115365,Koundinya WLS,,Q6434637,en:Koundinya Wildlife Sanctuary,protected_area,4,Wildlife Sanctuary,,12.879139616408875,78.59812085155258,ST_MultiPolygon
+relation,11279547,https://www.openstreetmap.org/relation/11279547,Chinnar WLS,,Q3522009,en:Chinnar Wildlife Sanctuary,protected_area,4,,,10.31074765361668,77.19530160584638,ST_MultiPolygon
+relation,21117309,https://www.openstreetmap.org/relation/21117309,Munnar Wildlife Zone ESZ (Proposed),,,,protected_area,6,Eco-Sensitive Zone,,10.21206189571486,77.14201547901749,ST_MultiPolygon
+relation,18201212,https://www.openstreetmap.org/relation/18201212,Yala National Park - Block 3,,Q1530863,en:Yala National Park,national_park,2,,,6.517533415457916,81.43925440000189,ST_MultiPolygon
+relation,4148317,https://www.openstreetmap.org/relation/4148317,Eravikulam National Park,,Q1194252,,national_park,2,,,10.231282384260732,77.0778424329468,ST_MultiPolygon
+relation,18304344,https://www.openstreetmap.org/relation/18304344,Yala National Park - Block 5,,Q1530863,en:Yala National Park,national_park,2,,,6.518733339891982,81.28814963760176,ST_MultiPolygon
+relation,21123057,https://www.openstreetmap.org/relation/21123057,Sri Venkateswara National Park,,Q3174893,en:Sri Venkateswara National Park,national_park,2,,,13.783051780165218,79.30565641728874,ST_MultiPolygon
+relation,21123096,https://www.openstreetmap.org/relation/21123096,Sri Venkateswara Wildlife Sanctuary,,,,protected_area,4,,,13.694759483000364,79.34089490906025,ST_MultiPolygon
+relation,21123095,https://www.openstreetmap.org/relation/21123095,Sri Venkateswara Wildlife ESZ (Proposed),,,,protected_area,6,,,13.753055009572313,79.3238497131385,ST_MultiPolygon
+relation,3531450,https://www.openstreetmap.org/relation/3531450,सगरमाथा राष्ट्रिय निकुञ्ज,Sagarmatha National Park,Q2211959,en:Sagarmatha National Park,national_park,2,,,27.933295674852772,86.7214316580425,ST_MultiPolygon
+relation,9336901,https://www.openstreetmap.org/relation/9336901,Kodaikanal WLS,,Q131123428,en:Kodaikanal Wildlife Sanctuary,protected_area,4,,,10.237781817345294,77.5022799579648,ST_MultiPolygon
+relation,21127289,https://www.openstreetmap.org/relation/21127289,Kodaikanal WLS ESZ (Proposed),,,,protected_area,6,Eco-Sensitive Zone,,10.223363023013237,77.53649143256419,ST_MultiPolygon
+relation,11279546,https://www.openstreetmap.org/relation/11279546,Kurinjimala WLS,,Q6446058,en:Kurinjimala Sanctuary,protected_area,4,,,10.218376116672195,77.2664363893691,ST_MultiPolygon
+way,667934530,https://www.openstreetmap.org/way/667934530,Kugti WLS,,Q17067959,en:Kugti Sanctuary,protected_area,4,,,32.473978723753625,76.71947529623553,ST_MultiPolygon
+relation,21075759,https://www.openstreetmap.org/relation/21075759,Bhimalpur Forest,,Q140089593,,protected_area,6,,"Forest Department, Government of Bihar",26.36288570626445,85.17252697619602,ST_MultiPolygon
+relation,21127130,https://www.openstreetmap.org/relation/21127130,Anamalai Tiger Reserve ESZ (Proposed),,,,protected_area,6,Eco-Sensitive Zone,,10.50456390583748,77.09774910610392,ST_MultiPolygon
+relation,11278141,https://www.openstreetmap.org/relation/11278141,Anamalai Tiger Reserve,,Q1661434,,protected_area,2,,,10.384534812489358,77.07812727883054,ST_MultiPolygon
+relation,21128954,https://www.openstreetmap.org/relation/21128954,Chimmony WLS,,Q6806784,en:Chimmini Wildlife Sanctuary,protected_area,4,,,10.430117834683502,76.48797542933683,ST_MultiPolygon
+relation,11279548,https://www.openstreetmap.org/relation/11279548,Parambikulam Tiger Reserve,,Q3635169,,protected_area,4,,,10.41060906329828,76.7151113712369,ST_MultiPolygon
+relation,21129053,https://www.openstreetmap.org/relation/21129053,Chimmony WLS ESZ (Proposed),,,,protected_area,6,Eco-Sensitive Zone,,10.396020491148747,76.46368785756522,ST_MultiPolygon
+relation,21129222,https://www.openstreetmap.org/relation/21129222,Peechi-Vazhani Wildlife Sanctuary,,Q7160147,,protected_area,4,,,10.551364209895995,76.39342930201515,ST_MultiPolygon
+relation,21130741,https://www.openstreetmap.org/relation/21130741,Silent Valley National Park,,Q176792,,national_park,2,,,11.13985041809086,76.43676350518835,ST_MultiPolygon
+relation,21127131,https://www.openstreetmap.org/relation/21127131,Anamalai Tiger Reserve Buffer Area,,,,protected_area,4,,,10.293709468522305,77.34288657833346,ST_MultiPolygon
+relation,21129221,https://www.openstreetmap.org/relation/21129221,Peechi-Vazhani WLS ESZ (Proposed),,,,protected_area,6,Eco-Sensitive Zone,,10.580397521839021,76.3406936697381,ST_MultiPolygon
+relation,21132683,https://www.openstreetmap.org/relation/21132683,Sultanpur National Park ESZ,,,,protected_area,6,ESZ,,28.462045239920794,76.89335169217593,ST_MultiPolygon
+relation,21130774,https://www.openstreetmap.org/relation/21130774,Karimpuzha Wildlife Sanctuary ESZ (Proposed),,,,protected_area,6,Eco-Sensitive Zone,,11.326164424719193,76.40214463523695,ST_MultiPolygon
+relation,21130740,https://www.openstreetmap.org/relation/21130740,Silent Valley National Park ESZ (Proposed),,,,protected_area,6,Eco-Sensitive Zone,,11.126700723025372,76.45789886460372,ST_MultiPolygon
+relation,21130775,https://www.openstreetmap.org/relation/21130775,Karimpuzha Wildlife Sanctuary,,Q65321737,,protected_area,4,,,11.312064897700683,76.4654657895145,ST_MultiPolygon
+relation,1943211,https://www.openstreetmap.org/relation/1943211,Asola-Bhatti Wildlife Sanctuary,,Q4807575,en:Asola Bhatti Wildlife Sanctuary,protected_area,4,,,28.448959930897384,77.22006897358084,ST_MultiPolygon
+way,637356886,https://www.openstreetmap.org/way/637356886,Belle Island WLS,,,,protected_area,4,,,12.11099162020313,92.7406130377615,ST_MultiPolygon
+relation,9474607,https://www.openstreetmap.org/relation/9474607,Dudhwa Tiger Reserve,,,,protected_area,4,,,28.351041145112134,80.75435708770735,ST_MultiPolygon
+relation,9405340,https://www.openstreetmap.org/relation/9405340,Nambor-Doigrung WLS,,Q16954910,en:Nambor - Doigrung Wildlife Sanctuary,protected_area,4,,,26.423614664515316,93.85247744347068,ST_MultiPolygon
+relation,21128925,https://www.openstreetmap.org/relation/21128925,Parambikulam Tiger Reserve ESZ (Proposed),,,,protected_area,6,Eco-Sensitive Zone,,10.399989596472594,76.69121240424907,ST_MultiPolygon
+relation,21130861,https://www.openstreetmap.org/relation/21130861,Mukurthi National Park,,Q2985390,,national_park,2,,,11.273363240070223,76.50740323106525,ST_MultiPolygon
+relation,21132682,https://www.openstreetmap.org/relation/21132682,Sultanpur National Park,,Q2985097,en:Sultanpur National Park,national_park,2,,,28.461776552394056,76.89017821457925,ST_MultiPolygon

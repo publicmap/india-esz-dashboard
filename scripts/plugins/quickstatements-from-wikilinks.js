@@ -35,7 +35,7 @@
 //
 // Usage:
 //   node scripts/plugins/quickstatements-from-wikilinks.js \
-//     --input data/wikidata-protected-areas.csv \
+//     --input data/wikidata/protected-areas.csv \
 //     --output data/wikidata-protected-areas.state-suggestions.csv \
 //     --qs-output data/wikidata-protected-areas.state.qs.txt \
 //     --property P131 \

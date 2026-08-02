@@ -6,18 +6,21 @@
   "private": true,
   "scripts": {
     "fetch": "node scripts/fetch-source.js",
-    "parse": "node scripts/parse-table.js",
+    "parse": "npm run parse:moef && npm run parse:wikipedia",
+    "parse:moef": "node scripts/parse-moef-table.js",
+    "parse:wikipedia": "node scripts/parse-wikipedia-tables.js",
     "clean": "node scripts/clean-moef-data.js",
     "enrich:wikidata": "node scripts/enrich-wikidata.js && npm run build",
+    "enrich:osm": "node scripts/enrich-osm.js",
     "enrich:archive": "node scripts/enrich-archive-org.js",
     "enrich:allmaps": "node scripts/enrich-allmaps.js",
-    "suggest:missing-state": "node scripts/plugins/quickstatements-from-wikilinks.js --input data/wikidata-protected-areas.csv --output data/wikidata-protected-areas.state-suggestions.csv --qs-output data/wikidata-protected-areas.state.qs.txt --property P131 --property-label state --target-types Q12443800,Q467745 --filter-column state",
-    "suggest:missing-located-in": "node scripts/plugins/quickstatements-from-wikilinks.js --input data/wikidata-protected-areas.csv --output data/wikidata-protected-areas.locatedInAdminTerritorialEntity-suggestions.csv --qs-output data/wikidata-protected-areas.locatedInAdminTerritorialEntity.qs.txt --property P131 --property-label locatedInAdminTerritorialEntity --target-types Q105626471,Q1149652,Q467745,Q12443800 --filter-column locatedInAdminTerritorialEntity",
+    "suggest:missing-state": "node scripts/plugins/quickstatements-from-wikilinks.js --input data/wikidata/protected-areas.csv --output data/wikidata-protected-areas.state-suggestions.csv --qs-output data/wikidata-protected-areas.state.qs.txt --property P131 --property-label state --target-types Q12443800,Q467745 --filter-column state",
+    "suggest:missing-located-in": "node scripts/plugins/quickstatements-from-wikilinks.js --input data/wikidata/protected-areas.csv --output data/wikidata-protected-areas.locatedInAdminTerritorialEntity-suggestions.csv --qs-output data/wikidata-protected-areas.locatedInAdminTerritorialEntity.qs.txt --property P131 --property-label locatedInAdminTerritorialEntity --target-types Q105626471,Q1149652,Q467745,Q12443800 --filter-column locatedInAdminTerritorialEntity",
     "build": "npm run build:geojson && npm run build:full-join && npm run build:atlas",
     "build:geojson": "node scripts/build-geojson.js",
     "build:full-join": "node scripts/build-full-join.js",
     "build:atlas": "node scripts/build-atlas.js",
-    "update": "npm run fetch && npm run parse && npm run clean && npm run enrich:wikidata && npm run enrich:archive && npm run enrich:allmaps && npm run build:geojson && npm run build:full-join && npm run build:atlas"
+    "update": "npm run fetch && npm run parse && npm run clean && npm run enrich:osm && npm run enrich:wikidata && npm run enrich:archive && npm run enrich:allmaps && npm run build:geojson && npm run build:full-join && npm run build:atlas"
   },
   "license": "MIT",
   "dependencies": {

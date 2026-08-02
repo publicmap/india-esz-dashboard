@@ -78,11 +78,11 @@
             </svg>
           </button>
           <div class="dropdown-menu" id="download-menu" role="menu" aria-labelledby="download-toggle">
-            <a class="dropdown-item" role="menuitem" href="data/moef-esz-notifications.csv" download>Notifications
+            <a class="dropdown-item" role="menuitem" href="data/moef/esz-notifications.csv" download>Notifications
               (CSV)</a>
-            <a class="dropdown-item" role="menuitem" href="data/moef-esz-notifications.json" download>Notifications
+            <a class="dropdown-item" role="menuitem" href="data/moef/esz-notifications.json" download>Notifications
               (JSON)</a>
-            <a class="dropdown-item" role="menuitem" href="data/wikidata-protected-areas.csv" download>Protected areas
+            <a class="dropdown-item" role="menuitem" href="data/wikidata/protected-areas.csv" download>Protected areas
               (CSV)</a>
             <a class="dropdown-item" role="menuitem" href="data/protected-areas.geojson" download>Protected areas
               (GeoJSON)</a>
@@ -106,7 +106,8 @@
 
       <div class="hero-stats-block">
         <div class="hero-stats" aria-label="Nationwide Eco-Sensitive Zone notification progress">
-          <div class="hero-stat hero-stat-primary">
+          <div class="hero-stat hero-stat-primary" id="hero-stat-overall" data-kpi="overall" role="button"
+            tabindex="0" aria-haspopup="dialog" title="View state/UT breakdown">
             <div class="hero-stat-icon" aria-hidden="true">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"
                 stroke-linejoin="round">
@@ -121,7 +122,8 @@
               <div class="hero-stat-progress-fill" id="hero-stat-overall-bar"></div>
             </div>
           </div>
-          <div class="hero-stat">
+          <div class="hero-stat" id="hero-stat-tiger" data-kpi="tiger" role="button" tabindex="0"
+            aria-haspopup="dialog" title="View tiger reserve breakdown">
             <div class="hero-stat-icon" aria-hidden="true">
               <svg viewBox="0 0 24 24" fill="currentColor">
                 <ellipse cx="12" cy="15.5" rx="5.2" ry="4.3" />
@@ -138,7 +140,8 @@
               <div class="hero-stat-progress-fill" id="hero-stat-tiger-bar"></div>
             </div>
           </div>
-          <div class="hero-stat">
+          <div class="hero-stat" id="hero-stat-np" data-kpi="np" role="button" tabindex="0" aria-haspopup="dialog"
+            title="View national park breakdown">
             <div class="hero-stat-icon" aria-hidden="true">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"
                 stroke-linejoin="round">
@@ -153,7 +156,8 @@
               <div class="hero-stat-progress-fill" id="hero-stat-np-bar"></div>
             </div>
           </div>
-          <div class="hero-stat">
+          <div class="hero-stat" id="hero-stat-sanctuary" data-kpi="sanctuary" role="button" tabindex="0"
+            aria-haspopup="dialog" title="View sanctuary breakdown">
             <div class="hero-stat-icon" aria-hidden="true">
               <svg viewBox="0 0 32 14" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round">
                 <path d="M1 8C5 -2 12 -2 16 6 20 -2 27 -2 31 8" />
@@ -167,7 +171,7 @@
             </div>
           </div>
         </div>
-        <p class="hero-stats-footnote">* Includes draft notifications not yet finalised</p>
+        <p class="hero-stats-footnote">* Includes draft notifications not yet finalised. Click a stat for details.</p>
       </div>
     </div>
     <svg class="canopy-divider" viewBox="0 0 1440 60" preserveAspectRatio="none" aria-hidden="true">
@@ -180,6 +184,25 @@
       src="https://commons.wikimedia.org/wiki/Special:FilePath/Scaly-breasted_Illadopsis_(Illadopsis_albipectus)_(022A-WA03044X0044-0015M0).ogg"
       type="audio/ogg" />
   </audio>
+
+  <div class="kpi-modal-overlay" id="kpi-modal-overlay" hidden>
+    <div class="kpi-modal" role="dialog" aria-modal="true" aria-labelledby="kpi-modal-title">
+      <div class="kpi-modal-header">
+        <div>
+          <p class="kpi-modal-kicker" id="kpi-modal-kicker"></p>
+          <h2 class="kpi-modal-title" id="kpi-modal-title"></h2>
+          <p class="kpi-modal-subtitle" id="kpi-modal-subtitle"></p>
+        </div>
+        <button class="kpi-modal-close" id="kpi-modal-close" type="button" aria-label="Close">
+          <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" fill="none" stroke="currentColor"
+            stroke-width="2.2" stroke-linecap="round">
+            <path d="M5 5l14 14M19 5L5 19" />
+          </svg>
+        </button>
+      </div>
+      <div class="kpi-modal-body" id="kpi-modal-body"></div>
+    </div>
+  </div>
 
   <main>
     <section class="explorer-section" aria-label="Notification explorer">
@@ -194,12 +217,183 @@
               <select id="pa-type-filter" class="type-filter-select" aria-label="Filter by protected area type">
                 <option value="">All types</option>
               </select>
-              <button class="btn btn-sm" id="reset-filters" type="button">Reset filters</button>
             </div>
-            <span id="result-count" class="result-count"></span>
+            <span class="result-status">
+              <span id="result-count" class="result-count"></span>
+              <button class="result-clear-btn" id="reset-filters" type="button" hidden
+                title="Clear all filters" aria-label="Clear all filters">
+                <svg viewBox="0 0 24 24" width="13" height="13" aria-hidden="true" fill="none"
+                  stroke="currentColor" stroke-width="2.2" stroke-linecap="round">
+                  <path d="M5 5l14 14M19 5L5 19" />
+                </svg>
+              </button>
+            </span>
+            <button class="btn btn-sm data-filters-toggle" id="data-filters-toggle" type="button"
+              aria-expanded="false" aria-controls="advanced-search-panel">
+              <svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true" fill="none"
+                stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 6h16M7 12h10M10 18h4" />
+              </svg>
+              <span>Data filters</span>
+              <span class="data-filters-badge" id="data-filters-badge" hidden></span>
+            </button>
           </div>
-          <p class="table-hint">Click a state to see its protected areas, grouped by type and size; click a card for
-            its full notification history.</p>
+
+          <div class="advanced-search-panel" id="advanced-search-panel" hidden>
+            <div class="advanced-search-body">
+              <p class="advanced-search-hint">Filter protected areas by whether each notification document is
+                available, to find gaps that need sourcing.</p>
+              <div class="doc-filter-group">
+                <label class="doc-filter-field" data-doc-icon="pdf">
+                  <span class="doc-filter-icon" aria-hidden="true"></span>
+                  <span class="doc-filter-label">MoEF PDF</span>
+                  <select id="doc-filter-moefpdf" class="type-filter-select"
+                    aria-label="Filter by MoEF PDF availability">
+                    <option value="">Any</option>
+                    <option value="available">Available</option>
+                    <option value="missing">Missing</option>
+                  </select>
+                </label>
+                <label class="doc-filter-field" data-doc-icon="archive">
+                  <span class="doc-filter-icon" aria-hidden="true"></span>
+                  <span class="doc-filter-label">Archive PDF</span>
+                  <select id="doc-filter-archivepdf" class="type-filter-select"
+                    aria-label="Filter by Archive PDF availability">
+                    <option value="">Any</option>
+                    <option value="available">Available</option>
+                    <option value="missing">Missing</option>
+                  </select>
+                </label>
+                <label class="doc-filter-field" data-doc-icon="map">
+                  <span class="doc-filter-icon" aria-hidden="true"></span>
+                  <span class="doc-filter-label">Boundary Map</span>
+                  <select id="doc-filter-boundarymap" class="type-filter-select"
+                    aria-label="Filter by Boundary Map availability">
+                    <option value="">Any</option>
+                    <option value="available">Available</option>
+                    <option value="missing">Missing</option>
+                  </select>
+                </label>
+                <label class="doc-filter-field" data-doc-icon="layers">
+                  <span class="doc-filter-icon" aria-hidden="true"></span>
+                  <span class="doc-filter-label">Boundary Data</span>
+                  <select id="doc-filter-boundarydata" class="type-filter-select"
+                    aria-label="Filter by Boundary Data availability">
+                    <option value="">Any</option>
+                    <option value="available">Available</option>
+                    <option value="missing">Missing</option>
+                  </select>
+                </label>
+              </div>
+
+              <details class="qa-panel edit-data-panel">
+                <summary>Edit data</summary>
+                <p class="section-intro">
+                  This dashboard is built by joining the MoEFCC ESZ notification list against protected area records
+                  on <a href="https://www.wikidata.org" target="_blank" rel="noopener">Wikidata</a>, which supplies
+                  each protected area's coordinates, type, and other reference details. Because the join relies on
+                  matching names and states across two sources, some records end up missing a coordinate or unmatched
+                  entirely. The lists below track those gaps &mdash; each links to where the underlying data can be
+                  corrected, either directly on Wikidata or via a pull request to this repository.
+                </p>
+
+                <details class="qa-panel" open>
+                  <summary>QA: protected areas not yet matched to Wikidata (<span id="qa-count">&ndash;</span>)
+                  </summary>
+                  <p class="qa-instructions">
+                    This combines both sides of the join that couldn't be matched to each other: protected area
+                    names/states from MoEF ESZ notifications (<span
+                      class="qa-legend-swatch qa-legend-swatch-moef"></span>
+                    shaded rows) with no corresponding Wikidata item, and Wikidata items (<span
+                      class="qa-legend-swatch qa-legend-swatch-wikidata"></span>
+                    shaded rows) with no corresponding MoEF notification &mdash; usually a spelling variant, a
+                    notification covering multiple parks, or an item genuinely missing on one side. The list is
+                    sorted by state then name so a MoEF/Wikidata pair for the same place tends to land next to each
+                    other.
+                  </p>
+                  <p class="qa-instructions">
+                    <strong>Match mode:</strong> click <em>Copy name</em> on a Wikidata row, then <em>Paste
+                      match</em> on the MoEF row it corresponds to. Each match adds an "add alias" QuickStatements
+                    line below (so the MoEF name becomes a matchable alias on that Wikidata item) &mdash; run the
+                    batch at
+                    <a href="https://quickstatements.toolforge.org/" target="_blank"
+                      rel="noopener">quickstatements.toolforge.org</a>,
+                    then also add a row to
+                    <a href="data/corrections.csv" target="_blank" rel="noopener"><code>data/corrections.csv</code></a>
+                    so this dashboard's own join picks it up before the next Wikidata dump. <strong>Create
+                      mode:</strong> tick the MoEF rows that genuinely have no Wikidata item yet to build a
+                    QuickStatements batch that creates one per row (location/<code>P131</code> isn't guessed &mdash;
+                    add it manually after creation).
+                  </p>
+                  <div class="qa-toolbar">
+                    <div class="qa-search-group">
+                      <input type="search" id="qa-name-search" placeholder="Filter by name&hellip;"
+                        aria-label="Filter unmatched list by name" />
+                      <span id="qa-result-count" class="result-count"></span>
+                    </div>
+                    <div class="qa-mode-toggle" role="group" aria-label="QA workflow mode">
+                      <button type="button" class="qa-mode-btn is-active" id="qa-mode-match" data-mode="match">Match
+                        mode</button>
+                      <button type="button" class="qa-mode-btn" id="qa-mode-create" data-mode="create">Create
+                        mode</button>
+                    </div>
+                    <label class="qa-hide-matched-toggle">
+                      <input type="checkbox" id="qa-hide-matched-toggle" checked>
+                      Hide Wikidata QIDs already matched elsewhere
+                    </label>
+                    <button class="btn btn-sm" id="copy-qa-list" type="button">Copy list</button>
+                  </div>
+                  <div class="table-wrap qa-table-wrap">
+                    <table class="qa-table">
+                      <thead>
+                        <tr>
+                          <th>Source</th>
+                          <th>State</th>
+                          <th>Protected area (as parsed)</th>
+                          <th>Type</th>
+                          <th>Reference</th>
+                        </tr>
+                      </thead>
+                      <tbody id="qa-table-body"></tbody>
+                    </table>
+                  </div>
+                  <div class="qa-quickstatements">
+                    <div class="qa-quickstatements-header">
+                      <span class="qa-quickstatements-title">QuickStatements batch</span>
+                      <span id="qa-quickstatements-count" class="qa-quickstatements-count"></span>
+                      <button class="btn btn-sm" id="copy-qa-quickstatements" type="button">Copy statements</button>
+                    </div>
+                    <textarea id="qa-quickstatements-output" class="qa-quickstatements-output" readonly rows="5"
+                      placeholder="Copy a Wikidata name, then paste it into a MoEF row to build a match."></textarea>
+                  </div>
+                </details>
+
+                <details class="qa-panel">
+                  <summary>Protected areas without a Wikidata coordinate (<span id="nocoord-count">&ndash;</span>)
+                  </summary>
+                  <p class="qa-instructions">
+                    These protected areas are listed in Wikidata but have no coordinate location, so they can't be
+                    placed on the map above (they're still counted in the KPIs and listed in the table). Use the edit
+                    link to add a <code>coordinate location</code> statement on Wikidata.
+                  </p>
+                  <div class="table-wrap qa-table-wrap">
+                    <table class="qa-table">
+                      <thead>
+                        <tr>
+                          <th>State</th>
+                          <th>Protected area</th>
+                          <th>Type</th>
+                          <th>Edit</th>
+                        </tr>
+                      </thead>
+                      <tbody id="nocoord-table-body"></tbody>
+                    </table>
+                  </div>
+                </details>
+              </details>
+            </div>
+          </div>
+
           <div class="accordion-wrap">
             <div id="pa-accordion" class="pa-accordion"></div>
           </div>
@@ -209,57 +403,6 @@
           <div id="map"></div>
           <p class="map-hint">Click a point for details. Points are protected areas with a known Wikidata location;
             boundary outlines (where available via OpenStreetMap) can be opened in amche-atlas from the popup.</p>
-
-          <details class="qa-panel">
-            <summary>Protected areas without a Wikidata coordinate (<span id="nocoord-count">&ndash;</span>)</summary>
-            <p class="qa-instructions">
-              These protected areas are listed in Wikidata but have no coordinate location, so they can't be placed on
-              the
-              map above (they're still counted in the KPIs and listed in the table). Use the edit link to add a
-              <code>coordinate location</code> statement on Wikidata.
-            </p>
-            <div class="table-wrap qa-table-wrap">
-              <table class="qa-table">
-                <thead>
-                  <tr>
-                    <th>State</th>
-                    <th>Protected area</th>
-                    <th>Type</th>
-                    <th>Edit</th>
-                  </tr>
-                </thead>
-                <tbody id="nocoord-table-body"></tbody>
-              </table>
-            </div>
-          </details>
-
-          <details class="qa-panel">
-            <summary>QA: protected areas not yet matched to Wikidata (<span id="qa-count">&ndash;</span>)</summary>
-            <p class="qa-instructions">
-              These protected area names and states come from MoEF ESZ notifications but couldn't be automatically
-              matched to a Wikidata item &mdash; usually a spelling variant, a notification covering multiple parks,
-              or an item genuinely missing from Wikidata. To fix one, add a row to
-              <a href="data/corrections.csv" target="_blank" rel="noopener"><code>data/corrections.csv</code></a>
-              with columns <code>paName, state, correctPaName, correctState, correctPaType</code> &mdash; the
-              <code>paName</code>/<code>state</code> as they appear below, and the corrected values to re-run the join
-              with &mdash; then open a pull request against the
-              <a href="https://github.com/publicmap/india-esz-dashboard" target="_blank" rel="noopener">repo</a>.
-            </p>
-            <div class="table-wrap qa-table-wrap">
-              <table class="qa-table">
-                <thead>
-                  <tr>
-                    <th>State</th>
-                    <th>Protected area (as parsed)</th>
-                    <th>Type</th>
-                    <th>Notification records</th>
-                    <th>Status seen</th>
-                  </tr>
-                </thead>
-                <tbody id="qa-table-body"></tbody>
-              </table>
-            </div>
-          </details>
         </div>
       </div>
     </section>

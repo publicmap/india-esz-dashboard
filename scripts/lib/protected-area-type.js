@@ -19,3 +19,20 @@ export function classifyProtectedAreaType(text) {
   }
   return null;
 }
+
+// Lower = more specific/higher-priority, using the same ordering as
+// PA_TYPE_RULES above (e.g. a Tiger Reserve outranks a Wildlife Sanctuary --
+// used when two sources disagree on an area's type and one has to win,
+// rather than picking whichever source happened to be processed last).
+// Unrecognized types sort last.
+export function protectedAreaTypePrecedence(type) {
+  const index = PA_TYPE_RULES.findIndex((rule) => rule.type === type);
+  return index === -1 ? PA_TYPE_RULES.length : index;
+}
+
+// True when `candidate` should replace `current` as the "best known" type.
+export function isMoreSpecificType(candidate, current) {
+  if (!candidate) return false;
+  if (!current) return true;
+  return protectedAreaTypePrecedence(candidate) < protectedAreaTypePrecedence(current);
+}

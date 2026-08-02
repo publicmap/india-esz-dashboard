@@ -1,4 +1,4 @@
-// Cleans the parsed MoEF notification records (data/moef-esz-notifications.json)
+// Cleans the parsed MoEF notification records (data/moef/esz-notifications.json)
 // before the Wikidata join: expands notifications that actually cover
 // multiple protected areas into one record per area, and canonicalizes
 // inconsistent names/types for the same area across draft vs final
@@ -13,7 +13,7 @@ import { cleanTrailingJunk } from './lib/clean-pa-name.js';
 import { splitMultiPark } from './lib/split-multi-park.js';
 
 const CORRECTIONS_PATH = 'data/corrections.csv';
-const DATA_PATH = 'data/moef-esz-notifications.json';
+const DATA_PATH = 'data/moef/esz-notifications.json';
 
 async function loadCorrections() {
   const text = await readFile(CORRECTIONS_PATH, 'utf8');
@@ -125,14 +125,21 @@ function cleanRecord(record, corrections) {
   }
 
   // Pass 1: whole-string correction/cleanup, then attempt a split.
+  const pass1Hit = corrections.map.has(`${record.protectedAreaName}${record.state}`);
   const corrected = applyCorrection(corrections, record.protectedAreaName, record.state);
   const cleanedName = cleanTrailingJunk(corrected.name);
   const parts = splitMultiPark(cleanedName);
 
   return parts.map((part) => {
     // Pass 2: per-fragment correction (for names only fixable once split out,
-    // e.g. a truncated fragment like "Sonai-Rupai Wildlife").
-    const fragmentCorrected = applyCorrection(corrections, part, corrected.state);
+    // e.g. a truncated fragment like "Sonai-Rupai Wildlife"). Skipped when
+    // Pass 1 already matched -- otherwise a fragment that happens to equal
+    // Pass 1's own trigger name (e.g. a PA whose corrected form is "<same
+    // name>, <second PA>") would re-match that same rule and get re-inflated
+    // back into the full multi-park string instead of staying split.
+    const fragmentCorrected = pass1Hit
+      ? { name: part, state: corrected.state, type: null }
+      : applyCorrection(corrections, part, corrected.state);
     const finalName = cleanTrailingJunk(fragmentCorrected.name);
     const finalType = fragmentCorrected.type
       ?? (parts.length === 1 ? corrected.type : null)
@@ -155,7 +162,7 @@ async function main() {
 
   await writeFile(DATA_PATH, JSON.stringify(cleaned, null, 2), 'utf8');
   const csvRows = cleaned.map((r) => ({ ...r, maps: JSON.stringify(r.maps) }));
-  await writeFile('data/moef-esz-notifications.csv', stringify(csvRows, { header: true }), 'utf8');
+  await writeFile('data/moef/esz-notifications.csv', stringify(csvRows, { header: true }), 'utf8');
 
   const splitCount = cleaned.length - records.length;
   const correctedCount = records.filter((r) => corrections.map.has(`${r.protectedAreaName}${r.state}`) || corrections.stateOnlyMap.has(r.state)).length;

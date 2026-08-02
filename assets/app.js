@@ -94,6 +94,35 @@ function matchesStateFilter(state) {
   return list.includes(paStateFilter);
 }
 
+// Advanced-search document-availability filters -- each keyed off a
+// notification's own document links (or, for boundary data, the PA's OSM
+// relation), so "missing" surfaces exactly the gaps the doc-link icons in
+// the notification history render as disabled/muted.
+function entryHasMoefPdf(entry) { return entry.notifications.some((n) => n.notificationPdfLink); }
+function entryHasArchivePdf(entry) { return entry.notifications.some((n) => n.notificationArchiveLink); }
+function entryHasBoundaryMap(entry) { return entry.notifications.some((n) => n.georeferencingLink); }
+function entryHasBoundaryData(entry) { return (entry.osmRelationIds || []).length > 0; }
+
+const DOC_AVAILABILITY_FIELDS = [
+  { key: 'moefpdf', selectId: 'doc-filter-moefpdf', check: entryHasMoefPdf },
+  { key: 'archivepdf', selectId: 'doc-filter-archivepdf', check: entryHasArchivePdf },
+  { key: 'boundarymap', selectId: 'doc-filter-boundarymap', check: entryHasBoundaryMap },
+  { key: 'boundarydata', selectId: 'doc-filter-boundarydata', check: entryHasBoundaryData },
+];
+// Value per field is '' (any), 'available', or 'missing'.
+const docAvailabilityFilters = {};
+
+function matchesDocAvailabilityFilters(entry) {
+  for (const field of DOC_AVAILABILITY_FIELDS) {
+    const want = docAvailabilityFilters[field.key];
+    if (!want) continue;
+    const has = field.check(entry);
+    if (want === 'available' && !has) return false;
+    if (want === 'missing' && has) return false;
+  }
+  return true;
+}
+
 async function loadData() {
   const res = await fetch('data/full-join.json');
   paEntries = await res.json();
@@ -140,7 +169,7 @@ function matchesSearch(entry) {
 
 function computeFilteredEntries() {
   return paEntries.filter((entry) => matchesTypeFilter(entry.protectedAreaType)
-    && matchesStateFilter(entry.state) && matchesSearch(entry));
+    && matchesStateFilter(entry.state) && matchesSearch(entry) && matchesDocAvailabilityFilters(entry));
 }
 
 // Hero stat categories for the header banner. "Sanctuaries" combines
@@ -156,23 +185,40 @@ const HERO_STAT_GROUPS = [
 // protected area with a foothold there (entry.state can list more than one)
 // has a final or draft ESZ -- a stricter, more legible headline than the
 // nationwide per-PA percentage, since a state can't hide a handful of
-// stragglers behind a large notified majority.
-function computeStateNotificationStats() {
+// stragglers behind a large notified majority. Also tracks, per state, the
+// latest notification date among its notified PAs -- the date the state's
+// own completion (or current progress) was last updated -- for the KPI
+// modal's detail list.
+function computeStateNotificationDetails() {
   const byState = new Map();
   for (const entry of paEntries) {
     for (const state of entry.state) {
       if (!state) continue;
-      const rec = byState.get(state) || { total: 0, notified: 0 };
+      const rec = byState.get(state) || { state, total: 0, notified: 0, latestDate: null };
       rec.total += 1;
-      if (entry.eszStatus === 'final' || entry.eszStatus === 'draft') rec.notified += 1;
+      if (entry.eszStatus === 'final' || entry.eszStatus === 'draft') {
+        rec.notified += 1;
+        const d = entry.latest && entry.latest.date;
+        if (d && (!rec.latestDate || d > rec.latestDate)) rec.latestDate = d;
+      }
       byState.set(state, rec);
     }
   }
-  let fullyNotified = 0;
-  for (const rec of byState.values()) {
-    if (rec.total > 0 && rec.notified === rec.total) fullyNotified += 1;
-  }
-  return { fullyNotified, totalStates: byState.size };
+  const rows = [...byState.values()].map((rec) => ({
+    ...rec,
+    pct: rec.total ? (rec.notified / rec.total) * 100 : 0,
+    completed: rec.total > 0 && rec.notified === rec.total,
+  }));
+  // Completed states first (most recently completed on top), then
+  // in-progress states by how close they are to completion, then states with
+  // no notifications at all, alphabetically within each group.
+  rows.sort((a, b) => {
+    if (a.completed !== b.completed) return a.completed ? -1 : 1;
+    if (a.completed) return (b.latestDate || '').localeCompare(a.latestDate || '');
+    if (b.pct !== a.pct) return b.pct - a.pct;
+    return a.state.localeCompare(b.state);
+  });
+  return rows;
 }
 
 // Hero stats are a fixed nationwide headline -- always computed from the
@@ -187,7 +233,9 @@ function renderHeroStats() {
     document.getElementById(`hero-stat-${key}-bar`).style.width = `${pct}%`;
   };
 
-  const { fullyNotified, totalStates } = computeStateNotificationStats();
+  const stateRows = computeStateNotificationDetails();
+  const totalStates = stateRows.length;
+  const fullyNotified = stateRows.filter((r) => r.completed).length;
   const statePct = totalStates ? (fullyNotified / totalStates) * 100 : 0;
   document.getElementById('hero-stat-overall-value').textContent = `${statePct.toFixed(0)}%`;
   document.getElementById('hero-stat-overall-note').textContent =
@@ -200,39 +248,483 @@ function renderHeroStats() {
   }
 }
 
-// PA entries with no wikidataId -- the "right-hand" side of the full join
-// that Wikidata doesn't know about yet.
-function computeUnmatchedPAs() {
+// ---------------------------------------------------------------------------
+// Hero KPI detail modal: each of the four hero-stat tiles opens a larger,
+// single-page breakdown of the number behind it. Content is (re)built from
+// the live paEntries on every open, so it always reflects the current
+// (unfiltered) nationwide dataset the hero tiles themselves summarize.
+
+function kpiPctBarCellHtml(pct) {
+  return `<span class="kpi-table-pct-cell">${pct.toFixed(0)}%
+    <span class="kpi-table-pct-bar"><span class="kpi-table-pct-fill" style="width:${pct}%"></span></span>
+  </span>`;
+}
+
+// Body for the primary "States/UTs completed" tile: every state/UT the join
+// touches, sorted completed-first (most recently completed on top), then by
+// how close the rest are to completion -- each row showing the year it was
+// completed in, or the date of its most recent notification otherwise.
+function renderStateKpiModalBody(rows) {
+  const completedCount = rows.filter((r) => r.completed).length;
+  const summary = `
+    <div class="kpi-modal-summary">
+      <span><strong>${completedCount}</strong> of ${rows.length} states/UTs fully notified</span>
+    </div>`;
+  const body = rows.map((r, i) => {
+    const statusClass = r.completed ? 'dot-final' : r.notified ? 'dot-draft' : 'dot-none';
+    const statusLabel = r.completed ? 'Completed' : r.notified ? 'In progress' : 'Not started';
+    const dateCell = r.completed
+      ? `Completed ${r.latestDate ? r.latestDate.slice(0, 4) : '–'}`
+      : r.latestDate
+        ? `Latest notification ${formatNotificationDate(r.latestDate)}`
+        : 'No notifications yet';
+    return `<tr>
+      <td class="kpi-table-rank">${i + 1}</td>
+      <td>${escapeHtml(r.state)}</td>
+      <td><span class="status-pill"><i class="dot ${statusClass}" aria-hidden="true"></i>${statusLabel}</span></td>
+      <td>${kpiPctBarCellHtml(r.pct)}</td>
+      <td>${r.notified.toLocaleString()} / ${r.total.toLocaleString()}</td>
+      <td>${escapeHtml(dateCell)}</td>
+    </tr>`;
+  }).join('');
+  return `${summary}
+    <div class="kpi-table-wrap">
+      <table class="kpi-table">
+        <thead><tr>
+          <th>#</th><th>State / UT</th><th>Status</th><th>Progress</th><th>PAs notified</th><th>Completion / latest notification</th>
+        </tr></thead>
+        <tbody>${body}</tbody>
+      </table>
+    </div>`;
+}
+
+// Body for the three PA-group tiles (Tiger Reserves, National Parks,
+// Sanctuaries): every PA in the group, sorted Final ahead of Draft ahead of
+// Not notified, most recent notification first within each status.
+function renderPaGroupKpiModalBody(entries, unitLabel) {
+  const counts = statusCounts(entries);
+  const statusRank = { final: 0, draft: 1, none: 2 };
+  const sorted = [...entries].sort((a, b) => {
+    const rankDiff = statusRank[a.eszStatus] - statusRank[b.eszStatus];
+    if (rankDiff !== 0) return rankDiff;
+    const da = (a.latest && a.latest.date) || '';
+    const db = (b.latest && b.latest.date) || '';
+    if (da !== db) return db.localeCompare(da);
+    return (a.name || '').localeCompare(b.name || '');
+  });
+  const summary = `
+    <div class="kpi-modal-summary">
+      <span><strong>${counts.final.toLocaleString()}</strong> final</span>
+      <span><strong>${counts.draft.toLocaleString()}</strong> draft</span>
+      <span><strong>${counts.none.toLocaleString()}</strong> not notified</span>
+      <span>${counts.total.toLocaleString()} ${unitLabel} total</span>
+    </div>`;
+  const body = sorted.map((entry) => `<tr>
+      <td>${escapeHtml(entry.name || '')}</td>
+      <td>${escapeHtml(stateAsString(entry.state))}</td>
+      <td><span class="status-pill"><i class="dot dot-${entry.eszStatus}" aria-hidden="true"></i>${eszStatusLabel(entry.eszStatus)}</span></td>
+      <td>${entry.latest ? escapeHtml(formatNotificationDate(entry.latest.date)) : '–'}</td>
+      <td>${entry.latest && entry.latest.orderNumber ? escapeHtml(entry.latest.orderNumber) : '–'}</td>
+    </tr>`).join('');
+  return `${summary}
+    <div class="kpi-table-wrap">
+      <table class="kpi-table">
+        <thead><tr>
+          <th>Protected area</th><th>State</th><th>Status</th><th>Notification date</th><th>Order no.</th>
+        </tr></thead>
+        <tbody>${body}</tbody>
+      </table>
+    </div>`;
+}
+
+// One builder per hero-stat tile (keyed by its data-kpi attribute) -- each
+// returns the modal header text plus body HTML, computed fresh from
+// paEntries at open time.
+const KPI_MODAL_BUILDERS = {
+  overall() {
+    const rows = computeStateNotificationDetails();
+    return {
+      kicker: 'Nationwide progress',
+      title: 'States & UTs by ESZ notification completion',
+      subtitle: 'A state/UT counts as complete only once every protected area with a foothold there has a final or draft ESZ notification.',
+      body: renderStateKpiModalBody(rows),
+    };
+  },
+  tiger() {
+    const entries = paEntries.filter((e) => HERO_STAT_GROUPS.find((g) => g.key === 'tiger').match(e.protectedAreaType));
+    return {
+      kicker: 'ESZ notification status',
+      title: 'Tiger Reserves',
+      subtitle: 'Every tiger reserve tracked in this dashboard, with its current ESZ notification status.',
+      body: renderPaGroupKpiModalBody(entries, 'tiger reserves'),
+    };
+  },
+  np() {
+    const entries = paEntries.filter((e) => HERO_STAT_GROUPS.find((g) => g.key === 'np').match(e.protectedAreaType));
+    return {
+      kicker: 'ESZ notification status',
+      title: 'National Parks',
+      subtitle: 'Every national park tracked in this dashboard, with its current ESZ notification status.',
+      body: renderPaGroupKpiModalBody(entries, 'national parks'),
+    };
+  },
+  sanctuary() {
+    const entries = paEntries.filter((e) => HERO_STAT_GROUPS.find((g) => g.key === 'sanctuary').match(e.protectedAreaType));
+    return {
+      kicker: 'ESZ notification status',
+      title: 'Sanctuaries',
+      subtitle: 'Wildlife and bird sanctuaries tracked in this dashboard, with their current ESZ notification status.',
+      body: renderPaGroupKpiModalBody(entries, 'sanctuaries'),
+    };
+  },
+};
+
+function openKpiModal(key) {
+  const builder = KPI_MODAL_BUILDERS[key];
+  if (!builder) return;
+  const { kicker, title, subtitle, body } = builder();
+  document.getElementById('kpi-modal-kicker').textContent = kicker;
+  document.getElementById('kpi-modal-title').textContent = title;
+  document.getElementById('kpi-modal-subtitle').textContent = subtitle;
+  document.getElementById('kpi-modal-body').innerHTML = body;
+
+  const overlay = document.getElementById('kpi-modal-overlay');
+  overlay.hidden = false;
+  document.body.classList.add('modal-open');
+  requestAnimationFrame(() => overlay.classList.add('is-open'));
+  document.getElementById('kpi-modal-close').focus();
+}
+
+function closeKpiModal() {
+  const overlay = document.getElementById('kpi-modal-overlay');
+  if (overlay.hidden) return;
+  overlay.classList.remove('is-open');
+  document.body.classList.remove('modal-open');
+  setTimeout(() => { overlay.hidden = true; }, 180);
+}
+
+function initHeroStatModals() {
+  document.querySelectorAll('.hero-stat[data-kpi]').forEach((el) => {
+    el.addEventListener('click', () => openKpiModal(el.dataset.kpi));
+    el.addEventListener('keydown', (e) => {
+      if (e.key !== 'Enter' && e.key !== ' ') return;
+      e.preventDefault();
+      openKpiModal(el.dataset.kpi);
+    });
+  });
+  document.getElementById('kpi-modal-close').addEventListener('click', closeKpiModal);
+  document.getElementById('kpi-modal-overlay').addEventListener('click', (e) => {
+    if (e.target.id === 'kpi-modal-overlay') closeKpiModal();
+  });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeKpiModal();
+  });
+}
+
+// PA entries with no wikidataId -- the MoEF-side of the full join that
+// Wikidata doesn't know about yet.
+function computeUnmatchedMoefPAs() {
   return paEntries
     .filter((entry) => !entry.wikidataId)
     .filter((entry) => matchesTypeFilter(entry.protectedAreaType))
     .filter((entry) => matchesStateFilter(entry.state))
     .map((entry) => ({
+      source: 'moef',
+      paKey: entry.paKey,
       state: entry.state[0] || '',
-      protectedAreaName: entry.name,
-      protectedAreaType: entry.protectedAreaType,
+      name: entry.name,
+      type: entry.protectedAreaType,
       recordCount: entry.notifications.length,
       statuses: [...new Set(entry.notifications.map((n) => n.notificationStatus).filter(Boolean))],
-    }))
-    .sort((a, b) => (a.state || '').localeCompare(b.state || '') || a.protectedAreaName.localeCompare(b.protectedAreaName));
+    }));
 }
 
-function unmatchedRowHtml(pa) {
-  const statuses = [...pa.statuses].sort().join(', ') || '–';
+// Wikidata-matched PA entries with no MoEF notification joined to them -- the
+// other side of the same unmatched join, so a spelling/wording mismatch shows
+// up as one row from each side instead of just the MoEF one. When
+// hideMatchedWikidataQids is on (the default), a Wikidata item that already
+// has a MoEF notification joined to it is left out -- normally correct,
+// since it isn't "unmatched". But occasionally that join is the wrong one
+// (the right MoEF row for this QID matched somewhere else, or not at all),
+// which hides the very QID you'd need to copy for a different row -- so the
+// toggle lets that be shown too.
+function computeUnmatchedWikidataPAs() {
+  return paEntries
+    .filter((entry) => entry.wikidataId)
+    .filter((entry) => !hideMatchedWikidataQids || entry.notifications.length === 0)
+    .filter((entry) => matchesTypeFilter(entry.protectedAreaType))
+    .filter((entry) => matchesStateFilter(entry.state))
+    .map((entry) => ({
+      source: 'wikidata',
+      paKey: entry.paKey,
+      state: stateAsString(entry.state),
+      name: entry.name,
+      type: entry.protectedAreaType,
+      wikidataId: entry.wikidataId,
+      wikidataUrl: entry.wikidataUrl,
+      matchedRecordCount: entry.notifications.length,
+    }));
+}
+
+// Combines both unmatched lists and sorts by state then name so a MoEF/Wikidata
+// pair describing the same real-world place tends to land next to each other,
+// making it easy to scan (or copy) for consolidation into corrections.csv.
+function computeCombinedUnjoined() {
+  return [...computeUnmatchedMoefPAs(), ...computeUnmatchedWikidataPAs()]
+    .sort((a, b) => (a.state || '').localeCompare(b.state || '') || (a.name || '').localeCompare(b.name || ''));
+}
+
+function moefReferenceText(pa) {
+  return `${pa.recordCount} record${pa.recordCount === 1 ? '' : 's'}${pa.statuses.length ? ` (${[...pa.statuses].sort().join(', ')})` : ''}`;
+}
+
+function wikidataUnmatchedRowHtml(pa) {
+  const isCopied = matchClipboard && matchClipboard.paKey === pa.paKey;
+  const alreadyMatchedBadge = pa.matchedRecordCount > 0
+    ? `<span class="qa-already-matched-badge">already matched to ${pa.matchedRecordCount} record${pa.matchedRecordCount === 1 ? '' : 's'} elsewhere</span>`
+    : '';
   return `
-    <tr>
+    <tr class="qa-row qa-row-wikidata${isCopied ? ' is-copied' : ''}">
+      <td>Wikidata</td>
       <td>${escapeHtml(pa.state || '')}</td>
-      <td>${escapeHtml(pa.protectedAreaName || '')}</td>
-      <td>${escapeHtml(pa.protectedAreaType || '')}</td>
-      <td>${pa.recordCount}</td>
-      <td>${escapeHtml(statuses)}</td>
+      <td>
+        <span class="qa-name">${escapeHtml(pa.name || '')}</span>
+        <button type="button" class="btn btn-xs copy-wikidata-name-btn" data-pa-key="${escapeHtml(pa.paKey)}">${isCopied ? 'Copied' : 'Copy name'}</button>
+        ${alreadyMatchedBadge}
+      </td>
+      <td>${escapeHtml(pa.type || '')}</td>
+      <td><a href="${pa.wikidataUrl}" target="_blank" rel="noopener">${escapeHtml(pa.wikidataId)}</a></td>
     </tr>`;
 }
 
+function moefUnmatchedRowHtml(pa) {
+  const match = pendingMatches.get(pa.paKey);
+  const nameCell = match
+    ? `<span class="qa-match-rename">${escapeHtml(pa.name || '')} &rarr; ${escapeHtml(match.wikidataName)}</span>
+       <span class="qa-match-banner">Matched to <a href="${match.wikidataUrl}" target="_blank" rel="noopener">[${escapeHtml(match.wikidataId)}]</a> &middot; <button type="button" class="link-btn remove-match-btn" data-pa-key="${escapeHtml(pa.paKey)}">remove</button></span>`
+    : `<span class="qa-name">${escapeHtml(pa.name || '')}</span>
+       <button type="button" class="btn btn-xs paste-match-btn" data-pa-key="${escapeHtml(pa.paKey)}" ${matchClipboard ? '' : 'disabled'}>Paste match</button>`;
+  const sourceCell = uiMode === 'create'
+    ? `<label class="qa-select-label"><input type="checkbox" class="create-select-checkbox" data-pa-key="${escapeHtml(pa.paKey)}" ${pendingCreates.has(pa.paKey) ? 'checked' : ''}> MoEF</label>`
+    : 'MoEF';
+  return `
+    <tr class="qa-row qa-row-moef${match ? ' qa-row-matched' : ''}">
+      <td>${sourceCell}</td>
+      <td>${escapeHtml(pa.state || '')}</td>
+      <td>${nameCell}</td>
+      <td>${escapeHtml(pa.type || '')}</td>
+      <td>${escapeHtml(moefReferenceText(pa))}</td>
+    </tr>`;
+}
+
+function unmatchedRowHtml(pa) {
+  return pa.source === 'wikidata' ? wikidataUnmatchedRowHtml(pa) : moefUnmatchedRowHtml(pa);
+}
+
+// Plain-text, tab-separated rendering of the combined unjoined list -- meant
+// to be pasted straight into an LLM chat (or a spreadsheet) to work out
+// MoEF/Wikidata pairs for data/corrections.csv.
+function combinedUnjoinedText(items) {
+  const header = ['Source', 'State', 'Protected area (as parsed)', 'Type', 'Reference'].join('\t');
+  const lines = items.map((pa) => {
+    const reference = pa.source === 'wikidata' ? pa.wikidataId : moefReferenceText(pa);
+    return [pa.source === 'wikidata' ? 'Wikidata' : 'MoEF', pa.state || '', pa.name || '', pa.type || '', reference].join('\t');
+  });
+  return [header, ...lines].join('\n');
+}
+
+let combinedUnjoinedCache = [];
+
+// 'match' pairs a MoEF row with an existing Wikidata row (building "add
+// alias" QuickStatements); 'create' selects MoEF rows that need a brand new
+// Wikidata item (building "CREATE" QuickStatements).
+let uiMode = 'match';
+// The Wikidata row most recently copied, awaiting a "Paste match" click:
+// { paKey, name, wikidataId, wikidataUrl }.
+let matchClipboard = null;
+// See computeUnmatchedWikidataPAs -- on by default so the list only shows
+// genuinely unmatched Wikidata items; toggled off to surface QIDs that got
+// joined to the wrong (or a different) MoEF row.
+let hideMatchedWikidataQids = true;
+// moefPaKey -> { wikidataId, wikidataUrl, wikidataName } for confirmed matches.
+const pendingMatches = new Map();
+// moefPaKeys ticked in create mode.
+const pendingCreates = new Set();
+// Live text filter over the QA table only -- narrows what's rendered, not
+// combinedUnjoinedCache itself, so copy-list/quickstatements still cover
+// every pending match regardless of what's currently filtered into view.
+let qaSearchTerm = '';
+
+// QIDs for the PA type categories this dashboard uses -- pulled from the
+// curated allowlist in scripts/enrich-wikidata.js (the types actually seen
+// among Indian protected areas on Wikidata), not guessed.
+const PA_TYPE_WIKIDATA_QID = {
+  'Tiger Reserve': 'Q5533772',
+  'National Park': 'Q46169',
+  'Bird Sanctuary': 'Q2714144',
+  'Wildlife Sanctuary': 'Q1377575',
+};
+const INDIA_WIKIDATA_QID = 'Q668';
+
+function quickstatementsValueEscape(value) {
+  return String(value || '').replace(/[\t\n]/g, ' ').replace(/"/g, '\\"');
+}
+
+// One "add alias" line per pending match -- the MoEF-side name becomes a
+// matchable alias on the paired Wikidata item.
+function quickstatementsAliasLines() {
+  const lines = [];
+  for (const [paKey, match] of pendingMatches) {
+    const moefItem = combinedUnjoinedCache.find((x) => x.paKey === paKey && x.source === 'moef');
+    if (!moefItem) continue;
+    lines.push(`${match.wikidataId}\tAen\t"${quickstatementsValueEscape(moefItem.name)}"`);
+  }
+  return lines;
+}
+
+// One CREATE block per selected MoEF row: label + instance-of (when the type
+// maps to a known QID) + country. Location (P131) is deliberately left out --
+// this dashboard doesn't carry a verified state-name -> QID table, so that
+// still needs a human to add after creation.
+function quickstatementsCreateLines() {
+  const lines = [];
+  for (const paKey of pendingCreates) {
+    const moefItem = combinedUnjoinedCache.find((x) => x.paKey === paKey && x.source === 'moef');
+    if (!moefItem) continue;
+    lines.push('CREATE');
+    lines.push(`LAST\tLen\t"${quickstatementsValueEscape(moefItem.name)}"`);
+    const typeQid = PA_TYPE_WIKIDATA_QID[moefItem.type];
+    if (typeQid) lines.push(`LAST\tP31\t${typeQid}`);
+    lines.push(`LAST\tP17\t${INDIA_WIKIDATA_QID}`);
+  }
+  return lines;
+}
+
+function renderQuickstatementsOutput() {
+  const box = document.getElementById('qa-quickstatements-output');
+  const countEl = document.getElementById('qa-quickstatements-count');
+  if (uiMode === 'create') {
+    box.value = quickstatementsCreateLines().join('\n');
+    countEl.textContent = pendingCreates.size
+      ? `${pendingCreates.size} item${pendingCreates.size === 1 ? '' : 's'} selected — add location (P131) manually after creation`
+      : '';
+    box.placeholder = 'Tick MoEF rows with no Wikidata item at all to build create statements.';
+  } else {
+    box.value = quickstatementsAliasLines().join('\n');
+    countEl.textContent = pendingMatches.size
+      ? `${pendingMatches.size} pending match${pendingMatches.size === 1 ? '' : 'es'}`
+      : '';
+    box.placeholder = 'Copy a Wikidata name, then paste it into a MoEF row to build a match.';
+  }
+}
+
+function matchesQaSearch(pa) {
+  if (!qaSearchTerm) return true;
+  return (pa.name || '').toLowerCase().includes(qaSearchTerm);
+}
+
+function renderQaTableBody() {
+  const rows = combinedUnjoinedCache.filter(matchesQaSearch);
+  document.getElementById('qa-table-body').innerHTML = rows.map(unmatchedRowHtml).join('');
+  document.getElementById('qa-result-count').textContent = qaSearchTerm
+    ? `${rows.length.toLocaleString()} of ${combinedUnjoinedCache.length.toLocaleString()}`
+    : '';
+}
+
 function renderQaList() {
-  const unmatchedPAs = computeUnmatchedPAs();
-  document.getElementById('qa-count').textContent = unmatchedPAs.length.toLocaleString();
-  document.getElementById('qa-table-body').innerHTML = unmatchedPAs.map(unmatchedRowHtml).join('');
+  combinedUnjoinedCache = computeCombinedUnjoined();
+  document.getElementById('qa-count').textContent = combinedUnjoinedCache.length.toLocaleString();
+  renderQaTableBody();
+  renderQuickstatementsOutput();
+}
+
+function setUiMode(mode) {
+  uiMode = mode;
+  matchClipboard = null;
+  document.getElementById('qa-mode-match').classList.toggle('is-active', mode === 'match');
+  document.getElementById('qa-mode-create').classList.toggle('is-active', mode === 'create');
+  renderQaTableBody();
+  renderQuickstatementsOutput();
+}
+
+function initQaModeToggle() {
+  document.getElementById('qa-mode-match').addEventListener('click', () => setUiMode('match'));
+  document.getElementById('qa-mode-create').addEventListener('click', () => setUiMode('create'));
+}
+
+function initQaSearch() {
+  const input = document.getElementById('qa-name-search');
+  input.addEventListener('input', () => {
+    qaSearchTerm = input.value.trim().toLowerCase();
+    renderQaTableBody();
+  });
+}
+
+function initHideMatchedToggle() {
+  const checkbox = document.getElementById('qa-hide-matched-toggle');
+  checkbox.checked = hideMatchedWikidataQids;
+  checkbox.addEventListener('change', () => {
+    hideMatchedWikidataQids = checkbox.checked;
+    renderQaList();
+  });
+}
+
+// Delegated so it keeps working across renderQaTableBody() re-renders.
+function initQaTableInteractions() {
+  const tbody = document.getElementById('qa-table-body');
+  tbody.addEventListener('click', (e) => {
+    const copyBtn = e.target.closest('.copy-wikidata-name-btn');
+    if (copyBtn) {
+      const paKey = copyBtn.dataset.paKey;
+      const item = combinedUnjoinedCache.find((x) => x.paKey === paKey && x.source === 'wikidata');
+      if (item) matchClipboard = { paKey: item.paKey, name: item.name, wikidataId: item.wikidataId, wikidataUrl: item.wikidataUrl };
+      renderQaTableBody();
+      return;
+    }
+    const pasteBtn = e.target.closest('.paste-match-btn');
+    if (pasteBtn && matchClipboard) {
+      const paKey = pasteBtn.dataset.paKey;
+      pendingMatches.set(paKey, { wikidataId: matchClipboard.wikidataId, wikidataUrl: matchClipboard.wikidataUrl, wikidataName: matchClipboard.name });
+      matchClipboard = null;
+      renderQaTableBody();
+      renderQuickstatementsOutput();
+      return;
+    }
+    const removeBtn = e.target.closest('.remove-match-btn');
+    if (removeBtn) {
+      pendingMatches.delete(removeBtn.dataset.paKey);
+      renderQaTableBody();
+      renderQuickstatementsOutput();
+    }
+  });
+  tbody.addEventListener('change', (e) => {
+    const checkbox = e.target.closest('.create-select-checkbox');
+    if (!checkbox) return;
+    if (checkbox.checked) pendingCreates.add(checkbox.dataset.paKey);
+    else pendingCreates.delete(checkbox.dataset.paKey);
+    renderQuickstatementsOutput();
+  });
+}
+
+async function copyTextToButton(button, text) {
+  const defaultLabel = button.textContent;
+  try {
+    await navigator.clipboard.writeText(text);
+    button.textContent = 'Copied!';
+  } catch {
+    button.textContent = 'Copy failed';
+  }
+  setTimeout(() => { button.textContent = defaultLabel; }, 1500);
+}
+
+function initCopyQaList() {
+  const button = document.getElementById('copy-qa-list');
+  button.addEventListener('click', () => copyTextToButton(button, combinedUnjoinedText(combinedUnjoinedCache)));
+}
+
+function initCopyQaQuickstatements() {
+  const button = document.getElementById('copy-qa-quickstatements');
+  button.addEventListener('click', () => copyTextToButton(button, document.getElementById('qa-quickstatements-output').value));
 }
 
 // Wikidata-matched PA entries with no coordinate -- these can't be placed on
@@ -769,25 +1261,90 @@ function cardOuterHtml(entry) {
     </div>`;
 }
 
-function notificationRowHtml(n) {
-  const dotClass = n.notificationStatus === 'Final' ? 'dot-final' : n.notificationStatus === 'Draft' ? 'dot-draft' : 'dot-none';
-  const links = [];
-  if (n.orderNumber && n.notificationPdfLink) links.push(`<a href="${n.notificationPdfLink}" target="_blank" rel="noopener">${escapeHtml(n.orderNumber)}</a>`);
-  else if (n.orderNumber) links.push(escapeHtml(n.orderNumber));
-  if (n.notificationArchiveLink) links.push(`<a href="${n.notificationArchiveLink}" target="_blank" rel="noopener">Archive</a>`);
-  if (n.georeferencingLink) links.push(`<a href="${n.georeferencingLink}" target="_blank" rel="noopener">Georeference</a>`);
+const NOTIFICATION_TYPE_LABEL = {
+  Final: 'Final ESZ Notification',
+  Draft: 'Draft ESZ Notification',
+  Amendment: 'Amendment To Final ESZ Notification',
+};
+const NOTIFICATION_DOT_CLASS = { Final: 'dot-final', Amendment: 'dot-final', Draft: 'dot-draft' };
+
+const DOC_ICON = {
+  pdf: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M7 3h7l4 4v13a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1z"/><path d="M14 3v4h4"/><path d="M9 13h6M9 16.5h6M9 9.5h2"/></svg>',
+  archive: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="4.2" rx="1"/><path d="M4.5 8.2V19a1 1 0 0 0 1 1h13a1 1 0 0 0 1-1V8.2"/><path d="M10 12.5h4"/></svg>',
+  map: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M9 4.5 3.5 6.7v13L9 17.5l6 2.2 5.5-2.2v-13L15 6.7l-6-2.2z"/><path d="M9 4.5v13M15 6.7v13"/><circle cx="12" cy="11.5" r="1.6"/></svg>',
+  layers: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.5 3 8.2l9 4.7 9-4.7-9-4.7z"/><path d="M3 12.2l9 4.7 9-4.7"/><path d="M3 16.2l9 4.7 9-4.7"/></svg>',
+};
+
+function notificationTypeLabel(status) {
+  return NOTIFICATION_TYPE_LABEL[status] || status || 'Not notified';
+}
+
+function formatNotificationDate(dateStr) {
+  if (!dateStr) return '–';
+  const d = new Date(`${dateStr}T00:00:00`);
+  if (Number.isNaN(d.getTime())) return dateStr;
+  return d.toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' });
+}
+
+// Each doc "descriptor" is { href, label, disabled } -- href is null when
+// there's genuinely nothing to link to (rendered as a non-interactive,
+// muted icon); disabled marks a link that works but is a fallback/search
+// rather than the real document (rendered muted, but still clickable).
+function moefPdfDoc(n) {
+  return { href: n.notificationPdfLink || null, label: 'MoEF PDF', disabled: !n.notificationPdfLink };
+}
+
+function archivePdfDoc(n) {
+  if (n.notificationArchiveLink) return { href: n.notificationArchiveLink, label: 'Archive PDF', disabled: false };
+  if (!n.orderNumber) return { href: null, label: 'Archive PDF', disabled: true };
+  const query = new URLSearchParams({ query: n.orderNumber }).toString();
+  return {
+    href: `https://archive.org/details/gazetteofindia?tab=collection&${query}&sin=TXT&sort=-date`,
+    label: 'Search Archive PDF',
+    disabled: true,
+  };
+}
+
+function boundaryMapDoc(n) {
+  if (n.georeferencingLink) return { href: n.georeferencingLink, label: 'Boundary Map', disabled: false };
+  if (n.allmapsImagesLink) return { href: n.allmapsImagesLink, label: 'Locate and Georeference Boundary Map', disabled: true };
+  return { href: null, label: 'Boundary Map', disabled: true };
+}
+
+function boundaryDataDoc(entry) {
+  const osmIds = entry.osmRelationIds || [];
+  if (osmIds.length) return { href: `${AMCHE_ATLAS_BASE}?layers=osm:relation/${osmIds[0]}`, label: 'Boundary Data', disabled: false };
+  return { href: null, label: 'Boundary Data', disabled: true };
+}
+
+function docLinkHtml(doc, icon) {
+  const cls = `pa-doc-link${doc.disabled ? ' is-disabled' : ''}`;
+  const title = escapeHtml(doc.label);
+  if (!doc.href) return `<span class="${cls}" title="${title}" aria-label="${title}" aria-disabled="true">${icon}</span>`;
+  return `<a class="${cls}" href="${doc.href}" target="_blank" rel="noopener" title="${title}" aria-label="${title}">${icon}</a>`;
+}
+
+function notificationRowHtml(n, entry) {
+  const dotClass = NOTIFICATION_DOT_CLASS[n.notificationStatus] || 'dot-none';
+  const docs = [
+    [moefPdfDoc(n), DOC_ICON.pdf],
+    [archivePdfDoc(n), DOC_ICON.archive],
+    [boundaryMapDoc(n), DOC_ICON.map],
+    [boundaryDataDoc(entry), DOC_ICON.layers],
+  ];
   return `
     <li class="pa-notification-row">
-      <span class="status-pill"><i class="dot ${dotClass}" aria-hidden="true"></i>${escapeHtml(n.notificationStatus || 'Not notified')}</span>
-      <span class="pa-notification-date">${escapeHtml(n.notificationDate || '–')}</span>
-      <span class="pa-notification-links">${links.join(' &middot; ') || '–'}</span>
+      <span class="pa-notification-date">${escapeHtml(formatNotificationDate(n.notificationDate))}</span>
+      <span class="pa-notification-type"><i class="dot ${dotClass}" aria-hidden="true"></i>${escapeHtml(notificationTypeLabel(n.notificationStatus))}</span>
+      ${n.orderNumber ? `<span class="pa-notification-order">${escapeHtml(n.orderNumber)}</span>` : ''}
+      <span class="pa-notification-docs">${docs.map(([doc, icon]) => docLinkHtml(doc, icon)).join('')}</span>
     </li>`;
 }
 
 function notificationListHtml(entry) {
   const sorted = [...entry.notifications].sort((a, b) => (b.notificationDate || '').localeCompare(a.notificationDate || ''));
   if (!sorted.length) return `<p class="pa-detail-empty">No ESZ notification on record yet.</p>`;
-  return `<ul class="pa-notification-list">${sorted.map(notificationRowHtml).join('')}</ul>`;
+  return `<ul class="pa-notification-list">${sorted.map((n) => notificationRowHtml(n, entry)).join('')}</ul>`;
 }
 
 function detailHtml(entry) {
@@ -1077,12 +1634,32 @@ function initAccordionEvents() {
   });
 }
 
+function anyDocFiltersActive() {
+  return DOC_AVAILABILITY_FIELDS.some((field) => docAvailabilityFilters[field.key]);
+}
+
+function anyFiltersActive() {
+  return !!searchTerm || !!paTypeFilter || !!paStateFilter || anyDocFiltersActive();
+}
+
+// Keeps the combined result-count/clear-filters control and the "Data
+// filters" toggle's active-count badge in sync with the current filter
+// state, so the clear button only appears once there's something to clear.
+function updateFilterStatusUi() {
+  document.getElementById('reset-filters').hidden = !anyFiltersActive();
+  const docActiveCount = DOC_AVAILABILITY_FIELDS.filter((field) => docAvailabilityFilters[field.key]).length;
+  const badge = document.getElementById('data-filters-badge');
+  badge.hidden = docActiveCount === 0;
+  badge.textContent = docActiveCount || '';
+}
+
 function applyFilters() {
   filteredEntries = computeFilteredEntries();
   renderAccordion();
   updateMapFilter();
   document.getElementById('result-count').textContent =
     `${filteredEntries.length.toLocaleString()} of ${paEntries.length.toLocaleString()} protected areas`;
+  updateFilterStatusUi();
 }
 
 function csvEscape(value) {
@@ -1114,6 +1691,18 @@ function collectProtectedAreaTypes() {
   return [...types].sort();
 }
 
+// Nationwide count per type (unaffected by the current filters -- these
+// label the dropdown's own options, not a live filtered result), keyed by
+// UNSPECIFIED_TYPE for entries with no protectedAreaType at all.
+function collectProtectedAreaTypeCounts() {
+  const counts = new Map();
+  for (const entry of paEntries) {
+    const key = entry.protectedAreaType || UNSPECIFIED_TYPE;
+    counts.set(key, (counts.get(key) || 0) + 1);
+  }
+  return counts;
+}
+
 function setPaTypeFilter(value) {
   paTypeFilter = value;
   applyFilters();
@@ -1123,17 +1712,18 @@ function setPaTypeFilter(value) {
 
 function initTypeFilter() {
   const select = document.getElementById('pa-type-filter');
+  const counts = collectProtectedAreaTypeCounts();
+  select.querySelector('option[value=""]').textContent = `All types (${paEntries.length.toLocaleString()})`;
   for (const type of collectProtectedAreaTypes()) {
     const opt = document.createElement('option');
     opt.value = type;
-    opt.textContent = type;
+    opt.textContent = `${type} (${(counts.get(type) || 0).toLocaleString()})`;
     select.appendChild(opt);
   }
-  const hasUnspecified = paEntries.some((entry) => !entry.protectedAreaType);
-  if (hasUnspecified) {
+  if (counts.has(UNSPECIFIED_TYPE)) {
     const opt = document.createElement('option');
     opt.value = UNSPECIFIED_TYPE;
-    opt.textContent = 'Unspecified type';
+    opt.textContent = `Unspecified type (${counts.get(UNSPECIFIED_TYPE).toLocaleString()})`;
     select.appendChild(opt);
   }
   select.addEventListener('change', () => setPaTypeFilter(select.value));
@@ -1147,6 +1737,17 @@ function collectStates() {
   return [...states].sort();
 }
 
+// Nationwide count per state (a PA spanning multiple states counts once
+// toward each), keyed by UNSPECIFIED_STATE for entries with no state at all.
+function collectStateCounts() {
+  const counts = new Map();
+  for (const entry of paEntries) {
+    const states = entry.state.length ? entry.state : [UNSPECIFIED_STATE];
+    for (const s of states) counts.set(s, (counts.get(s) || 0) + 1);
+  }
+  return counts;
+}
+
 function setPaStateFilter(value) {
   paStateFilter = value;
   applyFilters();
@@ -1156,17 +1757,18 @@ function setPaStateFilter(value) {
 
 function initStateFilter() {
   const select = document.getElementById('pa-state-filter');
+  const counts = collectStateCounts();
+  select.querySelector('option[value=""]').textContent = `All states (${paEntries.length.toLocaleString()})`;
   for (const state of collectStates()) {
     const opt = document.createElement('option');
     opt.value = state;
-    opt.textContent = state;
+    opt.textContent = `${state} (${(counts.get(state) || 0).toLocaleString()})`;
     select.appendChild(opt);
   }
-  const hasUnspecified = paEntries.some((entry) => entry.state.length === 0);
-  if (hasUnspecified) {
+  if (counts.has(UNSPECIFIED_STATE)) {
     const opt = document.createElement('option');
     opt.value = UNSPECIFIED_STATE;
-    opt.textContent = 'Unspecified state';
+    opt.textContent = `Unspecified state (${counts.get(UNSPECIFIED_STATE).toLocaleString()})`;
     select.appendChild(opt);
   }
   select.addEventListener('change', () => setPaStateFilter(select.value));
@@ -1195,6 +1797,55 @@ function initDownloadDropdown() {
   });
 }
 
+// Injects the same doc-link icons used in the notification history rows
+// (see DOC_ICON) into the Advanced Search filter labels, so the two stay in
+// sync from one definition instead of duplicating SVG markup in the HTML.
+function initDocFilterIcons() {
+  document.querySelectorAll('[data-doc-icon]').forEach((field) => {
+    const icon = DOC_ICON[field.dataset.docIcon];
+    const holder = field.querySelector('.doc-filter-icon');
+    if (icon && holder) holder.innerHTML = icon;
+  });
+}
+
+function initDocAvailabilityFilters() {
+  initDocFilterIcons();
+  for (const field of DOC_AVAILABILITY_FIELDS) {
+    const select = document.getElementById(field.selectId);
+    const availableCount = paEntries.filter(field.check).length;
+    const missingCount = paEntries.length - availableCount;
+    select.querySelector('option[value=""]').textContent = `Any (${paEntries.length.toLocaleString()})`;
+    select.querySelector('option[value="available"]').textContent = `Available (${availableCount.toLocaleString()})`;
+    select.querySelector('option[value="missing"]').textContent = `Missing (${missingCount.toLocaleString()})`;
+    docAvailabilityFilters[field.key] = select.value;
+    select.addEventListener('change', () => {
+      docAvailabilityFilters[field.key] = select.value;
+      applyFilters();
+    });
+  }
+}
+
+function resetDocAvailabilityFilters() {
+  for (const field of DOC_AVAILABILITY_FIELDS) {
+    document.getElementById(field.selectId).value = '';
+    docAvailabilityFilters[field.key] = '';
+  }
+}
+
+// The "Data filters" toggle button opens/closes the advanced-search-panel
+// (doc-availability filters + nested Edit data QA lists), which is a plain
+// hidden <div> rather than a <details> so the toggle can live in the
+// combined toolbar-status-group instead of an inline <summary>.
+function initDataFiltersToggle() {
+  const toggle = document.getElementById('data-filters-toggle');
+  const panel = document.getElementById('advanced-search-panel');
+  toggle.addEventListener('click', () => {
+    const willOpen = panel.hidden;
+    panel.hidden = !willOpen;
+    toggle.setAttribute('aria-expanded', String(willOpen));
+  });
+}
+
 function initFilterEvents() {
   const searchInput = document.getElementById('filter-search');
   searchInput.addEventListener('input', () => {
@@ -1208,6 +1859,7 @@ function initFilterEvents() {
     paTypeFilter = '';
     document.getElementById('pa-state-filter').value = '';
     paStateFilter = '';
+    resetDocAvailabilityFilters();
     applyFilters();
     renderQaList();
     renderNoCoordList();
@@ -1219,9 +1871,18 @@ async function main() {
   await loadData();
   initTypeFilter();
   initStateFilter();
+  initDocAvailabilityFilters();
+  initDataFiltersToggle();
   renderHeroStats();
+  initHeroStatModals();
   renderQaList();
   renderNoCoordList();
+  initCopyQaList();
+  initCopyQaQuickstatements();
+  initQaModeToggle();
+  initQaSearch();
+  initHideMatchedToggle();
+  initQaTableInteractions();
   initAtlasLink();
   initMap();
   initAccordionEvents();

@@ -8,8 +8,8 @@
 import { readFile, writeFile } from 'node:fs/promises';
 
 async function main() {
-  const wikidataPAs = JSON.parse(await readFile('data/wikidata-protected-areas.json', 'utf8'));
-  const moefRecords = JSON.parse(await readFile('data/moef-esz-notifications.json', 'utf8'));
+  const wikidataPAs = JSON.parse(await readFile('data/wikidata/protected-areas.json', 'utf8'));
+  const moefRecords = JSON.parse(await readFile('data/moef/esz-notifications.json', 'utf8'));
 
   const notificationsByWikidataId = new Map();
   for (const record of moefRecords) {

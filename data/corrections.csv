@@ -1,12 +1,13 @@
 "paName","state","correctPaName","correctState","correctPaType"
+"MajathalWildlife Sanctuary","Himachal Pradesh","Majathal Wildlife Sanctuary","Himachal Pradesh",
 "Bondla Mahaveer Wildlife Sanctuary","Goa","Bondla Wildlife Sanctuary","Goa",
 "Eravikulam National Park + 4 PAs","Kerala","Eravikulam National Park, Chinnar Wildlife Sanctuary, Anamudi Shola National Park, Pampadum Shola National Park and Kurinjimala Sanctuary","Kerala",
 "Valmiki Wildlife Sanctuary Valmiki National Park and Valmiki Tiger Reserve","Bihar","Valmiki Wildlife Sanctuary, Valmiki National Park and Valmiki Tiger Reserve","Bihar",
 "Betla National Park Palamau Wildlife Sanctuary and Mahuadanr Wolf Sanctuary WLS","Jharkhand","Betla National Park, Palamau Wildlife Sanctuary and Mahuadanr Wolf Sanctuary","Jharkhand",
-"Marine National and Marine Sanctuary","Gujarat","Marine National Park and Marine Sanctuary","Gujarat",
+"Marine National and Marine Sanctuary","Gujarat","Marine National Park, Marine Sanctuary","Gujarat",
 "Dachigham National Pak , Baltal Thajwas Sanctuary and Overa-Aru Sanctuary","Jammu and Kashmir","Dachigham National Park, Baltal Thajwas Sanctuary and Overa-Aru Sanctuary","Jammu and Kashmir",
-"Badrama and Khalasuni","Odisha","Badrama Wildlife Sanctuary and Khalasuni Wildlife Sanctuary","Odisha",
-"Pench National Park and the Mansingdeo","Maharashtra","Pench National Park and the Mansinghdeo Wildlife Sanctuary","Maharashtra",
+"Badrama and Khalasuni","Odisha","Badrama Wildlife Sanctuary, Khalasuni Wildlife Sanctuary","Odisha",
+"Pench National Park and the Mansingdeo","Maharashtra","Pench National Park, Mansinghdeo Wildlife Sanctuary","Maharashtra",
 "Nagzira WildlifeSanctuary, New Nagzira Wildlife Sanctuary, Koka Wildlife Sanctuary, Navegaon Wildlife Sanctuary and Navegaon National Park","Maharashtra","Nagzira Wildlife Sanctuary, New Nagzira Wildlife Sanctuary, Koka Wildlife Sanctuary, Navegaon Wildlife Sanctuary and Navegaon National Park","Maharashtra",
 "Kaimur WLS, Mirzapur-SonbhadraESZ Notification","Uttar Pradesh","Kaimur Wildlife Sanctuary","Uttar Pradesh","Wildlife Sanctuary"
 "Tadoba Tiger Reserve and Andheri WLS ESZ Notification","Maharashtra","Tadoba-Andhari Tiger Reserve","Maharashtra","Tiger Reserve"
@@ -15,17 +16,25 @@
 "Silent Valley National Park, Kerala (Malayalam version) (Disclaimer: The contents of this publication are purely on the basis of submission made by the State Government of Kerala vide its letter No. D2/85/2021/FWLD, dated 04/02/2022. In case there are any discrepancy in this Malayalam version, the English version of the draft ESZ Notification published vide S.O. No.3880(E) dated 27.10.2020 (ESZ around Silent Valley National Park) shall prevail.)","Kerala","Silent Valley National Park","Kerala","National Park"
 "Mukundra hills Tiger Reserve Sanctuary,","Rajasthan","Mukundra Hills Tiger Reserve","Rajasthan","Tiger Reserve"
 "Mukundra hills tiger reserve Sanctuary","Rajasthan","Mukundra Hills Tiger Reserve","Rajasthan","Tiger Reserve"
-"Pulicat Wildlife Sanctuary","Andhra Pradesh","Pulicat Bird Sanctuary","Andhra Pradesh","Bird Sanctuary"
-"Kambalkonda Wildlife Sanctuary","Andhra Pradesh","Kambalakonda Wildlife Sanctuary","Andhra Pradesh","Wildlife Sanctuary"
 "Coringa Wildlife Santuary","Andhra Pradesh","Coringa Wildlife Sanctuary","Andhra Pradesh","Wildlife Sanctuary"
 "Cuthbert Bay Wildlife","Andaman and Nicobar","Cuthbert Bay Wildlife Sanctuary","Andaman and Nicobar","Wildlife Sanctuary"
 "Cuthbert Bay Sanctuary","Andaman and Nicobar","Cuthbert Bay Wildlife Sanctuary","Andaman and Nicobar","Wildlife Sanctuary"
-"Mount harriet National Park","Andaman and Nicobar","Mount Harriet National Park","Andaman and Nicobar","National Park"
 "Eagle Nest Wildlife","Arunachal Pradesh","Eagle Nest Wildlife Sanctuary","Arunachal Pradesh","Wildlife Sanctuary"
-"Khijadia Wildlife Sanctuary","Gujarat","Khijadiya Wildlife Sanctuary","Gujarat","Wildlife Sanctuary"
 "Sonai-Rupai Wildlife","Assam","Sonai Rupai Wildlife Sanctuary","Assam","Wildlife Sanctuary"
 "Mahuadanr Wolf Sanctuary Sanctuary","Jharkhand","Mahuadanr Wolf Sanctuary","Jharkhand","Wildlife Sanctuary"
-"Dadra Nagar Haveli","Dadra and Nagar Haveli and Daman and Diu","Dadra and Nagar Haveli WLS","Dadra and Nagar Haveli and Daman and Diu","Wildlife Sanctuary"
+"Col Sher Jun National Park Earlier Simbalbara National Park","Himachal Pradesh","Simbalbara National Park","Himachal Pradesh","National Park"
+"Col. Sher Jung National Park also known as Simbalbara National Park","Himachal Pradesh","Simbalbara National Park","Himachal Pradesh","National Park"
+"Kaimur Wildlife Sanctuarry","Bihar","Kaimur Wildlife Sanctuary","Bihar","Wildlife Sanctuary"
+"Velvadar Black Buck Wildlife Sanctuary","Gujarat","Blackbuck National Park","Gujarat","National Park"
+"Rakchham-Chitkul Wildlife Sanctuary (previously known as Sangla Valley)","Himachal Pradesh","Rakchham Chitkul Wildlife Sanctuary","Himachal Pradesh","Wildlife Sanctuary"
+"ranahita (Blackbuck) Widlife Sanctuar","Telangana","Pranahita Wildlife Sanctuary","Telangana","Wildlife Sanctuary"
+"Jai Prakash Narayan (Surahatal) Bird Sanctuary","Uttar Pradesh","Surha Tal Bird Sanctuary","Uttar Pradesh","Bird Sanctuary"
+"Nawabganj (saheed Chandra Shekhar Azad)Bird","Uttar Pradesh","Nawabganj Bird Sanctuary","Uttar Pradesh","Bird Sanctuary"
+"Sharavati Valley Lion Tailed Macaque (LTM) Sanctuary","Karnataka","Sharavathi LTM Wildlife Sanctuary","Karnataka","Wildlife Sanctuary"
+"Point Calimere Sanctuary (including block A)","Tamil Nadu","Point Calimere Wildlife and Bird Sanctuary","Tamil Nadu","Wildlife Sanctuary"
+"Point Calimere Sanctuary (including block B","Tamil Nadu","Point Calimere Wildlife and Bird Sanctuary","Tamil Nadu","Wildlife Sanctuary"
+"Sepahijala Wildlife Sanctuary","Tripura","Sepahijala Wildlife Sanctuary, Clouded Leopard National Park","Tripura",
+"Trishna Wildlife Sanctuary","Tripura","Trishna Wildlife Sanctuary, Rajbari National Park","Tripura",
 
 ,"Andaman and Nicobar","","Andaman and Nicobar Islands",
 ,"Chattisgarh","","Chhattisgarh",
