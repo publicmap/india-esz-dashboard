@@ -48,6 +48,26 @@ const BOUNDARY_LINE_STYLES = [
   { color: 'rgb(160, 120, 160)', layerSuffix: 'osm-internal', widthFraction: 0.15, dashArray: [2, 1], delWidthFactor: 1.5 },
 ];
 
+// Optional overlays sourced from Bharatmaps/Parivesh (via the indianopenmaps
+// vector tile mirror maintained by the Datameet community), independent of
+// this dashboard's own PA points and notification tracking. Both are shown
+// by default and can be toggled off via the map-layer-control checkboxes in
+// the map panel.
+const BHARATMAPS_ATTRIBUTION = '<a href="https://bharatmaps.gov.in/BharatMaps/Home/Map" target="_blank" rel="noopener">Bharatmaps/Parivesh</a> - Collected by <a href="https://datameet.org" target="_blank" rel="noopener">Datameet Community</a>';
+
+const ESZ_LAYER_URL = 'https://indianopenmaps.fly.dev/not-so-open/forests/esz/parivesh/{z}/{x}/{y}.pbf';
+const ESZ_LAYER_SOURCE_LAYER = 'Bharatmaps_Parivesh_Eco_Sensitive_Zones';
+const ESZ_LAYER_MAXZOOM = 9;
+const ESZ_LAYER_LINE_WIDTH = [
+  'interpolate', ['linear'], ['zoom'],
+  14, ['case', ['boolean', ['feature-state', 'selected'], false], 4, ['boolean', ['feature-state', 'hover'], false], 3, 1],
+  18, ['case', ['boolean', ['feature-state', 'selected'], false], 8, ['boolean', ['feature-state', 'hover'], false], 5, 2],
+];
+
+const WILDLIFE_RESERVE_LAYER_URL = 'https://indianopenmaps.fly.dev/not-so-open/forests/wildlife/reserves-and-corridors/parivesh/{z}/{x}/{y}.pbf';
+const WILDLIFE_RESERVE_LAYER_SOURCE_LAYER = 'Bharatmaps_Parivesh_Wildlife_Reserves_and_Corridors';
+const WILDLIFE_RESERVE_LAYER_MAXZOOM = 10;
+
 // The dashboard's one data dependency: data/full-join.json, built by
 // scripts/build-full-join.js. It's a full outer join between the Wikidata
 // protected area list and the MoEF ESZ notification records -- one entry per
@@ -127,6 +147,125 @@ async function loadData() {
   const res = await fetch('data/full-join.json');
   paEntries = await res.json();
   entryByPaKey = new Map(paEntries.map((e) => [e.paKey, e]));
+}
+
+// The update workflow's cron schedule (.github/workflows/update.yml: '0 3 *
+// * 1', every Monday 03:00 UTC) -- used to render the "next update" estimate
+// in the source-status bar. Kept in sync with that file by hand since GitHub
+// Actions doesn't expose its own schedule to the page at runtime.
+const UPDATE_CRON_UTC_WEEKDAY = 1; // Monday
+const UPDATE_CRON_UTC_HOUR = 3;
+
+function daysUntilNextScheduledUpdate(now = new Date()) {
+  const next = new Date(now);
+  next.setUTCHours(UPDATE_CRON_UTC_HOUR, 0, 0, 0);
+  let daysAhead = (UPDATE_CRON_UTC_WEEKDAY - next.getUTCDay() + 7) % 7;
+  if (daysAhead === 0 && next <= now) daysAhead = 7;
+  next.setUTCDate(next.getUTCDate() + daysAhead);
+  return Math.ceil((next - now) / (24 * 60 * 60 * 1000));
+}
+
+function formatDaysAgo(days) {
+  if (days <= 0) return 'today';
+  if (days === 1) return '1 day ago';
+  return `${days} days ago`;
+}
+
+function formatDaysAhead(days) {
+  if (days <= 0) return 'today';
+  if (days === 1) return '1 day';
+  return `${days} days`;
+}
+
+// Populates the collapsible source-status bar (header) from
+// data/source-stats.json, built by scripts/build-source-stats.js. Kept
+// independent of loadData/paEntries -- a failure here (e.g. the file hasn't
+// been generated yet on a fresh checkout) shouldn't break the rest of the
+// dashboard, so main() fires this without awaiting it.
+async function initSourceStatus() {
+  const textEl = document.getElementById('source-status-text');
+  const bodyEl = document.getElementById('source-status-table-body');
+  try {
+    const res = await fetch('data/source-stats.json');
+    const { sources } = await res.json();
+    const conflated = sources.find((s) => s.id === 'conflated');
+    const upstreamSources = conflated.counts.breakdown; // MoEFCC, Wikidata, Wikipedia, OpenStreetMap
+
+    const mostRecentUpdate = Math.max(...upstreamSources.map((s) => new Date(s.lastUpdated).getTime()));
+    const daysAgo = Math.floor((Date.now() - mostRecentUpdate) / (24 * 60 * 60 * 1000));
+    const nextUpdateDays = daysUntilNextScheduledUpdate();
+
+    const sourceLinks = upstreamSources
+      .map((s) => `<a href="${escapeHtml(s.url)}" target="_blank" rel="noopener">${escapeHtml(s.label)}</a>`)
+      .join(', ')
+      .replace(/,([^,]*)$/, ' &amp;$1'); // ", D" -> " & D" on the last item
+    textEl.innerHTML = `Last updated <strong>${formatDaysAgo(daysAgo)}</strong> from ${sourceLinks}. ` +
+      `Next update: <strong>${formatDaysAhead(nextUpdateDays)}</strong>.`;
+
+    const cols = ['total', 'tigerReserve', 'nationalPark', 'wildlifeSanctuary'];
+
+    // Conflated -- the join's final, deduplicated output -- opens collapsed
+    // with a caret in its first cell; clicking it reveals the four upstream
+    // sources it was built from as nested sub-rows.
+    const conflatedRowHtml = `
+      <tr class="source-status-derived source-status-toggle" id="source-status-conflated-toggle"
+          role="button" tabindex="0" aria-expanded="false"
+          aria-controls="${upstreamSources.map((s) => `source-status-child-${s.id}`).join(' ')}">
+        <td><svg class="source-status-row-caret" viewBox="0 0 24 24" width="11" height="11" aria-hidden="true"
+              fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M6 9l6 6 6-6" /></svg>${escapeHtml(conflated.label)}</td>
+        ${cols.map((c) => `<td>${conflated.counts[c].toLocaleString()}</td>`).join('')}
+      </tr>`;
+    const upstreamRowHtml = (s) => `
+      <tr class="source-status-subrow source-status-conflated-child" id="source-status-child-${s.id}" hidden>
+        <td><a href="${escapeHtml(s.url)}" target="_blank" rel="noopener">${escapeHtml(s.label)}</a></td>
+        ${cols.map((c) => `<td>${s.counts[c].toLocaleString()}</td>`).join('')}
+      </tr>`;
+
+    // Final/Draft/No-notification each get a "(n%)" share of the Conflated
+    // total in that column -- the three rows partition it exactly, so their
+    // percentages always add up to 100%.
+    const finalEsz = sources.find((s) => s.id === 'final-esz');
+    const draftEsz = sources.find((s) => s.id === 'draft-esz');
+    const noNotification = sources.find((s) => s.id === 'no-notification');
+    const pctCell = (count, total) => {
+      const pct = total ? Math.round((count / total) * 100) : 0;
+      return `${count.toLocaleString()} <small>(${pct}%)</small>`;
+    };
+    // Same dot-badge classes (.dot-final/.dot-draft/.dot-none) used for ESZ
+    // status everywhere else on the dashboard -- the accordion cards, the
+    // notification history, and the map popups -- so this row label reads as
+    // the same status, not a separate color scheme.
+    const STATUS_DOT_CLASS = { 'final-esz': 'dot-final', 'draft-esz': 'dot-draft', 'no-notification': 'dot-none' };
+    const statusRowHtml = (s, highlight) => `
+      <tr class="${highlight ? 'source-status-highlight' : ''}">
+        <td><span class="status-pill"><i class="dot ${STATUS_DOT_CLASS[s.id]}" aria-hidden="true"></i>${escapeHtml(s.label)}</span></td>
+        ${cols.map((c) => `<td>${pctCell(s.counts[c], conflated.counts[c])}</td>`).join('')}
+      </tr>`;
+
+    bodyEl.innerHTML = conflatedRowHtml
+      + upstreamSources.map(upstreamRowHtml).join('')
+      + statusRowHtml(finalEsz, true)
+      + statusRowHtml(draftEsz)
+      + statusRowHtml(noNotification);
+
+    // Same instant as "Last updated" above (the most recently changed
+    // upstream source), just spelled out as a calendar date.
+    document.getElementById('source-status-generated').textContent = `Generated on ${new Date(mostRecentUpdate).toLocaleDateString('en-IN', { year: 'numeric', month: 'long', day: 'numeric' })}`;
+
+    const toggle = document.getElementById('source-status-conflated-toggle');
+    toggle.addEventListener('click', () => {
+      const expanded = toggle.getAttribute('aria-expanded') === 'true';
+      toggle.setAttribute('aria-expanded', String(!expanded));
+      document.querySelectorAll('.source-status-conflated-child').forEach((row) => { row.hidden = expanded; });
+    });
+    toggle.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggle.click(); }
+    });
+  } catch (err) {
+    console.error('Failed to load data/source-stats.json:', err);
+    textEl.textContent = 'Data source status unavailable.';
+  }
 }
 
 // Flattens PA entries into one row per notification record (for PAs with no
@@ -304,6 +443,12 @@ function kpiPctBarCellHtml(pct) {
 // section -- shown at the top of the states/UTs KPI modal so a first-time
 // reader has context for what "ESZ notification" means before diving into
 // the state-by-state breakdown.
+// The 2006 Supreme Court order (see timeline below) gave States/UTs 4 weeks
+// from this date to submit ESZ proposals; that deadline lapsed on 1 Jan 2007
+// and, per the PIB note above, has never been met nationwide since.
+const ESZ_PROPOSAL_DEADLINE = new Date('2007-01-01T00:00:00Z');
+const ESZ_DEADLINE_DAYS_OVERDUE = Math.floor((Date.now() - ESZ_PROPOSAL_DEADLINE.getTime()) / 86400000);
+
 const ESZ_INTRO_HTML = `
   <details class="kpi-intro">
     <summary>About Eco-Sensitive Zones (ESZs)</summary>
@@ -315,29 +460,62 @@ const ESZ_INTRO_HTML = `
       from areas of high protection to areas of lesser protection.
     </p>
     <div class="kpi-intro-media">
-      <a class="kpi-intro-image-link" href="assets/img/pib-moefcc-note.png" target="_blank" rel="noopener">
-        <img class="kpi-intro-image" src="assets/img/pib-moefcc-note.png"
-          alt="ESZ notification status of protected areas in India, PIB/MoEFCC note" loading="lazy" />
-      </a>
+      <div class="kpi-intro-image-col">
+        <a class="kpi-intro-image-link" href="assets/img/pib-moefcc-note.png" target="_blank" rel="noopener">
+          <img class="kpi-intro-image" src="assets/img/pib-moefcc-note.png"
+            alt="ESZ notification status of protected areas in India, PIB/MoEFCC note" loading="lazy" />
+        </a>
+        <div class="kpi-intro-day-counter">
+          <strong>${ESZ_DEADLINE_DAYS_OVERDUE.toLocaleString()}</strong> days overdue
+          <span>since the Supreme Court's 4th December, 2006 order requiring States/UTs to submit ESZ
+            proposals within 4 weeks &mdash; a deadline that lapsed on 1st January, 2007</span>
+        </div>
+      </div>
       <ol class="kpi-timeline">
-        <li><strong>2002</strong> &mdash; The Indian Board for Wildlife proposed 10km buffer zones under the
-          Environment Protection Act of 1986 to insulate national parks and sanctuaries.</li>
-        <li><strong>2004</strong> &mdash; The Goa Foundation filed a landmark case (PIL Writ Petition 460/2004) in
-          the Supreme Court demanding action against authorities for failing to notify ESZs.</li>
+        <li><strong>1970</strong> &mdash; The Indian Board for Wildlife (IBWL) is created as an advisory body to
+          provide guidance on issues relating to the protection and conservation of wildlife and their habitats.</li>
+        <li><strong>2002</strong> &mdash; The 21st IBWL meeting adopts the
+          <a href="https://moef.gov.in/uploads/2018/03/WILDLIFE%20CONSERVATION%20STRATEGY%202002.pdf"
+          target="_blank" rel="noopener">Wildlife Conservation Strategy 2002</a>, chaired by Shri Atal Bihari
+          Vajpayee, then Prime Minister of India, which proposed notifying 10km buffer zones of eco-fragile zones
+          around protected areas where mining and polluting industries would be prohibited.</li>
+        <li><strong>2003</strong> &mdash; The National Board for Wildlife (NBWL) is constituted as a statutory
+          body to replace the IBWL.</li>
+        <li><strong>2004</strong> &mdash; The <a href="http://goafoundation.org" target="_blank" rel="noopener">Goa
+          Foundation</a> filed a landmark case
+          (<a href="https://indiankanoon.org/doc/81576067/" target="_blank" rel="noopener">PIL Writ Petition 460/2004</a>)
+          in the Supreme Court for clarification regarding iron ore mining within 10km of protected areas in Goa.</li>
         <li><strong>2006</strong> &mdash; Supreme Court directs all States/UTs to define ESZs within 4 weeks,
-          failing which a 10km ESZ would apply by default.</li>
-        <li><strong>2011</strong> &mdash; MoEFCC publishes guidelines for declaration of ESZs, outlining the
+          failing which a <a href="https://www.pib.gov.in/newsite/PrintRelease.aspx?relid=126299&amp;reg=48&amp;lang=2"
+          target="_blank" rel="noopener">10km ESZ will apply as default</a>.</li>
+        <li><strong>2011</strong> &mdash; MoEFCC publishes
+          <a href="https://cpc.parivesh.nic.in/writereaddata/Guidelines_for_EcoSensitive_Zones_around_Protected_Areas.pdf"
+          target="_blank" rel="noopener">guidelines for declaration of ESZs</a>, outlining the
           procedure States/UTs must follow to demarcate and notify one.</li>
-        <li><strong>2012</strong> &mdash; Citing lack of progress, the Central Empowered Committee recommends an
-          interim 100m&ndash;2000m safety zone based on protected area size.</li>
-        <li><strong>2022</strong> &mdash; Supreme Court mandates a minimum 1km ESZ around all protected areas.</li>
-        <li><strong>2023</strong> &mdash; Supreme Court relaxes its 2022 order, allowing the minimum ESZ to be
-          protected-area-specific rather than a uniform distance.</li>
+        <li><strong>2012</strong> &mdash; Citing lack of progress on ESZ identification, the Central Empowered
+          Committee
+          <a href="https://hash-cookies.s3.amazonaws.com/CEC%20buffer%20zones%20report%2020.9.2012.pdf"
+          target="_blank" rel="noopener">recommends a safety zone of 100m&ndash;2000m</a> in the interim based on
+          protected area size.</li>
+        <li><strong>2022</strong> &mdash; Supreme Court
+          <a href="https://api.sci.gov.in/supremecourt/1995/2997/2997_1995_5_1501_36130_Order_03-Jun-2022.pdf"
+          target="_blank" rel="noopener">mandates a minimum 1km ESZ</a> around all protected areas.</li>
+        <li><strong>2023</strong> &mdash; Supreme Court
+          <a href="https://api.sci.gov.in/supremecourt/1995/2997/2997_1995_8_1501_43924_Judgement_26-Apr-2023.pdf"
+          target="_blank" rel="noopener">dilutes the 1km minimum ESZ</a> from its 2022 order to be protected-area
+          specific, citing uniform minimums as impossible to implement.</li>
+        <li><strong>2023</strong> &mdash; MoEFCC releases
+          <a href="https://cdnbbsr.s3waas.gov.in/s3fa5f68379610ec97bf9b19dfeb19d910/uploads/2025/09/202509051613268164.pdf"
+          target="_blank" rel="noopener">updated guidelines for seeking recommendations of the Standing Committee
+          of NBWL</a> for activities in protected areas and ESZs.</li>
+        <li><strong>2025</strong> &mdash; IGNFA publishes a
+          <a href="https://www.ignfa.gov.in/publications/an-evaluative-discusion-esz-paper.pdf" target="_blank"
+          rel="noopener">discussion paper on ESZ</a> advocating for a risk-based approach to ESZ declaration.</li>
       </ol>
     </div>
     <p class="kpi-intro-source">Source: <a href="https://www.pib.gov.in/newsite/PrintRelease.aspx?relid=126299&amp;reg=48&amp;lang=2"
       target="_blank" rel="noopener">PIB, Ministry of Environment Forests &amp; Climate Change, Government of India</a>,
-      <a href="https://en.wikipedia.org/wiki/Eco-sensitive_zone" target="_blank" rel="noopener">Wikipedia</a>.</p>
+      <a href="https://en.wikipedia.org/wiki/Eco-Sensitive_Zone" target="_blank" rel="noopener">Wikipedia</a>.</p>
   </details>`;
 
 // Bucket keys double as the data-bucket-<kebab> attribute name each table
@@ -435,8 +613,7 @@ function renderStateKpiModalBody(rows) {
       <td>${dateCell}</td>
     </tr>`;
   }).join('');
-  return `${ESZ_INTRO_HTML}
-    ${renderStateSummaryTilesHtml(rows)}
+  return `${renderStateSummaryTilesHtml(rows)}
     ${summary}
     <div class="kpi-table-wrap">
       <table class="kpi-table">
@@ -495,7 +672,7 @@ const KPI_MODAL_BUILDERS = {
     const rows = computeStateNotificationDetails();
     return {
       kicker: 'Nationwide progress',
-      title: 'States & UTs by ESZ notification completion',
+      title: 'States & UTs By Final ESZ Notification',
       subtitle: 'A state/UT counts as complete only once every protected area with a foothold there has a final or draft ESZ notification.',
       body: renderStateKpiModalBody(rows),
     };
@@ -1006,6 +1183,8 @@ function initMap() {
 
   map.on('load', () => {
     addBoundaryCorrectionLayers();
+    addEszLayer();
+    addWildlifeReserveLayer();
     map.addSource('protected-areas', { type: 'geojson', data: allFeatureCollection() });
     map.addLayer({
       id: 'protected-areas-circles',
@@ -1094,6 +1273,82 @@ function addBoundaryCorrectionLayers() {
       },
     });
   }
+}
+
+// Adds the Eco-Sensitive Zone overlay as a fill + outline layer pair, shown
+// by default -- hidden when the map-layer-control checkbox is unchecked.
+function addEszLayer() {
+  map.addSource('india-esz', {
+    type: 'vector',
+    tiles: [ESZ_LAYER_URL],
+    maxzoom: ESZ_LAYER_MAXZOOM,
+    attribution: BHARATMAPS_ATTRIBUTION,
+  });
+  map.addLayer({
+    id: 'india-esz-fill',
+    type: 'fill',
+    source: 'india-esz',
+    'source-layer': ESZ_LAYER_SOURCE_LAYER,
+    paint: { 'fill-color': 'green', 'fill-opacity': 0.2 },
+  });
+  map.addLayer({
+    id: 'india-esz-line',
+    type: 'line',
+    source: 'india-esz',
+    'source-layer': ESZ_LAYER_SOURCE_LAYER,
+    paint: { 'line-color': '#006400', 'line-width': ESZ_LAYER_LINE_WIDTH },
+  });
+}
+
+function setEszLayerVisibility(visible) {
+  const visibility = visible ? 'visible' : 'none';
+  if (map.getLayer('india-esz-fill')) map.setLayoutProperty('india-esz-fill', 'visibility', visibility);
+  if (map.getLayer('india-esz-line')) map.setLayoutProperty('india-esz-line', 'visibility', visibility);
+}
+
+function initEszLayerToggle() {
+  const checkbox = document.getElementById('layer-toggle-esz');
+  checkbox.addEventListener('change', () => setEszLayerVisibility(checkbox.checked));
+}
+
+// Adds the Wildlife Reserves & Corridors overlay (national parks, wildlife
+// sanctuaries, tiger conservation corridors) as a single fill layer -- the
+// upstream style spec's line-width is 0, so no separate outline layer is
+// drawn. Shown by default, same toggle pattern as the ESZ layer above.
+function addWildlifeReserveLayer() {
+  map.addSource('india-wildlife-reserve', {
+    type: 'vector',
+    tiles: [WILDLIFE_RESERVE_LAYER_URL],
+    maxzoom: WILDLIFE_RESERVE_LAYER_MAXZOOM,
+    attribution: BHARATMAPS_ATTRIBUTION,
+  });
+  map.addLayer({
+    id: 'india-wildlife-reserve-fill',
+    type: 'fill',
+    source: 'india-wildlife-reserve',
+    'source-layer': WILDLIFE_RESERVE_LAYER_SOURCE_LAYER,
+    paint: { 'fill-color': 'green', 'fill-opacity': 0.5 },
+  });
+}
+
+function setWildlifeReserveLayerVisibility(visible) {
+  const visibility = visible ? 'visible' : 'none';
+  if (map.getLayer('india-wildlife-reserve-fill')) map.setLayoutProperty('india-wildlife-reserve-fill', 'visibility', visibility);
+}
+
+function initWildlifeReserveLayerToggle() {
+  const checkbox = document.getElementById('layer-toggle-wildlife-reserve');
+  checkbox.addEventListener('change', () => setWildlifeReserveLayerVisibility(checkbox.checked));
+}
+
+function setPaPointsLayerVisibility(visible) {
+  const visibility = visible ? 'visible' : 'none';
+  if (map.getLayer('protected-areas-circles')) map.setLayoutProperty('protected-areas-circles', 'visibility', visibility);
+}
+
+function initPaPointsLayerToggle() {
+  const checkbox = document.getElementById('layer-toggle-pa-points');
+  checkbox.addEventListener('change', () => setPaPointsLayerVisibility(checkbox.checked));
 }
 
 // Builds a GeoJSON point feature straight from a PA entry's already-joined
@@ -2050,7 +2305,14 @@ function initFilterEvents() {
   document.getElementById('export-filtered').addEventListener('click', exportFilteredCsv);
 }
 
+function renderEszIntro() {
+  const el = document.getElementById('esz-intro');
+  if (el) el.innerHTML = ESZ_INTRO_HTML;
+}
+
 async function main() {
+  renderEszIntro();
+  initSourceStatus().catch((err) => console.error(err));
   await loadData();
   initTypeFilter();
   initStateFilter();
@@ -2068,6 +2330,9 @@ async function main() {
   initQaTableInteractions();
   initAtlasLink();
   initMap();
+  initPaPointsLayerToggle();
+  initEszLayerToggle();
+  initWildlifeReserveLayerToggle();
   initAccordionEvents();
   applyFilters();
   initFilterEvents();

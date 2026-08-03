@@ -98,6 +98,26 @@ function titleAgreesWithOwnText(title, ownText) {
   return false;
 }
 
+// A cell's primary notification link and its supplementary scanned-map PDF
+// are often both plain ".pdf" anchors, indistinguishable by extension. The
+// site's own title convention normally disambiguates the map link with a
+// "- Map" suffix (e.g. title="Click here to view or download - Map") while
+// leaving the primary link's title bare -- so a bare-titled primary anchor
+// can appear *after* a suffixed map anchor and get skipped in favor of it.
+// Reject "Map" as an extracted name so extraction falls through to the next
+// candidate instead of mistaking the map link for the protected area name.
+function isGenericAnchorLabel(name) {
+  return /^map$/i.test(name);
+}
+
+// When a cell's only anchor is a supplementary map PDF (the real name is
+// unlinked plain text next to it, e.g. "...Sanctuary , Madhya Pradesh& Map(71.15 KB)"),
+// name extraction falls all the way to the last-resort fallbackText path,
+// which would otherwise carry this dangling annotation into the extracted
+// name and confuse the state-suffix trim / multi-park split that run on it
+// downstream in clean-moef-data.js.
+const TRAILING_MAP_ANNOTATION_RE = /\s*&?\s*Map\s*\([^)]*\)\s*$/i;
+
 function extractProtectedAreaName($, anchors, fallbackText) {
   const titledAnchors = anchors.filter((a) => $(a).attr('title'));
   for (const a of titledAnchors) {
@@ -105,16 +125,16 @@ function extractProtectedAreaName($, anchors, fallbackText) {
     if (CLICK_TITLE_PREFIX.test(title)) {
       const name = stripBoilerplate(title.replace(CLICK_TITLE_PREFIX, ''));
       const ownText = stripBoilerplate(cleanText($(a).text()));
-      if (name && titleAgreesWithOwnText(name, ownText)) return name;
+      if (name && !isGenericAnchorLabel(name) && titleAgreesWithOwnText(name, ownText)) return name;
     }
   }
   const firstAnchorWithHref = anchors.find((a) => !/\.pdf$/i.test($(a).attr('href') || ''));
   const firstPdfAnchor = anchors.find((a) => /\.pdf$/i.test($(a).attr('href') || ''));
   const firstPdfAnchorText = stripBoilerplate(cleanText(firstPdfAnchor ? $(firstPdfAnchor).text() : ''));
-  if (firstPdfAnchorText) return firstPdfAnchorText;
+  if (firstPdfAnchorText && !isGenericAnchorLabel(firstPdfAnchorText)) return firstPdfAnchorText;
   if (firstAnchorWithHref) {
     const t = stripBoilerplate(cleanText($(firstAnchorWithHref).text()));
-    if (t) return t;
+    if (t && !isGenericAnchorLabel(t)) return t;
   }
   // Last resort: strip the boilerplate lead-in phrasing and take what's left.
   return stripBoilerplate(
@@ -123,7 +143,9 @@ function extractProtectedAreaName($, anchors, fallbackText) {
         .replace(LEADING_INDEX_RE, '')
         .replace(ORDER_NUMBER_RE, '')
         .replace(/\[[^\]]*\]/, ''),
-    ).slice(0, 80),
+    )
+      .replace(TRAILING_MAP_ANNOTATION_RE, '')
+      .slice(0, 80),
   );
 }
 

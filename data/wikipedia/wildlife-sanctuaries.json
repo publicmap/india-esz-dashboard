@@ -1,6 +1,7 @@
 [
   {
     "protectedAreaName": "Arial Island Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Andaman and Nicobar Islands",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Arial_Island_Wildlife_Sanctuary?action=edit&redlink=1",
@@ -10,6 +11,7 @@
   },
   {
     "protectedAreaName": "Bamboo Island Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Andaman and Nicobar Islands",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Bamboo_Island_Wildlife_Sanctuary",
@@ -18,7 +20,8 @@
     "district": "Andaman"
   },
   {
-    "protectedAreaName": "Barren Island Wildlife Sanctuary",
+    "protectedAreaName": "Barren Island (Andaman Islands)",
+    "nameAlias": "Barren Island Wildlife Sanctuary",
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Andaman and Nicobar Islands",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Barren_Island_(Andaman_Islands)",
@@ -28,6 +31,7 @@
   },
   {
     "protectedAreaName": "Battimalv Island Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Andaman and Nicobar Islands",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Battimalv_Island_Wildlife_Sanctuary?action=edit&redlink=1",
@@ -37,6 +41,7 @@
   },
   {
     "protectedAreaName": "Belle Island Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Andaman and Nicobar Islands",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Belle_Island_Wildlife_Sanctuary?action=edit&redlink=1",
@@ -46,6 +51,7 @@
   },
   {
     "protectedAreaName": "Benett Island Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Andaman and Nicobar Islands",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Benett_Island_Wildlife_Sanctuary?action=edit&redlink=1",
@@ -55,6 +61,7 @@
   },
   {
     "protectedAreaName": "Bingham Island Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Andaman and Nicobar Islands",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Bingham_Island_Wildlife_Sanctuary?action=edit&redlink=1",
@@ -64,6 +71,7 @@
   },
   {
     "protectedAreaName": "Blister Island Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Andaman and Nicobar Islands",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Blister_Island_Wildlife_Sanctuary?action=edit&redlink=1",
@@ -73,6 +81,7 @@
   },
   {
     "protectedAreaName": "Bluff Island Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Andaman and Nicobar Islands",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Bluff_Island_Wildlife_Sanctuary?action=edit&redlink=1",
@@ -82,6 +91,7 @@
   },
   {
     "protectedAreaName": "Bondoville Island Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Andaman and Nicobar Islands",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Bondoville_Island_Wildlife_Sanctuary?action=edit&redlink=1",
@@ -91,6 +101,7 @@
   },
   {
     "protectedAreaName": "Brush Island Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Andaman and Nicobar Islands",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Brush_Island_Wildlife_Sanctuary?action=edit&redlink=1",
@@ -100,6 +111,7 @@
   },
   {
     "protectedAreaName": "Buchanan Island Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Andaman and Nicobar Islands",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Buchanan_Island_Wildlife_Sanctuary?action=edit&redlink=1",
@@ -109,6 +121,7 @@
   },
   {
     "protectedAreaName": "Chanel Island Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Andaman and Nicobar Islands",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Chanel_Island_Wildlife_Sanctuary?action=edit&redlink=1",
@@ -118,6 +131,7 @@
   },
   {
     "protectedAreaName": "Cinque Islands Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Andaman and Nicobar Islands",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Cinque_Islands_Wildlife_Sanctuary?action=edit&redlink=1",
@@ -127,6 +141,7 @@
   },
   {
     "protectedAreaName": "Clyde Island Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Andaman and Nicobar Islands",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Clyde_Island_Wildlife_Sanctuary?action=edit&redlink=1",
@@ -136,6 +151,7 @@
   },
   {
     "protectedAreaName": "Cone Island Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Andaman and Nicobar Islands",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Cone_Island_Wildlife_Sanctuary?action=edit&redlink=1",
@@ -145,6 +161,7 @@
   },
   {
     "protectedAreaName": "Curlew (B.P.) Island Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Andaman and Nicobar Islands",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Curlew_(B.P.)_Island_Wildlife_Sanctuary?action=edit&redlink=1",
@@ -154,6 +171,7 @@
   },
   {
     "protectedAreaName": "Curlew Island Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Andaman and Nicobar Islands",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Curlew_Island_Wildlife_Sanctuary?action=edit&redlink=1",
@@ -163,6 +181,7 @@
   },
   {
     "protectedAreaName": "Cuthbert Bay Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Andaman and Nicobar Islands",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Cuthbert_Bay_Wildlife_Sanctuary",
@@ -172,6 +191,7 @@
   },
   {
     "protectedAreaName": "Defence Island Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Andaman and Nicobar Islands",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Defence_Island_Wildlife_Sanctuary",
@@ -181,6 +201,7 @@
   },
   {
     "protectedAreaName": "Dot Island Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Andaman and Nicobar Islands",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Dot_Island_Wildlife_Sanctuary?action=edit&redlink=1",
@@ -190,6 +211,7 @@
   },
   {
     "protectedAreaName": "Dottrell Island Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Andaman and Nicobar Islands",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Dottrell_Island_Wildlife_Sanctuary?action=edit&redlink=1",
@@ -199,6 +221,7 @@
   },
   {
     "protectedAreaName": "Duncan Island Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Andaman and Nicobar Islands",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Duncan_Island_Wildlife_Sanctuary?action=edit&redlink=1",
@@ -208,6 +231,7 @@
   },
   {
     "protectedAreaName": "East Island Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Andaman and Nicobar Islands",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/East_Island_Wildlife_Sanctuary?action=edit&redlink=1",
@@ -217,6 +241,7 @@
   },
   {
     "protectedAreaName": "East of Inglis Island Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Andaman and Nicobar Islands",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/East_of_Inglis_Island_Wildlife_Sanctuary?action=edit&redlink=1",
@@ -226,6 +251,7 @@
   },
   {
     "protectedAreaName": "Egg Island Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Andaman and Nicobar Islands",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Egg_Island_Wildlife_Sanctuary?action=edit&redlink=1",
@@ -235,6 +261,7 @@
   },
   {
     "protectedAreaName": "Entrance Island Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Andaman and Nicobar Islands",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Entrance_Island_Wildlife_Sanctuary?action=edit&redlink=1",
@@ -244,6 +271,7 @@
   },
   {
     "protectedAreaName": "Flat Island Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Andaman and Nicobar Islands",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Flat_Island_Wildlife_Sanctuary",
@@ -253,6 +281,7 @@
   },
   {
     "protectedAreaName": "Gander Island Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Andaman and Nicobar Islands",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Gander_Island_Wildlife_Sanctuary?action=edit&redlink=1",
@@ -262,6 +291,7 @@
   },
   {
     "protectedAreaName": "Girjan Island Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Andaman and Nicobar Islands",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Girjan_Island_Wildlife_Sanctuary?action=edit&redlink=1",
@@ -271,6 +301,7 @@
   },
   {
     "protectedAreaName": "Galathea Bay Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Andaman and Nicobar Islands",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Galathea_Bay_Wildlife_Sanctuary?action=edit&redlink=1",
@@ -280,6 +311,7 @@
   },
   {
     "protectedAreaName": "Goose Island Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Andaman and Nicobar Islands",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Goose_Island_Wildlife_Sanctuary?action=edit&redlink=1",
@@ -289,6 +321,7 @@
   },
   {
     "protectedAreaName": "Hump Island Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Andaman and Nicobar Islands",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Hump_Island_Wildlife_Sanctuary?action=edit&redlink=1",
@@ -297,7 +330,8 @@
     "district": "Andaman"
   },
   {
-    "protectedAreaName": "Interview Island Wildlife Sanctuary",
+    "protectedAreaName": "Interview Island",
+    "nameAlias": "Interview Island Wildlife Sanctuary",
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Andaman and Nicobar Islands",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Interview_Island",
@@ -307,6 +341,7 @@
   },
   {
     "protectedAreaName": "James Island Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Andaman and Nicobar Islands",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/James_Island_Wildlife_Sanctuary?action=edit&redlink=1",
@@ -316,6 +351,7 @@
   },
   {
     "protectedAreaName": "Jungle Island Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Andaman and Nicobar Islands",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Jungle_Island_Wildlife_Sanctuary?action=edit&redlink=1",
@@ -325,6 +361,7 @@
   },
   {
     "protectedAreaName": "Kwangtung Island Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Andaman and Nicobar Islands",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Kwangtung_Island_Wildlife_Sanctuary",
@@ -334,6 +371,7 @@
   },
   {
     "protectedAreaName": "Kyd Island Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Andaman and Nicobar Islands",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Kyd_Island_Wildlife_Sanctuary?action=edit&redlink=1",
@@ -343,6 +381,7 @@
   },
   {
     "protectedAreaName": "Landfall Island Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Andaman and Nicobar Islands",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Landfall_Island_Wildlife_Sanctuary?action=edit&redlink=1",
@@ -352,6 +391,7 @@
   },
   {
     "protectedAreaName": "Latouche Island Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Andaman and Nicobar Islands",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Latouche_Island_Wildlife_Sanctuary?action=edit&redlink=1",
@@ -361,6 +401,7 @@
   },
   {
     "protectedAreaName": "Lohabarrack Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Andaman and Nicobar Islands",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Lohabarrack_Wildlife_Sanctuary?action=edit&redlink=1",
@@ -370,6 +411,7 @@
   },
   {
     "protectedAreaName": "Mangrove Island Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Andaman and Nicobar Islands",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Mangrove_Island_Wildlife_Sanctuary?action=edit&redlink=1",
@@ -379,6 +421,7 @@
   },
   {
     "protectedAreaName": "Mask Island Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Andaman and Nicobar Islands",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Mask_Island_Wildlife_Sanctuary?action=edit&redlink=1",
@@ -388,6 +431,7 @@
   },
   {
     "protectedAreaName": "Mayo Island Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Andaman and Nicobar Islands",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Mayo_Island_Wildlife_Sanctuary?action=edit&redlink=1",
@@ -397,6 +441,7 @@
   },
   {
     "protectedAreaName": "Megapode Island Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Andaman and Nicobar Islands",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Megapode_Island_Wildlife_Sanctuary?action=edit&redlink=1",
@@ -406,6 +451,7 @@
   },
   {
     "protectedAreaName": "Montogemery Island Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Andaman and Nicobar Islands",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Montogemery_Island_Wildlife_Sanctuary?action=edit&redlink=1",
@@ -414,7 +460,8 @@
     "district": "Andaman"
   },
   {
-    "protectedAreaName": "Narcondam Island Wildlife Sanctuary",
+    "protectedAreaName": "Narcondam Island",
+    "nameAlias": "Narcondam Island Wildlife Sanctuary",
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Andaman and Nicobar Islands",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Narcondam_Island",
@@ -424,6 +471,7 @@
   },
   {
     "protectedAreaName": "North Brother Island Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Andaman and Nicobar Islands",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/North_Brother_Island_Wildlife_Sanctuary?action=edit&redlink=1",
@@ -433,6 +481,7 @@
   },
   {
     "protectedAreaName": "North Island Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Andaman and Nicobar Islands",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/North_Island_Wildlife_Sanctuary?action=edit&redlink=1",
@@ -442,6 +491,7 @@
   },
   {
     "protectedAreaName": "North Reef Island Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Andaman and Nicobar Islands",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/North_Reef_Island_Wildlife_Sanctuary?action=edit&redlink=1",
@@ -451,6 +501,7 @@
   },
   {
     "protectedAreaName": "Oliver Island Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Andaman and Nicobar Islands",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Oliver_Island_Wildlife_Sanctuary?action=edit&redlink=1",
@@ -460,6 +511,7 @@
   },
   {
     "protectedAreaName": "Orchid Island Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Andaman and Nicobar Islands",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Orchid_Island_Wildlife_Sanctuary?action=edit&redlink=1",
@@ -469,6 +521,7 @@
   },
   {
     "protectedAreaName": "Ox Island Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Andaman and Nicobar Islands",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Ox_Island_Wildlife_Sanctuary?action=edit&redlink=1",
@@ -478,6 +531,7 @@
   },
   {
     "protectedAreaName": "Oyster Island‑I Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Andaman and Nicobar Islands",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Oyster_Island‑I_Wildlife_Sanctuary?action=edit&redlink=1",
@@ -487,6 +541,7 @@
   },
   {
     "protectedAreaName": "Oyster Island‑II Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Andaman and Nicobar Islands",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Oyster_Island‑II_Wildlife_Sanctuary?action=edit&redlink=1",
@@ -496,6 +551,7 @@
   },
   {
     "protectedAreaName": "Paget Island Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Andaman and Nicobar Islands",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Paget_Island_Wildlife_Sanctuary?action=edit&redlink=1",
@@ -505,6 +561,7 @@
   },
   {
     "protectedAreaName": "Parkinson Island Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Andaman and Nicobar Islands",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Parkinson_Island_Wildlife_Sanctuary?action=edit&redlink=1",
@@ -514,6 +571,7 @@
   },
   {
     "protectedAreaName": "Passage Island Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Andaman and Nicobar Islands",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Passage_Island_Wildlife_Sanctuary?action=edit&redlink=1",
@@ -523,6 +581,7 @@
   },
   {
     "protectedAreaName": "Patric Island Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Andaman and Nicobar Islands",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Patric_Island_Wildlife_Sanctuary?action=edit&redlink=1",
@@ -532,6 +591,7 @@
   },
   {
     "protectedAreaName": "Peacock Island Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Andaman and Nicobar Islands",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Peacock_Island_Wildlife_Sanctuary?action=edit&redlink=1",
@@ -541,6 +601,7 @@
   },
   {
     "protectedAreaName": "Pitman Island Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Andaman and Nicobar Islands",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Pitman_Island_Wildlife_Sanctuary?action=edit&redlink=1",
@@ -550,6 +611,7 @@
   },
   {
     "protectedAreaName": "Point Island Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Andaman and Nicobar Islands",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Point_Island_Wildlife_Sanctuary?action=edit&redlink=1",
@@ -559,6 +621,7 @@
   },
   {
     "protectedAreaName": "Potanma Islands Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Andaman and Nicobar Islands",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Potanma_Islands_Wildlife_Sanctuary?action=edit&redlink=1",
@@ -568,6 +631,7 @@
   },
   {
     "protectedAreaName": "Ranger Island Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Andaman and Nicobar Islands",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Ranger_Island_Wildlife_Sanctuary?action=edit&redlink=1",
@@ -577,6 +641,7 @@
   },
   {
     "protectedAreaName": "Reef Island Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Andaman and Nicobar Islands",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Reef_Island_Wildlife_Sanctuary?action=edit&redlink=1",
@@ -586,6 +651,7 @@
   },
   {
     "protectedAreaName": "Roper Island Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Andaman and Nicobar Islands",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Roper_Island_Wildlife_Sanctuary?action=edit&redlink=1",
@@ -595,6 +661,7 @@
   },
   {
     "protectedAreaName": "Ross Island Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Andaman and Nicobar Islands",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Ross_Island_Wildlife_Sanctuary?action=edit&redlink=1",
@@ -604,6 +671,7 @@
   },
   {
     "protectedAreaName": "Rowe Island Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Andaman and Nicobar Islands",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Rowe_Island_Wildlife_Sanctuary?action=edit&redlink=1",
@@ -613,6 +681,7 @@
   },
   {
     "protectedAreaName": "Sandy Island Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Andaman and Nicobar Islands",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Sandy_Island_Wildlife_Sanctuary?action=edit&redlink=1",
@@ -622,6 +691,7 @@
   },
   {
     "protectedAreaName": "Sea Serpent Island Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Andaman and Nicobar Islands",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Sea_Serpent_Island_Wildlife_Sanctuary?action=edit&redlink=1",
@@ -631,6 +701,7 @@
   },
   {
     "protectedAreaName": "Shark Island Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Andaman and Nicobar Islands",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Shark_Island_Wildlife_Sanctuary?action=edit&redlink=1",
@@ -640,6 +711,7 @@
   },
   {
     "protectedAreaName": "Shearme Island Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Andaman and Nicobar Islands",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Shearme_Island_Wildlife_Sanctuary?action=edit&redlink=1",
@@ -649,6 +721,7 @@
   },
   {
     "protectedAreaName": "Sir Hugh Rose Island Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Andaman and Nicobar Islands",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Sir_Hugh_Rose_Island_Wildlife_Sanctuary?action=edit&redlink=1",
@@ -658,6 +731,7 @@
   },
   {
     "protectedAreaName": "Sisters Island Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Andaman and Nicobar Islands",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Sisters_Island_Wildlife_Sanctuary?action=edit&redlink=1",
@@ -667,6 +741,7 @@
   },
   {
     "protectedAreaName": "Snake Island‑I Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Andaman and Nicobar Islands",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Snake_Island‑I_Wildlife_Sanctuary?action=edit&redlink=1",
@@ -676,6 +751,7 @@
   },
   {
     "protectedAreaName": "Snake Island‑II Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Andaman and Nicobar Islands",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Snake_Island‑II_Wildlife_Sanctuary?action=edit&redlink=1",
@@ -685,6 +761,7 @@
   },
   {
     "protectedAreaName": "South Brother Island Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Andaman and Nicobar Islands",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/South_Brother_Island_Wildlife_Sanctuary?action=edit&redlink=1",
@@ -694,6 +771,7 @@
   },
   {
     "protectedAreaName": "South Reef Island Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Andaman and Nicobar Islands",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/South_Reef_Island_Wildlife_Sanctuary?action=edit&redlink=1",
@@ -703,6 +781,7 @@
   },
   {
     "protectedAreaName": "South Sentinel Island Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Andaman and Nicobar Islands",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/South_Sentinel_Island_Wildlife_Sanctuary?action=edit&redlink=1",
@@ -712,6 +791,7 @@
   },
   {
     "protectedAreaName": "Spike Island‑I Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Andaman and Nicobar Islands",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Spike_Island‑I_Wildlife_Sanctuary?action=edit&redlink=1",
@@ -721,6 +801,7 @@
   },
   {
     "protectedAreaName": "Spike Island‑II Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Andaman and Nicobar Islands",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Spike_Island‑II_Wildlife_Sanctuary?action=edit&redlink=1",
@@ -730,6 +811,7 @@
   },
   {
     "protectedAreaName": "Stoat Island Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Andaman and Nicobar Islands",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Stoat_Island_Wildlife_Sanctuary?action=edit&redlink=1",
@@ -739,6 +821,7 @@
   },
   {
     "protectedAreaName": "Surat Island Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Andaman and Nicobar Islands",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Surat_Island_Wildlife_Sanctuary?action=edit&redlink=1",
@@ -748,6 +831,7 @@
   },
   {
     "protectedAreaName": "Swamp Island Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Andaman and Nicobar Islands",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Swamp_Island_Wildlife_Sanctuary?action=edit&redlink=1",
@@ -757,6 +841,7 @@
   },
   {
     "protectedAreaName": "Table (Delgarno) Island Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Andaman and Nicobar Islands",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Table_(Delgarno)_Island_Wildlife_Sanctuary?action=edit&redlink=1",
@@ -766,6 +851,7 @@
   },
   {
     "protectedAreaName": "Table (Excelsior) Island Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Andaman and Nicobar Islands",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Table_(Excelsior)_Island_Wildlife_Sanctuary?action=edit&redlink=1",
@@ -775,6 +861,7 @@
   },
   {
     "protectedAreaName": "Talabaicha Island Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Andaman and Nicobar Islands",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Talabaicha_Island_Wildlife_Sanctuary?action=edit&redlink=1",
@@ -784,6 +871,7 @@
   },
   {
     "protectedAreaName": "Temple Island Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Andaman and Nicobar Islands",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Temple_Island_Wildlife_Sanctuary?action=edit&redlink=1",
@@ -793,6 +881,7 @@
   },
   {
     "protectedAreaName": "Tillongchang Island Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Andaman and Nicobar Islands",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Tillongchang_Island_Wildlife_Sanctuary?action=edit&redlink=1",
@@ -802,6 +891,7 @@
   },
   {
     "protectedAreaName": "Tree Island Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Andaman and Nicobar Islands",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Tree_Island_Wildlife_Sanctuary?action=edit&redlink=1",
@@ -811,6 +901,7 @@
   },
   {
     "protectedAreaName": "Trilby Island Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Andaman and Nicobar Islands",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Trilby_Island_Wildlife_Sanctuary?action=edit&redlink=1",
@@ -820,6 +911,7 @@
   },
   {
     "protectedAreaName": "Tuft Island Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Andaman and Nicobar Islands",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Tuft_Island_Wildlife_Sanctuary?action=edit&redlink=1",
@@ -829,6 +921,7 @@
   },
   {
     "protectedAreaName": "Turtle Islands Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Andaman and Nicobar Islands",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Turtle_Islands_Wildlife_Sanctuary",
@@ -838,6 +931,7 @@
   },
   {
     "protectedAreaName": "West Island Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Andaman and Nicobar Islands",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/West_Island_Wildlife_Sanctuary?action=edit&redlink=1",
@@ -847,6 +941,7 @@
   },
   {
     "protectedAreaName": "Wharf Island Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Andaman and Nicobar Islands",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Wharf_Island_Wildlife_Sanctuary?action=edit&redlink=1",
@@ -856,6 +951,7 @@
   },
   {
     "protectedAreaName": "White Cliff Island Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Andaman and Nicobar Islands",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/White_Cliff_Island_Wildlife_Sanctuary?action=edit&redlink=1",
@@ -865,6 +961,7 @@
   },
   {
     "protectedAreaName": "Coringa Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Andhra Pradesh",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Coringa_Wildlife_Sanctuary",
@@ -874,6 +971,7 @@
   },
   {
     "protectedAreaName": "Gundla Brahmeswaram Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Andhra Pradesh",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Gundla_Brahmeswaram_Wildlife_Sanctuary",
@@ -883,6 +981,7 @@
   },
   {
     "protectedAreaName": "Kambalakonda Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Andhra Pradesh",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Kambalakonda_Wildlife_Sanctuary",
@@ -892,6 +991,7 @@
   },
   {
     "protectedAreaName": "Koundinya Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Andhra Pradesh",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Koundinya_Wildlife_Sanctuary",
@@ -901,6 +1001,7 @@
   },
   {
     "protectedAreaName": "Kolleru Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Andhra Pradesh",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Kolleru_Wildlife_Sanctuary",
@@ -910,6 +1011,7 @@
   },
   {
     "protectedAreaName": "Krishna Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Andhra Pradesh",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Krishna_Wildlife_Sanctuary",
@@ -919,6 +1021,7 @@
   },
   {
     "protectedAreaName": "Nagarjunsagar-Srisailam Tiger Reserve",
+    "nameAlias": null,
     "protectedAreaType": "Tiger Reserve",
     "state": "Andhra Pradesh",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Nagarjunsagar-Srisailam_Tiger_Reserve",
@@ -928,6 +1031,7 @@
   },
   {
     "protectedAreaName": "Nelapattu Bird Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Bird Sanctuary",
     "state": "Andhra Pradesh",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Nelapattu_Bird_Sanctuary",
@@ -937,6 +1041,7 @@
   },
   {
     "protectedAreaName": "Pulicat Lake Bird Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Bird Sanctuary",
     "state": "Andhra Pradesh",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Pulicat_Lake_Bird_Sanctuary",
@@ -946,6 +1051,7 @@
   },
   {
     "protectedAreaName": "Rollapadu Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Andhra Pradesh",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Rollapadu_Wildlife_Sanctuary",
@@ -955,6 +1061,7 @@
   },
   {
     "protectedAreaName": "Sri Lankamalleswara Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Andhra Pradesh",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Sri_Lankamalleswara_Wildlife_Sanctuary",
@@ -964,6 +1071,7 @@
   },
   {
     "protectedAreaName": "Sri Penusila Narasimha Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Andhra Pradesh",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Sri_Penusila_Narasimha_Wildlife_Sanctuary",
@@ -972,8 +1080,9 @@
     "district": "Nellore"
   },
   {
-    "protectedAreaName": "Sri Venkateswara Wildlife Sanctuary",
-    "protectedAreaType": "Wildlife Sanctuary",
+    "protectedAreaName": "Sri Venkateswara National Park",
+    "nameAlias": "Sri Venkateswara Wildlife Sanctuary",
+    "protectedAreaType": "National Park",
     "state": "Andhra Pradesh",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Sri_Venkateswara_National_Park",
     "declared": "1985",
@@ -982,6 +1091,7 @@
   },
   {
     "protectedAreaName": "D'Ering Memorial Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Arunachal Pradesh",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/D'Ering_Memorial_Wildlife_Sanctuary",
@@ -991,6 +1101,7 @@
   },
   {
     "protectedAreaName": "Dibang Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Arunachal Pradesh",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Dibang_Wildlife_Sanctuary",
@@ -1000,6 +1111,7 @@
   },
   {
     "protectedAreaName": "Eaglenest Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Arunachal Pradesh",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Eaglenest_Wildlife_Sanctuary",
@@ -1009,6 +1121,7 @@
   },
   {
     "protectedAreaName": "Itanagar Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Arunachal Pradesh",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Itanagar_Wildlife_Sanctuary",
@@ -1018,6 +1131,7 @@
   },
   {
     "protectedAreaName": "Kamala Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Arunachal Pradesh",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Kamala_Wildlife_Sanctuary",
@@ -1027,6 +1141,7 @@
   },
   {
     "protectedAreaName": "Kamlang Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Arunachal Pradesh",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Kamlang_Wildlife_Sanctuary",
@@ -1036,6 +1151,7 @@
   },
   {
     "protectedAreaName": "Kane Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Arunachal Pradesh",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Kane_Wildlife_Sanctuary",
@@ -1045,6 +1161,7 @@
   },
   {
     "protectedAreaName": "Mehao Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Arunachal Pradesh",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Mehao_Wildlife_Sanctuary",
@@ -1054,6 +1171,7 @@
   },
   {
     "protectedAreaName": "Pakke Tiger Reserve",
+    "nameAlias": null,
     "protectedAreaType": "Tiger Reserve",
     "state": "Arunachal Pradesh",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Pakke_Tiger_Reserve",
@@ -1063,6 +1181,7 @@
   },
   {
     "protectedAreaName": "Ringba-Roba Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Arunachal Pradesh",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Ringba-Roba_Wildlife_Sanctuary",
@@ -1072,6 +1191,7 @@
   },
   {
     "protectedAreaName": "Sessa Orchid Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Arunachal Pradesh",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Sessa_Orchid_Wildlife_Sanctuary",
@@ -1081,6 +1201,7 @@
   },
   {
     "protectedAreaName": "Talle Valley Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Arunachal Pradesh",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Talle_Valley_Wildlife_Sanctuary",
@@ -1090,6 +1211,7 @@
   },
   {
     "protectedAreaName": "Yordi Rabe Supse Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Arunachal Pradesh",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Yordi_Rabe_Supse_Wildlife_Sanctuary",
@@ -1099,6 +1221,7 @@
   },
   {
     "protectedAreaName": "Amchang Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Assam",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Amchang_Wildlife_Sanctuary",
@@ -1108,6 +1231,7 @@
   },
   {
     "protectedAreaName": "Barnadi Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Assam",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Barnadi_Wildlife_Sanctuary",
@@ -1117,6 +1241,7 @@
   },
   {
     "protectedAreaName": "Bherjan-Borajan-Padumoni Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Assam",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Bherjan-Borajan-Padumoni_Wildlife_Sanctuary",
@@ -1126,6 +1251,7 @@
   },
   {
     "protectedAreaName": "Borail Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Assam",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Borail_Wildlife_Sanctuary",
@@ -1135,6 +1261,7 @@
   },
   {
     "protectedAreaName": "Burachapori Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Assam",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Burachapori_Wildlife_Sanctuary",
@@ -1144,6 +1271,7 @@
   },
   {
     "protectedAreaName": "Chakrashila Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Assam",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Chakrashila_Wildlife_Sanctuary",
@@ -1153,6 +1281,7 @@
   },
   {
     "protectedAreaName": "Deepar Beel Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Assam",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Deepar_Beel_Wildlife_Sanctuary",
@@ -1162,6 +1291,7 @@
   },
   {
     "protectedAreaName": "East Karbi-Anglong Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Assam",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/East_Karbi-Anglong_Wildlife_Sanctuary",
@@ -1171,6 +1301,7 @@
   },
   {
     "protectedAreaName": "Garampani Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Assam",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Garampani_Wildlife_Sanctuary",
@@ -1180,6 +1311,7 @@
   },
   {
     "protectedAreaName": "Hoollongapar Gibbon Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Assam",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Hoollongapar_Gibbon_Sanctuary",
@@ -1189,6 +1321,7 @@
   },
   {
     "protectedAreaName": "Laokhowa Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Assam",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Laokhowa_Wildlife_Sanctuary",
@@ -1198,6 +1331,7 @@
   },
   {
     "protectedAreaName": "Marat Longri Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Assam",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Marat_Longri_Wildlife_Sanctuary",
@@ -1207,6 +1341,7 @@
   },
   {
     "protectedAreaName": "Nambor Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Assam",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Nambor_Wildlife_Sanctuary",
@@ -1216,6 +1351,7 @@
   },
   {
     "protectedAreaName": "Nambor - Doigrung Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Assam",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Nambor_-_Doigrung_Wildlife_Sanctuary",
@@ -1225,6 +1361,7 @@
   },
   {
     "protectedAreaName": "Pabitora Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Assam",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Pabitora_Wildlife_Sanctuary",
@@ -1234,6 +1371,7 @@
   },
   {
     "protectedAreaName": "Pani Dihing Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Assam",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Pani_Dihing_Wildlife_Sanctuary",
@@ -1243,6 +1381,7 @@
   },
   {
     "protectedAreaName": "Sonai Rupai Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Assam",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Sonai_Rupai_Wildlife_Sanctuary",
@@ -1252,6 +1391,7 @@
   },
   {
     "protectedAreaName": "Barela Bird Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Bird Sanctuary",
     "state": "Bihar",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Barela_Bird_Sanctuary",
@@ -1261,6 +1401,7 @@
   },
   {
     "protectedAreaName": "Bhimbandh Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Bihar",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Bhimbandh_Wildlife_Sanctuary",
@@ -1270,6 +1411,7 @@
   },
   {
     "protectedAreaName": "Gautam Budha Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Bihar",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Gautam_Budha_Wildlife_Sanctuary",
@@ -1279,6 +1421,7 @@
   },
   {
     "protectedAreaName": "Kaimur Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Bihar",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Kaimur_Wildlife_Sanctuary",
@@ -1288,6 +1431,7 @@
   },
   {
     "protectedAreaName": "Kanwarjheel Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Bihar",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Kanwarjheel_Wildlife_Sanctuary",
@@ -1297,6 +1441,7 @@
   },
   {
     "protectedAreaName": "Kusheshwar Asthan Bird Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Bird Sanctuary",
     "state": "Bihar",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Kusheshwar_Asthan_Bird_Wildlife_Sanctuary",
@@ -1305,8 +1450,9 @@
     "district": "Darbhanga"
   },
   {
-    "protectedAreaName": "Nagi Dam Wildlife Sanctuary",
-    "protectedAreaType": "Wildlife Sanctuary",
+    "protectedAreaName": "Nagi Bird Sanctuary",
+    "nameAlias": "Nagi Dam Wildlife Sanctuary",
+    "protectedAreaType": "Bird Sanctuary",
     "state": "Bihar",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Nagi_Bird_Sanctuary",
     "declared": "1987",
@@ -1315,6 +1461,7 @@
   },
   {
     "protectedAreaName": "Nakti Dam Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Bihar",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Nakti_Dam_Wildlife_Sanctuary",
@@ -1324,6 +1471,7 @@
   },
   {
     "protectedAreaName": "Pant Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Bihar",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Pant_Wildlife_Sanctuary",
@@ -1333,6 +1481,7 @@
   },
   {
     "protectedAreaName": "Rajauli Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Bihar",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Rajauli_Wildlife_Sanctuary",
@@ -1342,6 +1491,7 @@
   },
   {
     "protectedAreaName": "Udaypur Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Bihar",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Udaypur_Wildlife_Sanctuary",
@@ -1351,6 +1501,7 @@
   },
   {
     "protectedAreaName": "Valmiki Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Bihar",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Valmiki_Wildlife_Sanctuary",
@@ -1360,6 +1511,7 @@
   },
   {
     "protectedAreaName": "Vikramshila Gangetic Dolphin Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Bihar",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Vikramshila_Gangetic_Dolphin_Sanctuary",
@@ -1368,7 +1520,8 @@
     "district": "Bhagalpur"
   },
   {
-    "protectedAreaName": "City Birds Wildlife Sanctuary",
+    "protectedAreaName": "Parrot Bird Sanctuary, Chandigarh",
+    "nameAlias": "Parrot Bird Sanctuary",
     "protectedAreaType": "Bird Sanctuary",
     "state": "Chandigarh",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Parrot_Bird_Sanctuary,_Chandigarh",
@@ -1378,6 +1531,7 @@
   },
   {
     "protectedAreaName": "Sukhna Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Chandigarh",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Sukhna_Wildlife_Sanctuary",
@@ -1387,6 +1541,7 @@
   },
   {
     "protectedAreaName": "Achanakmar Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Chhattisgarh",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Achanakmar_Wildlife_Sanctuary",
@@ -1396,6 +1551,7 @@
   },
   {
     "protectedAreaName": "Badalkhol Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Chhattisgarh",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Badalkhol_Wildlife_Sanctuary",
@@ -1404,7 +1560,8 @@
     "district": "Jashpur"
   },
   {
-    "protectedAreaName": "Barnawapara Wildlife Sanctuary",
+    "protectedAreaName": "Barnawapara Wildlife sanctuary",
+    "nameAlias": "Barnawapara Wildlife Sanctuary",
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Chhattisgarh",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Barnawapara_Wildlife_sanctuary",
@@ -1414,6 +1571,7 @@
   },
   {
     "protectedAreaName": "Bhairamgarh Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Chhattisgarh",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Bhairamgarh_Wildlife_Sanctuary",
@@ -1423,6 +1581,7 @@
   },
   {
     "protectedAreaName": "Bhoramdev Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Chhattisgarh",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Bhoramdev_Wildlife_Sanctuary",
@@ -1432,6 +1591,7 @@
   },
   {
     "protectedAreaName": "Gomardha Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Chhattisgarh",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Gomardha_Wildlife_Sanctuary",
@@ -1441,6 +1601,7 @@
   },
   {
     "protectedAreaName": "Pamed Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Chhattisgarh",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Pamed_Wildlife_Sanctuary",
@@ -1450,6 +1611,7 @@
   },
   {
     "protectedAreaName": "Semarsot Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Chhattisgarh",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Semarsot_Wildlife_Sanctuary",
@@ -1459,6 +1621,7 @@
   },
   {
     "protectedAreaName": "Sitanadi Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Chhattisgarh",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Sitanadi_Wildlife_Sanctuary",
@@ -1468,6 +1631,7 @@
   },
   {
     "protectedAreaName": "Tamor Pingla Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Chhattisgarh",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Tamor_Pingla_Wildlife_Sanctuary",
@@ -1477,6 +1641,7 @@
   },
   {
     "protectedAreaName": "Udanti Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Chhattisgarh",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Udanti_Wildlife_Sanctuary",
@@ -1486,8 +1651,9 @@
   },
   {
     "protectedAreaName": "Dadra and Nagar Haveli Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
-    "state": "Dadra Nagar Haveli and Daman and Diu",
+    "state": "Dadra and Nagar Haveli and Daman and Diu",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Dadra_and_Nagar_Haveli_Wildlife_Sanctuary",
     "declared": "2000",
     "area": "92.16",
@@ -1495,8 +1661,9 @@
   },
   {
     "protectedAreaName": "Fudam Bird Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Bird Sanctuary",
-    "state": "Dadra Nagar Haveli and Daman and Diu",
+    "state": "Dadra and Nagar Haveli and Daman and Diu",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Fudam_Bird_Sanctuary",
     "declared": "1991",
     "area": "2.18",
@@ -1504,6 +1671,7 @@
   },
   {
     "protectedAreaName": "Asola Bhatti Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Delhi",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Asola_Bhatti_Wildlife_Sanctuary",
@@ -1513,6 +1681,7 @@
   },
   {
     "protectedAreaName": "Bhagwan Mahavir Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Goa",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Bhagwan_Mahavir_Sanctuary",
@@ -1522,6 +1691,7 @@
   },
   {
     "protectedAreaName": "Bondla Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Goa",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Bondla_Wildlife_Sanctuary",
@@ -1531,6 +1701,7 @@
   },
   {
     "protectedAreaName": "Cotigao Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Goa",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Cotigao_Wildlife_Sanctuary",
@@ -1540,6 +1711,7 @@
   },
   {
     "protectedAreaName": "Madei Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Goa",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Madei_Wildlife_Sanctuary",
@@ -1549,6 +1721,7 @@
   },
   {
     "protectedAreaName": "Netravali Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Goa",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Netravali_Wildlife_Sanctuary",
@@ -1558,6 +1731,7 @@
   },
   {
     "protectedAreaName": "Salim Ali Bird Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Bird Sanctuary",
     "state": "Goa",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Salim_Ali_Bird_Sanctuary",
@@ -1567,6 +1741,7 @@
   },
   {
     "protectedAreaName": "Balaram Ambaji Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Gujarat",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Balaram_Ambaji_Wildlife_Sanctuary",
@@ -1576,6 +1751,7 @@
   },
   {
     "protectedAreaName": "Barda Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Gujarat",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Barda_Wildlife_Sanctuary",
@@ -1585,6 +1761,7 @@
   },
   {
     "protectedAreaName": "Gaga Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Gujarat",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Gaga_Wildlife_Sanctuary",
@@ -1594,6 +1771,7 @@
   },
   {
     "protectedAreaName": "Gir Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Gujarat",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Gir_Wildlife_Sanctuary",
@@ -1603,6 +1781,7 @@
   },
   {
     "protectedAreaName": "Girnar Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Gujarat",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Girnar_Wildlife_Sanctuary",
@@ -1611,7 +1790,8 @@
     "district": "Junagadh"
   },
   {
-    "protectedAreaName": "Hingolgadh Wildlife Sanctuary",
+    "protectedAreaName": "Hingolgadh Sanctuary",
+    "nameAlias": "Hingolgadh Wildlife Sanctuary",
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Gujarat",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Hingolgadh_Sanctuary",
@@ -1621,6 +1801,7 @@
   },
   {
     "protectedAreaName": "Jambughoda Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Gujarat",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Jambughoda_Wildlife_Sanctuary",
@@ -1630,6 +1811,7 @@
   },
   {
     "protectedAreaName": "Jessore Sloth Bear Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Gujarat",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Jessore_Sloth_Bear_Sanctuary",
@@ -1639,6 +1821,7 @@
   },
   {
     "protectedAreaName": "Khijadiya Bird Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Bird Sanctuary",
     "state": "Gujarat",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Khijadiya_Bird_Sanctuary",
@@ -1648,6 +1831,7 @@
   },
   {
     "protectedAreaName": "Kutch Bustard Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Gujarat",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Kutch_Bustard_Sanctuary",
@@ -1657,6 +1841,7 @@
   },
   {
     "protectedAreaName": "Kutch Desert Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Gujarat",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Kutch_Desert_Wildlife_Sanctuary",
@@ -1665,8 +1850,9 @@
     "district": "Kachchh"
   },
   {
-    "protectedAreaName": "Marine Wildlife Sanctuary",
-    "protectedAreaType": "Wildlife Sanctuary",
+    "protectedAreaName": "Marine National Park, Gulf of Kutch",
+    "nameAlias": "Marine Wildlife Sanctuary",
+    "protectedAreaType": "National Park",
     "state": "Gujarat",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Marine_National_Park,_Gulf_of_Kutch",
     "declared": "1980",
@@ -1675,6 +1861,7 @@
   },
   {
     "protectedAreaName": "Mitiyala Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Gujarat",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Mitiyala_Wildlife_Sanctuary",
@@ -1684,6 +1871,7 @@
   },
   {
     "protectedAreaName": "Nal Sarovar Bird Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Bird Sanctuary",
     "state": "Gujarat",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Nal_Sarovar_Bird_Sanctuary",
@@ -1692,7 +1880,8 @@
     "district": "Ahmedabad, Surendranagar"
   },
   {
-    "protectedAreaName": "Narayan Sarovar Wildlife Sanctuary",
+    "protectedAreaName": "Narayan Sarovar Sanctuary",
+    "nameAlias": "Narayan Sarovar Wildlife Sanctuary",
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Gujarat",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Narayan_Sarovar_Sanctuary",
@@ -1702,6 +1891,7 @@
   },
   {
     "protectedAreaName": "Pania Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Gujarat",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Pania_Wildlife_Sanctuary",
@@ -1711,6 +1901,7 @@
   },
   {
     "protectedAreaName": "Porbandar Bird Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Bird Sanctuary",
     "state": "Gujarat",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Porbandar_Bird_Sanctuary",
@@ -1720,6 +1911,7 @@
   },
   {
     "protectedAreaName": "Purna Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Gujarat",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Purna_Wildlife_Sanctuary",
@@ -1728,7 +1920,8 @@
     "district": "Dangs"
   },
   {
-    "protectedAreaName": "Rampara Wildlife Sanctuary",
+    "protectedAreaName": "Rampara Sanctuary",
+    "nameAlias": "Rampara Wildlife Sanctuary",
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Gujarat",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Rampara_Sanctuary",
@@ -1738,6 +1931,7 @@
   },
   {
     "protectedAreaName": "Ratanmahal Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Gujarat",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Ratanmahal_Wildlife_Sanctuary",
@@ -1747,6 +1941,7 @@
   },
   {
     "protectedAreaName": "Shoolpaneshwar Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Gujarat",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Shoolpaneshwar_Wildlife_Sanctuary",
@@ -1756,6 +1951,7 @@
   },
   {
     "protectedAreaName": "Thol Lake Bird Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Bird Sanctuary",
     "state": "Gujarat",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Thol_Lake_Bird_Sanctuary",
@@ -1765,6 +1961,7 @@
   },
   {
     "protectedAreaName": "Wild Ass Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Gujarat",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Wild_Ass_Wildlife_Sanctuary",
@@ -1774,6 +1971,7 @@
   },
   {
     "protectedAreaName": "Abubshahar Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Haryana",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Abubshahar_Wildlife_Sanctuary",
@@ -1783,6 +1981,7 @@
   },
   {
     "protectedAreaName": "Bhindawas Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Haryana",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Bhindawas_Wildlife_Sanctuary",
@@ -1792,6 +1991,7 @@
   },
   {
     "protectedAreaName": "Bir Shikargah Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Haryana",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Bir_Shikargah_Wildlife_Sanctuary",
@@ -1801,6 +2001,7 @@
   },
   {
     "protectedAreaName": "Chhilchhila Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Haryana",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Chhilchhila_Wildlife_Sanctuary",
@@ -1809,8 +2010,9 @@
     "district": "Kaithal"
   },
   {
-    "protectedAreaName": "Kalesar Wildlife Sanctuary",
-    "protectedAreaType": "Wildlife Sanctuary",
+    "protectedAreaName": "Kalesar National Park",
+    "nameAlias": "Kalesar Wildlife Sanctuary",
+    "protectedAreaType": "National Park",
     "state": "Haryana",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Kalesar_National_Park",
     "declared": "1996",
@@ -1819,6 +2021,7 @@
   },
   {
     "protectedAreaName": "Khaparwas Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Haryana",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Khaparwas_Wildlife_Sanctuary",
@@ -1828,6 +2031,7 @@
   },
   {
     "protectedAreaName": "Khol Hi-Raitan Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Haryana",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Khol_Hi-Raitan_Wildlife_Sanctuary",
@@ -1837,6 +2041,7 @@
   },
   {
     "protectedAreaName": "Nahar Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Haryana",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Nahar_Wildlife_Sanctuary",
@@ -1846,6 +2051,7 @@
   },
   {
     "protectedAreaName": "Bandli Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Himachal Pradesh",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Bandli_Wildlife_Sanctuary",
@@ -1855,6 +2061,7 @@
   },
   {
     "protectedAreaName": "Chail Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Himachal Pradesh",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Chail_Wildlife_Sanctuary",
@@ -1864,6 +2071,7 @@
   },
   {
     "protectedAreaName": "Chandratal Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Himachal Pradesh",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Chandratal_Wildlife_Sanctuary",
@@ -1873,6 +2081,7 @@
   },
   {
     "protectedAreaName": "Churdhar Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Himachal Pradesh",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Churdhar_Wildlife_Sanctuary",
@@ -1881,7 +2090,8 @@
     "district": "Sirmaur"
   },
   {
-    "protectedAreaName": "Daranghati Wildlife Sanctuary",
+    "protectedAreaName": "Daranghati Sanctuary",
+    "nameAlias": "Daranghati Wildlife Sanctuary",
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Himachal Pradesh",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Daranghati_Sanctuary",
@@ -1891,6 +2101,7 @@
   },
   {
     "protectedAreaName": "Dhauladhar Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Himachal Pradesh",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Dhauladhar_Wildlife_Sanctuary",
@@ -1899,7 +2110,8 @@
     "district": "Kangra"
   },
   {
-    "protectedAreaName": "Gamgul Siahbehi Wildlife Sanctuary",
+    "protectedAreaName": "Gamgul Siyabehi Wildlife Sanctuary",
+    "nameAlias": "Gamgul Siahbehi Wildlife Sanctuary",
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Himachal Pradesh",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Gamgul_Siyabehi_Wildlife_Sanctuary",
@@ -1909,6 +2121,7 @@
   },
   {
     "protectedAreaName": "Kais Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Himachal Pradesh",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Kais_Wildlife_Sanctuary?action=edit&redlink=1",
@@ -1918,6 +2131,7 @@
   },
   {
     "protectedAreaName": "Kalatop Khajjiar Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Himachal Pradesh",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Kalatop_Khajjiar_Wildlife_Sanctuary",
@@ -1927,6 +2141,7 @@
   },
   {
     "protectedAreaName": "Kanwar Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Himachal Pradesh",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Kanwar_Wildlife_Sanctuary",
@@ -1936,6 +2151,7 @@
   },
   {
     "protectedAreaName": "Khokhan Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Himachal Pradesh",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Khokhan_Wildlife_Sanctuary?action=edit&redlink=1",
@@ -1945,6 +2161,7 @@
   },
   {
     "protectedAreaName": "Kibber Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Himachal Pradesh",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Kibber_Wildlife_Sanctuary",
@@ -1953,7 +2170,8 @@
     "district": "Lahul and Spiti"
   },
   {
-    "protectedAreaName": "Kugti Wildlife Sanctuary",
+    "protectedAreaName": "Kugti Sanctuary",
+    "nameAlias": "Kugti Wildlife Sanctuary",
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Himachal Pradesh",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Kugti_Sanctuary",
@@ -1963,6 +2181,7 @@
   },
   {
     "protectedAreaName": "Lippa Asrang Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Himachal Pradesh",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Lippa_Asrang_Wildlife_Sanctuary?action=edit&redlink=1",
@@ -1971,7 +2190,8 @@
     "district": "Kinnaur"
   },
   {
-    "protectedAreaName": "Majathal Wildlife Sanctuary",
+    "protectedAreaName": "Majthal Sanctuary",
+    "nameAlias": "Majathal Wildlife Sanctuary",
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Himachal Pradesh",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Majthal_Sanctuary",
@@ -1981,6 +2201,7 @@
   },
   {
     "protectedAreaName": "Manali Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Himachal Pradesh",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Manali_Wildlife_Sanctuary",
@@ -1990,6 +2211,7 @@
   },
   {
     "protectedAreaName": "Nargu Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Himachal Pradesh",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Nargu_Wildlife_Sanctuary",
@@ -1999,6 +2221,7 @@
   },
   {
     "protectedAreaName": "Pong Dam Lake Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Himachal Pradesh",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Pong_Dam_Lake_Wildlife_Sanctuary",
@@ -2008,6 +2231,7 @@
   },
   {
     "protectedAreaName": "Rakchham Chitkul Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Himachal Pradesh",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Rakchham_Chitkul_Wildlife_Sanctuary",
@@ -2017,6 +2241,7 @@
   },
   {
     "protectedAreaName": "Renuka Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Himachal Pradesh",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Renuka_Wildlife_Sanctuary",
@@ -2026,6 +2251,7 @@
   },
   {
     "protectedAreaName": "Rupi Bhaba Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Himachal Pradesh",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Rupi_Bhaba_Wildlife_Sanctuary",
@@ -2035,6 +2261,7 @@
   },
   {
     "protectedAreaName": "Sainj Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Himachal Pradesh",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Sainj_Wildlife_Sanctuary?action=edit&redlink=1",
@@ -2044,6 +2271,7 @@
   },
   {
     "protectedAreaName": "Sechu Tuan Nala Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Himachal Pradesh",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Sechu_Tuan_Nala_Wildlife_Sanctuary",
@@ -2053,6 +2281,7 @@
   },
   {
     "protectedAreaName": "Shikari Devi Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Himachal Pradesh",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Shikari_Devi_Wildlife_Sanctuary?action=edit&redlink=1",
@@ -2062,6 +2291,7 @@
   },
   {
     "protectedAreaName": "Shimla Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Himachal Pradesh",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Shimla_Wildlife_Sanctuary?action=edit&redlink=1",
@@ -2071,6 +2301,7 @@
   },
   {
     "protectedAreaName": "Talra Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Himachal Pradesh",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Talra_Wildlife_Sanctuary",
@@ -2080,6 +2311,7 @@
   },
   {
     "protectedAreaName": "Tirthan Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Himachal Pradesh",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Tirthan_Wildlife_Sanctuary",
@@ -2089,6 +2321,7 @@
   },
   {
     "protectedAreaName": "Tundah Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Himachal Pradesh",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Tundah_Wildlife_Sanctuary?action=edit&redlink=1",
@@ -2098,6 +2331,7 @@
   },
   {
     "protectedAreaName": "Baltal Thajwas Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Jammu and Kashmir",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Baltal_Thajwas_Wildlife_Sanctuary",
@@ -2107,6 +2341,7 @@
   },
   {
     "protectedAreaName": "Gulmarg Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Jammu and Kashmir",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Gulmarg_Wildlife_Sanctuary",
@@ -2116,6 +2351,7 @@
   },
   {
     "protectedAreaName": "Hirpora Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Jammu and Kashmir",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Hirpora_Wildlife_Sanctuary",
@@ -2125,6 +2361,7 @@
   },
   {
     "protectedAreaName": "Jasrota Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Jammu and Kashmir",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Jasrota_Wildlife_Sanctuary?action=edit&redlink=1",
@@ -2134,6 +2371,7 @@
   },
   {
     "protectedAreaName": "Lachipora Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Jammu and Kashmir",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Lachipora_Wildlife_Sanctuary?action=edit&redlink=1",
@@ -2143,6 +2381,7 @@
   },
   {
     "protectedAreaName": "Limber Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Jammu and Kashmir",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Limber_Wildlife_Sanctuary",
@@ -2152,6 +2391,7 @@
   },
   {
     "protectedAreaName": "Nandini Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Jammu and Kashmir",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Nandini_Wildlife_Sanctuary?action=edit&redlink=1",
@@ -2161,6 +2401,7 @@
   },
   {
     "protectedAreaName": "Overa-Aru Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Jammu and Kashmir",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Overa-Aru_Wildlife_Sanctuary",
@@ -2170,6 +2411,7 @@
   },
   {
     "protectedAreaName": "Rajparian Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Jammu and Kashmir",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Rajparian_Wildlife_Sanctuary",
@@ -2179,6 +2421,7 @@
   },
   {
     "protectedAreaName": "Ramnagar Rakha Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Jammu and Kashmir",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Ramnagar_Rakha_Wildlife_Sanctuary?action=edit&redlink=1",
@@ -2187,7 +2430,8 @@
     "district": "Jammu"
   },
   {
-    "protectedAreaName": "Surinsar-Mansar Wildlife Sanctuary",
+    "protectedAreaName": "Mansar-Surinsar Wildlife Sanctuary",
+    "nameAlias": "Surinsar-Mansar Wildlife Sanctuary",
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Jammu and Kashmir",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Mansar-Surinsar_Wildlife_Sanctuary",
@@ -2196,7 +2440,8 @@
     "district": "Jammu"
   },
   {
-    "protectedAreaName": "Tata Kutti Wildlife Sanctuary",
+    "protectedAreaName": "Tratte Koot",
+    "nameAlias": "Tata Kutti",
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Jammu and Kashmir",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Tratte_Koot",
@@ -2206,6 +2451,7 @@
   },
   {
     "protectedAreaName": "Tral Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Jammu and Kashmir",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Tral_Wildlife_Sanctuary",
@@ -2215,6 +2461,7 @@
   },
   {
     "protectedAreaName": "Dalma Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Jharkhand",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Dalma_Wildlife_Sanctuary",
@@ -2224,6 +2471,7 @@
   },
   {
     "protectedAreaName": "Gautam Budha Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Jharkhand",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Gautam_Budha_Wildlife_Sanctuary",
@@ -2233,6 +2481,7 @@
   },
   {
     "protectedAreaName": "Hazaribagh Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Jharkhand",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Hazaribagh_Wildlife_Sanctuary",
@@ -2242,6 +2491,7 @@
   },
   {
     "protectedAreaName": "Koderma Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Jharkhand",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Koderma_Wildlife_Sanctuary",
@@ -2251,6 +2501,7 @@
   },
   {
     "protectedAreaName": "Lawalong Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Jharkhand",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Lawalong_Wildlife_Sanctuary",
@@ -2259,7 +2510,8 @@
     "district": "Chatra"
   },
   {
-    "protectedAreaName": "Mahuadanr Wildlife Sanctuary",
+    "protectedAreaName": "Mahuadanr Wolf Sanctuary",
+    "nameAlias": "Mahuadanr Wildlife Sanctuary",
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Jharkhand",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Mahuadanr_Wolf_Sanctuary",
@@ -2268,8 +2520,9 @@
     "district": "Palamau"
   },
   {
-    "protectedAreaName": "Palamau Wildlife Sanctuary",
-    "protectedAreaType": "Wildlife Sanctuary",
+    "protectedAreaName": "Palamau Tiger Reserve",
+    "nameAlias": "Palamau Wildlife Sanctuary",
+    "protectedAreaType": "Tiger Reserve",
     "state": "Jharkhand",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Palamau_Tiger_Reserve",
     "declared": "1976",
@@ -2278,6 +2531,7 @@
   },
   {
     "protectedAreaName": "Palkot Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Jharkhand",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Palkot_Wildlife_Sanctuary",
@@ -2287,6 +2541,7 @@
   },
   {
     "protectedAreaName": "Parasnath Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Jharkhand",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Parasnath_Wildlife_Sanctuary?action=edit&redlink=1",
@@ -2296,6 +2551,7 @@
   },
   {
     "protectedAreaName": "Topchanchi Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Jharkhand",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Topchanchi_Wildlife_Sanctuary",
@@ -2305,6 +2561,7 @@
   },
   {
     "protectedAreaName": "Udhwa Lake Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Jharkhand",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Udhwa_Lake_Wildlife_Sanctuary?action=edit&redlink=1",
@@ -2313,7 +2570,8 @@
     "district": "Sahebganj"
   },
   {
-    "protectedAreaName": "Adichunchunagiri Wildlife Sanctuary",
+    "protectedAreaName": "Adichunchanagiri Peacock Wildlife Sanctuary",
+    "nameAlias": "Adichunchunagiri Wildlife Sanctuary",
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Karnataka",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Adichunchanagiri_Peacock_Wildlife_Sanctuary",
@@ -2323,6 +2581,7 @@
   },
   {
     "protectedAreaName": "Arabithittu Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Karnataka",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Arabithittu_Wildlife_Sanctuary",
@@ -2332,6 +2591,7 @@
   },
   {
     "protectedAreaName": "Arsikere Sloth Bear Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Karnataka",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Arsikere_Sloth_Bear_Wildlife_Sanctuary?action=edit&redlink=1",
@@ -2341,6 +2601,7 @@
   },
   {
     "protectedAreaName": "Attiveri Bird Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Bird Sanctuary",
     "state": "Karnataka",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Attiveri_Bird_Sanctuary",
@@ -2350,6 +2611,7 @@
   },
   {
     "protectedAreaName": "Bankapura Wolf Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Karnataka",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Bankapura_Wolf_Wildlife_Sanctuary?action=edit&redlink=1",
@@ -2359,6 +2621,7 @@
   },
   {
     "protectedAreaName": "Bhadra Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Karnataka",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Bhadra_Wildlife_Sanctuary",
@@ -2368,6 +2631,7 @@
   },
   {
     "protectedAreaName": "Bhimgad Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Karnataka",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Bhimgad_Wildlife_Sanctuary",
@@ -2376,7 +2640,8 @@
     "district": "Belgavi"
   },
   {
-    "protectedAreaName": "Biligiri Rangaswamy Temple Wildlife Sanctuary",
+    "protectedAreaName": "Biligiriranga Hills",
+    "nameAlias": "Biligiri Rangaswamy Temple Wildlife Sanctuary",
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Karnataka",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Biligiriranga_Hills",
@@ -2386,6 +2651,7 @@
   },
   {
     "protectedAreaName": "Brahmagiri Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Karnataka",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Brahmagiri_Wildlife_Sanctuary",
@@ -2395,6 +2661,7 @@
   },
   {
     "protectedAreaName": "Bukkapatna Chinkara Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Karnataka",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Bukkapatna_Chinkara_Wildlife_Sanctuary",
@@ -2404,6 +2671,7 @@
   },
   {
     "protectedAreaName": "Cauvery Extension Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Karnataka",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Cauvery_Extension_Wildlife_Sanctuary?action=edit&redlink=1",
@@ -2413,6 +2681,7 @@
   },
   {
     "protectedAreaName": "Cauvery Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Karnataka",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Cauvery_Wildlife_Sanctuary",
@@ -2422,6 +2691,7 @@
   },
   {
     "protectedAreaName": "Chincholi Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Karnataka",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Chincholi_Wildlife_Sanctuary",
@@ -2431,6 +2701,7 @@
   },
   {
     "protectedAreaName": "Dandeli Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Karnataka",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Dandeli_Wildlife_Sanctuary",
@@ -2440,6 +2711,7 @@
   },
   {
     "protectedAreaName": "Daroji Sloth Bear Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Karnataka",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Daroji_Sloth_Bear_Sanctuary",
@@ -2449,6 +2721,7 @@
   },
   {
     "protectedAreaName": "Ghataprabha Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Karnataka",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Ghataprabha_Wildlife_Sanctuary",
@@ -2458,6 +2731,7 @@
   },
   {
     "protectedAreaName": "Gudavi Bird Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Bird Sanctuary",
     "state": "Karnataka",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Gudavi_Bird_Sanctuary",
@@ -2467,6 +2741,7 @@
   },
   {
     "protectedAreaName": "Gudekote Extension Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Karnataka",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Gudekote_Extension_Wildlife_Sanctuary?action=edit&redlink=1",
@@ -2476,6 +2751,7 @@
   },
   {
     "protectedAreaName": "Gudekote Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Karnataka",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Gudekote_Wildlife_Sanctuary",
@@ -2485,6 +2761,7 @@
   },
   {
     "protectedAreaName": "Jogimatti Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Karnataka",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Jogimatti_Wildlife_Sanctuary",
@@ -2494,6 +2771,7 @@
   },
   {
     "protectedAreaName": "Kamasandra Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Karnataka",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Kamasandra_Wildlife_Sanctuary?action=edit&redlink=1",
@@ -2502,7 +2780,8 @@
     "district": "Ramanagara"
   },
   {
-    "protectedAreaName": "Kappathagudda Wildlife Sanctuary",
+    "protectedAreaName": "Kappatagudda Wildlife Sanctuary",
+    "nameAlias": "Kappathagudda Wildlife Sanctuary",
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Karnataka",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Kappatagudda_Wildlife_Sanctuary",
@@ -2512,6 +2791,7 @@
   },
   {
     "protectedAreaName": "Malai Mahadeshwara Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Karnataka",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Malai_Mahadeshwara_Wildlife_Sanctuary",
@@ -2521,6 +2801,7 @@
   },
   {
     "protectedAreaName": "Melkote Temple Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Karnataka",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Melkote_Temple_Wildlife_Sanctuary",
@@ -2530,6 +2811,7 @@
   },
   {
     "protectedAreaName": "Mookambika Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Karnataka",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Mookambika_Wildlife_Sanctuary",
@@ -2539,6 +2821,7 @@
   },
   {
     "protectedAreaName": "Nugu Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Karnataka",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Nugu_Wildlife_Sanctuary",
@@ -2548,6 +2831,7 @@
   },
   {
     "protectedAreaName": "Pushpagiri Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Karnataka",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Pushpagiri_Wildlife_Sanctuary",
@@ -2557,6 +2841,7 @@
   },
   {
     "protectedAreaName": "Ramadevarabetta Vulture Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Karnataka",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Ramadevarabetta_Vulture_Sanctuary",
@@ -2566,6 +2851,7 @@
   },
   {
     "protectedAreaName": "Ranganathittu Bird Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Bird Sanctuary",
     "state": "Karnataka",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Ranganathittu_Bird_Sanctuary",
@@ -2574,7 +2860,8 @@
     "district": "Mysore"
   },
   {
-    "protectedAreaName": "Rangayyanadurga Wildlife Sanctuary",
+    "protectedAreaName": "Rangayyanadurga Four-horned antelope Wildlife Sanctuary",
+    "nameAlias": "Rangayyanadurga Wildlife Sanctuary",
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Karnataka",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Rangayyanadurga_Four-horned_antelope_Wildlife_Sanctuary",
@@ -2584,6 +2871,7 @@
   },
   {
     "protectedAreaName": "Ranibennur Blackbuck Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Karnataka",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Ranibennur_Blackbuck_Sanctuary",
@@ -2592,7 +2880,8 @@
     "district": "Dharwad"
   },
   {
-    "protectedAreaName": "Sharavati Valley Wildlife Sanctuary",
+    "protectedAreaName": "Sharavathi LTM Wildlife Sanctuary",
+    "nameAlias": "Sharavati Valley Wildlife Sanctuary",
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Karnataka",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Sharavathi_LTM_Wildlife_Sanctuary",
@@ -2602,6 +2891,7 @@
   },
   {
     "protectedAreaName": "Shettihalli Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Karnataka",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Shettihalli_Wildlife_Sanctuary",
@@ -2611,6 +2901,7 @@
   },
   {
     "protectedAreaName": "Someshwara Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Karnataka",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Someshwara_Wildlife_Sanctuary",
@@ -2620,6 +2911,7 @@
   },
   {
     "protectedAreaName": "Talakaveri Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Karnataka",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Talakaveri_Wildlife_Sanctuary",
@@ -2629,6 +2921,7 @@
   },
   {
     "protectedAreaName": "Thimlapura Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Karnataka",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Thimlapura_Wildlife_Sanctuary",
@@ -2638,6 +2931,7 @@
   },
   {
     "protectedAreaName": "Uttaregudda Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Karnataka",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Uttaregudda_Wildlife_Sanctuary?action=edit&redlink=1",
@@ -2647,6 +2941,7 @@
   },
   {
     "protectedAreaName": "Yadahalli Chinkara Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Karnataka",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Yadahalli_Chinkara_Wildlife_Sanctuary",
@@ -2656,6 +2951,7 @@
   },
   {
     "protectedAreaName": "Aralam Butterfly Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Kerala",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Aralam_Butterfly_Sanctuary",
@@ -2665,6 +2961,7 @@
   },
   {
     "protectedAreaName": "Chimmony Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Kerala",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Chimmony_Wildlife_Sanctuary",
@@ -2674,6 +2971,7 @@
   },
   {
     "protectedAreaName": "Chinnar Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Kerala",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Chinnar_Wildlife_Sanctuary",
@@ -2683,6 +2981,7 @@
   },
   {
     "protectedAreaName": "Choolannur Pea Fowl Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Kerala",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Choolannur_Pea_Fowl_Sanctuary",
@@ -2692,6 +2991,7 @@
   },
   {
     "protectedAreaName": "Idukki Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Kerala",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Idukki_Wildlife_Sanctuary",
@@ -2701,6 +3001,7 @@
   },
   {
     "protectedAreaName": "Karimpuzha Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Kerala",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Karimpuzha_Wildlife_Sanctuary",
@@ -2710,6 +3011,7 @@
   },
   {
     "protectedAreaName": "Kottiyoor Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Kerala",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Kottiyoor_Wildlife_Sanctuary",
@@ -2719,6 +3021,7 @@
   },
   {
     "protectedAreaName": "Kurinjimala Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Kerala",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Kurinjimala_Sanctuary",
@@ -2728,6 +3031,7 @@
   },
   {
     "protectedAreaName": "Malabar Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Kerala",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Malabar_Wildlife_Sanctuary",
@@ -2737,6 +3041,7 @@
   },
   {
     "protectedAreaName": "Mangalavanam Bird Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Bird Sanctuary",
     "state": "Kerala",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Mangalavanam_Bird_Sanctuary",
@@ -2746,6 +3051,7 @@
   },
   {
     "protectedAreaName": "Neyyar Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Kerala",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Neyyar_Wildlife_Sanctuary",
@@ -2755,6 +3061,7 @@
   },
   {
     "protectedAreaName": "Parambikulam Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Kerala",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Parambikulam_Wildlife_Sanctuary",
@@ -2764,6 +3071,7 @@
   },
   {
     "protectedAreaName": "Peechi-Vazhani Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Kerala",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Peechi-Vazhani_Wildlife_Sanctuary",
@@ -2773,6 +3081,7 @@
   },
   {
     "protectedAreaName": "Peppara Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Kerala",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Peppara_Wildlife_Sanctuary",
@@ -2782,6 +3091,7 @@
   },
   {
     "protectedAreaName": "Periyar Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Kerala",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Periyar_Wildlife_Sanctuary",
@@ -2791,6 +3101,7 @@
   },
   {
     "protectedAreaName": "Shendurney Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Kerala",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Shendurney_Wildlife_Sanctuary",
@@ -2800,6 +3111,7 @@
   },
   {
     "protectedAreaName": "Thattekad Bird Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Bird Sanctuary",
     "state": "Kerala",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Thattekad_Bird_Sanctuary",
@@ -2809,6 +3121,7 @@
   },
   {
     "protectedAreaName": "Wayanad Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Kerala",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Wayanad_Wildlife_Sanctuary",
@@ -2818,6 +3131,7 @@
   },
   {
     "protectedAreaName": "Changthang Cold Desert Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Ladakh",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Changthang_Cold_Desert_Wildlife_Sanctuary",
@@ -2827,6 +3141,7 @@
   },
   {
     "protectedAreaName": "Karakoram Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Ladakh",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Karakoram_Wildlife_Sanctuary",
@@ -2835,7 +3150,8 @@
     "district": "Leh"
   },
   {
-    "protectedAreaName": "Pitti",
+    "protectedAreaName": "Pitti Wildlife Sanctuary",
+    "nameAlias": "Pitti",
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Lakshadweep",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Pitti_Wildlife_Sanctuary?action=edit&redlink=1",
@@ -2845,6 +3161,7 @@
   },
   {
     "protectedAreaName": "Bagdara Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Madhya Pradesh",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Bagdara_Wildlife_Sanctuary",
@@ -2854,6 +3171,7 @@
   },
   {
     "protectedAreaName": "Bori Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Madhya Pradesh",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Bori_Wildlife_Sanctuary",
@@ -2863,6 +3181,7 @@
   },
   {
     "protectedAreaName": "Dr. Bhimrao Ambedkar Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Madhya Pradesh",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Dr._Bhimrao_Ambedkar_Wildlife_Sanctuary",
@@ -2872,6 +3191,7 @@
   },
   {
     "protectedAreaName": "Gandhi Sagar Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Madhya Pradesh",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Gandhi_Sagar_Sanctuary",
@@ -2881,6 +3201,7 @@
   },
   {
     "protectedAreaName": "Gangau Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Madhya Pradesh",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Gangau_Wildlife_Sanctuary?action=edit&redlink=1",
@@ -2890,6 +3211,7 @@
   },
   {
     "protectedAreaName": "Ghatigaon Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Madhya Pradesh",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Ghatigaon_Wildlife_Sanctuary",
@@ -2899,6 +3221,7 @@
   },
   {
     "protectedAreaName": "Karera Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Madhya Pradesh",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Karera_Wildlife_Sanctuary",
@@ -2908,6 +3231,7 @@
   },
   {
     "protectedAreaName": "Karmajhiri Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Madhya Pradesh",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Karmajhiri_Wildlife_Sanctuary?action=edit&redlink=1",
@@ -2917,6 +3241,7 @@
   },
   {
     "protectedAreaName": "Ken Gharial Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Madhya Pradesh",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Ken_Gharial_Sanctuary",
@@ -2926,6 +3251,7 @@
   },
   {
     "protectedAreaName": "Kheoni Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Madhya Pradesh",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Kheoni_Wildlife_Sanctuary",
@@ -2935,6 +3261,7 @@
   },
   {
     "protectedAreaName": "Narsinghgarh Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Madhya Pradesh",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Narsinghgarh_Wildlife_Sanctuary",
@@ -2944,6 +3271,7 @@
   },
   {
     "protectedAreaName": "National Chambal Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "National Park",
     "state": "Madhya Pradesh",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/National_Chambal_Wildlife_Sanctuary",
@@ -2953,6 +3281,7 @@
   },
   {
     "protectedAreaName": "Nauradehi Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Madhya Pradesh",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Nauradehi_Wildlife_Sanctuary",
@@ -2962,6 +3291,7 @@
   },
   {
     "protectedAreaName": "Omkareshwar Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Madhya Pradesh",
     "wikipediaUrl": null,
@@ -2971,6 +3301,7 @@
   },
   {
     "protectedAreaName": "Orchha Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Madhya Pradesh",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Orchha_Wildlife_Sanctuary",
@@ -2979,7 +3310,8 @@
     "district": "Tikamgarh"
   },
   {
-    "protectedAreaName": "Pachmarhi Wildlife Sanctuary",
+    "protectedAreaName": "Pachmarhi Biosphere Reserve",
+    "nameAlias": "Pachmarhi Wildlife Sanctuary",
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Madhya Pradesh",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Pachmarhi_Biosphere_Reserve",
@@ -2989,6 +3321,7 @@
   },
   {
     "protectedAreaName": "Panpatha Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Madhya Pradesh",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Panpatha_Wildlife_Sanctuary",
@@ -2997,8 +3330,9 @@
     "district": "Umaria"
   },
   {
-    "protectedAreaName": "Pench Wildlife Sanctuary",
-    "protectedAreaType": "Wildlife Sanctuary",
+    "protectedAreaName": "Pench Tiger Reserve",
+    "nameAlias": "Pench Wildlife Sanctuary",
+    "protectedAreaType": "Tiger Reserve",
     "state": "Madhya Pradesh",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Pench_Tiger_Reserve",
     "declared": "1975",
@@ -3007,6 +3341,7 @@
   },
   {
     "protectedAreaName": "Phen Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Madhya Pradesh",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Phen_Wildlife_Sanctuary",
@@ -3016,6 +3351,7 @@
   },
   {
     "protectedAreaName": "Ralamandal Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Madhya Pradesh",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Ralamandal_Wildlife_Sanctuary",
@@ -3025,6 +3361,7 @@
   },
   {
     "protectedAreaName": "Ratapani Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Madhya Pradesh",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Ratapani_Wildlife_Sanctuary",
@@ -3034,6 +3371,7 @@
   },
   {
     "protectedAreaName": "Sailana Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Madhya Pradesh",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Sailana_Wildlife_Sanctuary?action=edit&redlink=1",
@@ -3042,8 +3380,9 @@
     "district": "Ratlam"
   },
   {
-    "protectedAreaName": "Sanjay Dubri Wildlife Sanctuary",
-    "protectedAreaType": "Wildlife Sanctuary",
+    "protectedAreaName": "Sanjay National Park",
+    "nameAlias": "Sanjay Dubri Wildlife Sanctuary",
+    "protectedAreaType": "National Park",
     "state": "Madhya Pradesh",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Sanjay_National_Park",
     "declared": "1975",
@@ -3052,6 +3391,7 @@
   },
   {
     "protectedAreaName": "Sardarpur Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Madhya Pradesh",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Sardarpur_Wildlife_Sanctuary",
@@ -3061,6 +3401,7 @@
   },
   {
     "protectedAreaName": "Singhori Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Madhya Pradesh",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Singhori_Wildlife_Sanctuary",
@@ -3070,6 +3411,7 @@
   },
   {
     "protectedAreaName": "Son Gharial Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Madhya Pradesh",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Son_Gharial_Wildlife_Sanctuary",
@@ -3079,6 +3421,7 @@
   },
   {
     "protectedAreaName": "Veerangana Durgavati Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Madhya Pradesh",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Veerangana_Durgavati_Wildlife_Sanctuary",
@@ -3088,6 +3431,7 @@
   },
   {
     "protectedAreaName": "Amba Barwa Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Maharashtra",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Amba_Barwa_Wildlife_Sanctuary",
@@ -3097,6 +3441,7 @@
   },
   {
     "protectedAreaName": "Andhari Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Maharashtra",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Andhari_Wildlife_Sanctuary",
@@ -3106,6 +3451,7 @@
   },
   {
     "protectedAreaName": "Aner Dam Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Maharashtra",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Aner_Dam_Wildlife_Sanctuary",
@@ -3115,6 +3461,7 @@
   },
   {
     "protectedAreaName": "Bhamragarh Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Maharashtra",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Bhamragarh_Wildlife_Sanctuary?action=edit&redlink=1",
@@ -3124,6 +3471,7 @@
   },
   {
     "protectedAreaName": "Bhimashankar Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Maharashtra",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Bhimashankar_Wildlife_Sanctuary",
@@ -3133,6 +3481,7 @@
   },
   {
     "protectedAreaName": "Bor Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Maharashtra",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Bor_Wildlife_Sanctuary",
@@ -3142,6 +3491,7 @@
   },
   {
     "protectedAreaName": "Chaprala Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Maharashtra",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Chaprala_Wildlife_Sanctuary?action=edit&redlink=1",
@@ -3151,6 +3501,7 @@
   },
   {
     "protectedAreaName": "Deolgaon‑Rehkuri Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Maharashtra",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Deolgaon‑Rehkuri_Wildlife_Sanctuary?action=edit&redlink=1",
@@ -3160,6 +3511,7 @@
   },
   {
     "protectedAreaName": "Dnyanganga Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Maharashtra",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Dnyanganga_Wildlife_Sanctuary",
@@ -3169,6 +3521,7 @@
   },
   {
     "protectedAreaName": "Gautala Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Maharashtra",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Gautala_Wildlife_Sanctuary",
@@ -3178,6 +3531,7 @@
   },
   {
     "protectedAreaName": "Ghodazari Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Maharashtra",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Ghodazari_Wildlife_Sanctuary",
@@ -3187,6 +3541,7 @@
   },
   {
     "protectedAreaName": "Great Indian Bustard Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Maharashtra",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Great_Indian_Bustard_Sanctuary",
@@ -3196,6 +3551,7 @@
   },
   {
     "protectedAreaName": "Isapur Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Maharashtra",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Isapur_Wildlife_Sanctuary?action=edit&redlink=1",
@@ -3205,6 +3561,7 @@
   },
   {
     "protectedAreaName": "Jayakwadi Bird Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Bird Sanctuary",
     "state": "Maharashtra",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Jayakwadi_Bird_Sanctuary",
@@ -3214,6 +3571,7 @@
   },
   {
     "protectedAreaName": "Kalsubai Harishchandragad Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Maharashtra",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Kalsubai_Harishchandragad_Wildlife_Sanctuary",
@@ -3223,6 +3581,7 @@
   },
   {
     "protectedAreaName": "Kanhargaon Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Maharashtra",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Kanhargaon_Wildlife_Sanctuary",
@@ -3232,6 +3591,7 @@
   },
   {
     "protectedAreaName": "Karanja Sohol Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Maharashtra",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Karanja_Sohol_Wildlife_Sanctuary",
@@ -3241,6 +3601,7 @@
   },
   {
     "protectedAreaName": "Karnala Bird Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Bird Sanctuary",
     "state": "Maharashtra",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Karnala_Bird_Sanctuary",
@@ -3250,6 +3611,7 @@
   },
   {
     "protectedAreaName": "Katepurna Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Maharashtra",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Katepurna_Wildlife_Sanctuary?action=edit&redlink=1",
@@ -3259,6 +3621,7 @@
   },
   {
     "protectedAreaName": "Koka Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Maharashtra",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Koka_Wildlife_Sanctuary",
@@ -3268,6 +3631,7 @@
   },
   {
     "protectedAreaName": "Koyna Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Maharashtra",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Koyna_Wildlife_Sanctuary",
@@ -3277,6 +3641,7 @@
   },
   {
     "protectedAreaName": "Lonar Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Maharashtra",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Lonar_Wildlife_Sanctuary",
@@ -3286,6 +3651,7 @@
   },
   {
     "protectedAreaName": "Malvan Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Maharashtra",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Malvan_Wildlife_Sanctuary?action=edit&redlink=1",
@@ -3295,6 +3661,7 @@
   },
   {
     "protectedAreaName": "Mayureswar Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Maharashtra",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Mayureswar_Wildlife_Sanctuary",
@@ -3304,6 +3671,7 @@
   },
   {
     "protectedAreaName": "Mansingdeo Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Maharashtra",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Mansingdeo_Wildlife_Sanctuary?action=edit&redlink=1",
@@ -3312,7 +3680,8 @@
     "district": "Nagpur"
   },
   {
-    "protectedAreaName": "Melghat Wildlife Sanctuary",
+    "protectedAreaName": "Melghat",
+    "nameAlias": "Melghat Wildlife Sanctuary",
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Maharashtra",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Melghat",
@@ -3322,6 +3691,7 @@
   },
   {
     "protectedAreaName": "Nagzira Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Maharashtra",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Nagzira_Wildlife_Sanctuary",
@@ -3331,6 +3701,7 @@
   },
   {
     "protectedAreaName": "Naigaon Mayur Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Maharashtra",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Naigaon_Mayur_Wildlife_Sanctuary?action=edit&redlink=1",
@@ -3339,8 +3710,9 @@
     "district": "Beed"
   },
   {
-    "protectedAreaName": "Nandur Madhameshwar Wildlife Sanctuary",
-    "protectedAreaType": "Wildlife Sanctuary",
+    "protectedAreaName": "Nandur Madhmeshwar Bird Sanctuary",
+    "nameAlias": "Nandur Madhameshwar Wildlife Sanctuary",
+    "protectedAreaType": "Bird Sanctuary",
     "state": "Maharashtra",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Nandur_Madhmeshwar_Bird_Sanctuary",
     "declared": "1986",
@@ -3349,6 +3721,7 @@
   },
   {
     "protectedAreaName": "Narnala Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Maharashtra",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Narnala_Wildlife_Sanctuary?action=edit&redlink=1",
@@ -3358,6 +3731,7 @@
   },
   {
     "protectedAreaName": "Nawegaon Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Maharashtra",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Nawegaon_Wildlife_Sanctuary?action=edit&redlink=1",
@@ -3367,6 +3741,7 @@
   },
   {
     "protectedAreaName": "New Bor Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Maharashtra",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/New_Bor_Wildlife_Sanctuary?action=edit&redlink=1",
@@ -3376,6 +3751,7 @@
   },
   {
     "protectedAreaName": "New Maldhok Bird (Gangewadi) Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Bird Sanctuary",
     "state": "Maharashtra",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/New_Maldhok_Bird_(Gangewadi)_Wildlife_Sanctuary?action=edit&redlink=1",
@@ -3385,6 +3761,7 @@
   },
   {
     "protectedAreaName": "New Nagzira Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Maharashtra",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/New_Nagzira_Wildlife_Sanctuary?action=edit&redlink=1",
@@ -3394,6 +3771,7 @@
   },
   {
     "protectedAreaName": "Painganga Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Maharashtra",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Painganga_Wildlife_Sanctuary",
@@ -3403,6 +3781,7 @@
   },
   {
     "protectedAreaName": "Phansad Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Maharashtra",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Phansad_Wildlife_Sanctuary",
@@ -3412,6 +3791,7 @@
   },
   {
     "protectedAreaName": "Pranhita Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Maharashtra",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Pranhita_Wildlife_Sanctuary",
@@ -3421,6 +3801,7 @@
   },
   {
     "protectedAreaName": "Radhanagari Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Maharashtra",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Radhanagari_Wildlife_Sanctuary",
@@ -3430,6 +3811,7 @@
   },
   {
     "protectedAreaName": "Sagareshwar Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Maharashtra",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Sagareshwar_Wildlife_Sanctuary",
@@ -3439,6 +3821,7 @@
   },
   {
     "protectedAreaName": "Sudhagad Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Maharashtra",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Sudhagad_Wildlife_Sanctuary?action=edit&redlink=1",
@@ -3448,6 +3831,7 @@
   },
   {
     "protectedAreaName": "Tamhini Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Maharashtra",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Tamhini_Wildlife_Sanctuary?action=edit&redlink=1",
@@ -3457,6 +3841,7 @@
   },
   {
     "protectedAreaName": "Tansa Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Maharashtra",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Tansa_Wildlife_Sanctuary",
@@ -3466,6 +3851,7 @@
   },
   {
     "protectedAreaName": "Thane Creek Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Maharashtra",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Thane_Creek_Wildlife_Sanctuary?action=edit&redlink=1",
@@ -3475,6 +3861,7 @@
   },
   {
     "protectedAreaName": "Tipeshwar Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Maharashtra",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Tipeshwar_Wildlife_Sanctuary?action=edit&redlink=1",
@@ -3484,6 +3871,7 @@
   },
   {
     "protectedAreaName": "Tungareshwar Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Maharashtra",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Tungareshwar_Wildlife_Sanctuary",
@@ -3493,6 +3881,7 @@
   },
   {
     "protectedAreaName": "Umred Pauni Karhandla Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Maharashtra",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Umred_Pauni_Karhandla_Wildlife_Sanctuary",
@@ -3502,6 +3891,7 @@
   },
   {
     "protectedAreaName": "Wan Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Maharashtra",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Wan_Wildlife_Sanctuary",
@@ -3511,6 +3901,7 @@
   },
   {
     "protectedAreaName": "Yawal Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Maharashtra",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Yawal_Wildlife_Sanctuary",
@@ -3520,6 +3911,7 @@
   },
   {
     "protectedAreaName": "Yedsi Ramling Ghat Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Maharashtra",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Yedsi_Ramling_Ghat_Wildlife_Sanctuary",
@@ -3529,6 +3921,7 @@
   },
   {
     "protectedAreaName": "Bunning Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Manipur",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Bunning_Wildlife_Sanctuary?action=edit&redlink=1",
@@ -3538,6 +3931,7 @@
   },
   {
     "protectedAreaName": "Jiri-Makru Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Manipur",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Jiri-Makru_Wildlife_Sanctuary",
@@ -3547,6 +3941,7 @@
   },
   {
     "protectedAreaName": "Kailam Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Manipur",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Kailam_Wildlife_Sanctuary?action=edit&redlink=1",
@@ -3556,6 +3951,7 @@
   },
   {
     "protectedAreaName": "Khongjaingamba Ching Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Manipur",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Khongjaingamba_Ching_Wildlife_Sanctuary?action=edit&redlink=1",
@@ -3565,6 +3961,7 @@
   },
   {
     "protectedAreaName": "Thinungei Bird Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Bird Sanctuary",
     "state": "Manipur",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Thinungei_Bird_Sanctuary?action=edit&redlink=1",
@@ -3574,6 +3971,7 @@
   },
   {
     "protectedAreaName": "Yangoupokpi-Lokchao Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Manipur",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Yangoupokpi-Lokchao_Wildlife_Sanctuary",
@@ -3583,6 +3981,7 @@
   },
   {
     "protectedAreaName": "Zeilad Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Manipur",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Zeilad_Wildlife_Sanctuary?action=edit&redlink=1",
@@ -3592,6 +3991,7 @@
   },
   {
     "protectedAreaName": "Baghmara Pitcher Plant Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Meghalaya",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Baghmara_Pitcher_Plant_Wildlife_Sanctuary",
@@ -3601,6 +4001,7 @@
   },
   {
     "protectedAreaName": "Narpuh Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Meghalaya",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Narpuh_Wildlife_Sanctuary",
@@ -3610,6 +4011,7 @@
   },
   {
     "protectedAreaName": "Nongkhyllem Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Meghalaya",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Nongkhyllem_Wildlife_Sanctuary",
@@ -3619,6 +4021,7 @@
   },
   {
     "protectedAreaName": "Siju Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Meghalaya",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Siju_Wildlife_Sanctuary",
@@ -3627,8 +4030,9 @@
     "district": "South Garo Hills"
   },
   {
-    "protectedAreaName": "Dampa Wildlife Sanctuary",
-    "protectedAreaType": "Wildlife Sanctuary",
+    "protectedAreaName": "Dampa Tiger Reserve",
+    "nameAlias": "Dampa Wildlife Sanctuary",
+    "protectedAreaType": "Tiger Reserve",
     "state": "Mizoram",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Dampa_Tiger_Reserve",
     "declared": "1985",
@@ -3637,6 +4041,7 @@
   },
   {
     "protectedAreaName": "Khawnglung Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Mizoram",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Khawnglung_Wildlife_Sanctuary",
@@ -3646,6 +4051,7 @@
   },
   {
     "protectedAreaName": "Lengteng Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Mizoram",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Lengteng_Wildlife_Sanctuary",
@@ -3655,6 +4061,7 @@
   },
   {
     "protectedAreaName": "Ngengpui Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Mizoram",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Ngengpui_Wildlife_Sanctuary",
@@ -3664,6 +4071,7 @@
   },
   {
     "protectedAreaName": "Pualreng Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Mizoram",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Pualreng_Wildlife_Sanctuary",
@@ -3673,6 +4081,7 @@
   },
   {
     "protectedAreaName": "Tawi Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Mizoram",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Tawi_Wildlife_Sanctuary",
@@ -3682,6 +4091,7 @@
   },
   {
     "protectedAreaName": "Thorangtlang Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Mizoram",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Thorangtlang_Wildlife_Sanctuary",
@@ -3691,6 +4101,7 @@
   },
   {
     "protectedAreaName": "Tokalo Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Mizoram",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Tokalo_Wildlife_Sanctuary",
@@ -3700,6 +4111,7 @@
   },
   {
     "protectedAreaName": "Fakim Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Nagaland",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Fakim_Wildlife_Sanctuary",
@@ -3709,6 +4121,7 @@
   },
   {
     "protectedAreaName": "Puliebadze Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Nagaland",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Puliebadze_Wildlife_Sanctuary",
@@ -3718,6 +4131,7 @@
   },
   {
     "protectedAreaName": "Rangapahar Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Nagaland",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Rangapahar_Wildlife_Sanctuary",
@@ -3727,6 +4141,7 @@
   },
   {
     "protectedAreaName": "Singphan Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Nagaland",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Singphan_Wildlife_Sanctuary",
@@ -3735,7 +4150,8 @@
     "district": "Mon"
   },
   {
-    "protectedAreaName": "Badrama Wildlife Sanctuary",
+    "protectedAreaName": "Ushakothi Wildlife Sanctuary",
+    "nameAlias": "Badrama Wildlife Sanctuary",
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Odisha",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Ushakothi_Wildlife_Sanctuary",
@@ -3745,6 +4161,7 @@
   },
   {
     "protectedAreaName": "Baisipalli Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Odisha",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Baisipalli_Wildlife_Sanctuary",
@@ -3754,6 +4171,7 @@
   },
   {
     "protectedAreaName": "Balukhand-Konark Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Odisha",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Balukhand-Konark_Wildlife_Sanctuary",
@@ -3763,6 +4181,7 @@
   },
   {
     "protectedAreaName": "Bhitarkanika Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Odisha",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Bhitarkanika_Wildlife_Sanctuary",
@@ -3771,7 +4190,8 @@
     "district": "Kendrapara"
   },
   {
-    "protectedAreaName": "Chandaka Dampara Wildlife Sanctuary",
+    "protectedAreaName": "Chandaka Elephant Sanctuary",
+    "nameAlias": "Chandaka Dampara Wildlife Sanctuary",
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Odisha",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Chandaka_Elephant_Sanctuary",
@@ -3781,6 +4201,7 @@
   },
   {
     "protectedAreaName": "Debrigarh Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Odisha",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Debrigarh_Wildlife_Sanctuary",
@@ -3790,6 +4211,7 @@
   },
   {
     "protectedAreaName": "Gahirmatha Marine Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Odisha",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Gahirmatha_Marine_Sanctuary",
@@ -3799,6 +4221,7 @@
   },
   {
     "protectedAreaName": "Hadgarh Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Odisha",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Hadgarh_Wildlife_Sanctuary",
@@ -3808,6 +4231,7 @@
   },
   {
     "protectedAreaName": "Kapilasa Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Odisha",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Kapilasa_Wildlife_Sanctuary",
@@ -3817,6 +4241,7 @@
   },
   {
     "protectedAreaName": "Karlapat Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Odisha",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Karlapat_Wildlife_Sanctuary",
@@ -3826,6 +4251,7 @@
   },
   {
     "protectedAreaName": "Khalasuni Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Odisha",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Khalasuni_Wildlife_Sanctuary",
@@ -3835,6 +4261,7 @@
   },
   {
     "protectedAreaName": "Kotgarh Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Odisha",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Kotgarh_Wildlife_Sanctuary",
@@ -3844,6 +4271,7 @@
   },
   {
     "protectedAreaName": "Kuldiha Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Odisha",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Kuldiha_Wildlife_Sanctuary",
@@ -3853,6 +4281,7 @@
   },
   {
     "protectedAreaName": "Lakhari Valley Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Odisha",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Lakhari_Valley_Wildlife_Sanctuary",
@@ -3862,6 +4291,7 @@
   },
   {
     "protectedAreaName": "Nalbana Bird Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Bird Sanctuary",
     "state": "Odisha",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Nalbana_Bird_Sanctuary",
@@ -3871,6 +4301,7 @@
   },
   {
     "protectedAreaName": "Nandankanan Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Odisha",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Nandankanan_Wildlife_Sanctuary",
@@ -3880,6 +4311,7 @@
   },
   {
     "protectedAreaName": "Satkosia Gorge Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Odisha",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Satkosia_Gorge_Wildlife_Sanctuary",
@@ -3888,8 +4320,9 @@
     "district": "Angul, Boudh, Cuttack"
   },
   {
-    "protectedAreaName": "Simlipal Wildlife Sanctuary",
-    "protectedAreaType": "Wildlife Sanctuary",
+    "protectedAreaName": "Simlipal National Park",
+    "nameAlias": "Simlipal Wildlife Sanctuary",
+    "protectedAreaType": "National Park",
     "state": "Odisha",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Simlipal_National_Park",
     "declared": "1979",
@@ -3898,6 +4331,7 @@
   },
   {
     "protectedAreaName": "Sunabeda Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Odisha",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Sunabeda_Wildlife_Sanctuary",
@@ -3907,6 +4341,7 @@
   },
   {
     "protectedAreaName": "Abohar Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Punjab",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Abohar_Wildlife_Sanctuary",
@@ -3916,6 +4351,7 @@
   },
   {
     "protectedAreaName": "Bir Aishvan Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Punjab",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Bir_Aishvan_Wildlife_Sanctuary",
@@ -3925,6 +4361,7 @@
   },
   {
     "protectedAreaName": "Bir Bhadson Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Punjab",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Bir_Bhadson_Wildlife_Sanctuary?action=edit&redlink=1",
@@ -3933,7 +4370,8 @@
     "district": "Patiala"
   },
   {
-    "protectedAreaName": "Bir Bhunerheri Wildlife Sanctuary",
+    "protectedAreaName": "Bir Bunerheri Wildlife Sanctuary",
+    "nameAlias": "Bir Bhunerheri Wildlife Sanctuary",
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Punjab",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Bir_Bunerheri_Wildlife_Sanctuary",
@@ -3943,6 +4381,7 @@
   },
   {
     "protectedAreaName": "Bir Dosanjh Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Punjab",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Bir_Dosanjh_Wildlife_Sanctuary?action=edit&redlink=1",
@@ -3952,6 +4391,7 @@
   },
   {
     "protectedAreaName": "Bir Gurdialpura Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Punjab",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Bir_Gurdialpura_Wildlife_Sanctuary?action=edit&redlink=1",
@@ -3961,6 +4401,7 @@
   },
   {
     "protectedAreaName": "Bir Mehaswala Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Punjab",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Bir_Mehaswala_Wildlife_Sanctuary?action=edit&redlink=1",
@@ -3970,6 +4411,7 @@
   },
   {
     "protectedAreaName": "Bir Motibagh Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Punjab",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Bir_Motibagh_Wildlife_Sanctuary?action=edit&redlink=1",
@@ -3979,6 +4421,7 @@
   },
   {
     "protectedAreaName": "Harike Lake Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Punjab",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Harike_Lake_Wildlife_Sanctuary?action=edit&redlink=1",
@@ -3988,6 +4431,7 @@
   },
   {
     "protectedAreaName": "Jhajjar Bacholi Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Punjab",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Jhajjar_Bacholi_Wildlife_Sanctuary?action=edit&redlink=1",
@@ -3997,6 +4441,7 @@
   },
   {
     "protectedAreaName": "Kathlaur Kushlian Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Punjab",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Kathlaur_Kushlian_Wildlife_Sanctuary",
@@ -4006,6 +4451,7 @@
   },
   {
     "protectedAreaName": "Nangal Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Punjab",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Nangal_Wildlife_Sanctuary",
@@ -4015,6 +4461,7 @@
   },
   {
     "protectedAreaName": "Takhni-Rehampur Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Punjab",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Takhni-Rehampur_Wildlife_Sanctuary?action=edit&redlink=1",
@@ -4024,6 +4471,7 @@
   },
   {
     "protectedAreaName": "Oussudu Bird Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Bird Sanctuary",
     "state": "Puducherry",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Oussudu_Bird_Sanctuary",
@@ -4032,7 +4480,8 @@
     "district": "Puducherry"
   },
   {
-    "protectedAreaName": "Bandh Baretha Wildlife Sanctuary",
+    "protectedAreaName": "Bandh Baretha",
+    "nameAlias": "Bandh Baretha Wildlife Sanctuary",
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Rajasthan",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Bandh_Baretha",
@@ -4042,6 +4491,7 @@
   },
   {
     "protectedAreaName": "Bassi Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Rajasthan",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Bassi_Wildlife_Sanctuary",
@@ -4051,6 +4501,7 @@
   },
   {
     "protectedAreaName": "Bhensrodgarh Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Rajasthan",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Bhensrodgarh_Wildlife_Sanctuary",
@@ -4060,6 +4511,7 @@
   },
   {
     "protectedAreaName": "Darrah Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Rajasthan",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Darrah_Wildlife_Sanctuary",
@@ -4068,7 +4520,8 @@
     "district": "Jhalawar, Kota"
   },
   {
-    "protectedAreaName": "Desert National Sanctuary",
+    "protectedAreaName": "Desert National Park",
+    "nameAlias": "Desert National Sanctuary",
     "protectedAreaType": "National Park",
     "state": "Rajasthan",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Desert_National_Park",
@@ -4078,6 +4531,7 @@
   },
   {
     "protectedAreaName": "Jaisamand Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Rajasthan",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Jaisamand_Wildlife_Sanctuary",
@@ -4087,6 +4541,7 @@
   },
   {
     "protectedAreaName": "Jamwa Ramgarh Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Rajasthan",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Jamwa_Ramgarh_Wildlife_Sanctuary",
@@ -4096,6 +4551,7 @@
   },
   {
     "protectedAreaName": "Jawahar Sagar Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Rajasthan",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Jawahar_Sagar_Wildlife_Sanctuary",
@@ -4105,6 +4561,7 @@
   },
   {
     "protectedAreaName": "Kailadevi Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Rajasthan",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Kailadevi_Wildlife_Sanctuary",
@@ -4114,6 +4571,7 @@
   },
   {
     "protectedAreaName": "Kesarbagh Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Rajasthan",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Kesarbagh_Wildlife_Sanctuary",
@@ -4123,6 +4581,7 @@
   },
   {
     "protectedAreaName": "Kumbhalgarh Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Rajasthan",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Kumbhalgarh_Wildlife_Sanctuary",
@@ -4132,6 +4591,7 @@
   },
   {
     "protectedAreaName": "Mount Abu Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Rajasthan",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Mount_Abu_Wildlife_Sanctuary",
@@ -4141,6 +4601,7 @@
   },
   {
     "protectedAreaName": "Nahargarh Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Rajasthan",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Nahargarh_Wildlife_Sanctuary",
@@ -4150,6 +4611,7 @@
   },
   {
     "protectedAreaName": "National Chambal Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "National Park",
     "state": "Rajasthan",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/National_Chambal_Wildlife_Sanctuary",
@@ -4159,6 +4621,7 @@
   },
   {
     "protectedAreaName": "Phulwari ki Nal Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Rajasthan",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Phulwari_ki_Nal_Wildlife_Sanctuary",
@@ -4168,6 +4631,7 @@
   },
   {
     "protectedAreaName": "Ramgarh Vishdhari Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Rajasthan",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Ramgarh_Vishdhari_Wildlife_Sanctuary",
@@ -4177,6 +4641,7 @@
   },
   {
     "protectedAreaName": "Ramsagar Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Rajasthan",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Ramsagar_Wildlife_Sanctuary",
@@ -4186,6 +4651,7 @@
   },
   {
     "protectedAreaName": "Sajjangarh Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Rajasthan",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Sajjangarh_Wildlife_Sanctuary",
@@ -4194,8 +4660,9 @@
     "district": "Udaipur"
   },
   {
-    "protectedAreaName": "Sariska Wildlife Sanctuary",
-    "protectedAreaType": "Wildlife Sanctuary",
+    "protectedAreaName": "Sariska Tiger Reserve",
+    "nameAlias": "Sariska Wildlife Sanctuary",
+    "protectedAreaType": "Tiger Reserve",
     "state": "Rajasthan",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Sariska_Tiger_Reserve",
     "declared": "1955",
@@ -4204,6 +4671,7 @@
   },
   {
     "protectedAreaName": "Sawai Madhopur Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Rajasthan",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Sawai_Madhopur_Wildlife_Sanctuary",
@@ -4213,6 +4681,7 @@
   },
   {
     "protectedAreaName": "Sawai Man Singh Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Rajasthan",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Sawai_Man_Singh_Wildlife_Sanctuary",
@@ -4222,6 +4691,7 @@
   },
   {
     "protectedAreaName": "Shergarh Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Rajasthan",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Shergarh_Wildlife_Sanctuary",
@@ -4231,6 +4701,7 @@
   },
   {
     "protectedAreaName": "Sita Mata Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Rajasthan",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Sita_Mata_Wildlife_Sanctuary",
@@ -4239,7 +4710,8 @@
     "district": "Chittaurgarh, Udaipur"
   },
   {
-    "protectedAreaName": "Tal Chhapar Wildlife Sanctuary",
+    "protectedAreaName": "Tal Chhapar Sanctuary",
+    "nameAlias": "Tal Chhapar Wildlife Sanctuary",
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Rajasthan",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Tal_Chhapar_Sanctuary",
@@ -4248,7 +4720,8 @@
     "district": "Churu"
   },
   {
-    "protectedAreaName": "Todgarh-Raoli Wildlife Sanctuary",
+    "protectedAreaName": "Todgarh-Raoli Sanctuary",
+    "nameAlias": "Todgarh-Raoli Wildlife Sanctuary",
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Rajasthan",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Todgarh-Raoli_Sanctuary",
@@ -4258,6 +4731,7 @@
   },
   {
     "protectedAreaName": "Van Vihar Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Rajasthan",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Van_Vihar_Wildlife_Sanctuary",
@@ -4267,6 +4741,7 @@
   },
   {
     "protectedAreaName": "Fambong Lho Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Sikkim",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Fambong_Lho_Wildlife_Sanctuary",
@@ -4276,6 +4751,7 @@
   },
   {
     "protectedAreaName": "Kitam Bird Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Bird Sanctuary",
     "state": "Sikkim",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Kitam_Bird_Sanctuary",
@@ -4285,6 +4761,7 @@
   },
   {
     "protectedAreaName": "Kyongnosla Alpine Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Sikkim",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Kyongnosla_Alpine_Sanctuary",
@@ -4294,6 +4771,7 @@
   },
   {
     "protectedAreaName": "Maenam Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Sikkim",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Maenam_Wildlife_Sanctuary",
@@ -4303,6 +4781,7 @@
   },
   {
     "protectedAreaName": "Pangolakha Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Sikkim",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Pangolakha_Wildlife_Sanctuary",
@@ -4312,6 +4791,7 @@
   },
   {
     "protectedAreaName": "Shingba Rhododendron Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Sikkim",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Shingba_Rhododendron_Sanctuary",
@@ -4321,6 +4801,7 @@
   },
   {
     "protectedAreaName": "Varsey Rhododendron Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Sikkim",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Varsey_Rhododendron_Sanctuary",
@@ -4330,6 +4811,7 @@
   },
   {
     "protectedAreaName": "Anamalai Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Tamil Nadu",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Anamalai_Wildlife_Sanctuary",
@@ -4339,6 +4821,7 @@
   },
   {
     "protectedAreaName": "Cauvery North Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Tamil Nadu",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Cauvery_North_Wildlife_Sanctuary",
@@ -4348,6 +4831,7 @@
   },
   {
     "protectedAreaName": "Cauvery South Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Tamil Nadu",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Cauvery_South_Wildlife_Sanctuary",
@@ -4357,6 +4841,7 @@
   },
   {
     "protectedAreaName": "Chitrangudi Bird Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Bird Sanctuary",
     "state": "Tamil Nadu",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Chitrangudi_Bird_Sanctuary",
@@ -4366,6 +4851,7 @@
   },
   {
     "protectedAreaName": "Gangaikondan Spotted Deer Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Tamil Nadu",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Gangaikondan_Spotted_Deer_Sanctuary",
@@ -4375,6 +4861,7 @@
   },
   {
     "protectedAreaName": "Grizzled Squirrel Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Tamil Nadu",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Grizzled_Squirrel_Wildlife_Sanctuary",
@@ -4384,6 +4871,7 @@
   },
   {
     "protectedAreaName": "Kadavur Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Tamil Nadu",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Kadavur_Wildlife_Sanctuary",
@@ -4392,8 +4880,9 @@
     "district": "Dindigul, Karur"
   },
   {
-    "protectedAreaName": "Kalakkad Wildlife Sanctuary",
-    "protectedAreaType": "Wildlife Sanctuary",
+    "protectedAreaName": "Kalakkad Mundanthurai Tiger Reserve",
+    "nameAlias": "Kalakkad Wildlife Sanctuary",
+    "protectedAreaType": "Tiger Reserve",
     "state": "Tamil Nadu",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Kalakkad_Mundanthurai_Tiger_Reserve",
     "declared": "1976",
@@ -4402,6 +4891,7 @@
   },
   {
     "protectedAreaName": "Kallaperambur Lake Bird Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Bird Sanctuary",
     "state": "Tamil Nadu",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Kallaperambur_Lake_Bird_Sanctuary",
@@ -4411,6 +4901,7 @@
   },
   {
     "protectedAreaName": "Kanjirankulam Bird Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Bird Sanctuary",
     "state": "Tamil Nadu",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Kanjirankulam_Bird_Sanctuary",
@@ -4420,6 +4911,7 @@
   },
   {
     "protectedAreaName": "Kanyakumari Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Tamil Nadu",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Kanyakumari_Wildlife_Sanctuary",
@@ -4429,6 +4921,7 @@
   },
   {
     "protectedAreaName": "Karaivetti Bird Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Bird Sanctuary",
     "state": "Tamil Nadu",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Karaivetti_Bird_Sanctuary",
@@ -4438,6 +4931,7 @@
   },
   {
     "protectedAreaName": "Karikili Bird Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Bird Sanctuary",
     "state": "Tamil Nadu",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Karikili_Bird_Sanctuary",
@@ -4447,6 +4941,7 @@
   },
   {
     "protectedAreaName": "Kazhuveli Bird Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Bird Sanctuary",
     "state": "Tamil Nadu",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Kazhuveli_Bird_Sanctuary",
@@ -4456,6 +4951,7 @@
   },
   {
     "protectedAreaName": "Kodaikanal Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Tamil Nadu",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Kodaikanal_Wildlife_Sanctuary",
@@ -4465,6 +4961,7 @@
   },
   {
     "protectedAreaName": "Koonthankulam Bird Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Bird Sanctuary",
     "state": "Tamil Nadu",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Koonthankulam_Bird_Sanctuary",
@@ -4474,6 +4971,7 @@
   },
   {
     "protectedAreaName": "Megamalai Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Tamil Nadu",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Megamalai_Wildlife_Sanctuary",
@@ -4483,6 +4981,7 @@
   },
   {
     "protectedAreaName": "Melaselvanur-Kilaselvanur Bird Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Bird Sanctuary",
     "state": "Tamil Nadu",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Melaselvanur-Kilaselvanur_Bird_Sanctuary",
@@ -4492,6 +4991,7 @@
   },
   {
     "protectedAreaName": "Mudumalai Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Tamil Nadu",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Mudumalai_Wildlife_Sanctuary",
@@ -4500,8 +5000,9 @@
     "district": "Nilgiris"
   },
   {
-    "protectedAreaName": "Mundanthurai Wildlife Sanctuary",
-    "protectedAreaType": "Wildlife Sanctuary",
+    "protectedAreaName": "Kalakkad Mundanthurai Tiger Reserve",
+    "nameAlias": "Mundanthurai Wildlife Sanctuary",
+    "protectedAreaType": "Tiger Reserve",
     "state": "Tamil Nadu",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Kalakkad_Mundanthurai_Tiger_Reserve",
     "declared": "1962",
@@ -4510,6 +5011,7 @@
   },
   {
     "protectedAreaName": "Nanjarayan Tank Bird Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Bird Sanctuary",
     "state": "Tamil Nadu",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Nanjarayan_Tank_Bird_Sanctuary",
@@ -4519,6 +5021,7 @@
   },
   {
     "protectedAreaName": "Nellai Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Tamil Nadu",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Nellai_Wildlife_Sanctuary",
@@ -4528,6 +5031,7 @@
   },
   {
     "protectedAreaName": "Point Calimere Wildlife and Bird Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Bird Sanctuary",
     "state": "Tamil Nadu",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Point_Calimere_Wildlife_and_Bird_Sanctuary",
@@ -4537,6 +5041,7 @@
   },
   {
     "protectedAreaName": "Pulicat Lake Bird Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Bird Sanctuary",
     "state": "Tamil Nadu",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Pulicat_Lake_Bird_Sanctuary",
@@ -4546,6 +5051,7 @@
   },
   {
     "protectedAreaName": "Sakkarakottai Bird Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Bird Sanctuary",
     "state": "Tamil Nadu",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Sakkarakottai_Bird_Sanctuary",
@@ -4555,6 +5061,7 @@
   },
   {
     "protectedAreaName": "Sathyamangalam Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Tamil Nadu",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Sathyamangalam_Wildlife_Sanctuary",
@@ -4564,6 +5071,7 @@
   },
   {
     "protectedAreaName": "Thanthai Periyar Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Tamil Nadu",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Thanthai_Periyar_Wildlife_Sanctuary",
@@ -4573,6 +5081,7 @@
   },
   {
     "protectedAreaName": "Therthangal Bird Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Bird Sanctuary",
     "state": "Tamil Nadu",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Therthangal_Bird_Sanctuary",
@@ -4582,6 +5091,7 @@
   },
   {
     "protectedAreaName": "Udayamarthandapuram Bird Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Bird Sanctuary",
     "state": "Tamil Nadu",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Udayamarthandapuram_Bird_Sanctuary",
@@ -4591,6 +5101,7 @@
   },
   {
     "protectedAreaName": "Vaduvoor Bird Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Bird Sanctuary",
     "state": "Tamil Nadu",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Vaduvoor_Bird_Sanctuary",
@@ -4600,6 +5111,7 @@
   },
   {
     "protectedAreaName": "Vedanthangal Bird Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Bird Sanctuary",
     "state": "Tamil Nadu",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Vedanthangal_Bird_Sanctuary",
@@ -4609,6 +5121,7 @@
   },
   {
     "protectedAreaName": "Vallanadu Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Tamil Nadu",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Vallanadu_Wildlife_Sanctuary",
@@ -4618,6 +5131,7 @@
   },
   {
     "protectedAreaName": "Vellode Bird Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Bird Sanctuary",
     "state": "Tamil Nadu",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Vellode_Bird_Sanctuary",
@@ -4627,6 +5141,7 @@
   },
   {
     "protectedAreaName": "Vettangudi Bird Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Bird Sanctuary",
     "state": "Tamil Nadu",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Vettangudi_Bird_Sanctuary",
@@ -4636,6 +5151,7 @@
   },
   {
     "protectedAreaName": "Eturnagaram Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Telangana",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Eturnagaram_Wildlife_Sanctuary",
@@ -4645,6 +5161,7 @@
   },
   {
     "protectedAreaName": "Kawal Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Telangana",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Kawal_Wildlife_Sanctuary",
@@ -4654,6 +5171,7 @@
   },
   {
     "protectedAreaName": "Kinnerasani Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Telangana",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Kinnerasani_Wildlife_Sanctuary",
@@ -4663,6 +5181,7 @@
   },
   {
     "protectedAreaName": "Manjira Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Telangana",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Manjira_Wildlife_Sanctuary",
@@ -4672,6 +5191,7 @@
   },
   {
     "protectedAreaName": "Nagarjunsagar-Srisailam Tiger Reserve",
+    "nameAlias": null,
     "protectedAreaType": "Tiger Reserve",
     "state": "Telangana",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Nagarjunsagar-Srisailam_Tiger_Reserve",
@@ -4681,6 +5201,7 @@
   },
   {
     "protectedAreaName": "Pakhal Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Telangana",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Pakhal_Wildlife_Sanctuary",
@@ -4690,6 +5211,7 @@
   },
   {
     "protectedAreaName": "Pocharam Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Telangana",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Pocharam_Wildlife_Sanctuary",
@@ -4699,6 +5221,7 @@
   },
   {
     "protectedAreaName": "Pranahita Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Telangana",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Pranahita_Wildlife_Sanctuary",
@@ -4708,6 +5231,7 @@
   },
   {
     "protectedAreaName": "Shivaram Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Telangana",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Shivaram_Wildlife_Sanctuary",
@@ -4717,6 +5241,7 @@
   },
   {
     "protectedAreaName": "Gumti Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Tripura",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Gumti_Wildlife_Sanctuary",
@@ -4726,6 +5251,7 @@
   },
   {
     "protectedAreaName": "Rowa Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Tripura",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Rowa_Wildlife_Sanctuary",
@@ -4735,6 +5261,7 @@
   },
   {
     "protectedAreaName": "Sepahijala Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Tripura",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Sepahijala_Wildlife_Sanctuary",
@@ -4744,6 +5271,7 @@
   },
   {
     "protectedAreaName": "Trishna Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Tripura",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Trishna_Wildlife_Sanctuary",
@@ -4753,6 +5281,7 @@
   },
   {
     "protectedAreaName": "Bakhira Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Uttar Pradesh",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Bakhira_Wildlife_Sanctuary",
@@ -4762,6 +5291,7 @@
   },
   {
     "protectedAreaName": "Chandra Prabha Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Uttar Pradesh",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Chandra_Prabha_Wildlife_Sanctuary",
@@ -4771,6 +5301,7 @@
   },
   {
     "protectedAreaName": "Dr. Bhimrao Ambedkar Bird Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Bird Sanctuary",
     "state": "Uttar Pradesh",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Dr._Bhimrao_Ambedkar_Bird_Sanctuary?action=edit&redlink=1",
@@ -4780,6 +5311,7 @@
   },
   {
     "protectedAreaName": "Hastinapur Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Uttar Pradesh",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Hastinapur_Wildlife_Sanctuary",
@@ -4788,7 +5320,8 @@
     "district": "Bijnore, Ghaziabad, Jyotiba Nagar, Meerut, Muzaffarnagar"
   },
   {
-    "protectedAreaName": "Kachhua Wildlife Sanctuary",
+    "protectedAreaName": "Kachhua Sanctuary",
+    "nameAlias": "Kachhua Wildlife Sanctuary",
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Uttar Pradesh",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Kachhua_Sanctuary",
@@ -4798,6 +5331,7 @@
   },
   {
     "protectedAreaName": "Kaimoor Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Uttar Pradesh",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Kaimoor_Wildlife_Sanctuary",
@@ -4807,6 +5341,7 @@
   },
   {
     "protectedAreaName": "Katarniaghat Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Uttar Pradesh",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Katarniaghat_Wildlife_Sanctuary",
@@ -4816,6 +5351,7 @@
   },
   {
     "protectedAreaName": "Kishanpur Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Uttar Pradesh",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Kishanpur_Wildlife_Sanctuary",
@@ -4824,7 +5360,8 @@
     "district": "Lakhimpur-Kheri, Shahjahanpur"
   },
   {
-    "protectedAreaName": "Lakh Bahosi Wildlife Sanctuary",
+    "protectedAreaName": "Lakh Bahosi Sanctuary",
+    "nameAlias": "Lakh Bahosi Wildlife Sanctuary",
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Uttar Pradesh",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Lakh_Bahosi_Sanctuary",
@@ -4834,6 +5371,7 @@
   },
   {
     "protectedAreaName": "Mahavir Swami Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Uttar Pradesh",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Mahavir_Swami_Wildlife_Sanctuary",
@@ -4843,6 +5381,7 @@
   },
   {
     "protectedAreaName": "National Chambal Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "National Park",
     "state": "Uttar Pradesh",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/National_Chambal_Wildlife_Sanctuary",
@@ -4852,6 +5391,7 @@
   },
   {
     "protectedAreaName": "Nawabganj Bird Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Bird Sanctuary",
     "state": "Uttar Pradesh",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Nawabganj_Bird_Sanctuary",
@@ -4860,7 +5400,8 @@
     "district": "Unnao, Lucknow"
   },
   {
-    "protectedAreaName": "Okhla Wildlife Sanctuary",
+    "protectedAreaName": "Okhla Sanctuary",
+    "nameAlias": "Okhla Wildlife Sanctuary",
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Uttar Pradesh",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Okhla_Sanctuary",
@@ -4870,6 +5411,7 @@
   },
   {
     "protectedAreaName": "Parvati Arga Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Uttar Pradesh",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Parvati_Arga_Wildlife_Sanctuary",
@@ -4879,6 +5421,7 @@
   },
   {
     "protectedAreaName": "Patna Bird Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Bird Sanctuary",
     "state": "Uttar Pradesh",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Patna_Bird_Sanctuary",
@@ -4888,6 +5431,7 @@
   },
   {
     "protectedAreaName": "Pilibhit Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Uttar Pradesh",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Pilibhit_Wildlife_Sanctuary?action=edit&redlink=1",
@@ -4897,6 +5441,7 @@
   },
   {
     "protectedAreaName": "Ranipur Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Uttar Pradesh",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Ranipur_Wildlife_Sanctuary",
@@ -4906,6 +5451,7 @@
   },
   {
     "protectedAreaName": "Saman Bird Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Bird Sanctuary",
     "state": "Uttar Pradesh",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Saman_Bird_Sanctuary",
@@ -4915,6 +5461,7 @@
   },
   {
     "protectedAreaName": "Samaspur Bird Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Bird Sanctuary",
     "state": "Uttar Pradesh",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Samaspur_Bird_Sanctuary",
@@ -4924,6 +5471,7 @@
   },
   {
     "protectedAreaName": "Sandi Bird Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Bird Sanctuary",
     "state": "Uttar Pradesh",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Sandi_Bird_Sanctuary",
@@ -4933,6 +5481,7 @@
   },
   {
     "protectedAreaName": "Shekha Bird Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Bird Sanctuary",
     "state": "Uttar Pradesh",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Shekha_Bird_Sanctuary",
@@ -4942,6 +5491,7 @@
   },
   {
     "protectedAreaName": "Sohagi Barwa Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Uttar Pradesh",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Sohagi_Barwa_Wildlife_Sanctuary",
@@ -4951,6 +5501,7 @@
   },
   {
     "protectedAreaName": "Sohelwa Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Uttar Pradesh",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Sohelwa_Wildlife_Sanctuary",
@@ -4959,8 +5510,9 @@
     "district": "Balrampur, Shravasti"
   },
   {
-    "protectedAreaName": "Sur Sarovar Bird Sanctuary",
-    "protectedAreaType": "Bird Sanctuary",
+    "protectedAreaName": "Sur Sarovar Sanctuary",
+    "nameAlias": "Sur Sarovar Bird Sanctuary",
+    "protectedAreaType": "Wildlife Sanctuary",
     "state": "Uttar Pradesh",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Sur_Sarovar_Sanctuary",
     "declared": "1991",
@@ -4969,6 +5521,7 @@
   },
   {
     "protectedAreaName": "Surha Tal Bird Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Bird Sanctuary",
     "state": "Uttar Pradesh",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Surha_Tal_Bird_Sanctuary",
@@ -4978,6 +5531,7 @@
   },
   {
     "protectedAreaName": "Vijai Sagar Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Uttar Pradesh",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Vijai_Sagar_Wildlife_Sanctuary",
@@ -4987,6 +5541,7 @@
   },
   {
     "protectedAreaName": "Askot Musk Deer Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Uttarakhand",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Askot_Musk_Deer_Sanctuary",
@@ -4996,6 +5551,7 @@
   },
   {
     "protectedAreaName": "Binsar Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Uttarakhand",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Binsar_Wildlife_Sanctuary",
@@ -5005,6 +5561,7 @@
   },
   {
     "protectedAreaName": "Govind Pashu Vihar Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Uttarakhand",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Govind_Pashu_Vihar_Wildlife_Sanctuary",
@@ -5014,6 +5571,7 @@
   },
   {
     "protectedAreaName": "Kedarnath Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Uttarakhand",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Kedarnath_Wildlife_Sanctuary",
@@ -5023,6 +5581,7 @@
   },
   {
     "protectedAreaName": "Mussoorie Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Uttarakhand",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Mussoorie_Wildlife_Sanctuary",
@@ -5032,6 +5591,7 @@
   },
   {
     "protectedAreaName": "Nandhaur Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Uttarakhand",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Nandhaur_Wildlife_Sanctuary",
@@ -5041,6 +5601,7 @@
   },
   {
     "protectedAreaName": "Sonanadi Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "Uttarakhand",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Sonanadi_Wildlife_Sanctuary",
@@ -5050,6 +5611,7 @@
   },
   {
     "protectedAreaName": "Ballabhpur Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "West Bengal",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Ballabhpur_Wildlife_Sanctuary",
@@ -5059,6 +5621,7 @@
   },
   {
     "protectedAreaName": "Bethuadahari Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "West Bengal",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Bethuadahari_Wildlife_Sanctuary",
@@ -5068,6 +5631,7 @@
   },
   {
     "protectedAreaName": "Bibhutibhushan Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "West Bengal",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Bibhutibhushan_Wildlife_Sanctuary",
@@ -5076,8 +5640,9 @@
     "district": "North 24-Paraganas"
   },
   {
-    "protectedAreaName": "Buxa Wildlife Sanctuary",
-    "protectedAreaType": "Wildlife Sanctuary",
+    "protectedAreaName": "Buxa Tiger Reserve",
+    "nameAlias": "Buxa Wildlife Sanctuary",
+    "protectedAreaType": "Tiger Reserve",
     "state": "West Bengal",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Buxa_Tiger_Reserve",
     "declared": "1986",
@@ -5086,6 +5651,7 @@
   },
   {
     "protectedAreaName": "Chapramari Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "West Bengal",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Chapramari_Wildlife_Sanctuary",
@@ -5094,8 +5660,9 @@
     "district": "Jalpaiguri"
   },
   {
-    "protectedAreaName": "Chintamoni Kar Wildlife Sanctuary",
-    "protectedAreaType": "Wildlife Sanctuary",
+    "protectedAreaName": "Chintamoni Kar Bird Sanctuary",
+    "nameAlias": "Chintamoni Kar Wildlife Sanctuary",
+    "protectedAreaType": "Bird Sanctuary",
     "state": "West Bengal",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Chintamoni_Kar_Bird_Sanctuary",
     "declared": "1982",
@@ -5104,6 +5671,7 @@
   },
   {
     "protectedAreaName": "Haliday Island Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "West Bengal",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Haliday_Island_Wildlife_Sanctuary",
@@ -5113,6 +5681,7 @@
   },
   {
     "protectedAreaName": "Jore Pokhri Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "West Bengal",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Jore_Pokhri_Wildlife_Sanctuary",
@@ -5122,6 +5691,7 @@
   },
   {
     "protectedAreaName": "Lothian Island Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "West Bengal",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Lothian_Island_Wildlife_Sanctuary",
@@ -5131,6 +5701,7 @@
   },
   {
     "protectedAreaName": "Mahananda Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "West Bengal",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Mahananda_Wildlife_Sanctuary",
@@ -5140,6 +5711,7 @@
   },
   {
     "protectedAreaName": "Pakhibitan Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "West Bengal",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Pakhibitan_Wildlife_Sanctuary?action=edit&redlink=1",
@@ -5149,6 +5721,7 @@
   },
   {
     "protectedAreaName": "Raiganj Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "West Bengal",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Raiganj_Wildlife_Sanctuary",
@@ -5158,6 +5731,7 @@
   },
   {
     "protectedAreaName": "Ramnabagan Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "West Bengal",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Ramnabagan_Wildlife_Sanctuary",
@@ -5167,6 +5741,7 @@
   },
   {
     "protectedAreaName": "Sajnakhali Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "West Bengal",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Sajnakhali_Wildlife_Sanctuary",
@@ -5176,6 +5751,7 @@
   },
   {
     "protectedAreaName": "Senchal Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "West Bengal",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Senchal_Wildlife_Sanctuary",
@@ -5185,6 +5761,7 @@
   },
   {
     "protectedAreaName": "West Sunderban Wildlife Sanctuary",
+    "nameAlias": null,
     "protectedAreaType": "Wildlife Sanctuary",
     "state": "West Bengal",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/West_Sunderban_Wildlife_Sanctuary",

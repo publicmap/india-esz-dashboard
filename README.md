@@ -25,9 +25,12 @@ Source: [Wikipedia](https://en.wikipedia.org/wiki/Eco-sensitive_zone)
 >![ESZ notification status of protected areas in India](assets/img/pib-moefcc-note.png)<br>
 Source: [PIB, Ministry of Environment Forests & Climate Change, Government of India](https://www.pib.gov.in/newsite/PrintRelease.aspx?relid=126299&reg=48&lang=2)
 
-- 2002: The Indian Board for Wildlife proposed 10km buffer zones under the Environment Protection Act of 1986 to insulate national parks and sanctuaries
-- 2004: The Goa Foundation filed a landmark case [(PIL Writ Petition 460/2004)](https://indiankanoon.org/doc/81576067/) in the Supreme Court of India demanding action against authorities for failing to notify ESZs around protected wildlife areas
-- 2006: Supreme Court of India directs all State/UTs to define ESZ around protected areas within 4 weeks failing which a [10km ESZ will apply](https://www.pib.gov.in/newsite/PrintRelease.aspx?relid=126299&reg=48&lang=2)
+
+- 1970: The Indian Board for Wildlife (IBWL) is created as an advisory body to provide guidance on issues relating to the protection and conservation of wildlife and their habitats.  
+- 2002: The 21st IBWL meeting adopts the [Wildlife Conservation Strategy 2002](https://moef.gov.in/uploads/2018/03/WILDLIFE%20CONSERVATION%20STRATEGY%202002.pdf) chaired by Shri Atal Bihari Bajpai, then honourable Prime Minister of India, which proposed notifying 10km buffer zones of eco-fragile zones around protected areas where mining an polluting industries will be prohibited
+- 2003: The National Board for Wildlife (NBWL) is constituted as a statutory body to replace IBWL
+- 2004: The [Goa Foundation](http://goafoundation.org) filed a landmark case [(PIL Writ Petition 460/2004)](https://indiankanoon.org/doc/81576067/) in the Supreme Court of India for clarification regarding iron ore mining within 10km of protected areas in Goa state
+- 2006: Supreme Court of India directs all State/UTs to define Eco-Sensitive Zones (ESZ) around protected areas within 4 weeks failing which a [10km ESZ will apply as default](https://www.pib.gov.in/newsite/PrintRelease.aspx?relid=126299&reg=48&lang=2)
 - 2011: [Guidelines for declaration of ESZ](https://cpc.parivesh.nic.in/writereaddata/Guidelines_for_EcoSensitive_Zones_around_Protected_Areas.pdf) pulbished by MoEFCC outlining procedures to State/UTs to demarcate and notify ESZ with the following details:
 ```
 (i) Delineation of the physical boundaries on a topo-sheet with precise
@@ -48,8 +51,13 @@ proposed eco-sensitive zone.
 (vi) List of the protected areas for declaring eco-sensitive zone.
 - 2012: Due to lack of progress on ESZ identification, [CEC reccomends a safety zone of 100m-2000m metres](https://hash-cookies.s3.amazonaws.com/CEC%20buffer%20zones%20report%2020.9.2012.pdf) in the interim based on protected area size
 ```
+- 2015: Goa becomes the first state to publish final ESZ notifications for all 6 protected areas in the state
+- 2017: 
 - 2022: [Supreme Court mandates a minimum 1km ESZ](https://api.sci.gov.in/supremecourt/1995/2997/2997_1995_5_1501_36130_Order_03-Jun-2022.pdf) around all protected areas
-- 2023: [Supreme Court relaxes 2022 order to define minimum ESZ](https://api.sci.gov.in/supremecourt/1995/2997/2997_1995_8_1501_43924_Judgement_26-Apr-2023.pdf) to be protected area specific citing uniform minimums being impossible to implement.
+- 2023: [Supreme Court dilutes 1km minimum ESZ in 2022 order to define minimum ESZ](https://api.sci.gov.in/supremecourt/1995/2997/2997_1995_8_1501_43924_Judgement_26-Apr-2023.pdf) to be protected area specific citing uniform minimums being impossible to implement.
+- 2023: MoEFCC release [updated guidelines for seeking recommendations of the
+Standing Committee of NBWL for activities in protected areas and ESZ](https://cdnbbsr.s3waas.gov.in/s3fa5f68379610ec97bf9b19dfeb19d910/uploads/2025/09/202509051613268164.pdf)
+- 2025: [IGNFA]() publishes a [Discussion paper on ESZ](https://www.ignfa.gov.in/publications/an-evaluative-discusion-esz-paper.pdf) which advocates for a risk based approach to ESZ declaration
 
 ## Data pipeline
 

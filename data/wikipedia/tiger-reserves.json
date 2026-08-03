@@ -1,6 +1,7 @@
 [
   {
-    "protectedAreaName": "Bandipur Tiger Reserve",
+    "protectedAreaName": "Bandipur National Park Tiger Reserve",
+    "nameAlias": "Bandipur Tiger Reserve",
     "protectedAreaType": "Tiger Reserve",
     "state": "Karnataka",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Bandipur_National_Park",
@@ -14,7 +15,8 @@
     "areaTotalKm2": "1,456.3"
   },
   {
-    "protectedAreaName": "Corbett Tiger Reserve",
+    "protectedAreaName": "Jim Corbett National Park Tiger Reserve",
+    "nameAlias": "Corbett Tiger Reserve",
     "protectedAreaType": "Tiger Reserve",
     "state": "Uttarakhand",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Jim_Corbett_National_Park",
@@ -29,6 +31,7 @@
   },
   {
     "protectedAreaName": "Kanha Tiger Reserve",
+    "nameAlias": null,
     "protectedAreaType": "Tiger Reserve",
     "state": "Madhya Pradesh",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Kanha_Tiger_Reserve",
@@ -42,7 +45,8 @@
     "areaTotalKm2": "2,051.79"
   },
   {
-    "protectedAreaName": "Manas Tiger Reserve",
+    "protectedAreaName": "Manas National Park Tiger Reserve",
+    "nameAlias": "Manas Tiger Reserve",
     "protectedAreaType": "Tiger Reserve",
     "state": "Assam",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Manas_National_Park",
@@ -57,6 +61,7 @@
   },
   {
     "protectedAreaName": "Melghat Tiger Reserve",
+    "nameAlias": null,
     "protectedAreaType": "Tiger Reserve",
     "state": "Maharashtra",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Melghat",
@@ -71,6 +76,7 @@
   },
   {
     "protectedAreaName": "Palamau Tiger Reserve",
+    "nameAlias": null,
     "protectedAreaType": "Tiger Reserve",
     "state": "Jharkhand",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Palamau_Tiger_Reserve",
@@ -84,7 +90,8 @@
     "areaTotalKm2": "1,129.93"
   },
   {
-    "protectedAreaName": "Ranthambore Tiger Reserve",
+    "protectedAreaName": "Ranthambore National Park Tiger Reserve",
+    "nameAlias": "Ranthambore Tiger Reserve",
     "protectedAreaType": "Tiger Reserve",
     "state": "Rajasthan",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Ranthambore_National_Park",
@@ -98,7 +105,8 @@
     "areaTotalKm2": "1,411.29"
   },
   {
-    "protectedAreaName": "Similipal Tiger Reserve",
+    "protectedAreaName": "Simlipal National Park Tiger Reserve",
+    "nameAlias": "Similipal Tiger Reserve",
     "protectedAreaType": "Tiger Reserve",
     "state": "Odisha",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Simlipal_National_Park",
@@ -112,7 +120,8 @@
     "areaTotalKm2": "2,750"
   },
   {
-    "protectedAreaName": "Sunderbans Tiger Reserve",
+    "protectedAreaName": "Sundarbans National Park Tiger Reserve",
+    "nameAlias": "Sunderbans Tiger Reserve",
     "protectedAreaType": "Tiger Reserve",
     "state": "West Bengal",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Sundarbans_National_Park",
@@ -126,7 +135,8 @@
     "areaTotalKm2": "2,584.89"
   },
   {
-    "protectedAreaName": "Periyar Tiger Reserve",
+    "protectedAreaName": "Periyar National Park Tiger Reserve",
+    "nameAlias": "Periyar Tiger Reserve",
     "protectedAreaType": "Tiger Reserve",
     "state": "Kerala",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Periyar_National_Park",
@@ -141,6 +151,7 @@
   },
   {
     "protectedAreaName": "Sariska Tiger Reserve",
+    "nameAlias": null,
     "protectedAreaType": "Tiger Reserve",
     "state": "Rajasthan",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Sariska_Tiger_Reserve",
@@ -155,6 +166,7 @@
   },
   {
     "protectedAreaName": "Buxa Tiger Reserve",
+    "nameAlias": null,
     "protectedAreaType": "Tiger Reserve",
     "state": "West Bengal",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Buxa_Tiger_Reserve",
@@ -168,7 +180,8 @@
     "areaTotalKm2": "757.90"
   },
   {
-    "protectedAreaName": "Indravati Tiger Reserve",
+    "protectedAreaName": "Indravati National Park Tiger Reserve",
+    "nameAlias": "Indravati Tiger Reserve",
     "protectedAreaType": "Tiger Reserve",
     "state": "Chhattisgarh",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Indravati_National_Park",
@@ -182,7 +195,8 @@
     "areaTotalKm2": "2,799.07"
   },
   {
-    "protectedAreaName": "Namdapha Tiger Reserve",
+    "protectedAreaName": "Namdapha National Park Tiger Reserve",
+    "nameAlias": "Namdapha Tiger Reserve",
     "protectedAreaType": "Tiger Reserve",
     "state": "Arunachal Pradesh",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Namdapha_National_Park",
@@ -197,6 +211,7 @@
   },
   {
     "protectedAreaName": "Nagarjunsagar-Srisailam Tiger Reserve",
+    "nameAlias": null,
     "protectedAreaType": "Tiger Reserve",
     "state": "Andhra Pradesh",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Nagarjunsagar-Srisailam_Tiger_Reserve",
@@ -210,7 +225,8 @@
     "areaTotalKm2": "3,296.31"
   },
   {
-    "protectedAreaName": "Dudhwa Tiger Reserve",
+    "protectedAreaName": "Dudhwa National Park Tiger Reserve",
+    "nameAlias": "Dudhwa Tiger Reserve",
     "protectedAreaType": "Tiger Reserve",
     "state": "Uttar Pradesh",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Dudhwa_National_Park",
@@ -224,7 +240,8 @@
     "areaTotalKm2": "2,201.77"
   },
   {
-    "protectedAreaName": "Kalakad-Mundanthurai Tiger Reserve",
+    "protectedAreaName": "Kalakkad Mundanthurai Tiger Reserve",
+    "nameAlias": "Kalakad-Mundanthurai Tiger Reserve",
     "protectedAreaType": "Tiger Reserve",
     "state": "Tamil Nadu",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Kalakkad_Mundanthurai_Tiger_Reserve",
@@ -238,7 +255,8 @@
     "areaTotalKm2": "1,601.54"
   },
   {
-    "protectedAreaName": "Valmiki Tiger Reserve",
+    "protectedAreaName": "Valmiki National Park Tiger Reserve",
+    "nameAlias": "Valmiki Tiger Reserve",
     "protectedAreaType": "Tiger Reserve",
     "state": "Bihar",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Valmiki_National_Park",
@@ -252,7 +270,8 @@
     "areaTotalKm2": "899.38"
   },
   {
-    "protectedAreaName": "Pench (M.P.) Tiger Reserve",
+    "protectedAreaName": "Pench Tiger Reserve",
+    "nameAlias": "Pench (M.P.) Tiger Reserve",
     "protectedAreaType": "Tiger Reserve",
     "state": "Madhya Pradesh",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Pench_Tiger_Reserve",
@@ -266,7 +285,8 @@
     "areaTotalKm2": "1,179.63"
   },
   {
-    "protectedAreaName": "Tadoba-Andhari Tiger Reserve",
+    "protectedAreaName": "Tadoba Andhari Tiger Reserve",
+    "nameAlias": "Tadoba-Andhari Tiger Reserve",
     "protectedAreaType": "Tiger Reserve",
     "state": "Maharashtra",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Tadoba_Andhari_Tiger_Reserve",
@@ -280,7 +300,8 @@
     "areaTotalKm2": "1,727.59"
   },
   {
-    "protectedAreaName": "Bandhavgarh Tiger Reserve",
+    "protectedAreaName": "Bandhavgarh National Park Tiger Reserve",
+    "nameAlias": "Bandhavgarh Tiger Reserve",
     "protectedAreaType": "Tiger Reserve",
     "state": "Madhya Pradesh",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Bandhavgarh_National_Park",
@@ -294,7 +315,8 @@
     "areaTotalKm2": "1,536.93"
   },
   {
-    "protectedAreaName": "Panna Tiger Reserve",
+    "protectedAreaName": "Panna National Park Tiger Reserve",
+    "nameAlias": "Panna Tiger Reserve",
     "protectedAreaType": "Tiger Reserve",
     "state": "Madhya Pradesh",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Panna_National_Park",
@@ -309,6 +331,7 @@
   },
   {
     "protectedAreaName": "Dampa Tiger Reserve",
+    "nameAlias": null,
     "protectedAreaType": "Tiger Reserve",
     "state": "Mizoram",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Dampa_Tiger_Reserve",
@@ -322,7 +345,8 @@
     "areaTotalKm2": "988.00"
   },
   {
-    "protectedAreaName": "Bhadra Tiger Reserve",
+    "protectedAreaName": "Bhadra Wildlife Sanctuary Tiger Reserve",
+    "nameAlias": "Bhadra Tiger Reserve",
     "protectedAreaType": "Tiger Reserve",
     "state": "Karnataka",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Bhadra_Wildlife_Sanctuary",
@@ -336,7 +360,8 @@
     "areaTotalKm2": "1,064.29"
   },
   {
-    "protectedAreaName": "Pench (MH) Tiger Reserve",
+    "protectedAreaName": "Pench Tiger Reserve",
+    "nameAlias": null,
     "protectedAreaType": "Tiger Reserve",
     "state": "Maharashtra",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Pench_Tiger_Reserve",
@@ -351,6 +376,7 @@
   },
   {
     "protectedAreaName": "Pakke Tiger Reserve",
+    "nameAlias": null,
     "protectedAreaType": "Tiger Reserve",
     "state": "Arunachal Pradesh",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Pakke_Tiger_Reserve",
@@ -364,7 +390,8 @@
     "areaTotalKm2": "1,198.45"
   },
   {
-    "protectedAreaName": "Nameri Tiger Reserve",
+    "protectedAreaName": "Nameri National Park Tiger Reserve",
+    "nameAlias": "Nameri Tiger Reserve",
     "protectedAreaType": "Tiger Reserve",
     "state": "Assam",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Nameri_National_Park",
@@ -379,6 +406,7 @@
   },
   {
     "protectedAreaName": "Satpura Tiger Reserve",
+    "nameAlias": null,
     "protectedAreaType": "Tiger Reserve",
     "state": "Madhya Pradesh",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Satpura_Tiger_Reserve",
@@ -393,6 +421,7 @@
   },
   {
     "protectedAreaName": "Anamalai Tiger Reserve",
+    "nameAlias": null,
     "protectedAreaType": "Tiger Reserve",
     "state": "Tamil Nadu",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Anamalai_Tiger_Reserve",
@@ -406,7 +435,8 @@
     "areaTotalKm2": "1,479.87"
   },
   {
-    "protectedAreaName": "Udanti–Sitanadi Tiger Reserve",
+    "protectedAreaName": "Sitanadi Wildlife Sanctuary Tiger Reserve",
+    "nameAlias": "Udanti–Sitanadi Tiger Reserve",
     "protectedAreaType": "Tiger Reserve",
     "state": "Chhattisgarh",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Sitanadi_Wildlife_Sanctuary",
@@ -421,6 +451,7 @@
   },
   {
     "protectedAreaName": "Satkosia Tiger Reserve",
+    "nameAlias": null,
     "protectedAreaType": "Tiger Reserve",
     "state": "Odisha",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Satkosia_Tiger_Reserve",
@@ -434,7 +465,8 @@
     "areaTotalKm2": "963.87"
   },
   {
-    "protectedAreaName": "Kaziranga Tiger Reserve",
+    "protectedAreaName": "Kaziranga National Park Tiger Reserve",
+    "nameAlias": "Kaziranga Tiger Reserve",
     "protectedAreaType": "Tiger Reserve",
     "state": "Assam",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Kaziranga_National_Park",
@@ -448,7 +480,8 @@
     "areaTotalKm2": "1,173.58"
   },
   {
-    "protectedAreaName": "Achanakmar Tiger Reserve",
+    "protectedAreaName": "Achanakmar Wildlife Sanctuary Tiger Reserve",
+    "nameAlias": "Achanakmar Tiger Reserve",
     "protectedAreaType": "Tiger Reserve",
     "state": "Chhattisgarh",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Achanakmar_Wildlife_Sanctuary",
@@ -463,6 +496,7 @@
   },
   {
     "protectedAreaName": "Kali Tiger Reserve",
+    "nameAlias": null,
     "protectedAreaType": "Tiger Reserve",
     "state": "Karnataka",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Kali_Tiger_Reserve",
@@ -476,7 +510,8 @@
     "areaTotalKm2": "1,097.51"
   },
   {
-    "protectedAreaName": "Sanjay Dhubri Tiger Reserve",
+    "protectedAreaName": "Sanjay National Park Tiger Reserve",
+    "nameAlias": "Sanjay Dhubri Tiger Reserve",
     "protectedAreaType": "Tiger Reserve",
     "state": "Madhya Pradesh",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Sanjay_National_Park",
@@ -490,7 +525,8 @@
     "areaTotalKm2": "1,674.5"
   },
   {
-    "protectedAreaName": "Mudumalai Tiger Reserve",
+    "protectedAreaName": "Mudumalai National Park Tiger Reserve",
+    "nameAlias": "Mudumalai Tiger Reserve",
     "protectedAreaType": "Tiger Reserve",
     "state": "Tamil Nadu",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Mudumalai_National_Park",
@@ -504,7 +540,8 @@
     "areaTotalKm2": "688.59"
   },
   {
-    "protectedAreaName": "Nagarhole Tiger Reserve",
+    "protectedAreaName": "Nagarhole National Park Tiger Reserve",
+    "nameAlias": "Nagarhole Tiger Reserve",
     "protectedAreaType": "Tiger Reserve",
     "state": "Karnataka",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Nagarhole_National_Park",
@@ -519,6 +556,7 @@
   },
   {
     "protectedAreaName": "Parambikulam Tiger Reserve",
+    "nameAlias": null,
     "protectedAreaType": "Tiger Reserve",
     "state": "Kerala",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Parambikulam_Tiger_Reserve",
@@ -533,6 +571,7 @@
   },
   {
     "protectedAreaName": "Sahyadri Tiger Reserve",
+    "nameAlias": null,
     "protectedAreaType": "Tiger Reserve",
     "state": "Maharashtra",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Sahyadri_Tiger_Reserve",
@@ -546,7 +585,8 @@
     "areaTotalKm2": "1,165.57"
   },
   {
-    "protectedAreaName": "Biligiri Ranganatha Temple Tiger Reserve",
+    "protectedAreaName": "Biligiriranga Hills Tiger Reserve",
+    "nameAlias": "Biligiri Ranganatha Temple Tiger Reserve",
     "protectedAreaType": "Tiger Reserve",
     "state": "Karnataka",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Biligiriranga_Hills",
@@ -560,7 +600,8 @@
     "areaTotalKm2": "574.82"
   },
   {
-    "protectedAreaName": "Kawal Tiger Reserve",
+    "protectedAreaName": "Kawal Wildlife Sanctuary Tiger Reserve",
+    "nameAlias": "Kawal Tiger Reserve",
     "protectedAreaType": "Tiger Reserve",
     "state": "Telangana",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Kawal_Wildlife_Sanctuary",
@@ -574,7 +615,8 @@
     "areaTotalKm2": "2,015.44"
   },
   {
-    "protectedAreaName": "Sathyamangalam Tiger Reserve",
+    "protectedAreaName": "Sathyamangalam Wildlife Sanctuary Tiger Reserve",
+    "nameAlias": "Sathyamangalam Tiger Reserve",
     "protectedAreaType": "Tiger Reserve",
     "state": "Tamil Nadu",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Sathyamangalam_Wildlife_Sanctuary",
@@ -589,6 +631,7 @@
   },
   {
     "protectedAreaName": "Mukandra Hills Tiger Reserve",
+    "nameAlias": null,
     "protectedAreaType": "Tiger Reserve",
     "state": "Rajasthan",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Mukandra_Hills_Tiger_Reserve",
@@ -602,7 +645,8 @@
     "areaTotalKm2": "759.99"
   },
   {
-    "protectedAreaName": "Nawegaon–Nagzira Tiger Reserve",
+    "protectedAreaName": "Navegaon National Park Tiger Reserve",
+    "nameAlias": "Nawegaon–Nagzira Tiger Reserve",
     "protectedAreaType": "Tiger Reserve",
     "state": "Maharashtra",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Navegaon_National_Park",
@@ -617,6 +661,7 @@
   },
   {
     "protectedAreaName": "Amrabad Tiger Reserve",
+    "nameAlias": null,
     "protectedAreaType": "Tiger Reserve",
     "state": "Telangana",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Amrabad_Tiger_Reserve?action=edit&redlink=1",
@@ -631,6 +676,7 @@
   },
   {
     "protectedAreaName": "Pilibhit Tiger Reserve",
+    "nameAlias": null,
     "protectedAreaType": "Tiger Reserve",
     "state": "Uttar Pradesh",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Pilibhit_Tiger_Reserve",
@@ -644,7 +690,8 @@
     "areaTotalKm2": "730.25"
   },
   {
-    "protectedAreaName": "Bor Tiger Reserve",
+    "protectedAreaName": "Bor Wildlife Sanctuary Tiger Reserve",
+    "nameAlias": "Bor Tiger Reserve",
     "protectedAreaType": "Tiger Reserve",
     "state": "Maharashtra",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Bor_Wildlife_Sanctuary",
@@ -658,7 +705,8 @@
     "areaTotalKm2": "816.27"
   },
   {
-    "protectedAreaName": "Rajaji Tiger Reserve",
+    "protectedAreaName": "Rajaji National Park Tiger Reserve",
+    "nameAlias": "Rajaji Tiger Reserve",
     "protectedAreaType": "Tiger Reserve",
     "state": "Uttarakhand",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Rajaji_National_Park",
@@ -672,7 +720,8 @@
     "areaTotalKm2": "1,075.17"
   },
   {
-    "protectedAreaName": "Orang Tiger Reserve",
+    "protectedAreaName": "Orang National Park Tiger Reserve",
+    "nameAlias": "Orang Tiger Reserve",
     "protectedAreaType": "Tiger Reserve",
     "state": "Assam",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Orang_National_Park",
@@ -686,7 +735,8 @@
     "areaTotalKm2": "492.46"
   },
   {
-    "protectedAreaName": "Kamlang Tiger Reserve",
+    "protectedAreaName": "Kamlang Wildlife Sanctuary Tiger Reserve",
+    "nameAlias": "Kamlang Tiger Reserve",
     "protectedAreaType": "Tiger Reserve",
     "state": "Arunachal Pradesh",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Kamlang_Wildlife_Sanctuary",
@@ -700,7 +750,8 @@
     "areaTotalKm2": "783.00"
   },
   {
-    "protectedAreaName": "Srivilliputhur–Megamalai Tiger Reserve",
+    "protectedAreaName": "Srivilliputhur-Megamalai Tiger Reserve",
+    "nameAlias": "Srivilliputhur–Megamalai Tiger Reserve",
     "protectedAreaType": "Tiger Reserve",
     "state": "Tamil Nadu",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Srivilliputhur-Megamalai_Tiger_Reserve",
@@ -714,7 +765,8 @@
     "areaTotalKm2": "1,016.57"
   },
   {
-    "protectedAreaName": "Ramgarh Vishdhari Tiger Reserve",
+    "protectedAreaName": "Ramgarh Vishdhari Wildlife Sanctuary Tiger Reserve",
+    "nameAlias": "Ramgarh Vishdhari Tiger Reserve",
     "protectedAreaType": "Tiger Reserve",
     "state": "Rajasthan",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Ramgarh_Vishdhari_Wildlife_Sanctuary",
@@ -728,7 +780,8 @@
     "areaTotalKm2": "1,501.90"
   },
   {
-    "protectedAreaName": "Ranipur Tiger Reserve",
+    "protectedAreaName": "Ranipur Wildlife Sanctuary Tiger Reserve",
+    "nameAlias": "Ranipur Tiger Reserve",
     "protectedAreaType": "Tiger Reserve",
     "state": "Uttar Pradesh",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Ranipur_Wildlife_Sanctuary",
@@ -742,7 +795,8 @@
     "areaTotalKm2": "529.36"
   },
   {
-    "protectedAreaName": "Veerangana Durgavati Tiger Reserve",
+    "protectedAreaName": "Veerangana Durgavati Wildlife Sanctuary Tiger Reserve",
+    "nameAlias": "Veerangana Durgavati Tiger Reserve",
     "protectedAreaType": "Tiger Reserve",
     "state": "Madhya Pradesh",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Veerangana_Durgavati_Wildlife_Sanctuary",
@@ -756,7 +810,8 @@
     "areaTotalKm2": "2,339.12"
   },
   {
-    "protectedAreaName": "Dholpur-Karauli Tiger Reserve",
+    "protectedAreaName": "Dholpur—Karauli Tiger Reserve",
+    "nameAlias": "Dholpur-Karauli Tiger Reserve",
     "protectedAreaType": "Tiger Reserve",
     "state": "Rajasthan",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Dholpur—Karauli_Tiger_Reserve?action=edit&redlink=1",
@@ -770,7 +825,8 @@
     "areaTotalKm2": "599.64"
   },
   {
-    "protectedAreaName": "Guru Ghasidas–Tamor Pingla Tiger Reserve",
+    "protectedAreaName": "Guru Ghasidas - Tamor Pingla Tiger Reserve",
+    "nameAlias": "Guru Ghasidas–Tamor Pingla Tiger Reserve",
     "protectedAreaType": "Tiger Reserve",
     "state": "Chhattisgarh",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Guru_Ghasidas_-_Tamor_Pingla_Tiger_Reserve",
@@ -785,6 +841,7 @@
   },
   {
     "protectedAreaName": "Ratapani Tiger Reserve",
+    "nameAlias": null,
     "protectedAreaType": "Tiger Reserve",
     "state": "Madhya Pradesh",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Ratapani_Tiger_Reserve",
@@ -798,7 +855,8 @@
     "areaTotalKm2": "1,271.47"
   },
   {
-    "protectedAreaName": "Madhav Tiger Reserve",
+    "protectedAreaName": "Madhav National Park Tiger Reserve",
+    "nameAlias": "Madhav Tiger Reserve",
     "protectedAreaType": "Tiger Reserve",
     "state": "Madhya Pradesh",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Madhav_National_Park",

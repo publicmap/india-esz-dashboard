@@ -38,6 +38,28 @@ function firstWikipediaHref($, cell) {
   return a.length > 0 ? a.attr('href') : null;
 }
 
+// Parsoid renders a wikitext link as <a title="Page Title">Display Text</a>,
+// and the two can differ -- e.g. [[Nagarhole National Park|Nagarhole
+// National Park(Rajiv Gandhi)]] renders as <a title="Nagarhole National
+// Park">Nagarhole National Park(Rajiv Gandhi)</a>. The title attribute is
+// the actual Wikipedia article name, which is what a Wikidata label
+// corresponds to, so it's the name to match on first; the anchor's own
+// (possibly parenthetical/annotated) display text becomes a fallback alias
+// for matching, kept only when it actually differs from the title.
+function wikilinkName($, cell) {
+  if (!cell) return { name: null, alias: null };
+  const a = $(cell).find('a[href*="en.wikipedia.org/wiki/"]').first();
+  if (a.length === 0) return { name: cellText($, cell), alias: null };
+  // A redlink (article doesn't exist yet) gets its title annotated with
+  // " (page does not exist)" -- strip that back off so it isn't mistaken for
+  // part of the article name.
+  const linkedName = emptyToNull((a.attr('title') ?? '').replace(/\s*\(page does not exist\)\s*$/, ''));
+  const displayText = emptyToNull(a.text());
+  if (!linkedName) return { name: displayText, alias: null };
+  if (!displayText || displayText === linkedName) return { name: linkedName, alias: null };
+  return { name: linkedName, alias: displayText };
+}
+
 function firstImageSrc($, cell) {
   if (!cell) return null;
   const img = $(cell).find('img').first();
@@ -80,9 +102,10 @@ async function writeRecords(records, basename) {
 async function parseNationalParks() {
   const { $, rows } = await loadRows('data/raw/national-parks-table.html');
   const records = rows.map((c) => {
-    const name = cellText($, c.Name);
+    const { name, alias: nameAlias } = wikilinkName($, c.Name);
     return {
       protectedAreaName: name,
+      nameAlias,
       protectedAreaType: classifyProtectedAreaType(name) ?? 'National Park',
       state: cellText($, c.State),
       wikipediaUrl: firstWikipediaHref($, c.Name),
@@ -104,9 +127,10 @@ async function parseNationalParks() {
 async function parseWildlifeSanctuaries() {
   const { $, rows } = await loadRows('data/raw/wildlife-sanctuaries-table.html');
   const records = rows.map((c) => {
-    const name = cellText($, c.Sanctuary);
+    const { name, alias: nameAlias } = wikilinkName($, c.Sanctuary);
     return {
       protectedAreaName: name,
+      nameAlias,
       protectedAreaType: classifyProtectedAreaType(name) ?? 'Wildlife Sanctuary',
       state: cellText($, c.State),
       wikipediaUrl: firstWikipediaHref($, c.Sanctuary),
@@ -131,8 +155,16 @@ async function parseTigerReserves() {
   const { $, rows } = await loadRows('data/raw/tiger-reserves-table.html');
   const records = rows.map((c) => {
     const { latitude, longitude } = extractLatLon($, c.Location);
+    const { name, alias: nameAlias } = wikilinkName($, c.Name);
+    const protectedAreaName = tigerReserveName(name);
+    // Appending "Tiger Reserve" to both forms (e.g. title "Kanha Tiger
+    // Reserve" already has it, display text "Kanha" doesn't) can make an
+    // originally-differing pair collide -- drop the alias when that happens
+    // rather than store a pointless duplicate of the name.
+    const resolvedAlias = nameAlias ? tigerReserveName(nameAlias) : null;
     return {
-      protectedAreaName: tigerReserveName(cellText($, c.Name)),
+      protectedAreaName,
+      nameAlias: resolvedAlias !== protectedAreaName ? resolvedAlias : null,
       protectedAreaType: 'Tiger Reserve',
       state: cellText($, c.State),
       wikipediaUrl: firstWikipediaHref($, c.Name),

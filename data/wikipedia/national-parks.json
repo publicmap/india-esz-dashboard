@@ -1,6 +1,7 @@
 [
   {
     "protectedAreaName": "Campbell Bay National Park",
+    "nameAlias": null,
     "protectedAreaType": "National Park",
     "state": "Andaman and Nicobar Islands",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Campbell_Bay_National_Park",
@@ -17,6 +18,7 @@
   },
   {
     "protectedAreaName": "Galathea National Park",
+    "nameAlias": null,
     "protectedAreaType": "National Park",
     "state": "Andaman and Nicobar Islands",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Galathea_National_Park",
@@ -32,7 +34,8 @@
     "landmarks": null
   },
   {
-    "protectedAreaName": "Mahatma Gandhi Marine National Park(Wandoor)",
+    "protectedAreaName": "Mahatma Gandhi Marine National Park",
+    "nameAlias": "Mahatma Gandhi Marine National Park(Wandoor)",
     "protectedAreaType": "National Park",
     "state": "Andaman and Nicobar Islands",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Mahatma_Gandhi_Marine_National_Park",
@@ -49,6 +52,7 @@
   },
   {
     "protectedAreaName": "Mount Harriet National Park",
+    "nameAlias": null,
     "protectedAreaType": "National Park",
     "state": "Andaman and Nicobar Islands",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Mount_Harriet_National_Park",
@@ -65,6 +69,7 @@
   },
   {
     "protectedAreaName": "Rani Jhansi Marine National Park",
+    "nameAlias": null,
     "protectedAreaType": "National Park",
     "state": "Andaman and Nicobar Islands",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Rani_Jhansi_Marine_National_Park",
@@ -81,6 +86,7 @@
   },
   {
     "protectedAreaName": "Saddle Peak National Park",
+    "nameAlias": null,
     "protectedAreaType": "National Park",
     "state": "Andaman and Nicobar Islands",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Saddle_Peak_National_Park",
@@ -97,6 +103,7 @@
   },
   {
     "protectedAreaName": "North Button Island National Park",
+    "nameAlias": null,
     "protectedAreaType": "National Park",
     "state": "Andaman and Nicobar Islands",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/North_Button_Island_National_Park",
@@ -113,6 +120,7 @@
   },
   {
     "protectedAreaName": "Middle Button Island National Park",
+    "nameAlias": null,
     "protectedAreaType": "National Park",
     "state": "Andaman and Nicobar Islands",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Middle_Button_Island_National_Park",
@@ -129,6 +137,7 @@
   },
   {
     "protectedAreaName": "South Button Island National Park",
+    "nameAlias": null,
     "protectedAreaType": "National Park",
     "state": "Andaman and Nicobar Islands",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/South_Button_Island_National_Park",
@@ -145,6 +154,7 @@
   },
   {
     "protectedAreaName": "Papikonda National Park",
+    "nameAlias": null,
     "protectedAreaType": "National Park",
     "state": "Andhra Pradesh",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Papikonda_National_Park",
@@ -161,6 +171,7 @@
   },
   {
     "protectedAreaName": "Rajiv Gandhi National Park (Rameswaram)",
+    "nameAlias": null,
     "protectedAreaType": "National Park",
     "state": "Andhra Pradesh",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Rajiv_Gandhi_National_Park_(Rameswaram)",
@@ -177,6 +188,7 @@
   },
   {
     "protectedAreaName": "Sri Venkateswara National Park",
+    "nameAlias": null,
     "protectedAreaType": "National Park",
     "state": "Andhra Pradesh",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Sri_Venkateswara_National_Park",
@@ -193,6 +205,7 @@
   },
   {
     "protectedAreaName": "Mouling National Park",
+    "nameAlias": null,
     "protectedAreaType": "National Park",
     "state": "Arunachal Pradesh",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Mouling_National_Park",
@@ -209,6 +222,7 @@
   },
   {
     "protectedAreaName": "Namdapha National Park",
+    "nameAlias": null,
     "protectedAreaType": "National Park",
     "state": "Arunachal Pradesh",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Namdapha_National_Park",
@@ -225,6 +239,7 @@
   },
   {
     "protectedAreaName": "Dibru-Saikhowa National Park",
+    "nameAlias": null,
     "protectedAreaType": "National Park",
     "state": "Assam",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Dibru-Saikhowa_National_Park",
@@ -240,7 +255,8 @@
     "landmarks": null
   },
   {
-    "protectedAreaName": "Dihing Patkai National Park",
+    "protectedAreaName": "Dehing Patkai National Park",
+    "nameAlias": "Dihing Patkai National Park",
     "protectedAreaType": "National Park",
     "state": "Assam",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Dehing_Patkai_National_Park",
@@ -257,6 +273,7 @@
   },
   {
     "protectedAreaName": "Raimona National Park",
+    "nameAlias": null,
     "protectedAreaType": "National Park",
     "state": "Assam",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Raimona_National_Park",
@@ -273,6 +290,7 @@
   },
   {
     "protectedAreaName": "Kaziranga National Park",
+    "nameAlias": null,
     "protectedAreaType": "National Park",
     "state": "Assam",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Kaziranga_National_Park",
@@ -289,6 +307,7 @@
   },
   {
     "protectedAreaName": "Manas National Park",
+    "nameAlias": null,
     "protectedAreaType": "National Park",
     "state": "Assam",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Manas_National_Park",
@@ -305,6 +324,7 @@
   },
   {
     "protectedAreaName": "Nameri National Park",
+    "nameAlias": null,
     "protectedAreaType": "National Park",
     "state": "Assam",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Nameri_National_Park",
@@ -321,6 +341,7 @@
   },
   {
     "protectedAreaName": "Orang National Park",
+    "nameAlias": null,
     "protectedAreaType": "National Park",
     "state": "Assam",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Orang_National_Park",
@@ -337,6 +358,7 @@
   },
   {
     "protectedAreaName": "Sikhna Jwhwlao National Park",
+    "nameAlias": null,
     "protectedAreaType": "National Park",
     "state": "Assam",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Sikhna_Jwhwlao_National_Park",
@@ -353,6 +375,7 @@
   },
   {
     "protectedAreaName": "Valmiki National Park",
+    "nameAlias": null,
     "protectedAreaType": "National Park",
     "state": "Bihar",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Valmiki_National_Park",
@@ -368,8 +391,9 @@
     "landmarks": null
   },
   {
-    "protectedAreaName": "Guru Ghasidas National Park(Sanjay)",
-    "protectedAreaType": "National Park",
+    "protectedAreaName": "Guru Ghasidas - Tamor Pingla Tiger Reserve",
+    "nameAlias": "Guru Ghasidas National Park(Sanjay)",
+    "protectedAreaType": "Tiger Reserve",
     "state": "Chhattisgarh",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Guru_Ghasidas_-_Tamor_Pingla_Tiger_Reserve",
     "imageUrl": null,
@@ -384,7 +408,8 @@
     "landmarks": null
   },
   {
-    "protectedAreaName": "Indravati National Park(Kutru)",
+    "protectedAreaName": "Indravati National Park",
+    "nameAlias": "Indravati National Park(Kutru)",
     "protectedAreaType": "National Park",
     "state": "Chhattisgarh",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Indravati_National_Park",
@@ -401,6 +426,7 @@
   },
   {
     "protectedAreaName": "Kanger Ghati National Park",
+    "nameAlias": null,
     "protectedAreaType": "National Park",
     "state": "Chhattisgarh",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Kanger_Ghati_National_Park",
@@ -417,6 +443,7 @@
   },
   {
     "protectedAreaName": "Mollem National Park",
+    "nameAlias": null,
     "protectedAreaType": "National Park",
     "state": "Goa",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Mollem_National_Park",
@@ -432,7 +459,8 @@
     "landmarks": null
   },
   {
-    "protectedAreaName": "Blackbuck National Park(Velavadar)",
+    "protectedAreaName": "Blackbuck National Park, Velavadar",
+    "nameAlias": "Blackbuck National Park(Velavadar)",
     "protectedAreaType": "National Park",
     "state": "Gujarat",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Blackbuck_National_Park,_Velavadar",
@@ -449,6 +477,7 @@
   },
   {
     "protectedAreaName": "Gir Forest National Park",
+    "nameAlias": null,
     "protectedAreaType": "National Park",
     "state": "Gujarat",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Gir_Forest_National_Park",
@@ -464,7 +493,8 @@
     "landmarks": null
   },
   {
-    "protectedAreaName": "Marine National Park(Gulf of Kutch)",
+    "protectedAreaName": "Marine National Park, Gulf of Kutch",
+    "nameAlias": "Marine National Park(Gulf of Kutch)",
     "protectedAreaType": "National Park",
     "state": "Gujarat",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Marine_National_Park,_Gulf_of_Kutch",
@@ -481,6 +511,7 @@
   },
   {
     "protectedAreaName": "Vansda National Park",
+    "nameAlias": null,
     "protectedAreaType": "National Park",
     "state": "Gujarat",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Vansda_National_Park",
@@ -497,6 +528,7 @@
   },
   {
     "protectedAreaName": "Kalesar National Park",
+    "nameAlias": null,
     "protectedAreaType": "National Park",
     "state": "Haryana",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Kalesar_National_Park",
@@ -513,6 +545,7 @@
   },
   {
     "protectedAreaName": "Sultanpur National Park",
+    "nameAlias": null,
     "protectedAreaType": "National Park",
     "state": "Haryana",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Sultanpur_National_Park",
@@ -529,6 +562,7 @@
   },
   {
     "protectedAreaName": "Great Himalayan National Park",
+    "nameAlias": null,
     "protectedAreaType": "National Park",
     "state": "Himachal Pradesh",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Great_Himalayan_National_Park",
@@ -545,6 +579,7 @@
   },
   {
     "protectedAreaName": "Inderkilla National Park",
+    "nameAlias": null,
     "protectedAreaType": "National Park",
     "state": "Himachal Pradesh",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Inderkilla_National_Park",
@@ -561,6 +596,7 @@
   },
   {
     "protectedAreaName": "Khirganga National Park",
+    "nameAlias": null,
     "protectedAreaType": "National Park",
     "state": "Himachal Pradesh",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Khirganga_National_Park",
@@ -577,6 +613,7 @@
   },
   {
     "protectedAreaName": "Pin Valley National Park",
+    "nameAlias": null,
     "protectedAreaType": "National Park",
     "state": "Himachal Pradesh",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Pin_Valley_National_Park",
@@ -593,6 +630,7 @@
   },
   {
     "protectedAreaName": "Simbalbara National Park",
+    "nameAlias": null,
     "protectedAreaType": "National Park",
     "state": "Himachal Pradesh",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Simbalbara_National_Park",
@@ -609,6 +647,7 @@
   },
   {
     "protectedAreaName": "Dachigam National Park",
+    "nameAlias": null,
     "protectedAreaType": "National Park",
     "state": "Jammu and Kashmir",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Dachigam_National_Park",
@@ -625,6 +664,7 @@
   },
   {
     "protectedAreaName": "Kishtwar National Park",
+    "nameAlias": null,
     "protectedAreaType": "National Park",
     "state": "Jammu and Kashmir",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Kishtwar_National_Park",
@@ -641,6 +681,7 @@
   },
   {
     "protectedAreaName": "Kazinag National Park",
+    "nameAlias": null,
     "protectedAreaType": "National Park",
     "state": "Jammu and Kashmir",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Kazinag_National_Park",
@@ -656,7 +697,8 @@
     "landmarks": null
   },
   {
-    "protectedAreaName": "City Forest National Park(Salim Ali)",
+    "protectedAreaName": "Salim Ali National Park",
+    "nameAlias": "City Forest National Park(Salim Ali)",
     "protectedAreaType": "National Park",
     "state": "Jammu and Kashmir",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Salim_Ali_National_Park",
@@ -673,6 +715,7 @@
   },
   {
     "protectedAreaName": "Betla National Park",
+    "nameAlias": null,
     "protectedAreaType": "National Park",
     "state": "Jharkhand",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Betla_National_Park",
@@ -689,6 +732,7 @@
   },
   {
     "protectedAreaName": "Anshi National Park",
+    "nameAlias": null,
     "protectedAreaType": "National Park",
     "state": "Karnataka",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Anshi_National_Park",
@@ -705,6 +749,7 @@
   },
   {
     "protectedAreaName": "Bandipur National Park",
+    "nameAlias": null,
     "protectedAreaType": "National Park",
     "state": "Karnataka",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Bandipur_National_Park",
@@ -721,6 +766,7 @@
   },
   {
     "protectedAreaName": "Bannerghatta National Park",
+    "nameAlias": null,
     "protectedAreaType": "National Park",
     "state": "Karnataka",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Bannerghatta_National_Park",
@@ -737,6 +783,7 @@
   },
   {
     "protectedAreaName": "Kudremukh National Park",
+    "nameAlias": null,
     "protectedAreaType": "National Park",
     "state": "Karnataka",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Kudremukh_National_Park",
@@ -752,7 +799,8 @@
     "landmarks": null
   },
   {
-    "protectedAreaName": "Nagarhole National Park(Rajiv Gandhi)",
+    "protectedAreaName": "Nagarhole National Park",
+    "nameAlias": "Nagarhole National Park(Rajiv Gandhi)",
     "protectedAreaType": "National Park",
     "state": "Karnataka",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Nagarhole_National_Park",
@@ -769,6 +817,7 @@
   },
   {
     "protectedAreaName": "Anamudi Shola National Park",
+    "nameAlias": null,
     "protectedAreaType": "National Park",
     "state": "Kerala",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Anamudi_Shola_National_Park",
@@ -785,6 +834,7 @@
   },
   {
     "protectedAreaName": "Eravikulam National Park",
+    "nameAlias": null,
     "protectedAreaType": "National Park",
     "state": "Kerala",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Eravikulam_National_Park",
@@ -801,6 +851,7 @@
   },
   {
     "protectedAreaName": "Mathikettan Shola National Park",
+    "nameAlias": null,
     "protectedAreaType": "National Park",
     "state": "Kerala",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Mathikettan_Shola_National_Park",
@@ -817,6 +868,7 @@
   },
   {
     "protectedAreaName": "Pambadum Shola National Park",
+    "nameAlias": null,
     "protectedAreaType": "National Park",
     "state": "Kerala",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Pambadum_Shola_National_Park",
@@ -833,6 +885,7 @@
   },
   {
     "protectedAreaName": "Periyar National Park",
+    "nameAlias": null,
     "protectedAreaType": "National Park",
     "state": "Kerala",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Periyar_National_Park",
@@ -849,6 +902,7 @@
   },
   {
     "protectedAreaName": "Silent Valley National Park",
+    "nameAlias": null,
     "protectedAreaType": "National Park",
     "state": "Kerala",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Silent_Valley_National_Park",
@@ -865,6 +919,7 @@
   },
   {
     "protectedAreaName": "Hemis National Park",
+    "nameAlias": null,
     "protectedAreaType": "National Park",
     "state": "Ladakh",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Hemis_National_Park",
@@ -881,6 +936,7 @@
   },
   {
     "protectedAreaName": "Bandhavgarh National Park",
+    "nameAlias": null,
     "protectedAreaType": "National Park",
     "state": "Madhya Pradesh",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Bandhavgarh_National_Park",
@@ -897,6 +953,7 @@
   },
   {
     "protectedAreaName": "Dinosaur Fossils National Park",
+    "nameAlias": null,
     "protectedAreaType": "National Park",
     "state": "Madhya Pradesh",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Dinosaur_Fossils_National_Park",
@@ -912,7 +969,8 @@
     "landmarks": null
   },
   {
-    "protectedAreaName": "Ghughua Fossil National Park",
+    "protectedAreaName": "Ghughua Fossil Park",
+    "nameAlias": "Ghughua Fossil National Park",
     "protectedAreaType": "National Park",
     "state": "Madhya Pradesh",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Ghughua_Fossil_Park",
@@ -929,6 +987,7 @@
   },
   {
     "protectedAreaName": "Kanha National Park",
+    "nameAlias": null,
     "protectedAreaType": "National Park",
     "state": "Madhya Pradesh",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Kanha_National_Park",
@@ -945,6 +1004,7 @@
   },
   {
     "protectedAreaName": "Kuno National Park",
+    "nameAlias": null,
     "protectedAreaType": "National Park",
     "state": "Madhya Pradesh",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Kuno_National_Park",
@@ -961,6 +1021,7 @@
   },
   {
     "protectedAreaName": "Madhav National Park",
+    "nameAlias": null,
     "protectedAreaType": "National Park",
     "state": "Madhya Pradesh",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Madhav_National_Park",
@@ -977,6 +1038,7 @@
   },
   {
     "protectedAreaName": "Panna National Park",
+    "nameAlias": null,
     "protectedAreaType": "National Park",
     "state": "Madhya Pradesh",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Panna_National_Park",
@@ -993,6 +1055,7 @@
   },
   {
     "protectedAreaName": "Pench National Park",
+    "nameAlias": null,
     "protectedAreaType": "National Park",
     "state": "Madhya Pradesh",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Pench_National_Park",
@@ -1009,6 +1072,7 @@
   },
   {
     "protectedAreaName": "Sanjay National Park",
+    "nameAlias": null,
     "protectedAreaType": "National Park",
     "state": "Madhya Pradesh",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Sanjay_National_Park",
@@ -1025,6 +1089,7 @@
   },
   {
     "protectedAreaName": "Satpura National Park",
+    "nameAlias": null,
     "protectedAreaType": "National Park",
     "state": "Madhya Pradesh",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Satpura_National_Park",
@@ -1041,6 +1106,7 @@
   },
   {
     "protectedAreaName": "Van Vihar National Park",
+    "nameAlias": null,
     "protectedAreaType": "National Park",
     "state": "Madhya Pradesh",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Van_Vihar_National_Park",
@@ -1057,6 +1123,7 @@
   },
   {
     "protectedAreaName": "Chandoli National Park",
+    "nameAlias": null,
     "protectedAreaType": "National Park",
     "state": "Maharashtra",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Chandoli_National_Park",
@@ -1073,6 +1140,7 @@
   },
   {
     "protectedAreaName": "Gugamal National Park",
+    "nameAlias": null,
     "protectedAreaType": "National Park",
     "state": "Maharashtra",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Gugamal_National_Park",
@@ -1088,7 +1156,8 @@
     "landmarks": null
   },
   {
-    "protectedAreaName": "Nawegaon National Park",
+    "protectedAreaName": "Navegaon National Park",
+    "nameAlias": "Nawegaon National Park",
     "protectedAreaType": "National Park",
     "state": "Maharashtra",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Navegaon_National_Park",
@@ -1104,7 +1173,8 @@
     "landmarks": null
   },
   {
-    "protectedAreaName": "Sanjay Gandhi National Park(Borivili)",
+    "protectedAreaName": "Sanjay Gandhi National Park",
+    "nameAlias": "Sanjay Gandhi National Park(Borivili)",
     "protectedAreaType": "National Park",
     "state": "Maharashtra",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Sanjay_Gandhi_National_Park",
@@ -1120,8 +1190,9 @@
     "landmarks": null
   },
   {
-    "protectedAreaName": "Tadoba Andhari National Park",
-    "protectedAreaType": "National Park",
+    "protectedAreaName": "Tadoba Andhari Tiger Reserve",
+    "nameAlias": "Tadoba Andhari National Park",
+    "protectedAreaType": "Tiger Reserve",
     "state": "Maharashtra",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Tadoba_Andhari_Tiger_Reserve",
     "imageUrl": null,
@@ -1137,6 +1208,7 @@
   },
   {
     "protectedAreaName": "Pench National Park(Jawaharlal Nehru)",
+    "nameAlias": null,
     "protectedAreaType": "National Park",
     "state": "Maharashtra",
     "wikipediaUrl": null,
@@ -1152,7 +1224,8 @@
     "landmarks": null
   },
   {
-    "protectedAreaName": "Keibul -Lamjao National Park",
+    "protectedAreaName": "Keibul Lamjao National Park",
+    "nameAlias": "Keibul -Lamjao National Park",
     "protectedAreaType": "National Park",
     "state": "Manipur",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Keibul_Lamjao_National_Park",
@@ -1168,7 +1241,8 @@
     "landmarks": null
   },
   {
-    "protectedAreaName": "Shiroi National Park",
+    "protectedAreaName": "Shirui National Park",
+    "nameAlias": "Shiroi National Park",
     "protectedAreaType": "National Park",
     "state": "Manipur",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Shirui_National_Park",
@@ -1185,6 +1259,7 @@
   },
   {
     "protectedAreaName": "AK National Park",
+    "nameAlias": null,
     "protectedAreaType": "National Park",
     "state": "Meghalaya",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/AK_National_Park?action=edit&redlink=1",
@@ -1201,6 +1276,7 @@
   },
   {
     "protectedAreaName": "Nokrek National Park",
+    "nameAlias": null,
     "protectedAreaType": "National Park",
     "state": "Meghalaya",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Nokrek_National_Park",
@@ -1217,6 +1293,7 @@
   },
   {
     "protectedAreaName": "Murlen National Park",
+    "nameAlias": null,
     "protectedAreaType": "National Park",
     "state": "Mizoram",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Murlen_National_Park",
@@ -1232,7 +1309,8 @@
     "landmarks": null
   },
   {
-    "protectedAreaName": "Phawngpui Blue Mountain National Park",
+    "protectedAreaName": "Phawngpui National Park",
+    "nameAlias": "Phawngpui Blue Mountain National Park",
     "protectedAreaType": "National Park",
     "state": "Mizoram",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Phawngpui_National_Park",
@@ -1248,7 +1326,8 @@
     "landmarks": null
   },
   {
-    "protectedAreaName": "Inangki National Park",
+    "protectedAreaName": "Intanki National Park",
+    "nameAlias": "Inangki National Park",
     "protectedAreaType": "National Park",
     "state": "Nagaland",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Intanki_National_Park",
@@ -1265,6 +1344,7 @@
   },
   {
     "protectedAreaName": "Bhitarkanika National Park",
+    "nameAlias": null,
     "protectedAreaType": "National Park",
     "state": "Odisha",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Bhitarkanika_National_Park",
@@ -1281,6 +1361,7 @@
   },
   {
     "protectedAreaName": "Simlipal National Park",
+    "nameAlias": null,
     "protectedAreaType": "National Park",
     "state": "Odisha",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Simlipal_National_Park",
@@ -1297,6 +1378,7 @@
   },
   {
     "protectedAreaName": "Desert National Park",
+    "nameAlias": null,
     "protectedAreaType": "National Park",
     "state": "Rajasthan",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Desert_National_Park",
@@ -1312,7 +1394,8 @@
     "landmarks": null
   },
   {
-    "protectedAreaName": "Keoladeo Ghana National Park",
+    "protectedAreaName": "Keoladeo National Park",
+    "nameAlias": "Keoladeo Ghana National Park",
     "protectedAreaType": "National Park",
     "state": "Rajasthan",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Keoladeo_National_Park",
@@ -1329,6 +1412,7 @@
   },
   {
     "protectedAreaName": "Mukundara Hills National Park",
+    "nameAlias": null,
     "protectedAreaType": "National Park",
     "state": "Rajasthan",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Mukundara_Hills_National_Park",
@@ -1345,6 +1429,7 @@
   },
   {
     "protectedAreaName": "Ranthambore National Park",
+    "nameAlias": null,
     "protectedAreaType": "National Park",
     "state": "Rajasthan",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Ranthambore_National_Park",
@@ -1361,6 +1446,7 @@
   },
   {
     "protectedAreaName": "Sariska Tiger Reserve",
+    "nameAlias": null,
     "protectedAreaType": "Tiger Reserve",
     "state": "Rajasthan",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Sariska_Tiger_Reserve",
@@ -1377,6 +1463,7 @@
   },
   {
     "protectedAreaName": "Khangchendzonga National Park",
+    "nameAlias": null,
     "protectedAreaType": "National Park",
     "state": "Sikkim",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Khangchendzonga_National_Park",
@@ -1392,8 +1479,9 @@
     "landmarks": null
   },
   {
-    "protectedAreaName": "Indira Gandhi Sanctuary and National Park(Annamalai)",
-    "protectedAreaType": "National Park",
+    "protectedAreaName": "Anaimalai Tiger Reserve",
+    "nameAlias": "Indira Gandhi Sanctuary and National Park(Annamalai)",
+    "protectedAreaType": "Tiger Reserve",
     "state": "Tamil Nadu",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Anaimalai_Tiger_Reserve",
     "imageUrl": null,
@@ -1409,6 +1497,7 @@
   },
   {
     "protectedAreaName": "Guindy National Park",
+    "nameAlias": null,
     "protectedAreaType": "National Park",
     "state": "Tamil Nadu",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Guindy_National_Park",
@@ -1425,6 +1514,7 @@
   },
   {
     "protectedAreaName": "Gulf of Mannar Marine National Park",
+    "nameAlias": null,
     "protectedAreaType": "National Park",
     "state": "Tamil Nadu",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Gulf_of_Mannar_Marine_National_Park",
@@ -1441,6 +1531,7 @@
   },
   {
     "protectedAreaName": "Mudumalai National Park",
+    "nameAlias": null,
     "protectedAreaType": "National Park",
     "state": "Tamil Nadu",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Mudumalai_National_Park",
@@ -1457,6 +1548,7 @@
   },
   {
     "protectedAreaName": "Mukurthi National Park",
+    "nameAlias": null,
     "protectedAreaType": "National Park",
     "state": "Tamil Nadu",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Mukurthi_National_Park",
@@ -1473,6 +1565,7 @@
   },
   {
     "protectedAreaName": "Mahavir Harina Vanasthali National Park",
+    "nameAlias": null,
     "protectedAreaType": "National Park",
     "state": "Telangana",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Mahavir_Harina_Vanasthali_National_Park",
@@ -1489,6 +1582,7 @@
   },
   {
     "protectedAreaName": "Kasu Brahmananda Reddy National Park",
+    "nameAlias": null,
     "protectedAreaType": "National Park",
     "state": "Telangana",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Kasu_Brahmananda_Reddy_National_Park",
@@ -1505,6 +1599,7 @@
   },
   {
     "protectedAreaName": "Mrugavani National Park",
+    "nameAlias": null,
     "protectedAreaType": "National Park",
     "state": "Telangana",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Mrugavani_National_Park",
@@ -1520,7 +1615,8 @@
     "landmarks": null
   },
   {
-    "protectedAreaName": "Bison (Rajbari) National Park",
+    "protectedAreaName": "Rajbari National Park",
+    "nameAlias": "Bison (Rajbari) National Park",
     "protectedAreaType": "National Park",
     "state": "Tripura",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Rajbari_National_Park",
@@ -1537,6 +1633,7 @@
   },
   {
     "protectedAreaName": "Clouded Leopard National Park",
+    "nameAlias": null,
     "protectedAreaType": "National Park",
     "state": "Tripura",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Clouded_Leopard_National_Park",
@@ -1553,6 +1650,7 @@
   },
   {
     "protectedAreaName": "Dudhwa National Park",
+    "nameAlias": null,
     "protectedAreaType": "National Park",
     "state": "Uttar Pradesh",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Dudhwa_National_Park",
@@ -1569,6 +1667,7 @@
   },
   {
     "protectedAreaName": "Gangotri National Park",
+    "nameAlias": null,
     "protectedAreaType": "National Park",
     "state": "Uttarakhand",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Gangotri_National_Park",
@@ -1585,6 +1684,7 @@
   },
   {
     "protectedAreaName": "Govind Pashu Vihar National Park",
+    "nameAlias": null,
     "protectedAreaType": "National Park",
     "state": "Uttarakhand",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Govind_Pashu_Vihar_National_Park",
@@ -1601,6 +1701,7 @@
   },
   {
     "protectedAreaName": "Jim Corbett National Park",
+    "nameAlias": null,
     "protectedAreaType": "National Park",
     "state": "Uttarakhand",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Jim_Corbett_National_Park",
@@ -1617,6 +1718,7 @@
   },
   {
     "protectedAreaName": "Nanda Devi National Park",
+    "nameAlias": null,
     "protectedAreaType": "National Park",
     "state": "Uttarakhand",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Nanda_Devi_National_Park",
@@ -1633,6 +1735,7 @@
   },
   {
     "protectedAreaName": "Rajaji National Park",
+    "nameAlias": null,
     "protectedAreaType": "National Park",
     "state": "Uttarakhand",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Rajaji_National_Park",
@@ -1649,6 +1752,7 @@
   },
   {
     "protectedAreaName": "Valley of Flowers National Park",
+    "nameAlias": null,
     "protectedAreaType": "National Park",
     "state": "Uttarakhand",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Valley_of_Flowers_National_Park",
@@ -1665,6 +1769,7 @@
   },
   {
     "protectedAreaName": "Buxa Tiger Reserve",
+    "nameAlias": null,
     "protectedAreaType": "Tiger Reserve",
     "state": "West Bengal",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Buxa_Tiger_Reserve",
@@ -1681,6 +1786,7 @@
   },
   {
     "protectedAreaName": "Gorumara National Park",
+    "nameAlias": null,
     "protectedAreaType": "National Park",
     "state": "West Bengal",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Gorumara_National_Park",
@@ -1697,6 +1803,7 @@
   },
   {
     "protectedAreaName": "Jaldapara National Park",
+    "nameAlias": null,
     "protectedAreaType": "National Park",
     "state": "West Bengal",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Jaldapara_National_Park",
@@ -1713,6 +1820,7 @@
   },
   {
     "protectedAreaName": "Neora Valley National Park",
+    "nameAlias": null,
     "protectedAreaType": "National Park",
     "state": "West Bengal",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Neora_Valley_National_Park",
@@ -1729,6 +1837,7 @@
   },
   {
     "protectedAreaName": "Singalila National Park",
+    "nameAlias": null,
     "protectedAreaType": "National Park",
     "state": "West Bengal",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Singalila_National_Park",
@@ -1745,6 +1854,7 @@
   },
   {
     "protectedAreaName": "Sundarbans National Park",
+    "nameAlias": null,
     "protectedAreaType": "National Park",
     "state": "West Bengal",
     "wikipediaUrl": "https://en.wikipedia.org/wiki/Sundarbans_National_Park",

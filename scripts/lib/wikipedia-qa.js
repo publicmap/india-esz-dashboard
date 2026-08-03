@@ -61,15 +61,24 @@ function parseAreaKm2(text) {
 // item) for a Wikipedia record with no Wikidata match.
 function toMasterListEntry(record) {
   const normalizedName = normalizeName(record.protectedAreaName);
+  // record.nameAlias is the link's own display text when it differs from the
+  // linked Wikipedia article name (e.g. "Nagarhole National Park(Rajiv
+  // Gandhi)" for an article titled "Nagarhole National Park") -- carry it
+  // forward as an alias so a later join (e.g. the MoEF matcher, which also
+  // searches an item's aliases) can still match a record that uses this
+  // display form instead of the article title.
+  const aliases = record.nameAlias ? [record.nameAlias] : [];
+  const normalizedAliases = aliases.map((a) => normalizeName(a)).filter(Boolean);
+  const compactAliases = normalizedAliases.map((n) => compactName(n));
   return {
     wikidataId: syntheticWikidataId(record),
     wikidataUrl: null,
     wikidataLabel: record.protectedAreaName,
-    aliases: [],
+    aliases,
     normalizedName,
     compactName: compactName(normalizedName),
-    normalizedAliases: [],
-    compactAliases: [],
+    normalizedAliases,
+    compactAliases,
     protectedAreaType: record.protectedAreaType,
     partOf: [],
     image: record.imageUrl ?? null,
@@ -124,7 +133,15 @@ export function crossReferenceWikipedia(wikidataItems, wikipediaRecords) {
   const unmatchedWikipedia = [];
 
   for (const record of wikipediaRecords) {
-    const { item, matchConfidence } = match(record.protectedAreaName, record.state);
+    // record.protectedAreaName is the linked Wikipedia article's own name --
+    // try that first. Only when it fails to match anything does the link's
+    // display text (record.nameAlias, when it differs from the article name)
+    // get tried as a fallback name -- see wikilinkName in
+    // parse-wikipedia-tables.js.
+    let { item, matchConfidence } = match(record.protectedAreaName, record.state);
+    if (!item && record.nameAlias) {
+      ({ item, matchConfidence } = match(record.nameAlias, record.state));
+    }
     if (!item) {
       unmatchedWikipedia.push(record);
       continue;
