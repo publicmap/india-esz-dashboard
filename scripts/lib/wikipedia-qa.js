@@ -153,6 +153,7 @@ export function crossReferenceWikipedia(wikidataItems, wikipediaRecords) {
   const correctedType = [];
   const multiSourceMatches = [];
   const fuzzyMatches = [];
+  const finalTypeMismatches = [];
 
   for (const [item, matches] of matchesByItem) {
     // The most specific type among every matched Wikipedia entry wins (a
@@ -179,6 +180,28 @@ export function crossReferenceWikipedia(wikidataItems, wikipediaRecords) {
     item.wikipediaUrl = winner.record.wikipediaUrl ?? item.wikipediaUrl ?? null;
     item.wikipediaSource = winner.record.wikipediaSource;
     if (!item.enwikiUrl) item.enwikiUrl = winner.record.wikipediaUrl ?? null;
+
+    // Every list entry's own protectedAreaType (e.g. every wildlife-
+    // sanctuaries.json row defaults to "Wildlife Sanctuary" -- see
+    // parse-wikipedia-tables.js) is checked against the type the item
+    // actually ended up with in the final master list, not just the winning
+    // entry above -- a non-winning entry that still disagrees is either a
+    // stale row on its own Wikipedia list (worth fixing there) or a wrong
+    // fuzzy match dragging an unrelated entry onto this item.
+    for (const m of matches) {
+      if (m.record.protectedAreaType && m.record.protectedAreaType !== item.protectedAreaType) {
+        finalTypeMismatches.push({
+          wikidataId: item.wikidataId,
+          wikidataLabel: item.wikidataLabel,
+          finalType: item.protectedAreaType ?? '(none)',
+          wikipediaName: m.record.protectedAreaName,
+          wikipediaType: m.record.protectedAreaType,
+          wikipediaSource: m.record.wikipediaSource,
+          wikipediaUrl: m.record.wikipediaUrl ?? '',
+          matchConfidence: m.matchConfidence,
+        });
+      }
+    }
 
     if (matches.length > 1) {
       multiSourceMatches.push({
@@ -251,6 +274,15 @@ export function crossReferenceWikipedia(wikidataItems, wikipediaRecords) {
       quickStatements: protectedAreaTypeQuickStatements(correctedType),
     },
     {
+      title: 'Wikipedia list entry type disagrees with final master-list type',
+      description: 'A Wikipedia list entry\'s own `protectedAreaType` (e.g. every `wildlife-sanctuaries.json` row defaults to Wildlife Sanctuary) doesn\'t match the type its matched item ended up with in the final master list (`data/wikidata/protected-areas.json`). Usually this is a *different*, more specific Wikipedia entry for the same place winning (see "matched by multiple Wikipedia entries" below, in which case no action is needed here) -- but since Wikipedia\'s lists are more actively maintained and more current than Wikidata, a row here can also mean this entry\'s own Wikipedia list is stale, or a fuzzy match linked the wrong Wikipedia entry to this item.',
+      columns: ['wikidataId', 'wikidataLabel', 'finalType', 'wikipediaName', 'wikipediaType', 'wikipediaSource', 'wikipediaUrl', 'matchConfidence'],
+      rows: finalTypeMismatches,
+      quickStatements: reviewOnlyDetails(
+        'No mechanical fix -- review each row individually. If the final type is correct (a more specific Wikipedia entry legitimately won), no action needed. If this entry\'s own Wikipedia list is out of date, fix it on Wikipedia so the next run picks it up. If `matchConfidence` is `fuzzy` and this looks like the wrong place entirely, the fix is on the matching side, not here -- see the "Fuzzy Wikidata<->Wikipedia matches" section.',
+      ),
+    },
+    {
       title: 'Wikidata item matched by multiple Wikipedia entries',
       description: 'More than one Wikipedia entry (possibly from different lists) matched the same Wikidata item.',
       columns: ['wikidataId', 'wikidataLabel', 'matchedEntries', 'detail'],
@@ -292,6 +324,7 @@ export function crossReferenceWikipedia(wikidataItems, wikipediaRecords) {
       matchedCount: matchesByItem.size,
       newEntryCount: newEntries.length,
       correctedTypeCount: correctedType.length,
+      finalTypeMismatchCount: finalTypeMismatches.length,
     },
   };
 }

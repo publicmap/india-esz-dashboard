@@ -8,9 +8,178 @@
 // plus every Wikidata field the map/popups need and a precomputed
 // "representative" notification (same logic as build-geojson.js) so the
 // client never has to cross-reference three separate payloads to render.
+//
+// Also builds data/iiif-manifest.json -- a single IIIF Presentation API 3.0
+// Manifest (https://iiif.io/api/presentation/3.0/) composed of every
+// toposheet/annexure boundary map we've pinned down to a specific page (i.e.
+// every notification with a resolved "allmaps editor" link in
+// enrichment-cache.csv -- see scripts/enrich-allmaps.js), one Canvas per map,
+// so the whole collection can be browsed/georeferenced as a single item in
+// the Allmaps editor (like https://editor.allmaps.org/images?url=<manifest>)
+// instead of jumping between one per-notification archive.org manifest at a
+// time. Canvas width/height requires a live info.json lookup per image --
+// the set is small (a couple dozen resolved pages today) so this is done
+// inline at build time rather than added to the enrichment cache.
 
 import { readFile, writeFile } from 'node:fs/promises';
 import { loadCache } from './lib/enrichment-cache.js';
+import { buildThumbnailUrl } from './lib/allmaps.js';
+
+const DASHBOARD_URL = 'https://publicmap.github.io/india-esz-dashboard/';
+const GITHUB_RAW_BASE = 'https://raw.githubusercontent.com/publicmap/india-esz-dashboard/main';
+const MANIFEST_URL = `${DASHBOARD_URL}data/iiif-manifest.json`;
+const USER_AGENT = 'india-esz-dashboard-bot/1.0 (https://github.com/publicmap/india-esz-dashboard)';
+const FETCH_CONCURRENCY = 6;
+
+async function runWithConcurrency(items, worker, concurrency) {
+  let next = 0;
+  async function runNext() {
+    while (next < items.length) {
+      const i = next;
+      next += 1;
+      await worker(items[i], i);
+    }
+  }
+  await Promise.all(Array.from({ length: Math.min(concurrency, items.length) }, runNext));
+}
+
+// The `image=` query param on an "allmaps editor" URL (see buildEditorUrl in
+// lib/allmaps.js) is the IIIF Image API service @id for that exact canvas --
+// URLSearchParams hands it back already percent-decoded.
+function imageServiceIdFromEditorLink(georeferencingLink) {
+  return new URL(georeferencingLink).searchParams.get('image');
+}
+
+async function fetchImageDimensions(imageServiceId) {
+  const res = await fetch(`${imageServiceId}/info.json`, { headers: { 'User-Agent': USER_AGENT } });
+  if (!res.ok) throw new Error(`HTTP ${res.status}`);
+  const info = await res.json();
+  return { width: info.width, height: info.height };
+}
+
+function metadataEntry(label, value) {
+  return { label: { en: [label] }, value: { en: [value] } };
+}
+
+function link(href, text = href) {
+  return `<a href="${href}">${text}</a>`;
+}
+
+async function buildIiifManifest(entries) {
+  // A single boundary map page can end up attached to more than one
+  // `notification` record when a gazette lists the same protected area under
+  // several name aliases (e.g. "Valmiki Wildlife Sanctuary" / "... National
+  // Park" / "... Tiger Reserve" all resolved to the same Wikidata item and
+  // the same page) -- dedupe on the underlying image so it gets one canvas.
+  const seenImages = new Set();
+  const candidates = [];
+  for (const entry of entries) {
+    for (const notification of entry.notifications) {
+      if (!notification.georeferencingLink) continue;
+      const imageServiceId = imageServiceIdFromEditorLink(notification.georeferencingLink);
+      if (seenImages.has(imageServiceId)) continue;
+      seenImages.add(imageServiceId);
+      candidates.push({ entry, notification, imageServiceId });
+    }
+  }
+
+  const canvases = [];
+  let failures = 0;
+
+  await runWithConcurrency(candidates, async ({ entry, notification, imageServiceId }, i) => {
+    let dimensions;
+    try {
+      dimensions = await fetchImageDimensions(imageServiceId);
+    } catch (err) {
+      failures += 1;
+      console.error(`iiif-manifest: info.json fetch failed for ${imageServiceId}: ${err.message}`);
+      return;
+    }
+
+    const canvasId = `${MANIFEST_URL}/canvas/${i}`;
+    const { width, height } = dimensions;
+
+    canvases[i] = {
+      id: canvasId,
+      type: 'Canvas',
+      label: { en: [`${entry.name} (${notification.notificationDate})`] },
+      width,
+      height,
+      metadata: [
+        metadataEntry('Protected Area', entry.name),
+        metadataEntry('State', (entry.state || []).join(', ') || 'Unknown'),
+        entry.protectedAreaType && metadataEntry('Protected Area Type', entry.protectedAreaType),
+        metadataEntry('ESZ Notification', [notification.orderNumber, notification.notificationStatus, notification.notificationDate].filter(Boolean).join(' · ')),
+        entry.wikidataUrl && metadataEntry('Wikidata', link(entry.wikidataUrl)),
+        entry.enwikiUrl && metadataEntry('Wikipedia', link(entry.enwikiUrl)),
+        notification.notificationArchiveLink && metadataEntry('Gazette scan (archive.org)', link(notification.notificationArchiveLink)),
+        notification.notificationPdfLink && metadataEntry('Gazette PDF (egazette.nic.in)', link(notification.notificationPdfLink)),
+        metadataEntry('Explore on India ESZ Dashboard', link(DASHBOARD_URL)),
+      ].filter(Boolean),
+      thumbnail: [{ id: buildThumbnailUrl(imageServiceId), type: 'Image', format: 'image/jpeg' }],
+      rendering: [{ id: notification.georeferencingLink, type: 'Text', label: { en: ['Open in Allmaps editor'] }, format: 'text/html' }],
+      items: [{
+        id: `${canvasId}/page`,
+        type: 'AnnotationPage',
+        items: [{
+          id: `${canvasId}/page/annotation`,
+          type: 'Annotation',
+          motivation: 'painting',
+          target: canvasId,
+          body: {
+            id: `${imageServiceId}/full/max/0/default.jpg`,
+            type: 'Image',
+            format: 'image/jpeg',
+            width,
+            height,
+            service: [{ id: imageServiceId, type: 'ImageService3', profile: 'level2' }],
+          },
+        }],
+      }],
+    };
+  }, FETCH_CONCURRENCY);
+
+  const items = canvases.filter(Boolean);
+
+  const manifest = {
+    '@context': 'http://iiif.io/api/presentation/3/context.json',
+    id: MANIFEST_URL,
+    type: 'Manifest',
+    label: { en: ['India Eco-Sensitive Zone (ESZ) Notification Toposheet Maps'] },
+    summary: {
+      en: [
+        'Georeferenced boundary/annexure toposheet maps for Indian protected areas, extracted from Gazette of India Eco-Sensitive Zone (ESZ) notifications and compiled by the India ESZ Dashboard project. Each canvas is one protected area’s boundary map, pinpointed to its exact page within the notification’s scanned Gazette of India entry on archive.org.',
+      ],
+    },
+    metadata: [
+      metadataEntry('Project', `${link(DASHBOARD_URL, 'India ESZ Dashboard')} – explore Eco-Sensitive Zone notification status for every protected area in India`),
+      metadataEntry('Source', `Gazette of India notifications, Ministry of Environment, Forest and Climate Change (MoEFCC), digitized on ${link('https://archive.org')}`),
+      metadataEntry('Georeferencing', link('https://allmaps.org', 'Allmaps')),
+      metadataEntry('Maps in this manifest', String(items.length)),
+    ],
+    requiredStatement: {
+      label: { en: ['Attribution'] },
+      value: { en: [`Compiled by the ${link(DASHBOARD_URL, 'India ESZ Dashboard')} project from Gazette of India notifications digitized by archive.org. Georeferenced with ${link('https://allmaps.org', 'Allmaps')}.`] },
+    },
+    homepage: [{
+      id: DASHBOARD_URL, type: 'Text', label: { en: ['India ESZ Dashboard – explore'] }, format: 'text/html',
+    }],
+    provider: [{
+      id: 'https://github.com/publicmap/india-esz-dashboard',
+      type: 'Agent',
+      label: { en: ['India ESZ Dashboard'] },
+      homepage: [{
+        id: DASHBOARD_URL, type: 'Text', label: { en: ['India ESZ Dashboard'] }, format: 'text/html',
+      }],
+    }],
+    seeAlso: [{
+      id: `${GITHUB_RAW_BASE}/data/full-join.json`, type: 'Dataset', format: 'application/json', label: { en: ['Underlying structured dataset (full-join.json)'] },
+    }],
+    items,
+  };
+
+  return { manifest, failures };
+}
 
 function pickLatest(notifications, status) {
   const relevant = notifications.filter((n) => n.notificationStatus === status);
@@ -140,6 +309,10 @@ async function main() {
   for (const e of entries) byStatus[e.eszStatus] += 1;
   console.log(`Wrote ${entries.length} protected areas to data/full-join.json (${withCoords} with coordinates, ${entries.length - wikidataPAs.length} unmatched-to-Wikidata).`);
   console.log('By ESZ status:', byStatus);
+
+  const { manifest, failures } = await buildIiifManifest(entries);
+  await writeFile('data/iiif-manifest.json', JSON.stringify(manifest, null, 2), 'utf8');
+  console.log(`Wrote ${manifest.items.length} canvases to data/iiif-manifest.json${failures ? ` (${failures} info.json lookups failed and were skipped)` : ''}.`);
 }
 
 main().catch((err) => {

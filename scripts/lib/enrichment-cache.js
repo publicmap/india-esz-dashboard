@@ -27,6 +27,7 @@ const COLUMNS = [
   'archiveCreator', 'archiveDate', 'archiveMinistry', 'archiveDepartment',
   'archiveSubject', 'archiveGazetteSource',
   'allmaps images', 'toposheet page', 'toposheet thumbnail', 'allmaps editor', 'tms',
+  'allmaps annotation', 'georeferencing timestamp', 'allmaps remarks',
 ];
 const NO_MATCH = 'NONE';
 const EMPTY_ARCHIVE_FIELDS = {
@@ -35,6 +36,7 @@ const EMPTY_ARCHIVE_FIELDS = {
 };
 const EMPTY_ALLMAPS_FIELDS = {
   'allmaps images': '', 'toposheet page': '', 'toposheet thumbnail': '', 'allmaps editor': '', tms: '',
+  'allmaps annotation': '', 'georeferencing timestamp': '', 'allmaps remarks': '',
 };
 
 export async function loadCache(path) {
@@ -124,6 +126,9 @@ export function setAllmapsFields(cache, orderNumber, notificationDate, protected
     'toposheet thumbnail': fields.toposheetThumbnail ?? '',
     'allmaps editor': fields.allmapsEditor ?? '',
     tms: fields.tms ?? '',
+    'allmaps annotation': fields.allmapsAnnotation ?? '',
+    'georeferencing timestamp': fields.georeferencingTimestamp ?? '',
+    'allmaps remarks': fields.allmapsRemarks ?? '',
   });
 }
 

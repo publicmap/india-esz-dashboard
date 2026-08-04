@@ -540,6 +540,7 @@ a { color: var(--accent-strong); }
   font-size: 0.84rem;
   color: var(--text-secondary);
   line-height: 1.6;
+  list-style-type: disc;
 }
 .kpi-timeline li { margin-bottom: 0.4rem; }
 .kpi-timeline strong { color: var(--accent-strong); font-family: var(--font-display); }
@@ -558,6 +559,8 @@ a { color: var(--accent-strong); }
 .header-inner .kpi-intro summary { color: #fff3d1; }
 .header-inner .kpi-intro .section-intro { color: rgba(253, 247, 230, 0.85); }
 .header-inner .kpi-timeline { color: rgba(253, 247, 230, 0.8); }
+.header-inner .kpi-timeline a { color: #fff3d1; text-decoration-color: rgba(255, 243, 209, 0.5); }
+.header-inner .kpi-timeline strong { color: #ffd77a; }
 .header-inner .kpi-intro-source { color: rgba(253, 247, 230, 0.6); }
 .header-inner .kpi-intro-source a { color: rgba(253, 247, 230, 0.85); }
 .header-inner .kpi-intro-day-counter {
@@ -1407,31 +1410,60 @@ button.stat-tile.is-active {
 .pa-card {
   position: relative;
   display: flex;
-  align-items: stretch;
+  flex-direction: column;
   gap: 0;
   padding: 0;
   background: var(--surface-1);
   border: 1px solid var(--border);
   overflow: hidden;
-  cursor: pointer;
-  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  transition: box-shadow 0.15s ease;
 }
-.pa-card:hover { transform: translateX(2px); box-shadow: var(--shadow-soft); }
+.pa-card:hover { box-shadow: var(--shadow-soft); }
 .pa-card.is-selected { box-shadow: 0 0 0 2px var(--accent); }
 
-/* Collapsed rows get their own fixed dark theme (independent of the page's
-   light/dark toggle) -- a deliberate photo-strip look, not the paper-toned
-   surface the rest of the UI uses. The expanded detail view below keeps the
-   normal themed surface since it's read as body text/links, not browsed.
-   Corners are square and the border carries no per-status colour -- the
-   notification status is already stated as text on the right (see
-   .pa-card-status), so a coloured accent here would just be redundant. */
-.pa-card:not(.is-expanded) {
+/* Collapsed, the row gets its own fixed dark theme (independent of the
+   page's light/dark toggle) -- a deliberate photo-strip look, not the
+   paper-toned surface the rest of the UI uses. Corners are square and the
+   border carries no per-status colour -- the notification status is already
+   stated as text on the right (see .pa-card-status), so a coloured accent
+   here would just be redundant. Clicking it swaps this compact strip for the
+   wiki-sourced header (image/title/excerpt) in place -- see
+   .pa-card.is-expanded .pa-card-row below -- rather than duplicating that
+   content in a separate panel. */
+.pa-card-row {
+  display: flex;
+  align-items: stretch;
+  gap: 0;
+  cursor: pointer;
   background: #16241d;
   color: #f5ecd7;
-  border-color: rgba(245, 236, 216, 0.14);
+  transition: background 0.15s ease;
 }
-.pa-card:not(.is-expanded) .pa-card-right { color: rgba(245, 236, 216, 0.68); }
+.pa-card-row:hover { background: #1c2e24; }
+.pa-card-row .pa-card-right { color: rgba(245, 236, 216, 0.68); }
+
+/* Expanded, the row holds the wiki header (read as body text/links, not
+   browsed) so it reverts to the normal themed surface/text colour -- else it
+   would inherit the fixed dark-mode text colour set on .state-row-body above
+   and blend into its own light-mode background. */
+.pa-card.is-expanded .pa-card-row {
+  display: block;
+  background: var(--surface-1);
+  color: var(--text-primary);
+}
+.pa-card.is-expanded .pa-card-row:hover { background: var(--surface-1); }
+
+/* The compact strip and expanded header are both always in the DOM (see
+   cardOuterHtml in app.js) -- only one is shown at a time, purely via CSS, so
+   toggling a card never tears down (and thus never re-fetches/re-renders)
+   the wiki header's image or Commons gallery. display:contents on the
+   compact wrapper keeps its .pa-card-thumb/.pa-card-body as direct flex
+   children of .pa-card-row, matching the layout as if the wrapper weren't
+   there. */
+.pa-card-compact { display: contents; }
+.pa-card.is-expanded .pa-card-compact { display: none; }
+.pa-card-expanded-header { display: none; }
+.pa-card.is-expanded .pa-card-expanded-header { display: block; }
 
 .pa-card-thumb {
   flex: none;
@@ -1478,33 +1510,16 @@ button.stat-tile.is-active {
 .pa-card-area { white-space: nowrap; }
 .pa-card-status { white-space: nowrap; }
 
-/* an expanded card switches to the vertical detail layout, and -- unlike its
-   collapsed state -- must reset back to the normal themed surface/text
-   colour, since it would otherwise inherit the fixed dark-mode text colour
-   set on .state-row-body above and blend into its own light-mode background. */
-.pa-card.is-expanded {
-  display: block;
-  cursor: default;
+/* Notification history pops open below the row -- normal themed
+   surface/text colour, same reasoning as the expanded row above. Empty when
+   collapsed, so it takes up no space until a card is expanded; the top
+   border only appears once there's actually something below the row. */
+.pa-card-detail {
   background: var(--surface-1);
   color: var(--text-primary);
 }
-.pa-card.is-expanded:hover { transform: none; }
-
-.pa-card-collapse {
-  position: absolute;
-  top: 0.6rem;
-  right: 0.6rem;
-  width: 28px;
-  height: 28px;
-  border-radius: 50%;
-  border: 1px solid var(--border);
-  background: var(--surface-1);
-  color: var(--text-secondary);
-  font-size: 1.1rem;
-  line-height: 1;
-  cursor: pointer;
-}
-.pa-card-collapse:hover { background: var(--page-plane); }
+.pa-card-detail:not(:empty) { border-top: 1px solid var(--border); }
+.pa-card-detail:empty { display: none; }
 
 .pa-detail-grid {
   display: grid;
@@ -1527,13 +1542,23 @@ button.stat-tile.is-active {
   margin-top: 3px;
 }
 .pa-commons-mosaic:empty { display: none; margin-top: 0; }
-.pa-commons-mosaic a { width: 40px; height: 40px; }
+.pa-commons-mosaic a:not(.pa-commons-edit) { width: 40px; height: 40px; }
 .pa-commons-mosaic img { width: 100%; height: 100%; display: block; object-fit: cover; }
+.pa-commons-edit {
+  flex-basis: 100%;
+  font-size: 0.72rem;
+  color: var(--text-secondary);
+  text-decoration: none;
+  border-bottom: 1px solid color-mix(in srgb, currentColor 35%, transparent);
+  margin-top: 0.15rem;
+}
+.pa-commons-edit:hover { border-bottom-color: currentColor; }
 .pa-detail-title { margin: 0 0 0.3rem; font-family: var(--font-display); font-size: 1.15rem; }
 .pa-detail-meta { margin: 0 0 0.3rem; font-size: 0.82rem; color: var(--text-secondary); }
 .pa-detail-links { margin: 0 0 0.5rem; font-size: 0.85rem; display: flex; gap: 0.6rem; flex-wrap: wrap; }
 .pa-detail-excerpt { font-size: 0.85rem; line-height: 1.55; color: var(--text-secondary); margin: 0; }
 .pa-detail-excerpt:empty { display: none; }
+.pa-excerpt-more { white-space: nowrap; font-size: 0.82rem; }
 
 /* Protected area title linked to Wikipedia, with Wikidata/OSM logo links --
    used in both the accordion detail card title and the KPI group modal
@@ -1557,6 +1582,8 @@ button.stat-tile.is-active {
   letter-spacing: 0.04em;
   color: var(--text-muted);
 }
+.pa-notification-heading a { color: inherit; text-decoration: none; }
+.pa-notification-heading a:hover { text-decoration: underline; }
 .pa-notification-list { list-style: none; margin: 0; padding: 0 1.2rem 1rem; display: flex; flex-direction: column; gap: 0.5rem; }
 .pa-notification-row {
   display: flex;

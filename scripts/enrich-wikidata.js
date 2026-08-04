@@ -364,14 +364,27 @@ function writeWikidataTable(wikidataItems) {
   return Promise.all([jsonPromise, csvPromise]);
 }
 
+// Collects, per distinct (picked item, tied item(s)) pair, every MoEF record
+// name that hit the tie -- so e.g. both the Draft and Final Kodaikanal
+// notifications collapse into one QA row instead of two.
+function recordAmbiguousMatch(ambiguousByKey, item, tiedItems, record) {
+  const key = [item.wikidataId, ...tiedItems.map((t) => t.wikidataId).sort()].join('|');
+  if (!ambiguousByKey.has(key)) {
+    ambiguousByKey.set(key, { pickedItem: item, tiedItems, moefNames: new Set() });
+  }
+  ambiguousByKey.get(key).moefNames.add(record.protectedAreaName);
+}
+
 async function writeMoefTable(moefRecords, match, cache) {
+  const ambiguousByKey = new Map();
   const linked = moefRecords.map((record) => {
-    const { item, matchConfidence } = match(record.protectedAreaName, record.state);
+    const { item, matchConfidence, tiedItems } = match(record.protectedAreaName, record.state);
     // MoEF notification text is the primary source for type; fall back to the
     // matched Wikidata label (e.g. "... National Park") when it's still blank.
     const protectedAreaType = record.protectedAreaType ?? item?.protectedAreaType ?? null;
     const wikidataId = item?.wikidataId ?? null;
     setWikidataId(cache, record.orderNumber, record.notificationDate, record.protectedAreaName, wikidataId);
+    if (item && tiedItems.length > 0) recordAmbiguousMatch(ambiguousByKey, item, tiedItems, record);
     return {
       ...record,
       protectedAreaType,
@@ -383,7 +396,15 @@ async function writeMoefTable(moefRecords, match, cache) {
   await writeFile('data/moef/esz-notifications.json', JSON.stringify(linked, null, 2), 'utf8');
   const csvRows = linked.map((r) => ({ ...r, maps: JSON.stringify(r.maps) }));
   await writeFile('data/moef/esz-notifications.csv', stringify(csvRows, { header: true }), 'utf8');
-  return linked;
+
+  const ambiguousRows = [...ambiguousByKey.values()].map((a) => ({
+    moefName: [...a.moefNames].join('; '),
+    pickedWikidataId: a.pickedItem.wikidataId,
+    pickedWikidataLabel: a.pickedItem.wikidataLabel,
+    tiedWikidataId: a.tiedItems.map((t) => t.wikidataId).join('; '),
+    tiedWikidataLabel: a.tiedItems.map((t) => t.wikidataLabel).join('; '),
+  }));
+  return { linked, ambiguousRows };
 }
 
 async function main() {
@@ -401,7 +422,7 @@ async function main() {
     console.log(`Loaded ${wikipediaRecords.length} Wikipedia protected-area records from data/wikipedia/.`);
     const wp = crossReferenceWikipedia(wikidataItems, wikipediaRecords);
     wikidataItems.push(...wp.newEntries);
-    console.log(`Wikipedia cross-reference: ${wp.stats.matchedCount} Wikidata items matched, ${wp.stats.correctedTypeCount} protectedAreaType corrections, ${wp.stats.newEntryCount} new master-list entries added.`);
+    console.log(`Wikipedia cross-reference: ${wp.stats.matchedCount} Wikidata items matched, ${wp.stats.correctedTypeCount} protectedAreaType corrections, ${wp.stats.finalTypeMismatchCount} Wikipedia entries disagreeing with the final type, ${wp.stats.newEntryCount} new master-list entries added.`);
     wikipediaGroup = {
       title: 'Wikidata ↔ Wikipedia joins',
       description: `Cross-referenced against ${wp.stats.totalWikipediaRecords} records from \`data/wikipedia/{national-parks,wildlife-sanctuaries,tiger-reserves}.json\`.`,
@@ -436,14 +457,27 @@ async function main() {
     };
   }
 
-  await writeFile(QA_LOG_PATH, renderQaLog([wikipediaGroup, osmGroup], new Date().toISOString()), 'utf8');
-  console.log(`QA log written to ${QA_LOG_PATH}.`);
-
   await writeWikidataTable(wikidataItems);
 
   const match = buildMatcher(wikidataItems);
-  const linked = await writeMoefTable(moefRecords, match, cache);
+  const { linked, ambiguousRows } = await writeMoefTable(moefRecords, match, cache);
   await saveCache(CACHE_PATH, cache);
+
+  const moefGroup = {
+    title: 'MoEF ↔ Wikidata joins',
+    description: 'Linking each MoEF ESZ-notification record (`data/moef/esz-notifications.csv`) to its Wikidata/master-list item by name+state (see `scripts/lib/wikidata-match.js`).',
+    sections: [
+      {
+        title: 'MoEF notification name matched multiple Wikidata items',
+        description: 'The notification\'s name+state matched more than one distinct Wikidata item exactly -- typically one item\'s label and a different item\'s alias normalize to the same name once generic words like "Wildlife Sanctuary" are stripped. The tie is broken arbitrarily (array order, not evidence): every notification with this name gets linked to `pickedWikidataId`, and `tiedWikidataId` gets none, even if it\'s the more specific/correct item. Review by hand -- usually either a genuine Wikidata duplicate (merge the items on Wikidata) or a wrong alias on one item (fix on Wikidata); occasionally the tied item is a distinct, real place with a coincidentally identical name once stripped, which isn\'t fixable via a Wikidata edit.',
+        columns: ['moefName', 'pickedWikidataId', 'pickedWikidataLabel', 'tiedWikidataId', 'tiedWikidataLabel'],
+        rows: ambiguousRows,
+      },
+    ],
+  };
+
+  await writeFile(QA_LOG_PATH, renderQaLog([wikipediaGroup, osmGroup, moefGroup], new Date().toISOString()), 'utf8');
+  console.log(`QA log written to ${QA_LOG_PATH}.`);
 
   const exact = linked.filter((r) => r.matchConfidence === 'exact').length;
   const fuzzy = linked.filter((r) => r.matchConfidence === 'fuzzy').length;

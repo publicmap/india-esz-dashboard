@@ -52,6 +52,13 @@ export function buildTmsUrl(imageServiceId) {
   return `https://allmaps.xyz/images/${id}/{z}/{x}/{y}@2x.png`;
 }
 
+// The Allmaps Annotations API keys georeferencing results by the same id --
+// a 200 here means this exact IIIF image has been georeferenced somewhere,
+// a 404 means it hasn't.
+export function buildAnnotationUrl(allmapsId) {
+  return `https://annotations.allmaps.org/images/${allmapsId}`;
+}
+
 // Archive.org book-reader URLs encode the page as a 0-based leaf index,
 // e.g. .../page/n27/mode/2up -- this lines up with the IIIF manifest's
 // canvas order (canvas label "27" == items[27]) for the scans checked so
@@ -86,4 +93,15 @@ export function findImageServiceIdForPage(manifest, page) {
   const byLabel = items.find((c) => canvasLabel(c) === String(page));
   const canvas = byLabel ?? items[Number(page)];
   return canvas ? canvasImageServiceId(canvas) : null;
+}
+
+// Every canvas's label + IIIF Image API service id, in manifest order --
+// used to scan a whole scan for which page(s) have been georeferenced,
+// rather than looking up a single page already known ahead of time.
+export function listCanvases(manifest) {
+  const items = manifest?.items ?? [];
+  return items.map((canvas) => ({
+    label: canvasLabel(canvas),
+    imageServiceId: canvasImageServiceId(canvas),
+  }));
 }

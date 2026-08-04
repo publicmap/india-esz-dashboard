@@ -29,7 +29,7 @@ async function loadCorrections() {
       stateOnlyMap.set(state, correctState || state);
       continue;
     }
-    map.set(`${paName}${state}`, {
+    map.set(`${paName}${state}`, {
       correctPaName: correctPaName || paName,
       correctState: correctState || state,
       correctPaType: correctPaType || null,
@@ -106,7 +106,7 @@ function expandAndamanIslandPasFinal(record) {
 }
 
 function applyCorrection(corrections, name, state) {
-  const nameHit = corrections.map.get(`${name}${state}`);
+  const nameHit = corrections.map.get(`${name}${state}`);
   const stateOverride = corrections.stateOnlyMap.get(state);
   if (!nameHit && !stateOverride) return { name, state, type: null };
   return {
@@ -165,7 +165,7 @@ async function main() {
   await writeFile('data/moef/esz-notifications.csv', stringify(csvRows, { header: true }), 'utf8');
 
   const splitCount = cleaned.length - records.length;
-  const correctedCount = records.filter((r) => corrections.map.has(`${r.protectedAreaName}${r.state}`) || corrections.stateOnlyMap.has(r.state)).length;
+  const correctedCount = records.filter((r) => corrections.map.has(`${r.protectedAreaName}${r.state}`) || corrections.stateOnlyMap.has(r.state)).length;
   const remainingMultiLooking = cleaned.filter((r) => /\s+and\s+|,/i.test(r.protectedAreaName)).length;
 
   console.log(`Cleaned ${records.length} records -> ${cleaned.length} records (+${splitCount} from multi-park expansion).`);

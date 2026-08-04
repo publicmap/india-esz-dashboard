@@ -1660,10 +1660,20 @@ function cardCompactInnerHtml(entry) {
     </div>`;
 }
 
+// The compact strip and the expanded wiki header are both built once, up
+// front, as siblings -- expand/collapse then only toggles which one CSS
+// shows (see .pa-card.is-expanded rules), rather than tearing down and
+// rebuilding either on every toggle. That's what keeps re-expanding a card
+// instant and image-flicker-free instead of re-fetching/re-rendering the
+// Wikipedia excerpt and Commons gallery each time.
 function cardOuterHtml(entry) {
   return `
-    <div class="pa-card" data-pa-key="${escapeHtml(entry.paKey)}" tabindex="0" role="button" aria-expanded="false" title="${escapeHtml(entry.name || '')}">
-      ${cardCompactInnerHtml(entry)}
+    <div class="pa-card" data-pa-key="${escapeHtml(entry.paKey)}" title="${escapeHtml(entry.name || '')}">
+      <div class="pa-card-row" tabindex="0" role="button" aria-expanded="false">
+        <div class="pa-card-compact">${cardCompactInnerHtml(entry)}</div>
+        <div class="pa-card-expanded-header"></div>
+      </div>
+      <div class="pa-card-detail"></div>
     </div>`;
 }
 
@@ -1787,7 +1797,11 @@ function notificationListHtml(entry) {
   return `<ul class="pa-notification-list">${sorted.map((n) => notificationRowHtml(n, entry)).join('')}</ul>`;
 }
 
-function detailHtml(entry) {
+// Replaces the compact row's thumb/name/status with the full wiki-sourced
+// header (bigger image + Commons gallery, title with logos, meta, excerpt)
+// when a card expands -- this *is* the row's expanded state, not a separate
+// panel, so there's no duplicate title/image sitting below it.
+function detailHeaderHtml(entry) {
   const thumb = entry.pageBanner || entry.image;
   const meta = [];
   if (entry.iucnCategory) meta.push(escapeHtml(entry.iucnCategory.replace(/^IUCN category [IVXLC]+:\s*/, '')));
@@ -1800,7 +1814,6 @@ function detailHtml(entry) {
   if (osmIds.length) links.push(`<a href="${AMCHE_ATLAS_BASE}?layers=osm:relation/${osmIds[0]}" target="_blank" rel="noopener">Boundary in amche-atlas</a>`);
 
   return `
-    <button type="button" class="pa-card-collapse" aria-label="Collapse">&times;</button>
     <div class="pa-detail-grid">
       <div class="pa-detail-media">
         ${thumb ? `<a href="${commonsFilePageUrl(thumb)}" target="_blank" rel="noopener"><img class="pa-detail-image" src="${commonsThumbnailUrl(thumb, 120)}" alt="" loading="lazy" /></a>` : ''}
@@ -1812,8 +1825,13 @@ function detailHtml(entry) {
         ${links.length ? `<p class="pa-detail-links">${links.join(' &middot; ')}</p>` : ''}
         <p class="pa-detail-excerpt">${entry.enwikiUrl ? 'Loading Wikipedia summary&hellip;' : ''}</p>
       </div>
-    </div>
-    <h4 class="pa-notification-heading">ESZ notification history</h4>
+    </div>`;
+}
+
+// The only thing that pops open in the separate detail pane below the row.
+function notificationSectionHtml(entry) {
+  return `
+    <h4 class="pa-notification-heading"><a href="https://www.moef.gov.in/esz-notifications" target="_blank" rel="noopener">History of Eco-Sensitive Zone Notifications</a></h4>
     ${notificationListHtml(entry)}`;
 }
 
@@ -1839,14 +1857,14 @@ async function loadExcerpt(entry, cardEl) {
     } : null;
     excerptCache.set(entry.wikidataId, result);
   }
-  applyExcerpt(cardEl, result);
+  applyExcerpt(cardEl, result, entry.enwikiUrl);
 }
 
-function applyExcerpt(cardEl, result) {
+function applyExcerpt(cardEl, result, wikiUrl) {
   const excerptEl = cardEl.querySelector('.pa-detail-excerpt');
   if (!excerptEl) return; // card was collapsed/re-rendered before the fetch resolved
   if (!result || !result.extract) { excerptEl.remove(); return; }
-  excerptEl.textContent = result.extract;
+  excerptEl.innerHTML = `${escapeHtml(result.extract)} <a class="pa-excerpt-more" href="${wikiUrl}" target="_blank" rel="noopener">Read more on Wikipedia</a>`;
   const media = cardEl.querySelector('.pa-detail-media');
   if (result.imageUrl && media && !media.querySelector('img')) {
     const link = document.createElement('a');
@@ -1914,11 +1932,12 @@ async function loadCommonsMosaic(entry, cardEl) {
   const images = await fetchCommonsCategoryImages(category);
   mosaicEl = cardEl.querySelector('.pa-commons-mosaic');
   if (!mosaicEl) return;
-  if (!images.length) { mosaicEl.remove(); return; }
-  mosaicEl.innerHTML = images.map((img) => `
+  const galleryUrl = `https://commons.wikimedia.org/wiki/Category:${encodeURIComponent(category)}`;
+  const imagesHtml = images.map((img) => `
     <a href="${img.pageUrl}" target="_blank" rel="noopener">
       <img src="${img.thumbUrl}" alt="" loading="lazy" />
     </a>`).join('');
+  mosaicEl.innerHTML = `${imagesHtml}<a class="pa-commons-edit" href="${galleryUrl}" target="_blank" rel="noopener">[Edit Photos]</a>`;
 }
 
 function typeGroupHtml(type, entries) {
@@ -1985,19 +2004,28 @@ function toggleCard(cardEl, shouldExpand, { syncMap = true } = {}) {
   const paKey = cardEl.dataset.paKey;
   const entry = entryByPaKey.get(paKey);
   if (!entry) return;
+  const rowEl = cardEl.querySelector('.pa-card-row');
+  const headerEl = cardEl.querySelector('.pa-card-expanded-header');
+  const detailEl = cardEl.querySelector('.pa-card-detail');
   if (shouldExpand) {
     expandedCards.add(paKey);
     cardEl.classList.add('is-expanded');
-    cardEl.setAttribute('aria-expanded', 'true');
-    cardEl.innerHTML = detailHtml(entry);
-    loadExcerpt(entry, cardEl);
-    loadCommonsMosaic(entry, cardEl);
+    rowEl.setAttribute('aria-expanded', 'true');
+    // Only build the header (and kick off the excerpt/mosaic fetches) the
+    // first time this card expands -- re-expanding later just shows what's
+    // already there.
+    if (!headerEl.childElementCount) {
+      headerEl.innerHTML = detailHeaderHtml(entry);
+      loadExcerpt(entry, cardEl);
+      loadCommonsMosaic(entry, cardEl);
+    }
+    detailEl.innerHTML = notificationSectionHtml(entry);
     if (syncMap) selectEntryOnMap(entry);
   } else {
     expandedCards.delete(paKey);
     cardEl.classList.remove('is-expanded');
-    cardEl.setAttribute('aria-expanded', 'false');
-    cardEl.innerHTML = cardCompactInnerHtml(entry);
+    rowEl.setAttribute('aria-expanded', 'false');
+    detailEl.innerHTML = '';
     if (selectedWikidataId === entry.wikidataId) closePopup();
   }
 }
@@ -2042,21 +2070,24 @@ function onCardHoverLeave() {
 
 function initAccordionEvents() {
   accordionEl.addEventListener('click', (e) => {
-    if (e.target.closest('.pa-card-collapse')) {
-      const card = e.target.closest('.pa-card');
-      if (card) toggleCard(card, false);
+    // An expanded row hosts real links (Wikipedia, Commons, amche-atlas...)
+    // -- let those navigate instead of toggling the card closed.
+    if (e.target.closest('a[href]')) return;
+    const row = e.target.closest('.pa-card-row');
+    if (row) {
+      const card = row.closest('.pa-card');
+      if (card) toggleCard(card, !card.classList.contains('is-expanded'));
       return;
     }
-    const card = e.target.closest('.pa-card');
-    if (card) { toggleCard(card, !card.classList.contains('is-expanded')); return; }
     const header = e.target.closest('.state-row-header');
     if (header) toggleState(header.dataset.state);
   });
   accordionEl.addEventListener('keydown', (e) => {
     if (e.key !== 'Enter' && e.key !== ' ') return;
-    const card = e.target.closest('.pa-card');
-    if (card && e.target === card) {
+    const row = e.target.closest('.pa-card-row');
+    if (row && e.target === row) {
       e.preventDefault();
+      const card = row.closest('.pa-card');
       toggleCard(card, !card.classList.contains('is-expanded'));
     }
   });

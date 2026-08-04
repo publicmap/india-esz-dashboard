@@ -80,6 +80,72 @@
       }
     },
     {
+      "id": "relation/15743640",
+      "type": "osm",
+      "title": "Kevladev National Park (boundary)",
+      "description": "Final ESZ notified &middot; Rajasthan",
+      "tags": [
+        "Rajasthan",
+        "Final ESZ notified"
+      ],
+      "initiallyChecked": false,
+      "attribution": "&copy; OpenStreetMap contributors (via Overpass API)",
+      "style": {
+        "line-color": "#0ca30c",
+        "line-width": 2,
+        "fill-color": "#0ca30c",
+        "fill-opacity": 0.15,
+        "text-field": [
+          "get",
+          "name"
+        ]
+      }
+    },
+    {
+      "id": "relation/15876412",
+      "type": "osm",
+      "title": "Gulmarg Wildlife Sanctuary (boundary)",
+      "description": "Final ESZ notified &middot; Jammu and Kashmir",
+      "tags": [
+        "Jammu and Kashmir",
+        "Final ESZ notified"
+      ],
+      "initiallyChecked": false,
+      "attribution": "&copy; OpenStreetMap contributors (via Overpass API)",
+      "style": {
+        "line-color": "#0ca30c",
+        "line-width": 2,
+        "fill-color": "#0ca30c",
+        "fill-opacity": 0.15,
+        "text-field": [
+          "get",
+          "name"
+        ]
+      }
+    },
+    {
+      "id": "relation/9474608",
+      "type": "osm",
+      "title": "Pilibhit Tiger Reserve (boundary)",
+      "description": "Not yet notified &middot; Uttar Pradesh",
+      "tags": [
+        "Uttar Pradesh",
+        "Not yet notified"
+      ],
+      "initiallyChecked": false,
+      "attribution": "&copy; OpenStreetMap contributors (via Overpass API)",
+      "style": {
+        "line-color": "#898781",
+        "line-width": 2,
+        "fill-color": "#898781",
+        "fill-opacity": 0.15,
+        "text-field": [
+          "get",
+          "name"
+        ]
+      }
+    },
+    {
       "id": "relation/3494941",
       "type": "osm",
       "title": "Ranthambore National Park (boundary)",
@@ -168,12 +234,34 @@
       }
     },
     {
-      "id": "relation/19289292",
+      "id": "relation/17746132",
       "type": "osm",
-      "title": "Simlipal National Park (boundary)",
-      "description": "Draft ESZ notified &middot; Odisha",
+      "title": "Kalakkad Mundanthurai Tiger Reserve (boundary)",
+      "description": "Not yet notified &middot; Tamil Nadu",
       "tags": [
-        "Odisha",
+        "Tamil Nadu",
+        "Not yet notified"
+      ],
+      "initiallyChecked": false,
+      "attribution": "&copy; OpenStreetMap contributors (via Overpass API)",
+      "style": {
+        "line-color": "#898781",
+        "line-width": 2,
+        "fill-color": "#898781",
+        "fill-opacity": 0.15,
+        "text-field": [
+          "get",
+          "name"
+        ]
+      }
+    },
+    {
+      "id": "relation/15036911",
+      "type": "osm",
+      "title": "Anamudi Shola National Park (boundary)",
+      "description": "Draft ESZ notified &middot; Kerala",
+      "tags": [
+        "Kerala",
         "Draft ESZ notified"
       ],
       "initiallyChecked": false,
@@ -190,100 +278,12 @@
       }
     },
     {
-      "id": "relation/15743640",
+      "id": "relation/11279548",
       "type": "osm",
-      "title": "Kevladev National Park (boundary)",
-      "description": "Final ESZ notified &middot; Rajasthan",
+      "title": "Parambikulam Tiger Reserve (boundary)",
+      "description": "Draft ESZ notified &middot; Kerala",
       "tags": [
-        "Rajasthan",
-        "Final ESZ notified"
-      ],
-      "initiallyChecked": false,
-      "attribution": "&copy; OpenStreetMap contributors (via Overpass API)",
-      "style": {
-        "line-color": "#0ca30c",
-        "line-width": 2,
-        "fill-color": "#0ca30c",
-        "fill-opacity": 0.15,
-        "text-field": [
-          "get",
-          "name"
-        ]
-      }
-    },
-    {
-      "id": "relation/13617703",
-      "type": "osm",
-      "title": "Sundarbans National Park (boundary)",
-      "description": "Not yet notified &middot; West Bengal",
-      "tags": [
-        "West Bengal",
-        "Not yet notified"
-      ],
-      "initiallyChecked": false,
-      "attribution": "&copy; OpenStreetMap contributors (via Overpass API)",
-      "style": {
-        "line-color": "#898781",
-        "line-width": 2,
-        "fill-color": "#898781",
-        "fill-opacity": 0.15,
-        "text-field": [
-          "get",
-          "name"
-        ]
-      }
-    },
-    {
-      "id": "relation/15694340",
-      "type": "osm",
-      "title": "Bandhavgarh National Park (boundary)",
-      "description": "Final ESZ notified &middot; Madhya Pradesh",
-      "tags": [
-        "Madhya Pradesh",
-        "Final ESZ notified"
-      ],
-      "initiallyChecked": false,
-      "attribution": "&copy; OpenStreetMap contributors (via Overpass API)",
-      "style": {
-        "line-color": "#0ca30c",
-        "line-width": 2,
-        "fill-color": "#0ca30c",
-        "fill-opacity": 0.15,
-        "text-field": [
-          "get",
-          "name"
-        ]
-      }
-    },
-    {
-      "id": "relation/16831555",
-      "type": "osm",
-      "title": "Jim Corbett National Park (boundary)",
-      "description": "Not yet notified &middot; Uttarakhand",
-      "tags": [
-        "Uttarakhand",
-        "Not yet notified"
-      ],
-      "initiallyChecked": false,
-      "attribution": "&copy; OpenStreetMap contributors (via Overpass API)",
-      "style": {
-        "line-color": "#898781",
-        "line-width": 2,
-        "fill-color": "#898781",
-        "fill-opacity": 0.15,
-        "text-field": [
-          "get",
-          "name"
-        ]
-      }
-    },
-    {
-      "id": "relation/9466769",
-      "type": "osm",
-      "title": "Sariska Tiger Reserve (boundary)",
-      "description": "Draft ESZ notified &middot; Rajasthan",
-      "tags": [
-        "Rajasthan",
+        "Kerala",
         "Draft ESZ notified"
       ],
       "initiallyChecked": false,
@@ -292,50 +292,6 @@
         "line-color": "#fab219",
         "line-width": 2,
         "fill-color": "#fab219",
-        "fill-opacity": 0.15,
-        "text-field": [
-          "get",
-          "name"
-        ]
-      }
-    },
-    {
-      "id": "relation/9474608",
-      "type": "osm",
-      "title": "Pilibhit Tiger Reserve (boundary)",
-      "description": "Not yet notified &middot; Uttar Pradesh",
-      "tags": [
-        "Uttar Pradesh",
-        "Not yet notified"
-      ],
-      "initiallyChecked": false,
-      "attribution": "&copy; OpenStreetMap contributors (via Overpass API)",
-      "style": {
-        "line-color": "#898781",
-        "line-width": 2,
-        "fill-color": "#898781",
-        "fill-opacity": 0.15,
-        "text-field": [
-          "get",
-          "name"
-        ]
-      }
-    },
-    {
-      "id": "relation/15876412",
-      "type": "osm",
-      "title": "Gulmarg Wildlife Sanctuary (boundary)",
-      "description": "Final ESZ notified &middot; Jammu and Kashmir",
-      "tags": [
-        "Jammu and Kashmir",
-        "Final ESZ notified"
-      ],
-      "initiallyChecked": false,
-      "attribution": "&copy; OpenStreetMap contributors (via Overpass API)",
-      "style": {
-        "line-color": "#0ca30c",
-        "line-width": 2,
-        "fill-color": "#0ca30c",
         "fill-opacity": 0.15,
         "text-field": [
           "get",
@@ -432,12 +388,34 @@
       }
     },
     {
-      "id": "relation/17746132",
+      "id": "relation/415570",
       "type": "osm",
-      "title": "Kalakkad Mundanthurai Tiger Reserve (boundary)",
-      "description": "Not yet notified &middot; Tamil Nadu",
+      "title": "Gulf of Mannar Marine National Park (boundary)",
+      "description": "Final ESZ notified &middot; Tamil Nadu",
       "tags": [
         "Tamil Nadu",
+        "Final ESZ notified"
+      ],
+      "initiallyChecked": false,
+      "attribution": "&copy; OpenStreetMap contributors (via Overpass API)",
+      "style": {
+        "line-color": "#0ca30c",
+        "line-width": 2,
+        "fill-color": "#0ca30c",
+        "fill-opacity": 0.15,
+        "text-field": [
+          "get",
+          "name"
+        ]
+      }
+    },
+    {
+      "id": "relation/13617703",
+      "type": "osm",
+      "title": "Sundarbans National Park (boundary)",
+      "description": "Not yet notified &middot; West Bengal",
+      "tags": [
+        "West Bengal",
         "Not yet notified"
       ],
       "initiallyChecked": false,
@@ -454,56 +432,12 @@
       }
     },
     {
-      "id": "relation/15036911",
+      "id": "relation/15694340",
       "type": "osm",
-      "title": "Anamudi Shola National Park (boundary)",
-      "description": "Draft ESZ notified &middot; Kerala",
+      "title": "Bandhavgarh National Park (boundary)",
+      "description": "Final ESZ notified &middot; Madhya Pradesh",
       "tags": [
-        "Kerala",
-        "Draft ESZ notified"
-      ],
-      "initiallyChecked": false,
-      "attribution": "&copy; OpenStreetMap contributors (via Overpass API)",
-      "style": {
-        "line-color": "#fab219",
-        "line-width": 2,
-        "fill-color": "#fab219",
-        "fill-opacity": 0.15,
-        "text-field": [
-          "get",
-          "name"
-        ]
-      }
-    },
-    {
-      "id": "relation/11279548",
-      "type": "osm",
-      "title": "Parambikulam Tiger Reserve (boundary)",
-      "description": "Draft ESZ notified &middot; Kerala",
-      "tags": [
-        "Kerala",
-        "Draft ESZ notified"
-      ],
-      "initiallyChecked": false,
-      "attribution": "&copy; OpenStreetMap contributors (via Overpass API)",
-      "style": {
-        "line-color": "#fab219",
-        "line-width": 2,
-        "fill-color": "#fab219",
-        "fill-opacity": 0.15,
-        "text-field": [
-          "get",
-          "name"
-        ]
-      }
-    },
-    {
-      "id": "relation/415570",
-      "type": "osm",
-      "title": "Gulf of Mannar Marine National Park (boundary)",
-      "description": "Final ESZ notified &middot; Tamil Nadu",
-      "tags": [
-        "Tamil Nadu",
+        "Madhya Pradesh",
         "Final ESZ notified"
       ],
       "initiallyChecked": false,
@@ -512,6 +446,72 @@
         "line-color": "#0ca30c",
         "line-width": 2,
         "fill-color": "#0ca30c",
+        "fill-opacity": 0.15,
+        "text-field": [
+          "get",
+          "name"
+        ]
+      }
+    },
+    {
+      "id": "relation/16831555",
+      "type": "osm",
+      "title": "Jim Corbett National Park (boundary)",
+      "description": "Not yet notified &middot; Uttarakhand",
+      "tags": [
+        "Uttarakhand",
+        "Not yet notified"
+      ],
+      "initiallyChecked": false,
+      "attribution": "&copy; OpenStreetMap contributors (via Overpass API)",
+      "style": {
+        "line-color": "#898781",
+        "line-width": 2,
+        "fill-color": "#898781",
+        "fill-opacity": 0.15,
+        "text-field": [
+          "get",
+          "name"
+        ]
+      }
+    },
+    {
+      "id": "relation/19289292",
+      "type": "osm",
+      "title": "Simlipal National Park (boundary)",
+      "description": "Draft ESZ notified &middot; Odisha",
+      "tags": [
+        "Odisha",
+        "Draft ESZ notified"
+      ],
+      "initiallyChecked": false,
+      "attribution": "&copy; OpenStreetMap contributors (via Overpass API)",
+      "style": {
+        "line-color": "#fab219",
+        "line-width": 2,
+        "fill-color": "#fab219",
+        "fill-opacity": 0.15,
+        "text-field": [
+          "get",
+          "name"
+        ]
+      }
+    },
+    {
+      "id": "relation/9466769",
+      "type": "osm",
+      "title": "Sariska Tiger Reserve (boundary)",
+      "description": "Draft ESZ notified &middot; Rajasthan",
+      "tags": [
+        "Rajasthan",
+        "Draft ESZ notified"
+      ],
+      "initiallyChecked": false,
+      "attribution": "&copy; OpenStreetMap contributors (via Overpass API)",
+      "style": {
+        "line-color": "#fab219",
+        "line-width": 2,
+        "fill-color": "#fab219",
         "fill-opacity": 0.15,
         "text-field": [
           "get",

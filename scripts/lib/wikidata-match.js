@@ -18,22 +18,44 @@ export function statesAgree(a, b) {
   return a === b || a.includes(b) || b.includes(a);
 }
 
+function dedupeItems(items) {
+  const seen = new Set();
+  const out = [];
+  for (const item of items) {
+    if (seen.has(item.wikidataId)) continue;
+    seen.add(item.wikidataId);
+    out.push(item);
+  }
+  return out;
+}
+
 // Prefers a candidate whose state agrees with the record's, but -- unlike a
 // plain find-with-fallback -- refuses to silently hand back a candidate whose
 // state is known and DISAGREES just because it's the only one in the bucket.
 // A same-normalized-name collision across unrelated items in different
 // states does happen (e.g. two different sanctuaries both named after the
 // same person, one via a label and one only via an alias), so an
-// exact-name bucket isn't proof they're the same place. Returns null when
-// every candidate with a known state disagrees, so the caller can fall
+// exact-name bucket isn't proof they're the same place. Returns { pick: null }
+// when every candidate with a known state disagrees, so the caller can fall
 // through to the fuzzy tier (which applies the same veto) rather than
 // forcing a wrong match.
+//
+// When more than one *distinct* item survives the state check, that's a real
+// ambiguity -- two different Wikidata items whose name (label or alias)
+// collides once generic PA words are stripped, both plausible for this
+// record's state -- and picking the first one (array order, not evidence) is
+// arbitrary. Rather than silently doing that, `tied` carries the other
+// candidate(s) so the caller can flag the tie instead of swallowing it (see
+// e.g. Q3696260 "Palani Hills Wildlife Sanctuary and National Park", aliased
+// "Kodaikanal Wildlife Sanctuary", colliding with Q131123428's own label
+// "Kodaikanal Wildlife Sanctuary" -- both Tamil Nadu).
 function pickByState(candidates, normRecordState) {
+  const unique = dedupeItems(candidates);
   const agrees = (c) => c.state.some((a) => statesAgree(normalizeState(a), normRecordState));
-  const exactStateMatch = candidates.find(agrees);
-  if (exactStateMatch) return exactStateMatch;
-  const viable = candidates.filter((c) => c.state.length === 0);
-  return viable[0] ?? null;
+  const agreeing = unique.filter(agrees);
+  if (agreeing.length > 0) return { pick: agreeing[0], tied: agreeing.slice(1) };
+  const viable = unique.filter((c) => c.state.length === 0);
+  return { pick: viable[0] ?? null, tied: viable.slice(1) };
 }
 
 // A candidate name that scores against the record's name -- either an item's
@@ -60,9 +82,12 @@ function scoreCandidateName(normRecordName, candidateName, stateAgrees) {
   return nameScore >= (stateAgrees ? 0.7 : 0.85) ? nameScore : null;
 }
 
-// Returns a `match(name, state) -> { item, matchConfidence }` function closed
-// over an index of wikidataItems, for linking an external (name, state) pair
-// to its best Wikidata item. matchConfidence is 'exact' | 'fuzzy' | 'none'.
+// Returns a `match(name, state) -> { item, matchConfidence, tiedItems }`
+// function closed over an index of wikidataItems, for linking an external
+// (name, state) pair to its best Wikidata item. matchConfidence is 'exact' |
+// 'fuzzy' | 'none'. `tiedItems` is only non-empty for an 'exact' match where
+// more than one distinct Wikidata item tied on name+state (see pickByState) --
+// the returned `item` is still just the (arbitrary) first one.
 export function buildMatcher(wikidataItems) {
   const byNormName = new Map();
   const byCompactName = new Map();
@@ -82,16 +107,18 @@ export function buildMatcher(wikidataItems) {
     const normRecordName = normalizeName(recordName);
     const compactRecordName = compactName(normRecordName);
     const normRecordState = normalizeState(recordState);
-    if (!normRecordName) return { item: null, matchConfidence: 'none' };
+    if (!normRecordName) return { item: null, matchConfidence: 'none', tiedItems: [] };
 
     const exact = byNormName.get(normRecordName) ?? [];
-    const exactPick = pickByState(exact, normRecordState);
-    if (exactPick) return { item: exactPick, matchConfidence: 'exact' };
+    const exactResult = pickByState(exact, normRecordState);
+    if (exactResult.pick) return { item: exactResult.pick, matchConfidence: 'exact', tiedItems: exactResult.tied };
     // Same name once whitespace/hyphens are ignored (e.g. "Eaglenest" vs
     // "Eagle Nest") -- still an exact match, just a spacing variant.
     const compactExact = byCompactName.get(compactRecordName) ?? [];
-    const compactExactPick = pickByState(compactExact, normRecordState);
-    if (compactExactPick) return { item: compactExactPick, matchConfidence: 'exact' };
+    const compactExactResult = pickByState(compactExact, normRecordState);
+    if (compactExactResult.pick) {
+      return { item: compactExactResult.pick, matchConfidence: 'exact', tiedItems: compactExactResult.tied };
+    }
 
     // Fuzzy tier. Two structurally different kinds of near-match need two
     // different bars:
@@ -141,6 +168,8 @@ export function buildMatcher(wikidataItems) {
         best = item;
       }
     }
-    return best ? { item: best, matchConfidence: 'fuzzy' } : { item: null, matchConfidence: 'none' };
+    return best
+      ? { item: best, matchConfidence: 'fuzzy', tiedItems: [] }
+      : { item: null, matchConfidence: 'none', tiedItems: [] };
   };
 }

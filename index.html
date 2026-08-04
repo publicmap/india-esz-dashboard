@@ -86,6 +86,9 @@
               (CSV)</a>
             <a class="dropdown-item" role="menuitem" href="data/protected-areas.geojson" download>Protected areas
               (GeoJSON)</a>
+            <a class="dropdown-item" role="menuitem"
+              href="https://viewer.allmaps.org/?url=https%3A%2F%2Fpublicmap.github.io%2Findia-esz-dashboard%2Fdata%2Fiiif-manifest.json"
+              target="_blank" rel="noopener">Georeferenced Maps</a>
             <button class="dropdown-item" role="menuitem" id="export-filtered" type="button">Filtered table view
               (CSV)</button>
           </div>
@@ -121,7 +124,7 @@
               </svg>
             </div>
             <span class="hero-stat-value" id="hero-stat-overall-value">&ndash;</span>
-            <span class="hero-stat-label">Of States/UTs Completed ESZ Notification</span>
+            <span class="hero-stat-label">Of States/UTs Have Completed Finalized ESZ Notification</span>
             <span class="hero-stat-note" id="hero-stat-overall-note">&ndash;</span>
             <div class="hero-stat-progress">
               <div class="hero-stat-progress-fill" id="hero-stat-overall-bar"></div>
@@ -193,7 +196,8 @@
             is this dashboard's final, deduplicated output (MoEFCC merged with Wikidata) &mdash; the same figure used
             for the KPIs above; expand it to see the four upstream sources it was built from, each linking back to
             where you can verify the count directly. <em>Final ESZ</em>, <em>Draft ESZ</em>, and <em>No
-              notification</em> split that same total by ESZ status.</p>
+              notification</em> split that same total by ESZ status.
+          </p>
           <div class="table-wrap">
             <table class="source-status-table">
               <thead>
@@ -445,7 +449,8 @@
                 <input type="checkbox" id="layer-toggle-pa-points" checked>
                 <span>Protected Area ESZ Status</span>
               </label>
-              <label class="map-layer-toggle" title="Eco Sensitive Zones as defined in the National Environment Policy, MoEF">
+              <label class="map-layer-toggle"
+                title="Eco Sensitive Zones as defined in the National Environment Policy, MoEF">
                 <input type="checkbox" id="layer-toggle-esz" checked>
                 <span>Eco-Sensitive Zones</span>
               </label>
@@ -456,11 +461,12 @@
               </label>
             </div>
           </div>
-          <p class="map-hint">Click a point for details. Points are protected areas with a known Wikidata location;
-            boundary outlines (where available via OpenStreetMap) can be opened in amche-atlas from the popup.
-            The Eco-Sensitive Zones and Wildlife Reserves &amp; Corridors overlays are sourced from
-            <a href="https://bharatmaps.gov.in/BharatMaps/Home/Map" target="_blank" rel="noopener">Bharatmaps/Parivesh</a>,
-            collected by <a href="https://datameet.org" target="_blank" rel="noopener">Datameet Community</a>.</p>
+          <p class="map-hint">Click a point for details. The Eco-Sensitive Zones and Wildlife Reserves &amp; Corridors
+            overlays are sourced from
+            <a href="https://bharatmaps.gov.in/BharatMaps/Home/Map" target="_blank"
+              rel="noopener">Bharatmaps/Parivesh</a>,
+            collected by <a href="https://datameet.org" target="_blank" rel="noopener">Datameet Community</a>.
+          </p>
         </div>
       </div>
     </section>
