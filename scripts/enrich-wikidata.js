@@ -21,6 +21,7 @@ import { crossReferenceOsm } from './lib/osm-qa.js';
 import { loadWikipediaRecords } from './lib/wikipedia-cache.js';
 import { crossReferenceWikipedia } from './lib/wikipedia-qa.js';
 import { renderQaLog } from './lib/qa-log.js';
+import { diffByKey, logDiff } from './lib/diff-log.js';
 
 const CACHE_PATH = 'data/enrichment-cache.csv';
 const WIKIDATA_JSON_PATH = 'data/wikidata/protected-areas.json';
@@ -29,6 +30,23 @@ const QA_LOG_PATH = 'data/wikidata/qa-log.md';
 
 const SPARQL_ENDPOINT = 'https://query.wikidata.org/sparql';
 const USER_AGENT = 'india-esz-dashboard-bot/1.0 (https://github.com/publicmap/india-esz-dashboard)';
+
+async function readJsonIfExists(path) {
+  try {
+    return JSON.parse(await readFile(path, 'utf8'));
+  } catch {
+    return [];
+  }
+}
+
+function describeWikidataItem(item) {
+  return `${item.wikidataLabel || '(no label)'} -- ${item.wikidataUrl}`;
+}
+
+function describeMoefRecord(r) {
+  const link = r.wikidataId ? `https://www.wikidata.org/wiki/${r.wikidataId}` : 'no wikidata match';
+  return `${r.protectedAreaName} (${r.state}) -- ${link}`;
+}
 
 // Most individual Indian protected areas are NOT typed as a direct instance of
 // "protected area" (Q473972) itself -- they use a more specific subclass
@@ -334,7 +352,7 @@ async function fetchWikidataProtectedAreas() {
   return items;
 }
 
-function writeWikidataTable(wikidataItems) {
+async function writeWikidataTable(wikidataItems) {
   const rows = wikidataItems.map(({
     normalizedName, compactName: _compactName, normalizedAliases, compactAliases, ...item
   }) => item);
@@ -361,7 +379,8 @@ function writeWikidataTable(wikidataItems) {
   }));
   const csvPromise = writeFile(WIKIDATA_CSV_PATH, stringify(csvRows, { header: true }), 'utf8');
 
-  return Promise.all([jsonPromise, csvPromise]);
+  await Promise.all([jsonPromise, csvPromise]);
+  return rows;
 }
 
 // Collects, per distinct (picked item, tied item(s)) pair, every MoEF record
@@ -457,11 +476,18 @@ async function main() {
     };
   }
 
-  await writeWikidataTable(wikidataItems);
+  const previousWikidataItems = await readJsonIfExists(WIKIDATA_JSON_PATH);
+  const wikidataRows = await writeWikidataTable(wikidataItems);
+  const wikidataDiff = diffByKey(previousWikidataItems, wikidataRows, (item) => item.wikidataId);
 
   const match = buildMatcher(wikidataItems);
   const { linked, ambiguousRows } = await writeMoefTable(moefRecords, match, cache);
   await saveCache(CACHE_PATH, cache);
+  const moefDiff = diffByKey(
+    moefRecords,
+    linked,
+    (r) => `${r.orderNumber}|${r.notificationDate}|${r.protectedAreaName}|${r.state}`,
+  );
 
   const moefGroup = {
     title: 'MoEF ↔ Wikidata joins',
@@ -486,6 +512,8 @@ async function main() {
   console.log(`  matchConfidence exact: ${exact}`);
   console.log(`  matchConfidence fuzzy: ${fuzzy}`);
   console.log(`  matchConfidence none: ${none}`);
+  logDiff('Wikidata master-list records', wikidataDiff, describeWikidataItem);
+  logDiff('MoEF <-> Wikidata links', moefDiff, describeMoefRecord);
 }
 
 main().catch((err) => {

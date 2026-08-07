@@ -120,6 +120,13 @@ outputs directly, since those get overwritten the next time the pipeline runs:
   `correctPaType` left blank, just `state` (the exact value to match) and `correctState`
   (the fix). This renames the state on *every* MoEF record with that state, instead of
   needing one row per protected area.
+- **A notification's S.O./order number is mis-typed on the MoEF site itself**
+  (verified against the actual gazette, e.g. on archive.org) — add a row to
+  [`data/corrections.csv`](data/corrections.csv) with `orderNumber` set to the
+  *exact* wrong value as it currently appears in `data/moef/esz-notifications.json`
+  and `correctOrderNumber` set to the fix (all other columns blank). Applied by
+  `scripts/clean-moef-data.js`, which also fixes the same literal number
+  embedded in that record's `notificationSummary` text.
 - **A Wikidata field is wrong or missing** (state, admin territorial entity, coordinates,
   IUCN category, etc.) — fix it at the source: edit the item on
   [wikidata.org](https://www.wikidata.org/), then re-run `npm run enrich:wikidata` (or

@@ -52,6 +52,15 @@
 // matched their exact printed date, so unlike the description fallback,
 // there's no evidence the widened window is actually needed here, and
 // avoiding it keeps this expensive pass as narrow as possible.
+//
+// Fourth pass, broad description fallback: same collection+date+description
+// query as the "Search Archive PDF" link the dashboard shows for an
+// unresolved notification (archivePdfDoc() in assets/app.js), but with the
+// identifier:in.gazette.central.e. restriction dropped. Only reached if every
+// pass above -- including full-text -- failed, i.e. the restriction itself
+// may be the reason nothing matched; treated as the lowest-confidence pass
+// since without it a same-day state gazette reusing the same S.O. number
+// could match instead of the real one.
 const ADVANCED_SEARCH_URL = 'https://archive.org/advancedsearch.php';
 const USER_AGENT = 'india-esz-dashboard-bot/1.0 (https://github.com/publicmap/india-esz-dashboard)';
 const IDENTIFIER_PREFIX = 'in.gazette.central.e.*';
@@ -100,10 +109,11 @@ function addDays(dateStr, days) {
   return d.toISOString().slice(0, 10);
 }
 
-async function search(clause, notificationDate, windowDays = 0) {
+async function search(clause, notificationDate, { windowDays = 0, restrictIdentifier = true } = {}) {
   const endDate = windowDays > 0 ? addDays(notificationDate, windowDays) : notificationDate;
   const dateClause = windowDays > 0 ? `date:[${notificationDate} TO ${endDate}]` : `date:"${notificationDate}"`;
-  const q = `collection:"gazetteofindia" AND identifier:${IDENTIFIER_PREFIX} AND ${dateClause} AND (${clause})`;
+  const identifierClause = restrictIdentifier ? `AND identifier:${IDENTIFIER_PREFIX} ` : '';
+  const q = `collection:"gazetteofindia" ${identifierClause}AND ${dateClause} AND (${clause})`;
   const url = `${ADVANCED_SEARCH_URL}?q=${encodeURIComponent(q)}`
     + FIELDS.map((f) => `&fl[]=${f}`).join('')
     + '&rows=50&output=json';
@@ -297,13 +307,27 @@ export async function findGazetteArchiveLink(orderNumber, notificationDate, prot
   if (textDocs[0]) return toResult(textDocs[0], 'description');
 
   if (protectedAreaName) {
-    const nameDocs = await search(`description:"${escapeSolrPhrase(protectedAreaName)}"`, notificationDate, DATE_WINDOW_DAYS);
+    const nameDocs = await search(`description:"${escapeSolrPhrase(protectedAreaName)}"`, notificationDate, { windowDays: DATE_WINDOW_DAYS });
     if (nameDocs[0]) return toResult(nameDocs[0], 'description');
   }
 
   if (digits) {
     const fullTextDoc = await findFullTextMatch(digits, notificationDate, protectedAreaName);
     if (fullTextDoc) return toResult(fullTextDoc, 'fulltext');
+  }
+
+  // Absolute last resort: the same collection+date+description(digits) query
+  // a user gets by clicking the "Search Archive PDF" link in the dashboard
+  // (see archivePdfDoc() in assets/app.js), but without the
+  // identifier:in.gazette.central.e.* restriction every pass above relies on
+  // for precision. Only reachable if that restriction itself was the problem
+  // (e.g. a genuine central gazette scan filed under an unexpected
+  // identifier) -- dropping it also means a same-day state gazette that
+  // happens to reuse the same S.O. number could slip through, so this match
+  // is lower confidence than any of the passes above.
+  if (digits) {
+    const broadDocs = await search(`description:(${digits})`, notificationDate, { restrictIdentifier: false });
+    if (broadDocs[0]) return toResult(broadDocs[0], 'description-broad');
   }
 
   return null;

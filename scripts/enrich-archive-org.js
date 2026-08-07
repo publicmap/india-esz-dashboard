@@ -13,9 +13,19 @@ import { readFile, writeFile } from 'node:fs/promises';
 import { stringify } from 'csv-stringify/sync';
 import { findGazetteArchiveLink } from './lib/archive-org.js';
 import { loadCache, saveCache, getArchiveResult, setArchiveResult } from './lib/enrichment-cache.js';
+import { diffByKey, logDiff } from './lib/diff-log.js';
 
 const CONCURRENCY = 6;
 const CACHE_PATH = 'data/enrichment-cache.csv';
+
+function recordKey(r) {
+  return `${r.orderNumber}|${r.notificationDate}|${r.protectedAreaName}|${r.state}`;
+}
+
+function describeRecord(r) {
+  const links = [r.notificationPdfLink, r.notificationArchiveLink].filter(Boolean);
+  return `${r.protectedAreaName} (${r.state}) -- ${links.join(' | ') || 'no links'}`;
+}
 
 async function runWithConcurrency(items, worker, concurrency) {
   const results = new Array(items.length);
@@ -69,6 +79,8 @@ async function main() {
     return { ...record, notificationArchiveLink: result ? result.url : null };
   }, CONCURRENCY);
 
+  const diff = diffByKey(records, linked, recordKey);
+
   await writeFile('data/moef/esz-notifications.json', JSON.stringify(linked, null, 2), 'utf8');
   const csvRows = linked.map((r) => ({ ...r, maps: JSON.stringify(r.maps) }));
   await writeFile('data/moef/esz-notifications.csv', stringify(csvRows, { header: true }), 'utf8');
@@ -77,6 +89,7 @@ async function main() {
   const found = linked.filter((r) => r.notificationArchiveLink).length;
   console.log(`${cacheHits} records served from cache; looked up ${lookups} new order numbers (${failures} failed after retries).`);
   console.log(`Archive link found for ${found} / ${linked.length} records.`);
+  logDiff('Archive-link records', diff, describeRecord);
 }
 
 main().catch((err) => {

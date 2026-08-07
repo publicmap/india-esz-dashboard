@@ -31,11 +31,21 @@ import {
   buildImagesUrl, buildEditorUrl, buildThumbnailUrl, buildTmsUrl, buildAnnotationUrl, generateAllmapsId,
   extractPageFromArchiveLink, extractIdentifierFromArchiveLink, findImageServiceIdForPage, listCanvases,
 } from './lib/allmaps.js';
+import { diffByKey, logDiff } from './lib/diff-log.js';
 
 const CACHE_PATH = 'data/enrichment-cache.csv';
 const CONCURRENCY = 6;
 const CANVAS_CHECK_CONCURRENCY = 20;
 const USER_AGENT = 'india-esz-dashboard-bot/1.0 (https://github.com/publicmap/india-esz-dashboard)';
+
+function rowKey(r) {
+  return `${r.orderNumber}|${r.notificationDate}|${r.protectedAreaName}`;
+}
+
+function describeRow(r) {
+  const link = r['allmaps editor'] || r['toposheet thumbnail'] || r['allmaps images'] || r.archiveLink || 'no link';
+  return `${r.protectedAreaName || '(no PA name)'} -- ${link}`;
+}
 
 async function runWithConcurrency(items, worker, concurrency) {
   let next = 0;
@@ -102,6 +112,7 @@ function makeGeoreferenceDiscoverer() {
 
 async function main() {
   const cache = await loadCache(CACHE_PATH);
+  const previousCache = cache.map((r) => ({ ...r }));
   const manifestCache = new Map(); // identifier -> in-flight/resolved manifest.json
   const discoverGeoreferencedPages = makeGeoreferenceDiscoverer();
 
@@ -184,11 +195,14 @@ async function main() {
     });
   }, CONCURRENCY);
 
+  const diff = diffByKey(previousCache, cache, rowKey);
+
   await saveCache(CACHE_PATH, cache);
 
   console.log(`allmaps images URL set for ${withImages} rows (${skipped} rows already checked, skipped).`);
   console.log(`toposheet page resolved for ${withPage} rows (${manifestFailures} manifest fetch failures, ${pageNotFound} page-not-found).`);
   console.log(`georeferencing annotation matched for ${matched} rows; ${ambiguous} rows flagged with multiple georeferenced pages for manual review.`);
+  logDiff('Allmaps cache rows', diff, describeRow);
 }
 
 main().catch((err) => {

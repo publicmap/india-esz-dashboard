@@ -17,11 +17,22 @@ const DATA_PATH = 'data/moef/esz-notifications.json';
 
 async function loadCorrections() {
   const text = await readFile(CORRECTIONS_PATH, 'utf8');
-  const rows = parse(text, { columns: true, skip_empty_lines: true });
+  const rows = parse(text, { columns: true, skip_empty_lines: true, relax_column_count: true });
   const map = new Map();
   const stateOnlyMap = new Map();
+  const orderNumberMap = new Map();
   for (const row of rows) {
-    const { paName, state, correctPaName, correctState, correctPaType } = row;
+    const { paName, state, correctPaName, correctState, correctPaType, orderNumber, correctOrderNumber } = row;
+    if (orderNumber && correctOrderNumber) {
+      // MoEF's own table has the wrong S.O. number for this notification
+      // (verified against the actual gazette) -- keyed by the exact
+      // `orderNumber` as it currently appears, independent of paName/state.
+      // Safe as long as that string is unique to one PA in the real data --
+      // enforced below in main() rather than by scoping the key itself,
+      // since this row has no reliable paName/state of its own to scope by
+      // (the correction exists precisely because the source row is wrong).
+      orderNumberMap.set(orderNumber, correctOrderNumber);
+    }
     if (!state) continue;
     if (!paName) {
       // State-only correction: applies to every record with this state,
@@ -35,7 +46,23 @@ async function loadCorrections() {
       correctPaType: correctPaType || null,
     });
   }
-  return { map, stateOnlyMap };
+  return { map, stateOnlyMap, orderNumberMap };
+}
+
+// MoEF's table occasionally has a mis-typed S.O./order number (confirmed
+// against the actual gazette on archive.org) -- fix it, and the same literal
+// number embedded in the free-text `notificationSummary`, before enrichment
+// so `enrich-archive-org.js` searches for the correct number.
+function applyOrderNumberCorrection(record, corrections) {
+  const correctOrderNumber = corrections.orderNumberMap.get(record.orderNumber);
+  if (!correctOrderNumber) return record;
+  return {
+    ...record,
+    orderNumber: correctOrderNumber,
+    notificationSummary: record.notificationSummary
+      ? record.notificationSummary.split(record.orderNumber).join(correctOrderNumber)
+      : record.notificationSummary,
+  };
 }
 
 // A pair of notifications -- draft S.O 1498(E) and final S.O. 3099(E) --
@@ -117,6 +144,7 @@ function applyCorrection(corrections, name, state) {
 }
 
 function cleanRecord(record, corrections) {
+  record = applyOrderNumberCorrection(record, corrections);
   if (record.protectedAreaName === ANDAMAN_DRAFT_NAME) {
     return expandAndamanIslandPasDraft(record);
   }
@@ -154,9 +182,27 @@ function cleanRecord(record, corrections) {
   });
 }
 
+// Guards against an order-number correction silently over-applying: if the
+// wrong `orderNumber` string it's keyed on turns out to match more than one
+// distinct (protectedAreaName, state) pair in the real data, scoping by that
+// string alone isn't safe and the correction needs a narrower key instead.
+function assertOrderNumberCorrectionsAreScoped(records, orderNumberMap) {
+  for (const wrongOrderNumber of orderNumberMap.keys()) {
+    const matches = records.filter((r) => r.orderNumber === wrongOrderNumber);
+    const distinctPas = new Set(matches.map((r) => `${r.protectedAreaName}|${r.state}`));
+    if (distinctPas.size > 1) {
+      throw new Error(
+        `Order-number correction for ${JSON.stringify(wrongOrderNumber)} matches ${distinctPas.size} ` +
+        `different PAs (${[...distinctPas].join(', ')}) -- refine data/corrections.csv so it only hits the intended one.`
+      );
+    }
+  }
+}
+
 async function main() {
   const corrections = await loadCorrections();
   const records = JSON.parse(await readFile(DATA_PATH, 'utf8'));
+  assertOrderNumberCorrectionsAreScoped(records, corrections.orderNumberMap);
 
   const cleaned = records.flatMap((r) => cleanRecord(r, corrections));
 
@@ -166,10 +212,12 @@ async function main() {
 
   const splitCount = cleaned.length - records.length;
   const correctedCount = records.filter((r) => corrections.map.has(`${r.protectedAreaName}${r.state}`) || corrections.stateOnlyMap.has(r.state)).length;
+  const orderNumberCorrectedCount = records.filter((r) => corrections.orderNumberMap.has(r.orderNumber)).length;
   const remainingMultiLooking = cleaned.filter((r) => /\s+and\s+|,/i.test(r.protectedAreaName)).length;
 
   console.log(`Cleaned ${records.length} records -> ${cleaned.length} records (+${splitCount} from multi-park expansion).`);
   console.log(`Applied a whole-string correction to ${correctedCount} records.`);
+  console.log(`Applied an order-number correction to ${orderNumberCorrectedCount} records.`);
   if (remainingMultiLooking > 0) {
     console.log(`${remainingMultiLooking} names still contain "and"/"," after cleanup -- review these:`);
     cleaned

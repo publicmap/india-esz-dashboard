@@ -14,13 +14,30 @@
 // used later for point-in-polygon QA checks) and a flat CSV cache with a
 // lon/lat centroid per feature (data/osm/protected-areas.csv). Both are
 // consumed by enrich-wikidata.js to cross-reference OSM <-> Wikidata ids.
-import { writeFile } from 'node:fs/promises';
+import { readFile, writeFile } from 'node:fs/promises';
+import { parse } from 'csv-parse/sync';
 import { stringify } from 'csv-stringify/sync';
+import { diffByKey, logDiff } from './lib/diff-log.js';
+import { osmKey } from './lib/osm-cache.js';
 
 const POSTPASS_ENDPOINT = 'https://postpass.geofabrik.de/api/interpreter';
 const USER_AGENT = 'india-esz-dashboard-bot/1.0 (https://github.com/publicmap/india-esz-dashboard)';
 const GEOJSON_PATH = 'data/osm/protected-areas.geojson';
 const CSV_PATH = 'data/osm/protected-areas.csv';
+
+async function loadPreviousCsvRows() {
+  let text;
+  try {
+    text = await readFile(CSV_PATH, 'utf8');
+  } catch {
+    return [];
+  }
+  return text.trim() ? parse(text, { columns: true, skip_empty_lines: true }) : [];
+}
+
+function describeFeature(r) {
+  return `${r.name || r.nameEn || '(unnamed)'} -- ${r.osmUrl}${r.wikidata ? ` -> https://www.wikidata.org/wiki/${r.wikidata}` : ''}`;
+}
 
 // Bounding box covering mainland India plus Andaman & Nicobar and
 // Lakshadweep. Deliberately a loose bbox rather than an exact India
@@ -99,6 +116,8 @@ function toProperties(feature) {
 }
 
 async function main() {
+  const previousRows = await loadPreviousCsvRows();
+
   console.log('Querying Postpass for Indian protected-area / national-park OSM boundaries...');
   const fc = await queryPostpass(SQL_QUERY);
   console.log(`Fetched ${fc.features.length} OSM features.`);
@@ -117,6 +136,9 @@ async function main() {
   console.log(`Wrote ${csvRows.length} features to ${GEOJSON_PATH} and ${CSV_PATH}.`);
   console.log(`  with wikidata tag: ${withWikidata}`);
   console.log(`  without wikidata tag: ${csvRows.length - withWikidata}`);
+
+  const diff = diffByKey(previousRows, csvRows, (r) => osmKey(r.osmType, r.osmId));
+  logDiff('OSM features', diff, describeFeature);
 }
 
 main().catch((err) => {

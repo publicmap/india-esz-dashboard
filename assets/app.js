@@ -1746,10 +1746,13 @@ function moefPdfDoc(n) {
 
 function archivePdfDoc(n) {
   if (n.notificationArchiveLink) return { href: n.notificationArchiveLink, label: 'Archive PDF', disabled: false };
-  if (!n.orderNumber) return { href: null, label: 'Archive PDF', disabled: true };
-  const query = new URLSearchParams({ query: n.orderNumber }).toString();
+  const digits = n.orderNumber ? (n.orderNumber.match(/\d+/) || [])[0] : null;
+  if (!digits || !n.notificationDate) return { href: null, label: 'Archive PDF', disabled: true };
+  const query = new URLSearchParams({
+    query: `collection:"gazetteofindia" AND date:${n.notificationDate} AND description:(${digits})`,
+  }).toString();
   return {
-    href: `https://archive.org/details/gazetteofindia?tab=collection&${query}&sin=TXT&sort=-date`,
+    href: `https://archive.org/search?${query}`,
     label: 'Search Archive PDF',
     disabled: true,
   };
