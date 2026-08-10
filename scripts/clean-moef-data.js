@@ -107,7 +107,7 @@ const ANDAMAN_REDUNDANT_MAP_TITLES = new Set([
   'Nicobar Group of Island PAs',
 ]);
 
-function expandAndamanIslandPasDraft(record) {
+function expandAndamanIslandPasDraft(record, state) {
   return record.maps
     .filter((m) => !ANDAMAN_REDUNDANT_MAP_TITLES.has(m.title))
     .flatMap((m) => {
@@ -119,15 +119,17 @@ function expandAndamanIslandPasDraft(record) {
       ...record,
       protectedAreaName: name,
       protectedAreaType: classifyProtectedAreaType(name),
+      state,
       maps: [map],
     }));
 }
 
-function expandAndamanIslandPasFinal(record) {
+function expandAndamanIslandPasFinal(record, state) {
   return ANDAMAN_ISLAND_PA_NAMES.map((name) => ({
     ...record,
     protectedAreaName: name,
     protectedAreaType: classifyProtectedAreaType(name),
+    state,
     maps: [],
   }));
 }
@@ -145,11 +147,14 @@ function applyCorrection(corrections, name, state) {
 
 function cleanRecord(record, corrections) {
   record = applyOrderNumberCorrection(record, corrections);
-  if (record.protectedAreaName === ANDAMAN_DRAFT_NAME) {
-    return expandAndamanIslandPasDraft(record);
-  }
-  if (record.protectedAreaName === ANDAMAN_FINAL_NAME) {
-    return expandAndamanIslandPasFinal(record);
+  if (record.protectedAreaName === ANDAMAN_DRAFT_NAME || record.protectedAreaName === ANDAMAN_FINAL_NAME) {
+    // These two branches skip the normal per-fragment correction pass below
+    // (there's no PA name to key a correction on yet -- it's assigned during
+    // expansion), so the state-only correction has to be applied here instead.
+    const state = corrections.stateOnlyMap.get(record.state) ?? record.state;
+    return record.protectedAreaName === ANDAMAN_DRAFT_NAME
+      ? expandAndamanIslandPasDraft(record, state)
+      : expandAndamanIslandPasFinal(record, state);
   }
 
   // Pass 1: whole-string correction/cleanup, then attempt a split.
