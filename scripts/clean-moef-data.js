@@ -82,7 +82,14 @@ const ANDAMAN_BUTTON_ISLAND_NPS = [
 const ANDAMAN_RANI_JHANSI_NP = 'Rani Jhansi Marine National Park';
 
 // Order matches the numbered list (1. Arial ... 93. White Cliff) in the
-// draft notification's "Individual maps of 93 WLS" section.
+// draft notification's "Individual maps of 93 WLS" section (also the literal
+// `map.title` parsed off that section, see expandAndamanIslandPasDraft
+// below). The generated name here is deliberately the naive
+// "<title> Wildlife Sanctuary" form -- almost all of these are actually
+// missing an " Island" (and several also have a spelling/spacing difference)
+// versus what Wikidata/Wikipedia uses, but that gets fixed by the normal
+// per-record correction pass below (data/corrections.csv), the same way any
+// other MoEF name typo does, rather than hardcoded here.
 const ANDAMAN_WLS_TITLES = [
   'Arial', 'Bamboo', 'Barren', 'Batti Malv', 'Belle', 'Bennette', 'Bingham', 'Blister', 'Bluff', 'Bondoville',
   'Brush', 'Buchanan', 'Channel', 'Cinque Island', 'Clyde', 'Cone', 'Curlew Bp', 'Curlew', 'Defence', 'Dot',
@@ -107,7 +114,7 @@ const ANDAMAN_REDUNDANT_MAP_TITLES = new Set([
   'Nicobar Group of Island PAs',
 ]);
 
-function expandAndamanIslandPasDraft(record, state) {
+function expandAndamanIslandPasDraft(record) {
   return record.maps
     .filter((m) => !ANDAMAN_REDUNDANT_MAP_TITLES.has(m.title))
     .flatMap((m) => {
@@ -119,17 +126,15 @@ function expandAndamanIslandPasDraft(record, state) {
       ...record,
       protectedAreaName: name,
       protectedAreaType: classifyProtectedAreaType(name),
-      state,
       maps: [map],
     }));
 }
 
-function expandAndamanIslandPasFinal(record, state) {
+function expandAndamanIslandPasFinal(record) {
   return ANDAMAN_ISLAND_PA_NAMES.map((name) => ({
     ...record,
     protectedAreaName: name,
     protectedAreaType: classifyProtectedAreaType(name),
-    state,
     maps: [],
   }));
 }
@@ -147,16 +152,20 @@ function applyCorrection(corrections, name, state) {
 
 function cleanRecord(record, corrections) {
   record = applyOrderNumberCorrection(record, corrections);
-  if (record.protectedAreaName === ANDAMAN_DRAFT_NAME || record.protectedAreaName === ANDAMAN_FINAL_NAME) {
-    // These two branches skip the normal per-fragment correction pass below
-    // (there's no PA name to key a correction on yet -- it's assigned during
-    // expansion), so the state-only correction has to be applied here instead.
-    const state = corrections.stateOnlyMap.get(record.state) ?? record.state;
-    return record.protectedAreaName === ANDAMAN_DRAFT_NAME
-      ? expandAndamanIslandPasDraft(record, state)
-      : expandAndamanIslandPasFinal(record, state);
+  if (record.protectedAreaName === ANDAMAN_DRAFT_NAME) {
+    // Each expanded record still needs the normal per-record correction pass
+    // below (name typos/spacing, the Andaman-and-Nicobar state-only fix) --
+    // it's just the initial naive name/state that's assigned at expansion
+    // time rather than parsed off the source table directly.
+    return expandAndamanIslandPasDraft(record).flatMap((r) => cleanSingleAreaRecord(r, corrections));
   }
+  if (record.protectedAreaName === ANDAMAN_FINAL_NAME) {
+    return expandAndamanIslandPasFinal(record).flatMap((r) => cleanSingleAreaRecord(r, corrections));
+  }
+  return cleanSingleAreaRecord(record, corrections);
+}
 
+function cleanSingleAreaRecord(record, corrections) {
   // Pass 1: whole-string correction/cleanup, then attempt a split.
   const pass1Hit = corrections.map.has(`${record.protectedAreaName}${record.state}`);
   const corrected = applyCorrection(corrections, record.protectedAreaName, record.state);
