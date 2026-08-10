@@ -4,20 +4,20 @@
       "id": "conflated",
       "label": "Conflated",
       "url": null,
-      "lastUpdated": "2026-08-07T18:36:08.286Z",
-      "contentHash": "29753b1894d0abd40371fff0d495520cdeeb9ee8163f370281f543f18504b3bc",
+      "lastUpdated": "2026-08-10T07:34:39.610Z",
+      "contentHash": "fd2e1a9fff078f845caf1815f681b00b375b9246cd27166a6a86df81297b3327",
       "counts": {
         "total": 843,
-        "tigerReserve": 61,
-        "nationalPark": 97,
+        "tigerReserve": 62,
+        "nationalPark": 96,
         "wildlifeSanctuary": 663,
         "breakdown": [
           {
             "id": "moefcc",
             "label": "MoEFCC",
             "url": "https://moef.gov.in/esz-notifications",
-            "lastUpdated": "2026-08-07T18:36:08.266Z",
-            "contentHash": "a00d3d1e44481a9971d19cef799594a1c6b02e411195f377815eebee2a45e737",
+            "lastUpdated": "2026-08-10T07:34:41.374Z",
+            "contentHash": "bf2fae98ef85c0cb74d84d0f4c3ef39277945c91252f2d47ed3f6140183b9e11",
             "counts": {
               "total": 573,
               "tigerReserve": 41,
@@ -29,12 +29,12 @@
             "id": "wikidata",
             "label": "Wikidata",
             "url": "https://www.wikidata.org/wiki/Q473972",
-            "lastUpdated": "2026-08-07T18:36:08.265Z",
-            "contentHash": "fb948c25b3cd0d811c8acde1ef09803aea8dd155cd92c9388f91e7608ceb1ec8",
+            "lastUpdated": "2026-08-10T07:34:41.374Z",
+            "contentHash": "00469cf7ff28eff09964f1f9d03d1fe0b46d3c12a1c09a20023758ef5cedf8f6",
             "counts": {
               "total": 745,
-              "tigerReserve": 61,
-              "nationalPark": 91,
+              "tigerReserve": 62,
+              "nationalPark": 90,
               "wildlifeSanctuary": 573
             }
           },
@@ -42,7 +42,7 @@
             "id": "wikipedia",
             "label": "Wikipedia",
             "url": "https://en.wikipedia.org/wiki/List_of_national_parks_of_India",
-            "lastUpdated": "2026-08-07T18:36:08.269Z",
+            "lastUpdated": "2026-08-10T07:34:41.378Z",
             "contentHash": "3612c19fa41ecd50c2eab5a761f52b6653d068e88903194d6b4cdd5d4d0732e8",
             "counts": {
               "total": 745,
@@ -55,13 +55,13 @@
             "id": "openstreetmap",
             "label": "OpenStreetMap",
             "url": "https://github.com/publicmap/india-esz-dashboard/blob/main/data/osm/india-protected_areas.overpass.ql.txt",
-            "lastUpdated": "2026-08-07T18:36:08.286Z",
-            "contentHash": "4dfd8afea376329d2df6e1869e2ac1c3d5fc6770cd943f601cc779a0065f2fe5",
+            "lastUpdated": "2026-08-10T07:34:41.402Z",
+            "contentHash": "acb9a6dd62f00d3f71ade56c7a71bc9437e8aa17b0a852369c5380e5219a3c60",
             "counts": {
-              "total": 661,
+              "total": 660,
               "tigerReserve": 48,
               "nationalPark": 101,
-              "wildlifeSanctuary": 512
+              "wildlifeSanctuary": 511
             }
           }
         ]
@@ -71,8 +71,8 @@
       "id": "final-esz",
       "label": "Final ESZ",
       "url": null,
-      "lastUpdated": "2026-08-07T18:36:08.286Z",
-      "contentHash": "28c29290b38a8af778b23b2f6213a309553d9513f85881a68bab5c1b9aa5067c",
+      "lastUpdated": "2026-08-10T07:34:39.610Z",
+      "contentHash": "9e38fd0044fcd125093f1fded333bbf0ff39242d55057b8f3e37486750dfdf0c",
       "counts": {
         "total": 454,
         "tigerReserve": 27,
@@ -97,12 +97,12 @@
       "id": "no-notification",
       "label": "No notification",
       "url": null,
-      "lastUpdated": "2026-08-07T18:36:08.287Z",
-      "contentHash": "b871da33da27f2eaf8b930050afe2e7be4fd71f74c6dcf79ea81ba19ef502f5e",
+      "lastUpdated": "2026-08-10T07:34:39.611Z",
+      "contentHash": "9d4a186e190481fcd78ddc001dace3ca9f541a121cafbce7f639d468afc81ac4",
       "counts": {
         "total": 273,
-        "tigerReserve": 20,
-        "nationalPark": 27,
+        "tigerReserve": 21,
+        "nationalPark": 26,
         "wildlifeSanctuary": 206
       }
     }
