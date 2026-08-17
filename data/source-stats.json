@@ -4,45 +4,45 @@
       "id": "conflated",
       "label": "Conflated",
       "url": null,
-      "lastUpdated": "2026-08-10T12:13:29.417Z",
-      "contentHash": "54dfc7fcb65fc63d62850ba0150e6ea051af59796e0073a38013f6525b9303f5",
+      "lastUpdated": "2026-08-17T03:43:52.551Z",
+      "contentHash": "78d2614ad9d7002707cb8315761b8882cc0ad3ca40782a21c2e1c16cedcf6aaa",
       "counts": {
-        "total": 784,
+        "total": 782,
         "tigerReserve": 62,
-        "nationalPark": 96,
-        "wildlifeSanctuary": 604,
+        "nationalPark": 95,
+        "wildlifeSanctuary": 602,
         "breakdown": [
           {
             "id": "moefcc",
             "label": "MoEFCC",
             "url": "https://moef.gov.in/esz-notifications",
-            "lastUpdated": "2026-08-10T12:13:29.395Z",
-            "contentHash": "566a46f2d21940c6c10813a20f8460d9eaaa96effc7f9f5f4c3db497114a2f00",
+            "lastUpdated": "2026-08-17T03:43:56.041Z",
+            "contentHash": "19c6b580d87d892fc686796ade69194ae81f85d2bd60fb0d1d0c3c66a404aecf",
             "counts": {
-              "total": 574,
+              "total": 571,
               "tigerReserve": 41,
               "nationalPark": 71,
-              "wildlifeSanctuary": 460
+              "wildlifeSanctuary": 457
             }
           },
           {
             "id": "wikidata",
             "label": "Wikidata",
             "url": "https://www.wikidata.org/wiki/Q473972",
-            "lastUpdated": "2026-08-10T12:13:29.394Z",
-            "contentHash": "00469cf7ff28eff09964f1f9d03d1fe0b46d3c12a1c09a20023758ef5cedf8f6",
+            "lastUpdated": "2026-08-17T03:43:56.040Z",
+            "contentHash": "66ea848c600972494c51ef33b67827ddeaeba6213675d710d47bd7bf7a2b2502",
             "counts": {
-              "total": 745,
+              "total": 746,
               "tigerReserve": 62,
-              "nationalPark": 90,
-              "wildlifeSanctuary": 573
+              "nationalPark": 89,
+              "wildlifeSanctuary": 574
             }
           },
           {
             "id": "wikipedia",
             "label": "Wikipedia",
             "url": "https://en.wikipedia.org/wiki/List_of_national_parks_of_India",
-            "lastUpdated": "2026-08-10T12:13:29.399Z",
+            "lastUpdated": "2026-08-17T03:43:56.045Z",
             "contentHash": "3612c19fa41ecd50c2eab5a761f52b6653d068e88903194d6b4cdd5d4d0732e8",
             "counts": {
               "total": 745,
@@ -55,7 +55,7 @@
             "id": "openstreetmap",
             "label": "OpenStreetMap",
             "url": "https://github.com/publicmap/india-esz-dashboard/blob/main/data/osm/india-protected_areas.overpass.ql.txt",
-            "lastUpdated": "2026-08-10T12:13:29.416Z",
+            "lastUpdated": "2026-08-17T03:43:56.070Z",
             "contentHash": "acb9a6dd62f00d3f71ade56c7a71bc9437e8aa17b0a852369c5380e5219a3c60",
             "counts": {
               "total": 660,
@@ -71,13 +71,13 @@
       "id": "final-esz",
       "label": "Final ESZ",
       "url": null,
-      "lastUpdated": "2026-08-10T12:13:29.417Z",
-      "contentHash": "ee54860c7db9751938c04d1c93a7d69c0793af2c50ac7a379cb1f266902b69f9",
+      "lastUpdated": "2026-08-17T03:43:52.551Z",
+      "contentHash": "a43583f64932a40f12f0524a3dc3438754b1f96ec26e6e1cc68ff6a6371f9982",
       "counts": {
-        "total": 455,
+        "total": 452,
         "tigerReserve": 27,
         "nationalPark": 50,
-        "wildlifeSanctuary": 377
+        "wildlifeSanctuary": 374
       }
     },
     {
@@ -97,13 +97,13 @@
       "id": "no-notification",
       "label": "No notification",
       "url": null,
-      "lastUpdated": "2026-08-10T12:13:29.417Z",
-      "contentHash": "9cc039de5dd095130d26140a9606848ab40965bad1a68be82729eda8d8d0de0d",
+      "lastUpdated": "2026-08-17T03:43:52.551Z",
+      "contentHash": "184868222615dbd54920c4171d9235bcdc9a8f11f4b913d70a85468215839e04",
       "counts": {
-        "total": 213,
+        "total": 214,
         "tigerReserve": 21,
-        "nationalPark": 26,
-        "wildlifeSanctuary": 146
+        "nationalPark": 25,
+        "wildlifeSanctuary": 147
       }
     }
   ]

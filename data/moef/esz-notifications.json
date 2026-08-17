@@ -1408,8 +1408,8 @@
     ],
     "notificationUploadDate": "27/04/2016",
     "orderNumber": "S.O 1498(E)",
-    "wikidataId": null,
-    "matchConfidence": "none",
+    "wikidataId": "Q3364468",
+    "matchConfidence": "fuzzy",
     "notificationArchiveLink": "https://archive.org/details/in.gazette.central.e.2016-04-26.169254"
   },
   {
@@ -2017,8 +2017,8 @@
     ],
     "notificationUploadDate": "27/04/2016",
     "orderNumber": "S.O 1498(E)",
-    "wikidataId": null,
-    "matchConfidence": "none",
+    "wikidataId": "Q770855",
+    "matchConfidence": "fuzzy",
     "notificationArchiveLink": "https://archive.org/details/in.gazette.central.e.2016-04-26.169254"
   },
   {
@@ -2059,8 +2059,8 @@
     ],
     "notificationUploadDate": "27/04/2016",
     "orderNumber": "S.O 1498(E)",
-    "wikidataId": null,
-    "matchConfidence": "none",
+    "wikidataId": "Q770855",
+    "matchConfidence": "fuzzy",
     "notificationArchiveLink": "https://archive.org/details/in.gazette.central.e.2016-04-26.169254"
   },
   {
@@ -3200,8 +3200,8 @@
     "maps": [],
     "notificationUploadDate": "05/10/2016",
     "orderNumber": "S.O. 3099(E)",
-    "wikidataId": null,
-    "matchConfidence": "none",
+    "wikidataId": "Q3364468",
+    "matchConfidence": "fuzzy",
     "notificationArchiveLink": "https://archive.org/details/in.gazette.central.e.2016-09-30.172028"
   },
   {
@@ -3664,8 +3664,8 @@
     "maps": [],
     "notificationUploadDate": "05/10/2016",
     "orderNumber": "S.O. 3099(E)",
-    "wikidataId": null,
-    "matchConfidence": "none",
+    "wikidataId": "Q770855",
+    "matchConfidence": "fuzzy",
     "notificationArchiveLink": "https://archive.org/details/in.gazette.central.e.2016-09-30.172028"
   },
   {
@@ -3696,8 +3696,8 @@
     "maps": [],
     "notificationUploadDate": "05/10/2016",
     "orderNumber": "S.O. 3099(E)",
-    "wikidataId": null,
-    "matchConfidence": "none",
+    "wikidataId": "Q770855",
+    "matchConfidence": "fuzzy",
     "notificationArchiveLink": "https://archive.org/details/in.gazette.central.e.2016-09-30.172028"
   },
   {
@@ -6101,7 +6101,7 @@
     "maps": [],
     "notificationUploadDate": "04/04/2016",
     "orderNumber": "S.O. 353 (E)",
-    "wikidataId": "Q60398704",
+    "wikidataId": "Q2724481",
     "matchConfidence": "exact",
     "notificationArchiveLink": "https://archive.org/details/in.gazette.central.e.2012-02-29.025"
   },
@@ -6117,7 +6117,7 @@
     "maps": [],
     "notificationUploadDate": "04/04/2016",
     "orderNumber": "S.O. 353 (E)",
-    "wikidataId": "Q60398704",
+    "wikidataId": "Q2724481",
     "matchConfidence": "exact",
     "notificationArchiveLink": "https://archive.org/details/in.gazette.central.e.2012-02-29.025"
   },
@@ -6133,7 +6133,7 @@
     "maps": [],
     "notificationUploadDate": "06/09/2013",
     "orderNumber": "S.O. 2561",
-    "wikidataId": "Q60398704",
+    "wikidataId": "Q2724481",
     "matchConfidence": "exact",
     "notificationArchiveLink": "https://archive.org/details/in.gazette.central.e.2013-08-22.004"
   },
@@ -6149,7 +6149,7 @@
     "maps": [],
     "notificationUploadDate": "06/09/2013",
     "orderNumber": "S.O. 2561",
-    "wikidataId": "Q60398704",
+    "wikidataId": "Q2724481",
     "matchConfidence": "exact",
     "notificationArchiveLink": "https://archive.org/details/in.gazette.central.e.2013-08-22.004"
   },
@@ -6389,7 +6389,7 @@
     "maps": [],
     "notificationUploadDate": null,
     "orderNumber": "S.O. 3202",
-    "wikidataId": "Q7786672",
+    "wikidataId": "Q7786671",
     "matchConfidence": "exact",
     "notificationArchiveLink": "https://archive.org/details/in.gazette.central.e.2013-10-18.156750"
   },
@@ -6405,7 +6405,7 @@
     "maps": [],
     "notificationUploadDate": null,
     "orderNumber": "S.O. 421",
-    "wikidataId": "Q7786672",
+    "wikidataId": "Q7786671",
     "matchConfidence": "exact",
     "notificationArchiveLink": null
   },

@@ -6,680 +6,6 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          77.516667,
-          27.166667
-        ]
-      },
-      "properties": {
-        "wikidataId": "Q235878",
-        "wikidataUrl": "https://www.wikidata.org/wiki/Q235878",
-        "name": "Kevladev National Park",
-        "protectedAreaType": "National Park",
-        "state": "Rajasthan",
-        "iucnCategory": "IUCN category II: National Park",
-        "area": 2873,
-        "osmRelationIds": [
-          "15743640"
-        ],
-        "enwikiUrl": "https://en.wikipedia.org/wiki/Keoladeo_National_Park",
-        "eszStatus": "final",
-        "notificationCount": 4,
-        "notificationStatus": "Final",
-        "notificationDate": "2020-02-21",
-        "orderNumber": "S.O. 814(E)",
-        "notificationPdfLink": "https://moef.gov.in/uploads/2020/02/keoladeo-amendment-1.pdf",
-        "notificationArchiveLink": "https://archive.org/details/in.gazette.central.e.2020-02-21.216310"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          70.79667,
-          21.13556
-        ]
-      },
-      "properties": {
-        "wikidataId": "Q337028",
-        "wikidataUrl": "https://www.wikidata.org/wiki/Q337028",
-        "name": "Gir National Park",
-        "protectedAreaType": "National Park",
-        "state": "Gujarat",
-        "iucnCategory": "IUCN category II: National Park",
-        "area": 259,
-        "osmRelationIds": [],
-        "enwikiUrl": "https://en.wikipedia.org/wiki/Gir_National_Park",
-        "eszStatus": "draft",
-        "notificationCount": 2,
-        "notificationStatus": "Draft",
-        "notificationDate": "2024-09-18",
-        "orderNumber": "S.O. No. 3997(E)",
-        "notificationPdfLink": "https://moef.gov.in/uploads/pdf/gir_draft_notification.pdf",
-        "notificationArchiveLink": "https://archive.org/details/in.gazette.central.e.2024-09-18.257288"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          88.4007,
-          22.4295
-        ]
-      },
-      "properties": {
-        "wikidataId": "Q5101326",
-        "wikidataUrl": "https://www.wikidata.org/wiki/Q5101326",
-        "name": "Chintamoni Kar Bird Sanctuary",
-        "protectedAreaType": "Bird Sanctuary",
-        "state": "West Bengal",
-        "iucnCategory": "IUCN category IV: Habitat/Species Management Area",
-        "area": null,
-        "osmRelationIds": [],
-        "enwikiUrl": "https://en.wikipedia.org/wiki/Chintamoni_Kar_Bird_Sanctuary",
-        "eszStatus": "final",
-        "notificationCount": 2,
-        "notificationStatus": "Final",
-        "notificationDate": "2019-01-15",
-        "orderNumber": "S.O. 318(E)",
-        "notificationPdfLink": "https://moef.gov.in/uploads/2017/06/chintamani.pdf",
-        "notificationArchiveLink": "https://archive.org/details/in.gazette.central.e.2019-01-15.195414"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          74.36,
-          14.99
-        ]
-      },
-      "properties": {
-        "wikidataId": "Q5215675",
-        "wikidataUrl": "https://www.wikidata.org/wiki/Q5215675",
-        "name": "Anshi National Park",
-        "protectedAreaType": "National Park",
-        "state": "Karnataka",
-        "iucnCategory": null,
-        "area": null,
-        "osmRelationIds": [],
-        "enwikiUrl": "https://en.wikipedia.org/wiki/Dandeli_National_Park",
-        "eszStatus": "draft",
-        "notificationCount": 2,
-        "notificationStatus": "Draft",
-        "notificationDate": "2016-11-03",
-        "orderNumber": "S.O. 3369 (E)",
-        "notificationPdfLink": "https://moef.gov.in/uploads/2017/06/Dandeli%20Wildlife%20Sanctuary%20and%20Anshi%20NP%2C%20Karnataka_0.pdf",
-        "notificationArchiveLink": "https://archive.org/details/in.gazette.central.e.2016-11-03.172484"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          75.856,
-          24.868
-        ]
-      },
-      "properties": {
-        "wikidataId": "Q5224247",
-        "wikidataUrl": "https://www.wikidata.org/wiki/Q5224247",
-        "name": "Mukundra Hills Tiger Reserve",
-        "protectedAreaType": "Tiger Reserve",
-        "state": "Rajasthan",
-        "iucnCategory": "IUCN category II: National Park",
-        "area": null,
-        "osmRelationIds": [],
-        "enwikiUrl": "https://en.wikipedia.org/wiki/Mukundara_Hills_National_Park",
-        "eszStatus": "final",
-        "notificationCount": 2,
-        "notificationStatus": "Final",
-        "notificationDate": "2020-11-25",
-        "orderNumber": "S.O.4268(E)",
-        "notificationPdfLink": "https://moef.gov.in/uploads/2020/12/mukundra-1.pdf",
-        "notificationArchiveLink": null
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          95.526,
-          27.331
-        ]
-      },
-      "properties": {
-        "wikidataId": "Q5252276",
-        "wikidataUrl": "https://www.wikidata.org/wiki/Q5252276",
-        "name": "Dehing Patkai National Park",
-        "protectedAreaType": "National Park",
-        "state": "Assam",
-        "iucnCategory": "IUCN category II: National Park",
-        "area": 231,
-        "osmRelationIds": [],
-        "enwikiUrl": "https://en.wikipedia.org/wiki/Dehing_Patkai_National_Park",
-        "eszStatus": "draft",
-        "notificationCount": 1,
-        "notificationStatus": "Draft",
-        "notificationDate": "2019-05-30",
-        "orderNumber": "S.O. 1915(E)",
-        "notificationPdfLink": "https://moef.gov.in/uploads/2019/06/dehing-patkai.pdf",
-        "notificationArchiveLink": null
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          77.927,
-          26.166
-        ]
-      },
-      "properties": {
-        "wikidataId": "Q5555916",
-        "wikidataUrl": "https://www.wikidata.org/wiki/Q5555916",
-        "name": "Ghatigaon Sanctuary",
-        "protectedAreaType": "Wildlife Sanctuary",
-        "state": "Madhya Pradesh",
-        "iucnCategory": "IUCN category IV: Habitat/Species Management Area",
-        "area": 511,
-        "osmRelationIds": [],
-        "enwikiUrl": "https://en.wikipedia.org/wiki/Ghatigaon_Wildlife_Sanctuary",
-        "eszStatus": "final",
-        "notificationCount": 1,
-        "notificationStatus": "Final",
-        "notificationDate": "2016-12-14",
-        "orderNumber": "S.O. 4031 (E)",
-        "notificationPdfLink": "https://moef.gov.in/uploads/2017/06/Ghatigaon%20Hukna%20Wildlife%20Sanctuary%2C%20Madhya%20Pradesh(1).pdf",
-        "notificationArchiveLink": "https://archive.org/details/in.gazette.central.e.2016-12-14.173162"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          77.55833333,
-          9.575
-        ]
-      },
-      "properties": {
-        "wikidataId": "Q5609778",
-        "wikidataUrl": "https://www.wikidata.org/wiki/Q5609778",
-        "name": "Grizzled Squirrel Wildlife Sanctuary",
-        "protectedAreaType": "Tiger Reserve",
-        "state": "Tamil Nadu",
-        "iucnCategory": "IUCN category IV: Habitat/Species Management Area",
-        "area": 48500,
-        "osmRelationIds": [],
-        "enwikiUrl": "https://en.wikipedia.org/wiki/Grizzled_Squirrel_Wildlife_Sanctuary",
-        "eszStatus": "draft",
-        "notificationCount": 1,
-        "notificationStatus": "Draft",
-        "notificationDate": "2018-07-09",
-        "orderNumber": "S.O. 3363(E)",
-        "notificationPdfLink": "https://moef.gov.in/uploads/2017/06/Srivilliputhur-Grizzled-Squirrel.pdf",
-        "notificationArchiveLink": "https://archive.org/details/in.gazette.central.e.2018-07-09.187382"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          91.311666666,
-          23.664444444
-        ]
-      },
-      "properties": {
-        "wikidataId": "Q5618257",
-        "wikidataUrl": "https://www.wikidata.org/wiki/Q5618257",
-        "name": "Gumti Wildlife Sanctuary",
-        "protectedAreaType": "Wildlife Sanctuary",
-        "state": "Tripura",
-        "iucnCategory": "IUCN category IV: Habitat/Species Management Area",
-        "area": null,
-        "osmRelationIds": [],
-        "enwikiUrl": "https://en.wikipedia.org/wiki/Gumti_Wildlife_Sanctuary",
-        "eszStatus": "final",
-        "notificationCount": 3,
-        "notificationStatus": "Final",
-        "notificationDate": "2019-11-11",
-        "orderNumber": "S.O. 4076(E)",
-        "notificationPdfLink": "https://moef.gov.in/uploads/2019/11/gumuti.pdf",
-        "notificationArchiveLink": "https://archive.org/details/in.gazette.central.e.2019-11-11.213855"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          72.3,
-          24.2
-        ]
-      },
-      "properties": {
-        "wikidataId": "Q6187899",
-        "wikidataUrl": "https://www.wikidata.org/wiki/Q6187899",
-        "name": "Jessore Sloth Bear Sanctuary",
-        "protectedAreaType": "Wildlife Sanctuary",
-        "state": "Gujarat",
-        "iucnCategory": "IUCN category IV: Habitat/Species Management Area",
-        "area": null,
-        "osmRelationIds": [],
-        "enwikiUrl": "https://en.wikipedia.org/wiki/Jessore_Sloth_Bear_Sanctuary",
-        "eszStatus": "final",
-        "notificationCount": 2,
-        "notificationStatus": "Final",
-        "notificationDate": "2017-10-16",
-        "orderNumber": "S.O. 3342(E)",
-        "notificationPdfLink": "https://moef.gov.in/uploads/2017/06/jessore%2C%20gujarat.pdf",
-        "notificationArchiveLink": "https://archive.org/details/in.gazette.central.e.2017-10-16.179661"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          88.1573,
-          26.99118
-        ]
-      },
-      "properties": {
-        "wikidataId": "Q6277572",
-        "wikidataUrl": "https://www.wikidata.org/wiki/Q6277572",
-        "name": "Jore Pokhri Wildlife Sanctuary",
-        "protectedAreaType": "Wildlife Sanctuary",
-        "state": "West Bengal",
-        "iucnCategory": "IUCN category IV: Habitat/Species Management Area",
-        "area": null,
-        "osmRelationIds": [],
-        "enwikiUrl": "https://en.wikipedia.org/wiki/Jore_Pokhri_Wildlife_Sanctuary",
-        "eszStatus": "none",
-        "notificationCount": 0,
-        "notificationStatus": null,
-        "notificationDate": null,
-        "orderNumber": null,
-        "notificationPdfLink": null,
-        "notificationArchiveLink": null
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          81.2518,
-          28.1344
-        ]
-      },
-      "properties": {
-        "wikidataId": "Q6375178",
-        "wikidataUrl": "https://www.wikidata.org/wiki/Q6375178",
-        "name": "Katarniaghat Wildlife Sanctuary",
-        "protectedAreaType": "Wildlife Sanctuary",
-        "state": "Uttar Pradesh",
-        "iucnCategory": "IUCN category IV: Habitat/Species Management Area",
-        "area": 400.09,
-        "osmRelationIds": [],
-        "enwikiUrl": "https://en.wikipedia.org/wiki/Katarniaghat_Wildlife_Sanctuary",
-        "eszStatus": "none",
-        "notificationCount": 0,
-        "notificationStatus": null,
-        "notificationDate": null,
-        "orderNumber": null,
-        "notificationPdfLink": null,
-        "notificationArchiveLink": null
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          79.6,
-          30.75
-        ]
-      },
-      "properties": {
-        "wikidataId": "Q6382549",
-        "wikidataUrl": "https://www.wikidata.org/wiki/Q6382549",
-        "name": "Kedarnath Wildlife Sanctuary",
-        "protectedAreaType": "Wildlife Sanctuary",
-        "state": "Uttarakhand",
-        "iucnCategory": "IUCN category IV: Habitat/Species Management Area",
-        "area": 975,
-        "osmRelationIds": [],
-        "enwikiUrl": "https://en.wikipedia.org/wiki/Kedarnath_Wildlife_Sanctuary",
-        "eszStatus": "draft",
-        "notificationCount": 1,
-        "notificationStatus": "Draft",
-        "notificationDate": "2017-12-14",
-        "orderNumber": "S.O. 3880(E)",
-        "notificationPdfLink": "https://moef.gov.in/uploads/2017/06/kedarnath_0.pdf",
-        "notificationArchiveLink": "https://archive.org/details/in.gazette.central.e.2017-12-14.180904"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          78.645,
-          13.025
-        ]
-      },
-      "properties": {
-        "wikidataId": "Q6434637",
-        "wikidataUrl": "https://www.wikidata.org/wiki/Q6434637",
-        "name": "Koundinya Wildlife Sanctuary",
-        "protectedAreaType": "Wildlife Sanctuary",
-        "state": "Andhra Pradesh",
-        "iucnCategory": "IUCN category IV: Habitat/Species Management Area",
-        "area": null,
-        "osmRelationIds": [],
-        "enwikiUrl": "https://en.wikipedia.org/wiki/Koundinya_Wildlife_Sanctuary",
-        "eszStatus": "draft",
-        "notificationCount": 1,
-        "notificationStatus": "Draft",
-        "notificationDate": "2022-05-04",
-        "orderNumber": "S.O. 2077(E)",
-        "notificationPdfLink": "https://moef.gov.in/uploads/2021/08/Published-Draft-Notification-S-O-2077.pdf",
-        "notificationArchiveLink": "https://archive.org/details/in.gazette.central.e.2022-05-04.235561"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          77.175,
-          10.3
-        ]
-      },
-      "properties": {
-        "wikidataId": "Q3522009",
-        "wikidataUrl": "https://www.wikidata.org/wiki/Q3522009",
-        "name": "Chinnar Wildlife Sanctuary",
-        "protectedAreaType": "Wildlife Sanctuary",
-        "state": "Kerala",
-        "iucnCategory": "IUCN category IV: Habitat/Species Management Area",
-        "area": 9044,
-        "osmRelationIds": [],
-        "enwikiUrl": "https://en.wikipedia.org/wiki/Chinnar_Wildlife_Sanctuary",
-        "eszStatus": "draft",
-        "notificationCount": 2,
-        "notificationStatus": "Draft",
-        "notificationDate": "2021-01-12",
-        "orderNumber": "S.O. 124(E)",
-        "notificationPdfLink": "https://moef.gov.in/uploads/2021/01/eravikulam.pdf",
-        "notificationArchiveLink": "https://archive.org/details/in.gazette.central.e.2021-01-12.224379"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          80.2,
-          13.56666667
-        ]
-      },
-      "properties": {
-        "wikidataId": "Q3532790",
-        "wikidataUrl": "https://www.wikidata.org/wiki/Q3532790",
-        "name": "Pulicat Lake Bird Sanctuary",
-        "protectedAreaType": "Bird Sanctuary",
-        "state": "Andhra Pradesh",
-        "iucnCategory": "IUCN category IV: Habitat/Species Management Area",
-        "area": null,
-        "osmRelationIds": [],
-        "enwikiUrl": "https://en.wikipedia.org/wiki/Pulicat_Lake_Bird_Sanctuary",
-        "eszStatus": "final",
-        "notificationCount": 2,
-        "notificationStatus": "Final",
-        "notificationDate": "2015-06-26",
-        "orderNumber": "S.O. 1736",
-        "notificationPdfLink": "https://moef.gov.in/uploads/2017/06/S.O.%201736%20%5B26.06.2015%5D%20Final%20ESZ%20Notification%20on%20Pulicat%20Wildlife%20Sanctuary%2C%20Andhra%20Pradesh.pdf",
-        "notificationArchiveLink": "https://archive.org/details/in.gazette.central.e.2015-06-26.164907"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          85.366,
-          24.139
-        ]
-      },
-      "properties": {
-        "wikidataId": "Q3595683",
-        "wikidataUrl": "https://www.wikidata.org/wiki/Q3595683",
-        "name": "Hazaribagh Wildlife Sanctuary",
-        "protectedAreaType": "Wildlife Sanctuary",
-        "state": "Jharkhand",
-        "iucnCategory": "IUCN category IV: Habitat/Species Management Area",
-        "area": null,
-        "osmRelationIds": [],
-        "enwikiUrl": "https://en.wikipedia.org/wiki/Hazaribagh_Wildlife_Sanctuary",
-        "eszStatus": "final",
-        "notificationCount": 3,
-        "notificationStatus": "Final",
-        "notificationDate": "2019-08-01",
-        "orderNumber": "S.O. 2775(E)",
-        "notificationPdfLink": "https://moef.gov.in/uploads/2019/08/hazaribhag.pdf",
-        "notificationArchiveLink": "https://archive.org/details/in.gazette.central.e.2019-08-01.210080"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          77.140555555,
-          11.993888888
-        ]
-      },
-      "properties": {
-        "wikidataId": "Q3631211",
-        "wikidataUrl": "https://www.wikidata.org/wiki/Q3631211",
-        "name": "Biligiriranga Hills Tiger Reserve",
-        "protectedAreaType": "Tiger Reserve",
-        "state": "Karnataka",
-        "iucnCategory": "IUCN category IV: Habitat/Species Management Area",
-        "area": null,
-        "osmRelationIds": [],
-        "enwikiUrl": "https://en.wikipedia.org/wiki/Biligiriranga_Hills",
-        "eszStatus": "final",
-        "notificationCount": 2,
-        "notificationStatus": "Final",
-        "notificationDate": "2019-11-19",
-        "orderNumber": "S.O. 4152(E)",
-        "notificationPdfLink": "https://moef.gov.in/uploads/2019/10/billingirangana.pdf",
-        "notificationArchiveLink": "https://archive.org/details/in.gazette.central.e.2019-11-19.214206"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          80.6525,
-          30.12083333
-        ]
-      },
-      "properties": {
-        "wikidataId": "Q4807241",
-        "wikidataUrl": "https://www.wikidata.org/wiki/Q4807241",
-        "name": "Askot Musk Deer Sanctuary",
-        "protectedAreaType": "Wildlife Sanctuary",
-        "state": "Uttarakhand",
-        "iucnCategory": "IUCN category IV: Habitat/Species Management Area",
-        "area": null,
-        "osmRelationIds": [],
-        "enwikiUrl": "https://en.wikipedia.org/wiki/Askot_Musk_Deer_Sanctuary",
-        "eszStatus": "final",
-        "notificationCount": 2,
-        "notificationStatus": "Final",
-        "notificationDate": "2021-12-02",
-        "orderNumber": "S.O.4929(E)",
-        "notificationPdfLink": "https://moef.gov.in/uploads/2021/12/askot-1.pdf",
-        "notificationArchiveLink": null
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          84.75,
-          20.45
-        ]
-      },
-      "properties": {
-        "wikidataId": "Q4848700",
-        "wikidataUrl": "https://www.wikidata.org/wiki/Q4848700",
-        "name": "Baisipali Wildlife Sanctuary",
-        "protectedAreaType": "Wildlife Sanctuary",
-        "state": "Odisha",
-        "iucnCategory": "IUCN category IV: Habitat/Species Management Area",
-        "area": null,
-        "osmRelationIds": [],
-        "enwikiUrl": "https://en.wikipedia.org/wiki/Baisipalli_Wildlife_Sanctuary",
-        "eszStatus": "none",
-        "notificationCount": 0,
-        "notificationStatus": null,
-        "notificationDate": null,
-        "orderNumber": null,
-        "notificationPdfLink": null,
-        "notificationArchiveLink": null
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          88.3920227,
-          23.5975516
-        ]
-      },
-      "properties": {
-        "wikidataId": "Q4898107",
-        "wikidataUrl": "https://www.wikidata.org/wiki/Q4898107",
-        "name": "Bethuadahari Wildlife Sanctuary",
-        "protectedAreaType": "Wildlife Sanctuary",
-        "state": "West Bengal",
-        "iucnCategory": "IUCN category IV: Habitat/Species Management Area",
-        "area": null,
-        "osmRelationIds": [],
-        "enwikiUrl": "https://en.wikipedia.org/wiki/Bethuadahari_Wildlife_Sanctuary",
-        "eszStatus": "none",
-        "notificationCount": 0,
-        "notificationStatus": null,
-        "notificationDate": null,
-        "orderNumber": null,
-        "notificationPdfLink": null,
-        "notificationArchiveLink": null
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          88.762087,
-          23.186178
-        ]
-      },
-      "properties": {
-        "wikidataId": "Q4903011",
-        "wikidataUrl": "https://www.wikidata.org/wiki/Q4903011",
-        "name": "Bibhutibhushan Wildlife Sanctuary",
-        "protectedAreaType": "Wildlife Sanctuary",
-        "state": "West Bengal",
-        "iucnCategory": "IUCN category IV: Habitat/Species Management Area",
-        "area": null,
-        "osmRelationIds": [],
-        "enwikiUrl": "https://en.wikipedia.org/wiki/Bibhutibhushan_Wildlife_Sanctuary",
-        "eszStatus": "final",
-        "notificationCount": 2,
-        "notificationStatus": "Final",
-        "notificationDate": "2019-10-10",
-        "orderNumber": "S.O. 3652(E)",
-        "notificationPdfLink": "https://moef.gov.in/uploads/2018/12/bibhutibhushan.pdf",
-        "notificationArchiveLink": "https://archive.org/details/in.gazette.central.e.2019-10-10.213220"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          77.1978,
-          30.9599
-        ]
-      },
-      "properties": {
-        "wikidataId": "Q5067785",
-        "wikidataUrl": "https://www.wikidata.org/wiki/Q5067785",
-        "name": "Chail Sanctuary",
-        "protectedAreaType": "Wildlife Sanctuary",
-        "state": "Himachal Pradesh",
-        "iucnCategory": "IUCN category IV: Habitat/Species Management Area",
-        "area": 110,
-        "osmRelationIds": [],
-        "enwikiUrl": "https://en.wikipedia.org/wiki/Chail_Sanctuary",
-        "eszStatus": "final",
-        "notificationCount": 3,
-        "notificationStatus": "Final",
-        "notificationDate": "2022-01-05",
-        "orderNumber": "S.O.39(E)",
-        "notificationPdfLink": "https://moef.gov.in/uploads/2022/01/Chail.pdf",
-        "notificationArchiveLink": null
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          88.8551019,
-          26.8746424
-        ]
-      },
-      "properties": {
-        "wikidataId": "Q5073423",
-        "wikidataUrl": "https://www.wikidata.org/wiki/Q5073423",
-        "name": "Chapramari Wildlife Sanctuary",
-        "protectedAreaType": "Wildlife Sanctuary",
-        "state": "West Bengal",
-        "iucnCategory": "IUCN category IV: Habitat/Species Management Area",
-        "area": null,
-        "osmRelationIds": [],
-        "enwikiUrl": "https://en.wikipedia.org/wiki/Chapramari_Wildlife_Sanctuary",
-        "eszStatus": "final",
-        "notificationCount": 2,
-        "notificationStatus": "Final",
-        "notificationDate": "2019-06-07",
-        "orderNumber": "S.O. 1931(E)",
-        "notificationPdfLink": "https://moef.gov.in/uploads/2019/06/chapramari.pdf",
-        "notificationArchiveLink": "https://archive.org/details/in.gazette.central.e.2019-06-07.205332"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
           76.50257,
           26.01733
         ]
@@ -854,595 +180,27 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          88.75,
-          21.75
+          75.2475,
+          34.11
         ]
       },
       "properties": {
-        "wikidataId": "Q532440",
-        "wikidataUrl": "https://www.wikidata.org/wiki/Q532440",
-        "name": "Sundarbans National Park",
-        "protectedAreaType": "Tiger Reserve",
-        "state": "West Bengal",
-        "iucnCategory": "IUCN category II: National Park",
-        "area": 133010,
-        "osmRelationIds": [
-          "13617703"
-        ],
-        "enwikiUrl": "https://en.wikipedia.org/wiki/Sundarbans_National_Park",
-        "eszStatus": "none",
-        "notificationCount": 0,
-        "notificationStatus": null,
-        "notificationDate": null,
-        "orderNumber": null,
-        "notificationPdfLink": null,
-        "notificationArchiveLink": null
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          80.23079,
-          13.00259
-        ]
-      },
-      "properties": {
-        "wikidataId": "Q648548",
-        "wikidataUrl": "https://www.wikidata.org/wiki/Q648548",
-        "name": "Guindy National Park",
-        "protectedAreaType": "National Park",
-        "state": "Tamil Nadu",
-        "iucnCategory": "IUCN category II: National Park",
-        "area": 2.8,
-        "osmRelationIds": [],
-        "enwikiUrl": "https://en.wikipedia.org/wiki/Guindy_National_Park",
-        "eszStatus": "none",
-        "notificationCount": 0,
-        "notificationStatus": null,
-        "notificationDate": null,
-        "orderNumber": null,
-        "notificationPdfLink": null,
-        "notificationArchiveLink": null
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          72.9167,
-          19.25
-        ]
-      },
-      "properties": {
-        "wikidataId": "Q648907",
-        "wikidataUrl": "https://www.wikidata.org/wiki/Q648907",
-        "name": "Sanjay Gandhi National Park",
-        "protectedAreaType": "National Park",
-        "state": "Maharashtra",
-        "iucnCategory": "IUCN category II: National Park",
-        "area": 104,
-        "osmRelationIds": [],
-        "enwikiUrl": "https://en.wikipedia.org/wiki/Sanjay_Gandhi_National_Park",
-        "eszStatus": "final",
-        "notificationCount": 3,
-        "notificationStatus": "Final",
-        "notificationDate": "2016-12-05",
-        "orderNumber": "S.O. 3645 (E)",
-        "notificationPdfLink": "https://moef.gov.in/uploads/2017/06/Sanjay%20Gandhi%20NP%2C%20Maharashtra%20FINAL%20(1).pdf06-12-2016a.pdf",
-        "notificationArchiveLink": "https://archive.org/details/in.gazette.central.e.2016-12-05.172914"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          76.627222,
-          11.664444
-        ]
-      },
-      "properties": {
-        "wikidataId": "Q665110",
-        "wikidataUrl": "https://www.wikidata.org/wiki/Q665110",
-        "name": "Bandipur National Park",
-        "protectedAreaType": "Tiger Reserve",
-        "state": "Karnataka",
-        "iucnCategory": "IUCN category II: National Park",
-        "area": 872.24,
-        "osmRelationIds": [],
-        "enwikiUrl": "https://en.wikipedia.org/wiki/Bandipur_National_Park",
-        "eszStatus": "final",
-        "notificationCount": 4,
-        "notificationStatus": "Final",
-        "notificationDate": "2012-10-04",
-        "orderNumber": "S.O. No. 2364",
-        "notificationPdfLink": "https://moef.gov.in/uploads/2017/06/S.O.%20No.%202364%20%5B04.10.2012%5D%20Final%20ESZ%20Notification%20on%20Bandipur%20NP%2C%20Karnataka.pdf",
-        "notificationArchiveLink": null
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          80.16666667,
-          20.93333333
-        ]
-      },
-      "properties": {
-        "wikidataId": "Q763034",
-        "wikidataUrl": "https://www.wikidata.org/wiki/Q763034",
-        "name": "Nawegaon National Park",
-        "protectedAreaType": "Tiger Reserve",
-        "state": "Maharashtra",
-        "iucnCategory": "IUCN category II: National Park",
-        "area": 133.88,
-        "osmRelationIds": [],
-        "enwikiUrl": "https://en.wikipedia.org/wiki/Navegaon_National_Park",
-        "eszStatus": "final",
-        "notificationCount": 2,
-        "notificationStatus": "Final",
-        "notificationDate": "2023-09-20",
-        "orderNumber": "S.O. 4132(E)",
-        "notificationPdfLink": "https://moef.gov.in/uploads/2023/11/SO4132(E)-Final-notification-nagzira.pdf",
-        "notificationArchiveLink": "https://archive.org/details/in.gazette.central.e.2023-09-20.248884"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          80.96194444,
-          23.69944444
-        ]
-      },
-      "properties": {
-        "wikidataId": "Q806310",
-        "wikidataUrl": "https://www.wikidata.org/wiki/Q806310",
-        "name": "Bandhavgarh National Park",
-        "protectedAreaType": "Tiger Reserve",
-        "state": "Madhya Pradesh",
-        "iucnCategory": "IUCN category II: National Park",
-        "area": 448,
-        "osmRelationIds": [
-          "15694340"
-        ],
-        "enwikiUrl": "https://en.wikipedia.org/wiki/Bandhavgarh_National_Park",
-        "eszStatus": "final",
-        "notificationCount": 2,
-        "notificationStatus": "Final",
-        "notificationDate": "2016-12-14",
-        "orderNumber": "S.O. 4027 (E)",
-        "notificationPdfLink": "https://moef.gov.in/uploads/2017/06/Bandhavgarh%20National%20Park%2C%20Madhya%20Pradesh_0.pdf",
-        "notificationArchiveLink": "https://archive.org/details/in.gazette.central.e.2016-12-14.173159"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          72,
-          22.03333333
-        ]
-      },
-      "properties": {
-        "wikidataId": "Q880724",
-        "wikidataUrl": "https://www.wikidata.org/wiki/Q880724",
-        "name": "Blackbuck National Park",
-        "protectedAreaType": "National Park",
-        "state": "Gujarat",
-        "iucnCategory": "IUCN category II: National Park",
-        "area": 34,
-        "osmRelationIds": [],
-        "enwikiUrl": "https://en.wikipedia.org/wiki/Blackbuck_National_Park,_Velavadar",
-        "eszStatus": "final",
-        "notificationCount": 2,
-        "notificationStatus": "Final",
-        "notificationDate": "2017-07-06",
-        "orderNumber": "S.O. 2149 (E)",
-        "notificationPdfLink": "https://moef.gov.in/uploads/2017/06/Velavedar%20Black%20Buck%20National%20Park%2C%20Gujarat.pdf",
-        "notificationArchiveLink": "https://archive.org/details/in.gazette.central.e.2017-07-06.177349"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          78.93333333,
-          29.53333333
-        ]
-      },
-      "properties": {
-        "wikidataId": "Q949297",
-        "wikidataUrl": "https://www.wikidata.org/wiki/Q949297",
-        "name": "Jim Corbett National Park",
-        "protectedAreaType": "Tiger Reserve",
-        "state": "Uttarakhand",
-        "iucnCategory": "IUCN category II: National Park",
-        "area": 1288,
-        "osmRelationIds": [
-          "16831555"
-        ],
-        "enwikiUrl": "https://en.wikipedia.org/wiki/Jim_Corbett_National_Park",
-        "eszStatus": "none",
-        "notificationCount": 0,
-        "notificationStatus": null,
-        "notificationDate": null,
-        "orderNumber": null,
-        "notificationPdfLink": null,
-        "notificationArchiveLink": null
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          78.41,
-          17.42
-        ]
-      },
-      "properties": {
-        "wikidataId": "Q969593",
-        "wikidataUrl": "https://www.wikidata.org/wiki/Q969593",
-        "name": "Kasu Brahmananda Reddy National Park",
-        "protectedAreaType": "National Park",
-        "state": "Telangana",
-        "iucnCategory": "IUCN category II: National Park",
-        "area": null,
-        "osmRelationIds": [],
-        "enwikiUrl": "https://en.wikipedia.org/wiki/Kasu_Brahmananda_Reddy_National_Park",
-        "eszStatus": "final",
-        "notificationCount": 3,
-        "notificationStatus": "Final",
-        "notificationDate": "2020-10-27",
-        "orderNumber": "S.O. 3879(E)",
-        "notificationPdfLink": "https://moef.gov.in/uploads/2019/02/kesu-bramahanand.pdf",
-        "notificationArchiveLink": "https://archive.org/details/in.gazette.central.e.2020-10-27.222820"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          94.383333,
-          26.716667
-        ]
-      },
-      "properties": {
-        "wikidataId": "Q3471776",
-        "wikidataUrl": "https://www.wikidata.org/wiki/Q3471776",
-        "name": "Hoollongapar Gibbon Sanctuary",
+        "wikidataId": "Q101471239",
+        "wikidataUrl": "https://www.wikidata.org/wiki/Q101471239",
+        "name": "Overa-Aru Wildlife Sanctuary",
         "protectedAreaType": "Wildlife Sanctuary",
-        "state": "Assam",
-        "iucnCategory": "IUCN category IV: Habitat/Species Management Area",
-        "area": 20.98,
-        "osmRelationIds": [],
-        "enwikiUrl": "https://en.wikipedia.org/wiki/Hoollongapar_Gibbon_Sanctuary",
-        "eszStatus": "final",
-        "notificationCount": 2,
-        "notificationStatus": "Final",
-        "notificationDate": "2019-09-25",
-        "orderNumber": "S.O. 3462(E)",
-        "notificationPdfLink": "https://moef.gov.in/uploads/2018/12/hollongapar.pdf",
-        "notificationArchiveLink": "https://archive.org/details/in.gazette.central.e.2019-09-25.212794"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          76.71,
-          10.57
-        ]
-      },
-      "properties": {
-        "wikidataId": "Q6772512",
-        "wikidataUrl": "https://www.wikidata.org/wiki/Q6772512",
-        "name": "Thattekad Bird Sanctuary",
-        "protectedAreaType": "Bird Sanctuary",
-        "state": "Kerala",
+        "state": "Jammu and Kashmir",
         "iucnCategory": "IUCN category IV: Habitat/Species Management Area",
         "area": null,
         "osmRelationIds": [],
-        "enwikiUrl": "https://en.wikipedia.org/wiki/Thattekad_Bird_Sanctuary",
+        "enwikiUrl": "https://en.wikipedia.org/wiki/Overa-Aru_Wildlife_Sanctuary",
         "eszStatus": "draft",
-        "notificationCount": 2,
+        "notificationCount": 1,
         "notificationStatus": "Draft",
-        "notificationDate": "2020-09-25",
-        "orderNumber": "S.O.3454(E)",
-        "notificationPdfLink": "https://moef.gov.in/uploads/2020/10/thattekad.pdf",
-        "notificationArchiveLink": null
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          77.16,
-          8.4
-        ]
-      },
-      "properties": {
-        "wikidataId": "Q6807544",
-        "wikidataUrl": "https://www.wikidata.org/wiki/Q6807544",
-        "name": "Neyyar Wildlife Sanctuary",
-        "protectedAreaType": "Wildlife Sanctuary",
-        "state": "Kerala",
-        "iucnCategory": "IUCN category IV: Habitat/Species Management Area",
-        "area": 128000,
-        "osmRelationIds": [],
-        "enwikiUrl": "https://en.wikipedia.org/wiki/Neyyar_Wildlife_Sanctuary",
-        "eszStatus": "draft",
-        "notificationCount": 2,
-        "notificationStatus": "Draft",
-        "notificationDate": "2022-03-25",
-        "orderNumber": "S.O. 1361(E)",
-        "notificationPdfLink": "https://moef.gov.in/uploads/2022/03/Draft-Notification-Neyyar.pdf",
-        "notificationArchiveLink": null
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          74.1708,
-          15.5717
-        ]
-      },
-      "properties": {
-        "wikidataId": "Q6826847",
-        "wikidataUrl": "https://www.wikidata.org/wiki/Q6826847",
-        "name": "Mhadei Wildlife Sanctuary",
-        "protectedAreaType": "Wildlife Sanctuary",
-        "state": "Goa",
-        "iucnCategory": "IUCN category IV: Habitat/Species Management Area",
-        "area": 208.48,
-        "osmRelationIds": [],
-        "enwikiUrl": "https://en.wikipedia.org/wiki/Mhadei_Wildlife_Sanctuary",
-        "eszStatus": "final",
-        "notificationCount": 3,
-        "notificationStatus": "Final",
-        "notificationDate": "2015-02-25",
-        "orderNumber": "S.O. 616",
-        "notificationPdfLink": "https://moef.gov.in/uploads/2017/06/S.O.%20616%20%5B25.02.2015%5D%20Final%20ESZ%20Notification%20on%20Madei%20WLS%2C%20Goa.pdf",
-        "notificationArchiveLink": "https://archive.org/details/in.gazette.central.e.2015-02-25.163128"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          76.8572,
-          32.0139
-        ]
-      },
-      "properties": {
-        "wikidataId": "Q6965894",
-        "wikidataUrl": "https://www.wikidata.org/wiki/Q6965894",
-        "name": "Nargu Wildlife Sanctuary",
-        "protectedAreaType": "Wildlife Sanctuary",
-        "state": "Himachal Pradesh",
-        "iucnCategory": "IUCN category IV: Habitat/Species Management Area",
-        "area": null,
-        "osmRelationIds": [],
-        "enwikiUrl": "https://en.wikipedia.org/wiki/Nargu_Wildlife_Sanctuary",
-        "eszStatus": "final",
-        "notificationCount": 3,
-        "notificationStatus": "Final",
-        "notificationDate": "2022-03-25",
-        "orderNumber": "S.O. 1331(E)",
-        "notificationPdfLink": "https://moef.gov.in/uploads/2022/03/Final-Notification-Nargu.pdf",
-        "notificationArchiveLink": null
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          79.20188611,
-          23.17814167
-        ]
-      },
-      "properties": {
-        "wikidataId": "Q7050184",
-        "wikidataUrl": "https://www.wikidata.org/wiki/Q7050184",
-        "name": "Noradehi Wildlife Sanctuary",
-        "protectedAreaType": "Wildlife Sanctuary",
-        "state": "Madhya Pradesh",
-        "iucnCategory": "IUCN category IV: Habitat/Species Management Area",
-        "area": 1197,
-        "osmRelationIds": [],
-        "enwikiUrl": "https://en.wikipedia.org/wiki/Nauradehi_Wildlife_Sanctuary",
-        "eszStatus": "final",
-        "notificationCount": 2,
-        "notificationStatus": "Final",
-        "notificationDate": "2017-09-27",
-        "orderNumber": "S.O. 3133 (E)",
-        "notificationPdfLink": "https://moef.gov.in/uploads/2017/06/Nauradehi%20Wildlife%20Sanctuary%2C%20Madhya%20Pradesh_0.pdf",
-        "notificationArchiveLink": null
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          92.85833333,
-          27.08333333
-        ]
-      },
-      "properties": {
-        "wikidataId": "Q7125480",
-        "wikidataUrl": "https://www.wikidata.org/wiki/Q7125480",
-        "name": "Pakhui Tiger Reserve",
-        "protectedAreaType": "Tiger Reserve",
-        "state": "Arunachal Pradesh",
-        "iucnCategory": "IUCN category IV: Habitat/Species Management Area",
-        "area": 861.95,
-        "osmRelationIds": [],
-        "enwikiUrl": "https://en.wikipedia.org/wiki/Pakke_Tiger_Reserve",
-        "eszStatus": "none",
-        "notificationCount": 0,
-        "notificationStatus": null,
-        "notificationDate": null,
-        "orderNumber": null,
-        "notificationPdfLink": null,
-        "notificationArchiveLink": null
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          80.071968,
-          28.718811
-        ]
-      },
-      "properties": {
-        "wikidataId": "Q7193996",
-        "wikidataUrl": "https://www.wikidata.org/wiki/Q7193996",
-        "name": "Pilibhit Tiger Reserve",
-        "protectedAreaType": "Tiger Reserve",
-        "state": "Uttar Pradesh",
-        "iucnCategory": "IUCN category IV: Habitat/Species Management Area",
-        "area": 730.24,
-        "osmRelationIds": [
-          "9474608"
-        ],
-        "enwikiUrl": "https://en.wikipedia.org/wiki/Pilibhit_Tiger_Reserve",
-        "eszStatus": "none",
-        "notificationCount": 0,
-        "notificationStatus": null,
-        "notificationDate": null,
-        "orderNumber": null,
-        "notificationPdfLink": null,
-        "notificationArchiveLink": null
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          92.03138889,
-          26.24111111
-        ]
-      },
-      "properties": {
-        "wikidataId": "Q7206203",
-        "wikidataUrl": "https://www.wikidata.org/wiki/Q7206203",
-        "name": "Pobitora Wildlife Sanctuary",
-        "protectedAreaType": "Wildlife Sanctuary",
-        "state": "Assam",
-        "iucnCategory": "IUCN category IV: Habitat/Species Management Area",
-        "area": null,
-        "osmRelationIds": [],
-        "enwikiUrl": "https://en.wikipedia.org/wiki/Pobitora_Wildlife_Sanctuary",
-        "eszStatus": "none",
-        "notificationCount": 0,
-        "notificationStatus": null,
-        "notificationDate": null,
-        "orderNumber": null,
-        "notificationPdfLink": null,
-        "notificationArchiveLink": null
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          88.121,
-          25.637
-        ]
-      },
-      "properties": {
-        "wikidataId": "Q7283821",
-        "wikidataUrl": "https://www.wikidata.org/wiki/Q7283821",
-        "name": "Raiganj Wildlife Sanctuary",
-        "protectedAreaType": "Wildlife Sanctuary",
-        "state": "West Bengal",
-        "iucnCategory": "IUCN category IV: Habitat/Species Management Area",
-        "area": null,
-        "osmRelationIds": [],
-        "enwikiUrl": "https://en.wikipedia.org/wiki/Raiganj_Wildlife_Sanctuary",
-        "eszStatus": "final",
-        "notificationCount": 2,
-        "notificationStatus": "Final",
-        "notificationDate": "2018-11-26",
-        "orderNumber": "S.O. 5836(E)",
-        "notificationPdfLink": "https://moef.gov.in/uploads/2017/06/raiganj.pdf",
-        "notificationArchiveLink": "https://archive.org/details/in.gazette.central.e.2018-11-26.193287"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          91.4,
-          23.28
-        ]
-      },
-      "properties": {
-        "wikidataId": "Q7285897",
-        "wikidataUrl": "https://www.wikidata.org/wiki/Q7285897",
-        "name": "Rajbari National Park",
-        "protectedAreaType": "National Park",
-        "state": "Tripura",
-        "iucnCategory": "IUCN category II: National Park",
-        "area": null,
-        "osmRelationIds": [],
-        "enwikiUrl": "https://en.wikipedia.org/wiki/Rajbari_National_Park",
-        "eszStatus": "final",
-        "notificationCount": 2,
-        "notificationStatus": "Final",
-        "notificationDate": "2019-11-11",
-        "orderNumber": "S.O. 4077(E)",
-        "notificationPdfLink": "https://moef.gov.in/uploads/2019/11/trishna.pdf",
-        "notificationArchiveLink": "https://archive.org/details/in.gazette.central.e.2019-11-11.213858"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          77.722,
-          22.918
-        ]
-      },
-      "properties": {
-        "wikidataId": "Q7295480",
-        "wikidataUrl": "https://www.wikidata.org/wiki/Q7295480",
-        "name": "Ratapani Tiger Reserve",
-        "protectedAreaType": "Tiger Reserve",
-        "state": "Madhya Pradesh",
-        "iucnCategory": "IUCN category IV: Habitat/Species Management Area",
-        "area": null,
-        "osmRelationIds": [],
-        "enwikiUrl": "https://en.wikipedia.org/wiki/Ratapani_Tiger_Reserve",
-        "eszStatus": "final",
-        "notificationCount": 2,
-        "notificationStatus": "Final",
-        "notificationDate": "2017-08-11",
-        "orderNumber": "S.O. 2605 (E)",
-        "notificationPdfLink": "https://moef.gov.in/uploads/2017/06/Ratapani%20and%20Singhori%20WLS%20Final%2C%20Madhya%20Pradesh.pdf",
-        "notificationArchiveLink": "https://archive.org/details/in.gazette.central.e.2017-08-11.178076"
+        "notificationDate": "2021-06-07",
+        "orderNumber": "S.O. 2184(E)",
+        "notificationPdfLink": "https://moef.gov.in/uploads/2021/06/dachigaon.pdf",
+        "notificationArchiveLink": "https://archive.org/details/in.gazette.central.e.2021-06-07.227469"
       }
     },
     {
@@ -1816,6 +574,568 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
+          85.36,
+          24.1474
+        ]
+      },
+      "properties": {
+        "wikidataId": "Q3595683",
+        "wikidataUrl": "https://www.wikidata.org/wiki/Q3595683",
+        "name": "Hazaribagh Wildlife Sanctuary",
+        "protectedAreaType": "Wildlife Sanctuary",
+        "state": "Jharkhand",
+        "iucnCategory": "IUCN category IV: Habitat/Species Management Area",
+        "area": null,
+        "osmRelationIds": [],
+        "enwikiUrl": "https://en.wikipedia.org/wiki/Hazaribagh_Wildlife_Sanctuary",
+        "eszStatus": "final",
+        "notificationCount": 3,
+        "notificationStatus": "Final",
+        "notificationDate": "2019-08-01",
+        "orderNumber": "S.O. 2775(E)",
+        "notificationPdfLink": "https://moef.gov.in/uploads/2019/08/hazaribhag.pdf",
+        "notificationArchiveLink": "https://archive.org/details/in.gazette.central.e.2019-08-01.210080"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.140555555,
+          11.993888888
+        ]
+      },
+      "properties": {
+        "wikidataId": "Q3631211",
+        "wikidataUrl": "https://www.wikidata.org/wiki/Q3631211",
+        "name": "Biligiriranga Hills Tiger Reserve",
+        "protectedAreaType": "Tiger Reserve",
+        "state": "Karnataka",
+        "iucnCategory": "IUCN category IV: Habitat/Species Management Area",
+        "area": null,
+        "osmRelationIds": [],
+        "enwikiUrl": "https://en.wikipedia.org/wiki/Biligiriranga_Hills",
+        "eszStatus": "final",
+        "notificationCount": 2,
+        "notificationStatus": "Final",
+        "notificationDate": "2019-11-19",
+        "orderNumber": "S.O. 4152(E)",
+        "notificationPdfLink": "https://moef.gov.in/uploads/2019/10/billingirangana.pdf",
+        "notificationArchiveLink": "https://archive.org/details/in.gazette.central.e.2019-11-19.214206"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.6525,
+          30.12083333
+        ]
+      },
+      "properties": {
+        "wikidataId": "Q4807241",
+        "wikidataUrl": "https://www.wikidata.org/wiki/Q4807241",
+        "name": "Askot Musk Deer Sanctuary",
+        "protectedAreaType": "Wildlife Sanctuary",
+        "state": "Uttarakhand",
+        "iucnCategory": "IUCN category IV: Habitat/Species Management Area",
+        "area": null,
+        "osmRelationIds": [],
+        "enwikiUrl": "https://en.wikipedia.org/wiki/Askot_Musk_Deer_Sanctuary",
+        "eszStatus": "final",
+        "notificationCount": 2,
+        "notificationStatus": "Final",
+        "notificationDate": "2021-12-02",
+        "orderNumber": "S.O.4929(E)",
+        "notificationPdfLink": "https://moef.gov.in/uploads/2021/12/askot-1.pdf",
+        "notificationArchiveLink": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          84.75,
+          20.45
+        ]
+      },
+      "properties": {
+        "wikidataId": "Q4848700",
+        "wikidataUrl": "https://www.wikidata.org/wiki/Q4848700",
+        "name": "Baisipali Wildlife Sanctuary",
+        "protectedAreaType": "Wildlife Sanctuary",
+        "state": "Odisha",
+        "iucnCategory": "IUCN category IV: Habitat/Species Management Area",
+        "area": null,
+        "osmRelationIds": [],
+        "enwikiUrl": "https://en.wikipedia.org/wiki/Baisipalli_Wildlife_Sanctuary",
+        "eszStatus": "none",
+        "notificationCount": 0,
+        "notificationStatus": null,
+        "notificationDate": null,
+        "orderNumber": null,
+        "notificationPdfLink": null,
+        "notificationArchiveLink": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          88.3920227,
+          23.5975516
+        ]
+      },
+      "properties": {
+        "wikidataId": "Q4898107",
+        "wikidataUrl": "https://www.wikidata.org/wiki/Q4898107",
+        "name": "Bethuadahari Wildlife Sanctuary",
+        "protectedAreaType": "Wildlife Sanctuary",
+        "state": "West Bengal",
+        "iucnCategory": "IUCN category IV: Habitat/Species Management Area",
+        "area": null,
+        "osmRelationIds": [],
+        "enwikiUrl": "https://en.wikipedia.org/wiki/Bethuadahari_Wildlife_Sanctuary",
+        "eszStatus": "none",
+        "notificationCount": 0,
+        "notificationStatus": null,
+        "notificationDate": null,
+        "orderNumber": null,
+        "notificationPdfLink": null,
+        "notificationArchiveLink": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          88.762087,
+          23.186178
+        ]
+      },
+      "properties": {
+        "wikidataId": "Q4903011",
+        "wikidataUrl": "https://www.wikidata.org/wiki/Q4903011",
+        "name": "Bibhutibhushan Wildlife Sanctuary",
+        "protectedAreaType": "Wildlife Sanctuary",
+        "state": "West Bengal",
+        "iucnCategory": "IUCN category IV: Habitat/Species Management Area",
+        "area": null,
+        "osmRelationIds": [],
+        "enwikiUrl": "https://en.wikipedia.org/wiki/Bibhutibhushan_Wildlife_Sanctuary",
+        "eszStatus": "final",
+        "notificationCount": 2,
+        "notificationStatus": "Final",
+        "notificationDate": "2019-10-10",
+        "orderNumber": "S.O. 3652(E)",
+        "notificationPdfLink": "https://moef.gov.in/uploads/2018/12/bibhutibhushan.pdf",
+        "notificationArchiveLink": "https://archive.org/details/in.gazette.central.e.2019-10-10.213220"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.1978,
+          30.9599
+        ]
+      },
+      "properties": {
+        "wikidataId": "Q5067785",
+        "wikidataUrl": "https://www.wikidata.org/wiki/Q5067785",
+        "name": "Chail Sanctuary",
+        "protectedAreaType": "Wildlife Sanctuary",
+        "state": "Himachal Pradesh",
+        "iucnCategory": "IUCN category IV: Habitat/Species Management Area",
+        "area": 110,
+        "osmRelationIds": [],
+        "enwikiUrl": "https://en.wikipedia.org/wiki/Chail_Sanctuary",
+        "eszStatus": "final",
+        "notificationCount": 3,
+        "notificationStatus": "Final",
+        "notificationDate": "2022-01-05",
+        "orderNumber": "S.O.39(E)",
+        "notificationPdfLink": "https://moef.gov.in/uploads/2022/01/Chail.pdf",
+        "notificationArchiveLink": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          88.8551019,
+          26.8746424
+        ]
+      },
+      "properties": {
+        "wikidataId": "Q5073423",
+        "wikidataUrl": "https://www.wikidata.org/wiki/Q5073423",
+        "name": "Chapramari Wildlife Sanctuary",
+        "protectedAreaType": "Wildlife Sanctuary",
+        "state": "West Bengal",
+        "iucnCategory": "IUCN category IV: Habitat/Species Management Area",
+        "area": null,
+        "osmRelationIds": [],
+        "enwikiUrl": "https://en.wikipedia.org/wiki/Chapramari_Wildlife_Sanctuary",
+        "eszStatus": "final",
+        "notificationCount": 2,
+        "notificationStatus": "Final",
+        "notificationDate": "2019-06-07",
+        "orderNumber": "S.O. 1931(E)",
+        "notificationPdfLink": "https://moef.gov.in/uploads/2019/06/chapramari.pdf",
+        "notificationArchiveLink": "https://archive.org/details/in.gazette.central.e.2019-06-07.205332"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          88.4007,
+          22.4295
+        ]
+      },
+      "properties": {
+        "wikidataId": "Q5101326",
+        "wikidataUrl": "https://www.wikidata.org/wiki/Q5101326",
+        "name": "Chintamoni Kar Bird Sanctuary",
+        "protectedAreaType": "Bird Sanctuary",
+        "state": "West Bengal",
+        "iucnCategory": "IUCN category IV: Habitat/Species Management Area",
+        "area": null,
+        "osmRelationIds": [],
+        "enwikiUrl": "https://en.wikipedia.org/wiki/Chintamoni_Kar_Bird_Sanctuary",
+        "eszStatus": "final",
+        "notificationCount": 2,
+        "notificationStatus": "Final",
+        "notificationDate": "2019-01-15",
+        "orderNumber": "S.O. 318(E)",
+        "notificationPdfLink": "https://moef.gov.in/uploads/2017/06/chintamani.pdf",
+        "notificationArchiveLink": "https://archive.org/details/in.gazette.central.e.2019-01-15.195414"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.516667,
+          27.166667
+        ]
+      },
+      "properties": {
+        "wikidataId": "Q235878",
+        "wikidataUrl": "https://www.wikidata.org/wiki/Q235878",
+        "name": "Kevladev National Park",
+        "protectedAreaType": "National Park",
+        "state": "Rajasthan",
+        "iucnCategory": "IUCN category II: National Park",
+        "area": 2873,
+        "osmRelationIds": [
+          "15743640"
+        ],
+        "enwikiUrl": "https://en.wikipedia.org/wiki/Keoladeo_National_Park",
+        "eszStatus": "final",
+        "notificationCount": 4,
+        "notificationStatus": "Final",
+        "notificationDate": "2020-02-21",
+        "orderNumber": "S.O. 814(E)",
+        "notificationPdfLink": "https://moef.gov.in/uploads/2020/02/keoladeo-amendment-1.pdf",
+        "notificationArchiveLink": "https://archive.org/details/in.gazette.central.e.2020-02-21.216310"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          70.79667,
+          21.13556
+        ]
+      },
+      "properties": {
+        "wikidataId": "Q337028",
+        "wikidataUrl": "https://www.wikidata.org/wiki/Q337028",
+        "name": "Gir National Park",
+        "protectedAreaType": "National Park",
+        "state": "Gujarat",
+        "iucnCategory": "IUCN category II: National Park",
+        "area": 259,
+        "osmRelationIds": [],
+        "enwikiUrl": "https://en.wikipedia.org/wiki/Gir_National_Park",
+        "eszStatus": "draft",
+        "notificationCount": 2,
+        "notificationStatus": "Draft",
+        "notificationDate": "2024-09-18",
+        "orderNumber": "S.O. No. 3997(E)",
+        "notificationPdfLink": "https://moef.gov.in/uploads/pdf/gir_draft_notification.pdf",
+        "notificationArchiveLink": "https://archive.org/details/in.gazette.central.e.2024-09-18.257288"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          94.383333,
+          26.716667
+        ]
+      },
+      "properties": {
+        "wikidataId": "Q3471776",
+        "wikidataUrl": "https://www.wikidata.org/wiki/Q3471776",
+        "name": "Hoollongapar Gibbon Sanctuary",
+        "protectedAreaType": "Wildlife Sanctuary",
+        "state": "Assam",
+        "iucnCategory": "IUCN category IV: Habitat/Species Management Area",
+        "area": 20.98,
+        "osmRelationIds": [],
+        "enwikiUrl": "https://en.wikipedia.org/wiki/Hoollongapar_Gibbon_Sanctuary",
+        "eszStatus": "final",
+        "notificationCount": 2,
+        "notificationStatus": "Final",
+        "notificationDate": "2019-09-25",
+        "orderNumber": "S.O. 3462(E)",
+        "notificationPdfLink": "https://moef.gov.in/uploads/2018/12/hollongapar.pdf",
+        "notificationArchiveLink": "https://archive.org/details/in.gazette.central.e.2019-09-25.212794"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.175,
+          10.3
+        ]
+      },
+      "properties": {
+        "wikidataId": "Q3522009",
+        "wikidataUrl": "https://www.wikidata.org/wiki/Q3522009",
+        "name": "Chinnar Wildlife Sanctuary",
+        "protectedAreaType": "Wildlife Sanctuary",
+        "state": "Kerala",
+        "iucnCategory": "IUCN category IV: Habitat/Species Management Area",
+        "area": 9044,
+        "osmRelationIds": [],
+        "enwikiUrl": "https://en.wikipedia.org/wiki/Chinnar_Wildlife_Sanctuary",
+        "eszStatus": "draft",
+        "notificationCount": 2,
+        "notificationStatus": "Draft",
+        "notificationDate": "2021-01-12",
+        "orderNumber": "S.O. 124(E)",
+        "notificationPdfLink": "https://moef.gov.in/uploads/2021/01/eravikulam.pdf",
+        "notificationArchiveLink": "https://archive.org/details/in.gazette.central.e.2021-01-12.224379"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.2,
+          13.56666667
+        ]
+      },
+      "properties": {
+        "wikidataId": "Q3532790",
+        "wikidataUrl": "https://www.wikidata.org/wiki/Q3532790",
+        "name": "Pulicat Lake Bird Sanctuary",
+        "protectedAreaType": "Bird Sanctuary",
+        "state": "Andhra Pradesh",
+        "iucnCategory": "IUCN category IV: Habitat/Species Management Area",
+        "area": null,
+        "osmRelationIds": [],
+        "enwikiUrl": "https://en.wikipedia.org/wiki/Pulicat_Lake_Bird_Sanctuary",
+        "eszStatus": "final",
+        "notificationCount": 2,
+        "notificationStatus": "Final",
+        "notificationDate": "2015-06-26",
+        "orderNumber": "S.O. 1736",
+        "notificationPdfLink": "https://moef.gov.in/uploads/2017/06/S.O.%201736%20%5B26.06.2015%5D%20Final%20ESZ%20Notification%20on%20Pulicat%20Wildlife%20Sanctuary%2C%20Andhra%20Pradesh.pdf",
+        "notificationArchiveLink": "https://archive.org/details/in.gazette.central.e.2015-06-26.164907"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          84.3239,
+          19.3031
+        ]
+      },
+      "properties": {
+        "wikidataId": "Q15725165",
+        "wikidataUrl": "https://www.wikidata.org/wiki/Q15725165",
+        "name": "Lakhari Valley Wildlife Sanctuary",
+        "protectedAreaType": "Wildlife Sanctuary",
+        "state": "Odisha",
+        "iucnCategory": "IUCN category IV: Habitat/Species Management Area",
+        "area": null,
+        "osmRelationIds": [],
+        "enwikiUrl": "https://en.wikipedia.org/wiki/Lakhari_Valley_Wildlife_Sanctuary",
+        "eszStatus": "final",
+        "notificationCount": 2,
+        "notificationStatus": "Final",
+        "notificationDate": "2020-09-07",
+        "orderNumber": "S.O.3029 (E)",
+        "notificationPdfLink": "https://moef.gov.in/uploads/2020/09/lakhery.pdf",
+        "notificationArchiveLink": "https://archive.org/details/in.gazette.central.e.2020-09-07.221608"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          75.414166666,
+          11.918333333
+        ]
+      },
+      "properties": {
+        "wikidataId": "Q16137059",
+        "wikidataUrl": "https://www.wikidata.org/wiki/Q16137059",
+        "name": "Munderikadavu Bird Sanctuary",
+        "protectedAreaType": "Bird Sanctuary",
+        "state": "Kerala",
+        "iucnCategory": null,
+        "area": null,
+        "osmRelationIds": [],
+        "enwikiUrl": null,
+        "eszStatus": "none",
+        "notificationCount": 0,
+        "notificationStatus": null,
+        "notificationDate": null,
+        "orderNumber": null,
+        "notificationPdfLink": null,
+        "notificationArchiveLink": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          93.5,
+          28.25
+        ]
+      },
+      "properties": {
+        "wikidataId": "Q16895017",
+        "wikidataUrl": "https://www.wikidata.org/wiki/Q16895017",
+        "name": "Mehao Wildlife Sanctuary",
+        "protectedAreaType": "Wildlife Sanctuary",
+        "state": "Arunachal Pradesh",
+        "iucnCategory": null,
+        "area": null,
+        "osmRelationIds": [],
+        "enwikiUrl": "https://en.wikipedia.org/wiki/Mehao_Wildlife_Sanctuary",
+        "eszStatus": "draft",
+        "notificationCount": 2,
+        "notificationStatus": "Draft",
+        "notificationDate": "2018-02-22",
+        "orderNumber": "S.O. 772(E)",
+        "notificationPdfLink": "https://moef.gov.in/uploads/2019/08/mehao.pdf",
+        "notificationArchiveLink": "https://archive.org/details/in.gazette.central.e.2018-02-22.183346"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          79.51111111,
+          20.83555556
+        ]
+      },
+      "properties": {
+        "wikidataId": "Q16902313",
+        "wikidataUrl": "https://www.wikidata.org/wiki/Q16902313",
+        "name": "Umred Karhandla Wildlife Sanctuary",
+        "protectedAreaType": "Wildlife Sanctuary",
+        "state": "Maharashtra",
+        "iucnCategory": "IUCN category IV: Habitat/Species Management Area",
+        "area": 189.3,
+        "osmRelationIds": [],
+        "enwikiUrl": "https://en.wikipedia.org/wiki/Umred_Pauni_Karhandla_Wildlife_Sanctuary",
+        "eszStatus": "final",
+        "notificationCount": 2,
+        "notificationStatus": "Final",
+        "notificationDate": "2017-03-16",
+        "orderNumber": "S.O. 837 (E)",
+        "notificationPdfLink": "https://moef.gov.in/uploads/2019/08/Umred-Karhandla-Wildlife-Sanctuary-Maharashtra.pdf",
+        "notificationArchiveLink": "https://archive.org/details/in.gazette.central.e.2017-03-16.174803"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          88.1183,
+          27.1942
+        ]
+      },
+      "properties": {
+        "wikidataId": "Q16902550",
+        "wikidataUrl": "https://www.wikidata.org/wiki/Q16902550",
+        "name": "Varsey Rhododendron Sanctuary",
+        "protectedAreaType": "Wildlife Sanctuary",
+        "state": "Sikkim",
+        "iucnCategory": "IUCN category IV: Habitat/Species Management Area",
+        "area": 104,
+        "osmRelationIds": [],
+        "enwikiUrl": "https://en.wikipedia.org/wiki/Varsey_Rhododendron_Sanctuary",
+        "eszStatus": "final",
+        "notificationCount": 2,
+        "notificationStatus": "Final",
+        "notificationDate": "2014-08-27",
+        "orderNumber": "S.O. 2172",
+        "notificationPdfLink": "https://moef.gov.in/uploads/2017/06/S.O.%202172%20%5B27.08.2014%5D%20Final%20ESZ%20Notification%20on%20Barsey%20Rhododendron%20Sanctuary%2C%20Sikkim.pdf",
+        "notificationArchiveLink": "https://archive.org/details/in.gazette.central.e.2014-08-27.160782"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          93.897555,
+          27.547681
+        ]
+      },
+      "properties": {
+        "wikidataId": "Q17033744",
+        "wikidataUrl": "https://www.wikidata.org/wiki/Q17033744",
+        "name": "Talley Valley Wildlife Sanctuary",
+        "protectedAreaType": "Wildlife Sanctuary",
+        "state": "Arunachal Pradesh",
+        "iucnCategory": "IUCN category IV: Habitat/Species Management Area",
+        "area": 337,
+        "osmRelationIds": [],
+        "enwikiUrl": "https://en.wikipedia.org/wiki/Talle_Valley_Wildlife_Sanctuary",
+        "eszStatus": "draft",
+        "notificationCount": 1,
+        "notificationStatus": "Draft",
+        "notificationDate": "2015-09-17",
+        "orderNumber": "S.O. 2538",
+        "notificationPdfLink": "https://moef.gov.in/uploads/2017/06/S.O.%202538%20%5B17.09.2015%5D%20Draft%20ESZ%20Notification%20on%20Tale%20Wildlife%20Sanctuary%2C%20Arunachal%20Pradesh_0.pdf",
+        "notificationArchiveLink": "https://archive.org/details/in.gazette.central.e.2015-09-17.166238"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
           74.615555555,
           33.598888888
         ]
@@ -2040,110 +1360,26 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          76.8512,
-          30.7757
+          93.05,
+          22.66666667
         ]
       },
       "properties": {
-        "wikidataId": "Q23995986",
-        "wikidataUrl": "https://www.wikidata.org/wiki/Q23995986",
-        "name": "Sukhna Lake Wildlife Sanctuary",
-        "protectedAreaType": "Wildlife Sanctuary",
-        "state": "Chandigarh",
-        "iucnCategory": "IUCN category IV: Habitat/Species Management Area",
-        "area": 25.98,
-        "osmRelationIds": [],
-        "enwikiUrl": "https://en.wikipedia.org/wiki/Sukhna_Wildlife_Sanctuary",
-        "eszStatus": "final",
-        "notificationCount": 2,
-        "notificationStatus": "Final",
-        "notificationDate": "2017-01-19",
-        "orderNumber": "S.O. 185 (E)",
-        "notificationPdfLink": "https://moef.gov.in/uploads/2017/06/Sukhna%20Wildlife%20Sanctuary%2C%20Chandigarh.pdf",
-        "notificationArchiveLink": "https://archive.org/details/in.gazette.central.e.2017-01-19.173792"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          77.510227,
-          31.99343
-        ]
-      },
-      "properties": {
-        "wikidataId": "Q31708713",
-        "wikidataUrl": "https://www.wikidata.org/wiki/Q31708713",
-        "name": "Khirganga National Park",
+        "wikidataId": "Q15266124",
+        "wikidataUrl": "https://www.wikidata.org/wiki/Q15266124",
+        "name": "Phawngpui National Park",
         "protectedAreaType": "National Park",
-        "state": "Himachal Pradesh",
+        "state": "Mizoram",
         "iucnCategory": "IUCN category II: National Park",
         "area": null,
         "osmRelationIds": [],
-        "enwikiUrl": "https://en.wikipedia.org/wiki/Khirganga_National_Park",
-        "eszStatus": "draft",
-        "notificationCount": 1,
-        "notificationStatus": "Draft",
-        "notificationDate": "2016-08-05",
-        "orderNumber": "S.O. 2628(E)",
-        "notificationPdfLink": "https://moef.gov.in/uploads/2017/06/Great%20Himalayan%20National%20Park%2C%20HP.pdf",
-        "notificationArchiveLink": "https://archive.org/details/in.gazette.central.e.2016-08-05.171211"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          83.7531,
-          19.8768
-        ]
-      },
-      "properties": {
-        "wikidataId": "Q51137829",
-        "wikidataUrl": "https://www.wikidata.org/wiki/Q51137829",
-        "name": "Kotgarh Wildlife Sanctuary",
-        "protectedAreaType": "Wildlife Sanctuary",
-        "state": "Odisha",
-        "iucnCategory": "IUCN category IV: Habitat/Species Management Area",
-        "area": null,
-        "osmRelationIds": [],
-        "enwikiUrl": "https://en.wikipedia.org/wiki/Kotgarh_Wildlife_Sanctuary",
-        "eszStatus": "draft",
-        "notificationCount": 1,
-        "notificationStatus": "Draft",
-        "notificationDate": "2017-10-27",
-        "orderNumber": "S.O. 3433(E)",
-        "notificationPdfLink": "https://moef.gov.in/uploads/2017/06/kotagarh.pdf",
-        "notificationArchiveLink": "https://archive.org/details/in.gazette.central.e.2017-10-27.179896"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          76.516666666,
-          15.233333333
-        ]
-      },
-      "properties": {
-        "wikidataId": "Q65091528",
-        "wikidataUrl": "https://www.wikidata.org/wiki/Q65091528",
-        "name": "Gudekote Wildlife Sanctuary",
-        "protectedAreaType": "Wildlife Sanctuary",
-        "state": "Karnataka",
-        "iucnCategory": "IUCN category IV: Habitat/Species Management Area",
-        "area": null,
-        "osmRelationIds": [],
-        "enwikiUrl": "https://en.wikipedia.org/wiki/Gudekote_Wildlife_Sanctuary",
-        "eszStatus": "final",
-        "notificationCount": 2,
-        "notificationStatus": "Final",
-        "notificationDate": "2017-10-27",
-        "orderNumber": "S.O. 4747 (E)",
-        "notificationPdfLink": "https://moef.gov.in/uploads/2023/11/SO4747(E)-gudekote-final.pdf",
+        "enwikiUrl": "https://en.wikipedia.org/wiki/Phawngpui_National_Park",
+        "eszStatus": "none",
+        "notificationCount": 0,
+        "notificationStatus": null,
+        "notificationDate": null,
+        "orderNumber": null,
+        "notificationPdfLink": null,
         "notificationArchiveLink": null
       }
     },
@@ -2152,27 +1388,29 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          95.445833333,
-          27.937777777
+          88.75,
+          21.75
         ]
       },
       "properties": {
-        "wikidataId": "Q85755050",
-        "wikidataUrl": "https://www.wikidata.org/wiki/Q85755050",
-        "name": "D'Ering Memorial Wildlife Sanctuary",
-        "protectedAreaType": "Wildlife Sanctuary",
-        "state": "Arunachal Pradesh",
-        "iucnCategory": "IUCN category IV: Habitat/Species Management Area",
-        "area": null,
-        "osmRelationIds": [],
-        "enwikiUrl": "https://en.wikipedia.org/wiki/D%27Ering_Memorial_Wildlife_Sanctuary",
-        "eszStatus": "draft",
-        "notificationCount": 1,
-        "notificationStatus": "Draft",
-        "notificationDate": "2015-11-17",
-        "orderNumber": "S.O. 3101(E)",
-        "notificationPdfLink": "https://moef.gov.in/uploads/2017/06/DayingEring%20Wildlife%20Sanctuary%2C%20Arunachal%20Pradesh.pdf",
-        "notificationArchiveLink": "https://archive.org/details/in.gazette.central.e.2015-11-17.166766"
+        "wikidataId": "Q532440",
+        "wikidataUrl": "https://www.wikidata.org/wiki/Q532440",
+        "name": "Sundarbans National Park",
+        "protectedAreaType": "Tiger Reserve",
+        "state": "West Bengal",
+        "iucnCategory": "IUCN category II: National Park",
+        "area": 133010,
+        "osmRelationIds": [
+          "13617703"
+        ],
+        "enwikiUrl": "https://en.wikipedia.org/wiki/Sundarbans_National_Park",
+        "eszStatus": "none",
+        "notificationCount": 0,
+        "notificationStatus": null,
+        "notificationDate": null,
+        "orderNumber": null,
+        "notificationPdfLink": null,
+        "notificationArchiveLink": null
       }
     },
     {
@@ -2180,27 +1418,111 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          77.5059,
-          20.4289
+          80.23079,
+          13.00259
         ]
       },
       "properties": {
-        "wikidataId": "Q85773598",
-        "wikidataUrl": "https://www.wikidata.org/wiki/Q85773598",
-        "name": "Karanja Sohol Wildlife Sanctuary",
-        "protectedAreaType": "Wildlife Sanctuary",
-        "state": "Maharashtra",
-        "iucnCategory": "IUCN category IV: Habitat/Species Management Area",
-        "area": 18.32,
+        "wikidataId": "Q648548",
+        "wikidataUrl": "https://www.wikidata.org/wiki/Q648548",
+        "name": "Guindy National Park",
+        "protectedAreaType": "National Park",
+        "state": "Tamil Nadu",
+        "iucnCategory": "IUCN category II: National Park",
+        "area": 2.8,
         "osmRelationIds": [],
-        "enwikiUrl": "https://en.wikipedia.org/wiki/Karanja_Sohol_Wildlife_Sanctuary",
+        "enwikiUrl": "https://en.wikipedia.org/wiki/Guindy_National_Park",
+        "eszStatus": "none",
+        "notificationCount": 0,
+        "notificationStatus": null,
+        "notificationDate": null,
+        "orderNumber": null,
+        "notificationPdfLink": null,
+        "notificationArchiveLink": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          72.9167,
+          19.25
+        ]
+      },
+      "properties": {
+        "wikidataId": "Q648907",
+        "wikidataUrl": "https://www.wikidata.org/wiki/Q648907",
+        "name": "Sanjay Gandhi National Park",
+        "protectedAreaType": "National Park",
+        "state": "Maharashtra",
+        "iucnCategory": "IUCN category II: National Park",
+        "area": 104,
+        "osmRelationIds": [],
+        "enwikiUrl": "https://en.wikipedia.org/wiki/Sanjay_Gandhi_National_Park",
+        "eszStatus": "final",
+        "notificationCount": 3,
+        "notificationStatus": "Final",
+        "notificationDate": "2016-12-05",
+        "orderNumber": "S.O. 3645 (E)",
+        "notificationPdfLink": "https://moef.gov.in/uploads/2017/06/Sanjay%20Gandhi%20NP%2C%20Maharashtra%20FINAL%20(1).pdf06-12-2016a.pdf",
+        "notificationArchiveLink": "https://archive.org/details/in.gazette.central.e.2016-12-05.172914"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          76.627222,
+          11.664444
+        ]
+      },
+      "properties": {
+        "wikidataId": "Q665110",
+        "wikidataUrl": "https://www.wikidata.org/wiki/Q665110",
+        "name": "Bandipur National Park",
+        "protectedAreaType": "Tiger Reserve",
+        "state": "Karnataka",
+        "iucnCategory": "IUCN category II: National Park",
+        "area": 872.24,
+        "osmRelationIds": [],
+        "enwikiUrl": "https://en.wikipedia.org/wiki/Bandipur_National_Park",
+        "eszStatus": "final",
+        "notificationCount": 4,
+        "notificationStatus": "Final",
+        "notificationDate": "2012-10-04",
+        "orderNumber": "S.O. No. 2364",
+        "notificationPdfLink": "https://moef.gov.in/uploads/2017/06/S.O.%20No.%202364%20%5B04.10.2012%5D%20Final%20ESZ%20Notification%20on%20Bandipur%20NP%2C%20Karnataka.pdf",
+        "notificationArchiveLink": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.16666667,
+          20.93333333
+        ]
+      },
+      "properties": {
+        "wikidataId": "Q763034",
+        "wikidataUrl": "https://www.wikidata.org/wiki/Q763034",
+        "name": "Nawegaon National Park",
+        "protectedAreaType": "Tiger Reserve",
+        "state": "Maharashtra",
+        "iucnCategory": "IUCN category II: National Park",
+        "area": 133.88,
+        "osmRelationIds": [],
+        "enwikiUrl": "https://en.wikipedia.org/wiki/Navegaon_National_Park",
         "eszStatus": "final",
         "notificationCount": 2,
         "notificationStatus": "Final",
-        "notificationDate": "2021-06-18",
-        "orderNumber": "S.O. 2407(E)",
-        "notificationPdfLink": "https://moef.gov.in/uploads/2021/06/karanja-shool.pdf",
-        "notificationArchiveLink": "https://archive.org/details/in.gazette.central.e.2021-06-18.227727"
+        "notificationDate": "2023-09-20",
+        "orderNumber": "S.O. 4132(E)",
+        "notificationPdfLink": "https://moef.gov.in/uploads/2023/11/SO4132(E)-Final-notification-nagzira.pdf",
+        "notificationArchiveLink": "https://archive.org/details/in.gazette.central.e.2023-09-20.248884"
       }
     },
     {
@@ -2208,27 +1530,901 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          75.2475,
-          34.11
+          80.96194444,
+          23.69944444
         ]
       },
       "properties": {
-        "wikidataId": "Q101471239",
-        "wikidataUrl": "https://www.wikidata.org/wiki/Q101471239",
-        "name": "Overa-Aru Wildlife Sanctuary",
-        "protectedAreaType": "Wildlife Sanctuary",
-        "state": "Jammu and Kashmir",
-        "iucnCategory": "IUCN category IV: Habitat/Species Management Area",
+        "wikidataId": "Q806310",
+        "wikidataUrl": "https://www.wikidata.org/wiki/Q806310",
+        "name": "Bandhavgarh National Park",
+        "protectedAreaType": "Tiger Reserve",
+        "state": "Madhya Pradesh",
+        "iucnCategory": "IUCN category II: National Park",
+        "area": 448,
+        "osmRelationIds": [
+          "15694340"
+        ],
+        "enwikiUrl": "https://en.wikipedia.org/wiki/Bandhavgarh_National_Park",
+        "eszStatus": "final",
+        "notificationCount": 2,
+        "notificationStatus": "Final",
+        "notificationDate": "2016-12-14",
+        "orderNumber": "S.O. 4027 (E)",
+        "notificationPdfLink": "https://moef.gov.in/uploads/2017/06/Bandhavgarh%20National%20Park%2C%20Madhya%20Pradesh_0.pdf",
+        "notificationArchiveLink": "https://archive.org/details/in.gazette.central.e.2016-12-14.173159"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          72,
+          22.03333333
+        ]
+      },
+      "properties": {
+        "wikidataId": "Q880724",
+        "wikidataUrl": "https://www.wikidata.org/wiki/Q880724",
+        "name": "Blackbuck National Park",
+        "protectedAreaType": "National Park",
+        "state": "Gujarat",
+        "iucnCategory": "IUCN category II: National Park",
+        "area": 34,
+        "osmRelationIds": [],
+        "enwikiUrl": "https://en.wikipedia.org/wiki/Blackbuck_National_Park,_Velavadar",
+        "eszStatus": "final",
+        "notificationCount": 2,
+        "notificationStatus": "Final",
+        "notificationDate": "2017-07-06",
+        "orderNumber": "S.O. 2149 (E)",
+        "notificationPdfLink": "https://moef.gov.in/uploads/2017/06/Velavedar%20Black%20Buck%20National%20Park%2C%20Gujarat.pdf",
+        "notificationArchiveLink": "https://archive.org/details/in.gazette.central.e.2017-07-06.177349"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          78.93333333,
+          29.53333333
+        ]
+      },
+      "properties": {
+        "wikidataId": "Q949297",
+        "wikidataUrl": "https://www.wikidata.org/wiki/Q949297",
+        "name": "Jim Corbett National Park",
+        "protectedAreaType": "Tiger Reserve",
+        "state": "Uttarakhand",
+        "iucnCategory": "IUCN category II: National Park",
+        "area": 1288,
+        "osmRelationIds": [
+          "16831555"
+        ],
+        "enwikiUrl": "https://en.wikipedia.org/wiki/Jim_Corbett_National_Park",
+        "eszStatus": "none",
+        "notificationCount": 0,
+        "notificationStatus": null,
+        "notificationDate": null,
+        "orderNumber": null,
+        "notificationPdfLink": null,
+        "notificationArchiveLink": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          78.41,
+          17.42
+        ]
+      },
+      "properties": {
+        "wikidataId": "Q969593",
+        "wikidataUrl": "https://www.wikidata.org/wiki/Q969593",
+        "name": "Kasu Brahmananda Reddy National Park",
+        "protectedAreaType": "National Park",
+        "state": "Telangana",
+        "iucnCategory": "IUCN category II: National Park",
         "area": null,
         "osmRelationIds": [],
-        "enwikiUrl": "https://en.wikipedia.org/wiki/Overa-Aru_Wildlife_Sanctuary",
+        "enwikiUrl": "https://en.wikipedia.org/wiki/Kasu_Brahmananda_Reddy_National_Park",
+        "eszStatus": "final",
+        "notificationCount": 3,
+        "notificationStatus": "Final",
+        "notificationDate": "2020-10-27",
+        "orderNumber": "S.O. 3879(E)",
+        "notificationPdfLink": "https://moef.gov.in/uploads/2019/02/kesu-bramahanand.pdf",
+        "notificationArchiveLink": "https://archive.org/details/in.gazette.central.e.2020-10-27.222820"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          74.36,
+          14.99
+        ]
+      },
+      "properties": {
+        "wikidataId": "Q5215675",
+        "wikidataUrl": "https://www.wikidata.org/wiki/Q5215675",
+        "name": "Anshi National Park",
+        "protectedAreaType": "National Park",
+        "state": "Karnataka",
+        "iucnCategory": null,
+        "area": null,
+        "osmRelationIds": [],
+        "enwikiUrl": "https://en.wikipedia.org/wiki/Dandeli_National_Park",
+        "eszStatus": "draft",
+        "notificationCount": 2,
+        "notificationStatus": "Draft",
+        "notificationDate": "2016-11-03",
+        "orderNumber": "S.O. 3369 (E)",
+        "notificationPdfLink": "https://moef.gov.in/uploads/2017/06/Dandeli%20Wildlife%20Sanctuary%20and%20Anshi%20NP%2C%20Karnataka_0.pdf",
+        "notificationArchiveLink": "https://archive.org/details/in.gazette.central.e.2016-11-03.172484"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          75.856,
+          24.868
+        ]
+      },
+      "properties": {
+        "wikidataId": "Q5224247",
+        "wikidataUrl": "https://www.wikidata.org/wiki/Q5224247",
+        "name": "Mukundra Hills Tiger Reserve",
+        "protectedAreaType": "Tiger Reserve",
+        "state": "Rajasthan",
+        "iucnCategory": "IUCN category II: National Park",
+        "area": null,
+        "osmRelationIds": [],
+        "enwikiUrl": "https://en.wikipedia.org/wiki/Mukundara_Hills_National_Park",
+        "eszStatus": "final",
+        "notificationCount": 2,
+        "notificationStatus": "Final",
+        "notificationDate": "2020-11-25",
+        "orderNumber": "S.O.4268(E)",
+        "notificationPdfLink": "https://moef.gov.in/uploads/2020/12/mukundra-1.pdf",
+        "notificationArchiveLink": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          95.526,
+          27.331
+        ]
+      },
+      "properties": {
+        "wikidataId": "Q5252276",
+        "wikidataUrl": "https://www.wikidata.org/wiki/Q5252276",
+        "name": "Dehing Patkai National Park",
+        "protectedAreaType": "National Park",
+        "state": "Assam",
+        "iucnCategory": "IUCN category II: National Park",
+        "area": 231,
+        "osmRelationIds": [],
+        "enwikiUrl": "https://en.wikipedia.org/wiki/Dehing_Patkai_National_Park",
         "eszStatus": "draft",
         "notificationCount": 1,
         "notificationStatus": "Draft",
-        "notificationDate": "2021-06-07",
-        "orderNumber": "S.O. 2184(E)",
-        "notificationPdfLink": "https://moef.gov.in/uploads/2021/06/dachigaon.pdf",
-        "notificationArchiveLink": "https://archive.org/details/in.gazette.central.e.2021-06-07.227469"
+        "notificationDate": "2019-05-30",
+        "orderNumber": "S.O. 1915(E)",
+        "notificationPdfLink": "https://moef.gov.in/uploads/2019/06/dehing-patkai.pdf",
+        "notificationArchiveLink": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.927,
+          26.166
+        ]
+      },
+      "properties": {
+        "wikidataId": "Q5555916",
+        "wikidataUrl": "https://www.wikidata.org/wiki/Q5555916",
+        "name": "Ghatigaon Sanctuary",
+        "protectedAreaType": "Wildlife Sanctuary",
+        "state": "Madhya Pradesh",
+        "iucnCategory": "IUCN category IV: Habitat/Species Management Area",
+        "area": 511,
+        "osmRelationIds": [],
+        "enwikiUrl": "https://en.wikipedia.org/wiki/Ghatigaon_Wildlife_Sanctuary",
+        "eszStatus": "final",
+        "notificationCount": 1,
+        "notificationStatus": "Final",
+        "notificationDate": "2016-12-14",
+        "orderNumber": "S.O. 4031 (E)",
+        "notificationPdfLink": "https://moef.gov.in/uploads/2017/06/Ghatigaon%20Hukna%20Wildlife%20Sanctuary%2C%20Madhya%20Pradesh(1).pdf",
+        "notificationArchiveLink": "https://archive.org/details/in.gazette.central.e.2016-12-14.173162"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.55833333,
+          9.575
+        ]
+      },
+      "properties": {
+        "wikidataId": "Q5609778",
+        "wikidataUrl": "https://www.wikidata.org/wiki/Q5609778",
+        "name": "Grizzled Squirrel Wildlife Sanctuary",
+        "protectedAreaType": "Tiger Reserve",
+        "state": "Tamil Nadu",
+        "iucnCategory": "IUCN category IV: Habitat/Species Management Area",
+        "area": 48500,
+        "osmRelationIds": [],
+        "enwikiUrl": "https://en.wikipedia.org/wiki/Grizzled_Squirrel_Wildlife_Sanctuary",
+        "eszStatus": "draft",
+        "notificationCount": 1,
+        "notificationStatus": "Draft",
+        "notificationDate": "2018-07-09",
+        "orderNumber": "S.O. 3363(E)",
+        "notificationPdfLink": "https://moef.gov.in/uploads/2017/06/Srivilliputhur-Grizzled-Squirrel.pdf",
+        "notificationArchiveLink": "https://archive.org/details/in.gazette.central.e.2018-07-09.187382"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          91.311666666,
+          23.664444444
+        ]
+      },
+      "properties": {
+        "wikidataId": "Q5618257",
+        "wikidataUrl": "https://www.wikidata.org/wiki/Q5618257",
+        "name": "Gumti Wildlife Sanctuary",
+        "protectedAreaType": "Wildlife Sanctuary",
+        "state": "Tripura",
+        "iucnCategory": "IUCN category IV: Habitat/Species Management Area",
+        "area": null,
+        "osmRelationIds": [],
+        "enwikiUrl": "https://en.wikipedia.org/wiki/Gumti_Wildlife_Sanctuary",
+        "eszStatus": "final",
+        "notificationCount": 3,
+        "notificationStatus": "Final",
+        "notificationDate": "2019-11-11",
+        "orderNumber": "S.O. 4076(E)",
+        "notificationPdfLink": "https://moef.gov.in/uploads/2019/11/gumuti.pdf",
+        "notificationArchiveLink": "https://archive.org/details/in.gazette.central.e.2019-11-11.213855"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          72.3,
+          24.2
+        ]
+      },
+      "properties": {
+        "wikidataId": "Q6187899",
+        "wikidataUrl": "https://www.wikidata.org/wiki/Q6187899",
+        "name": "Jessore Sloth Bear Sanctuary",
+        "protectedAreaType": "Wildlife Sanctuary",
+        "state": "Gujarat",
+        "iucnCategory": "IUCN category IV: Habitat/Species Management Area",
+        "area": null,
+        "osmRelationIds": [],
+        "enwikiUrl": "https://en.wikipedia.org/wiki/Jessore_Sloth_Bear_Sanctuary",
+        "eszStatus": "final",
+        "notificationCount": 2,
+        "notificationStatus": "Final",
+        "notificationDate": "2017-10-16",
+        "orderNumber": "S.O. 3342(E)",
+        "notificationPdfLink": "https://moef.gov.in/uploads/2017/06/jessore%2C%20gujarat.pdf",
+        "notificationArchiveLink": "https://archive.org/details/in.gazette.central.e.2017-10-16.179661"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          88.1573,
+          26.99118
+        ]
+      },
+      "properties": {
+        "wikidataId": "Q6277572",
+        "wikidataUrl": "https://www.wikidata.org/wiki/Q6277572",
+        "name": "Jore Pokhri Wildlife Sanctuary",
+        "protectedAreaType": "Wildlife Sanctuary",
+        "state": "West Bengal",
+        "iucnCategory": "IUCN category IV: Habitat/Species Management Area",
+        "area": null,
+        "osmRelationIds": [],
+        "enwikiUrl": "https://en.wikipedia.org/wiki/Jore_Pokhri_Wildlife_Sanctuary",
+        "eszStatus": "none",
+        "notificationCount": 0,
+        "notificationStatus": null,
+        "notificationDate": null,
+        "orderNumber": null,
+        "notificationPdfLink": null,
+        "notificationArchiveLink": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          81.2518,
+          28.1344
+        ]
+      },
+      "properties": {
+        "wikidataId": "Q6375178",
+        "wikidataUrl": "https://www.wikidata.org/wiki/Q6375178",
+        "name": "Katarniaghat Wildlife Sanctuary",
+        "protectedAreaType": "Wildlife Sanctuary",
+        "state": "Uttar Pradesh",
+        "iucnCategory": "IUCN category IV: Habitat/Species Management Area",
+        "area": 400.09,
+        "osmRelationIds": [],
+        "enwikiUrl": "https://en.wikipedia.org/wiki/Katarniaghat_Wildlife_Sanctuary",
+        "eszStatus": "none",
+        "notificationCount": 0,
+        "notificationStatus": null,
+        "notificationDate": null,
+        "orderNumber": null,
+        "notificationPdfLink": null,
+        "notificationArchiveLink": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          79.6,
+          30.75
+        ]
+      },
+      "properties": {
+        "wikidataId": "Q6382549",
+        "wikidataUrl": "https://www.wikidata.org/wiki/Q6382549",
+        "name": "Kedarnath Wildlife Sanctuary",
+        "protectedAreaType": "Wildlife Sanctuary",
+        "state": "Uttarakhand",
+        "iucnCategory": "IUCN category IV: Habitat/Species Management Area",
+        "area": 975,
+        "osmRelationIds": [],
+        "enwikiUrl": "https://en.wikipedia.org/wiki/Kedarnath_Wildlife_Sanctuary",
+        "eszStatus": "draft",
+        "notificationCount": 1,
+        "notificationStatus": "Draft",
+        "notificationDate": "2017-12-14",
+        "orderNumber": "S.O. 3880(E)",
+        "notificationPdfLink": "https://moef.gov.in/uploads/2017/06/kedarnath_0.pdf",
+        "notificationArchiveLink": "https://archive.org/details/in.gazette.central.e.2017-12-14.180904"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          78.645,
+          13.025
+        ]
+      },
+      "properties": {
+        "wikidataId": "Q6434637",
+        "wikidataUrl": "https://www.wikidata.org/wiki/Q6434637",
+        "name": "Koundinya Wildlife Sanctuary",
+        "protectedAreaType": "Wildlife Sanctuary",
+        "state": "Andhra Pradesh",
+        "iucnCategory": "IUCN category IV: Habitat/Species Management Area",
+        "area": null,
+        "osmRelationIds": [],
+        "enwikiUrl": "https://en.wikipedia.org/wiki/Koundinya_Wildlife_Sanctuary",
+        "eszStatus": "draft",
+        "notificationCount": 1,
+        "notificationStatus": "Draft",
+        "notificationDate": "2022-05-04",
+        "orderNumber": "S.O. 2077(E)",
+        "notificationPdfLink": "https://moef.gov.in/uploads/2021/08/Published-Draft-Notification-S-O-2077.pdf",
+        "notificationArchiveLink": "https://archive.org/details/in.gazette.central.e.2022-05-04.235561"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          81.655277777,
+          23.968611111
+        ]
+      },
+      "properties": {
+        "wikidataId": "Q3092341",
+        "wikidataUrl": "https://www.wikidata.org/wiki/Q3092341",
+        "name": "Sanjay National Park",
+        "protectedAreaType": "Tiger Reserve",
+        "state": "Madhya Pradesh",
+        "iucnCategory": "IUCN category II: National Park",
+        "area": null,
+        "osmRelationIds": [],
+        "enwikiUrl": "https://en.wikipedia.org/wiki/Sanjay_National_Park",
+        "eszStatus": "final",
+        "notificationCount": 3,
+        "notificationStatus": "Final",
+        "notificationDate": "2017-08-29",
+        "orderNumber": "S.O. 2811",
+        "notificationPdfLink": "https://moef.gov.in/uploads/2017/06/Sanjay%20Dubri%20Tiger%20Reserve%20MP%20Final.pdf",
+        "notificationArchiveLink": "https://archive.org/details/in.gazette.central.e.2017-08-29.178399"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          92.71055556,
+          26.50666667
+        ]
+      },
+      "properties": {
+        "wikidataId": "Q3217688",
+        "wikidataUrl": "https://www.wikidata.org/wiki/Q3217688",
+        "name": "Laokhowa Wildlife Sanctuary",
+        "protectedAreaType": "Wildlife Sanctuary",
+        "state": "Assam",
+        "iucnCategory": "IUCN category IV: Habitat/Species Management Area",
+        "area": null,
+        "osmRelationIds": [],
+        "enwikiUrl": "https://en.wikipedia.org/wiki/Laokhowa_Wildlife_Sanctuary",
+        "eszStatus": "draft",
+        "notificationCount": 1,
+        "notificationStatus": "Draft",
+        "notificationDate": "2015-11-27",
+        "orderNumber": "SO 3236(E)",
+        "notificationPdfLink": "https://moef.gov.in/uploads/2018/12/SO-3334E09.12.2015-Draft-notification-declaring-Eco-sensitive-Zone-around-the-Laokhowa-Burhachapori-Wildlife-Sanctuary-in-the-State-of-Assam.pdf",
+        "notificationArchiveLink": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          72.63333333,
+          24.55
+        ]
+      },
+      "properties": {
+        "wikidataId": "Q3326008",
+        "wikidataUrl": "https://www.wikidata.org/wiki/Q3326008",
+        "name": "Mount Abu Wildlife Sanctuary",
+        "protectedAreaType": "Wildlife Sanctuary",
+        "state": "Rajasthan",
+        "iucnCategory": "IUCN category IV: Habitat/Species Management Area",
+        "area": null,
+        "osmRelationIds": [],
+        "enwikiUrl": "https://en.wikipedia.org/wiki/Mount_Abu_Wildlife_Sanctuary",
+        "eszStatus": "final",
+        "notificationCount": 3,
+        "notificationStatus": "Final",
+        "notificationDate": "2020-11-11",
+        "orderNumber": "S.O.4047(E)",
+        "notificationPdfLink": "https://moef.gov.in/uploads/2020/11/mount-abu.pdf",
+        "notificationArchiveLink": "https://archive.org/details/in.gazette.central.e.2020-11-11.223048"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          89.3775,
+          26.628611
+        ]
+      },
+      "properties": {
+        "wikidataId": "Q3350362",
+        "wikidataUrl": "https://www.wikidata.org/wiki/Q3350362",
+        "name": "Jaldapara National Park",
+        "protectedAreaType": "National Park",
+        "state": "West Bengal",
+        "iucnCategory": "IUCN category II: National Park",
+        "area": null,
+        "osmRelationIds": [],
+        "enwikiUrl": "https://en.wikipedia.org/wiki/Jaldapara_National_Park",
+        "eszStatus": "final",
+        "notificationCount": 3,
+        "notificationStatus": "Final",
+        "notificationDate": "2026-01-28",
+        "orderNumber": "S.O. No. 401 (E)",
+        "notificationPdfLink": "https://moef.gov.in/uploads/2026/02/401_Jaldapara%20Final.pdf",
+        "notificationArchiveLink": "https://archive.org/details/in.gazette.central.e.2026-01-28.269649"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          76.71,
+          10.57
+        ]
+      },
+      "properties": {
+        "wikidataId": "Q6772512",
+        "wikidataUrl": "https://www.wikidata.org/wiki/Q6772512",
+        "name": "Thattekad Bird Sanctuary",
+        "protectedAreaType": "Bird Sanctuary",
+        "state": "Kerala",
+        "iucnCategory": "IUCN category IV: Habitat/Species Management Area",
+        "area": null,
+        "osmRelationIds": [],
+        "enwikiUrl": "https://en.wikipedia.org/wiki/Thattekad_Bird_Sanctuary",
+        "eszStatus": "draft",
+        "notificationCount": 2,
+        "notificationStatus": "Draft",
+        "notificationDate": "2020-09-25",
+        "orderNumber": "S.O.3454(E)",
+        "notificationPdfLink": "https://moef.gov.in/uploads/2020/10/thattekad.pdf",
+        "notificationArchiveLink": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.16,
+          8.4
+        ]
+      },
+      "properties": {
+        "wikidataId": "Q6807544",
+        "wikidataUrl": "https://www.wikidata.org/wiki/Q6807544",
+        "name": "Neyyar Wildlife Sanctuary",
+        "protectedAreaType": "Wildlife Sanctuary",
+        "state": "Kerala",
+        "iucnCategory": "IUCN category IV: Habitat/Species Management Area",
+        "area": 128000,
+        "osmRelationIds": [],
+        "enwikiUrl": "https://en.wikipedia.org/wiki/Neyyar_Wildlife_Sanctuary",
+        "eszStatus": "draft",
+        "notificationCount": 2,
+        "notificationStatus": "Draft",
+        "notificationDate": "2022-03-25",
+        "orderNumber": "S.O. 1361(E)",
+        "notificationPdfLink": "https://moef.gov.in/uploads/2022/03/Draft-Notification-Neyyar.pdf",
+        "notificationArchiveLink": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          74.1708,
+          15.5717
+        ]
+      },
+      "properties": {
+        "wikidataId": "Q6826847",
+        "wikidataUrl": "https://www.wikidata.org/wiki/Q6826847",
+        "name": "Mhadei Wildlife Sanctuary",
+        "protectedAreaType": "Wildlife Sanctuary",
+        "state": "Goa",
+        "iucnCategory": "IUCN category IV: Habitat/Species Management Area",
+        "area": 208.48,
+        "osmRelationIds": [],
+        "enwikiUrl": "https://en.wikipedia.org/wiki/Mhadei_Wildlife_Sanctuary",
+        "eszStatus": "final",
+        "notificationCount": 3,
+        "notificationStatus": "Final",
+        "notificationDate": "2015-02-25",
+        "orderNumber": "S.O. 616",
+        "notificationPdfLink": "https://moef.gov.in/uploads/2017/06/S.O.%20616%20%5B25.02.2015%5D%20Final%20ESZ%20Notification%20on%20Madei%20WLS%2C%20Goa.pdf",
+        "notificationArchiveLink": "https://archive.org/details/in.gazette.central.e.2015-02-25.163128"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          76.8572,
+          32.0139
+        ]
+      },
+      "properties": {
+        "wikidataId": "Q6965894",
+        "wikidataUrl": "https://www.wikidata.org/wiki/Q6965894",
+        "name": "Nargu Wildlife Sanctuary",
+        "protectedAreaType": "Wildlife Sanctuary",
+        "state": "Himachal Pradesh",
+        "iucnCategory": "IUCN category IV: Habitat/Species Management Area",
+        "area": null,
+        "osmRelationIds": [],
+        "enwikiUrl": "https://en.wikipedia.org/wiki/Nargu_Wildlife_Sanctuary",
+        "eszStatus": "final",
+        "notificationCount": 3,
+        "notificationStatus": "Final",
+        "notificationDate": "2022-03-25",
+        "orderNumber": "S.O. 1331(E)",
+        "notificationPdfLink": "https://moef.gov.in/uploads/2022/03/Final-Notification-Nargu.pdf",
+        "notificationArchiveLink": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          79.20188611,
+          23.17814167
+        ]
+      },
+      "properties": {
+        "wikidataId": "Q7050184",
+        "wikidataUrl": "https://www.wikidata.org/wiki/Q7050184",
+        "name": "Noradehi Wildlife Sanctuary",
+        "protectedAreaType": "Wildlife Sanctuary",
+        "state": "Madhya Pradesh",
+        "iucnCategory": "IUCN category IV: Habitat/Species Management Area",
+        "area": 1197,
+        "osmRelationIds": [],
+        "enwikiUrl": "https://en.wikipedia.org/wiki/Nauradehi_Wildlife_Sanctuary",
+        "eszStatus": "final",
+        "notificationCount": 2,
+        "notificationStatus": "Final",
+        "notificationDate": "2017-09-27",
+        "orderNumber": "S.O. 3133 (E)",
+        "notificationPdfLink": "https://moef.gov.in/uploads/2017/06/Nauradehi%20Wildlife%20Sanctuary%2C%20Madhya%20Pradesh_0.pdf",
+        "notificationArchiveLink": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          92.85833333,
+          27.08333333
+        ]
+      },
+      "properties": {
+        "wikidataId": "Q7125480",
+        "wikidataUrl": "https://www.wikidata.org/wiki/Q7125480",
+        "name": "Pakhui Tiger Reserve",
+        "protectedAreaType": "Tiger Reserve",
+        "state": "Arunachal Pradesh",
+        "iucnCategory": "IUCN category IV: Habitat/Species Management Area",
+        "area": 861.95,
+        "osmRelationIds": [],
+        "enwikiUrl": "https://en.wikipedia.org/wiki/Pakke_Tiger_Reserve",
+        "eszStatus": "none",
+        "notificationCount": 0,
+        "notificationStatus": null,
+        "notificationDate": null,
+        "orderNumber": null,
+        "notificationPdfLink": null,
+        "notificationArchiveLink": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.071968,
+          28.718811
+        ]
+      },
+      "properties": {
+        "wikidataId": "Q7193996",
+        "wikidataUrl": "https://www.wikidata.org/wiki/Q7193996",
+        "name": "Pilibhit Tiger Reserve",
+        "protectedAreaType": "Tiger Reserve",
+        "state": "Uttar Pradesh",
+        "iucnCategory": "IUCN category IV: Habitat/Species Management Area",
+        "area": 730.24,
+        "osmRelationIds": [
+          "9474608"
+        ],
+        "enwikiUrl": "https://en.wikipedia.org/wiki/Pilibhit_Tiger_Reserve",
+        "eszStatus": "none",
+        "notificationCount": 0,
+        "notificationStatus": null,
+        "notificationDate": null,
+        "orderNumber": null,
+        "notificationPdfLink": null,
+        "notificationArchiveLink": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          79.697,
+          18.705
+        ]
+      },
+      "properties": {
+        "wikidataId": "Q7499351",
+        "wikidataUrl": "https://www.wikidata.org/wiki/Q7499351",
+        "name": "Shivaram Wildlife Sanctuary",
+        "protectedAreaType": "Wildlife Sanctuary",
+        "state": "Telangana",
+        "iucnCategory": "IUCN category IV: Habitat/Species Management Area",
+        "area": null,
+        "osmRelationIds": [],
+        "enwikiUrl": "https://en.wikipedia.org/wiki/Shivaram_Wildlife_Sanctuary",
+        "eszStatus": "draft",
+        "notificationCount": 1,
+        "notificationStatus": "Draft",
+        "notificationDate": "2018-05-25",
+        "orderNumber": "S.O. 2145(E)",
+        "notificationPdfLink": "https://moef.gov.in/uploads/2017/06/siwaram.pdf",
+        "notificationArchiveLink": "https://archive.org/details/in.gazette.central.e.2018-05-25.185943"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          91.311666666,
+          23.664444444
+        ]
+      },
+      "properties": {
+        "wikidataId": "Q7525566",
+        "wikidataUrl": "https://www.wikidata.org/wiki/Q7525566",
+        "name": "Sepahijala Wildlife Sanctuary",
+        "protectedAreaType": "Wildlife Sanctuary",
+        "state": "Tripura",
+        "iucnCategory": "IUCN category IV: Habitat/Species Management Area",
+        "area": 18.533,
+        "osmRelationIds": [],
+        "enwikiUrl": "https://en.wikipedia.org/wiki/Sepahijala_Wildlife_Sanctuary",
+        "eszStatus": "final",
+        "notificationCount": 2,
+        "notificationStatus": "Final",
+        "notificationDate": "2021-02-19",
+        "orderNumber": "S.O.789(E)",
+        "notificationPdfLink": "https://moef.gov.in/uploads/2021/02/sephajila.pdf",
+        "notificationArchiveLink": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          83.56,
+          27.31
+        ]
+      },
+      "properties": {
+        "wikidataId": "Q7554593",
+        "wikidataUrl": "https://www.wikidata.org/wiki/Q7554593",
+        "name": "Sohagi Barwa Wildlife Sanctuary",
+        "protectedAreaType": "Wildlife Sanctuary",
+        "state": "Uttar Pradesh",
+        "iucnCategory": "IUCN category IV: Habitat/Species Management Area",
+        "area": null,
+        "osmRelationIds": [],
+        "enwikiUrl": "https://en.wikipedia.org/wiki/Sohagi_Barwa_Wildlife_Sanctuary",
+        "eszStatus": "final",
+        "notificationCount": 2,
+        "notificationStatus": "Final",
+        "notificationDate": "2017-11-29",
+        "orderNumber": "S.O. 3776(E)",
+        "notificationPdfLink": "https://moef.gov.in/uploads/2017/06/sohagi.pdf",
+        "notificationArchiveLink": "https://archive.org/details/in.gazette.central.e.2017-11-29.180642"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          74.4349,
+          27.7981
+        ]
+      },
+      "properties": {
+        "wikidataId": "Q7678698",
+        "wikidataUrl": "https://www.wikidata.org/wiki/Q7678698",
+        "name": "Tal Chhapar Sanctuary",
+        "protectedAreaType": "Wildlife Sanctuary",
+        "state": "Rajasthan",
+        "iucnCategory": "IUCN category IV: Habitat/Species Management Area",
+        "area": null,
+        "osmRelationIds": [],
+        "enwikiUrl": "https://en.wikipedia.org/wiki/Tal_Chhapar_Sanctuary",
+        "eszStatus": "final",
+        "notificationCount": 2,
+        "notificationStatus": "Final",
+        "notificationDate": "2024-09-27",
+        "orderNumber": "S.O. No. 4242(E)",
+        "notificationPdfLink": "https://moef.gov.in/uploads/pdf/Tal_chappar_final_notification.pdf",
+        "notificationArchiveLink": "https://archive.org/details/in.gazette.central.e.2024-09-27.257583"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          72.392701,
+          23.140152
+        ]
+      },
+      "properties": {
+        "wikidataId": "Q7786671",
+        "wikidataUrl": "https://www.wikidata.org/wiki/Q7786671",
+        "name": "Thol Lake",
+        "protectedAreaType": "Bird Sanctuary",
+        "state": "Gujarat",
+        "iucnCategory": null,
+        "area": null,
+        "osmRelationIds": [],
+        "enwikiUrl": "https://en.wikipedia.org/wiki/Thol_Lake",
+        "eszStatus": "final",
+        "notificationCount": 2,
+        "notificationStatus": "Final",
+        "notificationDate": null,
+        "orderNumber": "S.O. 421",
+        "notificationPdfLink": "https://moef.gov.in/uploads/2017/06/S.O.%20421%20%5B0902.2015%5D%20Final%20ESZ%20Notification%20on%20Thol%20Bird%20Sanctuary%2C%20Gujarat.pdf",
+        "notificationArchiveLink": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          79.3225,
+          10.6989
+        ]
+      },
+      "properties": {
+        "wikidataId": "Q7908370",
+        "wikidataUrl": "https://www.wikidata.org/wiki/Q7908370",
+        "name": "Vaduvoor Bird Sanctuary",
+        "protectedAreaType": "Bird Sanctuary",
+        "state": "Tamil Nadu",
+        "iucnCategory": "IUCN category IV: Habitat/Species Management Area",
+        "area": 128.1,
+        "osmRelationIds": [],
+        "enwikiUrl": "https://en.wikipedia.org/wiki/Vaduvoor_Bird_Sanctuary",
+        "eszStatus": "final",
+        "notificationCount": 2,
+        "notificationStatus": "Final",
+        "notificationDate": "2019-09-16",
+        "orderNumber": "S.O. 3306(E)",
+        "notificationPdfLink": "https://moef.gov.in/uploads/2018/12/vaduvoor-1.pdf",
+        "notificationArchiveLink": "https://archive.org/details/in.gazette.central.e.2019-09-16.212532"
       }
     },
     {
@@ -2306,13 +2502,13 @@
         "area": 162.89,
         "osmRelationIds": [],
         "enwikiUrl": "https://en.wikipedia.org/wiki/Marine_National_Park,_Gulf_of_Kutch",
-        "eszStatus": "none",
-        "notificationCount": 0,
-        "notificationStatus": null,
-        "notificationDate": null,
-        "orderNumber": null,
-        "notificationPdfLink": null,
-        "notificationArchiveLink": null
+        "eszStatus": "final",
+        "notificationCount": 4,
+        "notificationStatus": "Final",
+        "notificationDate": "2013-08-22",
+        "orderNumber": "S.O. 2561",
+        "notificationPdfLink": "https://moef.gov.in/uploads/2017/06/S.O.%202561%20%5B22.08.2013%5D%20Final%20ESZ%20Notification%20on%20Marine%20National%20and%20Marine%20Sanctuary%2C%20Gujarat.pdf",
+        "notificationArchiveLink": "https://archive.org/details/in.gazette.central.e.2013-08-22.004"
       }
     },
     {
@@ -2490,160 +2686,20 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          81.655277777,
-          23.968611111
+          92.03138889,
+          26.24111111
         ]
       },
       "properties": {
-        "wikidataId": "Q3092341",
-        "wikidataUrl": "https://www.wikidata.org/wiki/Q3092341",
-        "name": "Sanjay National Park",
-        "protectedAreaType": "Tiger Reserve",
-        "state": "Madhya Pradesh",
-        "iucnCategory": "IUCN category II: National Park",
-        "area": null,
-        "osmRelationIds": [],
-        "enwikiUrl": "https://en.wikipedia.org/wiki/Sanjay_National_Park",
-        "eszStatus": "final",
-        "notificationCount": 3,
-        "notificationStatus": "Final",
-        "notificationDate": "2017-08-29",
-        "orderNumber": "S.O. 2811",
-        "notificationPdfLink": "https://moef.gov.in/uploads/2017/06/Sanjay%20Dubri%20Tiger%20Reserve%20MP%20Final.pdf",
-        "notificationArchiveLink": "https://archive.org/details/in.gazette.central.e.2017-08-29.178399"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          92.71055556,
-          26.50666667
-        ]
-      },
-      "properties": {
-        "wikidataId": "Q3217688",
-        "wikidataUrl": "https://www.wikidata.org/wiki/Q3217688",
-        "name": "Laokhowa Wildlife Sanctuary",
+        "wikidataId": "Q7206203",
+        "wikidataUrl": "https://www.wikidata.org/wiki/Q7206203",
+        "name": "Pobitora Wildlife Sanctuary",
         "protectedAreaType": "Wildlife Sanctuary",
         "state": "Assam",
         "iucnCategory": "IUCN category IV: Habitat/Species Management Area",
         "area": null,
         "osmRelationIds": [],
-        "enwikiUrl": "https://en.wikipedia.org/wiki/Laokhowa_Wildlife_Sanctuary",
-        "eszStatus": "draft",
-        "notificationCount": 1,
-        "notificationStatus": "Draft",
-        "notificationDate": "2015-11-27",
-        "orderNumber": "SO 3236(E)",
-        "notificationPdfLink": "https://moef.gov.in/uploads/2018/12/SO-3334E09.12.2015-Draft-notification-declaring-Eco-sensitive-Zone-around-the-Laokhowa-Burhachapori-Wildlife-Sanctuary-in-the-State-of-Assam.pdf",
-        "notificationArchiveLink": null
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          72.63333333,
-          24.55
-        ]
-      },
-      "properties": {
-        "wikidataId": "Q3326008",
-        "wikidataUrl": "https://www.wikidata.org/wiki/Q3326008",
-        "name": "Mount Abu Wildlife Sanctuary",
-        "protectedAreaType": "Wildlife Sanctuary",
-        "state": "Rajasthan",
-        "iucnCategory": "IUCN category IV: Habitat/Species Management Area",
-        "area": null,
-        "osmRelationIds": [],
-        "enwikiUrl": "https://en.wikipedia.org/wiki/Mount_Abu_Wildlife_Sanctuary",
-        "eszStatus": "final",
-        "notificationCount": 3,
-        "notificationStatus": "Final",
-        "notificationDate": "2020-11-11",
-        "orderNumber": "S.O.4047(E)",
-        "notificationPdfLink": "https://moef.gov.in/uploads/2020/11/mount-abu.pdf",
-        "notificationArchiveLink": "https://archive.org/details/in.gazette.central.e.2020-11-11.223048"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          89.3775,
-          26.628611
-        ]
-      },
-      "properties": {
-        "wikidataId": "Q3350362",
-        "wikidataUrl": "https://www.wikidata.org/wiki/Q3350362",
-        "name": "Jaldapara National Park",
-        "protectedAreaType": "National Park",
-        "state": "West Bengal",
-        "iucnCategory": "IUCN category II: National Park",
-        "area": null,
-        "osmRelationIds": [],
-        "enwikiUrl": "https://en.wikipedia.org/wiki/Jaldapara_National_Park",
-        "eszStatus": "final",
-        "notificationCount": 3,
-        "notificationStatus": "Final",
-        "notificationDate": "2026-01-28",
-        "orderNumber": "S.O. No. 401 (E)",
-        "notificationPdfLink": "https://moef.gov.in/uploads/2026/02/401_Jaldapara%20Final.pdf",
-        "notificationArchiveLink": "https://archive.org/details/in.gazette.central.e.2026-01-28.269649"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          84.3239,
-          19.3031
-        ]
-      },
-      "properties": {
-        "wikidataId": "Q15725165",
-        "wikidataUrl": "https://www.wikidata.org/wiki/Q15725165",
-        "name": "Lakhari Valley Wildlife Sanctuary",
-        "protectedAreaType": "Wildlife Sanctuary",
-        "state": "Odisha",
-        "iucnCategory": "IUCN category IV: Habitat/Species Management Area",
-        "area": null,
-        "osmRelationIds": [],
-        "enwikiUrl": "https://en.wikipedia.org/wiki/Lakhari_Valley_Wildlife_Sanctuary",
-        "eszStatus": "final",
-        "notificationCount": 2,
-        "notificationStatus": "Final",
-        "notificationDate": "2020-09-07",
-        "orderNumber": "S.O.3029 (E)",
-        "notificationPdfLink": "https://moef.gov.in/uploads/2020/09/lakhery.pdf",
-        "notificationArchiveLink": "https://archive.org/details/in.gazette.central.e.2020-09-07.221608"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          75.414166666,
-          11.918333333
-        ]
-      },
-      "properties": {
-        "wikidataId": "Q16137059",
-        "wikidataUrl": "https://www.wikidata.org/wiki/Q16137059",
-        "name": "Munderikadavu Bird Sanctuary",
-        "protectedAreaType": "Bird Sanctuary",
-        "state": "Kerala",
-        "iucnCategory": null,
-        "area": null,
-        "osmRelationIds": [],
-        "enwikiUrl": null,
+        "enwikiUrl": "https://en.wikipedia.org/wiki/Pobitora_Wildlife_Sanctuary",
         "eszStatus": "none",
         "notificationCount": 0,
         "notificationStatus": null,
@@ -2658,55 +2714,27 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          93.5,
-          28.25
+          88.121,
+          25.637
         ]
       },
       "properties": {
-        "wikidataId": "Q16895017",
-        "wikidataUrl": "https://www.wikidata.org/wiki/Q16895017",
-        "name": "Mehao Wildlife Sanctuary",
+        "wikidataId": "Q7283821",
+        "wikidataUrl": "https://www.wikidata.org/wiki/Q7283821",
+        "name": "Raiganj Wildlife Sanctuary",
         "protectedAreaType": "Wildlife Sanctuary",
-        "state": "Arunachal Pradesh",
-        "iucnCategory": null,
+        "state": "West Bengal",
+        "iucnCategory": "IUCN category IV: Habitat/Species Management Area",
         "area": null,
         "osmRelationIds": [],
-        "enwikiUrl": "https://en.wikipedia.org/wiki/Mehao_Wildlife_Sanctuary",
-        "eszStatus": "draft",
-        "notificationCount": 2,
-        "notificationStatus": "Draft",
-        "notificationDate": "2018-02-22",
-        "orderNumber": "S.O. 772(E)",
-        "notificationPdfLink": "https://moef.gov.in/uploads/2019/08/mehao.pdf",
-        "notificationArchiveLink": "https://archive.org/details/in.gazette.central.e.2018-02-22.183346"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          79.51111111,
-          20.83555556
-        ]
-      },
-      "properties": {
-        "wikidataId": "Q16902313",
-        "wikidataUrl": "https://www.wikidata.org/wiki/Q16902313",
-        "name": "Umred Karhandla Wildlife Sanctuary",
-        "protectedAreaType": "Wildlife Sanctuary",
-        "state": "Maharashtra",
-        "iucnCategory": "IUCN category IV: Habitat/Species Management Area",
-        "area": 189.3,
-        "osmRelationIds": [],
-        "enwikiUrl": "https://en.wikipedia.org/wiki/Umred_Pauni_Karhandla_Wildlife_Sanctuary",
+        "enwikiUrl": "https://en.wikipedia.org/wiki/Raiganj_Wildlife_Sanctuary",
         "eszStatus": "final",
         "notificationCount": 2,
         "notificationStatus": "Final",
-        "notificationDate": "2017-03-16",
-        "orderNumber": "S.O. 837 (E)",
-        "notificationPdfLink": "https://moef.gov.in/uploads/2019/08/Umred-Karhandla-Wildlife-Sanctuary-Maharashtra.pdf",
-        "notificationArchiveLink": "https://archive.org/details/in.gazette.central.e.2017-03-16.174803"
+        "notificationDate": "2018-11-26",
+        "orderNumber": "S.O. 5836(E)",
+        "notificationPdfLink": "https://moef.gov.in/uploads/2017/06/raiganj.pdf",
+        "notificationArchiveLink": "https://archive.org/details/in.gazette.central.e.2018-11-26.193287"
       }
     },
     {
@@ -2714,55 +2742,27 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          88.1183,
-          27.1942
+          91.4,
+          23.28
         ]
       },
       "properties": {
-        "wikidataId": "Q16902550",
-        "wikidataUrl": "https://www.wikidata.org/wiki/Q16902550",
-        "name": "Varsey Rhododendron Sanctuary",
-        "protectedAreaType": "Wildlife Sanctuary",
-        "state": "Sikkim",
-        "iucnCategory": "IUCN category IV: Habitat/Species Management Area",
-        "area": 104,
+        "wikidataId": "Q7285897",
+        "wikidataUrl": "https://www.wikidata.org/wiki/Q7285897",
+        "name": "Rajbari National Park",
+        "protectedAreaType": "National Park",
+        "state": "Tripura",
+        "iucnCategory": "IUCN category II: National Park",
+        "area": null,
         "osmRelationIds": [],
-        "enwikiUrl": "https://en.wikipedia.org/wiki/Varsey_Rhododendron_Sanctuary",
+        "enwikiUrl": "https://en.wikipedia.org/wiki/Rajbari_National_Park",
         "eszStatus": "final",
         "notificationCount": 2,
         "notificationStatus": "Final",
-        "notificationDate": "2014-08-27",
-        "orderNumber": "S.O. 2172",
-        "notificationPdfLink": "https://moef.gov.in/uploads/2017/06/S.O.%202172%20%5B27.08.2014%5D%20Final%20ESZ%20Notification%20on%20Barsey%20Rhododendron%20Sanctuary%2C%20Sikkim.pdf",
-        "notificationArchiveLink": "https://archive.org/details/in.gazette.central.e.2014-08-27.160782"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          93.897555,
-          27.547681
-        ]
-      },
-      "properties": {
-        "wikidataId": "Q17033744",
-        "wikidataUrl": "https://www.wikidata.org/wiki/Q17033744",
-        "name": "Talley Valley Wildlife Sanctuary",
-        "protectedAreaType": "Wildlife Sanctuary",
-        "state": "Arunachal Pradesh",
-        "iucnCategory": "IUCN category IV: Habitat/Species Management Area",
-        "area": 337,
-        "osmRelationIds": [],
-        "enwikiUrl": "https://en.wikipedia.org/wiki/Talle_Valley_Wildlife_Sanctuary",
-        "eszStatus": "draft",
-        "notificationCount": 1,
-        "notificationStatus": "Draft",
-        "notificationDate": "2015-09-17",
-        "orderNumber": "S.O. 2538",
-        "notificationPdfLink": "https://moef.gov.in/uploads/2017/06/S.O.%202538%20%5B17.09.2015%5D%20Draft%20ESZ%20Notification%20on%20Tale%20Wildlife%20Sanctuary%2C%20Arunachal%20Pradesh_0.pdf",
-        "notificationArchiveLink": "https://archive.org/details/in.gazette.central.e.2015-09-17.166238"
+        "notificationDate": "2019-11-11",
+        "orderNumber": "S.O. 4077(E)",
+        "notificationPdfLink": "https://moef.gov.in/uploads/2019/11/trishna.pdf",
+        "notificationArchiveLink": "https://archive.org/details/in.gazette.central.e.2019-11-11.213858"
       }
     },
     {
@@ -3039,7 +3039,7 @@
         "osmRelationIds": [],
         "enwikiUrl": "https://en.wikipedia.org/wiki/South_Button_Island_National_Park",
         "eszStatus": "final",
-        "notificationCount": 2,
+        "notificationCount": 6,
         "notificationStatus": "Final",
         "notificationDate": "2016-09-30",
         "orderNumber": "S.O. 3099(E)",
@@ -3898,64 +3898,6 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          78.9314,
-          16.0358
-        ]
-      },
-      "properties": {
-        "wikidataId": "Q3895706",
-        "wikidataUrl": "https://www.wikidata.org/wiki/Q3895706",
-        "name": "Nagarjunsagar-Srisailam Tiger Reserve",
-        "protectedAreaType": "Tiger Reserve",
-        "state": "Andhra Pradesh",
-        "iucnCategory": "IUCN category IV: Habitat/Species Management Area",
-        "area": 5937,
-        "osmRelationIds": [],
-        "enwikiUrl": "https://en.wikipedia.org/wiki/Nagarjunsagar-Srisailam_Tiger_Reserve",
-        "eszStatus": "final",
-        "notificationCount": 2,
-        "notificationStatus": "Final",
-        "notificationDate": "2021-10-18",
-        "orderNumber": "S.O.4373(E)",
-        "notificationPdfLink": "https://moef.gov.in/uploads/2020/08/Nagarjunasagar.pdf",
-        "notificationArchiveLink": null
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          77.31666667,
-          8.68333333
-        ]
-      },
-      "properties": {
-        "wikidataId": "Q3936889",
-        "wikidataUrl": "https://www.wikidata.org/wiki/Q3936889",
-        "name": "Kalakkad Mundanthurai Tiger Reserve",
-        "protectedAreaType": "Tiger Reserve",
-        "state": "Tamil Nadu",
-        "iucnCategory": "IUCN category IV: Habitat/Species Management Area",
-        "area": 89500,
-        "osmRelationIds": [
-          "17746132"
-        ],
-        "enwikiUrl": "https://en.wikipedia.org/wiki/Kalakkad_Mundanthurai_Tiger_Reserve",
-        "eszStatus": "none",
-        "notificationCount": 0,
-        "notificationStatus": null,
-        "notificationDate": null,
-        "orderNumber": null,
-        "notificationPdfLink": null,
-        "notificationArchiveLink": null
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
           88.06666667,
           27.11666667
         ]
@@ -4505,7 +4447,7 @@
         "osmRelationIds": [],
         "enwikiUrl": "https://en.wikipedia.org/wiki/North_Button_Island_National_Park",
         "eszStatus": "final",
-        "notificationCount": 2,
+        "notificationCount": 4,
         "notificationStatus": "Final",
         "notificationDate": "2016-09-30",
         "orderNumber": "S.O. 3099(E)",
@@ -4877,6 +4819,64 @@
         "orderNumber": "S.O. 3577(E)",
         "notificationPdfLink": "https://moef.gov.in/uploads/2019/08/ranganittu.pdf",
         "notificationArchiveLink": "https://archive.org/details/in.gazette.central.e.2017-11-10.180211"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          78.9314,
+          16.0358
+        ]
+      },
+      "properties": {
+        "wikidataId": "Q3895706",
+        "wikidataUrl": "https://www.wikidata.org/wiki/Q3895706",
+        "name": "Nagarjunsagar-Srisailam Tiger Reserve",
+        "protectedAreaType": "Tiger Reserve",
+        "state": "Andhra Pradesh",
+        "iucnCategory": "IUCN category IV: Habitat/Species Management Area",
+        "area": 5937,
+        "osmRelationIds": [],
+        "enwikiUrl": "https://en.wikipedia.org/wiki/Nagarjunsagar-Srisailam_Tiger_Reserve",
+        "eszStatus": "final",
+        "notificationCount": 2,
+        "notificationStatus": "Final",
+        "notificationDate": "2021-10-18",
+        "orderNumber": "S.O.4373(E)",
+        "notificationPdfLink": "https://moef.gov.in/uploads/2020/08/Nagarjunasagar.pdf",
+        "notificationArchiveLink": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.31666667,
+          8.68333333
+        ]
+      },
+      "properties": {
+        "wikidataId": "Q3936889",
+        "wikidataUrl": "https://www.wikidata.org/wiki/Q3936889",
+        "name": "Kalakkad Mundanthurai Tiger Reserve",
+        "protectedAreaType": "Tiger Reserve",
+        "state": "Tamil Nadu",
+        "iucnCategory": "IUCN category IV: Habitat/Species Management Area",
+        "area": 89500,
+        "osmRelationIds": [
+          "17746132"
+        ],
+        "enwikiUrl": "https://en.wikipedia.org/wiki/Kalakkad_Mundanthurai_Tiger_Reserve",
+        "eszStatus": "none",
+        "notificationCount": 0,
+        "notificationStatus": null,
+        "notificationDate": null,
+        "orderNumber": null,
+        "notificationPdfLink": null,
+        "notificationArchiveLink": null
       }
     },
     {
@@ -7868,12 +7868,12 @@
         "area": null,
         "osmRelationIds": [],
         "enwikiUrl": "https://en.wikipedia.org/wiki/Thol_Wildlife_Sanctuary",
-        "eszStatus": "final",
-        "notificationCount": 2,
-        "notificationStatus": "Final",
+        "eszStatus": "none",
+        "notificationCount": 0,
+        "notificationStatus": null,
         "notificationDate": null,
-        "orderNumber": "S.O. 421",
-        "notificationPdfLink": "https://moef.gov.in/uploads/2017/06/S.O.%20421%20%5B0902.2015%5D%20Final%20ESZ%20Notification%20on%20Thol%20Bird%20Sanctuary%2C%20Gujarat.pdf",
+        "orderNumber": null,
+        "notificationPdfLink": null,
         "notificationArchiveLink": null
       }
     },
@@ -8442,6 +8442,174 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
+          76.8512,
+          30.7757
+        ]
+      },
+      "properties": {
+        "wikidataId": "Q23995986",
+        "wikidataUrl": "https://www.wikidata.org/wiki/Q23995986",
+        "name": "Sukhna Lake Wildlife Sanctuary",
+        "protectedAreaType": "Wildlife Sanctuary",
+        "state": "Chandigarh",
+        "iucnCategory": "IUCN category IV: Habitat/Species Management Area",
+        "area": 25.98,
+        "osmRelationIds": [],
+        "enwikiUrl": "https://en.wikipedia.org/wiki/Sukhna_Wildlife_Sanctuary",
+        "eszStatus": "final",
+        "notificationCount": 2,
+        "notificationStatus": "Final",
+        "notificationDate": "2017-01-19",
+        "orderNumber": "S.O. 185 (E)",
+        "notificationPdfLink": "https://moef.gov.in/uploads/2017/06/Sukhna%20Wildlife%20Sanctuary%2C%20Chandigarh.pdf",
+        "notificationArchiveLink": "https://archive.org/details/in.gazette.central.e.2017-01-19.173792"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.510227,
+          31.99343
+        ]
+      },
+      "properties": {
+        "wikidataId": "Q31708713",
+        "wikidataUrl": "https://www.wikidata.org/wiki/Q31708713",
+        "name": "Khirganga National Park",
+        "protectedAreaType": "National Park",
+        "state": "Himachal Pradesh",
+        "iucnCategory": "IUCN category II: National Park",
+        "area": null,
+        "osmRelationIds": [],
+        "enwikiUrl": "https://en.wikipedia.org/wiki/Khirganga_National_Park",
+        "eszStatus": "draft",
+        "notificationCount": 1,
+        "notificationStatus": "Draft",
+        "notificationDate": "2016-08-05",
+        "orderNumber": "S.O. 2628(E)",
+        "notificationPdfLink": "https://moef.gov.in/uploads/2017/06/Great%20Himalayan%20National%20Park%2C%20HP.pdf",
+        "notificationArchiveLink": "https://archive.org/details/in.gazette.central.e.2016-08-05.171211"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          83.7531,
+          19.8768
+        ]
+      },
+      "properties": {
+        "wikidataId": "Q51137829",
+        "wikidataUrl": "https://www.wikidata.org/wiki/Q51137829",
+        "name": "Kotgarh Wildlife Sanctuary",
+        "protectedAreaType": "Wildlife Sanctuary",
+        "state": "Odisha",
+        "iucnCategory": "IUCN category IV: Habitat/Species Management Area",
+        "area": null,
+        "osmRelationIds": [],
+        "enwikiUrl": "https://en.wikipedia.org/wiki/Kotgarh_Wildlife_Sanctuary",
+        "eszStatus": "draft",
+        "notificationCount": 1,
+        "notificationStatus": "Draft",
+        "notificationDate": "2017-10-27",
+        "orderNumber": "S.O. 3433(E)",
+        "notificationPdfLink": "https://moef.gov.in/uploads/2017/06/kotagarh.pdf",
+        "notificationArchiveLink": "https://archive.org/details/in.gazette.central.e.2017-10-27.179896"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          76.516666666,
+          15.233333333
+        ]
+      },
+      "properties": {
+        "wikidataId": "Q65091528",
+        "wikidataUrl": "https://www.wikidata.org/wiki/Q65091528",
+        "name": "Gudekote Wildlife Sanctuary",
+        "protectedAreaType": "Wildlife Sanctuary",
+        "state": "Karnataka",
+        "iucnCategory": "IUCN category IV: Habitat/Species Management Area",
+        "area": null,
+        "osmRelationIds": [],
+        "enwikiUrl": "https://en.wikipedia.org/wiki/Gudekote_Wildlife_Sanctuary",
+        "eszStatus": "final",
+        "notificationCount": 2,
+        "notificationStatus": "Final",
+        "notificationDate": "2017-10-27",
+        "orderNumber": "S.O. 4747 (E)",
+        "notificationPdfLink": "https://moef.gov.in/uploads/2023/11/SO4747(E)-gudekote-final.pdf",
+        "notificationArchiveLink": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          95.445833333,
+          27.937777777
+        ]
+      },
+      "properties": {
+        "wikidataId": "Q85755050",
+        "wikidataUrl": "https://www.wikidata.org/wiki/Q85755050",
+        "name": "D'Ering Memorial Wildlife Sanctuary",
+        "protectedAreaType": "Wildlife Sanctuary",
+        "state": "Arunachal Pradesh",
+        "iucnCategory": "IUCN category IV: Habitat/Species Management Area",
+        "area": null,
+        "osmRelationIds": [],
+        "enwikiUrl": "https://en.wikipedia.org/wiki/D%27Ering_Memorial_Wildlife_Sanctuary",
+        "eszStatus": "draft",
+        "notificationCount": 1,
+        "notificationStatus": "Draft",
+        "notificationDate": "2015-11-17",
+        "orderNumber": "S.O. 3101(E)",
+        "notificationPdfLink": "https://moef.gov.in/uploads/2017/06/DayingEring%20Wildlife%20Sanctuary%2C%20Arunachal%20Pradesh.pdf",
+        "notificationArchiveLink": "https://archive.org/details/in.gazette.central.e.2015-11-17.166766"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.5059,
+          20.4289
+        ]
+      },
+      "properties": {
+        "wikidataId": "Q85773598",
+        "wikidataUrl": "https://www.wikidata.org/wiki/Q85773598",
+        "name": "Karanja Sohol Wildlife Sanctuary",
+        "protectedAreaType": "Wildlife Sanctuary",
+        "state": "Maharashtra",
+        "iucnCategory": "IUCN category IV: Habitat/Species Management Area",
+        "area": 18.32,
+        "osmRelationIds": [],
+        "enwikiUrl": "https://en.wikipedia.org/wiki/Karanja_Sohol_Wildlife_Sanctuary",
+        "eszStatus": "final",
+        "notificationCount": 2,
+        "notificationStatus": "Final",
+        "notificationDate": "2021-06-18",
+        "orderNumber": "S.O. 2407(E)",
+        "notificationPdfLink": "https://moef.gov.in/uploads/2021/06/karanja-shool.pdf",
+        "notificationArchiveLink": "https://archive.org/details/in.gazette.central.e.2021-06-18.227727"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
           85.580555555,
           25.766111111
         ]
@@ -8950,195 +9118,27 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          83.56,
-          27.31
+          77.722,
+          22.918
         ]
       },
       "properties": {
-        "wikidataId": "Q7554593",
-        "wikidataUrl": "https://www.wikidata.org/wiki/Q7554593",
-        "name": "Sohagi Barwa Wildlife Sanctuary",
-        "protectedAreaType": "Wildlife Sanctuary",
-        "state": "Uttar Pradesh",
+        "wikidataId": "Q7295480",
+        "wikidataUrl": "https://www.wikidata.org/wiki/Q7295480",
+        "name": "Ratapani Tiger Reserve",
+        "protectedAreaType": "Tiger Reserve",
+        "state": "Madhya Pradesh",
         "iucnCategory": "IUCN category IV: Habitat/Species Management Area",
         "area": null,
         "osmRelationIds": [],
-        "enwikiUrl": "https://en.wikipedia.org/wiki/Sohagi_Barwa_Wildlife_Sanctuary",
+        "enwikiUrl": "https://en.wikipedia.org/wiki/Ratapani_Tiger_Reserve",
         "eszStatus": "final",
         "notificationCount": 2,
         "notificationStatus": "Final",
-        "notificationDate": "2017-11-29",
-        "orderNumber": "S.O. 3776(E)",
-        "notificationPdfLink": "https://moef.gov.in/uploads/2017/06/sohagi.pdf",
-        "notificationArchiveLink": "https://archive.org/details/in.gazette.central.e.2017-11-29.180642"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          74.4349,
-          27.7981
-        ]
-      },
-      "properties": {
-        "wikidataId": "Q7678698",
-        "wikidataUrl": "https://www.wikidata.org/wiki/Q7678698",
-        "name": "Tal Chhapar Sanctuary",
-        "protectedAreaType": "Wildlife Sanctuary",
-        "state": "Rajasthan",
-        "iucnCategory": "IUCN category IV: Habitat/Species Management Area",
-        "area": null,
-        "osmRelationIds": [],
-        "enwikiUrl": "https://en.wikipedia.org/wiki/Tal_Chhapar_Sanctuary",
-        "eszStatus": "final",
-        "notificationCount": 2,
-        "notificationStatus": "Final",
-        "notificationDate": "2024-09-27",
-        "orderNumber": "S.O. No. 4242(E)",
-        "notificationPdfLink": "https://moef.gov.in/uploads/pdf/Tal_chappar_final_notification.pdf",
-        "notificationArchiveLink": "https://archive.org/details/in.gazette.central.e.2024-09-27.257583"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          72.392701,
-          23.140152
-        ]
-      },
-      "properties": {
-        "wikidataId": "Q7786671",
-        "wikidataUrl": "https://www.wikidata.org/wiki/Q7786671",
-        "name": "Thol Lake",
-        "protectedAreaType": "Bird Sanctuary",
-        "state": "Gujarat",
-        "iucnCategory": null,
-        "area": null,
-        "osmRelationIds": [],
-        "enwikiUrl": "https://en.wikipedia.org/wiki/Thol_Lake",
-        "eszStatus": "none",
-        "notificationCount": 0,
-        "notificationStatus": null,
-        "notificationDate": null,
-        "orderNumber": null,
-        "notificationPdfLink": null,
-        "notificationArchiveLink": null
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          79.3225,
-          10.6989
-        ]
-      },
-      "properties": {
-        "wikidataId": "Q7908370",
-        "wikidataUrl": "https://www.wikidata.org/wiki/Q7908370",
-        "name": "Vaduvoor Bird Sanctuary",
-        "protectedAreaType": "Bird Sanctuary",
-        "state": "Tamil Nadu",
-        "iucnCategory": "IUCN category IV: Habitat/Species Management Area",
-        "area": 128.1,
-        "osmRelationIds": [],
-        "enwikiUrl": "https://en.wikipedia.org/wiki/Vaduvoor_Bird_Sanctuary",
-        "eszStatus": "final",
-        "notificationCount": 2,
-        "notificationStatus": "Final",
-        "notificationDate": "2019-09-16",
-        "orderNumber": "S.O. 3306(E)",
-        "notificationPdfLink": "https://moef.gov.in/uploads/2018/12/vaduvoor-1.pdf",
-        "notificationArchiveLink": "https://archive.org/details/in.gazette.central.e.2019-09-16.212532"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          93.05,
-          22.66666667
-        ]
-      },
-      "properties": {
-        "wikidataId": "Q15266124",
-        "wikidataUrl": "https://www.wikidata.org/wiki/Q15266124",
-        "name": "Phawngpui National Park",
-        "protectedAreaType": "National Park",
-        "state": "Mizoram",
-        "iucnCategory": "IUCN category II: National Park",
-        "area": null,
-        "osmRelationIds": [],
-        "enwikiUrl": "https://en.wikipedia.org/wiki/Phawngpui_National_Park",
-        "eszStatus": "none",
-        "notificationCount": 0,
-        "notificationStatus": null,
-        "notificationDate": null,
-        "orderNumber": null,
-        "notificationPdfLink": null,
-        "notificationArchiveLink": null
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          79.697,
-          18.705
-        ]
-      },
-      "properties": {
-        "wikidataId": "Q7499351",
-        "wikidataUrl": "https://www.wikidata.org/wiki/Q7499351",
-        "name": "Shivaram Wildlife Sanctuary",
-        "protectedAreaType": "Wildlife Sanctuary",
-        "state": "Telangana",
-        "iucnCategory": "IUCN category IV: Habitat/Species Management Area",
-        "area": null,
-        "osmRelationIds": [],
-        "enwikiUrl": "https://en.wikipedia.org/wiki/Shivaram_Wildlife_Sanctuary",
-        "eszStatus": "draft",
-        "notificationCount": 1,
-        "notificationStatus": "Draft",
-        "notificationDate": "2018-05-25",
-        "orderNumber": "S.O. 2145(E)",
-        "notificationPdfLink": "https://moef.gov.in/uploads/2017/06/siwaram.pdf",
-        "notificationArchiveLink": "https://archive.org/details/in.gazette.central.e.2018-05-25.185943"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          91.311666666,
-          23.664444444
-        ]
-      },
-      "properties": {
-        "wikidataId": "Q7525566",
-        "wikidataUrl": "https://www.wikidata.org/wiki/Q7525566",
-        "name": "Sepahijala Wildlife Sanctuary",
-        "protectedAreaType": "Wildlife Sanctuary",
-        "state": "Tripura",
-        "iucnCategory": "IUCN category IV: Habitat/Species Management Area",
-        "area": 18.533,
-        "osmRelationIds": [],
-        "enwikiUrl": "https://en.wikipedia.org/wiki/Sepahijala_Wildlife_Sanctuary",
-        "eszStatus": "final",
-        "notificationCount": 2,
-        "notificationStatus": "Final",
-        "notificationDate": "2021-02-19",
-        "orderNumber": "S.O.789(E)",
-        "notificationPdfLink": "https://moef.gov.in/uploads/2021/02/sephajila.pdf",
-        "notificationArchiveLink": null
+        "notificationDate": "2017-08-11",
+        "orderNumber": "S.O. 2605 (E)",
+        "notificationPdfLink": "https://moef.gov.in/uploads/2017/06/Ratapani%20and%20Singhori%20WLS%20Final%2C%20Madhya%20Pradesh.pdf",
+        "notificationArchiveLink": "https://archive.org/details/in.gazette.central.e.2017-08-11.178076"
       }
     },
     {
@@ -12058,706 +12058,6 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          76.46,
-          30.19
-        ]
-      },
-      "properties": {
-        "wikidataId": "Q136707825",
-        "wikidataUrl": "https://www.wikidata.org/wiki/Q136707825",
-        "name": "Bir Bunerheri Wildlife Sanctuary",
-        "protectedAreaType": "Wildlife Sanctuary",
-        "state": "Punjab",
-        "iucnCategory": "IUCN category IV: Habitat/Species Management Area",
-        "area": 661.66,
-        "osmRelationIds": [],
-        "enwikiUrl": "https://en.wikipedia.org/wiki/Bir_Bunerheri_Wildlife_Sanctuary",
-        "eszStatus": "final",
-        "notificationCount": 2,
-        "notificationStatus": "Final",
-        "notificationDate": "2016-07-01",
-        "orderNumber": "S.O. 2277(E)",
-        "notificationPdfLink": "https://moef.gov.in/uploads/2017/06/Bir%20Bhunerheri%20Wildlife%20Sanctuary%2C%20Punjab.pdf",
-        "notificationArchiveLink": "https://archive.org/details/in.gazette.central.e.2016-07-01.170551"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          74.9138,
-          22.7428
-        ]
-      },
-      "properties": {
-        "wikidataId": "Q136994418",
-        "wikidataUrl": "https://www.wikidata.org/wiki/Q136994418",
-        "name": "Sardarpur Wildlife Sanctuary",
-        "protectedAreaType": "Wildlife Sanctuary",
-        "state": "Madhya Pradesh",
-        "iucnCategory": "IUCN category IV: Habitat/Species Management Area",
-        "area": null,
-        "osmRelationIds": [],
-        "enwikiUrl": "https://en.wikipedia.org/wiki/Sardarpur_Wildlife_Sanctuary",
-        "eszStatus": "final",
-        "notificationCount": 2,
-        "notificationStatus": "Final",
-        "notificationDate": "2020-08-28",
-        "orderNumber": "S.O. 2935(E)",
-        "notificationPdfLink": null,
-        "notificationArchiveLink": "https://archive.org/details/in.gazette.central.e.2020-08-28.221436"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          78.1767,
-          23.1786
-        ]
-      },
-      "properties": {
-        "wikidataId": "Q136994694",
-        "wikidataUrl": "https://www.wikidata.org/wiki/Q136994694",
-        "name": "Singhori Wildlife Sanctuary",
-        "protectedAreaType": "Wildlife Sanctuary",
-        "state": "Madhya Pradesh",
-        "iucnCategory": "IUCN category IV: Habitat/Species Management Area",
-        "area": null,
-        "osmRelationIds": [],
-        "enwikiUrl": "https://en.wikipedia.org/wiki/Singhori_Wildlife_Sanctuary",
-        "eszStatus": "final",
-        "notificationCount": 2,
-        "notificationStatus": "Final",
-        "notificationDate": "2017-08-11",
-        "orderNumber": "S.O. 2605 (E)",
-        "notificationPdfLink": "https://moef.gov.in/uploads/2017/06/Ratapani%20and%20Singhori%20WLS%20Final%2C%20Madhya%20Pradesh.pdf",
-        "notificationArchiveLink": "https://archive.org/details/in.gazette.central.e.2017-08-11.178076"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          73.7652,
-          19.4514
-        ]
-      },
-      "properties": {
-        "wikidataId": "Q137008662",
-        "wikidataUrl": "https://www.wikidata.org/wiki/Q137008662",
-        "name": "Kalsubai Harishchandragad Wildlife Sanctuary",
-        "protectedAreaType": "Wildlife Sanctuary",
-        "state": "Maharashtra",
-        "iucnCategory": "IUCN category IV: Habitat/Species Management Area",
-        "area": null,
-        "osmRelationIds": [],
-        "enwikiUrl": "https://en.wikipedia.org/wiki/Kalsubai_Harishchandragad_Wildlife_Sanctuary",
-        "eszStatus": "final",
-        "notificationCount": 2,
-        "notificationStatus": "Final",
-        "notificationDate": "2017-04-28",
-        "orderNumber": "S.O. 1367 (E)",
-        "notificationPdfLink": "https://moef.gov.in/uploads/2017/06/Kalsubai%20Harishchandragad%20Wildlife%20Sanctuary%2C%20Maharashtra.pdf",
-        "notificationArchiveLink": "https://archive.org/details/in.gazette.central.e.2017-04-28.175710"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          76.6949,
-          33.0266
-        ]
-      },
-      "properties": {
-        "wikidataId": "Q137008771",
-        "wikidataUrl": "https://www.wikidata.org/wiki/Q137008771",
-        "name": "Sechu Tuan Nala Wildlife Sanctuary",
-        "protectedAreaType": "Wildlife Sanctuary",
-        "state": "Himachal Pradesh",
-        "iucnCategory": "IUCN category IV: Habitat/Species Management Area",
-        "area": null,
-        "osmRelationIds": [],
-        "enwikiUrl": "https://en.wikipedia.org/wiki/Sechu_Tuan_Nala_Wildlife_Sanctuary",
-        "eszStatus": "final",
-        "notificationCount": 2,
-        "notificationStatus": "Final",
-        "notificationDate": "2017-09-29",
-        "orderNumber": "S.O. 3193 (E)",
-        "notificationPdfLink": "https://moef.gov.in/uploads/2017/06/Sechu%20Tuan%20Nala%20Wildlife%20Sanctuary%20HP.pdf",
-        "notificationArchiveLink": "https://archive.org/details/in.gazette.central.e.2017-09-29.179350"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          78.4083,
-          31.3469
-        ]
-      },
-      "properties": {
-        "wikidataId": "Q137027173",
-        "wikidataUrl": "https://www.wikidata.org/wiki/Q137027173",
-        "name": "Rakchham Chitkul Wildlife Sanctuary",
-        "protectedAreaType": "Wildlife Sanctuary",
-        "state": "Himachal Pradesh",
-        "iucnCategory": "IUCN category IV: Habitat/Species Management Area",
-        "area": null,
-        "osmRelationIds": [],
-        "enwikiUrl": "https://en.wikipedia.org/wiki/Rakchham_Chitkul_Wildlife_Sanctuary",
-        "eszStatus": "final",
-        "notificationCount": 2,
-        "notificationStatus": "Final",
-        "notificationDate": "2017-07-28",
-        "orderNumber": "S.O. 2404 (E)",
-        "notificationPdfLink": "https://moef.gov.in/uploads/2017/06/Rakchham-Chitkul%20Wildlife%20Sanctuary%2C%20Himachal%20Pradesh.pdf",
-        "notificationArchiveLink": "https://archive.org/details/in.gazette.central.e.2017-07-28.177759"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          92.5441,
-          23.3052
-        ]
-      },
-      "properties": {
-        "wikidataId": "Q137049264",
-        "wikidataUrl": "https://www.wikidata.org/wiki/Q137049264",
-        "name": "Thorangtlang Wildlife Sanctuary",
-        "protectedAreaType": "Wildlife Sanctuary",
-        "state": "Mizoram",
-        "iucnCategory": "IUCN category IV: Habitat/Species Management Area",
-        "area": null,
-        "osmRelationIds": [],
-        "enwikiUrl": "https://en.wikipedia.org/wiki/Thorangtlang_Wildlife_Sanctuary",
-        "eszStatus": "final",
-        "notificationCount": 2,
-        "notificationStatus": "Final",
-        "notificationDate": "2019-06-25",
-        "orderNumber": "S.O. 2165(E)",
-        "notificationPdfLink": "https://moef.gov.in/uploads/2019/07/thorangtlang.pdf",
-        "notificationArchiveLink": null
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          92.9485,
-          23.5376
-        ]
-      },
-      "properties": {
-        "wikidataId": "Q137049306",
-        "wikidataUrl": "https://www.wikidata.org/wiki/Q137049306",
-        "name": "Tawi Wildlife Sanctuary",
-        "protectedAreaType": "Wildlife Sanctuary",
-        "state": "Mizoram",
-        "iucnCategory": "IUCN category IV: Habitat/Species Management Area",
-        "area": null,
-        "osmRelationIds": [],
-        "enwikiUrl": "https://en.wikipedia.org/wiki/Tawi_Wildlife_Sanctuary",
-        "eszStatus": "final",
-        "notificationCount": 2,
-        "notificationStatus": "Final",
-        "notificationDate": "2019-06-12",
-        "orderNumber": "S.O. 1967(E)",
-        "notificationPdfLink": "https://moef.gov.in/uploads/2019/06/tawi.pdf",
-        "notificationArchiveLink": null
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          92.9067,
-          22.0374
-        ]
-      },
-      "properties": {
-        "wikidataId": "Q137144512",
-        "wikidataUrl": "https://www.wikidata.org/wiki/Q137144512",
-        "name": "Tokalo Wildlife Sanctuary",
-        "protectedAreaType": "Wildlife Sanctuary",
-        "state": "Mizoram",
-        "iucnCategory": "IUCN category IV: Habitat/Species Management Area",
-        "area": null,
-        "osmRelationIds": [],
-        "enwikiUrl": "https://en.wikipedia.org/wiki/Tokalo_Wildlife_Sanctuary",
-        "eszStatus": "draft",
-        "notificationCount": 1,
-        "notificationStatus": "Draft",
-        "notificationDate": "2021-01-28",
-        "orderNumber": "S.O. 439(E)",
-        "notificationPdfLink": "https://moef.gov.in/uploads/2021/02/tokalo.pdf",
-        "notificationArchiveLink": "https://archive.org/details/in.gazette.central.e.2021-01-28.224836"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          93.4155,
-          25.2032
-        ]
-      },
-      "properties": {
-        "wikidataId": "Q137223329",
-        "wikidataUrl": "https://www.wikidata.org/wiki/Q137223329",
-        "name": "Jiri-Makru Wildlife Sanctuary",
-        "protectedAreaType": "Wildlife Sanctuary",
-        "state": "Manipur",
-        "iucnCategory": "IUCN category IV: Habitat/Species Management Area",
-        "area": null,
-        "osmRelationIds": [],
-        "enwikiUrl": "https://en.wikipedia.org/wiki/Jiri-Makru_Wildlife_Sanctuary",
-        "eszStatus": "final",
-        "notificationCount": 2,
-        "notificationStatus": "Final",
-        "notificationDate": "2017-07-06",
-        "orderNumber": "S.O. 2146 (E)",
-        "notificationPdfLink": "https://moef.gov.in/uploads/2017/06/Jiri%20-%20Makru%20Wildlife%20Sanctuary%2C%20Manipur.pdf",
-        "notificationArchiveLink": "https://archive.org/details/in.gazette.central.e.2017-07-06.177266"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          92.4494,
-          25.1187
-        ]
-      },
-      "properties": {
-        "wikidataId": "Q137223381",
-        "wikidataUrl": "https://www.wikidata.org/wiki/Q137223381",
-        "name": "Narpuh Wildlife Sanctuary",
-        "protectedAreaType": "Wildlife Sanctuary",
-        "state": "Meghalaya",
-        "iucnCategory": "IUCN category IV: Habitat/Species Management Area",
-        "area": null,
-        "osmRelationIds": [],
-        "enwikiUrl": "https://en.wikipedia.org/wiki/Narpuh_Wildlife_Sanctuary",
-        "eszStatus": "final",
-        "notificationCount": 2,
-        "notificationStatus": "Final",
-        "notificationDate": "2017-09-06",
-        "orderNumber": "S.O. 2942",
-        "notificationPdfLink": "https://moef.gov.in/uploads/2017/06/Narpuh%20Wildlife%20Sanctuary%20Meghalaya%20Final.pdf",
-        "notificationArchiveLink": "https://archive.org/details/in.gazette.central.e.2017-09-06.178646"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          92.9468,
-          23.1234
-        ]
-      },
-      "properties": {
-        "wikidataId": "Q137223750",
-        "wikidataUrl": "https://www.wikidata.org/wiki/Q137223750",
-        "name": "Khawnglung Wildlife Sanctuary",
-        "protectedAreaType": "Wildlife Sanctuary",
-        "state": "Mizoram",
-        "iucnCategory": "IUCN category IV: Habitat/Species Management Area",
-        "area": null,
-        "osmRelationIds": [],
-        "enwikiUrl": "https://en.wikipedia.org/wiki/Khawnglung_Wildlife_Sanctuary",
-        "eszStatus": "final",
-        "notificationCount": 2,
-        "notificationStatus": "Final",
-        "notificationDate": "2019-12-06",
-        "orderNumber": "S.O. 4372(E)",
-        "notificationPdfLink": "https://moef.gov.in/uploads/2019/10/khawanglung.pdf",
-        "notificationArchiveLink": "https://archive.org/details/in.gazette.central.e.2019-12-06.214535"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          92.7748,
-          22.4309
-        ]
-      },
-      "properties": {
-        "wikidataId": "Q137224032",
-        "wikidataUrl": "https://www.wikidata.org/wiki/Q137224032",
-        "name": "Ngengpui Wildlife Sanctuary",
-        "protectedAreaType": "Wildlife Sanctuary",
-        "state": "Mizoram",
-        "iucnCategory": "IUCN category IV: Habitat/Species Management Area",
-        "area": null,
-        "osmRelationIds": [],
-        "enwikiUrl": "https://en.wikipedia.org/wiki/Ngengpui_Wildlife_Sanctuary",
-        "eszStatus": "none",
-        "notificationCount": 0,
-        "notificationStatus": null,
-        "notificationDate": null,
-        "orderNumber": null,
-        "notificationPdfLink": null,
-        "notificationArchiveLink": null
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          74.73888,
-          16.22251
-        ]
-      },
-      "properties": {
-        "wikidataId": "Q137252985",
-        "wikidataUrl": "https://www.wikidata.org/wiki/Q137252985",
-        "name": "Ghataprabha Wildlife Sanctuary",
-        "protectedAreaType": "Wildlife Sanctuary",
-        "state": "Karnataka",
-        "iucnCategory": "IUCN category IV: Habitat/Species Management Area",
-        "area": null,
-        "osmRelationIds": [],
-        "enwikiUrl": "https://en.wikipedia.org/wiki/Ghataprabha_Wildlife_Sanctuary",
-        "eszStatus": "final",
-        "notificationCount": 2,
-        "notificationStatus": "Final",
-        "notificationDate": "2017-06-28",
-        "orderNumber": "S.O. 2029 (E)",
-        "notificationPdfLink": "https://moef.gov.in/uploads/2017/06/Ghataprabha%20Bird%20Sanctuary%2C%20Karnataka.pdf",
-        "notificationArchiveLink": "https://archive.org/details/in.gazette.central.e.2017-06-28.177091"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          75.3801,
-          34.229
-        ]
-      },
-      "properties": {
-        "wikidataId": "Q137254449",
-        "wikidataUrl": "https://www.wikidata.org/wiki/Q137254449",
-        "name": "Baltal Thajwas Wildlife Sanctuary",
-        "protectedAreaType": "Wildlife Sanctuary",
-        "state": "Jammu and Kashmir",
-        "iucnCategory": "IUCN category IV: Habitat/Species Management Area",
-        "area": null,
-        "osmRelationIds": [],
-        "enwikiUrl": "https://en.wikipedia.org/wiki/Baltal_Thajwas_Wildlife_Sanctuary",
-        "eszStatus": "draft",
-        "notificationCount": 1,
-        "notificationStatus": "Draft",
-        "notificationDate": "2021-06-07",
-        "orderNumber": "S.O. 2184(E)",
-        "notificationPdfLink": "https://moef.gov.in/uploads/2021/06/dachigaon.pdf",
-        "notificationArchiveLink": "https://archive.org/details/in.gazette.central.e.2021-06-07.227469"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          90.345169,
-          25.596067
-        ]
-      },
-      "properties": {
-        "wikidataId": "Q137368881",
-        "wikidataUrl": "https://www.wikidata.org/wiki/Q137368881",
-        "name": "Selbagre Hoolock Gibbon Reserve",
-        "protectedAreaType": null,
-        "state": "Meghalaya",
-        "iucnCategory": null,
-        "area": null,
-        "osmRelationIds": [],
-        "enwikiUrl": null,
-        "eszStatus": "none",
-        "notificationCount": 0,
-        "notificationStatus": null,
-        "notificationDate": null,
-        "orderNumber": null,
-        "notificationPdfLink": null,
-        "notificationArchiveLink": null
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          93.7194,
-          25.85623
-        ]
-      },
-      "properties": {
-        "wikidataId": "Q137591486",
-        "wikidataUrl": "https://www.wikidata.org/wiki/Q137591486",
-        "name": "Rangapahar Wildlife Sanctuary",
-        "protectedAreaType": "Wildlife Sanctuary",
-        "state": "Nagaland",
-        "iucnCategory": "IUCN category IV: Habitat/Species Management Area",
-        "area": null,
-        "osmRelationIds": [],
-        "enwikiUrl": "https://en.wikipedia.org/wiki/Rangapahar_Wildlife_Sanctuary",
-        "eszStatus": "none",
-        "notificationCount": 0,
-        "notificationStatus": null,
-        "notificationDate": null,
-        "orderNumber": null,
-        "notificationPdfLink": null,
-        "notificationArchiveLink": null
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          79.68,
-          19.68
-        ]
-      },
-      "properties": {
-        "wikidataId": "Q137596744",
-        "wikidataUrl": "https://www.wikidata.org/wiki/Q137596744",
-        "name": "Kanhargaon Wildlife Sanctuary",
-        "protectedAreaType": "Wildlife Sanctuary",
-        "state": "Maharashtra",
-        "iucnCategory": null,
-        "area": null,
-        "osmRelationIds": [],
-        "enwikiUrl": "https://en.wikipedia.org/wiki/Kanhargaon_Wildlife_Sanctuary",
-        "eszStatus": "none",
-        "notificationCount": 0,
-        "notificationStatus": null,
-        "notificationDate": null,
-        "orderNumber": null,
-        "notificationPdfLink": null,
-        "notificationArchiveLink": null
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          76.8509,
-          21.2441
-        ]
-      },
-      "properties": {
-        "wikidataId": "Q137596748",
-        "wikidataUrl": "https://www.wikidata.org/wiki/Q137596748",
-        "name": "Wan Wildlife Sanctuary",
-        "protectedAreaType": "Wildlife Sanctuary",
-        "state": "Maharashtra",
-        "iucnCategory": "IUCN category IV: Habitat/Species Management Area",
-        "area": null,
-        "osmRelationIds": [],
-        "enwikiUrl": "https://en.wikipedia.org/wiki/Wan_Wildlife_Sanctuary",
-        "eszStatus": "none",
-        "notificationCount": 0,
-        "notificationStatus": null,
-        "notificationDate": null,
-        "orderNumber": null,
-        "notificationPdfLink": null,
-        "notificationArchiveLink": null
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          76.3688,
-          20.5599
-        ]
-      },
-      "properties": {
-        "wikidataId": "Q137670177",
-        "wikidataUrl": "https://www.wikidata.org/wiki/Q137670177",
-        "name": "Dnyanganga Wildlife Sanctuary",
-        "protectedAreaType": "Wildlife Sanctuary",
-        "state": "Maharashtra",
-        "iucnCategory": "IUCN category IV: Habitat/Species Management Area",
-        "area": null,
-        "osmRelationIds": [],
-        "enwikiUrl": "https://en.wikipedia.org/wiki/Dnyanganga_Wildlife_Sanctuary",
-        "eszStatus": "final",
-        "notificationCount": 2,
-        "notificationStatus": "Final",
-        "notificationDate": "2017-05-17",
-        "orderNumber": "S.O. 1604 (E)",
-        "notificationPdfLink": "https://moef.gov.in/uploads/2017/06/Dyanganga%20Wildlife%20Sanctuary%2C%20Maharashtra.pdf",
-        "notificationArchiveLink": "https://archive.org/details/in.gazette.central.e.2017-05-17.176153"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          81.0284,
-          22.3642
-        ]
-      },
-      "properties": {
-        "wikidataId": "Q137691018",
-        "wikidataUrl": "https://www.wikidata.org/wiki/Q137691018",
-        "name": "Phen Wildlife Sanctuary",
-        "protectedAreaType": "Wildlife Sanctuary",
-        "state": "Madhya Pradesh",
-        "iucnCategory": "IUCN category IV: Habitat/Species Management Area",
-        "area": null,
-        "osmRelationIds": [],
-        "enwikiUrl": "https://en.wikipedia.org/wiki/Phen_Wildlife_Sanctuary",
-        "eszStatus": "draft",
-        "notificationCount": 1,
-        "notificationStatus": "Draft",
-        "notificationDate": "2020-07-24",
-        "orderNumber": "S.O. 2438(E)",
-        "notificationPdfLink": "https://moef.gov.in/uploads/2019/10/kanha.pdf",
-        "notificationArchiveLink": null
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          78.6417,
-          29.6442
-        ]
-      },
-      "properties": {
-        "wikidataId": "Q137699186",
-        "wikidataUrl": "https://www.wikidata.org/wiki/Q137699186",
-        "name": "Sonanadi Wildlife Sanctuary",
-        "protectedAreaType": "Wildlife Sanctuary",
-        "state": "Uttarakhand",
-        "iucnCategory": "IUCN category IV: Habitat/Species Management Area",
-        "area": null,
-        "osmRelationIds": [],
-        "enwikiUrl": "https://en.wikipedia.org/wiki/Sonanadi_Wildlife_Sanctuary",
-        "eszStatus": "none",
-        "notificationCount": 0,
-        "notificationStatus": null,
-        "notificationDate": null,
-        "orderNumber": null,
-        "notificationPdfLink": null,
-        "notificationArchiveLink": null
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          84.1708,
-          25.8429
-        ]
-      },
-      "properties": {
-        "wikidataId": "Q137699192",
-        "wikidataUrl": "https://www.wikidata.org/wiki/Q137699192",
-        "name": "Surha Tal Bird Sanctuary",
-        "protectedAreaType": "Bird Sanctuary",
-        "state": "Uttar Pradesh",
-        "iucnCategory": "IUCN category IV: Habitat/Species Management Area",
-        "area": null,
-        "osmRelationIds": [],
-        "enwikiUrl": "https://en.wikipedia.org/wiki/Surha_Tal_Bird_Sanctuary",
-        "eszStatus": "final",
-        "notificationCount": 2,
-        "notificationStatus": "Final",
-        "notificationDate": "2019-03-11",
-        "orderNumber": "S.O. 1315(E)",
-        "notificationPdfLink": "https://moef.gov.in/uploads/2018/12/jai-prakash-narayan.pdf",
-        "notificationArchiveLink": "https://archive.org/details/in.gazette.central.e.2019-03-11.200110"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          80.15,
-          19.8
-        ]
-      },
-      "properties": {
-        "wikidataId": "Q137801052",
-        "wikidataUrl": "https://www.wikidata.org/wiki/Q137801052",
-        "name": "Pranhita Wildlife Sanctuary",
-        "protectedAreaType": "Wildlife Sanctuary",
-        "state": "Maharashtra",
-        "iucnCategory": null,
-        "area": null,
-        "osmRelationIds": [],
-        "enwikiUrl": "https://en.wikipedia.org/wiki/Pranhita_Wildlife_Sanctuary",
-        "eszStatus": "final",
-        "notificationCount": 3,
-        "notificationStatus": "Final",
-        "notificationDate": "2020-09-07",
-        "orderNumber": "S.O. 3030(E)",
-        "notificationPdfLink": "https://moef.gov.in/uploads/2020/09/pranhita.pdf",
-        "notificationArchiveLink": "https://archive.org/details/in.gazette.central.e.2020-09-07.221609"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          75.829,
-          11.131
-        ]
-      },
-      "properties": {
-        "wikidataId": "Q37564",
-        "wikidataUrl": "https://www.wikidata.org/wiki/Q37564",
-        "name": "Kadalundi Bird Sanctuary",
-        "protectedAreaType": "Bird Sanctuary",
-        "state": "Kerala",
-        "iucnCategory": null,
-        "area": null,
-        "osmRelationIds": [],
-        "enwikiUrl": "https://en.wikipedia.org/wiki/Kadalundi_Bird_Sanctuary",
-        "eszStatus": "none",
-        "notificationCount": 0,
-        "notificationStatus": null,
-        "notificationDate": null,
-        "orderNumber": null,
-        "notificationPdfLink": null,
-        "notificationArchiveLink": null
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
           76.7466378,
           13.6497129
         ]
@@ -14349,6 +13649,706 @@
         "orderNumber": "S.O. 1220(E)",
         "notificationPdfLink": "https://moef.gov.in/uploads/2018/12/nahargarh.pdf",
         "notificationArchiveLink": "https://archive.org/details/in.gazette.central.e.2019-03-08.199529"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          76.46,
+          30.19
+        ]
+      },
+      "properties": {
+        "wikidataId": "Q136707825",
+        "wikidataUrl": "https://www.wikidata.org/wiki/Q136707825",
+        "name": "Bir Bunerheri Wildlife Sanctuary",
+        "protectedAreaType": "Wildlife Sanctuary",
+        "state": "Punjab",
+        "iucnCategory": "IUCN category IV: Habitat/Species Management Area",
+        "area": 661.66,
+        "osmRelationIds": [],
+        "enwikiUrl": "https://en.wikipedia.org/wiki/Bir_Bunerheri_Wildlife_Sanctuary",
+        "eszStatus": "final",
+        "notificationCount": 2,
+        "notificationStatus": "Final",
+        "notificationDate": "2016-07-01",
+        "orderNumber": "S.O. 2277(E)",
+        "notificationPdfLink": "https://moef.gov.in/uploads/2017/06/Bir%20Bhunerheri%20Wildlife%20Sanctuary%2C%20Punjab.pdf",
+        "notificationArchiveLink": "https://archive.org/details/in.gazette.central.e.2016-07-01.170551"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          74.9138,
+          22.7428
+        ]
+      },
+      "properties": {
+        "wikidataId": "Q136994418",
+        "wikidataUrl": "https://www.wikidata.org/wiki/Q136994418",
+        "name": "Sardarpur Wildlife Sanctuary",
+        "protectedAreaType": "Wildlife Sanctuary",
+        "state": "Madhya Pradesh",
+        "iucnCategory": "IUCN category IV: Habitat/Species Management Area",
+        "area": null,
+        "osmRelationIds": [],
+        "enwikiUrl": "https://en.wikipedia.org/wiki/Sardarpur_Wildlife_Sanctuary",
+        "eszStatus": "final",
+        "notificationCount": 2,
+        "notificationStatus": "Final",
+        "notificationDate": "2020-08-28",
+        "orderNumber": "S.O. 2935(E)",
+        "notificationPdfLink": null,
+        "notificationArchiveLink": "https://archive.org/details/in.gazette.central.e.2020-08-28.221436"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          78.1767,
+          23.1786
+        ]
+      },
+      "properties": {
+        "wikidataId": "Q136994694",
+        "wikidataUrl": "https://www.wikidata.org/wiki/Q136994694",
+        "name": "Singhori Wildlife Sanctuary",
+        "protectedAreaType": "Wildlife Sanctuary",
+        "state": "Madhya Pradesh",
+        "iucnCategory": "IUCN category IV: Habitat/Species Management Area",
+        "area": null,
+        "osmRelationIds": [],
+        "enwikiUrl": "https://en.wikipedia.org/wiki/Singhori_Wildlife_Sanctuary",
+        "eszStatus": "final",
+        "notificationCount": 2,
+        "notificationStatus": "Final",
+        "notificationDate": "2017-08-11",
+        "orderNumber": "S.O. 2605 (E)",
+        "notificationPdfLink": "https://moef.gov.in/uploads/2017/06/Ratapani%20and%20Singhori%20WLS%20Final%2C%20Madhya%20Pradesh.pdf",
+        "notificationArchiveLink": "https://archive.org/details/in.gazette.central.e.2017-08-11.178076"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          73.7652,
+          19.4514
+        ]
+      },
+      "properties": {
+        "wikidataId": "Q137008662",
+        "wikidataUrl": "https://www.wikidata.org/wiki/Q137008662",
+        "name": "Kalsubai Harishchandragad Wildlife Sanctuary",
+        "protectedAreaType": "Wildlife Sanctuary",
+        "state": "Maharashtra",
+        "iucnCategory": "IUCN category IV: Habitat/Species Management Area",
+        "area": null,
+        "osmRelationIds": [],
+        "enwikiUrl": "https://en.wikipedia.org/wiki/Kalsubai_Harishchandragad_Wildlife_Sanctuary",
+        "eszStatus": "final",
+        "notificationCount": 2,
+        "notificationStatus": "Final",
+        "notificationDate": "2017-04-28",
+        "orderNumber": "S.O. 1367 (E)",
+        "notificationPdfLink": "https://moef.gov.in/uploads/2017/06/Kalsubai%20Harishchandragad%20Wildlife%20Sanctuary%2C%20Maharashtra.pdf",
+        "notificationArchiveLink": "https://archive.org/details/in.gazette.central.e.2017-04-28.175710"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          76.6949,
+          33.0266
+        ]
+      },
+      "properties": {
+        "wikidataId": "Q137008771",
+        "wikidataUrl": "https://www.wikidata.org/wiki/Q137008771",
+        "name": "Sechu Tuan Nala Wildlife Sanctuary",
+        "protectedAreaType": "Wildlife Sanctuary",
+        "state": "Himachal Pradesh",
+        "iucnCategory": "IUCN category IV: Habitat/Species Management Area",
+        "area": null,
+        "osmRelationIds": [],
+        "enwikiUrl": "https://en.wikipedia.org/wiki/Sechu_Tuan_Nala_Wildlife_Sanctuary",
+        "eszStatus": "final",
+        "notificationCount": 2,
+        "notificationStatus": "Final",
+        "notificationDate": "2017-09-29",
+        "orderNumber": "S.O. 3193 (E)",
+        "notificationPdfLink": "https://moef.gov.in/uploads/2017/06/Sechu%20Tuan%20Nala%20Wildlife%20Sanctuary%20HP.pdf",
+        "notificationArchiveLink": "https://archive.org/details/in.gazette.central.e.2017-09-29.179350"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          78.4083,
+          31.3469
+        ]
+      },
+      "properties": {
+        "wikidataId": "Q137027173",
+        "wikidataUrl": "https://www.wikidata.org/wiki/Q137027173",
+        "name": "Rakchham Chitkul Wildlife Sanctuary",
+        "protectedAreaType": "Wildlife Sanctuary",
+        "state": "Himachal Pradesh",
+        "iucnCategory": "IUCN category IV: Habitat/Species Management Area",
+        "area": null,
+        "osmRelationIds": [],
+        "enwikiUrl": "https://en.wikipedia.org/wiki/Rakchham_Chitkul_Wildlife_Sanctuary",
+        "eszStatus": "final",
+        "notificationCount": 2,
+        "notificationStatus": "Final",
+        "notificationDate": "2017-07-28",
+        "orderNumber": "S.O. 2404 (E)",
+        "notificationPdfLink": "https://moef.gov.in/uploads/2017/06/Rakchham-Chitkul%20Wildlife%20Sanctuary%2C%20Himachal%20Pradesh.pdf",
+        "notificationArchiveLink": "https://archive.org/details/in.gazette.central.e.2017-07-28.177759"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          92.5441,
+          23.3052
+        ]
+      },
+      "properties": {
+        "wikidataId": "Q137049264",
+        "wikidataUrl": "https://www.wikidata.org/wiki/Q137049264",
+        "name": "Thorangtlang Wildlife Sanctuary",
+        "protectedAreaType": "Wildlife Sanctuary",
+        "state": "Mizoram",
+        "iucnCategory": "IUCN category IV: Habitat/Species Management Area",
+        "area": null,
+        "osmRelationIds": [],
+        "enwikiUrl": "https://en.wikipedia.org/wiki/Thorangtlang_Wildlife_Sanctuary",
+        "eszStatus": "final",
+        "notificationCount": 2,
+        "notificationStatus": "Final",
+        "notificationDate": "2019-06-25",
+        "orderNumber": "S.O. 2165(E)",
+        "notificationPdfLink": "https://moef.gov.in/uploads/2019/07/thorangtlang.pdf",
+        "notificationArchiveLink": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          92.9485,
+          23.5376
+        ]
+      },
+      "properties": {
+        "wikidataId": "Q137049306",
+        "wikidataUrl": "https://www.wikidata.org/wiki/Q137049306",
+        "name": "Tawi Wildlife Sanctuary",
+        "protectedAreaType": "Wildlife Sanctuary",
+        "state": "Mizoram",
+        "iucnCategory": "IUCN category IV: Habitat/Species Management Area",
+        "area": null,
+        "osmRelationIds": [],
+        "enwikiUrl": "https://en.wikipedia.org/wiki/Tawi_Wildlife_Sanctuary",
+        "eszStatus": "final",
+        "notificationCount": 2,
+        "notificationStatus": "Final",
+        "notificationDate": "2019-06-12",
+        "orderNumber": "S.O. 1967(E)",
+        "notificationPdfLink": "https://moef.gov.in/uploads/2019/06/tawi.pdf",
+        "notificationArchiveLink": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          92.9067,
+          22.0374
+        ]
+      },
+      "properties": {
+        "wikidataId": "Q137144512",
+        "wikidataUrl": "https://www.wikidata.org/wiki/Q137144512",
+        "name": "Tokalo Wildlife Sanctuary",
+        "protectedAreaType": "Wildlife Sanctuary",
+        "state": "Mizoram",
+        "iucnCategory": "IUCN category IV: Habitat/Species Management Area",
+        "area": null,
+        "osmRelationIds": [],
+        "enwikiUrl": "https://en.wikipedia.org/wiki/Tokalo_Wildlife_Sanctuary",
+        "eszStatus": "draft",
+        "notificationCount": 1,
+        "notificationStatus": "Draft",
+        "notificationDate": "2021-01-28",
+        "orderNumber": "S.O. 439(E)",
+        "notificationPdfLink": "https://moef.gov.in/uploads/2021/02/tokalo.pdf",
+        "notificationArchiveLink": "https://archive.org/details/in.gazette.central.e.2021-01-28.224836"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          93.4155,
+          25.2032
+        ]
+      },
+      "properties": {
+        "wikidataId": "Q137223329",
+        "wikidataUrl": "https://www.wikidata.org/wiki/Q137223329",
+        "name": "Jiri-Makru Wildlife Sanctuary",
+        "protectedAreaType": "Wildlife Sanctuary",
+        "state": "Manipur",
+        "iucnCategory": "IUCN category IV: Habitat/Species Management Area",
+        "area": null,
+        "osmRelationIds": [],
+        "enwikiUrl": "https://en.wikipedia.org/wiki/Jiri-Makru_Wildlife_Sanctuary",
+        "eszStatus": "final",
+        "notificationCount": 2,
+        "notificationStatus": "Final",
+        "notificationDate": "2017-07-06",
+        "orderNumber": "S.O. 2146 (E)",
+        "notificationPdfLink": "https://moef.gov.in/uploads/2017/06/Jiri%20-%20Makru%20Wildlife%20Sanctuary%2C%20Manipur.pdf",
+        "notificationArchiveLink": "https://archive.org/details/in.gazette.central.e.2017-07-06.177266"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          92.4494,
+          25.1187
+        ]
+      },
+      "properties": {
+        "wikidataId": "Q137223381",
+        "wikidataUrl": "https://www.wikidata.org/wiki/Q137223381",
+        "name": "Narpuh Wildlife Sanctuary",
+        "protectedAreaType": "Wildlife Sanctuary",
+        "state": "Meghalaya",
+        "iucnCategory": "IUCN category IV: Habitat/Species Management Area",
+        "area": null,
+        "osmRelationIds": [],
+        "enwikiUrl": "https://en.wikipedia.org/wiki/Narpuh_Wildlife_Sanctuary",
+        "eszStatus": "final",
+        "notificationCount": 2,
+        "notificationStatus": "Final",
+        "notificationDate": "2017-09-06",
+        "orderNumber": "S.O. 2942",
+        "notificationPdfLink": "https://moef.gov.in/uploads/2017/06/Narpuh%20Wildlife%20Sanctuary%20Meghalaya%20Final.pdf",
+        "notificationArchiveLink": "https://archive.org/details/in.gazette.central.e.2017-09-06.178646"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          92.9468,
+          23.1234
+        ]
+      },
+      "properties": {
+        "wikidataId": "Q137223750",
+        "wikidataUrl": "https://www.wikidata.org/wiki/Q137223750",
+        "name": "Khawnglung Wildlife Sanctuary",
+        "protectedAreaType": "Wildlife Sanctuary",
+        "state": "Mizoram",
+        "iucnCategory": "IUCN category IV: Habitat/Species Management Area",
+        "area": null,
+        "osmRelationIds": [],
+        "enwikiUrl": "https://en.wikipedia.org/wiki/Khawnglung_Wildlife_Sanctuary",
+        "eszStatus": "final",
+        "notificationCount": 2,
+        "notificationStatus": "Final",
+        "notificationDate": "2019-12-06",
+        "orderNumber": "S.O. 4372(E)",
+        "notificationPdfLink": "https://moef.gov.in/uploads/2019/10/khawanglung.pdf",
+        "notificationArchiveLink": "https://archive.org/details/in.gazette.central.e.2019-12-06.214535"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          92.7748,
+          22.4309
+        ]
+      },
+      "properties": {
+        "wikidataId": "Q137224032",
+        "wikidataUrl": "https://www.wikidata.org/wiki/Q137224032",
+        "name": "Ngengpui Wildlife Sanctuary",
+        "protectedAreaType": "Wildlife Sanctuary",
+        "state": "Mizoram",
+        "iucnCategory": "IUCN category IV: Habitat/Species Management Area",
+        "area": null,
+        "osmRelationIds": [],
+        "enwikiUrl": "https://en.wikipedia.org/wiki/Ngengpui_Wildlife_Sanctuary",
+        "eszStatus": "none",
+        "notificationCount": 0,
+        "notificationStatus": null,
+        "notificationDate": null,
+        "orderNumber": null,
+        "notificationPdfLink": null,
+        "notificationArchiveLink": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          74.73888,
+          16.22251
+        ]
+      },
+      "properties": {
+        "wikidataId": "Q137252985",
+        "wikidataUrl": "https://www.wikidata.org/wiki/Q137252985",
+        "name": "Ghataprabha Wildlife Sanctuary",
+        "protectedAreaType": "Wildlife Sanctuary",
+        "state": "Karnataka",
+        "iucnCategory": "IUCN category IV: Habitat/Species Management Area",
+        "area": null,
+        "osmRelationIds": [],
+        "enwikiUrl": "https://en.wikipedia.org/wiki/Ghataprabha_Wildlife_Sanctuary",
+        "eszStatus": "final",
+        "notificationCount": 2,
+        "notificationStatus": "Final",
+        "notificationDate": "2017-06-28",
+        "orderNumber": "S.O. 2029 (E)",
+        "notificationPdfLink": "https://moef.gov.in/uploads/2017/06/Ghataprabha%20Bird%20Sanctuary%2C%20Karnataka.pdf",
+        "notificationArchiveLink": "https://archive.org/details/in.gazette.central.e.2017-06-28.177091"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          75.3801,
+          34.229
+        ]
+      },
+      "properties": {
+        "wikidataId": "Q137254449",
+        "wikidataUrl": "https://www.wikidata.org/wiki/Q137254449",
+        "name": "Baltal Thajwas Wildlife Sanctuary",
+        "protectedAreaType": "Wildlife Sanctuary",
+        "state": "Jammu and Kashmir",
+        "iucnCategory": "IUCN category IV: Habitat/Species Management Area",
+        "area": null,
+        "osmRelationIds": [],
+        "enwikiUrl": "https://en.wikipedia.org/wiki/Baltal_Thajwas_Wildlife_Sanctuary",
+        "eszStatus": "draft",
+        "notificationCount": 1,
+        "notificationStatus": "Draft",
+        "notificationDate": "2021-06-07",
+        "orderNumber": "S.O. 2184(E)",
+        "notificationPdfLink": "https://moef.gov.in/uploads/2021/06/dachigaon.pdf",
+        "notificationArchiveLink": "https://archive.org/details/in.gazette.central.e.2021-06-07.227469"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          90.345169,
+          25.596067
+        ]
+      },
+      "properties": {
+        "wikidataId": "Q137368881",
+        "wikidataUrl": "https://www.wikidata.org/wiki/Q137368881",
+        "name": "Selbagre Hoolock Gibbon Reserve",
+        "protectedAreaType": null,
+        "state": "Meghalaya",
+        "iucnCategory": null,
+        "area": null,
+        "osmRelationIds": [],
+        "enwikiUrl": null,
+        "eszStatus": "none",
+        "notificationCount": 0,
+        "notificationStatus": null,
+        "notificationDate": null,
+        "orderNumber": null,
+        "notificationPdfLink": null,
+        "notificationArchiveLink": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          93.7194,
+          25.85623
+        ]
+      },
+      "properties": {
+        "wikidataId": "Q137591486",
+        "wikidataUrl": "https://www.wikidata.org/wiki/Q137591486",
+        "name": "Rangapahar Wildlife Sanctuary",
+        "protectedAreaType": "Wildlife Sanctuary",
+        "state": "Nagaland",
+        "iucnCategory": "IUCN category IV: Habitat/Species Management Area",
+        "area": null,
+        "osmRelationIds": [],
+        "enwikiUrl": "https://en.wikipedia.org/wiki/Rangapahar_Wildlife_Sanctuary",
+        "eszStatus": "none",
+        "notificationCount": 0,
+        "notificationStatus": null,
+        "notificationDate": null,
+        "orderNumber": null,
+        "notificationPdfLink": null,
+        "notificationArchiveLink": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          79.68,
+          19.68
+        ]
+      },
+      "properties": {
+        "wikidataId": "Q137596744",
+        "wikidataUrl": "https://www.wikidata.org/wiki/Q137596744",
+        "name": "Kanhargaon Wildlife Sanctuary",
+        "protectedAreaType": "Wildlife Sanctuary",
+        "state": "Maharashtra",
+        "iucnCategory": null,
+        "area": null,
+        "osmRelationIds": [],
+        "enwikiUrl": "https://en.wikipedia.org/wiki/Kanhargaon_Wildlife_Sanctuary",
+        "eszStatus": "none",
+        "notificationCount": 0,
+        "notificationStatus": null,
+        "notificationDate": null,
+        "orderNumber": null,
+        "notificationPdfLink": null,
+        "notificationArchiveLink": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          76.8509,
+          21.2441
+        ]
+      },
+      "properties": {
+        "wikidataId": "Q137596748",
+        "wikidataUrl": "https://www.wikidata.org/wiki/Q137596748",
+        "name": "Wan Wildlife Sanctuary",
+        "protectedAreaType": "Wildlife Sanctuary",
+        "state": "Maharashtra",
+        "iucnCategory": "IUCN category IV: Habitat/Species Management Area",
+        "area": null,
+        "osmRelationIds": [],
+        "enwikiUrl": "https://en.wikipedia.org/wiki/Wan_Wildlife_Sanctuary",
+        "eszStatus": "none",
+        "notificationCount": 0,
+        "notificationStatus": null,
+        "notificationDate": null,
+        "orderNumber": null,
+        "notificationPdfLink": null,
+        "notificationArchiveLink": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          76.3688,
+          20.5599
+        ]
+      },
+      "properties": {
+        "wikidataId": "Q137670177",
+        "wikidataUrl": "https://www.wikidata.org/wiki/Q137670177",
+        "name": "Dnyanganga Wildlife Sanctuary",
+        "protectedAreaType": "Wildlife Sanctuary",
+        "state": "Maharashtra",
+        "iucnCategory": "IUCN category IV: Habitat/Species Management Area",
+        "area": null,
+        "osmRelationIds": [],
+        "enwikiUrl": "https://en.wikipedia.org/wiki/Dnyanganga_Wildlife_Sanctuary",
+        "eszStatus": "final",
+        "notificationCount": 2,
+        "notificationStatus": "Final",
+        "notificationDate": "2017-05-17",
+        "orderNumber": "S.O. 1604 (E)",
+        "notificationPdfLink": "https://moef.gov.in/uploads/2017/06/Dyanganga%20Wildlife%20Sanctuary%2C%20Maharashtra.pdf",
+        "notificationArchiveLink": "https://archive.org/details/in.gazette.central.e.2017-05-17.176153"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          81.0284,
+          22.3642
+        ]
+      },
+      "properties": {
+        "wikidataId": "Q137691018",
+        "wikidataUrl": "https://www.wikidata.org/wiki/Q137691018",
+        "name": "Phen Wildlife Sanctuary",
+        "protectedAreaType": "Wildlife Sanctuary",
+        "state": "Madhya Pradesh",
+        "iucnCategory": "IUCN category IV: Habitat/Species Management Area",
+        "area": null,
+        "osmRelationIds": [],
+        "enwikiUrl": "https://en.wikipedia.org/wiki/Phen_Wildlife_Sanctuary",
+        "eszStatus": "draft",
+        "notificationCount": 1,
+        "notificationStatus": "Draft",
+        "notificationDate": "2020-07-24",
+        "orderNumber": "S.O. 2438(E)",
+        "notificationPdfLink": "https://moef.gov.in/uploads/2019/10/kanha.pdf",
+        "notificationArchiveLink": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          78.6417,
+          29.6442
+        ]
+      },
+      "properties": {
+        "wikidataId": "Q137699186",
+        "wikidataUrl": "https://www.wikidata.org/wiki/Q137699186",
+        "name": "Sonanadi Wildlife Sanctuary",
+        "protectedAreaType": "Wildlife Sanctuary",
+        "state": "Uttarakhand",
+        "iucnCategory": "IUCN category IV: Habitat/Species Management Area",
+        "area": null,
+        "osmRelationIds": [],
+        "enwikiUrl": "https://en.wikipedia.org/wiki/Sonanadi_Wildlife_Sanctuary",
+        "eszStatus": "none",
+        "notificationCount": 0,
+        "notificationStatus": null,
+        "notificationDate": null,
+        "orderNumber": null,
+        "notificationPdfLink": null,
+        "notificationArchiveLink": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          84.1708,
+          25.8429
+        ]
+      },
+      "properties": {
+        "wikidataId": "Q137699192",
+        "wikidataUrl": "https://www.wikidata.org/wiki/Q137699192",
+        "name": "Surha Tal Bird Sanctuary",
+        "protectedAreaType": "Bird Sanctuary",
+        "state": "Uttar Pradesh",
+        "iucnCategory": "IUCN category IV: Habitat/Species Management Area",
+        "area": null,
+        "osmRelationIds": [],
+        "enwikiUrl": "https://en.wikipedia.org/wiki/Surha_Tal_Bird_Sanctuary",
+        "eszStatus": "final",
+        "notificationCount": 2,
+        "notificationStatus": "Final",
+        "notificationDate": "2019-03-11",
+        "orderNumber": "S.O. 1315(E)",
+        "notificationPdfLink": "https://moef.gov.in/uploads/2018/12/jai-prakash-narayan.pdf",
+        "notificationArchiveLink": "https://archive.org/details/in.gazette.central.e.2019-03-11.200110"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.15,
+          19.8
+        ]
+      },
+      "properties": {
+        "wikidataId": "Q137801052",
+        "wikidataUrl": "https://www.wikidata.org/wiki/Q137801052",
+        "name": "Pranhita Wildlife Sanctuary",
+        "protectedAreaType": "Wildlife Sanctuary",
+        "state": "Maharashtra",
+        "iucnCategory": null,
+        "area": null,
+        "osmRelationIds": [],
+        "enwikiUrl": "https://en.wikipedia.org/wiki/Pranhita_Wildlife_Sanctuary",
+        "eszStatus": "final",
+        "notificationCount": 3,
+        "notificationStatus": "Final",
+        "notificationDate": "2020-09-07",
+        "orderNumber": "S.O. 3030(E)",
+        "notificationPdfLink": "https://moef.gov.in/uploads/2020/09/pranhita.pdf",
+        "notificationArchiveLink": "https://archive.org/details/in.gazette.central.e.2020-09-07.221609"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          75.829,
+          11.131
+        ]
+      },
+      "properties": {
+        "wikidataId": "Q37564",
+        "wikidataUrl": "https://www.wikidata.org/wiki/Q37564",
+        "name": "Kadalundi Bird Sanctuary",
+        "protectedAreaType": "Bird Sanctuary",
+        "state": "Kerala",
+        "iucnCategory": null,
+        "area": null,
+        "osmRelationIds": [],
+        "enwikiUrl": "https://en.wikipedia.org/wiki/Kadalundi_Bird_Sanctuary",
+        "eszStatus": "none",
+        "notificationCount": 0,
+        "notificationStatus": null,
+        "notificationDate": null,
+        "orderNumber": null,
+        "notificationPdfLink": null,
+        "notificationArchiveLink": null
       }
     },
     {
