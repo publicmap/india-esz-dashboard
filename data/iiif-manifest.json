@@ -57,7 +57,7 @@
       },
       "value": {
         "en": [
-          "4"
+          "8"
         ]
       }
     }
@@ -280,6 +280,342 @@
                 "service": [
                   {
                     "id": "https://iiif.archive.org/image/iiif/3/in.gazette.central.e.2022-05-04.235561%2F235561_jpg.zip%2F235561_jpg%2F235561_0015.jpg",
+                    "type": "ImageService3",
+                    "profile": "level2"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "https://publicmap.github.io/india-esz-dashboard/data/iiif-manifest.json/canvas/1",
+      "type": "Canvas",
+      "label": {
+        "en": [
+          "Valmiki National Park (2017-09-13)"
+        ]
+      },
+      "width": 2550,
+      "height": 3301,
+      "metadata": [
+        {
+          "label": {
+            "en": [
+              "Protected Area"
+            ]
+          },
+          "value": {
+            "en": [
+              "Valmiki National Park"
+            ]
+          }
+        },
+        {
+          "label": {
+            "en": [
+              "State"
+            ]
+          },
+          "value": {
+            "en": [
+              "Bihar"
+            ]
+          }
+        },
+        {
+          "label": {
+            "en": [
+              "Protected Area Type"
+            ]
+          },
+          "value": {
+            "en": [
+              "Tiger Reserve"
+            ]
+          }
+        },
+        {
+          "label": {
+            "en": [
+              "ESZ Notification"
+            ]
+          },
+          "value": {
+            "en": [
+              "S.O. 3026 (E) · Final · 2017-09-13"
+            ]
+          }
+        },
+        {
+          "label": {
+            "en": [
+              "Wikidata"
+            ]
+          },
+          "value": {
+            "en": [
+              "<a href=\"https://www.wikidata.org/wiki/Q2428291\">https://www.wikidata.org/wiki/Q2428291</a>"
+            ]
+          }
+        },
+        {
+          "label": {
+            "en": [
+              "Wikipedia"
+            ]
+          },
+          "value": {
+            "en": [
+              "<a href=\"https://en.wikipedia.org/wiki/Valmiki_National_Park\">https://en.wikipedia.org/wiki/Valmiki_National_Park</a>"
+            ]
+          }
+        },
+        {
+          "label": {
+            "en": [
+              "Gazette scan (archive.org)"
+            ]
+          },
+          "value": {
+            "en": [
+              "<a href=\"https://archive.org/details/in.gazette.central.e.2017-09-13.178943\">https://archive.org/details/in.gazette.central.e.2017-09-13.178943</a>"
+            ]
+          }
+        },
+        {
+          "label": {
+            "en": [
+              "Gazette PDF (egazette.nic.in)"
+            ]
+          },
+          "value": {
+            "en": [
+              "<a href=\"https://moef.gov.in/uploads/2017/06/Valmiki%20Wildlife%20Sanctuary%2C%20Valmiki%20National%20Park%20and%20Valmiki%2C%20Bihar%20Final.pdf\">https://moef.gov.in/uploads/2017/06/Valmiki%20Wildlife%20Sanctuary%2C%20Valmiki%20National%20Park%20and%20Valmiki%2C%20Bihar%20Final.pdf</a>"
+            ]
+          }
+        },
+        {
+          "label": {
+            "en": [
+              "Explore on India ESZ Dashboard"
+            ]
+          },
+          "value": {
+            "en": [
+              "<a href=\"https://publicmap.github.io/india-esz-dashboard/\">https://publicmap.github.io/india-esz-dashboard/</a>"
+            ]
+          }
+        }
+      ],
+      "thumbnail": [
+        {
+          "id": "https://iiif.archive.org/image/iiif/3/in.gazette.central.e.2017-09-13.178943%2F178943_jp2.zip%2F178943_jp2%2F178943_0031.jp2/full/200,/0/default.jpg",
+          "type": "Image",
+          "format": "image/jpeg"
+        }
+      ],
+      "rendering": [
+        {
+          "id": "https://editor.allmaps.org/georeference?url=https%3A%2F%2Fiiif.archive.org%2Fiiif%2Fin.gazette.central.e.2017-09-13.178943%2Fmanifest.json&bg-preset=osm&bg-url=https%3A%2F%2Findianopenmaps.fly.dev%2Fsoi%2Fosm%2F%7Bz%7D%2F%7Bx%7D%2F%7By%7D.webp&image=https%3A%2F%2Fiiif.archive.org%2Fimage%2Fiiif%2F3%2Fin.gazette.central.e.2017-09-13.178943%252F178943_jp2.zip%252F178943_jp2%252F178943_0031.jp2",
+          "type": "Text",
+          "label": {
+            "en": [
+              "Open in Allmaps editor"
+            ]
+          },
+          "format": "text/html"
+        }
+      ],
+      "items": [
+        {
+          "id": "https://publicmap.github.io/india-esz-dashboard/data/iiif-manifest.json/canvas/1/page",
+          "type": "AnnotationPage",
+          "items": [
+            {
+              "id": "https://publicmap.github.io/india-esz-dashboard/data/iiif-manifest.json/canvas/1/page/annotation",
+              "type": "Annotation",
+              "motivation": "painting",
+              "target": "https://publicmap.github.io/india-esz-dashboard/data/iiif-manifest.json/canvas/1",
+              "body": {
+                "id": "https://iiif.archive.org/image/iiif/3/in.gazette.central.e.2017-09-13.178943%2F178943_jp2.zip%2F178943_jp2%2F178943_0031.jp2/full/max/0/default.jpg",
+                "type": "Image",
+                "format": "image/jpeg",
+                "width": 2550,
+                "height": 3301,
+                "service": [
+                  {
+                    "id": "https://iiif.archive.org/image/iiif/3/in.gazette.central.e.2017-09-13.178943%2F178943_jp2.zip%2F178943_jp2%2F178943_0031.jp2",
+                    "type": "ImageService3",
+                    "profile": "level2"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "https://publicmap.github.io/india-esz-dashboard/data/iiif-manifest.json/canvas/2",
+      "type": "Canvas",
+      "label": {
+        "en": [
+          "Neora Valley National Park (2016-10-26)"
+        ]
+      },
+      "width": 2480,
+      "height": 3509,
+      "metadata": [
+        {
+          "label": {
+            "en": [
+              "Protected Area"
+            ]
+          },
+          "value": {
+            "en": [
+              "Neora Valley National Park"
+            ]
+          }
+        },
+        {
+          "label": {
+            "en": [
+              "State"
+            ]
+          },
+          "value": {
+            "en": [
+              "West Bengal"
+            ]
+          }
+        },
+        {
+          "label": {
+            "en": [
+              "Protected Area Type"
+            ]
+          },
+          "value": {
+            "en": [
+              "National Park"
+            ]
+          }
+        },
+        {
+          "label": {
+            "en": [
+              "ESZ Notification"
+            ]
+          },
+          "value": {
+            "en": [
+              "S. O. 3312 · Draft · 2016-10-26"
+            ]
+          }
+        },
+        {
+          "label": {
+            "en": [
+              "Wikidata"
+            ]
+          },
+          "value": {
+            "en": [
+              "<a href=\"https://www.wikidata.org/wiki/Q2985788\">https://www.wikidata.org/wiki/Q2985788</a>"
+            ]
+          }
+        },
+        {
+          "label": {
+            "en": [
+              "Wikipedia"
+            ]
+          },
+          "value": {
+            "en": [
+              "<a href=\"https://en.wikipedia.org/wiki/Neora_Valley_National_Park\">https://en.wikipedia.org/wiki/Neora_Valley_National_Park</a>"
+            ]
+          }
+        },
+        {
+          "label": {
+            "en": [
+              "Gazette scan (archive.org)"
+            ]
+          },
+          "value": {
+            "en": [
+              "<a href=\"https://archive.org/details/in.gazette.central.e.2016-10-26.172406\">https://archive.org/details/in.gazette.central.e.2016-10-26.172406</a>"
+            ]
+          }
+        },
+        {
+          "label": {
+            "en": [
+              "Gazette PDF (egazette.nic.in)"
+            ]
+          },
+          "value": {
+            "en": [
+              "<a href=\"https://moef.gov.in/uploads/2017/06/Neora%20Valley%20National%20Park%2C%20West%20Bengal.pdf\">https://moef.gov.in/uploads/2017/06/Neora%20Valley%20National%20Park%2C%20West%20Bengal.pdf</a>"
+            ]
+          }
+        },
+        {
+          "label": {
+            "en": [
+              "Explore on India ESZ Dashboard"
+            ]
+          },
+          "value": {
+            "en": [
+              "<a href=\"https://publicmap.github.io/india-esz-dashboard/\">https://publicmap.github.io/india-esz-dashboard/</a>"
+            ]
+          }
+        }
+      ],
+      "thumbnail": [
+        {
+          "id": "https://iiif.archive.org/image/iiif/3/in.gazette.central.e.2016-10-26.172406%2F172406_jp2.zip%2F172406_jp2%2F172406_0021.jp2/full/200,/0/default.jpg",
+          "type": "Image",
+          "format": "image/jpeg"
+        }
+      ],
+      "rendering": [
+        {
+          "id": "https://editor.allmaps.org/georeference?url=https%3A%2F%2Fiiif.archive.org%2Fiiif%2Fin.gazette.central.e.2016-10-26.172406%2Fmanifest.json&bg-preset=osm&bg-url=https%3A%2F%2Findianopenmaps.fly.dev%2Fsoi%2Fosm%2F%7Bz%7D%2F%7Bx%7D%2F%7By%7D.webp&image=https%3A%2F%2Fiiif.archive.org%2Fimage%2Fiiif%2F3%2Fin.gazette.central.e.2016-10-26.172406%252F172406_jp2.zip%252F172406_jp2%252F172406_0021.jp2",
+          "type": "Text",
+          "label": {
+            "en": [
+              "Open in Allmaps editor"
+            ]
+          },
+          "format": "text/html"
+        }
+      ],
+      "items": [
+        {
+          "id": "https://publicmap.github.io/india-esz-dashboard/data/iiif-manifest.json/canvas/2/page",
+          "type": "AnnotationPage",
+          "items": [
+            {
+              "id": "https://publicmap.github.io/india-esz-dashboard/data/iiif-manifest.json/canvas/2/page/annotation",
+              "type": "Annotation",
+              "motivation": "painting",
+              "target": "https://publicmap.github.io/india-esz-dashboard/data/iiif-manifest.json/canvas/2",
+              "body": {
+                "id": "https://iiif.archive.org/image/iiif/3/in.gazette.central.e.2016-10-26.172406%2F172406_jp2.zip%2F172406_jp2%2F172406_0021.jp2/full/max/0/default.jpg",
+                "type": "Image",
+                "format": "image/jpeg",
+                "width": 2480,
+                "height": 3509,
+                "service": [
+                  {
+                    "id": "https://iiif.archive.org/image/iiif/3/in.gazette.central.e.2016-10-26.172406%2F172406_jp2.zip%2F172406_jp2%2F172406_0021.jp2",
                     "type": "ImageService3",
                     "profile": "level2"
                   }
@@ -627,6 +963,174 @@
       ]
     },
     {
+      "id": "https://publicmap.github.io/india-esz-dashboard/data/iiif-manifest.json/canvas/5",
+      "type": "Canvas",
+      "label": {
+        "en": [
+          "Asola Bhatti Wildlife Sanctuary (2017-09-12)"
+        ]
+      },
+      "width": 2550,
+      "height": 3301,
+      "metadata": [
+        {
+          "label": {
+            "en": [
+              "Protected Area"
+            ]
+          },
+          "value": {
+            "en": [
+              "Asola Bhatti Wildlife Sanctuary"
+            ]
+          }
+        },
+        {
+          "label": {
+            "en": [
+              "State"
+            ]
+          },
+          "value": {
+            "en": [
+              "National Capital Territory of Delhi"
+            ]
+          }
+        },
+        {
+          "label": {
+            "en": [
+              "Protected Area Type"
+            ]
+          },
+          "value": {
+            "en": [
+              "Wildlife Sanctuary"
+            ]
+          }
+        },
+        {
+          "label": {
+            "en": [
+              "ESZ Notification"
+            ]
+          },
+          "value": {
+            "en": [
+              "S.O. 2996 (E) · Final · 2017-09-12"
+            ]
+          }
+        },
+        {
+          "label": {
+            "en": [
+              "Wikidata"
+            ]
+          },
+          "value": {
+            "en": [
+              "<a href=\"https://www.wikidata.org/wiki/Q4807575\">https://www.wikidata.org/wiki/Q4807575</a>"
+            ]
+          }
+        },
+        {
+          "label": {
+            "en": [
+              "Wikipedia"
+            ]
+          },
+          "value": {
+            "en": [
+              "<a href=\"https://en.wikipedia.org/wiki/Asola_Bhatti_Wildlife_Sanctuary\">https://en.wikipedia.org/wiki/Asola_Bhatti_Wildlife_Sanctuary</a>"
+            ]
+          }
+        },
+        {
+          "label": {
+            "en": [
+              "Gazette scan (archive.org)"
+            ]
+          },
+          "value": {
+            "en": [
+              "<a href=\"https://archive.org/details/in.gazette.central.e.2017-09-12.178813\">https://archive.org/details/in.gazette.central.e.2017-09-12.178813</a>"
+            ]
+          }
+        },
+        {
+          "label": {
+            "en": [
+              "Gazette PDF (egazette.nic.in)"
+            ]
+          },
+          "value": {
+            "en": [
+              "<a href=\"https://moef.gov.in/uploads/2017/06/Asola%20Bhatti%20Wildlife%20Sanctuary%2C%20New%20Delhi%20Final.pdf\">https://moef.gov.in/uploads/2017/06/Asola%20Bhatti%20Wildlife%20Sanctuary%2C%20New%20Delhi%20Final.pdf</a>"
+            ]
+          }
+        },
+        {
+          "label": {
+            "en": [
+              "Explore on India ESZ Dashboard"
+            ]
+          },
+          "value": {
+            "en": [
+              "<a href=\"https://publicmap.github.io/india-esz-dashboard/\">https://publicmap.github.io/india-esz-dashboard/</a>"
+            ]
+          }
+        }
+      ],
+      "thumbnail": [
+        {
+          "id": "https://iiif.archive.org/image/iiif/3/in.gazette.central.e.2017-09-12.178813%2F178813_jp2.zip%2F178813_jp2%2F178813_0020.jp2/full/200,/0/default.jpg",
+          "type": "Image",
+          "format": "image/jpeg"
+        }
+      ],
+      "rendering": [
+        {
+          "id": "https://editor.allmaps.org/georeference?url=https%3A%2F%2Fiiif.archive.org%2Fiiif%2Fin.gazette.central.e.2017-09-12.178813%2Fmanifest.json&bg-preset=osm&bg-url=https%3A%2F%2Findianopenmaps.fly.dev%2Fsoi%2Fosm%2F%7Bz%7D%2F%7Bx%7D%2F%7By%7D.webp&image=https%3A%2F%2Fiiif.archive.org%2Fimage%2Fiiif%2F3%2Fin.gazette.central.e.2017-09-12.178813%252F178813_jp2.zip%252F178813_jp2%252F178813_0020.jp2",
+          "type": "Text",
+          "label": {
+            "en": [
+              "Open in Allmaps editor"
+            ]
+          },
+          "format": "text/html"
+        }
+      ],
+      "items": [
+        {
+          "id": "https://publicmap.github.io/india-esz-dashboard/data/iiif-manifest.json/canvas/5/page",
+          "type": "AnnotationPage",
+          "items": [
+            {
+              "id": "https://publicmap.github.io/india-esz-dashboard/data/iiif-manifest.json/canvas/5/page/annotation",
+              "type": "Annotation",
+              "motivation": "painting",
+              "target": "https://publicmap.github.io/india-esz-dashboard/data/iiif-manifest.json/canvas/5",
+              "body": {
+                "id": "https://iiif.archive.org/image/iiif/3/in.gazette.central.e.2017-09-12.178813%2F178813_jp2.zip%2F178813_jp2%2F178813_0020.jp2/full/max/0/default.jpg",
+                "type": "Image",
+                "format": "image/jpeg",
+                "width": 2550,
+                "height": 3301,
+                "service": [
+                  {
+                    "id": "https://iiif.archive.org/image/iiif/3/in.gazette.central.e.2017-09-12.178813%2F178813_jp2.zip%2F178813_jp2%2F178813_0020.jp2",
+                    "type": "ImageService3",
+                    "profile": "level2"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
       "id": "https://publicmap.github.io/india-esz-dashboard/data/iiif-manifest.json/canvas/6",
       "type": "Canvas",
       "label": {
@@ -784,6 +1288,174 @@
                 "service": [
                   {
                     "id": "https://iiif.archive.org/image/iiif/3/in.gazette.central.e.2019-09-11.212461%2F212461_jp2.zip%2F212461_jp2%2F212461_0043.jp2",
+                    "type": "ImageService3",
+                    "profile": "level2"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "https://publicmap.github.io/india-esz-dashboard/data/iiif-manifest.json/canvas/7",
+      "type": "Canvas",
+      "label": {
+        "en": [
+          "Tansa Wildlife Sanctuary (2017-08-10)"
+        ]
+      },
+      "width": 4961,
+      "height": 7016,
+      "metadata": [
+        {
+          "label": {
+            "en": [
+              "Protected Area"
+            ]
+          },
+          "value": {
+            "en": [
+              "Tansa Wildlife Sanctuary"
+            ]
+          }
+        },
+        {
+          "label": {
+            "en": [
+              "State"
+            ]
+          },
+          "value": {
+            "en": [
+              "Maharashtra"
+            ]
+          }
+        },
+        {
+          "label": {
+            "en": [
+              "Protected Area Type"
+            ]
+          },
+          "value": {
+            "en": [
+              "Wildlife Sanctuary"
+            ]
+          }
+        },
+        {
+          "label": {
+            "en": [
+              "ESZ Notification"
+            ]
+          },
+          "value": {
+            "en": [
+              "S.O. 2566 · Draft · 2017-08-10"
+            ]
+          }
+        },
+        {
+          "label": {
+            "en": [
+              "Wikidata"
+            ]
+          },
+          "value": {
+            "en": [
+              "<a href=\"https://www.wikidata.org/wiki/Q105847575\">https://www.wikidata.org/wiki/Q105847575</a>"
+            ]
+          }
+        },
+        {
+          "label": {
+            "en": [
+              "Wikipedia"
+            ]
+          },
+          "value": {
+            "en": [
+              "<a href=\"https://en.wikipedia.org/wiki/Tansa_Wildlife_Sanctuary\">https://en.wikipedia.org/wiki/Tansa_Wildlife_Sanctuary</a>"
+            ]
+          }
+        },
+        {
+          "label": {
+            "en": [
+              "Gazette scan (archive.org)"
+            ]
+          },
+          "value": {
+            "en": [
+              "<a href=\"https://archive.org/details/in.gazette.central.e.2017-08-10.178009\">https://archive.org/details/in.gazette.central.e.2017-08-10.178009</a>"
+            ]
+          }
+        },
+        {
+          "label": {
+            "en": [
+              "Gazette PDF (egazette.nic.in)"
+            ]
+          },
+          "value": {
+            "en": [
+              "<a href=\"https://moef.gov.in/uploads/2017/06/Tansa%20Wildlife%20Sanctuary%20Draft%2C%20Maharashtra.pdf\">https://moef.gov.in/uploads/2017/06/Tansa%20Wildlife%20Sanctuary%20Draft%2C%20Maharashtra.pdf</a>"
+            ]
+          }
+        },
+        {
+          "label": {
+            "en": [
+              "Explore on India ESZ Dashboard"
+            ]
+          },
+          "value": {
+            "en": [
+              "<a href=\"https://publicmap.github.io/india-esz-dashboard/\">https://publicmap.github.io/india-esz-dashboard/</a>"
+            ]
+          }
+        }
+      ],
+      "thumbnail": [
+        {
+          "id": "https://iiif.archive.org/image/iiif/3/in.gazette.central.e.2017-08-10.178009%2F178009_jp2.zip%2F178009_jp2%2F178009_0011.jp2/full/200,/0/default.jpg",
+          "type": "Image",
+          "format": "image/jpeg"
+        }
+      ],
+      "rendering": [
+        {
+          "id": "https://editor.allmaps.org/georeference?url=https%3A%2F%2Fiiif.archive.org%2Fiiif%2Fin.gazette.central.e.2017-08-10.178009%2Fmanifest.json&bg-preset=osm&bg-url=https%3A%2F%2Findianopenmaps.fly.dev%2Fsoi%2Fosm%2F%7Bz%7D%2F%7Bx%7D%2F%7By%7D.webp&image=https%3A%2F%2Fiiif.archive.org%2Fimage%2Fiiif%2F3%2Fin.gazette.central.e.2017-08-10.178009%252F178009_jp2.zip%252F178009_jp2%252F178009_0011.jp2",
+          "type": "Text",
+          "label": {
+            "en": [
+              "Open in Allmaps editor"
+            ]
+          },
+          "format": "text/html"
+        }
+      ],
+      "items": [
+        {
+          "id": "https://publicmap.github.io/india-esz-dashboard/data/iiif-manifest.json/canvas/7/page",
+          "type": "AnnotationPage",
+          "items": [
+            {
+              "id": "https://publicmap.github.io/india-esz-dashboard/data/iiif-manifest.json/canvas/7/page/annotation",
+              "type": "Annotation",
+              "motivation": "painting",
+              "target": "https://publicmap.github.io/india-esz-dashboard/data/iiif-manifest.json/canvas/7",
+              "body": {
+                "id": "https://iiif.archive.org/image/iiif/3/in.gazette.central.e.2017-08-10.178009%2F178009_jp2.zip%2F178009_jp2%2F178009_0011.jp2/full/max/0/default.jpg",
+                "type": "Image",
+                "format": "image/jpeg",
+                "width": 4961,
+                "height": 7016,
+                "service": [
+                  {
+                    "id": "https://iiif.archive.org/image/iiif/3/in.gazette.central.e.2017-08-10.178009%2F178009_jp2.zip%2F178009_jp2%2F178009_0011.jp2",
                     "type": "ImageService3",
                     "profile": "level2"
                   }

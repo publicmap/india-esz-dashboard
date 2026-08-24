@@ -80,6 +80,94 @@
       }
     },
     {
+      "id": "relation/15743640",
+      "type": "osm",
+      "title": "Kevladev National Park (boundary)",
+      "description": "Final ESZ notified &middot; Rajasthan",
+      "tags": [
+        "Rajasthan",
+        "Final ESZ notified"
+      ],
+      "initiallyChecked": false,
+      "attribution": "&copy; OpenStreetMap contributors (via Overpass API)",
+      "style": {
+        "line-color": "#0ca30c",
+        "line-width": 2,
+        "fill-color": "#0ca30c",
+        "fill-opacity": 0.15,
+        "text-field": [
+          "get",
+          "name"
+        ]
+      }
+    },
+    {
+      "id": "relation/15876412",
+      "type": "osm",
+      "title": "Gulmarg Wildlife Sanctuary (boundary)",
+      "description": "Final ESZ notified &middot; Jammu and Kashmir",
+      "tags": [
+        "Jammu and Kashmir",
+        "Final ESZ notified"
+      ],
+      "initiallyChecked": false,
+      "attribution": "&copy; OpenStreetMap contributors (via Overpass API)",
+      "style": {
+        "line-color": "#0ca30c",
+        "line-width": 2,
+        "fill-color": "#0ca30c",
+        "fill-opacity": 0.15,
+        "text-field": [
+          "get",
+          "name"
+        ]
+      }
+    },
+    {
+      "id": "relation/9474608",
+      "type": "osm",
+      "title": "Pilibhit Tiger Reserve (boundary)",
+      "description": "Not yet notified &middot; Uttar Pradesh",
+      "tags": [
+        "Uttar Pradesh",
+        "Not yet notified"
+      ],
+      "initiallyChecked": false,
+      "attribution": "&copy; OpenStreetMap contributors (via Overpass API)",
+      "style": {
+        "line-color": "#898781",
+        "line-width": 2,
+        "fill-color": "#898781",
+        "fill-opacity": 0.15,
+        "text-field": [
+          "get",
+          "name"
+        ]
+      }
+    },
+    {
+      "id": "relation/9282503",
+      "type": "osm",
+      "title": "Mount Manipur National Park (boundary)",
+      "description": "Final ESZ notified &middot; Andaman and Nicobar Islands",
+      "tags": [
+        "Andaman and Nicobar Islands",
+        "Final ESZ notified"
+      ],
+      "initiallyChecked": false,
+      "attribution": "&copy; OpenStreetMap contributors (via Overpass API)",
+      "style": {
+        "line-color": "#0ca30c",
+        "line-width": 2,
+        "fill-color": "#0ca30c",
+        "fill-opacity": 0.15,
+        "text-field": [
+          "get",
+          "name"
+        ]
+      }
+    },
+    {
       "id": "relation/3494941",
       "type": "osm",
       "title": "Ranthambore National Park (boundary)",
@@ -138,50 +226,6 @@
         "line-color": "#fab219",
         "line-width": 2,
         "fill-color": "#fab219",
-        "fill-opacity": 0.15,
-        "text-field": [
-          "get",
-          "name"
-        ]
-      }
-    },
-    {
-      "id": "relation/15876412",
-      "type": "osm",
-      "title": "Gulmarg Wildlife Sanctuary (boundary)",
-      "description": "Final ESZ notified &middot; Jammu and Kashmir",
-      "tags": [
-        "Jammu and Kashmir",
-        "Final ESZ notified"
-      ],
-      "initiallyChecked": false,
-      "attribution": "&copy; OpenStreetMap contributors (via Overpass API)",
-      "style": {
-        "line-color": "#0ca30c",
-        "line-width": 2,
-        "fill-color": "#0ca30c",
-        "fill-opacity": 0.15,
-        "text-field": [
-          "get",
-          "name"
-        ]
-      }
-    },
-    {
-      "id": "relation/15743640",
-      "type": "osm",
-      "title": "Kevladev National Park (boundary)",
-      "description": "Final ESZ notified &middot; Rajasthan",
-      "tags": [
-        "Rajasthan",
-        "Final ESZ notified"
-      ],
-      "initiallyChecked": false,
-      "attribution": "&copy; OpenStreetMap contributors (via Overpass API)",
-      "style": {
-        "line-color": "#0ca30c",
-        "line-width": 2,
-        "fill-color": "#0ca30c",
         "fill-opacity": 0.15,
         "text-field": [
           "get",
@@ -256,42 +300,20 @@
       }
     },
     {
-      "id": "relation/9474608",
+      "id": "relation/19289292",
       "type": "osm",
-      "title": "Pilibhit Tiger Reserve (boundary)",
-      "description": "Not yet notified &middot; Uttar Pradesh",
+      "title": "Simlipal National Park (boundary)",
+      "description": "Draft ESZ notified &middot; Odisha",
       "tags": [
-        "Uttar Pradesh",
-        "Not yet notified"
+        "Odisha",
+        "Draft ESZ notified"
       ],
       "initiallyChecked": false,
       "attribution": "&copy; OpenStreetMap contributors (via Overpass API)",
       "style": {
-        "line-color": "#898781",
+        "line-color": "#fab219",
         "line-width": 2,
-        "fill-color": "#898781",
-        "fill-opacity": 0.15,
-        "text-field": [
-          "get",
-          "name"
-        ]
-      }
-    },
-    {
-      "id": "relation/9282503",
-      "type": "osm",
-      "title": "Mount Manipur National Park (boundary)",
-      "description": "Final ESZ notified &middot; Andaman and Nicobar Islands",
-      "tags": [
-        "Andaman and Nicobar Islands",
-        "Final ESZ notified"
-      ],
-      "initiallyChecked": false,
-      "attribution": "&copy; OpenStreetMap contributors (via Overpass API)",
-      "style": {
-        "line-color": "#0ca30c",
-        "line-width": 2,
-        "fill-color": "#0ca30c",
+        "fill-color": "#fab219",
         "fill-opacity": 0.15,
         "text-field": [
           "get",
@@ -388,6 +410,28 @@
       }
     },
     {
+      "id": "relation/17746132",
+      "type": "osm",
+      "title": "Kalakkad Mundanthurai Tiger Reserve (boundary)",
+      "description": "Not yet notified &middot; Tamil Nadu",
+      "tags": [
+        "Tamil Nadu",
+        "Not yet notified"
+      ],
+      "initiallyChecked": false,
+      "attribution": "&copy; OpenStreetMap contributors (via Overpass API)",
+      "style": {
+        "line-color": "#898781",
+        "line-width": 2,
+        "fill-color": "#898781",
+        "fill-opacity": 0.15,
+        "text-field": [
+          "get",
+          "name"
+        ]
+      }
+    },
+    {
       "id": "relation/15036911",
       "type": "osm",
       "title": "Anamudi Shola National Park (boundary)",
@@ -432,28 +476,6 @@
       }
     },
     {
-      "id": "relation/17746132",
-      "type": "osm",
-      "title": "Kalakkad Mundanthurai Tiger Reserve (boundary)",
-      "description": "Not yet notified &middot; Tamil Nadu",
-      "tags": [
-        "Tamil Nadu",
-        "Not yet notified"
-      ],
-      "initiallyChecked": false,
-      "attribution": "&copy; OpenStreetMap contributors (via Overpass API)",
-      "style": {
-        "line-color": "#898781",
-        "line-width": 2,
-        "fill-color": "#898781",
-        "fill-opacity": 0.15,
-        "text-field": [
-          "get",
-          "name"
-        ]
-      }
-    },
-    {
       "id": "relation/415570",
       "type": "osm",
       "title": "Gulf of Mannar Marine National Park (boundary)",
@@ -476,20 +498,20 @@
       }
     },
     {
-      "id": "relation/19289292",
+      "id": "relation/678835645",
       "type": "osm",
-      "title": "Simlipal National Park (boundary)",
-      "description": "Draft ESZ notified &middot; Odisha",
+      "title": "West Sunderban Wildlife Sanctuary (boundary)",
+      "description": "Not yet notified &middot; West Bengal",
       "tags": [
-        "Odisha",
-        "Draft ESZ notified"
+        "West Bengal",
+        "Not yet notified"
       ],
       "initiallyChecked": false,
       "attribution": "&copy; OpenStreetMap contributors (via Overpass API)",
       "style": {
-        "line-color": "#fab219",
+        "line-color": "#898781",
         "line-width": 2,
-        "fill-color": "#fab219",
+        "fill-color": "#898781",
         "fill-opacity": 0.15,
         "text-field": [
           "get",
@@ -534,28 +556,6 @@
         "line-color": "#0ca30c",
         "line-width": 2,
         "fill-color": "#0ca30c",
-        "fill-opacity": 0.15,
-        "text-field": [
-          "get",
-          "name"
-        ]
-      }
-    },
-    {
-      "id": "relation/678835645",
-      "type": "osm",
-      "title": "West Sunderban Wildlife Sanctuary (boundary)",
-      "description": "Not yet notified &middot; West Bengal",
-      "tags": [
-        "West Bengal",
-        "Not yet notified"
-      ],
-      "initiallyChecked": false,
-      "attribution": "&copy; OpenStreetMap contributors (via Overpass API)",
-      "style": {
-        "line-color": "#898781",
-        "line-width": 2,
-        "fill-color": "#898781",
         "fill-opacity": 0.15,
         "text-field": [
           "get",
