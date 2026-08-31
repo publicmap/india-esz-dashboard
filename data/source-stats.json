@@ -4,20 +4,20 @@
       "id": "conflated",
       "label": "Conflated",
       "url": null,
-      "lastUpdated": "2026-08-24T03:49:08.817Z",
-      "contentHash": "5dd8e859806ac200f7e67d9b113449032de7f3e451baa35e1177dddd57a94782",
+      "lastUpdated": "2026-08-31T09:12:00.514Z",
+      "contentHash": "ef623b922ad604e581725cc3deca567e16b5cdfade839bfe3d9e532625d5aadd",
       "counts": {
         "total": 782,
         "tigerReserve": 62,
-        "nationalPark": 97,
-        "wildlifeSanctuary": 600,
+        "nationalPark": 96,
+        "wildlifeSanctuary": 601,
         "breakdown": [
           {
             "id": "moefcc",
             "label": "MoEFCC",
             "url": "https://moef.gov.in/esz-notifications",
-            "lastUpdated": "2026-08-24T03:49:10.852Z",
-            "contentHash": "7df8fabf734f22f78524eb14c6d700250732dd0cdf00021f24795fb73639d8a3",
+            "lastUpdated": "2026-08-31T09:13:02.320Z",
+            "contentHash": "aac0fe8a33da34e0a6a0ee83f0b7844d6742b10a28f6b4b94deba688451cb8d5",
             "counts": {
               "total": 571,
               "tigerReserve": 41,
@@ -29,20 +29,20 @@
             "id": "wikidata",
             "label": "Wikidata",
             "url": "https://www.wikidata.org/wiki/Q473972",
-            "lastUpdated": "2026-08-24T03:49:10.852Z",
-            "contentHash": "f4dd2ee0da74926f1668abbaf4a8cd37992f2979934ce22da9f54a219ef4b063",
+            "lastUpdated": "2026-08-31T09:13:02.319Z",
+            "contentHash": "b1de55f7d1be123d25ac640d8dcdbc118a330fa88777e3ead3ca5587c7d85788",
             "counts": {
               "total": 746,
               "tigerReserve": 62,
-              "nationalPark": 91,
-              "wildlifeSanctuary": 572
+              "nationalPark": 90,
+              "wildlifeSanctuary": 573
             }
           },
           {
             "id": "wikipedia",
             "label": "Wikipedia",
             "url": "https://en.wikipedia.org/wiki/List_of_national_parks_of_India",
-            "lastUpdated": "2026-08-24T03:49:10.857Z",
+            "lastUpdated": "2026-08-31T09:13:02.324Z",
             "contentHash": "3612c19fa41ecd50c2eab5a761f52b6653d068e88903194d6b4cdd5d4d0732e8",
             "counts": {
               "total": 745,
@@ -55,7 +55,7 @@
             "id": "openstreetmap",
             "label": "OpenStreetMap",
             "url": "https://github.com/publicmap/india-esz-dashboard/blob/main/data/osm/india-protected_areas.overpass.ql.txt",
-            "lastUpdated": "2026-08-24T03:49:10.890Z",
+            "lastUpdated": "2026-08-31T09:13:02.353Z",
             "contentHash": "acb9a6dd62f00d3f71ade56c7a71bc9437e8aa17b0a852369c5380e5219a3c60",
             "counts": {
               "total": 660,
@@ -71,8 +71,8 @@
       "id": "final-esz",
       "label": "Final ESZ",
       "url": null,
-      "lastUpdated": "2026-08-24T03:49:08.817Z",
-      "contentHash": "eac9d118e2ed205476ea1b5f1ff475b2a13748c6bc1375fec3cdff1a06668849",
+      "lastUpdated": "2026-08-31T09:12:00.514Z",
+      "contentHash": "2d5a30e84fe9310b9c2690389466cd8469bc52f460601563dda7da1650ef2228",
       "counts": {
         "total": 452,
         "tigerReserve": 27,
@@ -97,13 +97,13 @@
       "id": "no-notification",
       "label": "No notification",
       "url": null,
-      "lastUpdated": "2026-08-24T03:49:08.818Z",
-      "contentHash": "d1a6993b8684d10f1d7a66a7f4f952fffacf6dc6e56fa14762a17b58ad617eb7",
+      "lastUpdated": "2026-08-31T09:12:00.514Z",
+      "contentHash": "656c9bbaed72c353df01c94043b36779d3855ceccc64a631a2970b90445d70eb",
       "counts": {
         "total": 214,
         "tigerReserve": 21,
-        "nationalPark": 27,
-        "wildlifeSanctuary": 145
+        "nationalPark": 26,
+        "wildlifeSanctuary": 146
       }
     }
   ]
