@@ -168,94 +168,6 @@
       }
     },
     {
-      "id": "relation/13617703",
-      "type": "osm",
-      "title": "Sundarbans National Park (boundary)",
-      "description": "Not yet notified &middot; West Bengal",
-      "tags": [
-        "West Bengal",
-        "Not yet notified"
-      ],
-      "initiallyChecked": false,
-      "attribution": "&copy; OpenStreetMap contributors (via Overpass API)",
-      "style": {
-        "line-color": "#898781",
-        "line-width": 2,
-        "fill-color": "#898781",
-        "fill-opacity": 0.15,
-        "text-field": [
-          "get",
-          "name"
-        ]
-      }
-    },
-    {
-      "id": "relation/15694340",
-      "type": "osm",
-      "title": "Bandhavgarh National Park (boundary)",
-      "description": "Final ESZ notified &middot; Madhya Pradesh",
-      "tags": [
-        "Madhya Pradesh",
-        "Final ESZ notified"
-      ],
-      "initiallyChecked": false,
-      "attribution": "&copy; OpenStreetMap contributors (via Overpass API)",
-      "style": {
-        "line-color": "#0ca30c",
-        "line-width": 2,
-        "fill-color": "#0ca30c",
-        "fill-opacity": 0.15,
-        "text-field": [
-          "get",
-          "name"
-        ]
-      }
-    },
-    {
-      "id": "relation/16831555",
-      "type": "osm",
-      "title": "Jim Corbett National Park (boundary)",
-      "description": "Not yet notified &middot; Uttarakhand",
-      "tags": [
-        "Uttarakhand",
-        "Not yet notified"
-      ],
-      "initiallyChecked": false,
-      "attribution": "&copy; OpenStreetMap contributors (via Overpass API)",
-      "style": {
-        "line-color": "#898781",
-        "line-width": 2,
-        "fill-color": "#898781",
-        "fill-opacity": 0.15,
-        "text-field": [
-          "get",
-          "name"
-        ]
-      }
-    },
-    {
-      "id": "relation/15876412",
-      "type": "osm",
-      "title": "Gulmarg Wildlife Sanctuary (boundary)",
-      "description": "Final ESZ notified &middot; Jammu and Kashmir",
-      "tags": [
-        "Jammu and Kashmir",
-        "Final ESZ notified"
-      ],
-      "initiallyChecked": false,
-      "attribution": "&copy; OpenStreetMap contributors (via Overpass API)",
-      "style": {
-        "line-color": "#0ca30c",
-        "line-width": 2,
-        "fill-color": "#0ca30c",
-        "fill-opacity": 0.15,
-        "text-field": [
-          "get",
-          "name"
-        ]
-      }
-    },
-    {
       "id": "relation/9466769",
       "type": "osm",
       "title": "Sariska Tiger Reserve (boundary)",
@@ -314,6 +226,28 @@
         "line-color": "#898781",
         "line-width": 2,
         "fill-color": "#898781",
+        "fill-opacity": 0.15,
+        "text-field": [
+          "get",
+          "name"
+        ]
+      }
+    },
+    {
+      "id": "relation/15876412",
+      "type": "osm",
+      "title": "Gulmarg Wildlife Sanctuary (boundary)",
+      "description": "Final ESZ notified &middot; Jammu and Kashmir",
+      "tags": [
+        "Jammu and Kashmir",
+        "Final ESZ notified"
+      ],
+      "initiallyChecked": false,
+      "attribution": "&copy; OpenStreetMap contributors (via Overpass API)",
+      "style": {
+        "line-color": "#0ca30c",
+        "line-width": 2,
+        "fill-color": "#0ca30c",
         "fill-opacity": 0.15,
         "text-field": [
           "get",
@@ -490,6 +424,72 @@
         "line-color": "#0ca30c",
         "line-width": 2,
         "fill-color": "#0ca30c",
+        "fill-opacity": 0.15,
+        "text-field": [
+          "get",
+          "name"
+        ]
+      }
+    },
+    {
+      "id": "relation/13617703",
+      "type": "osm",
+      "title": "Sundarbans National Park (boundary)",
+      "description": "Not yet notified &middot; West Bengal",
+      "tags": [
+        "West Bengal",
+        "Not yet notified"
+      ],
+      "initiallyChecked": false,
+      "attribution": "&copy; OpenStreetMap contributors (via Overpass API)",
+      "style": {
+        "line-color": "#898781",
+        "line-width": 2,
+        "fill-color": "#898781",
+        "fill-opacity": 0.15,
+        "text-field": [
+          "get",
+          "name"
+        ]
+      }
+    },
+    {
+      "id": "relation/15694340",
+      "type": "osm",
+      "title": "Bandhavgarh National Park (boundary)",
+      "description": "Final ESZ notified &middot; Madhya Pradesh",
+      "tags": [
+        "Madhya Pradesh",
+        "Final ESZ notified"
+      ],
+      "initiallyChecked": false,
+      "attribution": "&copy; OpenStreetMap contributors (via Overpass API)",
+      "style": {
+        "line-color": "#0ca30c",
+        "line-width": 2,
+        "fill-color": "#0ca30c",
+        "fill-opacity": 0.15,
+        "text-field": [
+          "get",
+          "name"
+        ]
+      }
+    },
+    {
+      "id": "relation/16831555",
+      "type": "osm",
+      "title": "Jim Corbett National Park (boundary)",
+      "description": "Not yet notified &middot; Uttarakhand",
+      "tags": [
+        "Uttarakhand",
+        "Not yet notified"
+      ],
+      "initiallyChecked": false,
+      "attribution": "&copy; OpenStreetMap contributors (via Overpass API)",
+      "style": {
+        "line-color": "#898781",
+        "line-width": 2,
+        "fill-color": "#898781",
         "fill-opacity": 0.15,
         "text-field": [
           "get",
