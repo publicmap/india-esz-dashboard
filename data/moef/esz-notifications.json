@@ -4746,13 +4746,13 @@
     "notificationArchiveLink": "https://archive.org/details/in.gazette.central.e.2016-03-21.168948"
   },
   {
-    "moefSNo": 23,
+    "moefSNo": 22,
     "state": "Assam",
     "protectedAreaName": "Amchang Wildlife Sanctuary",
     "protectedAreaType": "Wildlife Sanctuary",
     "notificationStatus": "Final",
     "notificationDate": "2017-06-07",
-    "notificationSummary": "23. S.O. 1817 (E) [07.06.2017] Final Notification declaring Eco Sensitive Zone around Amchang Wildlife Sanctuary(3.55 MB), Assam",
+    "notificationSummary": "22. S.O. 1817 (E) [07.06.2017] Final Notification declaring Eco Sensitive Zone around Amchang Wildlife Sanctuary(3.55 MB), Assam 23.",
     "notificationPdfLink": "https://moef.gov.in/uploads/2017/06/Amchang%20Wildlife%20Sanctuary%2C%20Assam_0.pdf",
     "maps": [],
     "notificationUploadDate": "12/06/2017",
@@ -4760,6 +4760,22 @@
     "wikidataId": "Q19361617",
     "matchConfidence": "exact",
     "notificationArchiveLink": "https://archive.org/details/in.gazette.central.e.2017-06-07.176563"
+  },
+  {
+    "moefSNo": null,
+    "state": "Assam",
+    "protectedAreaName": "Amchang Wildlife Sanctuary",
+    "protectedAreaType": "Wildlife Sanctuary",
+    "notificationStatus": "Amendment",
+    "notificationDate": "2026-10-09",
+    "notificationSummary": "S.O. No. 5569 (E)[09.10.2026] Amendment of Eco-sensitive Zone around Amchang Wildlife Sanctuary(1881 KB), Assam",
+    "notificationPdfLink": "https://moef.gov.in/uploads/pdf-uploads/pdf_6ad05967123889.68204589.pdf",
+    "maps": [],
+    "notificationUploadDate": null,
+    "orderNumber": "S.O. No. 5569 (E)",
+    "wikidataId": "Q19361617",
+    "matchConfidence": "exact",
+    "notificationArchiveLink": null
   },
   {
     "moefSNo": 8,
@@ -6453,7 +6469,7 @@
     "maps": [],
     "notificationUploadDate": null,
     "orderNumber": "S.O. 3202",
-    "wikidataId": "Q7786671",
+    "wikidataId": "Q7786672",
     "matchConfidence": "exact",
     "notificationArchiveLink": "https://archive.org/details/in.gazette.central.e.2013-10-18.156750"
   },
@@ -6469,7 +6485,7 @@
     "maps": [],
     "notificationUploadDate": null,
     "orderNumber": "S.O. 421",
-    "wikidataId": "Q7786671",
+    "wikidataId": "Q7786672",
     "matchConfidence": "exact",
     "notificationArchiveLink": null
   },

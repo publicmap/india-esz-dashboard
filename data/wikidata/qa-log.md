@@ -1,6 +1,6 @@
 # Protected-area QA log
 
-Generated 2026-10-12T10:04:28.685Z by `scripts/enrich-wikidata.js`.
+Generated 2026-10-19T08:21:09.266Z by `scripts/enrich-wikidata.js`.
 
 ## Wikidata ↔ Wikipedia joins
 
@@ -1456,10 +1456,10 @@ Wikidata item is typed as National Park / Wildlife Sanctuary / Tiger Reserve (ca
 
 | wikidataId | wikidataLabel | protectedAreaType | state | wikipediaNameMatchState | wikipediaNameMatchUrl |
 | --- | --- | --- | --- | --- | --- |
-| Q60398704 | Marine Sanctuary (Gulf of Kutch) | Wildlife Sanctuary | Gujarat |  |  |
 | Q106684744 | Biligiri Rangaswamy Temple Wildlife Sanctuary | Wildlife Sanctuary | Karnataka |  |  |
 | Q109974038 | Siju Wildlife Sanctuary | Wildlife Sanctuary | Manipur | Meghalaya | https://en.wikipedia.org/wiki/Siju_Wildlife_Sanctuary |
 | Q113133799 | Garbhanga Wildlife Sanctuary | Wildlife Sanctuary | Assam |  |  |
+| Q60398704 | Marine Sanctuary (Gulf of Kutch) | Wildlife Sanctuary | Gujarat |  |  |
 | Q3174886 | Govind Pashu Vihar Wildlife Sanctuary | Wildlife Sanctuary | Uttar Pradesh | Uttarakhand | https://en.wikipedia.org/wiki/Govind_Pashu_Vihar_National_Park |
 | Q3364416 | Mandla Plant Fossils National Park | National Park | Madhya Pradesh |  |  |
 | Q3364473 | Pench Tiger Reserve | Tiger Reserve | Madhya Pradesh | Maharashtra | https://en.wikipedia.org/wiki/Pench_Tiger_Reserve |
@@ -1474,8 +1474,6 @@ Wikidata item is typed as National Park / Wildlife Sanctuary / Tiger Reserve (ca
 | Q6368141 | Karakoram Wildlife Sanctuary | Wildlife Sanctuary | Jammu and Kashmir | Ladakh | https://en.wikipedia.org/wiki/Karakoram_Wildlife_Sanctuary |
 | Q6750402 | Manjira Wildlife Sanctuary | Wildlife Sanctuary | Andhra Pradesh | Telangana | https://en.wikipedia.org/wiki/Manjira_Wildlife_Sanctuary |
 | Q6965807 | Narendrapur Wildlife Sanctuary | Wildlife Sanctuary | West Bengal |  |  |
-| Q880724 | Blackbuck National Park | National Park | Gujarat |  |  |
-| Q2979712 | Balpakram National Park | National Park | Meghalaya |  |  |
 | Q7786672 | Thol Wildlife Sanctuary | Wildlife Sanctuary | Gujarat |  |  |
 | Q13116281 | Karian Shola National Park | National Park | Tamil Nadu |  |  |
 | Q14205920 | Begur Wildlife Sanctuary | Wildlife Sanctuary | Kerala |  |  |
@@ -1486,6 +1484,8 @@ Wikidata item is typed as National Park / Wildlife Sanctuary / Tiger Reserve (ca
 | Q18110132 | Balimela Wildlife Sanctuary | Wildlife Sanctuary | Odisha |  |  |
 | Q18126911 | Kondakameru Wildlife Sanctuary | Wildlife Sanctuary | Odisha |  |  |
 | Q19881905 | Amangarh Tiger Reserve | Tiger Reserve | Uttar Pradesh |  |  |
+| Q880724 | Blackbuck National Park | National Park | Gujarat |  |  |
+| Q2979712 | Balpakram National Park | National Park | Meghalaya |  |  |
 | Q107324541 | Mehao Wildlife Sanctuary | Wildlife Sanctuary | Arunachal Pradesh |  |  |
 | Q65321737 | Karimpuzha Wildlife Sanctuary | Wildlife Sanctuary | Kerala |  |  |
 | Q105581798 | Benog Wildlife Sanctuary | Wildlife Sanctuary | Uttarakhand |  |  |
@@ -1542,16 +1542,10 @@ No OSM object references this wikidata id via P402, and no OSM object tags this 
 
 | wikidataId | wikidataLabel |
 | --- | --- |
-| Q3471776 | Hoollongapar Gibbon Sanctuary |
+| Q5215675 | Anshi National Park |
+| Q6375178 | Katarniaghat Wildlife Sanctuary |
 | Q3595683 | Hazaribagh Wildlife Sanctuary |
-| Q7050184 | Noradehi Wildlife Sanctuary |
-| Q7206203 | Pobitora Wildlife Sanctuary |
-| Q7285897 | Rajbari National Park |
-| Q2720864 | Pench National Park |
-| Q16137059 | Munderikadavu Bird Sanctuary |
-| Q16895017 | Mehao Wildlife Sanctuary |
-| Q17126760 | Daroji Sloth Bear Sanctuary |
-| Q60398704 | Marine Sanctuary (Gulf of Kutch) |
+| Q3471776 | Hoollongapar Gibbon Sanctuary |
 | Q102047437 | Gulmarg Wildlife Sanctuary |
 | Q106675739 | Udanti Wildlife Sanctuary |
 | Q106684744 | Biligiri Rangaswamy Temple Wildlife Sanctuary |
@@ -1559,20 +1553,30 @@ No OSM object references this wikidata id via P402, and no OSM object tags this 
 | Q110460281 | Yangoupokpi-Lokchao Wildlife Sanctuary |
 | Q112136896 | Kadalundi–Vallikkunnu Community Reserve |
 | Q113133799 | Garbhanga Wildlife Sanctuary |
-| Q5215675 | Anshi National Park |
-| Q6375178 | Katarniaghat Wildlife Sanctuary |
+| Q2720864 | Pench National Park |
+| Q7050184 | Noradehi Wildlife Sanctuary |
+| Q7206203 | Pobitora Wildlife Sanctuary |
+| Q7285897 | Rajbari National Park |
+| Q140306443 | Arial Island Wildlife Sanctuary |
+| Q141370278 | Western Ghats Ecologically Sensitive Area |
+| Q2429161 | Melghat Tiger Reserve |
+| Q16137059 | Munderikadavu Bird Sanctuary |
+| Q16895017 | Mehao Wildlife Sanctuary |
+| Q17126760 | Daroji Sloth Bear Sanctuary |
+| Q60398704 | Marine Sanctuary (Gulf of Kutch) |
+| Q134457402 | Lachipora Wildlife Sanctuary |
 | Q253455 | Dudhwa National Park |
 | Q1785732 | Koyna Wildlife Sanctuary |
 | Q1815612 | Namdapha National Park |
 | Q2340037 | Buxa Tiger Reserve |
 | Q2667857 | Salim Ali National Park |
-| Q3895706 | Nagarjunsagar-Srisailam Tiger Reserve |
 | Q3364416 | Mandla Plant Fossils National Park |
 | Q3364473 | Pench Tiger Reserve |
 | Q3364527 | Mahatma Gandhi Marine National Park |
 | Q3457187 | Dampa Tiger Reserve |
 | Q3523324 | Karimpuzha National Park |
 | Q3696259 | Chandoli National Park |
+| Q3895706 | Nagarjunsagar-Srisailam Tiger Reserve |
 | Q4208325 | Qazinag National Park |
 | Q4682873 | Adina Deer Park |
 | Q4691449 | Agasthyavanam Biological Park |
@@ -1591,13 +1595,6 @@ No OSM object references this wikidata id via P402, and no OSM object tags this 
 | Q6796837 | Mayani Bird Sanctuary |
 | Q6963221 | Nandhaur Wildlife Sanctuary |
 | Q6965807 | Narendrapur Wildlife Sanctuary |
-| Q7786671 | Thol Lake |
-| Q7461605 | Shahgarh Landscape |
-| Q134457402 | Lachipora Wildlife Sanctuary |
-| Q140306443 | Arial Island Wildlife Sanctuary |
-| Q141370278 | Western Ghats Ecologically Sensitive Area |
-| Q2429161 | Melghat Tiger Reserve |
-| Q2979712 | Balpakram National Park |
 | Q7426133 | Sathanur fossilized tree trunks |
 | Q7461463 | Shahayadri Tiger reserve |
 | Q7697281 | Telineelapuram and Telukunchi Bird Sanctuaries |
@@ -1623,6 +1620,12 @@ No OSM object references this wikidata id via P402, and no OSM object tags this 
 | Q18357307 | Uppalapadu Bird Sanctuary |
 | Q19881905 | Amangarh Tiger Reserve |
 | Q19894392 | Naina Devi Himalayan Bird Conservation Reserve |
+| Q7786671 | Thol Lake |
+| Q7461605 | Shahgarh Landscape |
+| Q2979712 | Balpakram National Park |
+| Q14623369 | Bherjan-Borajan-Padumoni Wildlife Sanctuary |
+| Q15203562 | Bornadi Wildlife Sanctuary |
+| Q15234037 | Kas Plateau Reserved Forest |
 | Q111169695 | Tirthan Wildlife Sanctuary |
 | Q111181702 | Singphan Wildlife Sanctuary |
 | Q111181960 | Talra Wildlife Sanctuary |
@@ -1650,17 +1653,6 @@ No OSM object references this wikidata id via P402, and no OSM object tags this 
 | Q106675711 | Udanti-Sitanadi Tiger Reserve |
 | Q107112206 | Raimona National Park |
 | Q107224583 | Lonar Wildlife Sanctuary |
-| Q116739635 | Cauvery south Wildlife Sanctuary |
-| Q117057454 | Shalboni Forest Range |
-| Q122363300 | Kadavur Wildlife Sanctuary |
-| Q123532242 | Tral Wildlife Sanctuary |
-| Q124249813 | Tanba Forest |
-| Q124393199 | Anandanagar Forest |
-| Q127499823 | Amrabad Tiger Reserve |
-| Q130974183 | Yordi Rabe Supse Wildlife Sanctuary |
-| Q130974358 | Bhairamgarh Wildlife Sanctuary |
-| Q131007942 | Kamala Wildlife Sanctuary |
-| Q131007944 | Ringba-Roba Wildlife Sanctuary |
 | Q137368881 | Selbagre Hoolock Gibbon Reserve |
 | Q137596744 | Kanhargaon Wildlife Sanctuary |
 | Q137596748 | Wan Wildlife Sanctuary |
@@ -1674,9 +1666,17 @@ No OSM object references this wikidata id via P402, and no OSM object tags this 
 | Q140886124 | Jhajjar-Bachauli Wildlife Sanctuary |
 | Q141019678 | Oran lands |
 | Q37564 | Kadalundi Bird Sanctuary |
-| Q14623369 | Bherjan-Borajan-Padumoni Wildlife Sanctuary |
-| Q15203562 | Bornadi Wildlife Sanctuary |
-| Q15234037 | Kas Plateau Reserved Forest |
+| Q116739635 | Cauvery south Wildlife Sanctuary |
+| Q117057454 | Shalboni Forest Range |
+| Q122363300 | Kadavur Wildlife Sanctuary |
+| Q123532242 | Tral Wildlife Sanctuary |
+| Q124249813 | Tanba Forest |
+| Q124393199 | Anandanagar Forest |
+| Q127499823 | Amrabad Tiger Reserve |
+| Q130974183 | Yordi Rabe Supse Wildlife Sanctuary |
+| Q130974358 | Bhairamgarh Wildlife Sanctuary |
+| Q131007942 | Kamala Wildlife Sanctuary |
+| Q131007944 | Ringba-Roba Wildlife Sanctuary |
 | Q22948452 | Ervadi Dargah Sharif |
 | Q26794312 | Shendurney Wildlife Reserve |
 | Q28173945 | Khonoma Nature Conservation and Tragopan Sanctuary |
@@ -1938,30 +1938,35 @@ The matched pair's Wikidata coordinate (P625) falls outside the OSM boundary geo
 
 | wikidataId | wikidataLabel | osmUrl | distanceToBoundary | distanceToCentroid |
 | --- | --- | --- | --- | --- |
+| Q5224247 | Mukundra Hills Tiger Reserve | https://www.openstreetmap.org/relation/9477404 | 162 m | 17.64 km |
+| Q5618257 | Gumti Wildlife Sanctuary | https://www.openstreetmap.org/relation/9264786 | 40.86 km | 48.60 km |
+| Q6187899 | Jessore Sloth Bear Sanctuary | https://www.openstreetmap.org/relation/9308456 | 19.95 km | 31.74 km |
+| Q6382549 | Kedarnath Wildlife Sanctuary | https://www.openstreetmap.org/relation/3014915 | 25.70 km | 42.37 km |
 | Q4807241 | Askot Musk Deer Sanctuary | https://www.openstreetmap.org/relation/9424049 | 1.38 km | 17.94 km |
 | Q5073423 | Chapramari Wildlife Sanctuary | https://www.openstreetmap.org/way/668960167 | 1.50 km | 3.02 km |
-| Q6772512 | Thattekad Bird Sanctuary | https://www.openstreetmap.org/way/677289011 | 47.59 km | 48.89 km |
-| Q6807544 | Neyyar Wildlife Sanctuary | https://www.openstreetmap.org/relation/9469924 | 12.20 km | 18.44 km |
-| Q6826847 | Mhadei Wildlife Sanctuary | https://www.openstreetmap.org/relation/19059002 | 94 m | 3.12 km |
-| Q6965894 | Nargu Wildlife Sanctuary | https://www.openstreetmap.org/way/667924651 | 2.89 km | 12.55 km |
+| Q3092341 | Sanjay National Park | https://www.openstreetmap.org/relation/9268491 | 12.05 km | 33.29 km |
+| Q115804851 | Dadra and Nagar Haveli Wildlife Sanctuary | https://www.openstreetmap.org/way/677741385 | 155 m | 980 m |
 | Q2639563 | Tadoba-Andhari Tiger Reserve | https://www.openstreetmap.org/way/679249389 | 1.04 km | 2.81 km |
 | Q2724481 | Marine National Park, Gulf of Kutch | https://www.openstreetmap.org/relation/8334753 | 9.61 km | 8.52 km |
 | Q2726467 | Kutch Bustard Sanctuary | https://www.openstreetmap.org/way/679583523 | 3.70 km | 4.62 km |
 | Q2730580 | Khijadiya Bird Sanctuary | https://www.openstreetmap.org/way/669203977 | 2.82 km | 4.30 km |
 | Q2989176 | Orang National Park | https://www.openstreetmap.org/relation/1665597 | 2.53 km | 7.40 km |
+| Q6772512 | Thattekad Bird Sanctuary | https://www.openstreetmap.org/way/677289011 | 47.59 km | 48.89 km |
+| Q6807544 | Neyyar Wildlife Sanctuary | https://www.openstreetmap.org/relation/9469924 | 12.20 km | 18.44 km |
+| Q6826847 | Mhadei Wildlife Sanctuary | https://www.openstreetmap.org/relation/19059002 | 94 m | 3.12 km |
+| Q6965894 | Nargu Wildlife Sanctuary | https://www.openstreetmap.org/way/667924651 | 2.89 km | 12.55 km |
+| Q135798492 | Bir Aishvan Wildlife Sanctuary | https://www.openstreetmap.org/way/202540707 | 3.47 km | 4.54 km |
+| Q1858071 | Panna National Park | https://www.openstreetmap.org/way/160695615 | 277 m | 14.27 km |
+| Q2226064 | Sathyamangalam Tiger Reserve | https://www.openstreetmap.org/relation/4192204 | 54.40 km | 72.65 km |
+| Q1544213 | Great Himalayan National Park | https://www.openstreetmap.org/relation/8815513 | 8.18 km | 30.75 km |
 | Q16902313 | Umred Karhandla Wildlife Sanctuary | https://www.openstreetmap.org/way/321130160 | 1.28 km | 2.07 km |
 | Q17033744 | Talley Valley Wildlife Sanctuary | https://www.openstreetmap.org/way/668128310 | 396 m | 14.11 km |
 | Q18343586 | Gautam Budha Wildlife Sanctuary | https://www.openstreetmap.org/way/667689530 | 19.43 km | 40.09 km |
 | Q19808294 | Nandur Madhmeshwar Bird Sanctuary | https://www.openstreetmap.org/way/682827513 | 3.43 km | 10.75 km |
 | Q21997171 | Parrot Bird Sanctuary Chandigarh | https://www.openstreetmap.org/way/129553511 | 343 m | 436 m |
 | Q65091528 | Gudekote Wildlife Sanctuary | https://www.openstreetmap.org/relation/9330957 | 38.90 km | 44.83 km |
-| Q1544213 | Great Himalayan National Park | https://www.openstreetmap.org/relation/8815513 | 8.18 km | 30.75 km |
-| Q115804851 | Dadra and Nagar Haveli Wildlife Sanctuary | https://www.openstreetmap.org/way/677741385 | 155 m | 980 m |
-| Q5224247 | Mukundra Hills Tiger Reserve | https://www.openstreetmap.org/relation/9477404 | 162 m | 17.64 km |
-| Q5618257 | Gumti Wildlife Sanctuary | https://www.openstreetmap.org/relation/9264786 | 40.86 km | 48.60 km |
-| Q6187899 | Jessore Sloth Bear Sanctuary | https://www.openstreetmap.org/relation/9308456 | 19.95 km | 31.74 km |
-| Q6382549 | Kedarnath Wildlife Sanctuary | https://www.openstreetmap.org/relation/3014915 | 25.70 km | 42.37 km |
-| Q3092341 | Sanjay National Park | https://www.openstreetmap.org/relation/9268491 | 12.05 km | 33.29 km |
+| Q130974238 | Barela Bird Sanctuary | https://www.openstreetmap.org/way/668838321 | 485 m | 2.77 km |
+| Q135012839 | Kwangtung Island Wildlife Sanctuary | https://www.openstreetmap.org/way/227814013 | 36.72 km | 36.93 km |
 | Q548153 | Periyar National Park | https://www.openstreetmap.org/way/681439743 | 9.36 km | 19.88 km |
 | Q1207543 | Indian Wild Ass Sanctuary | https://www.openstreetmap.org/way/669217186 | 2.01 km | 39.37 km |
 | Q1427976 | Indravati National Park | https://www.openstreetmap.org/relation/2123530 | 31.63 km | 55.75 km |
@@ -2006,15 +2011,6 @@ The matched pair's Wikidata coordinate (P625) falls outside the OSM boundary geo
 | Q6959133 | Nagzira Wildlife Sanctuary | https://www.openstreetmap.org/way/670043200 | 473 m | 9.60 km |
 | Q6982793 | Nawabganj Bird Sanctuary | https://www.openstreetmap.org/relation/8452444 | 83 m | 699 m |
 | Q7180496 | Phansad Wildlife Sanctuary | https://www.openstreetmap.org/way/670197606 | 2.71 km | 12.13 km |
-| Q880724 | Blackbuck National Park | https://www.openstreetmap.org/way/143357444 | 2.33 km | 5.60 km |
-| Q969593 | Kasu Brahmananda Reddy National Park | https://www.openstreetmap.org/way/28268610 | 174 m | 1.09 km |
-| Q130974238 | Barela Bird Sanctuary | https://www.openstreetmap.org/way/668838321 | 485 m | 2.77 km |
-| Q135012839 | Kwangtung Island Wildlife Sanctuary | https://www.openstreetmap.org/way/227814013 | 36.72 km | 36.93 km |
-| Q135798492 | Bir Aishvan Wildlife Sanctuary | https://www.openstreetmap.org/way/202540707 | 3.47 km | 4.54 km |
-| Q1858071 | Panna National Park | https://www.openstreetmap.org/way/160695615 | 277 m | 14.27 km |
-| Q2226064 | Sathyamangalam Tiger Reserve | https://www.openstreetmap.org/relation/4192204 | 54.40 km | 72.65 km |
-| Q2928293 | Bura Chapori Wildlife Sanctuary | https://www.openstreetmap.org/way/178119226 | 121 m | 2.11 km |
-| Q2985156 | Kalesar National Park | https://www.openstreetmap.org/way/666664869 | 743 m | 6.27 km |
 | Q7293023 | Ranibennur Blackbuck Sanctuary | https://www.openstreetmap.org/relation/9446246 | 373 m | 6.50 km |
 | Q7399055 | Sagareshwar Wildlife Sanctuary | https://www.openstreetmap.org/way/265054632 | 53 m | 1.26 km |
 | Q7402708 | Sajnekhali Wildlife Sanctuary | https://www.openstreetmap.org/relation/13617704 | 22.11 km | 33.02 km |
@@ -2039,6 +2035,16 @@ The matched pair's Wikidata coordinate (P625) falls outside the OSM boundary geo
 | Q19895392 | Pranahita Wildlife Sanctuary | https://www.openstreetmap.org/relation/9331660 | 992 m | 8.68 km |
 | Q19895529 | Purna Wildlife Sanctuary | https://www.openstreetmap.org/way/669197063 | 1.21 km | 8.90 km |
 | Q22080908 | Simbalbara National Park | https://www.openstreetmap.org/way/666725799 | 209 m | 3.02 km |
+| Q880724 | Blackbuck National Park | https://www.openstreetmap.org/way/143357444 | 2.33 km | 5.60 km |
+| Q969593 | Kasu Brahmananda Reddy National Park | https://www.openstreetmap.org/way/28268610 | 174 m | 1.09 km |
+| Q2928293 | Bura Chapori Wildlife Sanctuary | https://www.openstreetmap.org/way/178119226 | 121 m | 2.11 km |
+| Q2985156 | Kalesar National Park | https://www.openstreetmap.org/way/666664869 | 743 m | 6.27 km |
+| Q14623377 | Pani Dihing Wildlife Sanctuary | https://www.openstreetmap.org/way/677511689 | 106 m | 2.97 km |
+| Q15198953 | Bhimbandh Wildlife Sanctuary | https://www.openstreetmap.org/way/668864873 | 5.79 km | 17.58 km |
+| Q15232550 | Kaimur Wildlife Sanctuary | https://www.openstreetmap.org/way/668769113 | 8.90 km | 38.07 km |
+| Q15233552 | Kanjirankulam Bird Sanctuary | https://www.openstreetmap.org/way/671207570 | 2.55 km | 2.98 km |
+| Q15276427 | Sessa Orchid Sanctuary | https://www.openstreetmap.org/way/677464198 | 5.35 km | 9.77 km |
+| Q15723901 | Kuldiha Wildlife Sanctuary | https://www.openstreetmap.org/way/669795314 | 2.65 km | 14.72 km |
 | Q107313635 | Itanagar Wildlife Sanctuary | https://www.openstreetmap.org/way/677458098 | 5.22 km | 11.39 km |
 | Q60744029 | Mookambika Wildlife Sanctuary | https://www.openstreetmap.org/way/670548929 | 11.45 km | 24.74 km |
 | Q61363881 | Nongkhyllem Wildlife Sanctuary | https://www.openstreetmap.org/way/666517430 | 2.65 km | 6.86 km |
@@ -2059,12 +2065,6 @@ The matched pair's Wikidata coordinate (P625) falls outside the OSM boundary geo
 | Q131939336 | Girnar Wildlife Sanctuary | https://www.openstreetmap.org/relation/9078468 | 3.62 km | 11.76 km |
 | Q132068974 | Orchha Wildlife Sanctuary | https://www.openstreetmap.org/way/680764132 | 723 m | 5.75 km |
 | Q132126728 | Son Gharial Wildlife Sanctuary | https://www.openstreetmap.org/way/669274355 | 111 m | 67.61 km |
-| Q14623377 | Pani Dihing Wildlife Sanctuary | https://www.openstreetmap.org/way/677511689 | 106 m | 2.97 km |
-| Q15198953 | Bhimbandh Wildlife Sanctuary | https://www.openstreetmap.org/way/668864873 | 5.79 km | 17.58 km |
-| Q15232550 | Kaimur Wildlife Sanctuary | https://www.openstreetmap.org/way/668769113 | 8.90 km | 38.07 km |
-| Q15233552 | Kanjirankulam Bird Sanctuary | https://www.openstreetmap.org/way/671207570 | 2.55 km | 2.98 km |
-| Q15276427 | Sessa Orchid Sanctuary | https://www.openstreetmap.org/way/677464198 | 5.35 km | 9.77 km |
-| Q15723901 | Kuldiha Wildlife Sanctuary | https://www.openstreetmap.org/way/669795314 | 2.65 km | 14.72 km |
 | Q24906034 | Sri Penusila Narasimha Wildlife Sanctuary | https://www.openstreetmap.org/way/671119721 | 18.45 km | 47.38 km |
 | Q28174315 | Kapilasa Wildlife Sanctuary | https://www.openstreetmap.org/way/669764918 | 127 m | 4.59 km |
 | Q31708100 | Kottiyoor Wildlife Sanctuary | https://www.openstreetmap.org/way/677210306 | 1.61 km | 5.22 km |
@@ -2085,30 +2085,35 @@ Moves P625 to the OSM boundary's centroid. Check the `distanceToBoundary`/`dista
 Paste as a new batch at <https://quickstatements.toolforge.org/> (mode: v1, tab-separated) -- review every line first; these are suggestions, not verified edits:
 
 ```
+Q5224247	P625	@24.972967/75.724789	S248	Q936	S854	"https://www.openstreetmap.org/relation/9477404"
+Q5618257	P625	@23.649137/91.788542	S248	Q936	S854	"https://www.openstreetmap.org/relation/9264786"
+Q6187899	P625	@24.421379/72.497685	S248	Q936	S854	"https://www.openstreetmap.org/relation/9308456"
+Q6382549	P625	@30.609156/79.188307	S248	Q936	S854	"https://www.openstreetmap.org/relation/3014915"
 Q4807241	P625	@29.995644/80.534943	S248	Q936	S854	"https://www.openstreetmap.org/relation/9424049"
 Q5073423	P625	@26.899861/88.843723	S248	Q936	S854	"https://www.openstreetmap.org/way/668960167"
-Q6772512	P625	@10.130402/76.717059	S248	Q936	S854	"https://www.openstreetmap.org/way/677289011"
-Q6807544	P625	@8.554418/77.221104	S248	Q936	S854	"https://www.openstreetmap.org/relation/9469924"
-Q6826847	P625	@15.577911/74.199219	S248	Q936	S854	"https://www.openstreetmap.org/relation/19059002"
-Q6965894	P625	@31.979147/76.983837	S248	Q936	S854	"https://www.openstreetmap.org/way/667924651"
+Q3092341	P625	@23.899215/81.973908	S248	Q936	S854	"https://www.openstreetmap.org/relation/9268491"
+Q115804851	P625	@20.281397/73.097356	S248	Q936	S854	"https://www.openstreetmap.org/way/677741385"
 Q2639563	P625	@20.241771/79.427277	S248	Q936	S854	"https://www.openstreetmap.org/way/679249389"
 Q2724481	P625	@22.474676/69.699210	S248	Q936	S854	"https://www.openstreetmap.org/relation/8334753"
 Q2726467	P625	@23.182508/68.735610	S248	Q936	S854	"https://www.openstreetmap.org/way/679583523"
 Q2730580	P625	@22.547592/70.149901	S248	Q936	S854	"https://www.openstreetmap.org/way/669203977"
 Q2989176	P625	@26.552520/92.322565	S248	Q936	S854	"https://www.openstreetmap.org/relation/1665597"
+Q6772512	P625	@10.130402/76.717059	S248	Q936	S854	"https://www.openstreetmap.org/way/677289011"
+Q6807544	P625	@8.554418/77.221104	S248	Q936	S854	"https://www.openstreetmap.org/relation/9469924"
+Q6826847	P625	@15.577911/74.199219	S248	Q936	S854	"https://www.openstreetmap.org/relation/19059002"
+Q6965894	P625	@31.979147/76.983837	S248	Q936	S854	"https://www.openstreetmap.org/way/667924651"
+Q135798492	P625	@30.227151/75.884003	S248	Q936	S854	"https://www.openstreetmap.org/way/202540707"
+Q1858071	P625	@24.618780/79.940624	S248	Q936	S854	"https://www.openstreetmap.org/way/160695615"
+Q2226064	P625	@11.645353/77.103914	S248	Q936	S854	"https://www.openstreetmap.org/relation/4192204"
+Q1544213	P625	@31.797128/77.625759	S248	Q936	S854	"https://www.openstreetmap.org/relation/8815513"
 Q16902313	P625	@20.840831/79.492006	S248	Q936	S854	"https://www.openstreetmap.org/way/321130160"
 Q17033744	P625	@27.571168/94.038206	S248	Q936	S854	"https://www.openstreetmap.org/way/668128310"
 Q18343586	P625	@24.420136/85.186433	S248	Q936	S854	"https://www.openstreetmap.org/way/667689530"
 Q19808294	P625	@20.022816/74.108966	S248	Q936	S854	"https://www.openstreetmap.org/way/682827513"
 Q21997171	P625	@30.728874/76.779848	S248	Q936	S854	"https://www.openstreetmap.org/way/129553511"
 Q65091528	P625	@14.850454/76.647434	S248	Q936	S854	"https://www.openstreetmap.org/relation/9330957"
-Q1544213	P625	@31.797128/77.625759	S248	Q936	S854	"https://www.openstreetmap.org/relation/8815513"
-Q115804851	P625	@20.281397/73.097356	S248	Q936	S854	"https://www.openstreetmap.org/way/677741385"
-Q5224247	P625	@24.972967/75.724789	S248	Q936	S854	"https://www.openstreetmap.org/relation/9477404"
-Q5618257	P625	@23.649137/91.788542	S248	Q936	S854	"https://www.openstreetmap.org/relation/9264786"
-Q6187899	P625	@24.421379/72.497685	S248	Q936	S854	"https://www.openstreetmap.org/relation/9308456"
-Q6382549	P625	@30.609156/79.188307	S248	Q936	S854	"https://www.openstreetmap.org/relation/3014915"
-Q3092341	P625	@23.899215/81.973908	S248	Q936	S854	"https://www.openstreetmap.org/relation/9268491"
+Q130974238	P625	@25.764852/85.552952	S248	Q936	S854	"https://www.openstreetmap.org/way/668838321"
+Q135012839	P625	@13.169071/92.795173	S248	Q936	S854	"https://www.openstreetmap.org/way/227814013"
 Q548153	P625	@9.450035/77.307083	S248	Q936	S854	"https://www.openstreetmap.org/way/681439743"
 Q1207543	P625	@23.370231/71.248274	S248	Q936	S854	"https://www.openstreetmap.org/way/669217186"
 Q1427976	P625	@19.123259/80.517858	S248	Q936	S854	"https://www.openstreetmap.org/relation/2123530"
@@ -2153,15 +2158,6 @@ Q6746838	P625	@32.243787/77.124095	S248	Q936	S854	"https://www.openstreetmap.org
 Q6959133	P625	@21.290143/80.064214	S248	Q936	S854	"https://www.openstreetmap.org/way/670043200"
 Q6982793	P625	@26.614511/80.657823	S248	Q936	S854	"https://www.openstreetmap.org/relation/8452444"
 Q7180496	P625	@18.408330/72.966196	S248	Q936	S854	"https://www.openstreetmap.org/way/670197606"
-Q880724	P625	@22.043654/72.053189	S248	Q936	S854	"https://www.openstreetmap.org/way/143357444"
-Q969593	P625	@17.420444/78.420298	S248	Q936	S854	"https://www.openstreetmap.org/way/28268610"
-Q130974238	P625	@25.764852/85.552952	S248	Q936	S854	"https://www.openstreetmap.org/way/668838321"
-Q135012839	P625	@13.169071/92.795173	S248	Q936	S854	"https://www.openstreetmap.org/way/227814013"
-Q135798492	P625	@30.227151/75.884003	S248	Q936	S854	"https://www.openstreetmap.org/way/202540707"
-Q1858071	P625	@24.618780/79.940624	S248	Q936	S854	"https://www.openstreetmap.org/way/160695615"
-Q2226064	P625	@11.645353/77.103914	S248	Q936	S854	"https://www.openstreetmap.org/relation/4192204"
-Q2928293	P625	@26.531273/92.703495	S248	Q936	S854	"https://www.openstreetmap.org/way/178119226"
-Q2985156	P625	@30.386802/77.536994	S248	Q936	S854	"https://www.openstreetmap.org/way/666664869"
 Q7293023	P625	@14.673256/75.655866	S248	Q936	S854	"https://www.openstreetmap.org/relation/9446246"
 Q7399055	P625	@17.144327/74.369410	S248	Q936	S854	"https://www.openstreetmap.org/way/265054632"
 Q7402708	P625	@22.008869/88.821398	S248	Q936	S854	"https://www.openstreetmap.org/relation/13617704"
@@ -2186,6 +2182,16 @@ Q17082192	P625	@27.528140/78.313236	S248	Q936	S854	"https://www.openstreetmap.or
 Q19895392	P625	@18.955512/79.868868	S248	Q936	S854	"https://www.openstreetmap.org/relation/9331660"
 Q19895529	P625	@20.932065/73.617589	S248	Q936	S854	"https://www.openstreetmap.org/way/669197063"
 Q22080908	P625	@30.438783/77.504454	S248	Q936	S854	"https://www.openstreetmap.org/way/666725799"
+Q880724	P625	@22.043654/72.053189	S248	Q936	S854	"https://www.openstreetmap.org/way/143357444"
+Q969593	P625	@17.420444/78.420298	S248	Q936	S854	"https://www.openstreetmap.org/way/28268610"
+Q2928293	P625	@26.531273/92.703495	S248	Q936	S854	"https://www.openstreetmap.org/way/178119226"
+Q2985156	P625	@30.386802/77.536994	S248	Q936	S854	"https://www.openstreetmap.org/way/666664869"
+Q14623377	P625	@27.110693/94.623635	S248	Q936	S854	"https://www.openstreetmap.org/way/677511689"
+Q15198953	P625	@25.110175/86.393907	S248	Q936	S854	"https://www.openstreetmap.org/way/668864873"
+Q15232550	P625	@24.747823/83.677464	S248	Q936	S854	"https://www.openstreetmap.org/way/668769113"
+Q15233552	P625	@9.359787/78.478932	S248	Q936	S854	"https://www.openstreetmap.org/way/671207570"
+Q15276427	P625	@27.112738/92.488599	S248	Q936	S854	"https://www.openstreetmap.org/way/677464198"
+Q15723901	P625	@21.415438/86.611469	S248	Q936	S854	"https://www.openstreetmap.org/way/669795314"
 Q107313635	P625	@27.161330/93.629864	S248	Q936	S854	"https://www.openstreetmap.org/way/677458098"
 Q60744029	P625	@13.806470/74.851166	S248	Q936	S854	"https://www.openstreetmap.org/way/670548929"
 Q61363881	P625	@25.872324/91.777413	S248	Q936	S854	"https://www.openstreetmap.org/way/666517430"
@@ -2206,12 +2212,6 @@ Q131123428	P625	@10.237782/77.502280	S248	Q936	S854	"https://www.openstreetmap.o
 Q131939336	P625	@21.515624/70.540125	S248	Q936	S854	"https://www.openstreetmap.org/relation/9078468"
 Q132068974	P625	@25.301730/78.619419	S248	Q936	S854	"https://www.openstreetmap.org/way/680764132"
 Q132126728	P625	@24.469302/82.088294	S248	Q936	S854	"https://www.openstreetmap.org/way/669274355"
-Q14623377	P625	@27.110693/94.623635	S248	Q936	S854	"https://www.openstreetmap.org/way/677511689"
-Q15198953	P625	@25.110175/86.393907	S248	Q936	S854	"https://www.openstreetmap.org/way/668864873"
-Q15232550	P625	@24.747823/83.677464	S248	Q936	S854	"https://www.openstreetmap.org/way/668769113"
-Q15233552	P625	@9.359787/78.478932	S248	Q936	S854	"https://www.openstreetmap.org/way/671207570"
-Q15276427	P625	@27.112738/92.488599	S248	Q936	S854	"https://www.openstreetmap.org/way/677464198"
-Q15723901	P625	@21.415438/86.611469	S248	Q936	S854	"https://www.openstreetmap.org/way/669795314"
 Q24906034	P625	@14.405992/79.303762	S248	Q936	S854	"https://www.openstreetmap.org/way/671119721"
 Q28174315	P625	@20.667757/85.814142	S248	Q936	S854	"https://www.openstreetmap.org/way/669764918"
 Q31708100	P625	@11.894606/75.904085	S248	Q936	S854	"https://www.openstreetmap.org/way/677210306"
@@ -2236,22 +2236,22 @@ Matched pair (by id) whose names score below 0.5 similarity -- the id link may i
 | Q2731635 | Gaga Wildlife Sanctuary | https://www.openstreetmap.org/relation/9282949 | Gaga (Great Indian Bustard) WLS | osm-wikidata-tag | 0.16 |
 | Q5070917 | Chandaka Elephant Sanctuary | https://www.openstreetmap.org/way/669747799 |  | osm-wikidata-tag | 0.00 |
 | Q6750402 | Manjira Wildlife Sanctuary | https://www.openstreetmap.org/way/670962706 | Manjeera Crocodile WLS | osm-wikidata-tag | 0.33 |
-| Q880724 | Blackbuck National Park | https://www.openstreetmap.org/way/143357444 | Blackbuck National Park Velavadar | osm-wikidata-tag | 0.47 |
-| Q7499351 | Shivaram Wildlife Sanctuary | https://www.openstreetmap.org/way/670977220 | Lanja Madugu Siwaram WLS | osm-wikidata-tag | 0.25 |
 | Q7531584 | Sita Mata Wildlife Sanctuary | https://www.openstreetmap.org/way/667134094 |  | osm-wikidata-tag | 0.00 |
 | Q7901902 | Ushakothi Wildlife Sanctuary | https://www.openstreetmap.org/way/669809270 | Badrama WLS | osm-wikidata-tag | 0.11 |
 | Q12988826 | Vallanadu Wildlife Sanctuary | https://www.openstreetmap.org/way/671212129 | Vallanadu Blackbuck WLS | osm-wikidata-tag | 0.47 |
 | Q19361617 | Amchang Wildlife Sanctuary | https://www.openstreetmap.org/relation/9447819 |  | osm-wikidata-tag | 0.00 |
+| Q880724 | Blackbuck National Park | https://www.openstreetmap.org/way/143357444 | Blackbuck National Park Velavadar | osm-wikidata-tag | 0.47 |
+| Q7499351 | Shivaram Wildlife Sanctuary | https://www.openstreetmap.org/way/670977220 | Lanja Madugu Siwaram WLS | osm-wikidata-tag | 0.25 |
+| Q15650265 | Nalbana Bird Sanctuary | https://www.openstreetmap.org/way/86140211 | Chilikha (Nalabana) WLS | osm-wikidata-tag | 0.41 |
 | Q85846882 | Pant Wildlife Sanctuary | https://www.openstreetmap.org/way/668763979 | Pant (Rajgir) WLS | osm-wikidata-tag | 0.36 |
+| Q137254449 | Baltal Thajwas Wildlife Sanctuary | https://www.openstreetmap.org/way/676588330 | Thajwas - Baltal Wildlife Sanctuary | osm-wikidata-tag | 0.29 |
+| Q137699192 | Surha Tal Bird Sanctuary | https://www.openstreetmap.org/way/668732919 | Jai Prakash Narayan (Surhatal) Bird WLS | osm-wikidata-tag | 0.21 |
 | Q112252433 | Rangayyanadurga Four–horned antelope Wildlife Sanctuary | https://www.openstreetmap.org/relation/9447282 | Rangayyanadurga WLS | osm-wikidata-tag | 0.42 |
 | Q125881460 | Mansar-Surinsar Wildlife sanctuary | https://www.openstreetmap.org/way/668486755 | Surinsar Mansar WLS | osm-wikidata-tag | 0.47 |
 | Q130974349 | Badalkhol Wildlife Sanctuary | https://www.openstreetmap.org/way/669633370 |  | osm-wikidata-tag | 0.00 |
 | Q130974367 | Gomardha Wildlife Sanctuary | https://www.openstreetmap.org/way/669576115 | Sarangarh-Gomardha WLS | osm-wikidata-tag | 0.44 |
 | Q130974386 | Pamed Wildlife Sanctuary | https://www.openstreetmap.org/way/669572140 | Pamed Wild Buffalo WLS | osm-wikidata-tag | 0.28 |
 | Q130974396 | Semarsot Wildlife Sanctuary | https://www.openstreetmap.org/way/669578162 |  | osm-wikidata-tag | 0.00 |
-| Q137254449 | Baltal Thajwas Wildlife Sanctuary | https://www.openstreetmap.org/way/676588330 | Thajwas - Baltal Wildlife Sanctuary | osm-wikidata-tag | 0.29 |
-| Q137699192 | Surha Tal Bird Sanctuary | https://www.openstreetmap.org/way/668732919 | Jai Prakash Narayan (Surhatal) Bird WLS | osm-wikidata-tag | 0.21 |
-| Q15650265 | Nalbana Bird Sanctuary | https://www.openstreetmap.org/way/86140211 | Chilikha (Nalabana) WLS | osm-wikidata-tag | 0.41 |
 | Q135483626 | Panpatha Wildlife Sanctuary | https://www.openstreetmap.org/relation/15695895 |  | osm-wikidata-tag | 0.00 |
 
 <details>
@@ -2515,7 +2515,7 @@ The notification's name+state matched more than one distinct Wikidata item exact
 | --- | --- | --- | --- | --- |
 | Mehao Wildlife Sanctuary; Mehao WLS | Q16895017 | Mehao Wildlife Sanctuary | Q107324541 | Mehao Wildlife Sanctuary |
 | Marine National Park; Marine Sanctuary | Q2724481 | Marine National Park, Gulf of Kutch | Q60398704 | Marine Sanctuary (Gulf of Kutch) |
-| Thol Wildlife Sanctuary | Q7786671 | Thol Lake | Q7786672 | Thol Wildlife Sanctuary |
+| Thol Wildlife Sanctuary | Q7786672 | Thol Wildlife Sanctuary | Q7786671 | Thol Lake |
 | Khijadia Wildlife Sanctuary | Q2730580 | Khijadiya Bird Sanctuary | Q105944439 | Khijadia Bird Sanctuary |
 | Dandeli Wildlife Sanctuary | Q5215675 | Anshi National Park | Q5215676 | Dandeli Wildlife Sanctuary |
 | Shendurney Wildlife Sanctuary; Shendurney WLS | Q7494223 | Shendurney Wildlife Sanctuary | Q26794312 | Shendurney Wildlife Reserve |
