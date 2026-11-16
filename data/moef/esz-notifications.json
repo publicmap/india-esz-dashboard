@@ -5066,6 +5066,22 @@
     "notificationArchiveLink": "https://archive.org/details/in.gazette.central.e.2025-07-02.264338"
   },
   {
+    "moefSNo": 20,
+    "state": "Assam",
+    "protectedAreaName": "Bherjan-Borjan-Padumoni WLS Assam",
+    "protectedAreaType": "Wildlife Sanctuary",
+    "notificationStatus": "Draft",
+    "notificationDate": "2026-10-29",
+    "notificationSummary": "20.S.O. 5910(E) [29.10.2026] Draft of Eco-sensitive Zone around Bherjan-Borajan-Padumoni Wildlife Sanctuary Bherjan-Borjan-Padumoni WLS Assam in the state of Assam. (4.64 MB)",
+    "notificationPdfLink": "https://moef.gov.in/uploads/pdf-uploads/pdf_6af6a85a56ccb0.84745582.pdf",
+    "maps": [],
+    "notificationUploadDate": null,
+    "orderNumber": "S.O. 5910(E)",
+    "wikidataId": "Q14623369",
+    "matchConfidence": "fuzzy",
+    "notificationArchiveLink": null
+  },
+  {
     "moefSNo": 1,
     "state": "Bihar",
     "protectedAreaName": "Baraila Lake Salim Ali Jubba Sahni Bird Sanctuary",
@@ -5784,6 +5800,22 @@
     "wikidataId": "Q4673468",
     "matchConfidence": "exact",
     "notificationArchiveLink": "https://archive.org/details/in.gazette.central.e.2019-10-10.213250"
+  },
+  {
+    "moefSNo": 10,
+    "state": "Chhattisgarh",
+    "protectedAreaName": "Badalkhol WLS Chhatisgarh",
+    "protectedAreaType": "Wildlife Sanctuary",
+    "notificationStatus": "Draft",
+    "notificationDate": "2026-10-29",
+    "notificationSummary": "10. S.O. 5909(E) [29.10.2026] Draft of Eco-sensitive Zone around Badalkhol Wildlife Sanctuary Badalkhol WLS Chhatisgarh(3.94 MB) Chhattisgarh.",
+    "notificationPdfLink": "https://moef.gov.in/uploads/pdf-uploads/pdf_6af6a838a861c6.68263168.pdf",
+    "maps": [],
+    "notificationUploadDate": null,
+    "orderNumber": "S.O. 5909(E)",
+    "wikidataId": null,
+    "matchConfidence": "none",
+    "notificationArchiveLink": null
   },
   {
     "moefSNo": 1,
@@ -20041,7 +20073,7 @@
     "protectedAreaType": "National Park",
     "notificationStatus": "Draft",
     "notificationDate": "2023-11-16",
-    "notificationSummary": "14. • S.O. No. 4952(E) [16.11.2023] Re-Draft Notification declaring Eco Sensitive Zone around Gorumara National Park, (1,539 KB) in the state of West BengalRe-notification New",
+    "notificationSummary": "14. S.O. No. 4952(E) [16.11.2023] Re-Draft Notification declaring Eco Sensitive Zone around Gorumara National Park, (1,539 KB) in the state of West BengalRe-notification New",
     "notificationPdfLink": "https://moef.gov.in/uploads/2023/11/SO4952(E)-gorumara-redraft.pdf",
     "maps": [],
     "notificationUploadDate": "28/11/2023",
@@ -20057,7 +20089,7 @@
     "protectedAreaType": "Wildlife Sanctuary",
     "notificationStatus": "Draft",
     "notificationDate": "2024-10-28",
-    "notificationSummary": "15. • S.O. No. 4761(E) [28.10.2024] Draft Notification of Eco-sensitive Zone around Halliday Island Wildlife Sanctuary, (526 KB) in the state of West Bengal",
+    "notificationSummary": "15. S.O. No. 4761(E) [28.10.2024] Draft Notification of Eco-sensitive Zone around Halliday Island Wildlife Sanctuary, (526 KB) in the state of West Bengal",
     "notificationPdfLink": "https://moef.gov.in/uploads/pdf-uploads/pdf_6778d4d94481a3.20962475.pdf",
     "maps": [],
     "notificationUploadDate": "05/11/2024",
@@ -20073,7 +20105,7 @@
     "protectedAreaType": "Wildlife Sanctuary",
     "notificationStatus": "Draft",
     "notificationDate": "2024-12-30",
-    "notificationSummary": "16. •S.O. No. 5638(E) [30.12.2024] Draft Notification of Eco-sensitive Zone around Lothain Island Wildlife Sanctuary, (501 KB) in the state of West Bengal",
+    "notificationSummary": "16. S.O. No. 5638(E) [30.12.2024] Draft Notification of Eco-sensitive Zone around Lothain Island Wildlife Sanctuary, (501 KB) in the state of West Bengal",
     "notificationPdfLink": "https://moef.gov.in/uploads/pdf-uploads/pdf_6778d4f86d8715.38725123.pdf",
     "maps": [],
     "notificationUploadDate": "02/01/2025",
@@ -20081,5 +20113,21 @@
     "wikidataId": "Q6684762",
     "matchConfidence": "fuzzy",
     "notificationArchiveLink": "https://archive.org/details/in.gazette.central.e.2024-12-30.259802"
+  },
+  {
+    "moefSNo": 17,
+    "state": "West Bengal",
+    "protectedAreaName": "Mahananda Draft Notification",
+    "protectedAreaType": "Wildlife Sanctuary",
+    "notificationStatus": "Draft",
+    "notificationDate": "2026-10-27",
+    "notificationSummary": "17. S.O. No. 5816(E) [27.10.2026] Draft of Eco-sensitive Zone around Mahananda Wildlife Sanctuary Mahananda Draft Notification(3.14 MB) in the state of West Bengal",
+    "notificationPdfLink": "https://moef.gov.in/uploads/pdf-uploads/pdf_6af6a814431c38.03826611.pdf",
+    "maps": [],
+    "notificationUploadDate": null,
+    "orderNumber": "S.O. No. 5816(E)",
+    "wikidataId": null,
+    "matchConfidence": "none",
+    "notificationArchiveLink": null
   }
 ]
