@@ -7,7 +7,7 @@
   "type": "Manifest",
   "label": {
     "en": [
-      "DRAFT NOTIFICATION ESZ AROUND GREAT HIMALAYAN NATIONAL PARK HIMACHAL PRADESH"
+      "Great Himalayan National Park – ESZ notification"
     ]
   },
   "summary": {
@@ -36,43 +36,55 @@
       },
       "value": {
         "en": [
-          "23 April 2026"
+          "2026-04-23"
         ]
       }
     },
     {
       "label": {
         "en": [
-          "Gazette ID"
+          "Order number"
         ]
       },
       "value": {
         "en": [
-          "CG-DL-E-29042026-272139"
+          "S.O. 2052(E)"
         ]
       }
     },
     {
       "label": {
         "en": [
-          "Ministry"
+          "Status"
         ]
       },
       "value": {
         "en": [
-          "Ministry of Environment, Forest and Climate Change"
+          "Draft"
         ]
       }
     },
     {
       "label": {
         "en": [
-          "Original PDF"
+          "State"
         ]
       },
       "value": {
         "en": [
-          "<a href=\"https://egazette.gov.in/WriteReadData/2026/272139.pdf\">https://egazette.gov.in/WriteReadData/2026/272139.pdf</a>"
+          "Himachal Pradesh"
+        ]
+      }
+    },
+    {
+      "label": {
+        "en": [
+          "MoEFCC PDF"
+        ]
+      },
+      "value": {
+        "en": [
+          "<a href=\"https://moef.gov.in/uploads/pdf-uploads/pdf_6ac8782e5df210.00181482.pdf\">https://moef.gov.in/uploads/pdf-uploads/pdf_6ac8782e5df210.00181482.pdf</a>"
         ]
       }
     },

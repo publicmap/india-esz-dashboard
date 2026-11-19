@@ -1,0 +1,423 @@
+{
+  "@context": [
+    "http://iiif.io/api/extension/georef/1/context.json",
+    "http://iiif.io/api/presentation/3/context.json"
+  ],
+  "id": "https://publicmap.github.io/india-esz-dashboard/data/gazette-maps/manifests/in.gazette.central.e.2019-09-11.212461.json",
+  "type": "Manifest",
+  "label": {
+    "en": [
+      "Tungareshwar Sanctuary – ESZ notification"
+    ]
+  },
+  "summary": {
+    "en": [
+      "1 map image(s), 1 georeferenced with Allmaps."
+    ]
+  },
+  "metadata": [
+    {
+      "label": {
+        "en": [
+          "Gazette"
+        ]
+      },
+      "value": {
+        "en": [
+          "<a href=\"https://egazette.servantsofknowledge.in/details/in.gazette.central.e.2019-09-11.212461/\">in.gazette.central.e.2019-09-11.212461</a>"
+        ]
+      }
+    },
+    {
+      "label": {
+        "en": [
+          "Published"
+        ]
+      },
+      "value": {
+        "en": [
+          "2019-09-11"
+        ]
+      }
+    },
+    {
+      "label": {
+        "en": [
+          "Order number"
+        ]
+      },
+      "value": {
+        "en": [
+          "S.O. 3250(E)"
+        ]
+      }
+    },
+    {
+      "label": {
+        "en": [
+          "Status"
+        ]
+      },
+      "value": {
+        "en": [
+          "Final"
+        ]
+      }
+    },
+    {
+      "label": {
+        "en": [
+          "State"
+        ]
+      },
+      "value": {
+        "en": [
+          "Maharashtra"
+        ]
+      }
+    },
+    {
+      "label": {
+        "en": [
+          "MoEFCC PDF"
+        ]
+      },
+      "value": {
+        "en": [
+          "<a href=\"https://moef.gov.in/uploads/2018/12/tungareshwar.pdf\">https://moef.gov.in/uploads/2018/12/tungareshwar.pdf</a>"
+        ]
+      }
+    },
+    {
+      "label": {
+        "en": [
+          "Archive.org"
+        ]
+      },
+      "value": {
+        "en": [
+          "<a href=\"https://archive.org/details/in.gazette.central.e.2019-09-11.212461\">https://archive.org/details/in.gazette.central.e.2019-09-11.212461</a>"
+        ]
+      }
+    }
+  ],
+  "requiredStatement": {
+    "label": {
+      "en": [
+        "Attribution"
+      ]
+    },
+    "value": {
+      "en": [
+        "Gazette of India (MoEFCC). Images via <a href=\"https://egazette.servantsofknowledge.in/\">Servants of Knowledge</a> and <a href=\"https://archive.org\">archive.org</a>; georeferencing via <a href=\"https://allmaps.org\">Allmaps</a>."
+      ]
+    }
+  },
+  "homepage": [
+    {
+      "id": "https://egazette.servantsofknowledge.in/details/in.gazette.central.e.2019-09-11.212461/",
+      "type": "Text",
+      "label": {
+        "en": [
+          "Gazette text (Servants of Knowledge)"
+        ]
+      },
+      "format": "text/html"
+    }
+  ],
+  "seeAlso": [
+    {
+      "id": "https://iiif.archive.org/iiif/in.gazette.central.e.2019-09-11.212461/manifest.json",
+      "type": "Manifest",
+      "format": "application/ld+json",
+      "profile": "https://iiif.io/api/presentation/3/context.json"
+    }
+  ],
+  "partOf": [
+    {
+      "id": "https://publicmap.github.io/india-esz-dashboard/data/gazette-maps/collection.json",
+      "type": "Collection"
+    }
+  ],
+  "items": [
+    {
+      "id": "https://publicmap.github.io/india-esz-dashboard/data/gazette-maps/manifests/in.gazette.central.e.2019-09-11.212461/archive-43-0/canvas",
+      "type": "Canvas",
+      "label": {
+        "en": [
+          "Page 44 (page scan)"
+        ]
+      },
+      "width": 2550,
+      "height": 3301,
+      "metadata": [
+        {
+          "label": {
+            "en": [
+              "Page"
+            ]
+          },
+          "value": {
+            "en": [
+              "44"
+            ]
+          }
+        },
+        {
+          "label": {
+            "en": [
+              "Image source"
+            ]
+          },
+          "value": {
+            "en": [
+              "Page scan (archive.org)"
+            ]
+          }
+        },
+        {
+          "label": {
+            "en": [
+              "Georeferenced"
+            ]
+          },
+          "value": {
+            "en": [
+              "<a href=\"https://annotations.allmaps.org/maps/c588af7ad389ae96\">Allmaps</a>"
+            ]
+          }
+        }
+      ],
+      "thumbnail": [
+        {
+          "id": "https://iiif.archive.org/image/iiif/3/in.gazette.central.e.2019-09-11.212461%2F212461_jp2.zip%2F212461_jp2%2F212461_0043.jp2/full/400,/0/default.jpg",
+          "type": "Image",
+          "format": "image/jpeg"
+        }
+      ],
+      "partOf": [
+        {
+          "id": "https://iiif.archive.org/iiif/in.gazette.central.e.2019-09-11.212461/manifest.json",
+          "type": "Manifest"
+        }
+      ],
+      "items": [
+        {
+          "id": "https://publicmap.github.io/india-esz-dashboard/data/gazette-maps/manifests/in.gazette.central.e.2019-09-11.212461/archive-43-0/page",
+          "type": "AnnotationPage",
+          "items": [
+            {
+              "id": "https://publicmap.github.io/india-esz-dashboard/data/gazette-maps/manifests/in.gazette.central.e.2019-09-11.212461/archive-43-0/painting",
+              "type": "Annotation",
+              "motivation": "painting",
+              "body": {
+                "format": "image/jpeg",
+                "id": "https://iiif.archive.org/image/iiif/3/in.gazette.central.e.2019-09-11.212461%2F212461_jp2.zip%2F212461_jp2%2F212461_0043.jp2/full/max/0/default.jpg",
+                "service": [
+                  {
+                    "id": "https://iiif.archive.org/image/iiif/3/in.gazette.central.e.2019-09-11.212461%2F212461_jp2.zip%2F212461_jp2%2F212461_0043.jp2",
+                    "profile": "level2",
+                    "type": "ImageService3"
+                  }
+                ],
+                "type": "Image"
+              },
+              "target": "https://publicmap.github.io/india-esz-dashboard/data/gazette-maps/manifests/in.gazette.central.e.2019-09-11.212461/archive-43-0/canvas"
+            }
+          ]
+        }
+      ],
+      "annotations": [
+        {
+          "id": "https://publicmap.github.io/india-esz-dashboard/data/gazette-maps/manifests/in.gazette.central.e.2019-09-11.212461/archive-43-0/georeferencing",
+          "type": "AnnotationPage",
+          "items": [
+            {
+              "id": "https://annotations.allmaps.org/maps/c588af7ad389ae96",
+              "type": "Annotation",
+              "created": "2026-10-27T09:12:30.625Z",
+              "modified": "2026-10-27T09:12:30.625Z",
+              "motivation": "georeferencing",
+              "target": {
+                "type": "SpecificResource",
+                "source": {
+                  "id": "https://iiif.archive.org/image/iiif/3/in.gazette.central.e.2019-09-11.212461%2F212461_jp2.zip%2F212461_jp2%2F212461_0043.jp2",
+                  "type": "ImageService3",
+                  "height": 3301,
+                  "width": 2550,
+                  "partOf": [
+                    {
+                      "id": "https://iiif.archive.org/iiif/in.gazette.central.e.2019-09-11.212461$43/canvas",
+                      "type": "Canvas",
+                      "label": {
+                        "none": [
+                          "43"
+                        ]
+                      },
+                      "partOf": [
+                        {
+                          "id": "https://iiif.archive.org/iiif/in.gazette.central.e.2019-09-11.212461/manifest.json",
+                          "type": "Manifest",
+                          "label": {
+                            "none": [
+                              "Gazette of India - Extraordinary, 2019-09-11, Part II-Section 3-Sub-Section(ii)"
+                            ]
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "id": "https://publicmap.github.io/india-esz-dashboard/data/iiif-manifest.json/canvas/6",
+                      "type": "Canvas",
+                      "label": {
+                        "en": [
+                          "Tungareshwar Wildlife Sanctuary (2019-09-11)"
+                        ]
+                      },
+                      "partOf": []
+                    }
+                  ]
+                },
+                "selector": {
+                  "type": "SvgSelector",
+                  "value": "<svg width=\"2550\" height=\"3301\"><polygon points=\"0,0 0,3301 2550,3301 2550,0\" /></svg>"
+                }
+              },
+              "body": {
+                "type": "FeatureCollection",
+                "transformation": {
+                  "type": "polynomial",
+                  "options": {
+                    "order": 1
+                  }
+                },
+                "features": [
+                  {
+                    "type": "Feature",
+                    "properties": {
+                      "resourceCoords": [
+                        1567,
+                        1896
+                      ]
+                    },
+                    "geometry": {
+                      "type": "Point",
+                      "coordinates": [
+                        72.98519648331092,
+                        19.30229701997267
+                      ]
+                    }
+                  },
+                  {
+                    "type": "Feature",
+                    "properties": {
+                      "resourceCoords": [
+                        860,
+                        1013
+                      ]
+                    },
+                    "geometry": {
+                      "type": "Point",
+                      "coordinates": [
+                        72.84307657191792,
+                        19.50419683191396
+                      ]
+                    }
+                  },
+                  {
+                    "type": "Feature",
+                    "properties": {
+                      "resourceCoords": [
+                        901,
+                        1819
+                      ]
+                    },
+                    "geometry": {
+                      "type": "Point",
+                      "coordinates": [
+                        72.85258510262432,
+                        19.3182459784947
+                      ]
+                    }
+                  },
+                  {
+                    "type": "Feature",
+                    "properties": {
+                      "resourceCoords": [
+                        1421,
+                        1830
+                      ]
+                    },
+                    "geometry": {
+                      "type": "Point",
+                      "coordinates": [
+                        72.95740086903044,
+                        19.32060735898068
+                      ]
+                    }
+                  },
+                  {
+                    "type": "Feature",
+                    "properties": {
+                      "resourceCoords": [
+                        1418,
+                        1829
+                      ]
+                    },
+                    "geometry": {
+                      "type": "Point",
+                      "coordinates": [
+                        72.95485622642673,
+                        19.318629775810336
+                      ]
+                    }
+                  },
+                  {
+                    "type": "Feature",
+                    "properties": {
+                      "resourceCoords": [
+                        1420,
+                        1840
+                      ]
+                    },
+                    "geometry": {
+                      "type": "Point",
+                      "coordinates": [
+                        72.95627823057208,
+                        19.326257468896586
+                      ]
+                    }
+                  }
+                ],
+                "_allmaps": {
+                  "id": "https://annotations.allmaps.org/maps/c588af7ad389ae96",
+                  "version": "https://annotations.allmaps.org/maps/c588af7ad389ae96@7595eecc534e6b8b",
+                  "image": {
+                    "id": "https://annotations.allmaps.org/images/c6acd7b89670a8ca",
+                    "version": "https://annotations.allmaps.org/images/c6acd7b89670a8ca@f3b13a1f6983810a",
+                    "canvases": [
+                      {
+                        "id": "https://annotations.allmaps.org/canvases/163bdca8a588b187",
+                        "manifests": [
+                          {
+                            "id": "https://annotations.allmaps.org/manifests/eb254ec3832ee15a"
+                          }
+                        ]
+                      },
+                      {
+                        "id": "https://annotations.allmaps.org/canvases/c1ccedf8812f7033",
+                        "manifests": []
+                      }
+                    ]
+                  },
+                  "scale": 0.043277,
+                  "area": 4494300104.92
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

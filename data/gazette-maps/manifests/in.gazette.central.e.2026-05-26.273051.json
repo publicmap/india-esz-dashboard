@@ -7,7 +7,7 @@
   "type": "Manifest",
   "label": {
     "en": [
-      "DRAFT NOTIFICATION ESZ AROUND SOHELWA WLS UTTAR PRADESH"
+      "Sohelwa Wildlife Sanctuary – ESZ notification"
     ]
   },
   "summary": {
@@ -36,43 +36,55 @@
       },
       "value": {
         "en": [
-          "26 May 2026"
+          "2026-05-26"
         ]
       }
     },
     {
       "label": {
         "en": [
-          "Gazette ID"
+          "Order number"
         ]
       },
       "value": {
         "en": [
-          "CG-DL-E-01062026-273051"
+          "S.O. 2659(E)"
         ]
       }
     },
     {
       "label": {
         "en": [
-          "Ministry"
+          "Status"
         ]
       },
       "value": {
         "en": [
-          "Ministry of Environment, Forest and Climate Change"
+          "Draft"
         ]
       }
     },
     {
       "label": {
         "en": [
-          "Original PDF"
+          "State"
         ]
       },
       "value": {
         "en": [
-          "<a href=\"https://egazette.gov.in/WriteReadData/2026/273051.pdf\">https://egazette.gov.in/WriteReadData/2026/273051.pdf</a>"
+          "Uttar Pradesh"
+        ]
+      }
+    },
+    {
+      "label": {
+        "en": [
+          "MoEFCC PDF"
+        ]
+      },
+      "value": {
+        "en": [
+          "<a href=\"https://moef.gov.in/uploads/pdf-uploads/pdf_6ac8c1acec57a5.65593154.pdf\">https://moef.gov.in/uploads/pdf-uploads/pdf_6ac8c1acec57a5.65593154.pdf</a>"
         ]
       }
     },

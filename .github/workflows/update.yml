@@ -38,6 +38,27 @@ jobs:
       - name: Link Gazette of India archive.org entries
         run: npm run enrich:archive
 
+      # Gazette IIIF manifests rarely change, so they're cached between runs.
+      # Allmaps georeferencing is always refetched.
+      - name: Restore gazette manifest cache
+        uses: actions/cache@v4
+        with:
+          path: .cache/gazettes
+          key: gazettes-${{ github.run_id }}
+          restore-keys: gazettes-
+
+      - name: Build gazette map IIIF collection and mosaic
+        run: npm run build:gazette-maps
+
+      - name: Install tippecanoe
+        run: |
+          git clone --depth 1 --branch 2.47.0 https://github.com/felt/tippecanoe.git /tmp/tippecanoe
+          make -C /tmp/tippecanoe -j"$(nproc)"
+          sudo make -C /tmp/tippecanoe install
+
+      - name: Build OSM protected areas GeoJSON and MBTiles
+        run: npm run build:osm-protected-areas
+
       - name: Build protected areas GeoJSON
         run: npm run build:geojson
 

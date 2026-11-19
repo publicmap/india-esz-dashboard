@@ -7,7 +7,7 @@
   "type": "Manifest",
   "label": {
     "en": [
-      "Draft Notification ESZ around Yordi Rabe Supse Wildlife Sanctuary Arunachal Pradesh"
+      "Yordi Rabe Supse Wildlife Sanctuary – ESZ notification"
     ]
   },
   "summary": {
@@ -36,43 +36,55 @@
       },
       "value": {
         "en": [
-          "15 July 2026"
+          "2026-07-15"
         ]
       }
     },
     {
       "label": {
         "en": [
-          "Gazette ID"
+          "Order number"
         ]
       },
       "value": {
         "en": [
-          "CG-DL-E-24072026-274748"
+          "S.O. 3895(E)"
         ]
       }
     },
     {
       "label": {
         "en": [
-          "Ministry"
+          "Status"
         ]
       },
       "value": {
         "en": [
-          "Ministry of Environment, Forest and Climate Change"
+          "Draft"
         ]
       }
     },
     {
       "label": {
         "en": [
-          "Original PDF"
+          "State"
         ]
       },
       "value": {
         "en": [
-          "<a href=\"https://egazette.gov.in/WriteReadData/2026/274748.pdf\">https://egazette.gov.in/WriteReadData/2026/274748.pdf</a>"
+          "Arunachal Pradesh"
+        ]
+      }
+    },
+    {
+      "label": {
+        "en": [
+          "MoEFCC PDF"
+        ]
+      },
+      "value": {
+        "en": [
+          "<a href=\"https://moef.gov.in/uploads/pdf-uploads/pdf_6ac72eaced63c2.42359428.pdf\">https://moef.gov.in/uploads/pdf-uploads/pdf_6ac72eaced63c2.42359428.pdf</a>"
         ]
       }
     },

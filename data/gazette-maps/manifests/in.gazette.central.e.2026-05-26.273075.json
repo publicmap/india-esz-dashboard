@@ -7,7 +7,7 @@
   "type": "Manifest",
   "label": {
     "en": [
-      "DRAFT NOTIFICATION ESZ AROUND CHIMMONY WILDLIFE SANCTUARY KERALA"
+      "Chimmony Wildlife Sanctuary – ESZ notification"
     ]
   },
   "summary": {
@@ -36,43 +36,55 @@
       },
       "value": {
         "en": [
-          "26 May 2026"
+          "2026-05-26"
         ]
       }
     },
     {
       "label": {
         "en": [
-          "Gazette ID"
+          "Order number"
         ]
       },
       "value": {
         "en": [
-          "CG-DL-E-02062026-273075"
+          "S.O. 2654(E)"
         ]
       }
     },
     {
       "label": {
         "en": [
-          "Ministry"
+          "Status"
         ]
       },
       "value": {
         "en": [
-          "Ministry of Environment, Forest and Climate Change"
+          "Draft"
         ]
       }
     },
     {
       "label": {
         "en": [
-          "Original PDF"
+          "State"
         ]
       },
       "value": {
         "en": [
-          "<a href=\"https://egazette.gov.in/WriteReadData/2026/273075.pdf\">https://egazette.gov.in/WriteReadData/2026/273075.pdf</a>"
+          "Kerala"
+        ]
+      }
+    },
+    {
+      "label": {
+        "en": [
+          "MoEFCC PDF"
+        ]
+      },
+      "value": {
+        "en": [
+          "<a href=\"https://moef.gov.in/uploads/pdf-uploads/pdf_6ac8b9a74e98a9.06923628.pdf\">https://moef.gov.in/uploads/pdf-uploads/pdf_6ac8b9a74e98a9.06923628.pdf</a>"
         ]
       }
     },

@@ -1,0 +1,222 @@
+{
+  "gazette": "in.gazette.central.e.2024-11-29.259220",
+  "source": "https://egazette.servantsofknowledge.in/details/in.gazette.central.e.2024-11-29.259220/",
+  "tables": [
+    {
+      "annexure": "I(B)",
+      "title": "Geo-coordinates of Anamalai Tiger Reserve",
+      "kind": "boundary",
+      "points": 12
+    },
+    {
+      "annexure": "II",
+      "title": "Geo-coordinates of Eco-Sensitive Zone prominent points",
+      "kind": "boundary",
+      "points": 68
+    },
+    {
+      "annexure": "IV(A)",
+      "title": "List of Village inside the ESZ with Geo- coordinates",
+      "kind": "villages",
+      "points": 181
+    }
+  ],
+  "maps": [
+    {
+      "name": "p14-i1",
+      "page": 14,
+      "georef": {}
+    },
+    {
+      "name": "p15-i1",
+      "page": 15,
+      "georef": {
+        "score": 0.5724017437348793,
+        "hit_fraction": 0.625,
+        "chance": 0.12300858456379815,
+        "color": "red",
+        "minutes": 4,
+        "lon0": 76.8666666666666,
+        "lat0": 10.600000000000003,
+        "median_px_error": 3.4811362003611004,
+        "color_scores": {
+          "red": 0.572,
+          "green": 0.066,
+          "magenta": 0.071
+        }
+      }
+    },
+    {
+      "name": "p16-i1",
+      "page": 16,
+      "georef": {
+        "score": 0.8221440608000362,
+        "hit_fraction": 0.85,
+        "chance": 0.1566207984128397,
+        "color": "yellow",
+        "minutes": 4,
+        "lon0": 76.79999999999994,
+        "lat0": 10.600000000000003,
+        "median_px_error": 0.5179388386604646,
+        "color_scores": {
+          "red": 0.429,
+          "orange": 0.658,
+          "yellow": 0.822,
+          "green": 0.374,
+          "magenta": 0.096
+        }
+      }
+    },
+    {
+      "name": "p17-i1",
+      "page": 17,
+      "georef": {
+        "score": 0.7211617838658768,
+        "hit_fraction": 0.7625,
+        "chance": 0.1482516159629967,
+        "color": "black",
+        "minutes": 4,
+        "lon0": 76.79999999999994,
+        "lat0": 10.600000000000003,
+        "median_px_error": 2.5754217639786683,
+        "color_scores": {
+          "red": 0.291,
+          "orange": 0.324,
+          "yellow": 0.135,
+          "green": 0.242,
+          "cyan": 0.155,
+          "magenta": 0.084,
+          "black": 0.721
+        }
+      }
+    },
+    {
+      "name": "p18-i1",
+      "page": 18,
+      "georef": {
+        "score": 0.9008518366101319,
+        "hit_fraction": 0.9125,
+        "chance": 0.11748239192354464,
+        "color": "black",
+        "minutes": 5,
+        "lon0": 76.74999999999993,
+        "lat0": 10.666666666666657,
+        "median_px_error": 0.7595435171240242,
+        "color_scores": {
+          "red": 0.657,
+          "orange": 0.138,
+          "yellow": 0.103,
+          "green": 0.133,
+          "cyan": 0.092,
+          "blue": 0.127,
+          "magenta": 0.334,
+          "black": 0.901
+        }
+      }
+    },
+    {
+      "name": "p42-i1",
+      "page": 42,
+      "georef": {}
+    },
+    {
+      "name": "p42-i2",
+      "page": 42,
+      "georef": {
+        "score": 0.49112634802289973,
+        "hit_fraction": 0.5375,
+        "chance": 0.09112999228183091,
+        "color": "red",
+        "minutes": 4,
+        "lon0": 76.79999999999994,
+        "lat0": 10.600000000000003,
+        "median_px_error": 3.7760705472401113,
+        "color_scores": {
+          "red": 0.491,
+          "orange": 0.476,
+          "green": 0.05,
+          "magenta": 0.035
+        }
+      }
+    },
+    {
+      "name": "p43-i2",
+      "page": 43,
+      "georef": {}
+    },
+    {
+      "name": "p44-i1",
+      "page": 44,
+      "georef": {
+        "score": 0.8857210051151438,
+        "hit_fraction": 0.9,
+        "chance": 0.12494855156228107,
+        "color": "black",
+        "minutes": 5,
+        "lon0": 76.74999999999993,
+        "lat0": 10.666666666666657,
+        "median_px_error": 0.8878994261262857,
+        "color_scores": {
+          "red": 0.618,
+          "orange": 0.115,
+          "yellow": 0.107,
+          "green": 0.173,
+          "cyan": 0.092,
+          "blue": 0.14,
+          "magenta": 0.372,
+          "black": 0.886
+        }
+      }
+    }
+  ],
+  "stated_areas": [
+    {
+      "context": "The Tiger Reserve extends over an area of 1,479.87 square kilometres",
+      "km2": 1479.87
+    },
+    {
+      "context": ", including 958.59 square kilometres",
+      "km2": 958.59
+    },
+    {
+      "context": "of core or critical tiger habitat and 521.28 square kilometres",
+      "km2": 521.28
+    },
+    {
+      "context": "AND WHEREAS, the erstwhile Coimbatore South Territorial Forest Division, comprising an extent of 958 square kilometres",
+      "km2": 958.0
+    },
+    {
+      "context": "In the year 1989, the Government of Tamil Nadu notified an extent of 108 square kilometres",
+      "km2": 108.0
+    },
+    {
+      "context": "A common notification for both the core and buffer zones of the Tiger Reserve, to an extent of 1,479.87 square kilometres",
+      "km2": 1479.87
+    },
+    {
+      "context": "00 km from its boundary, encompassing an area of 767.57 square kilometers",
+      "km2": 767.57
+    }
+  ],
+  "digitized_map": "p42-i2",
+  "zone_areas_km2": {
+    "buffer": 162.44,
+    "esz": 751.59,
+    "core": 945.53
+  },
+  "table_fit_m": {
+    "Annexure I(B)": {
+      "points": 12,
+      "median": 277,
+      "p90": 1122,
+      "within_250m": 0.42
+    },
+    "Annexure II": {
+      "points": 68,
+      "median": 198,
+      "p90": 910,
+      "within_250m": 0.57
+    }
+  }
+}

@@ -63,7 +63,7 @@ Standing Committee of NBWL for activities in protected areas and ESZ](https://cd
 
 ```
 npm install
-npm run update   # fetch -> parse -> clean -> enrich:osm -> enrich:wikidata -> enrich:archive -> enrich:allmaps -> build:geojson -> build:full-join -> build:atlas
+npm run update   # fetch -> parse -> clean -> enrich:osm -> enrich:wikidata -> enrich:archive -> enrich:allmaps -> build:gazette-maps -> build:osm-protected-areas -> build:geojson -> build:full-join -> build:atlas
 ```
 
 Runs weekly via `.github/workflows/update.yml`; the dashboard (`index.html`) is redeployed to GitHub Pages afterwards by `.github/workflows/pages.yml`. Enable Pages once under repo Settings &rarr; Pages &rarr; Source: "GitHub Actions".
@@ -81,12 +81,22 @@ pipeline:
 | 4 | `npm run enrich:wikidata` | `data/moef/esz-notifications.json`, live Wikidata SPARQL, `data/wikipedia/{national-parks,wildlife-sanctuaries,tiger-reserves}.json`, `data/osm/protected-areas.csv` (if present) | `data/wikidata/protected-areas.{csv,json}`, `data/wikidata/qa-log.md`, `data/moef/esz-notifications.{csv,json}` (+ `wikidataId`/`matchConfidence`), `data/enrichment-cache.csv` | Fetches the full Wikidata list of Indian protected areas; cross-references it against the three Wikipedia lists to correct outdated `protectedAreaType` categorization and add any protected area Wikipedia has that Wikidata doesn't (building `data/wikidata/protected-areas.json` as the master PA list); cross-references OSM boundaries by `wikidata` tag; links each MoEF notification to its master-list item |
 | 5 | `npm run enrich:archive` | `data/moef/esz-notifications.json`, archive.org search | `data/moef/esz-notifications.{csv,json}` (+ `notificationArchiveLink`), `data/enrichment-cache.csv` | Looks up each notification's official gazette scan on archive.org |
 | 6 | `npm run enrich:allmaps` | `data/enrichment-cache.csv` | `data/enrichment-cache.csv` (+ Allmaps fields) | Adds Allmaps IIIF georeferencing links for toposheet scans found in step 5 |
-| 7 | `npm run build:geojson` | `data/wikidata/protected-areas.json`, `data/moef/esz-notifications.json` | `data/protected-areas.geojson` | Builds the point-feature GeoJSON (PA location + ESZ status) |
-| 8 | `npm run build:full-join` | `data/wikidata/protected-areas.json`, `data/moef/esz-notifications.json` | `data/full-join.json` | Builds the full outer join of Wikidata PAs and MoEF notifications (keyed by `wikidataId`, falling back to state+name for unmatched records) with a precomputed representative notification per PA &mdash; the single file `index.html`/`assets/app.js` load to render the table and map |
-| 9 | `npm run build:atlas` | `data/protected-areas.geojson` | `data/amche-atlas.json` | Builds the [amche-atlas](https://github.com/publicmap/amche-atlas/blob/dev/docs/API.md) config (PA points + live OSM-relation boundary layers) |
+| 7 | `npm run build:gazette-maps` | `data/moef/esz-notifications.json`, Servants of Knowledge + archive.org IIIF manifests, Allmaps annotations API | `data/gazette-maps/collection.json`, `data/gazette-maps/manifests/<id>.json`, `data/gazette-maps/mosaic.json`, `data/gazette-maps/mosaic-annotations.json` | For each gazette matched in step 5, builds a IIIF manifest of its map images (images embedded in the PDF, plus page scans that have been georeferenced) with the Allmaps georeferencing embedded, a IIIF Collection of those manifests, and a mosaic of every georeferenced map to load as one layer |
+| 8 | `npm run build:osm-protected-areas` | Postpass (OSM) | `data/osm/india-protected-areas-all.{geojson,mbtiles}` | Downloads every OSM feature with `boundary=protected_area`, `boundary=national_park` or a `protect_class` tag in the India bbox, keeps those whose interior point is inside India, and tiles them with [tippecanoe](https://github.com/felt/tippecanoe) (must be installed) |
+| 9 | `npm run build:geojson` | `data/wikidata/protected-areas.json`, `data/moef/esz-notifications.json` | `data/protected-areas.geojson` | Builds the point-feature GeoJSON (PA location + ESZ status) |
+| 10 | `npm run build:full-join` | `data/wikidata/protected-areas.json`, `data/moef/esz-notifications.json` | `data/full-join.json` | Builds the full outer join of Wikidata PAs and MoEF notifications (keyed by `wikidataId`, falling back to state+name for unmatched records) with a precomputed representative notification per PA &mdash; the single file `index.html`/`assets/app.js` load to render the table and map |
+| 11 | `npm run build:atlas` | `data/protected-areas.geojson` | `data/amche-atlas.json` | Builds the [amche-atlas](https://github.com/publicmap/amche-atlas/blob/dev/docs/API.md) config (PA points + live OSM-relation boundary layers) |
 
 Steps 4–6 cache their lookups in `data/enrichment-cache.csv`, so re-running them after
-the first full run is fast — only new/changed notifications are re-fetched.
+the first full run is fast — only new/changed notifications are re-fetched. Step 7 caches the
+gazette IIIF manifests in `.cache/gazettes/` and reuses them; it always refetches Allmaps
+georeferencing. Run `npm run build:gazette-maps -- --refresh` now and then to re-download
+everything.
+
+The gazette text and images aren't part of the update. `npm run dump:gazettes` saves each
+matched gazette's OCR text (`ocr.txt`, from egazette.servantsofknowledge.in), its metadata
+and the map images embedded in its PDF to `.cache/gazettes/<id>/`. Use `--limit N`,
+`--ids a,b`, `--no-text`, `--no-images` or `--refresh` as needed.
 
 Outputs:
 - `data/moef/esz-notifications.{csv,json}` — one row per protected area per notification, with a `wikidataId` join key
@@ -98,6 +108,9 @@ Outputs:
 - `data/protected-areas.geojson` — PA point locations with ESZ status
 - `data/full-join.json` — full outer join of the two above, one entry per protected area with its notification history nested; this is what the dashboard actually loads (downloadable CSV/JSON/GeoJSON links on the page still point at the individual files above)
 - `data/amche-atlas.json` — custom [amche-atlas](https://github.com/publicmap/amche-atlas/blob/dev/docs/API.md) config (PA points + OSM-relation boundary layers)
+- `data/gazette-maps/collection.json` — IIIF Collection of one manifest per gazette (`data/gazette-maps/manifests/`), each listing that gazette's map images with Allmaps georeferencing embedded
+- `data/gazette-maps/mosaic.json` / `mosaic-annotations.json` — every georeferenced gazette map as a single layer: a IIIF Manifest for [Allmaps Viewer](https://viewer.allmaps.org/?url=https://publicmap.github.io/india-esz-dashboard/data/gazette-maps/mosaic.json), and an AnnotationPage for Allmaps' map plugins and tile server (`https://allmaps.xyz/{z}/{x}/{y}.png?url=https://publicmap.github.io/india-esz-dashboard/data/gazette-maps/mosaic-annotations.json`)
+- `data/osm/india-protected-areas-all.{geojson,mbtiles}` — every OSM protected area in India, all OSM tags as properties (layer `protected_areas` in the MBTiles)
 - `data/enrichment-cache.csv` — persistent cache of Wikidata/archive.org lookups so repeat runs are fast
 
 ### Digitizing boundaries from a gazette notification
