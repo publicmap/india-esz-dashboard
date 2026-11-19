@@ -1,0 +1,349 @@
+{
+  "@context": [
+    "http://iiif.io/api/extension/georef/1/context.json",
+    "http://iiif.io/api/presentation/3/context.json"
+  ],
+  "id": "https://publicmap.github.io/india-esz-dashboard/data/gazette-maps/manifests/in.gazette.central.e.2016-10-26.172405.json",
+  "type": "Manifest",
+  "label": {
+    "en": [
+      "The following draft of the notification which the Central Government proposes to issue in exercise of the powers conferred by sub section"
+    ]
+  },
+  "summary": {
+    "en": [
+      "1 map image(s), 1 georeferenced with Allmaps."
+    ]
+  },
+  "metadata": [
+    {
+      "label": {
+        "en": [
+          "Gazette"
+        ]
+      },
+      "value": {
+        "en": [
+          "<a href=\"https://egazette.servantsofknowledge.in/details/in.gazette.central.e.2016-10-26.172405/\">in.gazette.central.e.2016-10-26.172405</a>"
+        ]
+      }
+    },
+    {
+      "label": {
+        "en": [
+          "Published"
+        ]
+      },
+      "value": {
+        "en": [
+          "26 October 2016"
+        ]
+      }
+    },
+    {
+      "label": {
+        "en": [
+          "Gazette ID"
+        ]
+      },
+      "value": {
+        "en": [
+          "NOT available ( 172405 )"
+        ]
+      }
+    },
+    {
+      "label": {
+        "en": [
+          "Ministry"
+        ]
+      },
+      "value": {
+        "en": [
+          "Ministry of Environment, Forest and Climate Change"
+        ]
+      }
+    },
+    {
+      "label": {
+        "en": [
+          "Original PDF"
+        ]
+      },
+      "value": {
+        "en": [
+          "<a href=\"https://egazette.gov.in/WriteReadData/2016/172405.pdf\">https://egazette.gov.in/WriteReadData/2016/172405.pdf</a>"
+        ]
+      }
+    },
+    {
+      "label": {
+        "en": [
+          "Archive.org"
+        ]
+      },
+      "value": {
+        "en": [
+          "<a href=\"https://archive.org/details/in.gazette.central.e.2016-10-26.172405\">https://archive.org/details/in.gazette.central.e.2016-10-26.172405</a>"
+        ]
+      }
+    }
+  ],
+  "requiredStatement": {
+    "label": {
+      "en": [
+        "Attribution"
+      ]
+    },
+    "value": {
+      "en": [
+        "Gazette of India (MoEFCC). Images via <a href=\"https://egazette.servantsofknowledge.in/\">Servants of Knowledge</a> and <a href=\"https://archive.org\">archive.org</a>; georeferencing via <a href=\"https://allmaps.org\">Allmaps</a>."
+      ]
+    }
+  },
+  "homepage": [
+    {
+      "id": "https://egazette.servantsofknowledge.in/details/in.gazette.central.e.2016-10-26.172405/",
+      "type": "Text",
+      "label": {
+        "en": [
+          "Gazette text (Servants of Knowledge)"
+        ]
+      },
+      "format": "text/html"
+    }
+  ],
+  "seeAlso": [
+    {
+      "id": "https://iiif.archive.org/iiif/in.gazette.central.e.2016-10-26.172405/manifest.json",
+      "type": "Manifest",
+      "format": "application/ld+json",
+      "profile": "https://iiif.io/api/presentation/3/context.json"
+    }
+  ],
+  "partOf": [
+    {
+      "id": "https://publicmap.github.io/india-esz-dashboard/data/gazette-maps/collection.json",
+      "type": "Collection"
+    }
+  ],
+  "items": [
+    {
+      "id": "https://publicmap.github.io/india-esz-dashboard/data/gazette-maps/manifests/in.gazette.central.e.2016-10-26.172405/archive-56-0/canvas",
+      "type": "Canvas",
+      "label": {
+        "en": [
+          "Page 57 (page scan)"
+        ]
+      },
+      "width": 2480,
+      "height": 3509,
+      "metadata": [
+        {
+          "label": {
+            "en": [
+              "Page"
+            ]
+          },
+          "value": {
+            "en": [
+              "57"
+            ]
+          }
+        },
+        {
+          "label": {
+            "en": [
+              "Image source"
+            ]
+          },
+          "value": {
+            "en": [
+              "Page scan (archive.org)"
+            ]
+          }
+        },
+        {
+          "label": {
+            "en": [
+              "Georeferenced"
+            ]
+          },
+          "value": {
+            "en": [
+              "<a href=\"https://annotations.allmaps.org/maps/7ede2e61956c63be\">Allmaps</a>"
+            ]
+          }
+        }
+      ],
+      "thumbnail": [
+        {
+          "id": "https://iiif.archive.org/image/iiif/3/in.gazette.central.e.2016-10-26.172405%2F172405_jp2.zip%2F172405_jp2%2F172405_0056.jp2/full/400,/0/default.jpg",
+          "type": "Image",
+          "format": "image/jpeg"
+        }
+      ],
+      "partOf": [
+        {
+          "id": "https://iiif.archive.org/iiif/in.gazette.central.e.2016-10-26.172405/manifest.json",
+          "type": "Manifest"
+        }
+      ],
+      "items": [
+        {
+          "id": "https://publicmap.github.io/india-esz-dashboard/data/gazette-maps/manifests/in.gazette.central.e.2016-10-26.172405/archive-56-0/page",
+          "type": "AnnotationPage",
+          "items": [
+            {
+              "id": "https://publicmap.github.io/india-esz-dashboard/data/gazette-maps/manifests/in.gazette.central.e.2016-10-26.172405/archive-56-0/painting",
+              "type": "Annotation",
+              "motivation": "painting",
+              "body": {
+                "format": "image/jpeg",
+                "id": "https://iiif.archive.org/image/iiif/3/in.gazette.central.e.2016-10-26.172405%2F172405_jp2.zip%2F172405_jp2%2F172405_0056.jp2/full/max/0/default.jpg",
+                "service": [
+                  {
+                    "id": "https://iiif.archive.org/image/iiif/3/in.gazette.central.e.2016-10-26.172405%2F172405_jp2.zip%2F172405_jp2%2F172405_0056.jp2",
+                    "profile": "level2",
+                    "type": "ImageService3"
+                  }
+                ],
+                "type": "Image"
+              },
+              "target": "https://publicmap.github.io/india-esz-dashboard/data/gazette-maps/manifests/in.gazette.central.e.2016-10-26.172405/archive-56-0/canvas"
+            }
+          ]
+        }
+      ],
+      "annotations": [
+        {
+          "id": "https://publicmap.github.io/india-esz-dashboard/data/gazette-maps/manifests/in.gazette.central.e.2016-10-26.172405/archive-56-0/georeferencing",
+          "type": "AnnotationPage",
+          "items": [
+            {
+              "id": "https://annotations.allmaps.org/maps/7ede2e61956c63be",
+              "type": "Annotation",
+              "created": "2026-07-03T14:23:29.735Z",
+              "modified": "2026-07-03T14:23:29.735Z",
+              "motivation": "georeferencing",
+              "target": {
+                "type": "SpecificResource",
+                "source": {
+                  "id": "https://iiif.archive.org/image/iiif/3/in.gazette.central.e.2016-10-26.172405%2F172405_jp2.zip%2F172405_jp2%2F172405_0056.jp2",
+                  "type": "ImageService3",
+                  "height": 3509,
+                  "width": 2480,
+                  "partOf": [
+                    {
+                      "id": "https://iiif.archive.org/iiif/in.gazette.central.e.2016-10-26.172405$56/canvas",
+                      "type": "Canvas",
+                      "label": {
+                        "none": [
+                          "56"
+                        ]
+                      },
+                      "partOf": [
+                        {
+                          "id": "https://iiif.archive.org/iiif/in.gazette.central.e.2016-10-26.172405/manifest.json",
+                          "type": "Manifest",
+                          "label": {
+                            "none": [
+                              "Union Government, Extraordinary, 2016-10-26, Part II-Section 3-Sub-Section(ii), Ref. 3311 E"
+                            ]
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "selector": {
+                  "type": "SvgSelector",
+                  "value": "<svg width=\"2480\" height=\"3509\"><polygon points=\"0,0 0,3509 2480,3509 2480,0\" /></svg>"
+                }
+              },
+              "body": {
+                "type": "FeatureCollection",
+                "transformation": {
+                  "type": "polynomial",
+                  "options": {
+                    "order": 1
+                  }
+                },
+                "features": [
+                  {
+                    "type": "Feature",
+                    "properties": {
+                      "resourceCoords": [
+                        1550,
+                        1159
+                      ]
+                    },
+                    "geometry": {
+                      "type": "Point",
+                      "coordinates": [
+                        71.21444103258253,
+                        21.10876316399427
+                      ]
+                    }
+                  },
+                  {
+                    "type": "Feature",
+                    "properties": {
+                      "resourceCoords": [
+                        670,
+                        1176
+                      ]
+                    },
+                    "geometry": {
+                      "type": "Point",
+                      "coordinates": [
+                        70.4662288541497,
+                        21.096567586935777
+                      ]
+                    }
+                  },
+                  {
+                    "type": "Feature",
+                    "properties": {
+                      "resourceCoords": [
+                        818,
+                        568
+                      ]
+                    },
+                    "geometry": {
+                      "type": "Point",
+                      "coordinates": [
+                        70.58798383582209,
+                        21.58321042958049
+                      ]
+                    }
+                  }
+                ],
+                "_allmaps": {
+                  "id": "https://annotations.allmaps.org/maps/7ede2e61956c63be",
+                  "version": "https://annotations.allmaps.org/maps/7ede2e61956c63be@3d34bad1167fb8c8",
+                  "image": {
+                    "id": "https://annotations.allmaps.org/images/dcb90488a15f280a",
+                    "version": "https://annotations.allmaps.org/images/dcb90488a15f280a@eb4f8ffeacb71324",
+                    "canvases": [
+                      {
+                        "id": "https://annotations.allmaps.org/canvases/3b0d860d12e23964",
+                        "manifests": [
+                          {
+                            "id": "https://annotations.allmaps.org/manifests/fdce553d7756ba64"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  "scale": 0.011255,
+                  "area": 68699466148.22
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

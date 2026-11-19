@@ -1,0 +1,371 @@
+{
+  "@context": [
+    "http://iiif.io/api/extension/georef/1/context.json",
+    "http://iiif.io/api/presentation/3/context.json"
+  ],
+  "id": "https://publicmap.github.io/india-esz-dashboard/data/gazette-maps/manifests/in.gazette.central.e.2026-06-02.273252.json",
+  "type": "Manifest",
+  "label": {
+    "en": [
+      "Draft Notification ESZ around Eravikulam National Park Kerala"
+    ]
+  },
+  "summary": {
+    "en": [
+      "1 map image(s), 1 georeferenced with Allmaps."
+    ]
+  },
+  "metadata": [
+    {
+      "label": {
+        "en": [
+          "Gazette"
+        ]
+      },
+      "value": {
+        "en": [
+          "<a href=\"https://egazette.servantsofknowledge.in/details/in.gazette.central.e.2026-06-02.273252/\">in.gazette.central.e.2026-06-02.273252</a>"
+        ]
+      }
+    },
+    {
+      "label": {
+        "en": [
+          "Published"
+        ]
+      },
+      "value": {
+        "en": [
+          "02 June 2026"
+        ]
+      }
+    },
+    {
+      "label": {
+        "en": [
+          "Gazette ID"
+        ]
+      },
+      "value": {
+        "en": [
+          "CG-DL-E-10062026-273252"
+        ]
+      }
+    },
+    {
+      "label": {
+        "en": [
+          "Ministry"
+        ]
+      },
+      "value": {
+        "en": [
+          "Ministry of Environment, Forest and Climate Change"
+        ]
+      }
+    },
+    {
+      "label": {
+        "en": [
+          "Original PDF"
+        ]
+      },
+      "value": {
+        "en": [
+          "<a href=\"https://egazette.gov.in/WriteReadData/2026/273252.pdf\">https://egazette.gov.in/WriteReadData/2026/273252.pdf</a>"
+        ]
+      }
+    },
+    {
+      "label": {
+        "en": [
+          "Archive.org"
+        ]
+      },
+      "value": {
+        "en": [
+          "<a href=\"https://archive.org/details/in.gazette.central.e.2026-06-02.273252\">https://archive.org/details/in.gazette.central.e.2026-06-02.273252</a>"
+        ]
+      }
+    }
+  ],
+  "requiredStatement": {
+    "label": {
+      "en": [
+        "Attribution"
+      ]
+    },
+    "value": {
+      "en": [
+        "Gazette of India (MoEFCC). Images via <a href=\"https://egazette.servantsofknowledge.in/\">Servants of Knowledge</a> and <a href=\"https://archive.org\">archive.org</a>; georeferencing via <a href=\"https://allmaps.org\">Allmaps</a>."
+      ]
+    }
+  },
+  "homepage": [
+    {
+      "id": "https://egazette.servantsofknowledge.in/details/in.gazette.central.e.2026-06-02.273252/",
+      "type": "Text",
+      "label": {
+        "en": [
+          "Gazette text (Servants of Knowledge)"
+        ]
+      },
+      "format": "text/html"
+    }
+  ],
+  "seeAlso": [
+    {
+      "id": "https://gazettes.servantsofknowledge.in/gzdl/html/central_extraordinary/2026-06-02/manifest/273252/manifest.json",
+      "type": "Manifest",
+      "format": "application/ld+json",
+      "profile": "https://iiif.io/api/presentation/3/context.json"
+    },
+    {
+      "id": "https://iiif.archive.org/iiif/in.gazette.central.e.2026-06-02.273252/manifest.json",
+      "type": "Manifest",
+      "format": "application/ld+json",
+      "profile": "https://iiif.io/api/presentation/3/context.json"
+    }
+  ],
+  "partOf": [
+    {
+      "id": "https://publicmap.github.io/india-esz-dashboard/data/gazette-maps/collection.json",
+      "type": "Collection"
+    }
+  ],
+  "items": [
+    {
+      "id": "https://publicmap.github.io/india-esz-dashboard/data/gazette-maps/manifests/in.gazette.central.e.2026-06-02.273252/archive-59-0/canvas",
+      "type": "Canvas",
+      "label": {
+        "en": [
+          "Page 60 (page scan)"
+        ]
+      },
+      "width": 2481,
+      "height": 3508,
+      "metadata": [
+        {
+          "label": {
+            "en": [
+              "Page"
+            ]
+          },
+          "value": {
+            "en": [
+              "60"
+            ]
+          }
+        },
+        {
+          "label": {
+            "en": [
+              "Image source"
+            ]
+          },
+          "value": {
+            "en": [
+              "Page scan (archive.org)"
+            ]
+          }
+        },
+        {
+          "label": {
+            "en": [
+              "Georeferenced"
+            ]
+          },
+          "value": {
+            "en": [
+              "<a href=\"https://annotations.allmaps.org/maps/674cd27a1a2b81c7\">Allmaps</a>"
+            ]
+          }
+        }
+      ],
+      "thumbnail": [
+        {
+          "id": "https://iiif.archive.org/image/iiif/3/in.gazette.central.e.2026-06-02.273252%2F273252_jp2.zip%2F273252_jp2%2F273252_0059.jp2/full/400,/0/default.jpg",
+          "type": "Image",
+          "format": "image/jpeg"
+        }
+      ],
+      "partOf": [
+        {
+          "id": "https://iiif.archive.org/iiif/in.gazette.central.e.2026-06-02.273252/manifest.json",
+          "type": "Manifest"
+        }
+      ],
+      "items": [
+        {
+          "id": "https://publicmap.github.io/india-esz-dashboard/data/gazette-maps/manifests/in.gazette.central.e.2026-06-02.273252/archive-59-0/page",
+          "type": "AnnotationPage",
+          "items": [
+            {
+              "id": "https://publicmap.github.io/india-esz-dashboard/data/gazette-maps/manifests/in.gazette.central.e.2026-06-02.273252/archive-59-0/painting",
+              "type": "Annotation",
+              "motivation": "painting",
+              "body": {
+                "format": "image/jpeg",
+                "id": "https://iiif.archive.org/image/iiif/3/in.gazette.central.e.2026-06-02.273252%2F273252_jp2.zip%2F273252_jp2%2F273252_0059.jp2/full/max/0/default.jpg",
+                "service": [
+                  {
+                    "id": "https://iiif.archive.org/image/iiif/3/in.gazette.central.e.2026-06-02.273252%2F273252_jp2.zip%2F273252_jp2%2F273252_0059.jp2",
+                    "profile": "level2",
+                    "type": "ImageService3"
+                  }
+                ],
+                "type": "Image"
+              },
+              "target": "https://publicmap.github.io/india-esz-dashboard/data/gazette-maps/manifests/in.gazette.central.e.2026-06-02.273252/archive-59-0/canvas"
+            }
+          ]
+        }
+      ],
+      "annotations": [
+        {
+          "id": "https://publicmap.github.io/india-esz-dashboard/data/gazette-maps/manifests/in.gazette.central.e.2026-06-02.273252/archive-59-0/georeferencing",
+          "type": "AnnotationPage",
+          "items": [
+            {
+              "id": "https://annotations.allmaps.org/maps/674cd27a1a2b81c7",
+              "type": "Annotation",
+              "created": "2026-07-18T19:24:58.265Z",
+              "modified": "2026-07-18T19:24:58.265Z",
+              "motivation": "georeferencing",
+              "target": {
+                "type": "SpecificResource",
+                "source": {
+                  "id": "https://iiif.archive.org/image/iiif/3/in.gazette.central.e.2026-06-02.273252%2F273252_jp2.zip%2F273252_jp2%2F273252_0059.jp2",
+                  "type": "ImageService3",
+                  "height": 3508,
+                  "width": 2481,
+                  "partOf": [
+                    {
+                      "id": "https://iiif.archive.org/iiif/in.gazette.central.e.2026-06-02.273252$59/canvas",
+                      "type": "Canvas",
+                      "label": {
+                        "none": [
+                          "59"
+                        ]
+                      },
+                      "partOf": [
+                        {
+                          "id": "https://iiif.archive.org/iiif/in.gazette.central.e.2026-06-02.273252/manifest.json",
+                          "type": "Manifest",
+                          "label": {
+                            "none": [
+                              "Extrordinary Gazette of India, 2026-06-02"
+                            ]
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "selector": {
+                  "type": "SvgSelector",
+                  "value": "<svg width=\"2481\" height=\"3508\"><polygon points=\"0,0 0,3508 2481,3508 2481,0\" /></svg>"
+                }
+              },
+              "body": {
+                "type": "FeatureCollection",
+                "transformation": {
+                  "type": "polynomial",
+                  "options": {
+                    "order": 1
+                  }
+                },
+                "features": [
+                  {
+                    "type": "Feature",
+                    "properties": {
+                      "resourceCoords": [
+                        1770,
+                        2239
+                      ]
+                    },
+                    "geometry": {
+                      "type": "Point",
+                      "coordinates": [
+                        77.26758223446393,
+                        10.121753495935224
+                      ]
+                    }
+                  },
+                  {
+                    "type": "Feature",
+                    "properties": {
+                      "resourceCoords": [
+                        1703,
+                        1320
+                      ]
+                    },
+                    "geometry": {
+                      "type": "Point",
+                      "coordinates": [
+                        77.25739187083133,
+                        10.259423407462009
+                      ]
+                    }
+                  },
+                  {
+                    "type": "Feature",
+                    "properties": {
+                      "resourceCoords": [
+                        736,
+                        1855
+                      ]
+                    },
+                    "geometry": {
+                      "type": "Point",
+                      "coordinates": [
+                        77.02351536869833,
+                        10.178613215386221
+                      ]
+                    }
+                  },
+                  {
+                    "type": "Feature",
+                    "properties": {
+                      "resourceCoords": [
+                        1377,
+                        699
+                      ]
+                    },
+                    "geometry": {
+                      "type": "Point",
+                      "coordinates": [
+                        77.1767470883168,
+                        10.358350221862523
+                      ]
+                    }
+                  }
+                ],
+                "_allmaps": {
+                  "id": "https://annotations.allmaps.org/maps/674cd27a1a2b81c7",
+                  "version": "https://annotations.allmaps.org/maps/674cd27a1a2b81c7@2827eebfc1330796",
+                  "image": {
+                    "id": "https://annotations.allmaps.org/images/7ece3c91d4cd4a20",
+                    "version": "https://annotations.allmaps.org/images/7ece3c91d4cd4a20@7c3e97de4f1d0fb3",
+                    "canvases": [
+                      {
+                        "id": "https://annotations.allmaps.org/canvases/ec8534617b142e79",
+                        "manifests": [
+                          {
+                            "id": "https://annotations.allmaps.org/manifests/25eba576e0c293e0"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  "scale": 0.047448,
+                  "area": 3865944703.22
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

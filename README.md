@@ -100,6 +100,43 @@ Outputs:
 - `data/amche-atlas.json` — custom [amche-atlas](https://github.com/publicmap/amche-atlas/blob/dev/docs/API.md) config (PA points + OSM-relation boundary layers)
 - `data/enrichment-cache.csv` — persistent cache of Wikidata/archive.org lookups so repeat runs are fast
 
+### Digitizing boundaries from a gazette notification
+
+`scripts/digitize-gazette-maps.py` turns the maps and coordinate tables in a Gazette of India
+ESZ notification into GeoJSON. It runs separately from the npm pipeline, one gazette at a time,
+and needs only [uv](https://docs.astral.sh/uv/), which installs its Python dependencies:
+
+```
+uv run scripts/digitize-gazette-maps.py https://egazette.servantsofknowledge.in/details/in.gazette.central.e.2024-11-29.259220/
+```
+
+It accepts a gazette URL or identifier. The PDF comes from egazette.servantsofknowledge.in,
+with archive.org as a fallback. For scanned gazettes it uses the archive's OCR text. Then it:
+
+1. Parses every coordinate table under its Annexure. Decimal and D°M′S″ values are both
+   read, including PDFs where the degree sign comes out as a `0` (`920 39’49”`).
+2. Georeferences each framed map. It finds the graticule ticks, then picks the
+   interval, origin and boundary colour that put the most table points on a drawn line.
+3. Traces the boundary lines of the best map, or the one named in `labels.json`, and
+   closes dash gaps. It then polygonizes the enclosed faces and groups them into zones.
+
+Output in `data/gazette-maps/<gazette-id>/`:
+
+- `boundaries.geojson`: one polygon per zone (e.g. `core`, `buffer`, `esz`) with its area
+- `faces.geojson`: every traced face, with its edge styles, ESZ-village count and area, for review
+- `table-points.geojson`: the table points, plus each boundary table's outline in listed order
+- `<map>.tif` / `<map>-preview.png`: georeferenced map images and a QA overlay
+- `report.json`: georeference fit, zone areas next to the areas stated in the text, and the
+  distance from the listed boundary points to the traced boundary
+- `labels.json` (hand-written, optional): which map and line colour to use, plus seed
+  `[lon, lat]` points that assign faces to zones. Without it, a face is labelled `esz` when it
+  contains listed ESZ villages or is mostly edged in yellow dashes.
+
+Limits: it can trace boundaries only when they're drawn in a distinct colour on a map with a
+graticule frame. Rotated or greyscale scans and black-line toposheets still produce table
+outlines, and the toposheets also get a GeoTIFF, but nothing is traced. Check the preview
+image and `report.json` (`table_fit_m`, `warning`) before trusting a trace.
+
 ## Contributing corrections
 
 This is scraped and joined data from a government site and Wikidata, so it's imperfect —

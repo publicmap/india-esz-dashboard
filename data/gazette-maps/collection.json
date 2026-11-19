@@ -1,0 +1,251 @@
+{
+  "@context": "http://iiif.io/api/presentation/3/context.json",
+  "id": "https://publicmap.github.io/india-esz-dashboard/data/gazette-maps/collection.json",
+  "type": "Collection",
+  "label": {
+    "en": [
+      "India Eco-Sensitive Zone gazette maps"
+    ]
+  },
+  "summary": {
+    "en": [
+      "Map images from 10 Gazette of India Eco-Sensitive Zone notifications, with Allmaps georeferencing where available (4 of 35 maps)."
+    ]
+  },
+  "requiredStatement": {
+    "label": {
+      "en": [
+        "Attribution"
+      ]
+    },
+    "value": {
+      "en": [
+        "Gazette of India (MoEFCC). Images via <a href=\"https://egazette.servantsofknowledge.in/\">Servants of Knowledge</a> and <a href=\"https://archive.org\">archive.org</a>; georeferencing via <a href=\"https://allmaps.org\">Allmaps</a>."
+      ]
+    }
+  },
+  "homepage": [
+    {
+      "id": "https://publicmap.github.io/india-esz-dashboard/",
+      "type": "Text",
+      "label": {
+        "en": [
+          "India ESZ Dashboard"
+        ]
+      },
+      "format": "text/html"
+    }
+  ],
+  "items": [
+    {
+      "id": "https://publicmap.github.io/india-esz-dashboard/data/gazette-maps/manifests/in.gazette.central.e.2024-11-29.259220.json",
+      "type": "Manifest",
+      "label": {
+        "en": [
+          "Draft Notification of Anamalai Tiger Reserve in the State of Tamil Nadu"
+        ]
+      },
+      "summary": {
+        "en": [
+          "8 map image(s), 1 georeferenced with Allmaps."
+        ]
+      },
+      "thumbnail": [
+        {
+          "id": "https://gazettes.servantsofknowledge.in/gzdl/html/central_extraordinary/2024-11-29/manifest/259220/images/Image85/full/max/0/default.png",
+          "type": "Image",
+          "format": "image/png"
+        }
+      ]
+    },
+    {
+      "id": "https://publicmap.github.io/india-esz-dashboard/data/gazette-maps/manifests/in.gazette.central.e.2016-10-26.172405.json",
+      "type": "Manifest",
+      "label": {
+        "en": [
+          "The following draft of the notification which the Central Government proposes to issue in exercise of the powers conferred by sub section"
+        ]
+      },
+      "summary": {
+        "en": [
+          "1 map image(s), 1 georeferenced with Allmaps."
+        ]
+      },
+      "thumbnail": [
+        {
+          "id": "https://iiif.archive.org/image/iiif/3/in.gazette.central.e.2016-10-26.172405%2F172405_jp2.zip%2F172405_jp2%2F172405_0056.jp2/full/400,/0/default.jpg",
+          "type": "Image",
+          "format": "image/jpeg"
+        }
+      ]
+    },
+    {
+      "id": "https://publicmap.github.io/india-esz-dashboard/data/gazette-maps/manifests/in.gazette.central.e.2026-09-02.276168.json",
+      "type": "Manifest",
+      "label": {
+        "en": [
+          "Draft Notification ESZ around Nagarahole Tiger Reserve Karnataka"
+        ]
+      },
+      "summary": {
+        "en": [
+          "2 map image(s), 0 georeferenced with Allmaps."
+        ]
+      },
+      "thumbnail": [
+        {
+          "id": "https://gazettes.servantsofknowledge.in/gzdl/html/central_extraordinary/2026-09-02/manifest/276168/images/Image107/full/max/0/default.png",
+          "type": "Image",
+          "format": "image/png"
+        }
+      ]
+    },
+    {
+      "id": "https://publicmap.github.io/india-esz-dashboard/data/gazette-maps/manifests/in.gazette.central.e.2026-07-23.274903.json",
+      "type": "Manifest",
+      "label": {
+        "en": [
+          "DRAFT NOTIFICATION ESZ AROUND NEYYAR PEPPARA WILDLIFE SANCTUARY KERALA"
+        ]
+      },
+      "summary": {
+        "en": [
+          "6 map image(s), 0 georeferenced with Allmaps."
+        ]
+      },
+      "thumbnail": [
+        {
+          "id": "https://gazettes.servantsofknowledge.in/gzdl/html/central_extraordinary/2026-07-23/manifest/274903/images/Image87/full/max/0/default.png",
+          "type": "Image",
+          "format": "image/png"
+        }
+      ]
+    },
+    {
+      "id": "https://publicmap.github.io/india-esz-dashboard/data/gazette-maps/manifests/in.gazette.central.e.2026-07-15.274748.json",
+      "type": "Manifest",
+      "label": {
+        "en": [
+          "Draft Notification ESZ around Yordi Rabe Supse Wildlife Sanctuary Arunachal Pradesh"
+        ]
+      },
+      "summary": {
+        "en": [
+          "4 map image(s), 0 georeferenced with Allmaps."
+        ]
+      },
+      "thumbnail": [
+        {
+          "id": "https://gazettes.servantsofknowledge.in/gzdl/html/central_extraordinary/2026-07-15/manifest/274748/images/Image102/full/max/0/default.png",
+          "type": "Image",
+          "format": "image/png"
+        }
+      ]
+    },
+    {
+      "id": "https://publicmap.github.io/india-esz-dashboard/data/gazette-maps/manifests/in.gazette.central.e.2026-06-02.273252.json",
+      "type": "Manifest",
+      "label": {
+        "en": [
+          "Draft Notification ESZ around Eravikulam National Park Kerala"
+        ]
+      },
+      "summary": {
+        "en": [
+          "1 map image(s), 1 georeferenced with Allmaps."
+        ]
+      },
+      "thumbnail": [
+        {
+          "id": "https://iiif.archive.org/image/iiif/3/in.gazette.central.e.2026-06-02.273252%2F273252_jp2.zip%2F273252_jp2%2F273252_0059.jp2/full/400,/0/default.jpg",
+          "type": "Image",
+          "format": "image/jpeg"
+        }
+      ]
+    },
+    {
+      "id": "https://publicmap.github.io/india-esz-dashboard/data/gazette-maps/manifests/in.gazette.central.e.2026-05-26.273075.json",
+      "type": "Manifest",
+      "label": {
+        "en": [
+          "DRAFT NOTIFICATION ESZ AROUND CHIMMONY WILDLIFE SANCTUARY KERALA"
+        ]
+      },
+      "summary": {
+        "en": [
+          "1 map image(s), 1 georeferenced with Allmaps."
+        ]
+      },
+      "thumbnail": [
+        {
+          "id": "https://iiif.archive.org/image/iiif/3/in.gazette.central.e.2026-05-26.273075%2F273075_jp2.zip%2F273075_jp2%2F273075_0038.jp2/full/400,/0/default.jpg",
+          "type": "Image",
+          "format": "image/jpeg"
+        }
+      ]
+    },
+    {
+      "id": "https://publicmap.github.io/india-esz-dashboard/data/gazette-maps/manifests/in.gazette.central.e.2026-05-26.273051.json",
+      "type": "Manifest",
+      "label": {
+        "en": [
+          "DRAFT NOTIFICATION ESZ AROUND SOHELWA WLS UTTAR PRADESH"
+        ]
+      },
+      "summary": {
+        "en": [
+          "4 map image(s), 0 georeferenced with Allmaps."
+        ]
+      },
+      "thumbnail": [
+        {
+          "id": "https://gazettes.servantsofknowledge.in/gzdl/html/central_extraordinary/2026-05-26/manifest/273051/images/Image87/full/max/0/default.png",
+          "type": "Image",
+          "format": "image/png"
+        }
+      ]
+    },
+    {
+      "id": "https://publicmap.github.io/india-esz-dashboard/data/gazette-maps/manifests/in.gazette.central.e.2026-04-23.272139.json",
+      "type": "Manifest",
+      "label": {
+        "en": [
+          "DRAFT NOTIFICATION ESZ AROUND GREAT HIMALAYAN NATIONAL PARK HIMACHAL PRADESH"
+        ]
+      },
+      "summary": {
+        "en": [
+          "2 map image(s), 0 georeferenced with Allmaps."
+        ]
+      },
+      "thumbnail": [
+        {
+          "id": "https://gazettes.servantsofknowledge.in/gzdl/html/central_extraordinary/2026-04-23/manifest/272139/images/Image98/full/max/0/default.png",
+          "type": "Image",
+          "format": "image/png"
+        }
+      ]
+    },
+    {
+      "id": "https://publicmap.github.io/india-esz-dashboard/data/gazette-maps/manifests/in.gazette.central.e.2026-04-02.271600.json",
+      "type": "Manifest",
+      "label": {
+        "en": [
+          "Draft Notification ESZ around Kali Tiger Reserve Karnataka"
+        ]
+      },
+      "summary": {
+        "en": [
+          "6 map image(s), 0 georeferenced with Allmaps."
+        ]
+      },
+      "thumbnail": [
+        {
+          "id": "https://gazettes.servantsofknowledge.in/gzdl/html/central_extraordinary/2026-04-02/manifest/271600/images/Image88/full/max/0/default.png",
+          "type": "Image",
+          "format": "image/png"
+        }
+      ]
+    }
+  ]
+}
