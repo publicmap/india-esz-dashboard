@@ -1,0 +1,1734 @@
+{
+  "@context": [
+    "http://iiif.io/api/extension/georef/1/context.json",
+    "http://iiif.io/api/presentation/3/context.json"
+  ],
+  "id": "https://publicmap.github.io/india-esz-dashboard/data/gazette-maps/manifests/in.gazette.central.e.2018-12-26.194534.json",
+  "type": "Manifest",
+  "label": {
+    "en": [
+      "Bandh Baretha Wildlife – ESZ notification"
+    ]
+  },
+  "summary": {
+    "en": [
+      "18 map image(s), 0 georeferenced with Allmaps."
+    ]
+  },
+  "metadata": [
+    {
+      "label": {
+        "en": [
+          "Gazette"
+        ]
+      },
+      "value": {
+        "en": [
+          "<a href=\"https://egazette.servantsofknowledge.in/details/in.gazette.central.e.2018-12-26.194534/\">in.gazette.central.e.2018-12-26.194534</a>"
+        ]
+      }
+    },
+    {
+      "label": {
+        "en": [
+          "Published"
+        ]
+      },
+      "value": {
+        "en": [
+          "2018-12-26"
+        ]
+      }
+    },
+    {
+      "label": {
+        "en": [
+          "Order number"
+        ]
+      },
+      "value": {
+        "en": [
+          "S.O. 6319(E)"
+        ]
+      }
+    },
+    {
+      "label": {
+        "en": [
+          "Status"
+        ]
+      },
+      "value": {
+        "en": [
+          "Final"
+        ]
+      }
+    },
+    {
+      "label": {
+        "en": [
+          "State"
+        ]
+      },
+      "value": {
+        "en": [
+          "Rajasthan"
+        ]
+      }
+    },
+    {
+      "label": {
+        "en": [
+          "MoEFCC PDF"
+        ]
+      },
+      "value": {
+        "en": [
+          "<a href=\"https://moef.gov.in/uploads/2018/12/ban-baretha.pdf\">https://moef.gov.in/uploads/2018/12/ban-baretha.pdf</a>"
+        ]
+      }
+    },
+    {
+      "label": {
+        "en": [
+          "Archive.org"
+        ]
+      },
+      "value": {
+        "en": [
+          "<a href=\"https://archive.org/details/in.gazette.central.e.2018-12-26.194534\">https://archive.org/details/in.gazette.central.e.2018-12-26.194534</a>"
+        ]
+      }
+    }
+  ],
+  "requiredStatement": {
+    "label": {
+      "en": [
+        "Attribution"
+      ]
+    },
+    "value": {
+      "en": [
+        "Gazette of India (MoEFCC). Images via <a href=\"https://egazette.servantsofknowledge.in/\">Servants of Knowledge</a> and <a href=\"https://archive.org\">archive.org</a>; georeferencing via <a href=\"https://allmaps.org\">Allmaps</a>."
+      ]
+    }
+  },
+  "homepage": [
+    {
+      "id": "https://egazette.servantsofknowledge.in/details/in.gazette.central.e.2018-12-26.194534/",
+      "type": "Text",
+      "label": {
+        "en": [
+          "Gazette text (Servants of Knowledge)"
+        ]
+      },
+      "format": "text/html"
+    }
+  ],
+  "seeAlso": [
+    {
+      "id": "https://gazettes.servantsofknowledge.in/gzdl/html/central_extraordinary/2018-12-26/manifest/194534/manifest.json",
+      "type": "Manifest",
+      "format": "application/ld+json",
+      "profile": "https://iiif.io/api/presentation/3/context.json"
+    },
+    {
+      "id": "https://iiif.archive.org/iiif/in.gazette.central.e.2018-12-26.194534/manifest.json",
+      "type": "Manifest",
+      "format": "application/ld+json",
+      "profile": "https://iiif.io/api/presentation/3/context.json"
+    }
+  ],
+  "partOf": [
+    {
+      "id": "https://publicmap.github.io/india-esz-dashboard/data/gazette-maps/collection.json",
+      "type": "Collection"
+    }
+  ],
+  "items": [
+    {
+      "id": "https://publicmap.github.io/india-esz-dashboard/data/gazette-maps/manifests/in.gazette.central.e.2018-12-26.194534/sok-15-0/canvas",
+      "type": "Canvas",
+      "label": {
+        "en": [
+          "Page 15 (image in PDF)"
+        ]
+      },
+      "width": 1269,
+      "height": 1487,
+      "metadata": [
+        {
+          "label": {
+            "en": [
+              "Page"
+            ]
+          },
+          "value": {
+            "en": [
+              "15"
+            ]
+          }
+        },
+        {
+          "label": {
+            "en": [
+              "Image source"
+            ]
+          },
+          "value": {
+            "en": [
+              "Image embedded in the gazette PDF (Servants of Knowledge)"
+            ]
+          }
+        },
+        {
+          "label": {
+            "en": [
+              "Georeferenced"
+            ]
+          },
+          "value": {
+            "en": [
+              "No"
+            ]
+          }
+        }
+      ],
+      "thumbnail": [
+        {
+          "id": "https://gazettes.servantsofknowledge.in/gzdl/html/central_extraordinary/2018-12-26/manifest/194534/images/R841/full/max/0/default.png",
+          "type": "Image",
+          "format": "image/png"
+        }
+      ],
+      "partOf": [
+        {
+          "id": "https://gazettes.servantsofknowledge.in/gzdl/html/central_extraordinary/2018-12-26/manifest/194534/manifest.json",
+          "type": "Manifest"
+        }
+      ],
+      "items": [
+        {
+          "id": "https://publicmap.github.io/india-esz-dashboard/data/gazette-maps/manifests/in.gazette.central.e.2018-12-26.194534/sok-15-0/page",
+          "type": "AnnotationPage",
+          "items": [
+            {
+              "id": "https://publicmap.github.io/india-esz-dashboard/data/gazette-maps/manifests/in.gazette.central.e.2018-12-26.194534/sok-15-0/painting",
+              "type": "Annotation",
+              "motivation": "painting",
+              "body": {
+                "id": "https://gazettes.servantsofknowledge.in/gzdl/html/central_extraordinary/2018-12-26/manifest/194534/images/R841/full/max/0/default.png",
+                "type": "Image",
+                "service": [
+                  {
+                    "id": "https://gazettes.servantsofknowledge.in/gzdl/html/central_extraordinary/2018-12-26/manifest/194534/images/R841",
+                    "type": "ImageService3",
+                    "profile": "level0"
+                  }
+                ],
+                "format": "image/png"
+              },
+              "target": "https://publicmap.github.io/india-esz-dashboard/data/gazette-maps/manifests/in.gazette.central.e.2018-12-26.194534/sok-15-0/canvas"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "https://publicmap.github.io/india-esz-dashboard/data/gazette-maps/manifests/in.gazette.central.e.2018-12-26.194534/sok-16-1/canvas",
+      "type": "Canvas",
+      "label": {
+        "en": [
+          "Page 16 (image in PDF)"
+        ]
+      },
+      "width": 1269,
+      "height": 1526,
+      "metadata": [
+        {
+          "label": {
+            "en": [
+              "Page"
+            ]
+          },
+          "value": {
+            "en": [
+              "16"
+            ]
+          }
+        },
+        {
+          "label": {
+            "en": [
+              "Image source"
+            ]
+          },
+          "value": {
+            "en": [
+              "Image embedded in the gazette PDF (Servants of Knowledge)"
+            ]
+          }
+        },
+        {
+          "label": {
+            "en": [
+              "Georeferenced"
+            ]
+          },
+          "value": {
+            "en": [
+              "No"
+            ]
+          }
+        }
+      ],
+      "thumbnail": [
+        {
+          "id": "https://gazettes.servantsofknowledge.in/gzdl/html/central_extraordinary/2018-12-26/manifest/194534/images/R848/full/max/0/default.png",
+          "type": "Image",
+          "format": "image/png"
+        }
+      ],
+      "partOf": [
+        {
+          "id": "https://gazettes.servantsofknowledge.in/gzdl/html/central_extraordinary/2018-12-26/manifest/194534/manifest.json",
+          "type": "Manifest"
+        }
+      ],
+      "items": [
+        {
+          "id": "https://publicmap.github.io/india-esz-dashboard/data/gazette-maps/manifests/in.gazette.central.e.2018-12-26.194534/sok-16-1/page",
+          "type": "AnnotationPage",
+          "items": [
+            {
+              "id": "https://publicmap.github.io/india-esz-dashboard/data/gazette-maps/manifests/in.gazette.central.e.2018-12-26.194534/sok-16-1/painting",
+              "type": "Annotation",
+              "motivation": "painting",
+              "body": {
+                "id": "https://gazettes.servantsofknowledge.in/gzdl/html/central_extraordinary/2018-12-26/manifest/194534/images/R848/full/max/0/default.png",
+                "type": "Image",
+                "service": [
+                  {
+                    "id": "https://gazettes.servantsofknowledge.in/gzdl/html/central_extraordinary/2018-12-26/manifest/194534/images/R848",
+                    "type": "ImageService3",
+                    "profile": "level0"
+                  }
+                ],
+                "format": "image/png"
+              },
+              "target": "https://publicmap.github.io/india-esz-dashboard/data/gazette-maps/manifests/in.gazette.central.e.2018-12-26.194534/sok-16-1/canvas"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "https://publicmap.github.io/india-esz-dashboard/data/gazette-maps/manifests/in.gazette.central.e.2018-12-26.194534/sok-21-2/canvas",
+      "type": "Canvas",
+      "label": {
+        "en": [
+          "Page 21 (image in PDF)"
+        ]
+      },
+      "width": 1269,
+      "height": 1762,
+      "metadata": [
+        {
+          "label": {
+            "en": [
+              "Page"
+            ]
+          },
+          "value": {
+            "en": [
+              "21"
+            ]
+          }
+        },
+        {
+          "label": {
+            "en": [
+              "Image source"
+            ]
+          },
+          "value": {
+            "en": [
+              "Image embedded in the gazette PDF (Servants of Knowledge)"
+            ]
+          }
+        },
+        {
+          "label": {
+            "en": [
+              "Georeferenced"
+            ]
+          },
+          "value": {
+            "en": [
+              "No"
+            ]
+          }
+        }
+      ],
+      "thumbnail": [
+        {
+          "id": "https://gazettes.servantsofknowledge.in/gzdl/html/central_extraordinary/2018-12-26/manifest/194534/images/R887/full/max/0/default.png",
+          "type": "Image",
+          "format": "image/png"
+        }
+      ],
+      "partOf": [
+        {
+          "id": "https://gazettes.servantsofknowledge.in/gzdl/html/central_extraordinary/2018-12-26/manifest/194534/manifest.json",
+          "type": "Manifest"
+        }
+      ],
+      "items": [
+        {
+          "id": "https://publicmap.github.io/india-esz-dashboard/data/gazette-maps/manifests/in.gazette.central.e.2018-12-26.194534/sok-21-2/page",
+          "type": "AnnotationPage",
+          "items": [
+            {
+              "id": "https://publicmap.github.io/india-esz-dashboard/data/gazette-maps/manifests/in.gazette.central.e.2018-12-26.194534/sok-21-2/painting",
+              "type": "Annotation",
+              "motivation": "painting",
+              "body": {
+                "id": "https://gazettes.servantsofknowledge.in/gzdl/html/central_extraordinary/2018-12-26/manifest/194534/images/R887/full/max/0/default.png",
+                "type": "Image",
+                "service": [
+                  {
+                    "id": "https://gazettes.servantsofknowledge.in/gzdl/html/central_extraordinary/2018-12-26/manifest/194534/images/R887",
+                    "type": "ImageService3",
+                    "profile": "level0"
+                  }
+                ],
+                "format": "image/png"
+              },
+              "target": "https://publicmap.github.io/india-esz-dashboard/data/gazette-maps/manifests/in.gazette.central.e.2018-12-26.194534/sok-21-2/canvas"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "https://publicmap.github.io/india-esz-dashboard/data/gazette-maps/manifests/in.gazette.central.e.2018-12-26.194534/sok-37-3/canvas",
+      "type": "Canvas",
+      "label": {
+        "en": [
+          "Page 37 (image in PDF)"
+        ]
+      },
+      "width": 1755,
+      "height": 497,
+      "metadata": [
+        {
+          "label": {
+            "en": [
+              "Page"
+            ]
+          },
+          "value": {
+            "en": [
+              "37"
+            ]
+          }
+        },
+        {
+          "label": {
+            "en": [
+              "Image source"
+            ]
+          },
+          "value": {
+            "en": [
+              "Image embedded in the gazette PDF (Servants of Knowledge)"
+            ]
+          }
+        },
+        {
+          "label": {
+            "en": [
+              "Georeferenced"
+            ]
+          },
+          "value": {
+            "en": [
+              "No"
+            ]
+          }
+        }
+      ],
+      "thumbnail": [
+        {
+          "id": "https://gazettes.servantsofknowledge.in/gzdl/html/central_extraordinary/2018-12-26/manifest/194534/images/R986/full/max/0/default.png",
+          "type": "Image",
+          "format": "image/png"
+        }
+      ],
+      "partOf": [
+        {
+          "id": "https://gazettes.servantsofknowledge.in/gzdl/html/central_extraordinary/2018-12-26/manifest/194534/manifest.json",
+          "type": "Manifest"
+        }
+      ],
+      "items": [
+        {
+          "id": "https://publicmap.github.io/india-esz-dashboard/data/gazette-maps/manifests/in.gazette.central.e.2018-12-26.194534/sok-37-3/page",
+          "type": "AnnotationPage",
+          "items": [
+            {
+              "id": "https://publicmap.github.io/india-esz-dashboard/data/gazette-maps/manifests/in.gazette.central.e.2018-12-26.194534/sok-37-3/painting",
+              "type": "Annotation",
+              "motivation": "painting",
+              "body": {
+                "id": "https://gazettes.servantsofknowledge.in/gzdl/html/central_extraordinary/2018-12-26/manifest/194534/images/R986/full/max/0/default.png",
+                "type": "Image",
+                "service": [
+                  {
+                    "id": "https://gazettes.servantsofknowledge.in/gzdl/html/central_extraordinary/2018-12-26/manifest/194534/images/R986",
+                    "type": "ImageService3",
+                    "profile": "level0"
+                  }
+                ],
+                "format": "image/png"
+              },
+              "target": "https://publicmap.github.io/india-esz-dashboard/data/gazette-maps/manifests/in.gazette.central.e.2018-12-26.194534/sok-37-3/canvas"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "https://publicmap.github.io/india-esz-dashboard/data/gazette-maps/manifests/in.gazette.central.e.2018-12-26.194534/sok-37-4/canvas",
+      "type": "Canvas",
+      "label": {
+        "en": [
+          "Page 37 (image in PDF)"
+        ]
+      },
+      "width": 1755,
+      "height": 497,
+      "metadata": [
+        {
+          "label": {
+            "en": [
+              "Page"
+            ]
+          },
+          "value": {
+            "en": [
+              "37"
+            ]
+          }
+        },
+        {
+          "label": {
+            "en": [
+              "Image source"
+            ]
+          },
+          "value": {
+            "en": [
+              "Image embedded in the gazette PDF (Servants of Knowledge)"
+            ]
+          }
+        },
+        {
+          "label": {
+            "en": [
+              "Georeferenced"
+            ]
+          },
+          "value": {
+            "en": [
+              "No"
+            ]
+          }
+        }
+      ],
+      "thumbnail": [
+        {
+          "id": "https://gazettes.servantsofknowledge.in/gzdl/html/central_extraordinary/2018-12-26/manifest/194534/images/R987/full/max/0/default.png",
+          "type": "Image",
+          "format": "image/png"
+        }
+      ],
+      "partOf": [
+        {
+          "id": "https://gazettes.servantsofknowledge.in/gzdl/html/central_extraordinary/2018-12-26/manifest/194534/manifest.json",
+          "type": "Manifest"
+        }
+      ],
+      "items": [
+        {
+          "id": "https://publicmap.github.io/india-esz-dashboard/data/gazette-maps/manifests/in.gazette.central.e.2018-12-26.194534/sok-37-4/page",
+          "type": "AnnotationPage",
+          "items": [
+            {
+              "id": "https://publicmap.github.io/india-esz-dashboard/data/gazette-maps/manifests/in.gazette.central.e.2018-12-26.194534/sok-37-4/painting",
+              "type": "Annotation",
+              "motivation": "painting",
+              "body": {
+                "id": "https://gazettes.servantsofknowledge.in/gzdl/html/central_extraordinary/2018-12-26/manifest/194534/images/R987/full/max/0/default.png",
+                "type": "Image",
+                "service": [
+                  {
+                    "id": "https://gazettes.servantsofknowledge.in/gzdl/html/central_extraordinary/2018-12-26/manifest/194534/images/R987",
+                    "type": "ImageService3",
+                    "profile": "level0"
+                  }
+                ],
+                "format": "image/png"
+              },
+              "target": "https://publicmap.github.io/india-esz-dashboard/data/gazette-maps/manifests/in.gazette.central.e.2018-12-26.194534/sok-37-4/canvas"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "https://publicmap.github.io/india-esz-dashboard/data/gazette-maps/manifests/in.gazette.central.e.2018-12-26.194534/sok-37-5/canvas",
+      "type": "Canvas",
+      "label": {
+        "en": [
+          "Page 37 (image in PDF)"
+        ]
+      },
+      "width": 1755,
+      "height": 497,
+      "metadata": [
+        {
+          "label": {
+            "en": [
+              "Page"
+            ]
+          },
+          "value": {
+            "en": [
+              "37"
+            ]
+          }
+        },
+        {
+          "label": {
+            "en": [
+              "Image source"
+            ]
+          },
+          "value": {
+            "en": [
+              "Image embedded in the gazette PDF (Servants of Knowledge)"
+            ]
+          }
+        },
+        {
+          "label": {
+            "en": [
+              "Georeferenced"
+            ]
+          },
+          "value": {
+            "en": [
+              "No"
+            ]
+          }
+        }
+      ],
+      "thumbnail": [
+        {
+          "id": "https://gazettes.servantsofknowledge.in/gzdl/html/central_extraordinary/2018-12-26/manifest/194534/images/R988/full/max/0/default.png",
+          "type": "Image",
+          "format": "image/png"
+        }
+      ],
+      "partOf": [
+        {
+          "id": "https://gazettes.servantsofknowledge.in/gzdl/html/central_extraordinary/2018-12-26/manifest/194534/manifest.json",
+          "type": "Manifest"
+        }
+      ],
+      "items": [
+        {
+          "id": "https://publicmap.github.io/india-esz-dashboard/data/gazette-maps/manifests/in.gazette.central.e.2018-12-26.194534/sok-37-5/page",
+          "type": "AnnotationPage",
+          "items": [
+            {
+              "id": "https://publicmap.github.io/india-esz-dashboard/data/gazette-maps/manifests/in.gazette.central.e.2018-12-26.194534/sok-37-5/painting",
+              "type": "Annotation",
+              "motivation": "painting",
+              "body": {
+                "id": "https://gazettes.servantsofknowledge.in/gzdl/html/central_extraordinary/2018-12-26/manifest/194534/images/R988/full/max/0/default.png",
+                "type": "Image",
+                "service": [
+                  {
+                    "id": "https://gazettes.servantsofknowledge.in/gzdl/html/central_extraordinary/2018-12-26/manifest/194534/images/R988",
+                    "type": "ImageService3",
+                    "profile": "level0"
+                  }
+                ],
+                "format": "image/png"
+              },
+              "target": "https://publicmap.github.io/india-esz-dashboard/data/gazette-maps/manifests/in.gazette.central.e.2018-12-26.194534/sok-37-5/canvas"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "https://publicmap.github.io/india-esz-dashboard/data/gazette-maps/manifests/in.gazette.central.e.2018-12-26.194534/sok-37-6/canvas",
+      "type": "Canvas",
+      "label": {
+        "en": [
+          "Page 37 (image in PDF)"
+        ]
+      },
+      "width": 1755,
+      "height": 497,
+      "metadata": [
+        {
+          "label": {
+            "en": [
+              "Page"
+            ]
+          },
+          "value": {
+            "en": [
+              "37"
+            ]
+          }
+        },
+        {
+          "label": {
+            "en": [
+              "Image source"
+            ]
+          },
+          "value": {
+            "en": [
+              "Image embedded in the gazette PDF (Servants of Knowledge)"
+            ]
+          }
+        },
+        {
+          "label": {
+            "en": [
+              "Georeferenced"
+            ]
+          },
+          "value": {
+            "en": [
+              "No"
+            ]
+          }
+        }
+      ],
+      "thumbnail": [
+        {
+          "id": "https://gazettes.servantsofknowledge.in/gzdl/html/central_extraordinary/2018-12-26/manifest/194534/images/R989/full/max/0/default.png",
+          "type": "Image",
+          "format": "image/png"
+        }
+      ],
+      "partOf": [
+        {
+          "id": "https://gazettes.servantsofknowledge.in/gzdl/html/central_extraordinary/2018-12-26/manifest/194534/manifest.json",
+          "type": "Manifest"
+        }
+      ],
+      "items": [
+        {
+          "id": "https://publicmap.github.io/india-esz-dashboard/data/gazette-maps/manifests/in.gazette.central.e.2018-12-26.194534/sok-37-6/page",
+          "type": "AnnotationPage",
+          "items": [
+            {
+              "id": "https://publicmap.github.io/india-esz-dashboard/data/gazette-maps/manifests/in.gazette.central.e.2018-12-26.194534/sok-37-6/painting",
+              "type": "Annotation",
+              "motivation": "painting",
+              "body": {
+                "id": "https://gazettes.servantsofknowledge.in/gzdl/html/central_extraordinary/2018-12-26/manifest/194534/images/R989/full/max/0/default.png",
+                "type": "Image",
+                "service": [
+                  {
+                    "id": "https://gazettes.servantsofknowledge.in/gzdl/html/central_extraordinary/2018-12-26/manifest/194534/images/R989",
+                    "type": "ImageService3",
+                    "profile": "level0"
+                  }
+                ],
+                "format": "image/png"
+              },
+              "target": "https://publicmap.github.io/india-esz-dashboard/data/gazette-maps/manifests/in.gazette.central.e.2018-12-26.194534/sok-37-6/canvas"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "https://publicmap.github.io/india-esz-dashboard/data/gazette-maps/manifests/in.gazette.central.e.2018-12-26.194534/sok-37-7/canvas",
+      "type": "Canvas",
+      "label": {
+        "en": [
+          "Page 37 (image in PDF)"
+        ]
+      },
+      "width": 1755,
+      "height": 494,
+      "metadata": [
+        {
+          "label": {
+            "en": [
+              "Page"
+            ]
+          },
+          "value": {
+            "en": [
+              "37"
+            ]
+          }
+        },
+        {
+          "label": {
+            "en": [
+              "Image source"
+            ]
+          },
+          "value": {
+            "en": [
+              "Image embedded in the gazette PDF (Servants of Knowledge)"
+            ]
+          }
+        },
+        {
+          "label": {
+            "en": [
+              "Georeferenced"
+            ]
+          },
+          "value": {
+            "en": [
+              "No"
+            ]
+          }
+        }
+      ],
+      "thumbnail": [
+        {
+          "id": "https://gazettes.servantsofknowledge.in/gzdl/html/central_extraordinary/2018-12-26/manifest/194534/images/R990/full/max/0/default.png",
+          "type": "Image",
+          "format": "image/png"
+        }
+      ],
+      "partOf": [
+        {
+          "id": "https://gazettes.servantsofknowledge.in/gzdl/html/central_extraordinary/2018-12-26/manifest/194534/manifest.json",
+          "type": "Manifest"
+        }
+      ],
+      "items": [
+        {
+          "id": "https://publicmap.github.io/india-esz-dashboard/data/gazette-maps/manifests/in.gazette.central.e.2018-12-26.194534/sok-37-7/page",
+          "type": "AnnotationPage",
+          "items": [
+            {
+              "id": "https://publicmap.github.io/india-esz-dashboard/data/gazette-maps/manifests/in.gazette.central.e.2018-12-26.194534/sok-37-7/painting",
+              "type": "Annotation",
+              "motivation": "painting",
+              "body": {
+                "id": "https://gazettes.servantsofknowledge.in/gzdl/html/central_extraordinary/2018-12-26/manifest/194534/images/R990/full/max/0/default.png",
+                "type": "Image",
+                "service": [
+                  {
+                    "id": "https://gazettes.servantsofknowledge.in/gzdl/html/central_extraordinary/2018-12-26/manifest/194534/images/R990",
+                    "type": "ImageService3",
+                    "profile": "level0"
+                  }
+                ],
+                "format": "image/png"
+              },
+              "target": "https://publicmap.github.io/india-esz-dashboard/data/gazette-maps/manifests/in.gazette.central.e.2018-12-26.194534/sok-37-7/canvas"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "https://publicmap.github.io/india-esz-dashboard/data/gazette-maps/manifests/in.gazette.central.e.2018-12-26.194534/sok-38-8/canvas",
+      "type": "Canvas",
+      "label": {
+        "en": [
+          "Page 38 (image in PDF)"
+        ]
+      },
+      "width": 1755,
+      "height": 497,
+      "metadata": [
+        {
+          "label": {
+            "en": [
+              "Page"
+            ]
+          },
+          "value": {
+            "en": [
+              "38"
+            ]
+          }
+        },
+        {
+          "label": {
+            "en": [
+              "Image source"
+            ]
+          },
+          "value": {
+            "en": [
+              "Image embedded in the gazette PDF (Servants of Knowledge)"
+            ]
+          }
+        },
+        {
+          "label": {
+            "en": [
+              "Georeferenced"
+            ]
+          },
+          "value": {
+            "en": [
+              "No"
+            ]
+          }
+        }
+      ],
+      "thumbnail": [
+        {
+          "id": "https://gazettes.servantsofknowledge.in/gzdl/html/central_extraordinary/2018-12-26/manifest/194534/images/R997/full/max/0/default.png",
+          "type": "Image",
+          "format": "image/png"
+        }
+      ],
+      "partOf": [
+        {
+          "id": "https://gazettes.servantsofknowledge.in/gzdl/html/central_extraordinary/2018-12-26/manifest/194534/manifest.json",
+          "type": "Manifest"
+        }
+      ],
+      "items": [
+        {
+          "id": "https://publicmap.github.io/india-esz-dashboard/data/gazette-maps/manifests/in.gazette.central.e.2018-12-26.194534/sok-38-8/page",
+          "type": "AnnotationPage",
+          "items": [
+            {
+              "id": "https://publicmap.github.io/india-esz-dashboard/data/gazette-maps/manifests/in.gazette.central.e.2018-12-26.194534/sok-38-8/painting",
+              "type": "Annotation",
+              "motivation": "painting",
+              "body": {
+                "id": "https://gazettes.servantsofknowledge.in/gzdl/html/central_extraordinary/2018-12-26/manifest/194534/images/R997/full/max/0/default.png",
+                "type": "Image",
+                "service": [
+                  {
+                    "id": "https://gazettes.servantsofknowledge.in/gzdl/html/central_extraordinary/2018-12-26/manifest/194534/images/R997",
+                    "type": "ImageService3",
+                    "profile": "level0"
+                  }
+                ],
+                "format": "image/png"
+              },
+              "target": "https://publicmap.github.io/india-esz-dashboard/data/gazette-maps/manifests/in.gazette.central.e.2018-12-26.194534/sok-38-8/canvas"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "https://publicmap.github.io/india-esz-dashboard/data/gazette-maps/manifests/in.gazette.central.e.2018-12-26.194534/sok-38-9/canvas",
+      "type": "Canvas",
+      "label": {
+        "en": [
+          "Page 38 (image in PDF)"
+        ]
+      },
+      "width": 1755,
+      "height": 497,
+      "metadata": [
+        {
+          "label": {
+            "en": [
+              "Page"
+            ]
+          },
+          "value": {
+            "en": [
+              "38"
+            ]
+          }
+        },
+        {
+          "label": {
+            "en": [
+              "Image source"
+            ]
+          },
+          "value": {
+            "en": [
+              "Image embedded in the gazette PDF (Servants of Knowledge)"
+            ]
+          }
+        },
+        {
+          "label": {
+            "en": [
+              "Georeferenced"
+            ]
+          },
+          "value": {
+            "en": [
+              "No"
+            ]
+          }
+        }
+      ],
+      "thumbnail": [
+        {
+          "id": "https://gazettes.servantsofknowledge.in/gzdl/html/central_extraordinary/2018-12-26/manifest/194534/images/R998/full/max/0/default.png",
+          "type": "Image",
+          "format": "image/png"
+        }
+      ],
+      "partOf": [
+        {
+          "id": "https://gazettes.servantsofknowledge.in/gzdl/html/central_extraordinary/2018-12-26/manifest/194534/manifest.json",
+          "type": "Manifest"
+        }
+      ],
+      "items": [
+        {
+          "id": "https://publicmap.github.io/india-esz-dashboard/data/gazette-maps/manifests/in.gazette.central.e.2018-12-26.194534/sok-38-9/page",
+          "type": "AnnotationPage",
+          "items": [
+            {
+              "id": "https://publicmap.github.io/india-esz-dashboard/data/gazette-maps/manifests/in.gazette.central.e.2018-12-26.194534/sok-38-9/painting",
+              "type": "Annotation",
+              "motivation": "painting",
+              "body": {
+                "id": "https://gazettes.servantsofknowledge.in/gzdl/html/central_extraordinary/2018-12-26/manifest/194534/images/R998/full/max/0/default.png",
+                "type": "Image",
+                "service": [
+                  {
+                    "id": "https://gazettes.servantsofknowledge.in/gzdl/html/central_extraordinary/2018-12-26/manifest/194534/images/R998",
+                    "type": "ImageService3",
+                    "profile": "level0"
+                  }
+                ],
+                "format": "image/png"
+              },
+              "target": "https://publicmap.github.io/india-esz-dashboard/data/gazette-maps/manifests/in.gazette.central.e.2018-12-26.194534/sok-38-9/canvas"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "https://publicmap.github.io/india-esz-dashboard/data/gazette-maps/manifests/in.gazette.central.e.2018-12-26.194534/sok-38-10/canvas",
+      "type": "Canvas",
+      "label": {
+        "en": [
+          "Page 38 (image in PDF)"
+        ]
+      },
+      "width": 1755,
+      "height": 497,
+      "metadata": [
+        {
+          "label": {
+            "en": [
+              "Page"
+            ]
+          },
+          "value": {
+            "en": [
+              "38"
+            ]
+          }
+        },
+        {
+          "label": {
+            "en": [
+              "Image source"
+            ]
+          },
+          "value": {
+            "en": [
+              "Image embedded in the gazette PDF (Servants of Knowledge)"
+            ]
+          }
+        },
+        {
+          "label": {
+            "en": [
+              "Georeferenced"
+            ]
+          },
+          "value": {
+            "en": [
+              "No"
+            ]
+          }
+        }
+      ],
+      "thumbnail": [
+        {
+          "id": "https://gazettes.servantsofknowledge.in/gzdl/html/central_extraordinary/2018-12-26/manifest/194534/images/R999/full/max/0/default.png",
+          "type": "Image",
+          "format": "image/png"
+        }
+      ],
+      "partOf": [
+        {
+          "id": "https://gazettes.servantsofknowledge.in/gzdl/html/central_extraordinary/2018-12-26/manifest/194534/manifest.json",
+          "type": "Manifest"
+        }
+      ],
+      "items": [
+        {
+          "id": "https://publicmap.github.io/india-esz-dashboard/data/gazette-maps/manifests/in.gazette.central.e.2018-12-26.194534/sok-38-10/page",
+          "type": "AnnotationPage",
+          "items": [
+            {
+              "id": "https://publicmap.github.io/india-esz-dashboard/data/gazette-maps/manifests/in.gazette.central.e.2018-12-26.194534/sok-38-10/painting",
+              "type": "Annotation",
+              "motivation": "painting",
+              "body": {
+                "id": "https://gazettes.servantsofknowledge.in/gzdl/html/central_extraordinary/2018-12-26/manifest/194534/images/R999/full/max/0/default.png",
+                "type": "Image",
+                "service": [
+                  {
+                    "id": "https://gazettes.servantsofknowledge.in/gzdl/html/central_extraordinary/2018-12-26/manifest/194534/images/R999",
+                    "type": "ImageService3",
+                    "profile": "level0"
+                  }
+                ],
+                "format": "image/png"
+              },
+              "target": "https://publicmap.github.io/india-esz-dashboard/data/gazette-maps/manifests/in.gazette.central.e.2018-12-26.194534/sok-38-10/canvas"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "https://publicmap.github.io/india-esz-dashboard/data/gazette-maps/manifests/in.gazette.central.e.2018-12-26.194534/sok-38-11/canvas",
+      "type": "Canvas",
+      "label": {
+        "en": [
+          "Page 38 (image in PDF)"
+        ]
+      },
+      "width": 1755,
+      "height": 497,
+      "metadata": [
+        {
+          "label": {
+            "en": [
+              "Page"
+            ]
+          },
+          "value": {
+            "en": [
+              "38"
+            ]
+          }
+        },
+        {
+          "label": {
+            "en": [
+              "Image source"
+            ]
+          },
+          "value": {
+            "en": [
+              "Image embedded in the gazette PDF (Servants of Knowledge)"
+            ]
+          }
+        },
+        {
+          "label": {
+            "en": [
+              "Georeferenced"
+            ]
+          },
+          "value": {
+            "en": [
+              "No"
+            ]
+          }
+        }
+      ],
+      "thumbnail": [
+        {
+          "id": "https://gazettes.servantsofknowledge.in/gzdl/html/central_extraordinary/2018-12-26/manifest/194534/images/R1000/full/max/0/default.png",
+          "type": "Image",
+          "format": "image/png"
+        }
+      ],
+      "partOf": [
+        {
+          "id": "https://gazettes.servantsofknowledge.in/gzdl/html/central_extraordinary/2018-12-26/manifest/194534/manifest.json",
+          "type": "Manifest"
+        }
+      ],
+      "items": [
+        {
+          "id": "https://publicmap.github.io/india-esz-dashboard/data/gazette-maps/manifests/in.gazette.central.e.2018-12-26.194534/sok-38-11/page",
+          "type": "AnnotationPage",
+          "items": [
+            {
+              "id": "https://publicmap.github.io/india-esz-dashboard/data/gazette-maps/manifests/in.gazette.central.e.2018-12-26.194534/sok-38-11/painting",
+              "type": "Annotation",
+              "motivation": "painting",
+              "body": {
+                "id": "https://gazettes.servantsofknowledge.in/gzdl/html/central_extraordinary/2018-12-26/manifest/194534/images/R1000/full/max/0/default.png",
+                "type": "Image",
+                "service": [
+                  {
+                    "id": "https://gazettes.servantsofknowledge.in/gzdl/html/central_extraordinary/2018-12-26/manifest/194534/images/R1000",
+                    "type": "ImageService3",
+                    "profile": "level0"
+                  }
+                ],
+                "format": "image/png"
+              },
+              "target": "https://publicmap.github.io/india-esz-dashboard/data/gazette-maps/manifests/in.gazette.central.e.2018-12-26.194534/sok-38-11/canvas"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "https://publicmap.github.io/india-esz-dashboard/data/gazette-maps/manifests/in.gazette.central.e.2018-12-26.194534/sok-38-12/canvas",
+      "type": "Canvas",
+      "label": {
+        "en": [
+          "Page 38 (image in PDF)"
+        ]
+      },
+      "width": 1755,
+      "height": 494,
+      "metadata": [
+        {
+          "label": {
+            "en": [
+              "Page"
+            ]
+          },
+          "value": {
+            "en": [
+              "38"
+            ]
+          }
+        },
+        {
+          "label": {
+            "en": [
+              "Image source"
+            ]
+          },
+          "value": {
+            "en": [
+              "Image embedded in the gazette PDF (Servants of Knowledge)"
+            ]
+          }
+        },
+        {
+          "label": {
+            "en": [
+              "Georeferenced"
+            ]
+          },
+          "value": {
+            "en": [
+              "No"
+            ]
+          }
+        }
+      ],
+      "thumbnail": [
+        {
+          "id": "https://gazettes.servantsofknowledge.in/gzdl/html/central_extraordinary/2018-12-26/manifest/194534/images/R1001/full/max/0/default.png",
+          "type": "Image",
+          "format": "image/png"
+        }
+      ],
+      "partOf": [
+        {
+          "id": "https://gazettes.servantsofknowledge.in/gzdl/html/central_extraordinary/2018-12-26/manifest/194534/manifest.json",
+          "type": "Manifest"
+        }
+      ],
+      "items": [
+        {
+          "id": "https://publicmap.github.io/india-esz-dashboard/data/gazette-maps/manifests/in.gazette.central.e.2018-12-26.194534/sok-38-12/page",
+          "type": "AnnotationPage",
+          "items": [
+            {
+              "id": "https://publicmap.github.io/india-esz-dashboard/data/gazette-maps/manifests/in.gazette.central.e.2018-12-26.194534/sok-38-12/painting",
+              "type": "Annotation",
+              "motivation": "painting",
+              "body": {
+                "id": "https://gazettes.servantsofknowledge.in/gzdl/html/central_extraordinary/2018-12-26/manifest/194534/images/R1001/full/max/0/default.png",
+                "type": "Image",
+                "service": [
+                  {
+                    "id": "https://gazettes.servantsofknowledge.in/gzdl/html/central_extraordinary/2018-12-26/manifest/194534/images/R1001",
+                    "type": "ImageService3",
+                    "profile": "level0"
+                  }
+                ],
+                "format": "image/png"
+              },
+              "target": "https://publicmap.github.io/india-esz-dashboard/data/gazette-maps/manifests/in.gazette.central.e.2018-12-26.194534/sok-38-12/canvas"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "https://publicmap.github.io/india-esz-dashboard/data/gazette-maps/manifests/in.gazette.central.e.2018-12-26.194534/sok-43-13/canvas",
+      "type": "Canvas",
+      "label": {
+        "en": [
+          "Page 43 (image in PDF)"
+        ]
+      },
+      "width": 1755,
+      "height": 497,
+      "metadata": [
+        {
+          "label": {
+            "en": [
+              "Page"
+            ]
+          },
+          "value": {
+            "en": [
+              "43"
+            ]
+          }
+        },
+        {
+          "label": {
+            "en": [
+              "Image source"
+            ]
+          },
+          "value": {
+            "en": [
+              "Image embedded in the gazette PDF (Servants of Knowledge)"
+            ]
+          }
+        },
+        {
+          "label": {
+            "en": [
+              "Georeferenced"
+            ]
+          },
+          "value": {
+            "en": [
+              "No"
+            ]
+          }
+        }
+      ],
+      "thumbnail": [
+        {
+          "id": "https://gazettes.servantsofknowledge.in/gzdl/html/central_extraordinary/2018-12-26/manifest/194534/images/R1032/full/max/0/default.png",
+          "type": "Image",
+          "format": "image/png"
+        }
+      ],
+      "partOf": [
+        {
+          "id": "https://gazettes.servantsofknowledge.in/gzdl/html/central_extraordinary/2018-12-26/manifest/194534/manifest.json",
+          "type": "Manifest"
+        }
+      ],
+      "items": [
+        {
+          "id": "https://publicmap.github.io/india-esz-dashboard/data/gazette-maps/manifests/in.gazette.central.e.2018-12-26.194534/sok-43-13/page",
+          "type": "AnnotationPage",
+          "items": [
+            {
+              "id": "https://publicmap.github.io/india-esz-dashboard/data/gazette-maps/manifests/in.gazette.central.e.2018-12-26.194534/sok-43-13/painting",
+              "type": "Annotation",
+              "motivation": "painting",
+              "body": {
+                "id": "https://gazettes.servantsofknowledge.in/gzdl/html/central_extraordinary/2018-12-26/manifest/194534/images/R1032/full/max/0/default.png",
+                "type": "Image",
+                "service": [
+                  {
+                    "id": "https://gazettes.servantsofknowledge.in/gzdl/html/central_extraordinary/2018-12-26/manifest/194534/images/R1032",
+                    "type": "ImageService3",
+                    "profile": "level0"
+                  }
+                ],
+                "format": "image/png"
+              },
+              "target": "https://publicmap.github.io/india-esz-dashboard/data/gazette-maps/manifests/in.gazette.central.e.2018-12-26.194534/sok-43-13/canvas"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "https://publicmap.github.io/india-esz-dashboard/data/gazette-maps/manifests/in.gazette.central.e.2018-12-26.194534/sok-43-14/canvas",
+      "type": "Canvas",
+      "label": {
+        "en": [
+          "Page 43 (image in PDF)"
+        ]
+      },
+      "width": 1755,
+      "height": 497,
+      "metadata": [
+        {
+          "label": {
+            "en": [
+              "Page"
+            ]
+          },
+          "value": {
+            "en": [
+              "43"
+            ]
+          }
+        },
+        {
+          "label": {
+            "en": [
+              "Image source"
+            ]
+          },
+          "value": {
+            "en": [
+              "Image embedded in the gazette PDF (Servants of Knowledge)"
+            ]
+          }
+        },
+        {
+          "label": {
+            "en": [
+              "Georeferenced"
+            ]
+          },
+          "value": {
+            "en": [
+              "No"
+            ]
+          }
+        }
+      ],
+      "thumbnail": [
+        {
+          "id": "https://gazettes.servantsofknowledge.in/gzdl/html/central_extraordinary/2018-12-26/manifest/194534/images/R1033/full/max/0/default.png",
+          "type": "Image",
+          "format": "image/png"
+        }
+      ],
+      "partOf": [
+        {
+          "id": "https://gazettes.servantsofknowledge.in/gzdl/html/central_extraordinary/2018-12-26/manifest/194534/manifest.json",
+          "type": "Manifest"
+        }
+      ],
+      "items": [
+        {
+          "id": "https://publicmap.github.io/india-esz-dashboard/data/gazette-maps/manifests/in.gazette.central.e.2018-12-26.194534/sok-43-14/page",
+          "type": "AnnotationPage",
+          "items": [
+            {
+              "id": "https://publicmap.github.io/india-esz-dashboard/data/gazette-maps/manifests/in.gazette.central.e.2018-12-26.194534/sok-43-14/painting",
+              "type": "Annotation",
+              "motivation": "painting",
+              "body": {
+                "id": "https://gazettes.servantsofknowledge.in/gzdl/html/central_extraordinary/2018-12-26/manifest/194534/images/R1033/full/max/0/default.png",
+                "type": "Image",
+                "service": [
+                  {
+                    "id": "https://gazettes.servantsofknowledge.in/gzdl/html/central_extraordinary/2018-12-26/manifest/194534/images/R1033",
+                    "type": "ImageService3",
+                    "profile": "level0"
+                  }
+                ],
+                "format": "image/png"
+              },
+              "target": "https://publicmap.github.io/india-esz-dashboard/data/gazette-maps/manifests/in.gazette.central.e.2018-12-26.194534/sok-43-14/canvas"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "https://publicmap.github.io/india-esz-dashboard/data/gazette-maps/manifests/in.gazette.central.e.2018-12-26.194534/sok-43-15/canvas",
+      "type": "Canvas",
+      "label": {
+        "en": [
+          "Page 43 (image in PDF)"
+        ]
+      },
+      "width": 1755,
+      "height": 497,
+      "metadata": [
+        {
+          "label": {
+            "en": [
+              "Page"
+            ]
+          },
+          "value": {
+            "en": [
+              "43"
+            ]
+          }
+        },
+        {
+          "label": {
+            "en": [
+              "Image source"
+            ]
+          },
+          "value": {
+            "en": [
+              "Image embedded in the gazette PDF (Servants of Knowledge)"
+            ]
+          }
+        },
+        {
+          "label": {
+            "en": [
+              "Georeferenced"
+            ]
+          },
+          "value": {
+            "en": [
+              "No"
+            ]
+          }
+        }
+      ],
+      "thumbnail": [
+        {
+          "id": "https://gazettes.servantsofknowledge.in/gzdl/html/central_extraordinary/2018-12-26/manifest/194534/images/R1034/full/max/0/default.png",
+          "type": "Image",
+          "format": "image/png"
+        }
+      ],
+      "partOf": [
+        {
+          "id": "https://gazettes.servantsofknowledge.in/gzdl/html/central_extraordinary/2018-12-26/manifest/194534/manifest.json",
+          "type": "Manifest"
+        }
+      ],
+      "items": [
+        {
+          "id": "https://publicmap.github.io/india-esz-dashboard/data/gazette-maps/manifests/in.gazette.central.e.2018-12-26.194534/sok-43-15/page",
+          "type": "AnnotationPage",
+          "items": [
+            {
+              "id": "https://publicmap.github.io/india-esz-dashboard/data/gazette-maps/manifests/in.gazette.central.e.2018-12-26.194534/sok-43-15/painting",
+              "type": "Annotation",
+              "motivation": "painting",
+              "body": {
+                "id": "https://gazettes.servantsofknowledge.in/gzdl/html/central_extraordinary/2018-12-26/manifest/194534/images/R1034/full/max/0/default.png",
+                "type": "Image",
+                "service": [
+                  {
+                    "id": "https://gazettes.servantsofknowledge.in/gzdl/html/central_extraordinary/2018-12-26/manifest/194534/images/R1034",
+                    "type": "ImageService3",
+                    "profile": "level0"
+                  }
+                ],
+                "format": "image/png"
+              },
+              "target": "https://publicmap.github.io/india-esz-dashboard/data/gazette-maps/manifests/in.gazette.central.e.2018-12-26.194534/sok-43-15/canvas"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "https://publicmap.github.io/india-esz-dashboard/data/gazette-maps/manifests/in.gazette.central.e.2018-12-26.194534/sok-43-16/canvas",
+      "type": "Canvas",
+      "label": {
+        "en": [
+          "Page 43 (image in PDF)"
+        ]
+      },
+      "width": 1755,
+      "height": 497,
+      "metadata": [
+        {
+          "label": {
+            "en": [
+              "Page"
+            ]
+          },
+          "value": {
+            "en": [
+              "43"
+            ]
+          }
+        },
+        {
+          "label": {
+            "en": [
+              "Image source"
+            ]
+          },
+          "value": {
+            "en": [
+              "Image embedded in the gazette PDF (Servants of Knowledge)"
+            ]
+          }
+        },
+        {
+          "label": {
+            "en": [
+              "Georeferenced"
+            ]
+          },
+          "value": {
+            "en": [
+              "No"
+            ]
+          }
+        }
+      ],
+      "thumbnail": [
+        {
+          "id": "https://gazettes.servantsofknowledge.in/gzdl/html/central_extraordinary/2018-12-26/manifest/194534/images/R1035/full/max/0/default.png",
+          "type": "Image",
+          "format": "image/png"
+        }
+      ],
+      "partOf": [
+        {
+          "id": "https://gazettes.servantsofknowledge.in/gzdl/html/central_extraordinary/2018-12-26/manifest/194534/manifest.json",
+          "type": "Manifest"
+        }
+      ],
+      "items": [
+        {
+          "id": "https://publicmap.github.io/india-esz-dashboard/data/gazette-maps/manifests/in.gazette.central.e.2018-12-26.194534/sok-43-16/page",
+          "type": "AnnotationPage",
+          "items": [
+            {
+              "id": "https://publicmap.github.io/india-esz-dashboard/data/gazette-maps/manifests/in.gazette.central.e.2018-12-26.194534/sok-43-16/painting",
+              "type": "Annotation",
+              "motivation": "painting",
+              "body": {
+                "id": "https://gazettes.servantsofknowledge.in/gzdl/html/central_extraordinary/2018-12-26/manifest/194534/images/R1035/full/max/0/default.png",
+                "type": "Image",
+                "service": [
+                  {
+                    "id": "https://gazettes.servantsofknowledge.in/gzdl/html/central_extraordinary/2018-12-26/manifest/194534/images/R1035",
+                    "type": "ImageService3",
+                    "profile": "level0"
+                  }
+                ],
+                "format": "image/png"
+              },
+              "target": "https://publicmap.github.io/india-esz-dashboard/data/gazette-maps/manifests/in.gazette.central.e.2018-12-26.194534/sok-43-16/canvas"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "https://publicmap.github.io/india-esz-dashboard/data/gazette-maps/manifests/in.gazette.central.e.2018-12-26.194534/sok-43-17/canvas",
+      "type": "Canvas",
+      "label": {
+        "en": [
+          "Page 43 (image in PDF)"
+        ]
+      },
+      "width": 1755,
+      "height": 494,
+      "metadata": [
+        {
+          "label": {
+            "en": [
+              "Page"
+            ]
+          },
+          "value": {
+            "en": [
+              "43"
+            ]
+          }
+        },
+        {
+          "label": {
+            "en": [
+              "Image source"
+            ]
+          },
+          "value": {
+            "en": [
+              "Image embedded in the gazette PDF (Servants of Knowledge)"
+            ]
+          }
+        },
+        {
+          "label": {
+            "en": [
+              "Georeferenced"
+            ]
+          },
+          "value": {
+            "en": [
+              "No"
+            ]
+          }
+        }
+      ],
+      "thumbnail": [
+        {
+          "id": "https://gazettes.servantsofknowledge.in/gzdl/html/central_extraordinary/2018-12-26/manifest/194534/images/R1036/full/max/0/default.png",
+          "type": "Image",
+          "format": "image/png"
+        }
+      ],
+      "partOf": [
+        {
+          "id": "https://gazettes.servantsofknowledge.in/gzdl/html/central_extraordinary/2018-12-26/manifest/194534/manifest.json",
+          "type": "Manifest"
+        }
+      ],
+      "items": [
+        {
+          "id": "https://publicmap.github.io/india-esz-dashboard/data/gazette-maps/manifests/in.gazette.central.e.2018-12-26.194534/sok-43-17/page",
+          "type": "AnnotationPage",
+          "items": [
+            {
+              "id": "https://publicmap.github.io/india-esz-dashboard/data/gazette-maps/manifests/in.gazette.central.e.2018-12-26.194534/sok-43-17/painting",
+              "type": "Annotation",
+              "motivation": "painting",
+              "body": {
+                "id": "https://gazettes.servantsofknowledge.in/gzdl/html/central_extraordinary/2018-12-26/manifest/194534/images/R1036/full/max/0/default.png",
+                "type": "Image",
+                "service": [
+                  {
+                    "id": "https://gazettes.servantsofknowledge.in/gzdl/html/central_extraordinary/2018-12-26/manifest/194534/images/R1036",
+                    "type": "ImageService3",
+                    "profile": "level0"
+                  }
+                ],
+                "format": "image/png"
+              },
+              "target": "https://publicmap.github.io/india-esz-dashboard/data/gazette-maps/manifests/in.gazette.central.e.2018-12-26.194534/sok-43-17/canvas"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

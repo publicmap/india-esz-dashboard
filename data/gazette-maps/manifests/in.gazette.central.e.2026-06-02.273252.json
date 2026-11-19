@@ -7,7 +7,7 @@
   "type": "Manifest",
   "label": {
     "en": [
-      "Draft Notification ESZ around Eravikulam National Park Kerala"
+      "Eravikulam Nation Park – ESZ notification"
     ]
   },
   "summary": {
@@ -36,43 +36,55 @@
       },
       "value": {
         "en": [
-          "02 June 2026"
+          "2026-06-02"
         ]
       }
     },
     {
       "label": {
         "en": [
-          "Gazette ID"
+          "Order number"
         ]
       },
       "value": {
         "en": [
-          "CG-DL-E-10062026-273252"
+          "S.O. 2802(E)"
         ]
       }
     },
     {
       "label": {
         "en": [
-          "Ministry"
+          "Status"
         ]
       },
       "value": {
         "en": [
-          "Ministry of Environment, Forest and Climate Change"
+          "Draft"
         ]
       }
     },
     {
       "label": {
         "en": [
-          "Original PDF"
+          "State"
         ]
       },
       "value": {
         "en": [
-          "<a href=\"https://egazette.gov.in/WriteReadData/2026/273252.pdf\">https://egazette.gov.in/WriteReadData/2026/273252.pdf</a>"
+          "Kerala"
+        ]
+      }
+    },
+    {
+      "label": {
+        "en": [
+          "MoEFCC PDF"
+        ]
+      },
+      "value": {
+        "en": [
+          "<a href=\"https://moef.gov.in/uploads/pdf-uploads/pdf_6ac8b9727491e8.30242968.pdf\">https://moef.gov.in/uploads/pdf-uploads/pdf_6ac8b9727491e8.30242968.pdf</a>"
         ]
       }
     },

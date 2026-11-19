@@ -7,7 +7,7 @@
   "type": "Manifest",
   "label": {
     "en": [
-      "Draft Notification ESZ around Nagarahole Tiger Reserve Karnataka"
+      "Nagarhole TR – ESZ notification"
     ]
   },
   "summary": {
@@ -36,43 +36,55 @@
       },
       "value": {
         "en": [
-          "02 September 2026"
+          "2026-09-02"
         ]
       }
     },
     {
       "label": {
         "en": [
-          "Gazette ID"
+          "Order number"
         ]
       },
       "value": {
         "en": [
-          "CG-DL-E-14092026-276168"
+          "S.O. No. 4862(E)"
         ]
       }
     },
     {
       "label": {
         "en": [
-          "Ministry"
+          "Status"
         ]
       },
       "value": {
         "en": [
-          "Ministry of Environment, Forest and Climate Change"
+          "Draft"
         ]
       }
     },
     {
       "label": {
         "en": [
-          "Original PDF"
+          "State"
         ]
       },
       "value": {
         "en": [
-          "<a href=\"https://egazette.gov.in/WriteReadData/2026/276168.pdf\">https://egazette.gov.in/WriteReadData/2026/276168.pdf</a>"
+          "Karnataka"
+        ]
+      }
+    },
+    {
+      "label": {
+        "en": [
+          "MoEFCC PDF"
+        ]
+      },
+      "value": {
+        "en": [
+          "<a href=\"https://moef.gov.in/uploads/pdf-uploads/pdf_6ac87ddced08b7.52107784.pdf\">https://moef.gov.in/uploads/pdf-uploads/pdf_6ac87ddced08b7.52107784.pdf</a>"
         ]
       }
     },

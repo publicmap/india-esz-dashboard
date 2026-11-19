@@ -7,7 +7,7 @@
   "type": "Manifest",
   "label": {
     "en": [
-      "Draft Notification of Anamalai Tiger Reserve in the State of Tamil Nadu"
+      "Anamalai Tiger Reserve – ESZ notification"
     ]
   },
   "summary": {
@@ -36,43 +36,55 @@
       },
       "value": {
         "en": [
-          "29 November 2024"
+          "2024-11-29"
         ]
       }
     },
     {
       "label": {
         "en": [
-          "Gazette ID"
+          "Order number"
         ]
       },
       "value": {
         "en": [
-          "CG-DL-E-09122024-259220"
+          "S.O. 5129(E)"
         ]
       }
     },
     {
       "label": {
         "en": [
-          "Ministry"
+          "Status"
         ]
       },
       "value": {
         "en": [
-          "Ministry of Environment, Forest and Climate Change"
+          "Draft"
         ]
       }
     },
     {
       "label": {
         "en": [
-          "Original PDF"
+          "State"
         ]
       },
       "value": {
         "en": [
-          "<a href=\"https://egazette.gov.in/WriteReadData/2024/259220.pdf\">https://egazette.gov.in/WriteReadData/2024/259220.pdf</a>"
+          "Tamil Nadu"
+        ]
+      }
+    },
+    {
+      "label": {
+        "en": [
+          "MoEFCC PDF"
+        ]
+      },
+      "value": {
+        "en": [
+          "<a href=\"https://moef.gov.in/uploads/pdf-uploads/pdf_6ac8bf0eea9ed8.91462390.pdf\">https://moef.gov.in/uploads/pdf-uploads/pdf_6ac8bf0eea9ed8.91462390.pdf</a>"
         ]
       }
     },

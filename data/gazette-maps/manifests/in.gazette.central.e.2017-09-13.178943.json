@@ -1,0 +1,375 @@
+{
+  "@context": [
+    "http://iiif.io/api/extension/georef/1/context.json",
+    "http://iiif.io/api/presentation/3/context.json"
+  ],
+  "id": "https://publicmap.github.io/india-esz-dashboard/data/gazette-maps/manifests/in.gazette.central.e.2017-09-13.178943.json",
+  "type": "Manifest",
+  "label": {
+    "en": [
+      "Valmiki Wildlife Sanctuary, Valmiki National Park, Valmiki Tiger Reserve – ESZ notification"
+    ]
+  },
+  "summary": {
+    "en": [
+      "1 map image(s), 1 georeferenced with Allmaps."
+    ]
+  },
+  "metadata": [
+    {
+      "label": {
+        "en": [
+          "Gazette"
+        ]
+      },
+      "value": {
+        "en": [
+          "<a href=\"https://egazette.servantsofknowledge.in/details/in.gazette.central.e.2017-09-13.178943/\">in.gazette.central.e.2017-09-13.178943</a>"
+        ]
+      }
+    },
+    {
+      "label": {
+        "en": [
+          "Published"
+        ]
+      },
+      "value": {
+        "en": [
+          "2017-09-13"
+        ]
+      }
+    },
+    {
+      "label": {
+        "en": [
+          "Order number"
+        ]
+      },
+      "value": {
+        "en": [
+          "S.O. 3026 (E)"
+        ]
+      }
+    },
+    {
+      "label": {
+        "en": [
+          "Status"
+        ]
+      },
+      "value": {
+        "en": [
+          "Final"
+        ]
+      }
+    },
+    {
+      "label": {
+        "en": [
+          "State"
+        ]
+      },
+      "value": {
+        "en": [
+          "Bihar"
+        ]
+      }
+    },
+    {
+      "label": {
+        "en": [
+          "MoEFCC PDF"
+        ]
+      },
+      "value": {
+        "en": [
+          "<a href=\"https://moef.gov.in/uploads/2017/06/Valmiki%20Wildlife%20Sanctuary%2C%20Valmiki%20National%20Park%20and%20Valmiki%2C%20Bihar%20Final.pdf\">https://moef.gov.in/uploads/2017/06/Valmiki%20Wildlife%20Sanctuary%2C%20Valmiki%20National%20Park%20and%20Valmiki%2C%20Bihar%20Final.pdf</a>"
+        ]
+      }
+    },
+    {
+      "label": {
+        "en": [
+          "Archive.org"
+        ]
+      },
+      "value": {
+        "en": [
+          "<a href=\"https://archive.org/details/in.gazette.central.e.2017-09-13.178943\">https://archive.org/details/in.gazette.central.e.2017-09-13.178943</a>"
+        ]
+      }
+    }
+  ],
+  "requiredStatement": {
+    "label": {
+      "en": [
+        "Attribution"
+      ]
+    },
+    "value": {
+      "en": [
+        "Gazette of India (MoEFCC). Images via <a href=\"https://egazette.servantsofknowledge.in/\">Servants of Knowledge</a> and <a href=\"https://archive.org\">archive.org</a>; georeferencing via <a href=\"https://allmaps.org\">Allmaps</a>."
+      ]
+    }
+  },
+  "homepage": [
+    {
+      "id": "https://egazette.servantsofknowledge.in/details/in.gazette.central.e.2017-09-13.178943/",
+      "type": "Text",
+      "label": {
+        "en": [
+          "Gazette text (Servants of Knowledge)"
+        ]
+      },
+      "format": "text/html"
+    }
+  ],
+  "seeAlso": [
+    {
+      "id": "https://iiif.archive.org/iiif/in.gazette.central.e.2017-09-13.178943/manifest.json",
+      "type": "Manifest",
+      "format": "application/ld+json",
+      "profile": "https://iiif.io/api/presentation/3/context.json"
+    }
+  ],
+  "partOf": [
+    {
+      "id": "https://publicmap.github.io/india-esz-dashboard/data/gazette-maps/collection.json",
+      "type": "Collection"
+    }
+  ],
+  "items": [
+    {
+      "id": "https://publicmap.github.io/india-esz-dashboard/data/gazette-maps/manifests/in.gazette.central.e.2017-09-13.178943/archive-31-0/canvas",
+      "type": "Canvas",
+      "label": {
+        "en": [
+          "Page 32 (page scan)"
+        ]
+      },
+      "width": 2550,
+      "height": 3301,
+      "metadata": [
+        {
+          "label": {
+            "en": [
+              "Page"
+            ]
+          },
+          "value": {
+            "en": [
+              "32"
+            ]
+          }
+        },
+        {
+          "label": {
+            "en": [
+              "Image source"
+            ]
+          },
+          "value": {
+            "en": [
+              "Page scan (archive.org)"
+            ]
+          }
+        },
+        {
+          "label": {
+            "en": [
+              "Georeferenced"
+            ]
+          },
+          "value": {
+            "en": [
+              "<a href=\"https://annotations.allmaps.org/maps/82ddd6c5566e4d83\">Allmaps</a>"
+            ]
+          }
+        }
+      ],
+      "thumbnail": [
+        {
+          "id": "https://iiif.archive.org/image/iiif/3/in.gazette.central.e.2017-09-13.178943%2F178943_jp2.zip%2F178943_jp2%2F178943_0031.jp2/full/400,/0/default.jpg",
+          "type": "Image",
+          "format": "image/jpeg"
+        }
+      ],
+      "partOf": [
+        {
+          "id": "https://iiif.archive.org/iiif/in.gazette.central.e.2017-09-13.178943/manifest.json",
+          "type": "Manifest"
+        }
+      ],
+      "items": [
+        {
+          "id": "https://publicmap.github.io/india-esz-dashboard/data/gazette-maps/manifests/in.gazette.central.e.2017-09-13.178943/archive-31-0/page",
+          "type": "AnnotationPage",
+          "items": [
+            {
+              "id": "https://publicmap.github.io/india-esz-dashboard/data/gazette-maps/manifests/in.gazette.central.e.2017-09-13.178943/archive-31-0/painting",
+              "type": "Annotation",
+              "motivation": "painting",
+              "body": {
+                "format": "image/jpeg",
+                "id": "https://iiif.archive.org/image/iiif/3/in.gazette.central.e.2017-09-13.178943%2F178943_jp2.zip%2F178943_jp2%2F178943_0031.jp2/full/max/0/default.jpg",
+                "service": [
+                  {
+                    "id": "https://iiif.archive.org/image/iiif/3/in.gazette.central.e.2017-09-13.178943%2F178943_jp2.zip%2F178943_jp2%2F178943_0031.jp2",
+                    "profile": "level2",
+                    "type": "ImageService3"
+                  }
+                ],
+                "type": "Image"
+              },
+              "target": "https://publicmap.github.io/india-esz-dashboard/data/gazette-maps/manifests/in.gazette.central.e.2017-09-13.178943/archive-31-0/canvas"
+            }
+          ]
+        }
+      ],
+      "annotations": [
+        {
+          "id": "https://publicmap.github.io/india-esz-dashboard/data/gazette-maps/manifests/in.gazette.central.e.2017-09-13.178943/archive-31-0/georeferencing",
+          "type": "AnnotationPage",
+          "items": [
+            {
+              "id": "https://annotations.allmaps.org/maps/82ddd6c5566e4d83",
+              "type": "Annotation",
+              "created": "2026-08-03T18:28:13.956Z",
+              "modified": "2026-08-03T18:28:13.956Z",
+              "motivation": "georeferencing",
+              "target": {
+                "type": "SpecificResource",
+                "source": {
+                  "id": "https://iiif.archive.org/image/iiif/3/in.gazette.central.e.2017-09-13.178943%2F178943_jp2.zip%2F178943_jp2%2F178943_0031.jp2",
+                  "type": "ImageService3",
+                  "height": 3301,
+                  "width": 2550,
+                  "partOf": [
+                    {
+                      "id": "https://iiif.archive.org/iiif/in.gazette.central.e.2017-09-13.178943$31/canvas",
+                      "type": "Canvas",
+                      "label": {
+                        "none": [
+                          "31"
+                        ]
+                      },
+                      "partOf": [
+                        {
+                          "id": "https://iiif.archive.org/iiif/in.gazette.central.e.2017-09-13.178943/manifest.json",
+                          "type": "Manifest",
+                          "label": {
+                            "none": [
+                              "Union Government, Extraordinary, 2017-09-13, Part II-Section 3-Sub-Section(ii), Ref. 3026 E"
+                            ]
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "id": "https://publicmap.github.io/india-esz-dashboard/data/iiif-manifest.json/canvas/1",
+                      "type": "Canvas",
+                      "label": {
+                        "en": [
+                          "Valmiki National Park (2017-09-13)"
+                        ]
+                      },
+                      "partOf": []
+                    }
+                  ]
+                },
+                "selector": {
+                  "type": "SvgSelector",
+                  "value": "<svg width=\"2550\" height=\"3301\"><polygon points=\"0,0 0,3301 2550,3301 2550,0\" /></svg>"
+                }
+              },
+              "body": {
+                "type": "FeatureCollection",
+                "transformation": {
+                  "type": "polynomial",
+                  "options": {
+                    "order": 1
+                  }
+                },
+                "features": [
+                  {
+                    "type": "Feature",
+                    "properties": {
+                      "resourceCoords": [
+                        502,
+                        1122
+                      ]
+                    },
+                    "geometry": {
+                      "type": "Point",
+                      "coordinates": [
+                        83.83713012641033,
+                        27.320699502509754
+                      ]
+                    }
+                  },
+                  {
+                    "type": "Feature",
+                    "properties": {
+                      "resourceCoords": [
+                        1928,
+                        1077
+                      ]
+                    },
+                    "geometry": {
+                      "type": "Point",
+                      "coordinates": [
+                        84.62290473955,
+                        27.33606746723771
+                      ]
+                    }
+                  },
+                  {
+                    "type": "Feature",
+                    "properties": {
+                      "resourceCoords": [
+                        1330,
+                        1496
+                      ]
+                    },
+                    "geometry": {
+                      "type": "Point",
+                      "coordinates": [
+                        84.29196222030737,
+                        27.15175072971572
+                      ]
+                    }
+                  }
+                ],
+                "_allmaps": {
+                  "id": "https://annotations.allmaps.org/maps/82ddd6c5566e4d83",
+                  "version": "https://annotations.allmaps.org/maps/82ddd6c5566e4d83@f2819d4edf4829eb",
+                  "image": {
+                    "id": "https://annotations.allmaps.org/images/b8c35d71d5ab9695",
+                    "version": "https://annotations.allmaps.org/images/b8c35d71d5ab9695@eec55e650b41bfa6",
+                    "canvases": [
+                      {
+                        "id": "https://annotations.allmaps.org/canvases/fe89836282d70b8b",
+                        "manifests": [
+                          {
+                            "id": "https://annotations.allmaps.org/manifests/b8f2bfc2e84dee7d"
+                          }
+                        ]
+                      },
+                      {
+                        "id": "https://annotations.allmaps.org/canvases/d4da044e3c568404",
+                        "manifests": []
+                      }
+                    ]
+                  },
+                  "scale": 0.019262,
+                  "area": 22688445139.2
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
