@@ -18,6 +18,13 @@
 //   data/gazette-maps/collection.json        a Collection with one Manifest per gazette
 //   data/gazette-maps/manifests/<id>.json    that gazette's manifest: one canvas per map
 //                                            image, linked (seeAlso) to the source manifests
+//   data/gazette-maps/index.json             {<gazette id>: {maps, georeferenced, mapPages}} for
+//                                            every fetched gazette, read by build-full-join.js;
+//                                            mapPages are 1-based page numbers that hold an
+//                                            embedded map-size image or a georeferenced scan,
+//                                            so the dashboard can show likely map pages without
+//                                            scanning every page (the SoK manifest has no CORS
+//                                            header, so the browser can't read it itself)
 //   data/gazette-maps/mosaic.json            one Manifest of every georeferenced map, so all of
 //                                            them load as a single layer (Allmaps Viewer)
 //   data/gazette-maps/mosaic-annotations.json
@@ -218,6 +225,16 @@ async function main() {
     await writeFile(path.join(OUT_DIR, 'manifests', `${g.id}.json`), `${JSON.stringify(manifest, null, 2)}\n`);
     refs.push({ id: manifest.id, type: 'Manifest', label, summary, thumbnail: canvases[0].thumbnail });
   }
+
+  const index = Object.fromEntries(gazettes.map((g) => [g.id, {
+    maps: g.maps.length,
+    georeferenced: g.maps.filter((m) => m.georeference).length,
+    // SoK labels are 1-based PDF pages ("Page 42"); archive.org canvas labels
+    // are 0-based leaf numbers, so leaf 41 is page 42.
+    mapPages: [...new Set(g.maps.map((m) => (m.source === 'sok' ? Number(m.page) : Number(m.page) + 1)))]
+      .filter(Number.isFinite).sort((a, b) => a - b),
+  }]).sort(([a], [b]) => (a < b ? -1 : 1)));
+  await writeFile(path.join(OUT_DIR, 'index.json'), `${JSON.stringify(index, null, 1)}\n`);
 
   const collection = {
     '@context': 'http://iiif.io/api/presentation/3/context.json',

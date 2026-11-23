@@ -1176,6 +1176,44 @@ button.stat-tile.is-active {
 }
 .map-hint { font-size: 0.8rem; color: var(--text-muted); margin: 0.6rem 0 0; }
 
+.mapping-progress {
+  margin-top: 0.9rem;
+  padding: 0.9rem 1rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  background: var(--surface-1);
+}
+.mapping-progress-title { font-family: var(--font-display); font-size: 1rem; margin: 0; color: var(--text-primary); }
+.mapping-progress-scope { font-size: 0.78rem; color: var(--text-muted); margin: 0.15rem 0 0.7rem; }
+.mapping-progress-row + .mapping-progress-row { margin-top: 0.75rem; }
+.mapping-progress-label {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.5rem;
+  font-size: 0.85rem;
+  color: var(--text-primary);
+}
+.mapping-progress-value { font-variant-numeric: tabular-nums; font-weight: 600; }
+.mapping-progress-bar {
+  height: 8px;
+  margin-top: 0.3rem;
+  border-radius: 999px;
+  background: var(--gridline);
+  overflow: hidden;
+}
+.mapping-progress-fill {
+  display: block;
+  height: 100%;
+  width: 0;
+  border-radius: 999px;
+  background: var(--accent-2);
+  transition: width 0.3s ease;
+}
+.mapping-progress-fill-osm { background: var(--accent); }
+.mapping-progress-desc { font-size: 0.75rem; color: var(--text-secondary); margin: 0.25rem 0 0; }
+.mapping-progress-help { font-size: 0.75rem; color: var(--text-muted); margin: 0.8rem 0 0; }
+@media (prefers-reduced-motion: reduce) { .mapping-progress-fill { transition: none; } }
+
 .map-layer-control {
   position: absolute;
   top: 0.6rem;
@@ -1206,21 +1244,6 @@ button.stat-tile.is-active {
   font-family: inherit;
   border-radius: var(--radius-md);
   padding: 0.85rem 1rem;
-}
-.popup-title { font-weight: 700; font-family: var(--font-display); margin: 0 0 0.35rem; }
-.popup-row { font-size: 0.85rem; color: var(--text-secondary); margin: 0.15rem 0; }
-
-.map-hover-popup {
-  pointer-events: none;
-}
-.map-hover-popup .maplibregl-popup-content {
-  padding: 0.3rem 0.55rem;
-  font-size: 0.78rem;
-  font-weight: 600;
-  white-space: nowrap;
-}
-.map-hover-popup .maplibregl-popup-tip {
-  display: none;
 }
 
 .table-toolbar {
@@ -1420,13 +1443,18 @@ button.stat-tile.is-active {
 }
 .pa-card:hover { box-shadow: var(--shadow-soft); }
 .pa-card.is-selected { box-shadow: 0 0 0 2px var(--accent); }
+/* ESZ-status border, matching the colour of its map marker (PA_MARKER_STATUS_COLOR
+   in app.js): green when the final ESZ is notified, yellow for a draft, and a
+   heavier red when no notification has been found. */
+.pa-card--final { border: 1px solid #0ca30c; }
+.pa-card--draft { border: 1px solid #fab219; }
+.pa-card--none { border: 2px solid #dc2626; }
 
 /* Collapsed, the row gets its own fixed dark theme (independent of the
    page's light/dark toggle) -- a deliberate photo-strip look, not the
-   paper-toned surface the rest of the UI uses. Corners are square and the
-   border carries no per-status colour -- the notification status is already
-   stated as text on the right (see .pa-card-status), so a coloured accent
-   here would just be redundant. Clicking it swaps this compact strip for the
+   paper-toned surface the rest of the UI uses. Corners are square; the
+   card's border carries its ESZ status (see .pa-card--<status> above), the
+   same as its map marker. Clicking it swaps this compact strip for the
    wiki-sourced header (image/title/excerpt) in place -- see
    .pa-card.is-expanded .pa-card-row below -- rather than duplicating that
    content in a separate panel. */
@@ -1613,6 +1641,80 @@ button.stat-tile.is-active {
   color: var(--text-muted);
   font-size: 0.76rem;
 }
+.gazette-maps { flex: 1 0 100%; min-width: 0; }
+.gazette-maps[hidden] { display: none; }
+.gazette-maps { margin-top: 0.1rem; }
+.gazette-maps-status {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.6rem;
+  font-size: 0.76rem;
+  color: var(--text-muted);
+}
+.gazette-maps-actions { display: flex; gap: 0.4rem; flex: none; }
+.gazette-maps-btn {
+  flex: none;
+  font: inherit;
+  font-size: 0.74rem;
+  padding: 0.15rem 0.6rem;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--surface-2);
+  color: var(--text-secondary);
+  cursor: pointer;
+}
+.gazette-maps-btn[aria-pressed="true"] { background: var(--accent); border-color: var(--accent); color: var(--surface-1); }
+.gazette-maps-btn:hover { color: var(--text-primary); border-color: var(--baseline); }
+.gazette-thumbs {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 0.45rem;
+  overflow-x: auto;
+  padding-bottom: 0.3rem;
+  scroll-snap-type: x proximity;
+}
+/* Thumbnails are white paper scans in either theme, so the badge and page
+   label use fixed colours rather than theme tokens. */
+.gazette-thumb {
+  position: relative;
+  flex: none;
+  width: 92px;
+  border: 1px solid var(--gridline);
+  border-radius: 8px;
+  overflow: hidden;
+  background: #fff;
+  scroll-snap-align: start;
+  text-decoration: none;
+}
+.gazette-thumb img { display: block; width: 100%; aspect-ratio: 1 / 1.41; object-fit: cover; object-position: top; }
+.gazette-thumb:hover, .gazette-thumb:focus-visible { border-color: var(--accent); box-shadow: var(--shadow-soft); }
+.gazette-thumb.is-ignored img { opacity: 0.55; filter: grayscale(1); }
+.gazette-thumb.is-unchecked { border-style: dashed; }
+.gazette-thumb-badge {
+  position: absolute;
+  left: 4px;
+  right: 4px;
+  bottom: 22px;
+  padding: 2px 4px;
+  border-radius: 4px;
+  background: #b5570f;
+  color: #fff;
+  font-size: 0.62rem;
+  font-weight: 600;
+  line-height: 1.2;
+  text-align: center;
+}
+.gazette-thumb-badge.is-done { background: #1f6f54; }
+.gazette-thumb.is-ignored .gazette-thumb-badge { display: none; }
+.gazette-thumb-page {
+  display: block;
+  padding: 2px 0;
+  font-size: 0.68rem;
+  text-align: center;
+  color: #5c5340;
+  background: #fffaf0;
+}
 .pa-notification-docs {
   display: flex;
   align-items: center;
@@ -1633,7 +1735,9 @@ button.stat-tile.is-active {
   transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease, transform 0.15s ease;
 }
 .pa-doc-link svg { width: 18px; height: 18px; }
-a.pa-doc-link:hover {
+button.pa-doc-link { cursor: pointer; padding: 0; font: inherit; }
+button.pa-doc-link[aria-expanded="true"] { background: var(--accent); border-color: var(--accent); color: var(--surface-1); }
+a.pa-doc-link:hover, button.pa-doc-link:hover {
   background: var(--accent);
   border-color: var(--accent);
   color: var(--surface-1);
@@ -1686,3 +1790,8 @@ span.pa-doc-link[aria-disabled="true"] {
   .ambient-toggle span { display: none; }
   .state-row-progress, .pa-type-progress { width: 100%; }
 }
+
+/* "#" permalink before a PA's detail heading: links to the page with that PA
+   selected (see syncUrlHash in app.js). */
+.pa-permalink { margin-right: 0.3rem; color: var(--text-muted); text-decoration: none; font-weight: 400; }
+.pa-permalink:hover { color: inherit; text-decoration: underline; }

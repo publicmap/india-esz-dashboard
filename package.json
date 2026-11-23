@@ -16,6 +16,7 @@
     "enrich:allmaps": "node scripts/enrich-allmaps.js",
     "build:gazette-maps": "node scripts/fetch-gazette-iiif.js",
     "build:osm-protected-areas": "node scripts/build-osm-protected-areas.js",
+    "build:natural-earth": "node scripts/build-natural-earth.js",
     "dump:gazettes": "node scripts/dump-gazettes.js",
     "suggest:missing-state": "node scripts/plugins/quickstatements-from-wikilinks.js --input data/wikidata/protected-areas.csv --output data/wikidata-protected-areas.state-suggestions.csv --qs-output data/wikidata-protected-areas.state.qs.txt --property P131 --property-label state --target-types Q12443800,Q467745 --filter-column state",
     "suggest:missing-located-in": "node scripts/plugins/quickstatements-from-wikilinks.js --input data/wikidata/protected-areas.csv --output data/wikidata-protected-areas.locatedInAdminTerritorialEntity-suggestions.csv --qs-output data/wikidata-protected-areas.locatedInAdminTerritorialEntity.qs.txt --property P131 --property-label locatedInAdminTerritorialEntity --target-types Q105626471,Q1149652,Q467745,Q12443800 --filter-column locatedInAdminTerritorialEntity",

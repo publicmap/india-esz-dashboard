@@ -4,6 +4,7 @@
 // step -- dependencies are loaded as ES modules straight from a CDN.
 
 import { Protocol as PmtilesProtocol } from 'https://cdn.jsdelivr.net/npm/pmtiles@4.4.1/+esm';
+import { WarpedMapLayer } from 'https://cdn.jsdelivr.net/npm/@allmaps/maplibre@1.0.0-beta.42/+esm';
 
 const GITHUB_RAW_ATLAS_URL = 'https://raw.githubusercontent.com/publicmap/india-esz-dashboard/main/data/amche-atlas.json';
 const AMCHE_ATLAS_BASE = 'https://amche.in/dev/';
@@ -32,6 +33,10 @@ const STATUS_COLOR = { final: '#0ca30c', draft: '#fab219', none: '#898781' };
 // own approximation (upstream's dash units are canvas pixels; MapLibre's
 // line-dasharray is in multiples of line width, so the numbers don't carry
 // over 1:1) of the same dash-dot international / dashed internal look.
+// The map's all-India starting view -- also restored when the pointer
+// leaves the state list after a state hover zoomed in.
+const INITIAL_VIEW = { center: [82, 22], zoom: 3.6 };
+
 const BOUNDARY_CORRECTIONS_PMTILES_URL = 'https://cdn.jsdelivr.net/npm/@india-boundary-corrector/data@0.2.2/india_boundary_corrections.pmtiles.gz';
 // Upstream's own "osm-carto" config gates this at startZoom 4 (matching how
 // coarse OSM's own raster boundary line is at low zoom); we start at 0
@@ -58,15 +63,98 @@ const BHARATMAPS_ATTRIBUTION = '<a href="https://bharatmaps.gov.in/BharatMaps/Ho
 const ESZ_LAYER_URL = 'https://indianopenmaps.fly.dev/not-so-open/forests/esz/parivesh/{z}/{x}/{y}.pbf';
 const ESZ_LAYER_SOURCE_LAYER = 'Bharatmaps_Parivesh_Eco_Sensitive_Zones';
 const ESZ_LAYER_MAXZOOM = 9;
-const ESZ_LAYER_LINE_WIDTH = [
-  'interpolate', ['linear'], ['zoom'],
-  14, ['case', ['boolean', ['feature-state', 'selected'], false], 4, ['boolean', ['feature-state', 'hover'], false], 3, 1],
-  18, ['case', ['boolean', ['feature-state', 'selected'], false], 8, ['boolean', ['feature-state', 'hover'], false], 5, 2],
-];
+// The Parivesh overlays (ESZ, wildlife reserves) sit under the OSM protected
+// areas as faint context: a light fill, no outline, and name labels from
+// PARIVESH_LABEL_MINZOOM. The labels run along each polygon's edge, repeated:
+// these tiles stop at z9/z10, so a single interior label (one per source
+// tile) almost never falls inside a z14 view.
+const PARIVESH_FILL_OPACITY = 0.1;
+const PARIVESH_LABEL_MINZOOM = 14;
+const PARIVESH_LABEL_LAYOUT = {
+  'symbol-placement': 'line',
+  'symbol-spacing': 350,
+  'text-font': ['open_sans_regular'],
+  'text-size': 12,
+  'text-offset': [0, -0.8], // just inside/outside the edge, not on it
+  'text-padding': 4,
+};
+const PARIVESH_LABEL_PAINT = { 'text-color': '#166534', 'text-halo-color': '#ffffff', 'text-halo-width': 1.5 };
+
+// Small condensed source tags ("OSM", "BHARATMAPS") repeated along polygon
+// outlines from z8, so it's clear which dataset each boundary comes from.
+const SOURCE_TAG_MINZOOM = 8;
+function sourceTagLayer(id, source, sourceLayer, text, color) {
+  return {
+    id,
+    type: 'symbol',
+    source,
+    'source-layer': sourceLayer,
+    minzoom: SOURCE_TAG_MINZOOM,
+    layout: {
+      'symbol-placement': 'line',
+      'symbol-spacing': 250,
+      // Forest boundaries are jagged: allow sharp bends under the short tag,
+      // or it rarely finds a stretch to sit on.
+      'text-max-angle': 90,
+      'text-field': text,
+      'text-font': ['open_sans_condensed_semibold'],
+      'text-size': 8,
+      'text-letter-spacing': 0.05,
+      'text-padding': 0,
+    },
+    paint: { 'text-color': color, 'text-halo-color': '#ffffff', 'text-halo-width': 1.2 },
+  };
+}
 
 const WILDLIFE_RESERVE_LAYER_URL = 'https://indianopenmaps.fly.dev/not-so-open/forests/wildlife/reserves-and-corridors/parivesh/{z}/{x}/{y}.pbf';
 const WILDLIFE_RESERVE_LAYER_SOURCE_LAYER = 'Bharatmaps_Parivesh_Wildlife_Reserves_and_Corridors';
 const WILDLIFE_RESERVE_LAYER_MAXZOOM = 10;
+
+// Every OSM protected area in India, built by
+// scripts/build-osm-protected-areas.js and served from this site as PMTiles.
+// Every georeferenced ESZ gazette map (an Allmaps AnnotationPage built by
+// build:gazette-maps), warped onto the map in the browser by the Allmaps
+// MapLibre plugin straight from the gazette page images' IIIF services.
+// (The Allmaps tile server renders the same mosaic, but takes minutes a
+// tile.) Pinned to @allmaps/maplibre 1.0.0-beta.42, the last release built
+// for MapLibre 4 -- later ones need MapLibre 5/6 and load maps without
+// drawing them on this page's 4.7.1.
+const NOTIFICATION_MAPS_ANNOTATIONS_URL = new URL('data/gazette-maps/mosaic-annotations.json', document.baseURI).href;
+const NOTIFICATION_MAPS_LAYER_ID = 'notification-maps';
+const NOTIFICATION_MAPS_OPACITY = 0.85;
+
+// OSM ocean polygons (Shortbread vector tiles), a pale mask over the sea on
+// the OSM raster basemap.
+const OCEAN_TILES_URL = 'https://vector.openstreetmap.org/shortbread_v1/{z}/{x}/{y}.mvt';
+
+// Natural Earth 1:10m countries from India's point of view, built by
+// scripts/build-natural-earth.js: outlines for every country, and a grey mask
+// over all of them except India.
+const NATURAL_EARTH_PMTILES_URL = new URL('data/natural-earth/countries-ind.pmtiles', document.baseURI).href;
+const COUNTRY_MASK_COLOR = '#9ca3af';
+const COUNTRY_MASK_OPACITY = 0.9;
+
+const OSM_PA_PMTILES_URL = new URL('data/osm/india-protected-areas-all.pmtiles', document.baseURI).href;
+const OSM_PA_SOURCE_LAYER = 'protected_areas';
+// OSM zones, classified from name/protection_title (see osmPaZoneExpr): the
+// core area is filled by its PA's ESZ notification status (unlinked areas in
+// grey), the buffer in a light green, ESZs hatched in their PA's status colour
+// and eco-sensitive areas hatched light green.
+const OSM_PA_CORE_OPACITY = 0.45;
+const OSM_PA_LABEL_MINZOOM = 7;
+const OSM_PA_UNLINKED_COLOR = '#898781';
+const OSM_PA_BUFFER_COLOR = '#86efac';
+const OSM_PA_BUFFER_OPACITY = 0.5;
+// ESZ hatching is drawn in its PA's status colour (see osmPaStatusById);
+// eco-sensitive areas keep a light green.
+const OSM_PA_ESZ_HATCH = { spacing: 8, width: 1.5, alpha: 0.75 };
+const OSM_PA_ESA_HATCH = { image: 'osm-pa-hatch-esa', color: 'rgba(74, 222, 128, 0.6)', spacing: 10, width: 1 };
+const osmPaEszHatchImage = (status) => `osm-pa-hatch-esz-${status}`;
+// The NIC (Parivesh) ESZ layer gets the same hatch, muted: its features carry
+// no link to a PA, so it's drawn in one green at low opacity under the OSM
+// layer.
+const NIC_ESZ_HATCH = { ...OSM_PA_ESZ_HATCH, image: 'nic-esz-hatch', color: '#166534' };
+const NIC_ESZ_HATCH_OPACITY = 0.2;
 
 // The dashboard's one data dependency: data/full-join.json, built by
 // scripts/build-full-join.js. It's a full outer join between the Wikidata
@@ -121,7 +209,20 @@ function matchesStateFilter(state) {
 function entryHasMoefPdf(entry) { return entry.notifications.some((n) => n.notificationPdfLink); }
 function entryHasArchivePdf(entry) { return entry.notifications.some((n) => n.notificationArchiveLink); }
 function entryHasBoundaryMap(entry) { return entry.notifications.some((n) => n.georeferencingLink); }
-function entryHasBoundaryData(entry) { return (entry.osmRelationIds || []).length > 0; }
+function entryHasBoundaryData(entry) { return entryOsmFeatureId(entry) !== null; }
+// The PA's OSM boundary as "relation/<id>" or "way/<id>": Wikidata's OSM
+// relation ID first, else an OSM feature tagged with the PA's Wikidata ID.
+function entryOsmFeatureId(entry) {
+  const relationId = (entry.osmRelationIds || [])[0];
+  if (relationId) return `relation/${relationId}`;
+  return (entry.osmFeatureIds || [])[0] || null;
+}
+// amche-atlas's osm: shortcut takes relations; ways go to openstreetmap.org.
+function osmBoundaryHref(osmFeatureId) {
+  return osmFeatureId.startsWith('relation/')
+    ? `${AMCHE_ATLAS_BASE}?layers=osm:${osmFeatureId}`
+    : `https://www.openstreetmap.org/${osmFeatureId}`;
+}
 
 const DOC_AVAILABILITY_FIELDS = [
   { key: 'moefpdf', selectId: 'doc-filter-moefpdf', check: entryHasMoefPdf },
@@ -234,7 +335,7 @@ async function initSourceStatus() {
     };
     // Same dot-badge classes (.dot-final/.dot-draft/.dot-none) used for ESZ
     // status everywhere else on the dashboard -- the accordion cards, the
-    // notification history, and the map popups -- so this row label reads as
+    // and the notification history -- so this row label reads as
     // the same status, not a separate color scheme.
     const STATUS_DOT_CLASS = { 'final-esz': 'dot-final', 'draft-esz': 'dot-draft', 'no-notification': 'dot-none' };
     const statusRowHtml = (s, highlight) => `
@@ -1094,47 +1195,75 @@ function escapeHtml(value) {
   return String(value).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 }
 
-// Builds the popup markup for a map marker -- just the PA name and its
-// latest ESZ status. Full detail (images, excerpt, links, notification
-// history) now lives in that PA's card in the accordion below; clicking a
-// marker opens (and scrolls to) that card via revealCard.
-function buildPopupHtml(p) {
-  const dotClass = p.eszStatus === 'final' ? 'dot-final' : p.eszStatus === 'draft' ? 'dot-draft' : 'dot-none';
-  const statusLabel = p.notificationStatus || 'Not notified';
-  return `
-    <p class="popup-title">${escapeHtml(p.name || '')}</p>
-    <p class="popup-row status-pill"><i class="dot ${dotClass}" aria-hidden="true"></i>${escapeHtml(statusLabel)}</p>
-  `;
-}
-
-function openPopupForFeature(feature) {
-  showPopup(feature.geometry.coordinates, buildPopupHtml(feature.properties));
-}
-
-let activePopup = null;
 let selectedWikidataId = null;
-const hoverPopup = new maplibregl.Popup({ closeButton: false, closeOnClick: false, className: 'map-hover-popup', offset: 10, anchor: 'bottom' });
+// The map has no popups: hovering/selecting a PA marker swaps its badge to the
+// full name, and its detail lives in its card in the accordion.
 
-function closePopup() {
-  if (activePopup) { activePopup.remove(); activePopup = null; }
-}
-
+// Ends the PA selection: un-highlights its card and drops its marker back to
+// the initials badge.
 function clearSelection() {
   selectedWikidataId = null;
   highlightCard(null);
 }
 
-function showPopup(coordinates, html) {
-  closePopup();
-  // focusAfterOpen defaults to true, which calls .focus() on the popup DOM
-  // node -- the browser then scrolls that (possibly off-screen) node into
-  // view. Harmless for a click, but this popup also opens on every PA-row
-  // *hover* (onCardHoverEnter), so left at its default it yanked the page's
-  // scroll position around on every row the mouse crossed.
-  activePopup = new maplibregl.Popup({ maxWidth: '300px', focusAfterOpen: false }).setLngLat(coordinates).setHTML(html).addTo(map);
-  // Closing the popup (via its "x" button, or being replaced/removed
-  // programmatically) is what ends a selection -- keep the two in sync.
-  activePopup.on('close', clearSelection);
+// Selects a PA as a map click does: its state becomes the selected state
+// (fitted first), its card opens and scrolls into view, then the map zooms
+// in to the PA once the state fit lands. Also used for the URL hash.
+function selectPa(paKey) {
+  const entry = entryByPaKey.get(paKey);
+  const paState = entry?.state[0];
+  if (paState && paState !== selectedState) {
+    if (selectedState) openStates.delete(selectedState);
+    openStates.add(paState);
+    selectState(paState);
+    renderAccordion();
+  }
+  selectedWikidataId = paKey;
+  highlightCard(selectedWikidataId);
+  revealCard(selectedWikidataId);
+  if (entry && entry.coordinateLatitude != null) {
+    const zoomIn = () => { if (selectedWikidataId === paKey) zoomToEntry(entry); };
+    if (map.isMoving()) map.once('moveend', zoomIn);
+    else zoomIn();
+  }
+}
+
+// The URL hash names the open PA (#Q1661434, or the encoded paKey of a PA
+// without a Wikidata item), so a link opens the page with that PA selected.
+// Off until the map has loaded and applied the hash it was opened with, so
+// the initial renders don't wipe it.
+let urlHashSyncEnabled = false;
+
+function paKeyHash(paKey) {
+  return `#${encodeURIComponent(paKey)}`;
+}
+
+function paKeyFromHash() {
+  const raw = location.hash.slice(1);
+  if (!raw) return null;
+  let key;
+  try { key = decodeURIComponent(raw); } catch { return null; }
+  return entryByPaKey.has(key) ? key : null;
+}
+
+function syncUrlHash() {
+  if (!urlHashSyncEnabled) return;
+  const key = selectedWikidataId || [...expandedCards].pop() || null;
+  const hash = key ? paKeyHash(key) : '';
+  if (location.hash === hash || (!hash && !location.hash)) return;
+  history.replaceState(null, '', `${location.pathname}${location.search}${hash}`);
+}
+
+function selectPaFromHash() {
+  const key = paKeyFromHash();
+  if (key && key !== selectedWikidataId) selectPa(key);
+}
+
+function initUrlHash() {
+  selectPaFromHash();
+  urlHashSyncEnabled = true;
+  syncUrlHash();
+  window.addEventListener('hashchange', selectPaFromHash);
 }
 
 // Pans/flies the map to a PA feature. Pass `zoom` to fly in (card click);
@@ -1149,11 +1278,14 @@ function focusFeature(feature, { zoom } = {}) {
 // card per state) -- the accordion equivalent of the old table's selected-row
 // styling.
 function highlightCard(paKey) {
+  setActivePaMarker(paKey);
   document.querySelectorAll('#pa-accordion .pa-card.is-selected').forEach((el) => el.classList.remove('is-selected'));
-  if (!paKey) return;
-  for (const el of document.querySelectorAll('#pa-accordion .pa-card')) {
-    if (el.dataset.paKey === paKey) el.classList.add('is-selected');
+  if (paKey) {
+    for (const el of document.querySelectorAll('#pa-accordion .pa-card')) {
+      if (el.dataset.paKey === paKey) el.classList.add('is-selected');
+    }
   }
+  syncUrlHash();
 }
 
 let map;
@@ -1164,6 +1296,10 @@ function initMap() {
     container: 'map',
     style: {
       version: 8,
+      // Glyphs for the state-name labels (see addStateBoundaryLayers).
+      // VersaTiles: Open Sans in every weight plus condensed widths (font
+      // names are its snake_case face ids, e.g. open_sans_semibold).
+      glyphs: 'https://tiles.versatiles.org/assets/glyphs/{fontstack}/{range}.pbf',
       sources: {
         osm: {
           type: 'raster',
@@ -1175,57 +1311,211 @@ function initMap() {
       },
       layers: [{ id: 'osm', type: 'raster', source: 'osm' }],
     },
-    center: [82, 22],
-    zoom: 3.6,
+    center: INITIAL_VIEW.center,
+    zoom: INITIAL_VIEW.zoom,
+    attributionControl: false, // added below, collapsed
   });
   window.__debugMap = map; // TEMP-DEBUG-HOOK: remove before commit
   map.addControl(new maplibregl.NavigationControl({ showCompass: false }), 'top-right');
+  addCollapsedAttribution();
 
   map.on('load', () => {
+    addOceanLayers();
+    addCountryLayers();
+    addNotificationMapsLayer();
     addBoundaryCorrectionLayers();
     addEszLayer();
     addWildlifeReserveLayer();
+    addOsmProtectedAreaLayer();
+    // State lines/labels above the other overlays; the mask layer is moved
+    // down to just above the OSM basemap.
+    addStateBoundaryLayers();
+    // PA markers last, on top of everything (including the state lines and
+    // labels).
     map.addSource('protected-areas', { type: 'geojson', data: allFeatureCollection() });
-    map.addLayer({
-      id: 'protected-areas-circles',
-      type: 'circle',
-      source: 'protected-areas',
-      paint: {
-        'circle-color': [
-          'match', ['get', 'eszStatus'],
-          'final', STATUS_COLOR.final,
-          'draft', STATUS_COLOR.draft,
-          STATUS_COLOR.none,
-        ],
-        'circle-radius': ['interpolate', ['linear'], ['zoom'], 3, 2.5, 8, 6, 12, 10],
-        'circle-stroke-color': '#111827',
-        'circle-stroke-width': 0.5,
-        'circle-opacity': 0.9,
-      },
+    addPaMarkerLayers();
+
+    // Hovering a marker activates that PA the same way hovering its card
+    // does: its badge swaps to the full name -- unless a PA is selected,
+    // which keeps hover suspended until cleared. Both marker layers are
+    // hit-tested together, since activating a PA moves it from the base
+    // layer to the active one right under the pointer.
+    let hoveredMarkerId = null;
+    const onMarkerHover = (f) => {
+      const id = f ? f.properties.wikidataId : null;
+      if (id === hoveredMarkerId) return;
+      hoveredMarkerId = id;
+      map.getCanvas().style.cursor = id ? 'pointer' : '';
+      if (selectedWikidataId) return;
+      setActivePaMarker(id);
+    };
+    // Hovering a state on the map styles it as if selected (outline, tint,
+    // label, dimmed points elsewhere) without moving the map; off every
+    // state, the selected state's styling comes back.
+    let hoveredMapLgdName = '';
+    const onMapStateHover = (point) => {
+      const hit = point && map.queryRenderedFeatures(point, { layers: ['state-boundaries-mask'] })[0];
+      const lgdName = hit ? String(hit.properties.STNAME || '').toUpperCase() : '';
+      if (lgdName === hoveredMapLgdName) return;
+      hoveredMapLgdName = lgdName;
+      setActiveStateOutline(lgdName ? (dashboardStateName(lgdName) || lgdName) : selectedState);
+    };
+    map.on('mousemove', (e) => {
+      onMarkerHover(paMarkerAt(e.point));
+      onMapStateHover(e.point);
+      // Linked OSM polygons are clickable too (see the click handler).
+      if (!hoveredMarkerId) map.getCanvas().style.cursor = osmPaKeyAt(e.point) ? 'pointer' : '';
+    });
+    map.getCanvas().addEventListener('mouseleave', () => {
+      onMarkerHover(null);
+      onMapStateHover(null);
+    });
+    // A click on a PA marker, or on an OSM polygon linked to a PA (its own
+    // boundary or its ESZ), toggles that PA's selection: selecting it (and
+    // its state), or deselecting it when it's already selected. Clicking
+    // anywhere else clears the PA selection and selects/deselects a state
+    // (see onMapStateClick).
+    // A user pan/zoom moves the view off the selected PA (see
+    // returnToOpenPa); programmatic moves carry no originalEvent.
+    map.on('movestart', (e) => { if (e.originalEvent) mapViewPa = null; });
+    map.on('click', (e) => {
+      const id = paMarkerAt(e.point)?.properties.wikidataId || osmPaKeyAt(e.point);
+      if (id && id === selectedWikidataId) {
+        deselectPa(id);
+        return;
+      }
+      if (id) {
+        selectPa(id);
+        return;
+      }
+      clearSelection();
+      onMapStateClick(e);
     });
 
-    map.on('click', 'protected-areas-circles', (e) => {
-      const f = e.features[0];
-      openPopupForFeature(f);
-      selectedWikidataId = f.properties.wikidataId;
-      highlightCard(selectedWikidataId);
-      revealCard(selectedWikidataId);
-    });
-    map.on('mouseenter', 'protected-areas-circles', () => { map.getCanvas().style.cursor = 'pointer'; });
-    map.on('mouseleave', 'protected-areas-circles', () => {
-      map.getCanvas().style.cursor = '';
-      hoverPopup.remove();
-    });
-    map.on('mousemove', 'protected-areas-circles', (e) => {
-      const f = e.features[0];
-      hoverPopup.setLngLat(f.geometry.coordinates).setHTML(escapeHtml(f.properties.name || '')).addTo(map);
-    });
-    // Clicking empty map background clears the current selection.
-    map.on('click', (e) => {
-      const hit = map.queryRenderedFeatures(e.point, { layers: ['protected-areas-circles'] });
-      if (hit.length === 0) closePopup();
-    });
+    // Open the PA named in the URL hash, and keep the hash in step from here on.
+    initUrlHash();
   });
+}
+
+// PA markers: a circle coloured by ESZ status -- green when the final ESZ is
+// notified, yellow for a draft, red when no notification has been found --
+// with the PA's name as a text label beside it.
+const PA_MARKER_STATUSES = ['final', 'draft', 'none'];
+const PA_MARKER_STATUS_COLOR = { final: STATUS_COLOR.final, draft: STATUS_COLOR.draft, none: '#dc2626' };
+// Marker size by area: the mappable PAs with a known area are split into
+// equal thirds (small / medium / large), scaled by these factors; PAs with
+// no known area get the small size.
+const PA_MARKER_SIZE_SCALES = [1, 1.5, 2];
+// Circle radius (px) of a small-bucket marker by zoom; the others scale up.
+const PA_MARKER_RADIUS_STOPS = [3, 2, 7, 3, 10, 4, 14, 5];
+// Below this zoom the label abbreviates the PA type (see abbreviatePaName).
+const PA_LABEL_FULL_NAME_ZOOM = 14;
+const PA_LABEL_FONT = ['open_sans_semibold'];
+
+function paMarkerRadius(extra = 0) {
+  const expr = ['interpolate', ['linear'], ['zoom']];
+  for (let i = 0; i < PA_MARKER_RADIUS_STOPS.length; i += 2) {
+    expr.push(PA_MARKER_RADIUS_STOPS[i], ['+', ['*', PA_MARKER_RADIUS_STOPS[i + 1], ['get', 'markerScale']], extra]);
+  }
+  return expr;
+}
+
+const PA_MARKER_COLOR_EXPR = ['match', ['get', 'eszStatus'],
+  'final', PA_MARKER_STATUS_COLOR.final, 'draft', PA_MARKER_STATUS_COLOR.draft, PA_MARKER_STATUS_COLOR.none];
+
+// "Periyar Tiger Reserve" -> "Periyar TR", etc.; shown below
+// PA_LABEL_FULL_NAME_ZOOM.
+const PA_NAME_ABBREVIATIONS = [
+  [/\bNational Park\b/gi, 'NP'],
+  [/\bWildlife Sanctuary\b/gi, 'WLS'],
+  [/\bBird Sanctuary\b/gi, 'BS'],
+  [/\bTiger Reserve\b/gi, 'TR'],
+];
+function abbreviatePaName(name) {
+  return PA_NAME_ABBREVIATIONS.reduce((n, [re, short]) => n.replace(re, short), name || '');
+}
+
+const PA_LABEL_TEXT_FIELD = ['step', ['zoom'], ['get', 'shortName'], PA_LABEL_FULL_NAME_ZOOM, ['get', 'name']];
+const PA_LABEL_LAYOUT = {
+  'text-font': PA_LABEL_FONT,
+  'text-size': ['interpolate', ['linear'], ['zoom'], 5, 10, 10, 12, 14, 13],
+  // Beside the circle, trying right first; offset in ems, clear of the
+  // largest circle.
+  'text-variable-anchor': ['left', 'right', 'top', 'bottom'],
+  'text-radial-offset': ['interpolate', ['linear'], ['zoom'], 3, ['*', 0.35, ['get', 'markerScale']], 14, ['*', 0.5, ['get', 'markerScale']]],
+  'text-justify': 'auto',
+  'text-max-width': 10,
+};
+const PA_LABEL_PAINT = { 'text-color': '#111827', 'text-halo-color': '#ffffff', 'text-halo-width': 1.5 };
+
+// Base circles + labels for every PA, plus an "active" circle + label pair
+// for one PA (hovered on the map or in the list, else the selected one),
+// drawn on top with a black ring and a full-name label that's never hidden by
+// collisions -- see setActivePaMarker.
+function addPaMarkerLayers() {
+  map.addLayer({
+    id: 'protected-areas-markers',
+    type: 'circle',
+    source: 'protected-areas',
+    paint: {
+      'circle-radius': paMarkerRadius(),
+      'circle-color': PA_MARKER_COLOR_EXPR,
+      'circle-stroke-color': '#ffffff',
+      'circle-stroke-width': 1,
+    },
+    // Small PAs draw on top, so a large circle doesn't bury them.
+    layout: { 'circle-sort-key': ['-', 0, ['get', 'markerScale']] },
+  });
+  map.addLayer({
+    id: 'protected-areas-labels',
+    type: 'symbol',
+    source: 'protected-areas',
+    layout: {
+      ...PA_LABEL_LAYOUT,
+      'text-field': PA_LABEL_TEXT_FIELD,
+      // Larger PAs win label collisions.
+      'symbol-sort-key': ['-', 0, ['get', 'markerScale']],
+    },
+    paint: PA_LABEL_PAINT,
+  });
+  map.addLayer({
+    id: 'protected-areas-active',
+    type: 'circle',
+    source: 'protected-areas',
+    filter: ['==', ['get', 'wikidataId'], ''],
+    paint: {
+      'circle-radius': paMarkerRadius(1),
+      'circle-color': PA_MARKER_COLOR_EXPR,
+      'circle-stroke-color': '#000000',
+      'circle-stroke-width': 2,
+    },
+  });
+  map.addLayer({
+    id: 'protected-areas-active-label',
+    type: 'symbol',
+    source: 'protected-areas',
+    filter: ['==', ['get', 'wikidataId'], ''],
+    layout: {
+      ...PA_LABEL_LAYOUT,
+      'text-field': ['get', 'name'],
+      'text-font': ['open_sans_bold'],
+      'text-allow-overlap': true,
+      'text-ignore-placement': true,
+    },
+    paint: PA_LABEL_PAINT,
+  });
+}
+
+// Activates one PA's marker (by wikidataId), or with null falls back to the
+// selected PA (if any).
+function setActivePaMarker(wikidataId) {
+  if (!map || !map.getLayer('protected-areas-active')) return;
+  const id = wikidataId || selectedWikidataId || '';
+  const active = entryByPaKey.get(id) ? id : '';
+  map.setFilter('protected-areas-active', ['==', ['get', 'wikidataId'], active]);
+  map.setFilter('protected-areas-active-label', ['==', ['get', 'wikidataId'], active]);
+  // Drop its base label so the active full-name label isn't doubled.
+  map.setFilter('protected-areas-labels', active ? ['!=', ['get', 'wikidataId'], active] : null);
 }
 
 function boundaryWidthExpression(multiplier) {
@@ -1239,6 +1529,97 @@ function boundaryWidthExpression(multiplier) {
 // Adds the corrected India boundary as vector line layers (see the styling
 // constants above), sourced straight from the india-boundary-corrector
 // PMTiles dataset via the `pmtiles://` protocol -- no raster tile rewriting.
+// Ocean mask: just above the basemap (and the state mask), under every
+// other overlay.
+function addOceanLayers() {
+  map.addSource('ocean', {
+    type: 'vector',
+    tiles: [OCEAN_TILES_URL],
+    maxzoom: 14,
+    attribution: '<a href="https://shortbread-tiles.org/schema/1.0/" target="_blank" rel="noopener">Shortbread vector tiles</a>',
+  });
+  map.addLayer({
+    id: 'ocean-fill',
+    type: 'fill',
+    source: 'ocean',
+    'source-layer': 'ocean',
+    paint: { 'fill-color': '#ebfaff', 'fill-opacity': 0.5 },
+  });
+  map.addLayer({
+    id: 'ocean-line',
+    type: 'line',
+    source: 'ocean',
+    'source-layer': 'ocean',
+    paint: { 'line-color': '#e6e6e6', 'line-width': 0.2 },
+  });
+}
+
+// Natural Earth countries: a grey mask over every country except India, plus
+// thin country outlines. Sits just above the basemap and the state mask, under
+// every other overlay.
+function addCountryLayers() {
+  map.addSource('natural-earth-countries', {
+    type: 'vector',
+    url: `pmtiles://${NATURAL_EARTH_PMTILES_URL}`,
+    attribution: '<a href="https://www.naturalearthdata.com/" target="_blank" rel="noopener">Natural Earth</a>',
+  });
+  map.addLayer({
+    id: 'country-mask',
+    type: 'fill',
+    source: 'natural-earth-countries',
+    'source-layer': 'countries',
+    filter: ['!=', ['get', 'ADM0_A3_IN'], 'IND'],
+    paint: { 'fill-color': COUNTRY_MASK_COLOR, 'fill-opacity': COUNTRY_MASK_OPACITY },
+  });
+  map.addLayer({
+    id: 'country-line',
+    type: 'line',
+    source: 'natural-earth-countries',
+    'source-layer': 'countries',
+    paint: { 'line-color': '#6b7280', 'line-width': 0.75 },
+  });
+}
+
+// Compact attribution, collapsed to its (i) button. MapLibre opens the compact
+// box itself the first time it fills with attributions, so close it once
+// when that happens; the button toggles it as usual after that.
+function addCollapsedAttribution() {
+  const control = new maplibregl.AttributionControl({ compact: true });
+  map.addControl(control, 'bottom-right');
+  const el = map.getContainer().querySelector('.maplibregl-ctrl-attrib');
+  if (!el) return;
+  const collapse = () => {
+    if (!el.classList.contains('maplibregl-compact-show')) return false;
+    el.classList.remove('maplibregl-compact-show');
+    el.setAttribute('open', ''); // same state the (i) button leaves it in when closing
+    return true;
+  };
+  if (collapse()) return;
+  const observer = new MutationObserver(() => { if (collapse()) observer.disconnect(); });
+  observer.observe(el, { attributes: true, attributeFilter: ['class'] });
+}
+
+// The georeferenced gazette maps: above the basemap masks, under every vector
+// overlay (boundaries, ESZs, reserves, OSM PAs, markers). Loading is async; a
+// failure leaves the rest of the map untouched.
+function addNotificationMapsLayer() {
+  const layer = new WarpedMapLayer({ layerId: NOTIFICATION_MAPS_LAYER_ID, opacity: NOTIFICATION_MAPS_OPACITY });
+  map.addLayer(layer);
+  layer.addGeoreferenceAnnotationByUrl(NOTIFICATION_MAPS_ANNOTATIONS_URL)
+    .catch((err) => console.warn('Notification maps failed to load:', err));
+}
+
+function setNotificationMapsLayerVisibility(visible) {
+  if (map.getLayer(NOTIFICATION_MAPS_LAYER_ID)) {
+    map.setLayoutProperty(NOTIFICATION_MAPS_LAYER_ID, 'visibility', visible ? 'visible' : 'none');
+  }
+}
+
+function initNotificationMapsLayerToggle() {
+  const checkbox = document.getElementById('layer-toggle-notification-maps');
+  checkbox.addEventListener('change', () => setNotificationMapsLayerVisibility(checkbox.checked));
+}
+
 function addBoundaryCorrectionLayers() {
   map.addSource('india-boundary-corrections', {
     type: 'vector',
@@ -1275,9 +1656,166 @@ function addBoundaryCorrectionLayers() {
   }
 }
 
-// Adds the Eco-Sensitive Zone overlay as a fill + outline layer pair, shown
+// LGD state/UT boundaries from Indian Open Maps (vector tiles, source layer
+// "LGD_States", name in STNAME as upper case). Drawn as a faint outline for
+// every state with its name label, plus a highlight outline for the active
+// state -- the selected (expanded / clicked) one, or a hovered accordion
+// header previewing another -- and a white mask over every other state while
+// one is active (see setActiveStateOutline).
+const STATE_BOUNDARY_TILES_URL = 'https://indianopenmaps.com/not-so-open/states/lgd/{z}/{x}/{y}.pbf';
+const STATE_NAME_EXPR = ['upcase', ['to-string', ['get', 'STNAME']]];
+const STATE_MASK_COLOR = '#ffffff';
+const STATE_MASK_OPACITY = 0.8;
+const STATE_ACTIVE_FILL_COLOR = '#fdf3c4'; // off-yellow
+// The active state's tint fades out as you zoom in: 0.8 up to z12, 0 by z18.
+const STATE_ACTIVE_FILL_OPACITY_STOPS = [12, 0.8, 18, 0];
+// Dashboard state names (from Wikidata) whose LGD STNAME is spelled differently.
+const LGD_STATE_NAME_OVERRIDES = {
+  'Andaman and Nicobar Islands': 'ANDAMAN & NICOBAR',
+  'Dadra and Nagar Haveli and Daman and Diu': 'DADRA,NAGAR HAVELI,DAMAN & DIU',
+  'Jammu and Kashmir': 'JAMMU & KASHMIR',
+  'National Capital Territory of Delhi': 'DELHI',
+};
+
+function lgdStateName(stateName) {
+  return (LGD_STATE_NAME_OVERRIDES[stateName] || stateName).toUpperCase();
+}
+
+function addStateBoundaryLayers() {
+  map.addSource('state-boundaries', {
+    type: 'vector',
+    tiles: [STATE_BOUNDARY_TILES_URL],
+    minzoom: 0,
+    maxzoom: 10,
+    attribution: "<a href='https://lgdirectory.gov.in' target='_blank' rel='noopener'>Local Government Directory</a>, <a href='https://datameet.org' target='_blank' rel='noopener'>Datameet Community</a>",
+  });
+  map.addLayer({
+    id: 'state-boundaries-mask',
+    type: 'fill',
+    source: 'state-boundaries',
+    'source-layer': 'LGD_States',
+    // Covers every state at all times (so map clicks can hit-test states via
+    // this layer); setActiveStateOutline drives the colour and opacity --
+    // white at 0.8 on every state that isn't active (all of them until one
+    // is), and an off-yellow tint on the active one that fades out by z18.
+    paint: { 'fill-color': STATE_MASK_COLOR, 'fill-opacity': STATE_MASK_OPACITY },
+  });
+  map.addLayer({
+    id: 'state-boundaries-line',
+    type: 'line',
+    source: 'state-boundaries',
+    'source-layer': 'LGD_States',
+    paint: {
+      'line-color': '#9ca3af',
+      'line-width': ['interpolate', ['linear'], ['zoom'], 3, 0.5, 8, 1.2],
+    },
+  });
+  map.addLayer({
+    id: 'state-boundaries-label',
+    type: 'symbol',
+    source: 'state-boundaries',
+    'source-layer': 'LGD_States',
+    layout: {
+      'text-field': ['get', 'STNAME'],
+      // PT Sans Bold (the source's suggested font) isn't on this glyph server.
+      'text-font': ['open_sans_bold'],
+      'text-size': ['interpolate', ['linear'], ['zoom'], 3, 10, 6, 15],
+      'text-padding': 50,
+      'text-max-width': 8,
+      'symbol-sort-key': 1,
+    },
+    paint: {
+      'text-color': '#000000',
+      'text-opacity': 0.8,
+      'text-halo-color': '#ffffff',
+      'text-halo-width': 1,
+    },
+  });
+  map.addLayer({
+    id: 'state-boundaries-active',
+    type: 'line',
+    source: 'state-boundaries',
+    'source-layer': 'LGD_States',
+    filter: ['==', STATE_NAME_EXPR, ''],
+    layout: { 'line-join': 'round' },
+    paint: {
+      'line-color': '#000000',
+      'line-width': 1,
+    },
+  });
+  // Label above the active outline so the line doesn't strike through it.
+  map.moveLayer('state-boundaries-label');
+  // The mask only fades the basemap: it sits directly above the OSM raster,
+  // under every overlay (ESZs, reserves, OSM PAs, markers, boundaries).
+  const layerIds = map.getStyle().layers.map((l) => l.id);
+  const aboveBasemap = layerIds[layerIds.indexOf('osm') + 1];
+  if (aboveBasemap && aboveBasemap !== 'state-boundaries-mask') map.moveLayer('state-boundaries-mask', aboveBasemap);
+  // Every state's tiles are loaded at the initial all-India view -- cache
+  // their bboxes before the user can zoom away.
+  map.once('idle', () => cacheStateBounds());
+}
+
+// Per-state bbox (keyed by LGD name) from the boundary polygons, cached the
+// first time each state's tiles are seen. querySourceFeatures only covers
+// tiles currently loaded, so the cache is filled for every state at once on
+// the first idle at the all-India view (see addStateBoundaryLayers) and
+// topped up from whatever's loaded on later lookups.
+const stateBoundsCache = new Map();
+
+function cacheStateBounds(filter) {
+  const features = map.querySourceFeatures('state-boundaries', { sourceLayer: 'LGD_States', filter });
+  for (const f of features) {
+    const name = String(f.properties.STNAME || '').toUpperCase();
+    if (!name) continue;
+    const bounds = stateBoundsCache.get(name) || new maplibregl.LngLatBounds();
+    const polygons = f.geometry.type === 'Polygon' ? [f.geometry.coordinates] : f.geometry.coordinates;
+    for (const polygon of polygons) for (const [lng, lat] of polygon[0]) bounds.extend([lng, lat]);
+    stateBoundsCache.set(name, bounds);
+  }
+}
+
+function stateBoundaryBounds(stateName) {
+  const name = lgdStateName(stateName);
+  if (!stateBoundsCache.has(name)) cacheStateBounds(['==', STATE_NAME_EXPR, name]);
+  return stateBoundsCache.get(name) || null;
+}
+
+// Outlines one state (by dashboard name) and masks every other state white,
+// or clears both with null.
+function setActiveStateOutline(stateName) {
+  if (!map || !map.getLayer('state-boundaries-active')) return;
+  const name = stateName ? lgdStateName(stateName) : '';
+  map.setFilter('state-boundaries-active', ['==', STATE_NAME_EXPR, name]);
+  const isActive = ['==', STATE_NAME_EXPR, name];
+  map.setPaintProperty('state-boundaries-mask', 'fill-color',
+    stateName ? ['case', isActive, STATE_ACTIVE_FILL_COLOR, STATE_MASK_COLOR] : STATE_MASK_COLOR);
+  // A zoom interpolate has to be the outermost expression, so the
+  // active/inactive case goes inside each stop.
+  const [z0, o0, z1, o1] = STATE_ACTIVE_FILL_OPACITY_STOPS;
+  map.setPaintProperty('state-boundaries-mask', 'fill-opacity', stateName
+    ? ['interpolate', ['linear'], ['zoom'],
+      z0, ['case', isActive, o0, STATE_MASK_OPACITY],
+      z1, ['case', isActive, o1, STATE_MASK_OPACITY]]
+    : STATE_MASK_OPACITY);
+  // Hovered state's label: full opacity and placed first in collision
+  // detection, so a neighbour's label can't knock it out.
+  map.setPaintProperty('state-boundaries-label', 'text-opacity',
+    stateName ? ['case', ['==', STATE_NAME_EXPR, name], 1, 0.8] : 0.8);
+  map.setLayoutProperty('state-boundaries-label', 'symbol-sort-key',
+    stateName ? ['case', ['==', STATE_NAME_EXPR, name], 0, 1] : 1);
+  // Markers for PAs outside the active state fade back.
+  if (map.getLayer('protected-areas-markers')) {
+    const opacity = stateName ? ['case', ['in', `|${stateName}|`, ['get', 'statesKey']], 1, 0.5] : 1;
+    map.setPaintProperty('protected-areas-markers', 'circle-opacity', opacity);
+    map.setPaintProperty('protected-areas-markers', 'circle-stroke-opacity', opacity);
+    map.setPaintProperty('protected-areas-labels', 'text-opacity', opacity);
+  }
+}
+
+// Adds the Eco-Sensitive Zone overlay as a fill + label layer pair, shown
 // by default -- hidden when the map-layer-control checkbox is unchecked.
 function addEszLayer() {
+  addOsmPaHatchImages();
   map.addSource('india-esz', {
     type: 'vector',
     tiles: [ESZ_LAYER_URL],
@@ -1289,21 +1827,27 @@ function addEszLayer() {
     type: 'fill',
     source: 'india-esz',
     'source-layer': ESZ_LAYER_SOURCE_LAYER,
-    paint: { 'fill-color': 'green', 'fill-opacity': 0.2 },
+    paint: { 'fill-pattern': NIC_ESZ_HATCH.image, 'fill-opacity': NIC_ESZ_HATCH_OPACITY },
   });
+  map.addLayer(sourceTagLayer('india-esz-source-tag', 'india-esz', ESZ_LAYER_SOURCE_LAYER, 'BHARATMAPS', '#166534'));
+  // e.g. "NELLAI WLS ESZ"
   map.addLayer({
-    id: 'india-esz-line',
-    type: 'line',
+    id: 'india-esz-label',
+    type: 'symbol',
     source: 'india-esz',
     'source-layer': ESZ_LAYER_SOURCE_LAYER,
-    paint: { 'line-color': '#006400', 'line-width': ESZ_LAYER_LINE_WIDTH },
+    minzoom: PARIVESH_LABEL_MINZOOM,
+    filter: ['has', 'Name'],
+    layout: { ...PARIVESH_LABEL_LAYOUT, 'text-field': ['concat', ['get', 'Name'], ' ESZ'] },
+    paint: PARIVESH_LABEL_PAINT,
   });
 }
 
 function setEszLayerVisibility(visible) {
   const visibility = visible ? 'visible' : 'none';
-  if (map.getLayer('india-esz-fill')) map.setLayoutProperty('india-esz-fill', 'visibility', visibility);
-  if (map.getLayer('india-esz-line')) map.setLayoutProperty('india-esz-line', 'visibility', visibility);
+  for (const id of ['india-esz-fill', 'india-esz-source-tag', 'india-esz-label']) {
+    if (map.getLayer(id)) map.setLayoutProperty(id, 'visibility', visibility);
+  }
 }
 
 function initEszLayerToggle() {
@@ -1312,9 +1856,8 @@ function initEszLayerToggle() {
 }
 
 // Adds the Wildlife Reserves & Corridors overlay (national parks, wildlife
-// sanctuaries, tiger conservation corridors) as a single fill layer -- the
-// upstream style spec's line-width is 0, so no separate outline layer is
-// drawn. Shown by default, same toggle pattern as the ESZ layer above.
+// sanctuaries, tiger conservation corridors) as a fill + label layer pair.
+// Shown by default, same toggle pattern as the ESZ layer above.
 function addWildlifeReserveLayer() {
   map.addSource('india-wildlife-reserve', {
     type: 'vector',
@@ -1327,13 +1870,44 @@ function addWildlifeReserveLayer() {
     type: 'fill',
     source: 'india-wildlife-reserve',
     'source-layer': WILDLIFE_RESERVE_LAYER_SOURCE_LAYER,
-    paint: { 'fill-color': 'green', 'fill-opacity': 0.5 },
+    paint: { 'fill-color': 'green', 'fill-opacity': PARIVESH_FILL_OPACITY },
+  });
+  // Dotted outline, so the faint fill's extent still reads.
+  map.addLayer({
+    id: 'india-wildlife-reserve-line',
+    type: 'line',
+    source: 'india-wildlife-reserve',
+    'source-layer': WILDLIFE_RESERVE_LAYER_SOURCE_LAYER,
+    layout: { 'line-cap': 'round', 'line-join': 'round' },
+    paint: {
+      'line-color': '#16a34a',
+      'line-width': ['interpolate', ['linear'], ['zoom'], 5, 1, 12, 1.5],
+      'line-dasharray': [0.1, 2],
+      'line-opacity': 0.8,
+    },
+  });
+  map.addLayer(sourceTagLayer('india-wildlife-reserve-source-tag', 'india-wildlife-reserve', WILDLIFE_RESERVE_LAYER_SOURCE_LAYER, 'BHARATMAPS', '#166534'));
+  // e.g. "Periyar Tiger reserve"
+  map.addLayer({
+    id: 'india-wildlife-reserve-label',
+    type: 'symbol',
+    source: 'india-wildlife-reserve',
+    'source-layer': WILDLIFE_RESERVE_LAYER_SOURCE_LAYER,
+    minzoom: PARIVESH_LABEL_MINZOOM,
+    filter: ['has', 'newname'],
+    layout: {
+      ...PARIVESH_LABEL_LAYOUT,
+      'text-field': ['concat', ['get', 'newname'], ' ', ['coalesce', ['get', 'type'], '']],
+    },
+    paint: PARIVESH_LABEL_PAINT,
   });
 }
 
 function setWildlifeReserveLayerVisibility(visible) {
   const visibility = visible ? 'visible' : 'none';
-  if (map.getLayer('india-wildlife-reserve-fill')) map.setLayoutProperty('india-wildlife-reserve-fill', 'visibility', visibility);
+  for (const id of ['india-wildlife-reserve-fill', 'india-wildlife-reserve-line', 'india-wildlife-reserve-source-tag', 'india-wildlife-reserve-label']) {
+    if (map.getLayer(id)) map.setLayoutProperty(id, 'visibility', visibility);
+  }
 }
 
 function initWildlifeReserveLayerToggle() {
@@ -1341,9 +1915,242 @@ function initWildlifeReserveLayerToggle() {
   checkbox.addEventListener('change', () => setWildlifeReserveLayerVisibility(checkbox.checked));
 }
 
+// OSM protected areas, drawn above the Parivesh overlays: ESZ and
+// eco-sensitive-area hatching at the bottom, then buffer zones, then the core
+// areas filled by ESZ notification status, all with a 1px outline in their
+// status colour.
+function addOsmProtectedAreaLayer() {
+  addOsmPaHatchImages();
+  map.addSource('osm-protected-areas', {
+    type: 'vector',
+    url: `pmtiles://${OSM_PA_PMTILES_URL}`,
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a> contributors',
+  });
+  const zone = osmPaZoneExpr();
+  const statusById = osmPaStatusById();
+  osmIdToPaKey = buildOsmIdToPaKey();
+  const statusColor = osmPaStatusMatchExpr(statusById, (s) => PA_MARKER_STATUS_COLOR[s], OSM_PA_UNLINKED_COLOR);
+  const eszHatch = osmPaStatusMatchExpr(statusById, osmPaEszHatchImage, osmPaEszHatchImage('unlinked'));
+  const base = { source: 'osm-protected-areas', 'source-layer': OSM_PA_SOURCE_LAYER };
+  map.addLayer({
+    ...base,
+    id: 'osm-pa-hatch',
+    type: 'fill',
+    filter: ['match', zone, ['esz', 'esa'], true, false],
+    paint: { 'fill-pattern': ['case', ['==', zone, 'esa'], OSM_PA_ESA_HATCH.image, eszHatch] },
+  });
+  map.addLayer({
+    ...base,
+    id: 'osm-pa-buffer',
+    type: 'fill',
+    filter: ['==', zone, 'buffer'],
+    paint: { 'fill-color': OSM_PA_BUFFER_COLOR, 'fill-opacity': OSM_PA_BUFFER_OPACITY },
+  });
+  map.addLayer({
+    ...base,
+    id: 'osm-pa-fill',
+    type: 'fill',
+    filter: ['==', zone, 'core'],
+    paint: { 'fill-color': statusColor, 'fill-opacity': OSM_PA_CORE_OPACITY },
+  });
+  map.addLayer({
+    ...base,
+    id: 'osm-pa-line',
+    type: 'line',
+    // Outlined in the same status colour as the core fill (grey when unlinked).
+    paint: { 'line-color': statusColor, 'line-width': 1 },
+  });
+  map.addLayer(sourceTagLayer('osm-pa-source-tag', base.source, base['source-layer'], 'OSM', statusColor));
+  // Polygon names in dark-green italics, set apart from the PA marker labels
+  // (which are placed first, so they win any collision).
+  map.addLayer({
+    ...base,
+    id: 'osm-pa-label',
+    type: 'symbol',
+    minzoom: OSM_PA_LABEL_MINZOOM,
+    filter: ['==', ['geometry-type'], 'Polygon'],
+    layout: {
+      'text-field': ['coalesce', ['get', 'name:en'], ['get', 'name']],
+      'text-font': ['open_sans_regular_italic'],
+      'text-size': ['interpolate', ['linear'], ['zoom'], OSM_PA_LABEL_MINZOOM, 10, 12, 12],
+      'text-max-width': 8,
+      'text-padding': 4,
+    },
+    paint: { 'text-color': '#14532d', 'text-halo-color': '#ffffff', 'text-halo-width': 1.5 },
+  });
+}
+
+// 'esz' | 'esa' | 'buffer' | 'core' for an OSM protected-area feature, from
+// its name and protection_title (OSM has no dedicated zone tag): e.g. "Kali
+// TR ESZ", protection_title=Eco-Sensitive Zone; "Western Ghats Eco-Sensitive
+// Area"; "Anamalai Tiger Reserve Buffer Area", "50m Wetland Buffer Zone",
+// "Wetland Zone of Influence". Everything else is a core area.
+function osmPaZoneExpr() {
+  const text = ['downcase', ['concat',
+    ['coalesce', ['get', 'name'], ''], ' | ', ['coalesce', ['get', 'name:en'], ''], ' | ',
+    ['coalesce', ['get', 'protection_title'], '']]];
+  const has = (...needles) => ['any', ...needles.map((n) => ['in', n, text])];
+  return ['case',
+    has('sensitive area'), 'esa',
+    has('sensitive zone', 'esz'), 'esz',
+    has('buffer', 'zone of influence'), 'buffer',
+    'core'];
+}
+
+// Each linked OSM feature's ESZ notification status: the PA's own polygons
+// (osmFeatureIds by wikidata tag, osmRelationIds from the protected-area
+// list) and its ESZ polygons (osmEszIds, matched by name in
+// build-full-join.js). A feature linked to several PAs takes the most
+// advanced status.
+function osmPaStatusById() {
+  const rank = { final: 2, draft: 1, none: 0 };
+  const statusById = new Map();
+  for (const entry of paEntries) {
+    const status = entry.eszStatus in rank ? entry.eszStatus : 'none';
+    const ids = [
+      ...(entry.osmFeatureIds || []),
+      ...(entry.osmRelationIds || []).map((id) => `relation/${id}`),
+      ...(entry.osmEszIds || []),
+    ];
+    for (const id of ids) {
+      const prev = statusById.get(id);
+      if (!prev || rank[status] > rank[prev]) statusById.set(id, status);
+    }
+  }
+  return statusById;
+}
+
+// A ['match', @id, ...] expression giving valueFor(status) for each linked
+// feature and `fallback` for the rest.
+function osmPaStatusMatchExpr(statusById, valueFor, fallback) {
+  const expr = ['match', ['get', '@id']];
+  for (const status of PA_MARKER_STATUSES) {
+    const ids = [...statusById].filter(([, s]) => s === status).map(([id]) => id);
+    if (ids.length) expr.push(ids, valueFor(status));
+  }
+  return expr.length > 2 ? [...expr, fallback] : fallback;
+}
+
+function hexToRgba(hex, alpha) {
+  const n = parseInt(hex.slice(1), 16);
+  return `rgba(${(n >> 16) & 255}, ${(n >> 8) & 255}, ${n & 255}, ${alpha})`;
+}
+
+// Diagonal-stripe fill patterns: one per ESZ status colour (plus grey for an
+// unlinked ESZ), and the eco-sensitive-area one.
+function addOsmPaHatchImages() {
+  const ratio = 2;
+  const hatches = [
+    ...PA_MARKER_STATUSES.map((status) => ({
+      ...OSM_PA_ESZ_HATCH, image: osmPaEszHatchImage(status), color: hexToRgba(PA_MARKER_STATUS_COLOR[status], OSM_PA_ESZ_HATCH.alpha),
+    })),
+    { ...OSM_PA_ESZ_HATCH, image: osmPaEszHatchImage('unlinked'), color: hexToRgba(OSM_PA_UNLINKED_COLOR, OSM_PA_ESZ_HATCH.alpha) },
+    OSM_PA_ESA_HATCH,
+    NIC_ESZ_HATCH,
+  ];
+  for (const { image, color, spacing, width } of hatches) {
+    if (map.hasImage(image)) continue;
+    const size = spacing * ratio;
+    const canvas = document.createElement('canvas');
+    canvas.width = size;
+    canvas.height = size;
+    const ctx = canvas.getContext('2d');
+    ctx.strokeStyle = color;
+    ctx.lineWidth = width * ratio;
+    ctx.beginPath();
+    // Three parallel 45° lines so the stripe stays continuous across tiles.
+    for (const offset of [-size, 0, size]) {
+      ctx.moveTo(offset, size);
+      ctx.lineTo(offset + size, 0);
+    }
+    ctx.stroke();
+    map.addImage(image, ctx.getImageData(0, 0, size, size), { pixelRatio: ratio });
+  }
+}
+
+// OSM feature id -> the PA it's linked to (its own polygons, then its ESZ
+// polygons), filled in by addOsmProtectedAreaLayer.
+let osmIdToPaKey = new Map();
+
+function buildOsmIdToPaKey() {
+  const index = new Map();
+  for (const field of ['own', 'esz']) {
+    for (const entry of paEntries) {
+      if (entry.coordinateLatitude == null) continue;
+      const ids = field === 'own'
+        ? [...(entry.osmFeatureIds || []), ...(entry.osmRelationIds || []).map((id) => `relation/${id}`)]
+        : entry.osmEszIds || [];
+      for (const id of ids) if (!index.has(id)) index.set(id, entry.paKey);
+    }
+  }
+  return index;
+}
+
+// The PA linked to the topmost OSM polygon under a screen point (core fill
+// over buffer over ESZ hatch), or null.
+const OSM_PA_CLICK_LAYERS = ['osm-pa-fill', 'osm-pa-buffer', 'osm-pa-hatch'];
+function osmPaKeyAt(point) {
+  const layers = OSM_PA_CLICK_LAYERS.filter((id) => map.getLayer(id) && map.getLayoutProperty(id, 'visibility') !== 'none');
+  if (!layers.length) return null;
+  for (const f of map.queryRenderedFeatures(point, { layers })) {
+    const key = osmIdToPaKey.get(f.properties['@id']);
+    if (key) return key;
+  }
+  return null;
+}
+
+// Ends a PA's selection from the map: clears it and closes its card(s).
+function deselectPa(paKey) {
+  for (const cardEl of accordionEl.querySelectorAll('.pa-card.is-expanded')) {
+    if (cardEl.dataset.paKey === paKey) toggleCard(cardEl, false);
+  }
+  clearSelection();
+}
+
+// The PA under a screen point: the circle whose centre is nearest the
+// pointer (within a few px of slop), and only failing that a label -- so a
+// big label, e.g. the selected PA's bold one, never hides the circles
+// beneath it.
+const PA_MARKER_LAYERS = ['protected-areas-markers', 'protected-areas-labels', 'protected-areas-active', 'protected-areas-active-label'];
+const PA_CIRCLE_LAYERS = ['protected-areas-markers', 'protected-areas-active'];
+const PA_LABEL_LAYERS = ['protected-areas-active-label', 'protected-areas-labels'];
+const PA_CIRCLE_HIT_SLOP = 4;
+function paMarkerAt(point) {
+  const existing = (ids) => ids.filter((id) => map.getLayer(id));
+  const s = PA_CIRCLE_HIT_SLOP;
+  const circles = map.queryRenderedFeatures(
+    [[point.x - s, point.y - s], [point.x + s, point.y + s]],
+    { layers: existing(PA_CIRCLE_LAYERS) },
+  );
+  let nearest = null;
+  let nearestDist = Infinity;
+  for (const f of circles) {
+    const p = map.project(f.geometry.coordinates);
+    const d = Math.hypot(p.x - point.x, p.y - point.y);
+    if (d < nearestDist) { nearest = f; nearestDist = d; }
+  }
+  if (nearest) return nearest;
+  const labels = map.queryRenderedFeatures(point, { layers: existing(PA_LABEL_LAYERS) });
+  return labels[0] || null;
+}
+
+function setOsmPaLayerVisibility(visible) {
+  const visibility = visible ? 'visible' : 'none';
+  for (const id of ['osm-pa-hatch', 'osm-pa-buffer', 'osm-pa-fill', 'osm-pa-line', 'osm-pa-source-tag', 'osm-pa-label']) {
+    if (map.getLayer(id)) map.setLayoutProperty(id, 'visibility', visibility);
+  }
+}
+
+function initOsmPaLayerToggle() {
+  const checkbox = document.getElementById('layer-toggle-osm-pa');
+  checkbox.addEventListener('change', () => setOsmPaLayerVisibility(checkbox.checked));
+}
+
 function setPaPointsLayerVisibility(visible) {
   const visibility = visible ? 'visible' : 'none';
-  if (map.getLayer('protected-areas-circles')) map.setLayoutProperty('protected-areas-circles', 'visibility', visibility);
+  for (const id of PA_MARKER_LAYERS) {
+    if (map.getLayer(id)) map.setLayoutProperty(id, 'visibility', visibility);
+  }
 }
 
 function initPaPointsLayerToggle() {
@@ -1353,6 +2160,30 @@ function initPaPointsLayerToggle() {
 
 // Builds a GeoJSON point feature straight from a PA entry's already-joined
 // fields -- the map never needs to look anything up in a separate payload.
+// A PA's area for marker sizing: its OSM polygon's (measured consistently
+// by build-osm-protected-areas.js) else Wikidata's, which is sometimes off
+// by a unit conversion.
+function entrySizeArea(entry) {
+  return entry.osmAreaKm2 ?? entry.area ?? null;
+}
+
+// Tertile cut-offs over every mappable PA's area, computed once (from the
+// unfiltered list, so a marker's size doesn't change with the filters).
+let paAreaTertiles = null;
+function paMarkerSizeScale(entry) {
+  if (!paAreaTertiles) {
+    const areas = paEntries
+      .filter((e) => e.coordinateLatitude != null)
+      .map(entrySizeArea).filter((a) => a != null)
+      .sort((a, b) => a - b);
+    paAreaTertiles = [areas[Math.floor(areas.length / 3)], areas[Math.floor((2 * areas.length) / 3)]];
+  }
+  const area = entrySizeArea(entry);
+  if (area == null) return PA_MARKER_SIZE_SCALES[0];
+  const bucket = area < paAreaTertiles[0] ? 0 : area < paAreaTertiles[1] ? 1 : 2;
+  return PA_MARKER_SIZE_SCALES[bucket];
+}
+
 function entryToFeature(entry) {
   return {
     type: 'Feature',
@@ -1363,6 +2194,9 @@ function entryToFeature(entry) {
       name: entry.name,
       protectedAreaType: entry.protectedAreaType,
       state: entry.state[0] || null,
+      // Every state the PA spans, '|'-delimited, for the out-of-state marker
+      // dimming in setActiveStateOutline (feature properties can't be arrays).
+      statesKey: `|${entry.state.join('|')}|`,
       iucnCategory: entry.iucnCategory,
       area: entry.area,
       pageBanner: entry.pageBanner,
@@ -1370,6 +2204,8 @@ function entryToFeature(entry) {
       osmRelationIds: entry.osmRelationIds,
       enwikiUrl: entry.enwikiUrl,
       eszStatus: entry.eszStatus,
+      shortName: abbreviatePaName(entry.name),
+      markerScale: paMarkerSizeScale(entry),
       notificationCount: entry.notifications.length,
       notificationStatus: entry.latest ? entry.latest.status : null,
       notificationDate: entry.latest ? entry.latest.date : null,
@@ -1408,7 +2244,7 @@ function updateMapFilter() {
   map.getSource('protected-areas').setData(collection);
 
   if (selectedWikidataId && !collection.features.some((f) => f.properties.wikidataId === selectedWikidataId)) {
-    closePopup();
+    clearSelection();
   }
 
   clearTimeout(fitBoundsTimer);
@@ -1417,6 +2253,8 @@ function updateMapFilter() {
     const bounds = new maplibregl.LngLatBounds();
     for (const f of collection.features) bounds.extend(f.geometry.coordinates);
     map.fitBounds(bounds, { padding: 48, maxZoom: 10, duration: 500 });
+    mapViewState = null;
+    mapViewPa = null;
   }, 250);
 }
 
@@ -1668,7 +2506,7 @@ function cardCompactInnerHtml(entry) {
 // Wikipedia excerpt and Commons gallery each time.
 function cardOuterHtml(entry) {
   return `
-    <div class="pa-card" data-pa-key="${escapeHtml(entry.paKey)}" title="${escapeHtml(entry.name || '')}">
+    <div class="pa-card pa-card--${entry.eszStatus === 'final' || entry.eszStatus === 'draft' ? entry.eszStatus : 'none'}" data-pa-key="${escapeHtml(entry.paKey)}" title="${escapeHtml(entry.name || '')}">
       <div class="pa-card-row" tabindex="0" role="button" aria-expanded="false">
         <div class="pa-card-compact">${cardCompactInnerHtml(entry)}</div>
         <div class="pa-card-expanded-header"></div>
@@ -1687,6 +2525,7 @@ const NOTIFICATION_DOT_CLASS = { Final: 'dot-final', Amendment: 'dot-final', Dra
 const DOC_ICON = {
   pdf: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M7 3h7l4 4v13a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1z"/><path d="M14 3v4h4"/><path d="M9 13h6M9 16.5h6M9 9.5h2"/></svg>',
   archive: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="4.2" rx="1"/><path d="M4.5 8.2V19a1 1 0 0 0 1 1h13a1 1 0 0 0 1-1V8.2"/><path d="M10 12.5h4"/></svg>',
+  findMaps: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="13" height="16" rx="1.5"/><path d="M6 8.5h7M6 12h3"/><circle cx="15.5" cy="14.5" r="3.3"/><path d="m18 17 3 3"/></svg>',
   map: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M9 4.5 3.5 6.7v13L9 17.5l6 2.2 5.5-2.2v-13L15 6.7l-6-2.2z"/><path d="M9 4.5v13M15 6.7v13"/><circle cx="12" cy="11.5" r="1.6"/></svg>',
   layers: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.5 3 8.2l9 4.7 9-4.7-9-4.7z"/><path d="M3 12.2l9 4.7 9-4.7"/><path d="M3 16.2l9 4.7 9-4.7"/></svg>',
 };
@@ -1718,9 +2557,9 @@ function paTitleLinksHtml(entry) {
   if (entry.wikidataUrl) {
     badges.push(`<a class="pa-title-logo pa-title-logo-wikidata" href="${entry.wikidataUrl}" target="_blank" rel="noopener" title="View on Wikidata" aria-label="View on Wikidata">${WIKIDATA_LOGO}</a>`);
   }
-  const osmId = (entry.osmRelationIds || [])[0];
+  const osmId = entryOsmFeatureId(entry);
   if (osmId) {
-    badges.push(`<a class="pa-title-logo pa-title-logo-osm" href="https://www.openstreetmap.org/relation/${osmId}" target="_blank" rel="noopener" title="View on OpenStreetMap" aria-label="View on OpenStreetMap">${OSM_LOGO}</a>`);
+    badges.push(`<a class="pa-title-logo pa-title-logo-osm" href="https://www.openstreetmap.org/${osmId}" target="_blank" rel="noopener" title="View on OpenStreetMap" aria-label="View on OpenStreetMap">${OSM_LOGO}</a>`);
   }
   return `<span class="pa-title-with-logos">${titleLink}${badges.length ? `<span class="pa-title-logos">${badges.join('')}</span>` : ''}</span>`;
 }
@@ -1765,14 +2604,21 @@ function boundaryMapDoc(n) {
 }
 
 function boundaryDataDoc(entry) {
-  const osmIds = entry.osmRelationIds || [];
-  if (osmIds.length) return { href: `${AMCHE_ATLAS_BASE}?layers=osm:relation/${osmIds[0]}`, label: 'Boundary Data', disabled: false };
+  const osmId = entryOsmFeatureId(entry);
+  if (osmId) return { href: osmBoundaryHref(osmId), label: 'Boundary Data', disabled: false };
   return { href: null, label: 'Boundary Data', disabled: true };
+}
+
+function gazetteMapsPanelHtml(n) {
+  const archiveId = archiveIdFromLink(n.notificationArchiveLink);
+  if (!archiveId) return '';
+  return `<div class="gazette-maps" hidden data-archive-id="${escapeHtml(archiveId)}" data-map-pages="${(n.gazetteMapPages || []).join(',')}"></div>`;
 }
 
 function docLinkHtml(doc, icon) {
   const cls = `pa-doc-link${doc.disabled ? ' is-disabled' : ''}`;
   const title = escapeHtml(doc.label);
+  if (doc.button) return `<button type="button" class="${cls} gazette-maps-trigger" aria-expanded="false" title="${title}" aria-label="${title}">${icon}</button>`;
   if (!doc.href) return `<span class="${cls}" title="${title}" aria-label="${title}" aria-disabled="true">${icon}</span>`;
   return `<a class="${cls}" href="${doc.href}" target="_blank" rel="noopener" title="${title}" aria-label="${title}">${icon}</a>`;
 }
@@ -1785,12 +2631,19 @@ function notificationRowHtml(n, entry) {
     [boundaryMapDoc(n), DOC_ICON.map],
     [boundaryDataDoc(entry), DOC_ICON.layers],
   ];
+  const archiveId = archiveIdFromLink(n.notificationArchiveLink);
+  if (archiveId) {
+    const mapCount = (n.gazetteMapPages || []).length;
+    const label = mapCount ? `Find maps in this gazette (${mapCount} likely map page${mapCount === 1 ? '' : 's'})` : 'Find maps in this gazette';
+    docs.push([{ button: true, label }, DOC_ICON.findMaps]);
+  }
   return `
     <li class="pa-notification-row">
       <span class="pa-notification-date">${escapeHtml(formatNotificationDate(n.notificationDate))}</span>
       <span class="pa-notification-type"><i class="dot ${dotClass}" aria-hidden="true"></i>${escapeHtml(notificationTypeLabel(n.notificationStatus))}</span>
       ${n.orderNumber ? `<span class="pa-notification-order">${escapeHtml(n.orderNumber)}</span>` : ''}
       <span class="pa-notification-docs">${docs.map(([doc, icon]) => docLinkHtml(doc, icon)).join('')}</span>
+      ${gazetteMapsPanelHtml(n)}
     </li>`;
 }
 
@@ -1798,6 +2651,318 @@ function notificationListHtml(entry) {
   const sorted = [...entry.notifications].sort((a, b) => (b.notificationDate || '').localeCompare(a.notificationDate || ''));
   if (!sorted.length) return `<p class="pa-detail-empty">No ESZ notification on record yet.</p>`;
   return `<ul class="pa-notification-list">${sorted.map((n) => notificationRowHtml(n, entry)).join('')}</ul>`;
+}
+
+// ---------------------------------------------------------------------------
+// Gazette map thumbnails, opened from the "Find maps" action on a
+// notification row. Nothing is fetched until that button is pressed.
+//
+// 1. Likely map pages come with the data: build:gazette-maps records, per
+//    gazette, the pages holding a map-size image embedded in the PDF (from the
+//    Servants of Knowledge manifest, which the browser can't read itself: it
+//    sends no CORS header) and the pages already georeferenced in Allmaps.
+//    These show immediately.
+// 2. "Scan all pages" (automatic when nothing was recorded, e.g. older scanned
+//    gazettes) loads every page thumbnail from the archive.org IIIF manifest,
+//    draws it to a canvas and keeps pages with enough clearly coloured pixels:
+//    text and tables are black and white, annexure maps are in colour. Pages
+//    are scanned last-first, because the annexures sit at the end.
+// Allmaps annotations for the manifest (looked up by the sha1 id Allmaps
+// uses) mark pages "Georeferenced"; the rest get "Add Georeferencing".
+// Clicking a thumbnail opens that page in the Allmaps editor over the Survey
+// of India basemap. "Show all" lists every page, with non-map pages greyed.
+//
+// Thumbnails come from archive.org's IIIF Image API (about 1 s each, with a
+// CORS header so they can be measured). About one URL in four hangs and
+// returns a 504 after a minute, and always the same URLs, while a different
+// URL for the same page (v2 instead of v3, or a 1px different size) usually
+// works. So a page that doesn't load within THUMB_TIMEOUT_MS is retried with
+// the next URL variant. Allmaps links and annotation lookups use the v3 image
+// id from the manifest, which is what Allmaps keys them by. A page whose
+// variants all fail is reported as "couldn't be checked" and shown with
+// archive.org's BookReader page image (displayable but, lacking CORS, not
+// measurable).
+const ALLMAPS_BG_URL = 'https://indianopenmaps.fly.dev/soi/osm/{z}/{x}/{y}.webp';
+const GAZETTE_THUMB_SIZE = 160;
+// Tuned on 2015-2024 gazettes: text pages score at most 0.02% coloured pixels,
+// the faintest georeferenced 2015 map about 0.6%, modern colour maps 3-40%.
+const COLOUR_CHROMA_MIN = 40; // max(r,g,b) - min(r,g,b) for a pixel to count as coloured
+const COLOUR_FRACTION_MIN = 0.002; // share of coloured pixels for a page to count as a map
+const THUMB_TIMEOUT_MS = 8000;
+const THUMB_CONCURRENCY = 6;
+const COLOUR_CACHE_KEY = 'gazettePageColour:v2';
+
+const gazetteStates = new Map(); // archive id -> state, shared by every row showing that gazette
+let colourCache = {};
+try { colourCache = JSON.parse(localStorage.getItem(COLOUR_CACHE_KEY) || '{}'); } catch { colourCache = {}; }
+function saveColourCache() {
+  try { localStorage.setItem(COLOUR_CACHE_KEY, JSON.stringify(colourCache)); } catch { /* storage unavailable */ }
+}
+
+function archiveIdFromLink(link) {
+  return link?.match(/archive\.org\/details\/([^/?#]+)/)?.[1] || null;
+}
+
+async function allmapsId(uri) {
+  const digest = await crypto.subtle.digest('SHA-1', new TextEncoder().encode(uri));
+  return [...new Uint8Array(digest)].map((b) => b.toString(16).padStart(2, '0')).join('').slice(0, 16);
+}
+
+function allmapsEditorUrl(manifestUrl, imageServiceId) {
+  const params = new URLSearchParams({ url: manifestUrl, 'bg-preset': 'osm', 'bg-url': ALLMAPS_BG_URL, image: imageServiceId });
+  return `https://editor.allmaps.org/georeference?${params}`;
+}
+
+// Throttles measurable thumbnail loads across every open panel. The most
+// recently started scan is served first (a higher batch number wins), in the
+// order its pages were queued.
+const thumbQueue = [];
+let thumbsInFlight = 0;
+let thumbBatch = 0;
+function queueThumb(task, batch) {
+  return new Promise((resolve) => {
+    thumbQueue.push({ task, resolve, batch });
+    pumpThumbQueue();
+  });
+}
+function pumpThumbQueue() {
+  while (thumbsInFlight < THUMB_CONCURRENCY && thumbQueue.length) {
+    let next = 0;
+    for (let i = 1; i < thumbQueue.length; i += 1) if (thumbQueue[i].batch > thumbQueue[next].batch) next = i;
+    const { task, resolve } = thumbQueue.splice(next, 1)[0];
+    thumbsInFlight += 1;
+    task().then(resolve, () => resolve(null)).finally(() => { thumbsInFlight -= 1; pumpThumbQueue(); });
+  }
+}
+
+// Measured at the thumbnail's own size: shrinking it further averages thin
+// coloured boundary lines away.
+function measureColour(url) {
+  return new Promise((resolve, reject) => {
+    const img = new Image();
+    const timer = setTimeout(() => { img.src = ''; reject(new Error('timeout')); }, THUMB_TIMEOUT_MS);
+    img.crossOrigin = 'anonymous';
+    img.onload = () => {
+      clearTimeout(timer);
+      const w = img.naturalWidth;
+      const h = img.naturalHeight;
+      const canvas = document.createElement('canvas');
+      canvas.width = w;
+      canvas.height = h;
+      const ctx = canvas.getContext('2d', { willReadFrequently: true });
+      ctx.drawImage(img, 0, 0, w, h);
+      const { data } = ctx.getImageData(0, 0, w, h);
+      let coloured = 0;
+      for (let i = 0; i < data.length; i += 4) {
+        const max = Math.max(data[i], data[i + 1], data[i + 2]);
+        const min = Math.min(data[i], data[i + 1], data[i + 2]);
+        if (max - min > COLOUR_CHROMA_MIN) coloured += 1;
+      }
+      resolve(coloured / (w * h));
+    };
+    img.onerror = () => { clearTimeout(timer); reject(new Error(`thumbnail failed: ${url}`)); };
+    img.src = url;
+  });
+}
+
+function thumbVariants(serviceId) {
+  const v2 = serviceId.replace('/image/iiif/3/', '/image/iiif/2/');
+  const v3 = serviceId.replace('/image/iiif/2/', '/image/iiif/3/');
+  const n = GAZETTE_THUMB_SIZE;
+  return [`${v2}/full/!${n},${n}/0/default.jpg`, `${v3}/full/!${n},${n}/0/default.jpg`, `${v2}/full/!${n + 1},${n + 1}/0/default.jpg`];
+}
+
+function gazetteState(archiveId, candidatePages) {
+  if (!gazetteStates.has(archiveId)) {
+    gazetteStates.set(archiveId, {
+      archiveId,
+      manifestUrl: `https://iiif.archive.org/iiif/${archiveId}/manifest.json`,
+      candidates: new Set(candidatePages),
+      pages: [],
+      georeferenced: new Set(),
+      loading: null, // promise for manifest + annotations
+      error: null,
+      scan: 'idle', // 'idle' | 'running' | 'done'
+      scanned: 0,
+      listeners: new Set(),
+    });
+  }
+  return gazetteStates.get(archiveId);
+}
+
+function notifyGazette(state) { state.listeners.forEach((fn) => fn()); }
+
+function loadGazettePages(state) {
+  state.loading ??= (async () => {
+    try {
+      const [manifest, annotations] = await Promise.all([
+        fetch(state.manifestUrl).then((r) => { if (!r.ok) throw new Error(`manifest HTTP ${r.status}`); return r.json(); }),
+        allmapsId(state.manifestUrl)
+          .then((id) => fetch(`https://annotations.allmaps.org/manifests/${id}`))
+          .then((r) => (r.ok ? r.json() : null))
+          .catch(() => null),
+      ]);
+      for (const a of annotations?.items || []) {
+        const src = a.target?.source;
+        if (src) state.georeferenced.add(src.id || src['@id']);
+      }
+      state.pages = (manifest.items || []).map((canvas, index) => {
+        const body = canvas.items?.[0]?.items?.[0]?.body;
+        const service = [].concat(body?.service || [])[0];
+        const serviceId = service?.id || service?.['@id'];
+        return serviceId ? {
+          index,
+          page: index + 1, // archive.org leaf 0 is page 1
+          serviceId,
+          thumbVariants: thumbVariants(serviceId),
+          iiifThumb: thumbVariants(serviceId)[0], // replaced by whichever variant loaded
+          pageThumb: `https://archive.org/download/${state.archiveId}/page/n${index}_w${GAZETTE_THUMB_SIZE}.jpg`,
+          colour: colourCache[serviceId],
+          failed: false,
+        } : null;
+      }).filter(Boolean);
+    } catch (err) {
+      state.error = err.message;
+    }
+    notifyGazette(state);
+  })();
+  return state.loading;
+}
+
+async function scanGazette(state) {
+  if (state.scan !== 'idle') return;
+  state.scan = 'running';
+  notifyGazette(state);
+  await loadGazettePages(state);
+  const batch = ++thumbBatch;
+  let sinceSave = 0;
+  state.scanned = 0;
+  await Promise.all([...state.pages].reverse().map((p) => {
+    if (p.colour != null) { state.scanned += 1; return null; }
+    return queueThumb(async () => {
+      for (const url of p.thumbVariants) {
+        try {
+          p.colour = await measureColour(url);
+          p.iiifThumb = url;
+          p.failed = false;
+          break;
+        } catch {
+          p.failed = true; // not cached, so a later scan tries again
+        }
+      }
+      if (p.failed) return;
+      colourCache[p.serviceId] = Math.round(p.colour * 100000) / 100000;
+      if (++sinceSave >= 10) { sinceSave = 0; saveColourCache(); }
+    }, batch).then(() => { state.scanned += 1; notifyGazette(state); });
+  }));
+  saveColourCache();
+  state.scan = 'done';
+  notifyGazette(state);
+}
+
+const isMapPage = (state, p) => state.georeferenced.has(p.serviceId)
+  || state.candidates.has(p.page)
+  || (p.colour != null && p.colour >= COLOUR_FRACTION_MIN);
+
+function gazetteThumbHtml(state, p, ignored) {
+  const georef = state.georeferenced.has(p.serviceId);
+  const badge = georef
+    ? '<span class="gazette-thumb-badge is-done">Georeferenced</span>'
+    : '<span class="gazette-thumb-badge">Add Georeferencing</span>';
+  let title = `Page ${p.page}: ${georef ? 'open in the Allmaps editor' : 'add georeferencing in the Allmaps editor'}`;
+  if (p.failed) title += " (couldn't check this page for colour)";
+  // Same URL and crossorigin mode as the measuring load, so a measured page
+  // comes straight from the browser cache.
+  const img = p.failed
+    ? `<img src="${escapeHtml(p.pageThumb)}" alt="Gazette page ${p.page}" loading="lazy" />`
+    : `<img src="${escapeHtml(p.iiifThumb)}" alt="Gazette page ${p.page}" loading="lazy" crossorigin="anonymous" />`;
+  return `<a class="gazette-thumb${ignored ? ' is-ignored' : ''}${p.failed ? ' is-unchecked' : ''}" href="${escapeHtml(allmapsEditorUrl(state.manifestUrl, p.serviceId))}"
+      target="_blank" rel="noopener" title="${escapeHtml(title)}">
+      ${img}
+      ${badge}
+      <span class="gazette-thumb-page">p. ${p.page}</span>
+    </a>`;
+}
+
+function renderGazetteMaps(el, state) {
+  const showAll = el.dataset.showAll === 'true';
+  const maps = state.pages.filter((p) => isMapPage(state, p));
+  const failed = state.pages.filter((p) => p.failed && !isMapPage(state, p));
+  const plural = (n, word) => `${n} ${word}${n === 1 ? '' : 's'}`;
+  let status;
+  if (state.error) status = `Couldn't load the gazette scan (${escapeHtml(state.error)}).`;
+  else if (!state.pages.length) status = 'Loading gazette pages&hellip;';
+  else if (state.scan === 'running') status = `Scanning pages for colour maps&hellip; ${state.scanned} of ${state.pages.length}, ${maps.length} found`;
+  else if (state.scan === 'done') {
+    status = maps.length ? `${plural(maps.length, 'map page')} in this gazette` : 'No colour map pages found in this gazette';
+    if (failed.length) status += ` &middot; ${plural(failed.length, 'page')} couldn't be checked`;
+  } else {
+    status = maps.length
+      ? `${plural(maps.length, 'likely map page')}, from images in the gazette PDF and Allmaps`
+      : 'No map pages recorded for this gazette';
+  }
+  const buttons = [];
+  if (state.pages.length && state.scan === 'idle') {
+    buttons.push('<button type="button" class="gazette-maps-btn" data-gazette-action="scan" title="Check every page for colour maps (slow: about a second a page)">Scan all pages</button>');
+  }
+  if (state.pages.length) {
+    buttons.push(`<button type="button" class="gazette-maps-btn" data-gazette-action="show-all" aria-pressed="${showAll}">${showAll ? 'Show maps only' : `Show all (${state.pages.length})`}</button>`);
+  }
+  const shown = showAll ? state.pages : maps;
+  const scrollLeft = el.querySelector('.gazette-thumbs')?.scrollLeft || 0;
+  el.innerHTML = `
+    <div class="gazette-maps-status"><span>${status}</span><span class="gazette-maps-actions">${buttons.join('')}</span></div>
+    ${shown.length ? `<div class="gazette-thumbs">${shown.map((p) => gazetteThumbHtml(state, p, showAll && !isMapPage(state, p))).join('')}</div>` : ''}`;
+  const strip = el.querySelector('.gazette-thumbs');
+  if (strip) strip.scrollLeft = scrollLeft;
+}
+
+// Wires a .gazette-maps panel to its gazette's shared state; re-renders as
+// pages load and scanning progresses, until the panel leaves the DOM.
+function attachGazettePanel(el) {
+  const candidates = (el.dataset.mapPages || '').split(',').filter(Boolean).map(Number);
+  const state = gazetteState(el.dataset.archiveId, candidates);
+  let pending = false;
+  const render = () => {
+    if (!el.isConnected) { state.listeners.delete(render); return; }
+    if (pending) return;
+    pending = true;
+    requestAnimationFrame(() => { pending = false; if (el.isConnected) renderGazetteMaps(el, state); });
+  };
+  state.listeners.add(render);
+  renderGazetteMaps(el, state);
+  loadGazettePages(state).then(() => {
+    // Nothing recorded for this gazette: scanning is the only way to find maps.
+    if (!state.error && state.candidates.size === 0 && state.georeferenced.size === 0) scanGazette(state);
+  });
+  return state;
+}
+
+// Delegated handler for the "Find maps" row action and the panel buttons.
+function handleGazetteMapsClick(e) {
+  const trigger = e.target.closest('.gazette-maps-trigger');
+  if (trigger) {
+    const panel = trigger.closest('.pa-notification-row').querySelector('.gazette-maps');
+    const open = trigger.getAttribute('aria-expanded') !== 'true';
+    trigger.setAttribute('aria-expanded', String(open));
+    panel.hidden = !open;
+    if (open && !panel.dataset.attached) {
+      panel.dataset.attached = 'true';
+      attachGazettePanel(panel);
+    }
+    return true;
+  }
+  const btn = e.target.closest('[data-gazette-action]');
+  if (!btn) return false;
+  const panel = btn.closest('.gazette-maps');
+  const state = gazetteStates.get(panel.dataset.archiveId);
+  if (!state) return true;
+  if (btn.dataset.gazetteAction === 'scan') scanGazette(state);
+  if (btn.dataset.gazetteAction === 'show-all') {
+    panel.dataset.showAll = panel.dataset.showAll === 'true' ? 'false' : 'true';
+    renderGazetteMaps(panel, state);
+  }
+  return true;
 }
 
 // Replaces the compact row's thumb/name/status with the full wiki-sourced
@@ -1813,8 +2978,11 @@ function detailHeaderHtml(entry) {
   if (stateLabel) meta.push(escapeHtml(stateLabel));
 
   const links = [];
-  const osmIds = entry.osmRelationIds || [];
-  if (osmIds.length) links.push(`<a href="${AMCHE_ATLAS_BASE}?layers=osm:relation/${osmIds[0]}" target="_blank" rel="noopener">Boundary in amche-atlas</a>`);
+  const osmId = entryOsmFeatureId(entry);
+  if (osmId) {
+    const where = osmId.startsWith('relation/') ? 'amche-atlas' : 'OpenStreetMap';
+    links.push(`<a href="${osmBoundaryHref(osmId)}" target="_blank" rel="noopener">Boundary in ${where}</a>`);
+  }
 
   return `
     <div class="pa-detail-grid">
@@ -1823,7 +2991,7 @@ function detailHeaderHtml(entry) {
         ${entry.wikidataId ? `<div class="pa-commons-mosaic" aria-label="More images from Wikimedia Commons"></div>` : ''}
       </div>
       <div class="pa-detail-body">
-        <h3 class="pa-detail-title">${paTitleLinksHtml(entry)}</h3>
+        <h3 class="pa-detail-title"><a class="pa-permalink" href="${escapeHtml(paKeyHash(entry.paKey))}" title="Link to this protected area" aria-label="Link to this protected area">#</a>${paTitleLinksHtml(entry)}</h3>
         ${meta.length ? `<p class="pa-detail-meta">${meta.join(' &middot; ')}</p>` : ''}
         ${links.length ? `<p class="pa-detail-links">${links.join(' &middot; ')}</p>` : ''}
         <p class="pa-detail-excerpt">${entry.enwikiUrl ? 'Loading Wikipedia summary&hellip;' : ''}</p>
@@ -1995,12 +3163,43 @@ function renderAccordion() {
 }
 
 function selectEntryOnMap(entry) {
-  if (!entry.wikidataId || entry.coordinateLatitude == null) { closePopup(); return; }
-  const feature = entryToFeature(entry);
-  focusFeature(feature, { zoom: 10 });
-  openPopupForFeature(feature);
-  selectedWikidataId = feature.properties.wikidataId;
+  if (!entry.wikidataId || entry.coordinateLatitude == null) { clearSelection(); return; }
+  zoomToEntry(entry);
+  selectedWikidataId = entry.wikidataId;
   highlightCard(selectedWikidataId);
+}
+
+// Zooms the map to a selected PA: fits its OSM boundary's bbox
+// (entry.osmBbox, from build-full-join.js) when it's mapped in OSM, else
+// flies to its Wikidata point.
+function zoomToEntry(entry) {
+  if (entry.osmBbox) {
+    const [w, s, e, n] = entry.osmBbox;
+    map.fitBounds([[w, s], [e, n]], { padding: mapOverlayPadding(24), maxZoom: 14, duration: 800 });
+  } else {
+    focusFeature(entryToFeature(entry), { zoom: 10 });
+  }
+  mapViewState = null; // no longer framing a whole state
+  mapViewPa = entry.wikidataId;
+}
+
+// The open PA: the selected one, else the most recently expanded card that's
+// still open (a map click clears the selection but leaves its card open).
+function openPaKey() {
+  if (selectedWikidataId) return selectedWikidataId;
+  const keys = [...expandedCards].filter((k) => entryByPaKey.get(k)?.coordinateLatitude != null);
+  return keys.length ? keys[keys.length - 1] : null;
+}
+
+// While a PA is open, puts the map back on it if something (a state-header
+// hover, another card's hover, a manual pan/zoom) has moved the view away.
+// Returns whether there is an open PA.
+function returnToOpenPa() {
+  const key = openPaKey();
+  if (!map || !key) return false;
+  const entry = entryByPaKey.get(key);
+  if (mapViewPa !== entry.wikidataId) zoomToEntry(entry);
+  return true;
 }
 
 function toggleCard(cardEl, shouldExpand, { syncMap = true } = {}) {
@@ -2011,6 +3210,7 @@ function toggleCard(cardEl, shouldExpand, { syncMap = true } = {}) {
   const headerEl = cardEl.querySelector('.pa-card-expanded-header');
   const detailEl = cardEl.querySelector('.pa-card-detail');
   if (shouldExpand) {
+    expandedCards.delete(paKey); // re-added last: the most recently opened PA (see openPaKey)
     expandedCards.add(paKey);
     cardEl.classList.add('is-expanded');
     rowEl.setAttribute('aria-expanded', 'true');
@@ -2029,19 +3229,25 @@ function toggleCard(cardEl, shouldExpand, { syncMap = true } = {}) {
     cardEl.classList.remove('is-expanded');
     rowEl.setAttribute('aria-expanded', 'false');
     detailEl.innerHTML = '';
-    if (selectedWikidataId === entry.wikidataId) closePopup();
+    if (selectedWikidataId === entry.wikidataId) clearSelection();
   }
+  syncUrlHash();
 }
 
 function toggleState(stateName) {
-  if (openStates.has(stateName)) openStates.delete(stateName);
-  else openStates.add(stateName);
+  if (openStates.has(stateName)) {
+    openStates.delete(stateName);
+    if (stateName === selectedState) deselectState();
+  } else {
+    openStates.add(stateName);
+    selectState(stateName);
+  }
   renderAccordion();
 }
 
 // Opens a PA's state section(s), scrolls to its card, and expands its detail
 // -- used when a map marker is clicked (the marker's own click handler
-// already flew the map/opened the popup, so map sync is skipped here).
+// already selected the PA and fitted its state, so map sync is skipped here).
 function revealCard(paKey) {
   const entry = entryByPaKey.get(paKey);
   if (!entry) return;
@@ -2057,22 +3263,203 @@ function revealCard(paKey) {
   if (!cardEl.classList.contains('is-expanded')) toggleCard(cardEl, true, { syncMap: false });
 }
 
+// Bumped on every card hover enter/leave, so a PA focus waiting on a state
+// fit (see onCardHoverEnter) is dropped if the pointer has moved on.
+let cardHoverToken = 0;
+
+// Hovering a PA card first makes sure the map is showing the card's state --
+// fitting to it if the map is elsewhere (e.g. the pointer came straight from
+// another state's header), or letting a fit to it that's still animating
+// finish -- and only then pans to the PA and shows its name badge, so the PA
+// focus doesn't cut the state fit short.
 function onCardHoverEnter(cardEl) {
+  // Coming back to the open PA's card brings it back into view.
+  if (cardEl.dataset.paKey === openPaKey()) {
+    returnToOpenPa();
+    return;
+  }
   if (selectedWikidataId) return; // a card/marker is selected -- hover is suspended until cleared
   const entry = entryByPaKey.get(cardEl.dataset.paKey);
   if (!entry || entry.coordinateLatitude == null) return;
-  const feature = entryToFeature(entry);
-  focusFeature(feature);
-  openPopupForFeature(feature);
+  const token = ++cardHoverToken;
+  const stateName = cardEl.closest('.state-row')?.dataset.stateRow;
+  const focusPa = () => {
+    if (token !== cardHoverToken || selectedWikidataId) return;
+    focusFeature(entryToFeature(entry));
+    setActivePaMarker(entry.wikidataId);
+  };
+  if (stateName) {
+    clearTimeout(stateHoverTimer); // a header hover's pending fit is superseded
+    setActiveStateOutline(stateName);
+    if (mapViewState !== stateName) fitMapToState(stateName);
+  }
+  if (map.isMoving()) map.once('moveend', focusPa);
+  else focusPa();
 }
 
 function onCardHoverLeave() {
+  cardHoverToken += 1;
   if (selectedWikidataId) return;
-  closePopup();
+  setActivePaMarker(null);
+  setActiveStateOutline(selectedState);
+}
+
+// The selected state: the most recently expanded accordion state, or one
+// clicked on the map. It stays outlined (with the rest of the map masked)
+// until it's collapsed or the map is clicked outside every state. Hovering
+// another state's header previews that state, then falls back to this one.
+let selectedState = null;
+
+// Hovering a state header highlights that state over the all-India view.
+// Debounced so sweeping the pointer down the list doesn't fly the map
+// through every state on the way.
+let stateHoverTimer = null;
+// Set once a state hover has moved the map, so leaving the list knows to
+// put the selected state's (or the all-India) view back.
+let stateHoverMovedMap = false;
+// The state the map was last fitted to (null once it's been moved to some
+// other view: all-India, or a filter-driven fit), so a PA card hover knows
+// whether it has to bring its state into view first.
+let mapViewState = null;
+// The PA the map was last zoomed to with zoomToEntry (null once the view has
+// moved elsewhere), so leaving the list or re-hovering the selected card can
+// put the selected PA back in view.
+let mapViewPa = null;
+
+function selectState(stateName) {
+  clearTimeout(stateHoverTimer);
+  selectedState = stateName;
+  setActiveStateOutline(stateName);
+  fitMapToState(stateName, { force: true });
+  stateHoverMovedMap = false; // the map is where the selection wants it
+}
+
+function deselectState() {
+  clearTimeout(stateHoverTimer);
+  selectedState = null;
+  stateHoverMovedMap = false;
+  setActiveStateOutline(null);
+  if (map) map.flyTo({ ...INITIAL_VIEW, duration: 500, essential: true });
+  mapViewState = null;
+  mapViewPa = null;
+}
+
+// LGD (upper-case) state name -> the dashboard's name for it, over every
+// state any PA lists (filtered or not).
+function dashboardStateName(lgdName) {
+  for (const entry of paEntries) {
+    for (const state of entry.state) if (lgdStateName(state) === lgdName) return state;
+  }
+  return null;
+}
+
+// Map click: on a state, switch the selection (and the expanded accordion
+// row) to it; outside every state, collapse and clear the selected state.
+function onMapStateClick(e) {
+  const hit = map.queryRenderedFeatures(e.point, { layers: ['state-boundaries-mask'] })[0];
+  const lgdName = hit ? String(hit.properties.STNAME || '').toUpperCase() : '';
+  if (!lgdName) {
+    if (!selectedState) return;
+    openStates.delete(selectedState);
+    deselectState();
+    renderAccordion();
+    return;
+  }
+  // States with no PAs in the dataset have no accordion row, but can still
+  // be selected on the map under their LGD name.
+  const stateName = dashboardStateName(lgdName) || lgdName;
+  if (stateName === selectedState) return;
+  if (selectedState) openStates.delete(selectedState);
+  openStates.add(stateName);
+  selectState(stateName);
+  renderAccordion();
+  const header = [...accordionEl.querySelectorAll('.state-row-header')].find((el) => el.dataset.state === stateName);
+  if (header) header.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+// `force` is for an explicit state selection, which should move the map even
+// while a PA is selected; a hover preview never yanks the map away from one.
+function fitMapToState(stateName, { force = false } = {}) {
+  if (!map || (selectedWikidataId && !force)) return;
+  let bounds = stateBoundaryBounds(stateName);
+  if (!bounds) {
+    // No boundary polygon for this name (e.g. "Unspecified state") -- fall
+    // back to the extent of its PA markers.
+    const entries = buildStateGroups(filteredEntries).get(stateName) || [];
+    bounds = new maplibregl.LngLatBounds();
+    for (const entry of entries) {
+      if (entry.coordinateLatitude == null) continue;
+      bounds.extend([entry.coordinateLongitude, entry.coordinateLatitude]);
+    }
+    if (bounds.isEmpty()) return;
+  }
+  clearTimeout(fitBoundsTimer); // a pending filter-driven fit would undo this one
+  map.fitBounds(bounds, { padding: mapOverlayPadding(24), maxZoom: 9, duration: 500 });
+  mapViewState = stateName;
+  mapViewPa = null;
+  stateHoverMovedMap = true;
+}
+
+// fitBounds padding that clears the map's overlays -- the layer toggle panel
+// (top-left) and the attribution box (bottom) -- so a fitted state isn't
+// hidden under them in the narrow map column. Each side gets `base` plus
+// whatever an overlay pinned to that edge covers.
+function mapOverlayPadding(base) {
+  const mapRect = map.getContainer().getBoundingClientRect();
+  const pad = { top: base, bottom: base, left: base, right: base };
+  const overlays = [
+    document.getElementById('map-layer-control'),
+    map.getContainer().querySelector('.maplibregl-ctrl-bottom-right .maplibregl-ctrl-attrib'),
+    map.getContainer().querySelector('.maplibregl-ctrl-bottom-left .maplibregl-ctrl-attrib'),
+  ];
+  for (const el of overlays) {
+    if (!el || !el.offsetParent) continue;
+    const r = el.getBoundingClientRect();
+    const fromTop = r.bottom - mapRect.top;
+    const fromBottom = mapRect.bottom - r.top;
+    if (fromTop < mapRect.height / 2) pad.top = Math.max(pad.top, fromTop + base);
+    else if (fromBottom < mapRect.height / 2) pad.bottom = Math.max(pad.bottom, fromBottom + base);
+  }
+  // fitBounds throws if padding leaves no room; give up the extra in that case.
+  if (pad.top + pad.bottom >= mapRect.height - 40) return base;
+  return pad;
+}
+
+// Flies to the all-India view for a state-header hover (unless the map is
+// already there); leaving the list puts the open PA / selected state back.
+function showIndiaView() {
+  if (!map) return;
+  const atIndia = !mapViewState && !mapViewPa
+    && Math.abs(map.getZoom() - INITIAL_VIEW.zoom) < 0.05
+    && map.getCenter().distanceTo(maplibregl.LngLat.convert(INITIAL_VIEW.center)) < 20000;
+  if (!atIndia) map.flyTo({ ...INITIAL_VIEW, duration: 500, essential: true });
+  mapViewState = null;
+  mapViewPa = null;
+  stateHoverMovedMap = true;
+}
+
+function resetMapAfterStateHover() {
+  clearTimeout(stateHoverTimer);
+  if (!map) return;
+  // While a PA is open, the map always goes back to it.
+  if (returnToOpenPa()) {
+    stateHoverMovedMap = false;
+    return;
+  }
+  if (!stateHoverMovedMap) return;
+  if (selectedState) {
+    fitMapToState(selectedState);
+  } else {
+    map.flyTo({ ...INITIAL_VIEW, duration: 500, essential: true });
+    mapViewState = null;
+    mapViewPa = null;
+  }
+  stateHoverMovedMap = false;
 }
 
 function initAccordionEvents() {
   accordionEl.addEventListener('click', (e) => {
+    if (handleGazetteMapsClick(e)) return;
     // An expanded row hosts real links (Wikipedia, Commons, amche-atlas...)
     // -- let those navigate instead of toggling the card closed.
     if (e.target.closest('a[href]')) return;
@@ -2097,13 +3484,30 @@ function initAccordionEvents() {
   // mouseenter/mouseleave don't bubble, so delegation uses mouseover/mouseout
   // with a relatedTarget check to only fire once per card boundary crossing.
   accordionEl.addEventListener('mouseover', (e) => {
+    const stateHeader = e.target.closest('.state-row-header');
+    if (stateHeader && !stateHeader.contains(e.relatedTarget)) {
+      // Highlight the state as if selected, over the all-India view --
+      // except the selected state's own header, which leaves the map on it
+      // (clicking a header re-renders the list, so this fires again right
+      // after the click has fitted the map to the newly selected state).
+      clearTimeout(stateHoverTimer);
+      setActiveStateOutline(stateHeader.dataset.state);
+      if (stateHeader.dataset.state !== selectedState) stateHoverTimer = setTimeout(showIndiaView, 150);
+    }
     const card = e.target.closest('.pa-card');
     if (card && !card.contains(e.relatedTarget)) onCardHoverEnter(card);
   });
   accordionEl.addEventListener('mouseout', (e) => {
+    const stateHeader = e.target.closest('.state-row-header');
+    if (stateHeader && !stateHeader.contains(e.relatedTarget)) {
+      clearTimeout(stateHoverTimer);
+      setActiveStateOutline(selectedState);
+    }
     const card = e.target.closest('.pa-card');
     if (card && !card.contains(e.relatedTarget)) onCardHoverLeave();
   });
+  // mouseleave on the accordion itself fires once, when the pointer exits the list.
+  accordionEl.addEventListener('mouseleave', resetMapAfterStateHover);
 }
 
 function anyDocFiltersActive() {
@@ -2125,10 +3529,40 @@ function updateFilterStatusUi() {
   badge.textContent = docActiveCount || '';
 }
 
+// Mapping progress below the map, over the PAs passing the current filters:
+// - ESZ maps georeferenced: PAs with an ESZ notification whose gazette has
+//   at least one map georeferenced in Allmaps (counts from build:gazette-maps);
+// - Digitized on OSM: PAs linked to an OSM boundary.
+function setProgress(prefix, done, total, desc) {
+  const pct = total ? (done / total) * 100 : 0;
+  document.getElementById(`progress-${prefix}-value`).textContent = total ? `${pct.toFixed(pct > 0 && pct < 1 ? 1 : 0)}%` : '–';
+  const bar = document.getElementById(`progress-${prefix}-bar`);
+  bar.setAttribute('aria-valuenow', pct.toFixed(1));
+  bar.querySelector('.mapping-progress-fill').style.width = `${pct}%`;
+  document.getElementById(`progress-${prefix}-desc`).textContent = desc;
+}
+
+function renderMappingProgress() {
+  const fmt = (n) => n.toLocaleString();
+  const notified = filteredEntries.filter((e) => e.notifications.length > 0);
+  const withMaps = notified.filter((e) => e.notifications.some((n) => n.gazetteMaps > 0));
+  const georeferenced = notified.filter((e) => e.notifications.some((n) => n.georeferencedMaps > 0));
+  setProgress('georef', georeferenced.length, notified.length,
+    `${fmt(georeferenced.length)} of ${fmt(notified.length)} protected areas with an ESZ notification · `
+    + `${fmt(withMaps.length)} have map images found in their gazette`);
+  const onOsm = filteredEntries.filter(entryHasBoundaryData);
+  setProgress('osm', onOsm.length, filteredEntries.length,
+    `${fmt(onOsm.length)} of ${fmt(filteredEntries.length)} protected areas have an OSM boundary linked by Wikidata ID`);
+  document.getElementById('mapping-progress-scope').textContent = anyFiltersActive()
+    ? 'For the protected areas matching the current filters.'
+    : 'For all protected areas in the dashboard.';
+}
+
 function applyFilters() {
   filteredEntries = computeFilteredEntries();
   renderAccordion();
   updateMapFilter();
+  renderMappingProgress();
   document.getElementById('result-count').textContent =
     `${filteredEntries.length.toLocaleString()} of ${paEntries.length.toLocaleString()} protected areas`;
   updateFilterStatusUi();
@@ -2367,6 +3801,8 @@ async function main() {
   initPaPointsLayerToggle();
   initEszLayerToggle();
   initWildlifeReserveLayerToggle();
+  initOsmPaLayerToggle();
+  initNotificationMapsLayerToggle();
   initAccordionEvents();
   applyFilters();
   initFilterEvents();

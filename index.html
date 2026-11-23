@@ -461,6 +461,16 @@
                 <input type="checkbox" id="layer-toggle-wildlife-reserve" checked>
                 <span>Wildlife Reserves &amp; Corridors</span>
               </label>
+              <label class="map-layer-toggle"
+                title="Every protected area boundary mapped in OpenStreetMap (boundary=protected_area, boundary=national_park or protect_class)">
+                <input type="checkbox" id="layer-toggle-osm-pa" checked>
+                <span>OSM Protected Areas</span>
+              </label>
+              <label class="map-layer-toggle"
+                title="ESZ notification maps from the Gazette of India, georeferenced in Allmaps">
+                <input type="checkbox" id="layer-toggle-notification-maps" checked>
+                <span>Notification Map</span>
+              </label>
             </div>
           </div>
           <p class="map-hint">Click a point for details. The Eco-Sensitive Zones and Wildlife Reserves &amp; Corridors
@@ -468,7 +478,42 @@
             <a href="https://bharatmaps.gov.in/BharatMaps/Home/Map" target="_blank"
               rel="noopener">Bharatmaps/Parivesh</a>,
             collected by <a href="https://datameet.org" target="_blank" rel="noopener">Datameet Community</a>.
+            OSM Protected Areas are from <a href="https://www.openstreetmap.org/copyright" target="_blank"
+              rel="noopener">OpenStreetMap</a>
+            (<a href="data/osm/india-protected-areas-all.pmtiles" download>PMTiles</a>).
           </p>
+          <section class="mapping-progress" aria-labelledby="mapping-progress-title">
+            <h3 class="mapping-progress-title" id="mapping-progress-title">Mapping progress</h3>
+            <p class="mapping-progress-scope" id="mapping-progress-scope"></p>
+            <div class="mapping-progress-row">
+              <div class="mapping-progress-label">
+                <span>ESZ maps georeferenced</span>
+                <span class="mapping-progress-value" id="progress-georef-value">&ndash;</span>
+              </div>
+              <div class="mapping-progress-bar" role="progressbar" aria-labelledby="progress-georef-desc"
+                aria-valuemin="0" aria-valuemax="100" id="progress-georef-bar">
+                <span class="mapping-progress-fill"></span>
+              </div>
+              <p class="mapping-progress-desc" id="progress-georef-desc"></p>
+            </div>
+            <div class="mapping-progress-row">
+              <div class="mapping-progress-label">
+                <span>Digitized on OSM</span>
+                <span class="mapping-progress-value" id="progress-osm-value">&ndash;</span>
+              </div>
+              <div class="mapping-progress-bar" role="progressbar" aria-labelledby="progress-osm-desc"
+                aria-valuemin="0" aria-valuemax="100" id="progress-osm-bar">
+                <span class="mapping-progress-fill mapping-progress-fill-osm"></span>
+              </div>
+              <p class="mapping-progress-desc" id="progress-osm-desc"></p>
+            </div>
+            <p class="mapping-progress-help">
+              Help georeference a gazette map in
+              <a href="https://viewer.allmaps.org/?url=https://publicmap.github.io/india-esz-dashboard/data/gazette-maps/collection.json"
+                target="_blank" rel="noopener">Allmaps</a>, or map a boundary on
+              <a href="https://www.openstreetmap.org/edit" target="_blank" rel="noopener">OpenStreetMap</a>.
+            </p>
+          </section>
         </div>
       </div>
     </section>
