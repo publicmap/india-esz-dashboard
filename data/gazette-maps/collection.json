@@ -9,7 +9,7 @@
   },
   "summary": {
     "en": [
-      "Map images from 270 Gazette of India Eco-Sensitive Zone notifications, with Allmaps georeferencing where available (20 of 949 maps)."
+      "Map images from 206 Gazette of India Eco-Sensitive Zone notifications, with Allmaps georeferencing where available (19 of 718 maps)."
     ]
   },
   "requiredStatement": {
@@ -173,33 +173,12 @@
       },
       "summary": {
         "en": [
-          "2 map image(s), 0 georeferenced with Allmaps."
+          "3 map image(s), 1 georeferenced with Allmaps."
         ]
       },
       "thumbnail": [
         {
           "id": "https://gazettes.servantsofknowledge.in/gzdl/html/central_extraordinary/2026-04-23/manifest/272139/images/Image98/full/max/0/default.png",
-          "type": "Image",
-          "format": "image/png"
-        }
-      ]
-    },
-    {
-      "id": "https://publicmap.github.io/india-esz-dashboard/data/gazette-maps/manifests/in.gazette.central.e.2026-04-02.271600.json",
-      "type": "Manifest",
-      "label": {
-        "en": [
-          "Kali tiger reserve – ESZ notification"
-        ]
-      },
-      "summary": {
-        "en": [
-          "6 map image(s), 0 georeferenced with Allmaps."
-        ]
-      },
-      "thumbnail": [
-        {
-          "id": "https://gazettes.servantsofknowledge.in/gzdl/html/central_extraordinary/2026-04-02/manifest/271600/images/Image88/full/max/0/default.png",
           "type": "Image",
           "format": "image/png"
         }
@@ -263,27 +242,6 @@
       "thumbnail": [
         {
           "id": "https://gazettes.servantsofknowledge.in/gzdl/html/central_extraordinary/2026-02-17/manifest/270341/images/Image90/full/max/0/default.png",
-          "type": "Image",
-          "format": "image/png"
-        }
-      ]
-    },
-    {
-      "id": "https://publicmap.github.io/india-esz-dashboard/data/gazette-maps/manifests/in.gazette.central.e.2026-02-16.270233.json",
-      "type": "Manifest",
-      "label": {
-        "en": [
-          "Dudhwa Tiger Reserve – ESZ notification"
-        ]
-      },
-      "summary": {
-        "en": [
-          "6 map image(s), 0 georeferenced with Allmaps."
-        ]
-      },
-      "thumbnail": [
-        {
-          "id": "https://gazettes.servantsofknowledge.in/gzdl/html/central_extraordinary/2026-02-16/manifest/270233/images/Image90/full/max/0/default.png",
           "type": "Image",
           "format": "image/png"
         }
@@ -479,27 +437,6 @@
       ]
     },
     {
-      "id": "https://publicmap.github.io/india-esz-dashboard/data/gazette-maps/manifests/in.gazette.central.e.2024-08-09.256291.json",
-      "type": "Manifest",
-      "label": {
-        "en": [
-          "Kamlang Wildlife Sanctuary, Namdapha Tiger Reserve – ESZ notification"
-        ]
-      },
-      "summary": {
-        "en": [
-          "7 map image(s), 0 georeferenced with Allmaps."
-        ]
-      },
-      "thumbnail": [
-        {
-          "id": "https://gazettes.servantsofknowledge.in/gzdl/html/central_extraordinary/2024-08-09/manifest/256291/images/Image89/full/max/0/default.png",
-          "type": "Image",
-          "format": "image/png"
-        }
-      ]
-    },
-    {
       "id": "https://publicmap.github.io/india-esz-dashboard/data/gazette-maps/manifests/in.gazette.central.e.2023-11-16.250111.json",
       "type": "Manifest",
       "label": {
@@ -542,27 +479,6 @@
       ]
     },
     {
-      "id": "https://publicmap.github.io/india-esz-dashboard/data/gazette-maps/manifests/in.gazette.central.e.2023-11-02.249864.json",
-      "type": "Manifest",
-      "label": {
-        "en": [
-          "Sariska Tiger Reserve – ESZ notification"
-        ]
-      },
-      "summary": {
-        "en": [
-          "2 map image(s), 0 georeferenced with Allmaps."
-        ]
-      },
-      "thumbnail": [
-        {
-          "id": "https://gazettes.servantsofknowledge.in/gzdl/html/central_extraordinary/2023-11-02/manifest/249864/images/Image96/full/max/0/default.png",
-          "type": "Image",
-          "format": "image/png"
-        }
-      ]
-    },
-    {
       "id": "https://publicmap.github.io/india-esz-dashboard/data/gazette-maps/manifests/in.gazette.central.e.2023-10-09.249304.json",
       "type": "Manifest",
       "label": {
@@ -578,69 +494,6 @@
       "thumbnail": [
         {
           "id": "https://gazettes.servantsofknowledge.in/gzdl/html/central_extraordinary/2023-10-09/manifest/249304/images/Image94/full/max/0/default.png",
-          "type": "Image",
-          "format": "image/png"
-        }
-      ]
-    },
-    {
-      "id": "https://publicmap.github.io/india-esz-dashboard/data/gazette-maps/manifests/in.gazette.central.e.2023-09-20.248884.json",
-      "type": "Manifest",
-      "label": {
-        "en": [
-          "Nagzira Wildlife Sanctuary, New Nagzira Wildlife Sanctuary, Koka Wildlife Sanctuary, Navegaon Wildlife Sanctuary, Navegaon National Park – ESZ notification"
-        ]
-      },
-      "summary": {
-        "en": [
-          "6 map image(s), 0 georeferenced with Allmaps."
-        ]
-      },
-      "thumbnail": [
-        {
-          "id": "https://gazettes.servantsofknowledge.in/gzdl/html/central_extraordinary/2023-09-20/manifest/248884/images/Image77/full/max/0/default.png",
-          "type": "Image",
-          "format": "image/png"
-        }
-      ]
-    },
-    {
-      "id": "https://publicmap.github.io/india-esz-dashboard/data/gazette-maps/manifests/in.gazette.central.e.2023-09-11.248646.json",
-      "type": "Manifest",
-      "label": {
-        "en": [
-          "Bhitarkanika National Park – ESZ notification"
-        ]
-      },
-      "summary": {
-        "en": [
-          "6 map image(s), 0 georeferenced with Allmaps."
-        ]
-      },
-      "thumbnail": [
-        {
-          "id": "https://gazettes.servantsofknowledge.in/gzdl/html/central_extraordinary/2023-09-11/manifest/248646/images/Image90/full/max/0/default.png",
-          "type": "Image",
-          "format": "image/png"
-        }
-      ]
-    },
-    {
-      "id": "https://publicmap.github.io/india-esz-dashboard/data/gazette-maps/manifests/in.gazette.central.e.2023-08-23.248348.json",
-      "type": "Manifest",
-      "label": {
-        "en": [
-          "Sessa Orchid Wildlife Sanctuary – ESZ notification"
-        ]
-      },
-      "summary": {
-        "en": [
-          "6 map image(s), 0 georeferenced with Allmaps."
-        ]
-      },
-      "thumbnail": [
-        {
-          "id": "https://gazettes.servantsofknowledge.in/gzdl/html/central_extraordinary/2023-08-23/manifest/248348/images/Image80/full/max/0/default.png",
           "type": "Image",
           "format": "image/png"
         }
@@ -794,27 +647,6 @@
       ]
     },
     {
-      "id": "https://publicmap.github.io/india-esz-dashboard/data/gazette-maps/manifests/in.gazette.central.e.2021-09-22.229953.json",
-      "type": "Manifest",
-      "label": {
-        "en": [
-          "Binsar Wildlife Sanctuary – ESZ notification"
-        ]
-      },
-      "summary": {
-        "en": [
-          "2 map image(s), 0 georeferenced with Allmaps."
-        ]
-      },
-      "thumbnail": [
-        {
-          "id": "https://gazettes.servantsofknowledge.in/gzdl/html/central_extraordinary/2021-09-22/manifest/229953/images/Image75/full/max/0/default.png",
-          "type": "Image",
-          "format": "image/png"
-        }
-      ]
-    },
-    {
       "id": "https://publicmap.github.io/india-esz-dashboard/data/gazette-maps/manifests/in.gazette.central.e.2021-07-12.228254.json",
       "type": "Manifest",
       "label": {
@@ -914,27 +746,6 @@
       "thumbnail": [
         {
           "id": "https://gazettes.servantsofknowledge.in/gzdl/html/central_extraordinary/2021-06-07/manifest/227475/images/Image80/full/max/0/default.png",
-          "type": "Image",
-          "format": "image/png"
-        }
-      ]
-    },
-    {
-      "id": "https://publicmap.github.io/india-esz-dashboard/data/gazette-maps/manifests/in.gazette.central.e.2021-06-07.227425.json",
-      "type": "Manifest",
-      "label": {
-        "en": [
-          "Dhauladhar Wildlife Sanctuary – ESZ notification"
-        ]
-      },
-      "summary": {
-        "en": [
-          "6 map image(s), 0 georeferenced with Allmaps."
-        ]
-      },
-      "thumbnail": [
-        {
-          "id": "https://gazettes.servantsofknowledge.in/gzdl/html/central_extraordinary/2021-06-07/manifest/227425/images/Image80/full/max/0/default.png",
           "type": "Image",
           "format": "image/png"
         }
@@ -1739,27 +1550,6 @@
       ]
     },
     {
-      "id": "https://publicmap.github.io/india-esz-dashboard/data/gazette-maps/manifests/in.gazette.central.e.2019-11-11.213855.json",
-      "type": "Manifest",
-      "label": {
-        "en": [
-          "Gumuti Wildlife Sanctuary – ESZ notification"
-        ]
-      },
-      "summary": {
-        "en": [
-          "6 map image(s), 0 georeferenced with Allmaps."
-        ]
-      },
-      "thumbnail": [
-        {
-          "id": "https://gazettes.servantsofknowledge.in/gzdl/html/central_extraordinary/2019-11-11/manifest/213855/images/R684/full/max/0/default.png",
-          "type": "Image",
-          "format": "image/png"
-        }
-      ]
-    },
-    {
       "id": "https://publicmap.github.io/india-esz-dashboard/data/gazette-maps/manifests/in.gazette.central.e.2019-11-06.213807.json",
       "type": "Manifest",
       "label": {
@@ -2006,27 +1796,6 @@
       "thumbnail": [
         {
           "id": "https://gazettes.servantsofknowledge.in/gzdl/html/central_extraordinary/2019-08-09/manifest/210577/images/R626/full/max/0/default.png",
-          "type": "Image",
-          "format": "image/png"
-        }
-      ]
-    },
-    {
-      "id": "https://publicmap.github.io/india-esz-dashboard/data/gazette-maps/manifests/in.gazette.central.e.2019-08-05.210390.json",
-      "type": "Manifest",
-      "label": {
-        "en": [
-          "Nellai Wildlife – ESZ notification"
-        ]
-      },
-      "summary": {
-        "en": [
-          "2 map image(s), 0 georeferenced with Allmaps."
-        ]
-      },
-      "thumbnail": [
-        {
-          "id": "https://gazettes.servantsofknowledge.in/gzdl/html/central_extraordinary/2019-08-05/manifest/210390/images/R593/full/max/0/default.png",
           "type": "Image",
           "format": "image/png"
         }
@@ -2390,48 +2159,6 @@
       ]
     },
     {
-      "id": "https://publicmap.github.io/india-esz-dashboard/data/gazette-maps/manifests/in.gazette.central.e.2019-01-01.194833.json",
-      "type": "Manifest",
-      "label": {
-        "en": [
-          "Bhakira Wild Life Sanctuary – ESZ notification"
-        ]
-      },
-      "summary": {
-        "en": [
-          "4 map image(s), 0 georeferenced with Allmaps."
-        ]
-      },
-      "thumbnail": [
-        {
-          "id": "https://gazettes.servantsofknowledge.in/gzdl/html/central_extraordinary/2019-01-01/manifest/194833/images/R826/full/max/0/default.png",
-          "type": "Image",
-          "format": "image/png"
-        }
-      ]
-    },
-    {
-      "id": "https://publicmap.github.io/india-esz-dashboard/data/gazette-maps/manifests/in.gazette.central.e.2018-12-26.194534.json",
-      "type": "Manifest",
-      "label": {
-        "en": [
-          "Bandh Baretha Wildlife – ESZ notification"
-        ]
-      },
-      "summary": {
-        "en": [
-          "18 map image(s), 0 georeferenced with Allmaps."
-        ]
-      },
-      "thumbnail": [
-        {
-          "id": "https://gazettes.servantsofknowledge.in/gzdl/html/central_extraordinary/2018-12-26/manifest/194534/images/R841/full/max/0/default.png",
-          "type": "Image",
-          "format": "image/png"
-        }
-      ]
-    },
-    {
       "id": "https://publicmap.github.io/india-esz-dashboard/data/gazette-maps/manifests/in.gazette.central.e.2018-12-18.194226.json",
       "type": "Manifest",
       "label": {
@@ -2447,27 +2174,6 @@
       "thumbnail": [
         {
           "id": "https://gazettes.servantsofknowledge.in/gzdl/html/central_extraordinary/2018-12-18/manifest/194226/images/R317/full/max/0/default.png",
-          "type": "Image",
-          "format": "image/png"
-        }
-      ]
-    },
-    {
-      "id": "https://publicmap.github.io/india-esz-dashboard/data/gazette-maps/manifests/in.gazette.central.e.2018-11-26.193321.json",
-      "type": "Manifest",
-      "label": {
-        "en": [
-          "Nellai Wildlife Sanctuary – ESZ notification"
-        ]
-      },
-      "summary": {
-        "en": [
-          "2 map image(s), 0 georeferenced with Allmaps."
-        ]
-      },
-      "thumbnail": [
-        {
-          "id": "https://gazettes.servantsofknowledge.in/gzdl/html/central_extraordinary/2018-11-26/manifest/193321/images/R582/full/max/0/default.png",
           "type": "Image",
           "format": "image/png"
         }
@@ -2537,27 +2243,6 @@
       ]
     },
     {
-      "id": "https://publicmap.github.io/india-esz-dashboard/data/gazette-maps/manifests/in.gazette.central.e.2018-11-05.191867.json",
-      "type": "Manifest",
-      "label": {
-        "en": [
-          "Gangaikondan Spotted Deer Sanctuary – ESZ notification"
-        ]
-      },
-      "summary": {
-        "en": [
-          "10 map image(s), 0 georeferenced with Allmaps."
-        ]
-      },
-      "thumbnail": [
-        {
-          "id": "https://gazettes.servantsofknowledge.in/gzdl/html/central_extraordinary/2018-11-05/manifest/191867/images/R796/full/max/0/default.png",
-          "type": "Image",
-          "format": "image/png"
-        }
-      ]
-    },
-    {
       "id": "https://publicmap.github.io/india-esz-dashboard/data/gazette-maps/manifests/in.gazette.central.e.2018-09-19.189941.json",
       "type": "Manifest",
       "label": {
@@ -2621,27 +2306,6 @@
       ]
     },
     {
-      "id": "https://publicmap.github.io/india-esz-dashboard/data/gazette-maps/manifests/in.gazette.central.e.2018-07-27.188079.json",
-      "type": "Manifest",
-      "label": {
-        "en": [
-          "Gulf of Mannar National Park – ESZ notification"
-        ]
-      },
-      "summary": {
-        "en": [
-          "8 map image(s), 0 georeferenced with Allmaps."
-        ]
-      },
-      "thumbnail": [
-        {
-          "id": "https://gazettes.servantsofknowledge.in/gzdl/html/central_extraordinary/2018-07-27/manifest/188079/images/R788/full/max/0/default.png",
-          "type": "Image",
-          "format": "image/png"
-        }
-      ]
-    },
-    {
       "id": "https://publicmap.github.io/india-esz-dashboard/data/gazette-maps/manifests/in.gazette.central.e.2018-07-20.187741.json",
       "type": "Manifest",
       "label": {
@@ -2678,27 +2342,6 @@
       "thumbnail": [
         {
           "id": "https://gazettes.servantsofknowledge.in/gzdl/html/central_extraordinary/2018-07-13/manifest/187380/images/R563/full/max/0/default.png",
-          "type": "Image",
-          "format": "image/png"
-        }
-      ]
-    },
-    {
-      "id": "https://publicmap.github.io/india-esz-dashboard/data/gazette-maps/manifests/in.gazette.central.e.2018-07-09.187382.json",
-      "type": "Manifest",
-      "label": {
-        "en": [
-          "Srivilliputhur Grizzled Squirrel – ESZ notification"
-        ]
-      },
-      "summary": {
-        "en": [
-          "10 map image(s), 0 georeferenced with Allmaps."
-        ]
-      },
-      "thumbnail": [
-        {
-          "id": "https://gazettes.servantsofknowledge.in/gzdl/html/central_extraordinary/2018-07-09/manifest/187382/images/R808/full/max/0/default.png",
           "type": "Image",
           "format": "image/png"
         }
@@ -2804,153 +2447,6 @@
       "thumbnail": [
         {
           "id": "https://gazettes.servantsofknowledge.in/gzdl/html/central_extraordinary/2018-06-19/manifest/186612/images/R791/full/max/0/default.png",
-          "type": "Image",
-          "format": "image/png"
-        }
-      ]
-    },
-    {
-      "id": "https://publicmap.github.io/india-esz-dashboard/data/gazette-maps/manifests/in.gazette.central.e.2018-05-31.186142.json",
-      "type": "Manifest",
-      "label": {
-        "en": [
-          "Bandh Baretha Wildlife – ESZ notification"
-        ]
-      },
-      "summary": {
-        "en": [
-          "2 map image(s), 0 georeferenced with Allmaps."
-        ]
-      },
-      "thumbnail": [
-        {
-          "id": "https://gazettes.servantsofknowledge.in/gzdl/html/central_extraordinary/2018-05-31/manifest/186142/images/R706/full/max/0/default.png",
-          "type": "Image",
-          "format": "image/png"
-        }
-      ]
-    },
-    {
-      "id": "https://publicmap.github.io/india-esz-dashboard/data/gazette-maps/manifests/in.gazette.central.e.2018-05-25.185979.json",
-      "type": "Manifest",
-      "label": {
-        "en": [
-          "Chitrangudi Bird Sanctuary – ESZ notification"
-        ]
-      },
-      "summary": {
-        "en": [
-          "10 map image(s), 0 georeferenced with Allmaps."
-        ]
-      },
-      "thumbnail": [
-        {
-          "id": "https://gazettes.servantsofknowledge.in/gzdl/html/central_extraordinary/2018-05-25/manifest/185979/images/R756/full/max/0/default.png",
-          "type": "Image",
-          "format": "image/png"
-        }
-      ]
-    },
-    {
-      "id": "https://publicmap.github.io/india-esz-dashboard/data/gazette-maps/manifests/in.gazette.central.e.2018-05-25.185969.json",
-      "type": "Manifest",
-      "label": {
-        "en": [
-          "KaraivetiWildlife Sanctuary – ESZ notification"
-        ]
-      },
-      "summary": {
-        "en": [
-          "10 map image(s), 0 georeferenced with Allmaps."
-        ]
-      },
-      "thumbnail": [
-        {
-          "id": "https://gazettes.servantsofknowledge.in/gzdl/html/central_extraordinary/2018-05-25/manifest/185969/images/R774/full/max/0/default.png",
-          "type": "Image",
-          "format": "image/png"
-        }
-      ]
-    },
-    {
-      "id": "https://publicmap.github.io/india-esz-dashboard/data/gazette-maps/manifests/in.gazette.central.e.2018-05-25.185943.json",
-      "type": "Manifest",
-      "label": {
-        "en": [
-          "Siwaram Crocodile Sanctuary – ESZ notification"
-        ]
-      },
-      "summary": {
-        "en": [
-          "4 map image(s), 0 georeferenced with Allmaps."
-        ]
-      },
-      "thumbnail": [
-        {
-          "id": "https://gazettes.servantsofknowledge.in/gzdl/html/central_extraordinary/2018-05-25/manifest/185943/images/R732/full/max/0/default.png",
-          "type": "Image",
-          "format": "image/png"
-        }
-      ]
-    },
-    {
-      "id": "https://publicmap.github.io/india-esz-dashboard/data/gazette-maps/manifests/in.gazette.central.e.2018-05-22.185786.json",
-      "type": "Manifest",
-      "label": {
-        "en": [
-          "Rajaji National Park – ESZ notification"
-        ]
-      },
-      "summary": {
-        "en": [
-          "10 map image(s), 0 georeferenced with Allmaps."
-        ]
-      },
-      "thumbnail": [
-        {
-          "id": "https://gazettes.servantsofknowledge.in/gzdl/html/central_extraordinary/2018-05-22/manifest/185786/images/R463/full/max/0/default.png",
-          "type": "Image",
-          "format": "image/png"
-        }
-      ]
-    },
-    {
-      "id": "https://publicmap.github.io/india-esz-dashboard/data/gazette-maps/manifests/in.gazette.central.e.2018-05-22.185765.json",
-      "type": "Manifest",
-      "label": {
-        "en": [
-          "Pench NP Pench Mougali Sanctuary – ESZ notification"
-        ]
-      },
-      "summary": {
-        "en": [
-          "2 map image(s), 0 georeferenced with Allmaps."
-        ]
-      },
-      "thumbnail": [
-        {
-          "id": "https://gazettes.servantsofknowledge.in/gzdl/html/central_extraordinary/2018-05-22/manifest/185765/images/R457/full/max/0/default.png",
-          "type": "Image",
-          "format": "image/png"
-        }
-      ]
-    },
-    {
-      "id": "https://publicmap.github.io/india-esz-dashboard/data/gazette-maps/manifests/in.gazette.central.e.2018-05-11.185308.json",
-      "type": "Manifest",
-      "label": {
-        "en": [
-          "Saddle Peak National Park – ESZ notification"
-        ]
-      },
-      "summary": {
-        "en": [
-          "2 map image(s), 0 georeferenced with Allmaps."
-        ]
-      },
-      "thumbnail": [
-        {
-          "id": "https://gazettes.servantsofknowledge.in/gzdl/html/central_extraordinary/2018-05-11/manifest/185308/images/R650/full/max/0/default.png",
           "type": "Image",
           "format": "image/png"
         }
@@ -3335,69 +2831,6 @@
       ]
     },
     {
-      "id": "https://publicmap.github.io/india-esz-dashboard/data/gazette-maps/manifests/in.gazette.central.e.2017-06-07.176557.json",
-      "type": "Manifest",
-      "label": {
-        "en": [
-          "Attiveri Bird Sanctuary – ESZ notification"
-        ]
-      },
-      "summary": {
-        "en": [
-          "2 map image(s), 0 georeferenced with Allmaps."
-        ]
-      },
-      "thumbnail": [
-        {
-          "id": "https://gazettes.servantsofknowledge.in/gzdl/html/central_extraordinary/2017-06-07/manifest/176557/images/R72/full/max/0/default.png",
-          "type": "Image",
-          "format": "image/png"
-        }
-      ]
-    },
-    {
-      "id": "https://publicmap.github.io/india-esz-dashboard/data/gazette-maps/manifests/in.gazette.central.e.2017-05-31.176421.json",
-      "type": "Manifest",
-      "label": {
-        "en": [
-          "Gangewadi New Great Indian Bustard Sanctuary – ESZ notification"
-        ]
-      },
-      "summary": {
-        "en": [
-          "1 map image(s), 0 georeferenced with Allmaps."
-        ]
-      },
-      "thumbnail": [
-        {
-          "id": "https://gazettes.servantsofknowledge.in/gzdl/html/central_extraordinary/2017-05-31/manifest/176421/images/R412/full/max/0/default.png",
-          "type": "Image",
-          "format": "image/png"
-        }
-      ]
-    },
-    {
-      "id": "https://publicmap.github.io/india-esz-dashboard/data/gazette-maps/manifests/in.gazette.central.e.2017-05-26.176317.json",
-      "type": "Manifest",
-      "label": {
-        "en": [
-          "Brahmagiri Wildlife Sanctuary – ESZ notification"
-        ]
-      },
-      "summary": {
-        "en": [
-          "1 map image(s), 1 georeferenced with Allmaps."
-        ]
-      },
-      "thumbnail": [
-        {
-          "id": "https://iiif.archive.org/image/iiif/3/in.gazette.central.e.2017-05-26.176317%2F176317_jp2.zip%2F176317_jp2%2F176317_0024.jp2/full/400,/0/default.jpg",
-          "type": "Image",
-          "format": "image/jpeg"
-        }
-      ]
-    },
-    {
       "id": "https://publicmap.github.io/india-esz-dashboard/data/gazette-maps/manifests/in.gazette.central.e.2017-05-26.176314.json",
       "type": "Manifest",
       "label": {
@@ -3413,27 +2846,6 @@
       "thumbnail": [
         {
           "id": "https://gazettes.servantsofknowledge.in/gzdl/html/central_extraordinary/2017-05-26/manifest/176314/images/Im1/full/max/0/default.png",
-          "type": "Image",
-          "format": "image/png"
-        }
-      ]
-    },
-    {
-      "id": "https://publicmap.github.io/india-esz-dashboard/data/gazette-maps/manifests/in.gazette.central.e.2017-05-26.176313.json",
-      "type": "Manifest",
-      "label": {
-        "en": [
-          "Orchha Wildlife Sanctuary – ESZ notification"
-        ]
-      },
-      "summary": {
-        "en": [
-          "2 map image(s), 0 georeferenced with Allmaps."
-        ]
-      },
-      "thumbnail": [
-        {
-          "id": "https://gazettes.servantsofknowledge.in/gzdl/html/central_extraordinary/2017-05-26/manifest/176313/images/Im1/full/max/0/default.png",
           "type": "Image",
           "format": "image/png"
         }
@@ -3524,27 +2936,6 @@
       ]
     },
     {
-      "id": "https://publicmap.github.io/india-esz-dashboard/data/gazette-maps/manifests/in.gazette.central.e.2017-05-15.176108.json",
-      "type": "Manifest",
-      "label": {
-        "en": [
-          "Rajiv Gandhi National Park – ESZ notification"
-        ]
-      },
-      "summary": {
-        "en": [
-          "2 map image(s), 0 georeferenced with Allmaps."
-        ]
-      },
-      "thumbnail": [
-        {
-          "id": "https://gazettes.servantsofknowledge.in/gzdl/html/central_extraordinary/2017-05-15/manifest/176108/images/Image154/full/max/0/default.png",
-          "type": "Image",
-          "format": "image/png"
-        }
-      ]
-    },
-    {
       "id": "https://publicmap.github.io/india-esz-dashboard/data/gazette-maps/manifests/in.gazette.central.e.2017-04-28.175827.json",
       "type": "Manifest",
       "label": {
@@ -3560,27 +2951,6 @@
       "thumbnail": [
         {
           "id": "https://gazettes.servantsofknowledge.in/gzdl/html/central_extraordinary/2017-04-28/manifest/175827/images/Image149/full/max/0/default.png",
-          "type": "Image",
-          "format": "image/png"
-        }
-      ]
-    },
-    {
-      "id": "https://publicmap.github.io/india-esz-dashboard/data/gazette-maps/manifests/in.gazette.central.e.2017-04-28.175715.json",
-      "type": "Manifest",
-      "label": {
-        "en": [
-          "Kambalakonda Wildlife Sanctuary – ESZ notification"
-        ]
-      },
-      "summary": {
-        "en": [
-          "2 map image(s), 0 georeferenced with Allmaps."
-        ]
-      },
-      "thumbnail": [
-        {
-          "id": "https://gazettes.servantsofknowledge.in/gzdl/html/central_extraordinary/2017-04-28/manifest/175715/images/Im1/full/max/0/default.png",
           "type": "Image",
           "format": "image/png"
         }
@@ -3650,27 +3020,6 @@
       ]
     },
     {
-      "id": "https://publicmap.github.io/india-esz-dashboard/data/gazette-maps/manifests/in.gazette.central.e.2017-03-16.174803.json",
-      "type": "Manifest",
-      "label": {
-        "en": [
-          "Umred Karhandla Wildlife – ESZ notification"
-        ]
-      },
-      "summary": {
-        "en": [
-          "2 map image(s), 0 georeferenced with Allmaps."
-        ]
-      },
-      "thumbnail": [
-        {
-          "id": "https://gazettes.servantsofknowledge.in/gzdl/html/central_extraordinary/2017-03-16/manifest/174803/images/Im1/full/max/0/default.png",
-          "type": "Image",
-          "format": "image/png"
-        }
-      ]
-    },
-    {
       "id": "https://publicmap.github.io/india-esz-dashboard/data/gazette-maps/manifests/in.gazette.central.e.2017-02-14.174178.json",
       "type": "Manifest",
       "label": {
@@ -3686,153 +3035,6 @@
       "thumbnail": [
         {
           "id": "https://gazettes.servantsofknowledge.in/gzdl/html/central_extraordinary/2017-02-14/manifest/174178/images/R70/full/max/0/default.png",
-          "type": "Image",
-          "format": "image/png"
-        }
-      ]
-    },
-    {
-      "id": "https://publicmap.github.io/india-esz-dashboard/data/gazette-maps/manifests/in.gazette.central.e.2017-01-19.173792.json",
-      "type": "Manifest",
-      "label": {
-        "en": [
-          "Sukhna Wildlife Sanctuary – ESZ notification"
-        ]
-      },
-      "summary": {
-        "en": [
-          "2 map image(s), 0 georeferenced with Allmaps."
-        ]
-      },
-      "thumbnail": [
-        {
-          "id": "https://gazettes.servantsofknowledge.in/gzdl/html/central_extraordinary/2017-01-19/manifest/173792/images/R75/full/max/0/default.png",
-          "type": "Image",
-          "format": "image/png"
-        }
-      ]
-    },
-    {
-      "id": "https://publicmap.github.io/india-esz-dashboard/data/gazette-maps/manifests/in.gazette.central.e.2017-01-19.173791.json",
-      "type": "Manifest",
-      "label": {
-        "en": [
-          "Van Vihar National Park – ESZ notification"
-        ]
-      },
-      "summary": {
-        "en": [
-          "2 map image(s), 0 georeferenced with Allmaps."
-        ]
-      },
-      "thumbnail": [
-        {
-          "id": "https://gazettes.servantsofknowledge.in/gzdl/html/central_extraordinary/2017-01-19/manifest/173791/images/R66/full/max/0/default.png",
-          "type": "Image",
-          "format": "image/png"
-        }
-      ]
-    },
-    {
-      "id": "https://publicmap.github.io/india-esz-dashboard/data/gazette-maps/manifests/in.gazette.central.e.2017-01-10.173572.json",
-      "type": "Manifest",
-      "label": {
-        "en": [
-          "Bird Sanctuary Union Territory – ESZ notification"
-        ]
-      },
-      "summary": {
-        "en": [
-          "1 map image(s), 0 georeferenced with Allmaps."
-        ]
-      },
-      "thumbnail": [
-        {
-          "id": "https://gazettes.servantsofknowledge.in/gzdl/html/central_extraordinary/2017-01-10/manifest/173572/images/R65/full/max/0/default.png",
-          "type": "Image",
-          "format": "image/png"
-        }
-      ]
-    },
-    {
-      "id": "https://publicmap.github.io/india-esz-dashboard/data/gazette-maps/manifests/in.gazette.central.e.2017-01-10.173567.json",
-      "type": "Manifest",
-      "label": {
-        "en": [
-          "Singalila National Park – ESZ notification"
-        ]
-      },
-      "summary": {
-        "en": [
-          "3 map image(s), 0 georeferenced with Allmaps."
-        ]
-      },
-      "thumbnail": [
-        {
-          "id": "https://gazettes.servantsofknowledge.in/gzdl/html/central_extraordinary/2017-01-10/manifest/173567/images/R68/full/max/0/default.png",
-          "type": "Image",
-          "format": "image/png"
-        }
-      ]
-    },
-    {
-      "id": "https://publicmap.github.io/india-esz-dashboard/data/gazette-maps/manifests/in.gazette.central.e.2017-01-10.173559.json",
-      "type": "Manifest",
-      "label": {
-        "en": [
-          "Khaparwas Wildlife – ESZ notification"
-        ]
-      },
-      "summary": {
-        "en": [
-          "1 map image(s), 0 georeferenced with Allmaps."
-        ]
-      },
-      "thumbnail": [
-        {
-          "id": "https://gazettes.servantsofknowledge.in/gzdl/html/central_extraordinary/2017-01-10/manifest/173559/images/R125/full/max/0/default.png",
-          "type": "Image",
-          "format": "image/png"
-        }
-      ]
-    },
-    {
-      "id": "https://publicmap.github.io/india-esz-dashboard/data/gazette-maps/manifests/in.gazette.central.e.2016-12-14.173162.json",
-      "type": "Manifest",
-      "label": {
-        "en": [
-          "Ghatigaon Hukna Wildlife Sanctuary – ESZ notification"
-        ]
-      },
-      "summary": {
-        "en": [
-          "2 map image(s), 0 georeferenced with Allmaps."
-        ]
-      },
-      "thumbnail": [
-        {
-          "id": "https://gazettes.servantsofknowledge.in/gzdl/html/central_extraordinary/2016-12-14/manifest/173162/images/R63/full/max/0/default.png",
-          "type": "Image",
-          "format": "image/png"
-        }
-      ]
-    },
-    {
-      "id": "https://publicmap.github.io/india-esz-dashboard/data/gazette-maps/manifests/in.gazette.central.e.2016-12-14.173161.json",
-      "type": "Manifest",
-      "label": {
-        "en": [
-          "Son Gharial Wildlife Sanctuary – ESZ notification"
-        ]
-      },
-      "summary": {
-        "en": [
-          "2 map image(s), 0 georeferenced with Allmaps."
-        ]
-      },
-      "thumbnail": [
-        {
-          "id": "https://gazettes.servantsofknowledge.in/gzdl/html/central_extraordinary/2016-12-14/manifest/173161/images/R67/full/max/0/default.png",
           "type": "Image",
           "format": "image/png"
         }
@@ -3875,69 +3077,6 @@
       "thumbnail": [
         {
           "id": "https://gazettes.servantsofknowledge.in/gzdl/html/central_extraordinary/2016-12-05/manifest/172914/images/R69/full/max/0/default.png",
-          "type": "Image",
-          "format": "image/png"
-        }
-      ]
-    },
-    {
-      "id": "https://publicmap.github.io/india-esz-dashboard/data/gazette-maps/manifests/in.gazette.central.e.2016-11-30.172887.json",
-      "type": "Manifest",
-      "label": {
-        "en": [
-          "Takhni-Rahmapur Wildlife Sanctuary – ESZ notification"
-        ]
-      },
-      "summary": {
-        "en": [
-          "1 map image(s), 0 georeferenced with Allmaps."
-        ]
-      },
-      "thumbnail": [
-        {
-          "id": "https://gazettes.servantsofknowledge.in/gzdl/html/central_extraordinary/2016-11-30/manifest/172887/images/R100/full/max/0/default.png",
-          "type": "Image",
-          "format": "image/png"
-        }
-      ]
-    },
-    {
-      "id": "https://publicmap.github.io/india-esz-dashboard/data/gazette-maps/manifests/in.gazette.central.e.2016-11-03.172484.json",
-      "type": "Manifest",
-      "label": {
-        "en": [
-          "Dandeli Wildlife Sanctuary, Anshi National Park, Kali Tiger Reserve – ESZ notification"
-        ]
-      },
-      "summary": {
-        "en": [
-          "2 map image(s), 0 georeferenced with Allmaps."
-        ]
-      },
-      "thumbnail": [
-        {
-          "id": "https://gazettes.servantsofknowledge.in/gzdl/html/central_extraordinary/2016-11-03/manifest/172484/images/R90/full/max/0/default.png",
-          "type": "Image",
-          "format": "image/png"
-        }
-      ]
-    },
-    {
-      "id": "https://publicmap.github.io/india-esz-dashboard/data/gazette-maps/manifests/in.gazette.central.e.2016-10-26.172406.json",
-      "type": "Manifest",
-      "label": {
-        "en": [
-          "Neora Valley National Park – ESZ notification"
-        ]
-      },
-      "summary": {
-        "en": [
-          "1 map image(s), 0 georeferenced with Allmaps."
-        ]
-      },
-      "thumbnail": [
-        {
-          "id": "https://gazettes.servantsofknowledge.in/gzdl/html/central_extraordinary/2016-10-26/manifest/172406/images/R136/full/max/0/default.png",
           "type": "Image",
           "format": "image/png"
         }
@@ -4238,27 +3377,6 @@
       ]
     },
     {
-      "id": "https://publicmap.github.io/india-esz-dashboard/data/gazette-maps/manifests/in.gazette.central.e.2016-08-05.171144.json",
-      "type": "Manifest",
-      "label": {
-        "en": [
-          "Nugu Wildlife Sanctuary – ESZ notification"
-        ]
-      },
-      "summary": {
-        "en": [
-          "6 map image(s), 0 georeferenced with Allmaps."
-        ]
-      },
-      "thumbnail": [
-        {
-          "id": "https://gazettes.servantsofknowledge.in/gzdl/html/central_extraordinary/2016-08-05/manifest/171144/images/R495/full/max/0/default.png",
-          "type": "Image",
-          "format": "image/png"
-        }
-      ]
-    },
-    {
       "id": "https://publicmap.github.io/india-esz-dashboard/data/gazette-maps/manifests/in.gazette.central.e.2016-07-21.170984.json",
       "type": "Manifest",
       "label": {
@@ -4316,27 +3434,6 @@
       "thumbnail": [
         {
           "id": "https://gazettes.servantsofknowledge.in/gzdl/html/central_extraordinary/2016-07-21/manifest/170939/images/R319/full/max/0/default.png",
-          "type": "Image",
-          "format": "image/png"
-        }
-      ]
-    },
-    {
-      "id": "https://publicmap.github.io/india-esz-dashboard/data/gazette-maps/manifests/in.gazette.central.e.2016-07-01.170551.json",
-      "type": "Manifest",
-      "label": {
-        "en": [
-          "Bir Bhunerheri Wildlife Sanctuary – ESZ notification"
-        ]
-      },
-      "summary": {
-        "en": [
-          "2 map image(s), 0 georeferenced with Allmaps."
-        ]
-      },
-      "thumbnail": [
-        {
-          "id": "https://gazettes.servantsofknowledge.in/gzdl/html/central_extraordinary/2016-07-01/manifest/170551/images/R599/full/max/0/default.png",
           "type": "Image",
           "format": "image/png"
         }
@@ -4406,27 +3503,6 @@
       ]
     },
     {
-      "id": "https://publicmap.github.io/india-esz-dashboard/data/gazette-maps/manifests/in.gazette.central.e.2016-06-15.170254.json",
-      "type": "Manifest",
-      "label": {
-        "en": [
-          "Sohagibarwa Wildlife Sanctuary – ESZ notification"
-        ]
-      },
-      "summary": {
-        "en": [
-          "2 map image(s), 0 georeferenced with Allmaps."
-        ]
-      },
-      "thumbnail": [
-        {
-          "id": "https://gazettes.servantsofknowledge.in/gzdl/html/central_extraordinary/2016-06-15/manifest/170254/images/R345/full/max/0/default.png",
-          "type": "Image",
-          "format": "image/png"
-        }
-      ]
-    },
-    {
       "id": "https://publicmap.github.io/india-esz-dashboard/data/gazette-maps/manifests/in.gazette.central.e.2016-06-15.170228.json",
       "type": "Manifest",
       "label": {
@@ -4484,48 +3560,6 @@
       "thumbnail": [
         {
           "id": "https://gazettes.servantsofknowledge.in/gzdl/html/central_extraordinary/2016-06-03/manifest/170053/images/R427/full/max/0/default.png",
-          "type": "Image",
-          "format": "image/png"
-        }
-      ]
-    },
-    {
-      "id": "https://publicmap.github.io/india-esz-dashboard/data/gazette-maps/manifests/in.gazette.central.e.2016-06-03.170051.json",
-      "type": "Manifest",
-      "label": {
-        "en": [
-          "Churdhar Wildlife Sanctuary – ESZ notification"
-        ]
-      },
-      "summary": {
-        "en": [
-          "2 map image(s), 0 georeferenced with Allmaps."
-        ]
-      },
-      "thumbnail": [
-        {
-          "id": "https://gazettes.servantsofknowledge.in/gzdl/html/central_extraordinary/2016-06-03/manifest/170051/images/R433/full/max/0/default.png",
-          "type": "Image",
-          "format": "image/png"
-        }
-      ]
-    },
-    {
-      "id": "https://publicmap.github.io/india-esz-dashboard/data/gazette-maps/manifests/in.gazette.central.e.2016-06-03.170040.json",
-      "type": "Manifest",
-      "label": {
-        "en": [
-          "Saman Bird Sanctuary – ESZ notification"
-        ]
-      },
-      "summary": {
-        "en": [
-          "2 map image(s), 0 georeferenced with Allmaps."
-        ]
-      },
-      "thumbnail": [
-        {
-          "id": "https://gazettes.servantsofknowledge.in/gzdl/html/central_extraordinary/2016-06-03/manifest/170040/images/R111/full/max/0/default.png",
           "type": "Image",
           "format": "image/png"
         }
@@ -4616,27 +3650,6 @@
       ]
     },
     {
-      "id": "https://publicmap.github.io/india-esz-dashboard/data/gazette-maps/manifests/in.gazette.central.e.2016-04-26.169254.json",
-      "type": "Manifest",
-      "label": {
-        "en": [
-          "Rani Jhansi Marine National Park, North Button Island National Park, Middle Button Island National Park, South Button Island National Park, Arial Island Wildlife Sanctuary, Bamboo Island Wildlife Sanctuary, Barren Island Wildlife Sanctuary, Battimalv Island Wildlife Sanctuary, Belle Island Wildlife Sanctuary, Benett Island Wildlife Sanctuary, Bingham Island Wildlife Sanctuary, Blister Island Wildlife Sanctuary, Bluff Island Wildlife Sanctuary, Bondoville Island Wildlife Sanctuary, Brush Island Wildlife Sanctuary, Buchanan Island Wildlife Sanctuary, Chanel Island Wildlife Sanctuary, Cinque Islands Wildlife Sanctuary, Clyde Island Wildlife Sanctuary, Cone Island Wildlife Sanctuary, Curlew (B.P.) Island Wildlife Sanctuary, Curlew Island Wildlife Sanctuary, Defence Island Wildlife Sanctuary, Dot Island Wildlife Sanctuary, Dottrell Island Wildlife Sanctuary, Duncan Island Wildlife Sanctuary, East Island Wildlife Sanctuary, Egg Island Wildlife Sanctuary, Entrance Island Wildlife Sanctuary, Flat Island Wildlife Sanctuary, Gander Island Wildlife Sanctuary, Goose Island Wildlife Sanctuary, Girjan Island Wildlife Sanctuary, Hump Island Wildlife Sanctuary, East of Inglis Island Wildlife Sanctuary, Interview Island Wildlife Sanctuary, James Island Wildlife Sanctuary, Jungle Island Wildlife Sanctuary, Kwangtung Island Wildlife Sanctuary, Kyd Island Wildlife Sanctuary, Landfall Island Wildlife Sanctuary, Latouche Island Wildlife Sanctuary, Mangrove Island Wildlife Sanctuary, Mask Island Wildlife Sanctuary, Mayo Island Wildlife Sanctuary, Megapode Island Wildlife Sanctuary, Montogemery Island Wildlife Sanctuary, Narcondam Island Wildlife Sanctuary, North Brother Island Wildlife Sanctuary, North Reef Island Wildlife Sanctuary, North Island Wildlife Sanctuary, Oliver Island Wildlife Sanctuary, Orchid Island Wildlife Sanctuary, Ox Island Wildlife Sanctuary, Oyster Island‑I Wildlife Sanctuary, Oyster Island‑II Wildlife Sanctuary, Paget Island Wildlife Sanctuary, Parkinson Island Wildlife Sanctuary, Passage Island Wildlife Sanctuary, Patric Island Wildlife Sanctuary, Pitman Island Wildlife Sanctuary, Peacock Island Wildlife Sanctuary, Point Island Wildlife Sanctuary, Potanma Islands Wildlife Sanctuary, Ranger Island Wildlife Sanctuary, Reef Island Wildlife Sanctuary, Roper Island Wildlife Sanctuary, Ross Island Wildlife Sanctuary, Rowe Island Wildlife Sanctuary, Sandy Island Wildlife Sanctuary, Sea Serpent Island Wildlife Sanctuary, Shark Island Wildlife Sanctuary, Shearme Island Wildlife Sanctuary, Sir Hugh Rose Island Wildlife Sanctuary, Sisters Island Wildlife Sanctuary, Snake Island‑I Wildlife Sanctuary, Snake Island‑II Wildlife Sanctuary, South Brother Island Wildlife Sanctuary, South Reef Island Wildlife Sanctuary, South Sentinel Island Wildlife Sanctuary, Spike Island‑II Wildlife Sanctuary, Spike Island‑I Wildlife Sanctuary, Stoat Island Wildlife Sanctuary, Surat Island Wildlife Sanctuary, Swamp Island Wildlife Sanctuary, Table (Delgarno) Island Wildlife Sanctuary, Table (Excelsior) Island Wildlife Sanctuary, Talabaicha Island Wildlife Sanctuary, Temple Island Wildlife Sanctuary, Tillongchang Island Wildlife Sanctuary, Tree Island Wildlife Sanctuary, Trilby Island Wildlife Sanctuary, Tuft Island Wildlife Sanctuary, Turtle Islands Wildlife Sanctuary, West Island Wildlife Sanctuary, Wharf Island Wildlife Sanctuary, White Cliff Island Wildlife Sanctuary – ESZ notification"
-        ]
-      },
-      "summary": {
-        "en": [
-          "6 map image(s), 0 georeferenced with Allmaps."
-        ]
-      },
-      "thumbnail": [
-        {
-          "id": "https://gazettes.servantsofknowledge.in/gzdl/html/central_extraordinary/2016-04-26/manifest/169254/images/R416/full/max/0/default.png",
-          "type": "Image",
-          "format": "image/png"
-        }
-      ]
-    },
-    {
       "id": "https://publicmap.github.io/india-esz-dashboard/data/gazette-maps/manifests/in.gazette.central.e.2016-04-08.169081.json",
       "type": "Manifest",
       "label": {
@@ -4694,27 +3707,6 @@
       "thumbnail": [
         {
           "id": "https://gazettes.servantsofknowledge.in/gzdl/html/central_extraordinary/2016-03-31/manifest/168951/images/R366/full/max/0/default.png",
-          "type": "Image",
-          "format": "image/png"
-        }
-      ]
-    },
-    {
-      "id": "https://publicmap.github.io/india-esz-dashboard/data/gazette-maps/manifests/in.gazette.central.e.2016-03-31.168946.json",
-      "type": "Manifest",
-      "label": {
-        "en": [
-          "Periyar Tiger Reserve – ESZ notification"
-        ]
-      },
-      "summary": {
-        "en": [
-          "1 map image(s), 0 georeferenced with Allmaps."
-        ]
-      },
-      "thumbnail": [
-        {
-          "id": "https://gazettes.servantsofknowledge.in/gzdl/html/central_extraordinary/2016-03-31/manifest/168946/images/R358/full/max/0/default.png",
           "type": "Image",
           "format": "image/png"
         }
@@ -4910,27 +3902,6 @@
       ]
     },
     {
-      "id": "https://publicmap.github.io/india-esz-dashboard/data/gazette-maps/manifests/in.gazette.central.e.2016-03-11.168588.json",
-      "type": "Manifest",
-      "label": {
-        "en": [
-          "Bir Moti Bagh Wildlife Sanctuary – ESZ notification"
-        ]
-      },
-      "summary": {
-        "en": [
-          "2 map image(s), 0 georeferenced with Allmaps."
-        ]
-      },
-      "thumbnail": [
-        {
-          "id": "https://gazettes.servantsofknowledge.in/gzdl/html/central_extraordinary/2016-03-11/manifest/168588/images/R79/full/max/0/default.png",
-          "type": "Image",
-          "format": "image/png"
-        }
-      ]
-    },
-    {
       "id": "https://publicmap.github.io/india-esz-dashboard/data/gazette-maps/manifests/in.gazette.central.e.2016-03-11.168587.json",
       "type": "Manifest",
       "label": {
@@ -5036,27 +4007,6 @@
       ]
     },
     {
-      "id": "https://publicmap.github.io/india-esz-dashboard/data/gazette-maps/manifests/in.gazette.central.e.2015-12-22.167287.json",
-      "type": "Manifest",
-      "label": {
-        "en": [
-          "Bhakira Wild Life Sanctuary – ESZ notification"
-        ]
-      },
-      "summary": {
-        "en": [
-          "2 map image(s), 0 georeferenced with Allmaps."
-        ]
-      },
-      "thumbnail": [
-        {
-          "id": "https://gazettes.servantsofknowledge.in/gzdl/html/central_extraordinary/2015-12-22/manifest/167287/images/R444/full/max/0/default.png",
-          "type": "Image",
-          "format": "image/png"
-        }
-      ]
-    },
-    {
       "id": "https://publicmap.github.io/india-esz-dashboard/data/gazette-maps/manifests/in.gazette.central.e.2015-12-22.167284.json",
       "type": "Manifest",
       "label": {
@@ -5099,48 +4049,6 @@
       ]
     },
     {
-      "id": "https://publicmap.github.io/india-esz-dashboard/data/gazette-maps/manifests/in.gazette.central.e.2015-11-20.166810.json",
-      "type": "Manifest",
-      "label": {
-        "en": [
-          "Lonar Wildlife Sanctuary – ESZ notification"
-        ]
-      },
-      "summary": {
-        "en": [
-          "2 map image(s), 0 georeferenced with Allmaps."
-        ]
-      },
-      "thumbnail": [
-        {
-          "id": "https://gazettes.servantsofknowledge.in/gzdl/html/central_extraordinary/2015-11-20/manifest/166810/images/R427/full/max/0/default.png",
-          "type": "Image",
-          "format": "image/png"
-        }
-      ]
-    },
-    {
-      "id": "https://publicmap.github.io/india-esz-dashboard/data/gazette-maps/manifests/in.gazette.central.e.2015-11-20.166799.json",
-      "type": "Manifest",
-      "label": {
-        "en": [
-          "Bhaindrogarh WL Sanctuary – ESZ notification"
-        ]
-      },
-      "summary": {
-        "en": [
-          "2 map image(s), 0 georeferenced with Allmaps."
-        ]
-      },
-      "thumbnail": [
-        {
-          "id": "https://gazettes.servantsofknowledge.in/gzdl/html/central_extraordinary/2015-11-20/manifest/166799/images/R74/full/max/0/default.png",
-          "type": "Image",
-          "format": "image/png"
-        }
-      ]
-    },
-    {
       "id": "https://publicmap.github.io/india-esz-dashboard/data/gazette-maps/manifests/in.gazette.central.e.2015-11-20.166796.json",
       "type": "Manifest",
       "label": {
@@ -5156,27 +4064,6 @@
       "thumbnail": [
         {
           "id": "https://gazettes.servantsofknowledge.in/gzdl/html/central_extraordinary/2015-11-20/manifest/166796/images/R599/full/max/0/default.png",
-          "type": "Image",
-          "format": "image/png"
-        }
-      ]
-    },
-    {
-      "id": "https://publicmap.github.io/india-esz-dashboard/data/gazette-maps/manifests/in.gazette.central.e.2015-11-20.166786.json",
-      "type": "Manifest",
-      "label": {
-        "en": [
-          "Narpuh – ESZ notification"
-        ]
-      },
-      "summary": {
-        "en": [
-          "2 map image(s), 0 georeferenced with Allmaps."
-        ]
-      },
-      "thumbnail": [
-        {
-          "id": "https://gazettes.servantsofknowledge.in/gzdl/html/central_extraordinary/2015-11-20/manifest/166786/images/R415/full/max/0/default.png",
           "type": "Image",
           "format": "image/png"
         }
@@ -5246,27 +4133,6 @@
       ]
     },
     {
-      "id": "https://publicmap.github.io/india-esz-dashboard/data/gazette-maps/manifests/in.gazette.central.e.2015-11-17.166737.json",
-      "type": "Manifest",
-      "label": {
-        "en": [
-          "Nokrek NP – ESZ notification"
-        ]
-      },
-      "summary": {
-        "en": [
-          "2 map image(s), 0 georeferenced with Allmaps."
-        ]
-      },
-      "thumbnail": [
-        {
-          "id": "https://gazettes.servantsofknowledge.in/gzdl/html/central_extraordinary/2015-11-17/manifest/166737/images/R69/full/max/0/default.png",
-          "type": "Image",
-          "format": "image/png"
-        }
-      ]
-    },
-    {
       "id": "https://publicmap.github.io/india-esz-dashboard/data/gazette-maps/manifests/in.gazette.central.e.2015-11-05.166647.json",
       "type": "Manifest",
       "label": {
@@ -5309,111 +4175,6 @@
       ]
     },
     {
-      "id": "https://publicmap.github.io/india-esz-dashboard/data/gazette-maps/manifests/in.gazette.central.e.2015-10-19.166387.json",
-      "type": "Manifest",
-      "label": {
-        "en": [
-          "Mookambika Wildlife Sanctuary – ESZ notification"
-        ]
-      },
-      "summary": {
-        "en": [
-          "4 map image(s), 0 georeferenced with Allmaps."
-        ]
-      },
-      "thumbnail": [
-        {
-          "id": "https://gazettes.servantsofknowledge.in/gzdl/html/central_extraordinary/2015-10-19/manifest/166387/images/R576/full/max/0/default.png",
-          "type": "Image",
-          "format": "image/png"
-        }
-      ]
-    },
-    {
-      "id": "https://publicmap.github.io/india-esz-dashboard/data/gazette-maps/manifests/in.gazette.central.e.2015-10-19.166369.json",
-      "type": "Manifest",
-      "label": {
-        "en": [
-          "Ramsagar Wildlife Sanctuary – ESZ notification"
-        ]
-      },
-      "summary": {
-        "en": [
-          "2 map image(s), 0 georeferenced with Allmaps."
-        ]
-      },
-      "thumbnail": [
-        {
-          "id": "https://gazettes.servantsofknowledge.in/gzdl/html/central_extraordinary/2015-10-19/manifest/166369/images/R355/full/max/0/default.png",
-          "type": "Image",
-          "format": "image/png"
-        }
-      ]
-    },
-    {
-      "id": "https://publicmap.github.io/india-esz-dashboard/data/gazette-maps/manifests/in.gazette.central.e.2015-10-13.166220.json",
-      "type": "Manifest",
-      "label": {
-        "en": [
-          "Bassi Wildlife Sanctuary – ESZ notification"
-        ]
-      },
-      "summary": {
-        "en": [
-          "1 map image(s), 0 georeferenced with Allmaps."
-        ]
-      },
-      "thumbnail": [
-        {
-          "id": "https://gazettes.servantsofknowledge.in/gzdl/html/central_extraordinary/2015-10-13/manifest/166220/images/R591/full/max/0/default.png",
-          "type": "Image",
-          "format": "image/png"
-        }
-      ]
-    },
-    {
-      "id": "https://publicmap.github.io/india-esz-dashboard/data/gazette-maps/manifests/in.gazette.central.e.2015-10-05.165970.json",
-      "type": "Manifest",
-      "label": {
-        "en": [
-          "Ghatigoan Hukna Wildlife Sanctuary – ESZ notification"
-        ]
-      },
-      "summary": {
-        "en": [
-          "2 map image(s), 0 georeferenced with Allmaps."
-        ]
-      },
-      "thumbnail": [
-        {
-          "id": "https://gazettes.servantsofknowledge.in/gzdl/html/central_extraordinary/2015-10-05/manifest/165970/images/R678/full/max/0/default.png",
-          "type": "Image",
-          "format": "image/png"
-        }
-      ]
-    },
-    {
-      "id": "https://publicmap.github.io/india-esz-dashboard/data/gazette-maps/manifests/in.gazette.central.e.2015-09-17.166382.json",
-      "type": "Manifest",
-      "label": {
-        "en": [
-          "Sukhna Wildlife Sanctuary – ESZ notification"
-        ]
-      },
-      "summary": {
-        "en": [
-          "2 map image(s), 0 georeferenced with Allmaps."
-        ]
-      },
-      "thumbnail": [
-        {
-          "id": "https://gazettes.servantsofknowledge.in/gzdl/html/central_extraordinary/2015-09-17/manifest/166382/images/R81/full/max/0/default.png",
-          "type": "Image",
-          "format": "image/png"
-        }
-      ]
-    },
-    {
       "id": "https://publicmap.github.io/india-esz-dashboard/data/gazette-maps/manifests/in.gazette.central.e.2015-09-17.166378.json",
       "type": "Manifest",
       "label": {
@@ -5429,27 +4190,6 @@
       "thumbnail": [
         {
           "id": "https://gazettes.servantsofknowledge.in/gzdl/html/central_extraordinary/2015-09-17/manifest/166378/images/R252/full/max/0/default.png",
-          "type": "Image",
-          "format": "image/png"
-        }
-      ]
-    },
-    {
-      "id": "https://publicmap.github.io/india-esz-dashboard/data/gazette-maps/manifests/in.gazette.central.e.2015-09-17.166325.json",
-      "type": "Manifest",
-      "label": {
-        "en": [
-          "Umrer Karhandala Wildlife Sanctuary – ESZ notification"
-        ]
-      },
-      "summary": {
-        "en": [
-          "2 map image(s), 0 georeferenced with Allmaps."
-        ]
-      },
-      "thumbnail": [
-        {
-          "id": "https://gazettes.servantsofknowledge.in/gzdl/html/central_extraordinary/2015-09-17/manifest/166325/images/R171/full/max/0/default.png",
           "type": "Image",
           "format": "image/png"
         }
@@ -5540,69 +4280,6 @@
       ]
     },
     {
-      "id": "https://publicmap.github.io/india-esz-dashboard/data/gazette-maps/manifests/in.gazette.central.e.2015-05-01.164020.json",
-      "type": "Manifest",
-      "label": {
-        "en": [
-          "Chandaka Dampara Wildlife Sanctuary – ESZ notification"
-        ]
-      },
-      "summary": {
-        "en": [
-          "3 map image(s), 0 georeferenced with Allmaps."
-        ]
-      },
-      "thumbnail": [
-        {
-          "id": "https://gazettes.servantsofknowledge.in/gzdl/html/central_extraordinary/2015-05-01/manifest/164020/images/R409/full/max/0/default.png",
-          "type": "Image",
-          "format": "image/png"
-        }
-      ]
-    },
-    {
-      "id": "https://publicmap.github.io/india-esz-dashboard/data/gazette-maps/manifests/in.gazette.central.e.2015-02-24.163111.json",
-      "type": "Manifest",
-      "label": {
-        "en": [
-          "Cotigao WLS – ESZ notification"
-        ]
-      },
-      "summary": {
-        "en": [
-          "3 map image(s), 1 georeferenced with Allmaps."
-        ]
-      },
-      "thumbnail": [
-        {
-          "id": "https://gazettes.servantsofknowledge.in/gzdl/html/central_extraordinary/2015-02-24/manifest/163111/images/R73/full/max/0/default.png",
-          "type": "Image",
-          "format": "image/png"
-        }
-      ]
-    },
-    {
-      "id": "https://publicmap.github.io/india-esz-dashboard/data/gazette-maps/manifests/in.gazette.central.e.2015-01-28.162706.json",
-      "type": "Manifest",
-      "label": {
-        "en": [
-          "Kaimur Wildlife Sanctuary – ESZ notification"
-        ]
-      },
-      "summary": {
-        "en": [
-          "2 map image(s), 0 georeferenced with Allmaps."
-        ]
-      },
-      "thumbnail": [
-        {
-          "id": "https://gazettes.servantsofknowledge.in/gzdl/html/central_extraordinary/2015-01-28/manifest/162706/images/R371/full/max/0/default.png",
-          "type": "Image",
-          "format": "image/png"
-        }
-      ]
-    },
-    {
       "id": "https://publicmap.github.io/india-esz-dashboard/data/gazette-maps/manifests/in.gazette.central.e.2014-02-25.158506.json",
       "type": "Manifest",
       "label": {
@@ -5660,27 +4337,6 @@
       "thumbnail": [
         {
           "id": "https://gazettes.servantsofknowledge.in/gzdl/html/central_extraordinary/2014-02-06/manifest/158103/images/R71/full/max/0/default.png",
-          "type": "Image",
-          "format": "image/png"
-        }
-      ]
-    },
-    {
-      "id": "https://publicmap.github.io/india-esz-dashboard/data/gazette-maps/manifests/in.gazette.central.e.2014-02-06.158102.json",
-      "type": "Manifest",
-      "label": {
-        "en": [
-          "Pangolakha Wildlife Sanctuary – ESZ notification"
-        ]
-      },
-      "summary": {
-        "en": [
-          "2 map image(s), 0 georeferenced with Allmaps."
-        ]
-      },
-      "thumbnail": [
-        {
-          "id": "https://gazettes.servantsofknowledge.in/gzdl/html/central_extraordinary/2014-02-06/manifest/158102/images/R67/full/max/0/default.png",
           "type": "Image",
           "format": "image/png"
         }

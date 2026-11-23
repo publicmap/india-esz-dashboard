@@ -14,11 +14,6 @@
   "georeferenced": 0,
   "mapPages": []
  },
- "in.gazette.central.e.2013-08-22.004": {
-  "maps": 0,
-  "georeferenced": 0,
-  "mapPages": []
- },
  "in.gazette.central.e.2013-10-18.156750": {
   "maps": 0,
   "georeferenced": 0,
@@ -34,19 +29,6 @@
   "georeferenced": 0,
   "mapPages": [
    8
-  ]
- },
- "in.gazette.central.e.2014-02-04.158119": {
-  "maps": 0,
-  "georeferenced": 0,
-  "mapPages": []
- },
- "in.gazette.central.e.2014-02-06.158102": {
-  "maps": 2,
-  "georeferenced": 0,
-  "mapPages": [
-   7,
-   15
   ]
  },
  "in.gazette.central.e.2014-02-06.158103": {
@@ -88,17 +70,7 @@
   "georeferenced": 0,
   "mapPages": []
  },
- "in.gazette.central.e.2014-03-03.158535": {
-  "maps": 0,
-  "georeferenced": 0,
-  "mapPages": []
- },
  "in.gazette.central.e.2014-03-03.158536": {
-  "maps": 0,
-  "georeferenced": 0,
-  "mapPages": []
- },
- "in.gazette.central.e.2014-07-04.160153": {
   "maps": 0,
   "georeferenced": 0,
   "mapPages": []
@@ -114,11 +86,6 @@
   "mapPages": []
  },
  "in.gazette.central.e.2014-08-27.160860": {
-  "maps": 0,
-  "georeferenced": 0,
-  "mapPages": []
- },
- "in.gazette.central.e.2014-08-27.160861": {
   "maps": 0,
   "georeferenced": 0,
   "mapPages": []
@@ -158,66 +125,7 @@
   "georeferenced": 0,
   "mapPages": []
  },
- "in.gazette.central.e.2015-01-23.162904": {
-  "maps": 0,
-  "georeferenced": 0,
-  "mapPages": []
- },
- "in.gazette.central.e.2015-01-28.162706": {
-  "maps": 2,
-  "georeferenced": 0,
-  "mapPages": [
-   8,
-   21
-  ]
- },
- "in.gazette.central.e.2015-02-17.163095": {
-  "maps": 0,
-  "georeferenced": 0,
-  "mapPages": []
- },
- "in.gazette.central.e.2015-02-20.163057": {
-  "maps": 0,
-  "georeferenced": 0,
-  "mapPages": []
- },
- "in.gazette.central.e.2015-02-24.163111": {
-  "maps": 3,
-  "georeferenced": 1,
-  "mapPages": [
-   8,
-   17
-  ]
- },
- "in.gazette.central.e.2015-02-25.163128": {
-  "maps": 0,
-  "georeferenced": 0,
-  "mapPages": []
- },
- "in.gazette.central.e.2015-04-10.164108": {
-  "maps": 0,
-  "georeferenced": 0,
-  "mapPages": []
- },
- "in.gazette.central.e.2015-05-01.164020": {
-  "maps": 3,
-  "georeferenced": 0,
-  "mapPages": [
-   8,
-   17
-  ]
- },
- "in.gazette.central.e.2015-05-12.164252": {
-  "maps": 0,
-  "georeferenced": 0,
-  "mapPages": []
- },
  "in.gazette.central.e.2015-05-22.164353": {
-  "maps": 0,
-  "georeferenced": 0,
-  "mapPages": []
- },
- "in.gazette.central.e.2015-05-25.164676": {
   "maps": 0,
   "georeferenced": 0,
   "mapPages": []
@@ -235,11 +143,6 @@
    24
   ]
  },
- "in.gazette.central.e.2015-06-02.164458": {
-  "maps": 0,
-  "georeferenced": 0,
-  "mapPages": []
- },
  "in.gazette.central.e.2015-06-09.164675": {
   "maps": 1,
   "georeferenced": 0,
@@ -248,16 +151,6 @@
   ]
  },
  "in.gazette.central.e.2015-06-12.164726": {
-  "maps": 0,
-  "georeferenced": 0,
-  "mapPages": []
- },
- "in.gazette.central.e.2015-06-16.164622": {
-  "maps": 0,
-  "georeferenced": 0,
-  "mapPages": []
- },
- "in.gazette.central.e.2015-06-22.165042": {
   "maps": 0,
   "georeferenced": 0,
   "mapPages": []
@@ -282,11 +175,6 @@
   "georeferenced": 0,
   "mapPages": []
  },
- "in.gazette.central.e.2015-06-30.165436": {
-  "maps": 0,
-  "georeferenced": 0,
-  "mapPages": []
- },
  "in.gazette.central.e.2015-07-17.165158": {
   "maps": 0,
   "georeferenced": 0,
@@ -302,16 +190,6 @@
   "georeferenced": 0,
   "mapPages": []
  },
- "in.gazette.central.e.2015-07-30.165222": {
-  "maps": 0,
-  "georeferenced": 0,
-  "mapPages": []
- },
- "in.gazette.central.e.2015-07-30.165471": {
-  "maps": 0,
-  "georeferenced": 0,
-  "mapPages": []
- },
  "in.gazette.central.e.2015-08-04.165556": {
   "maps": 0,
   "georeferenced": 0,
@@ -323,11 +201,6 @@
   "mapPages": []
  },
  "in.gazette.central.e.2015-08-31.165744": {
-  "maps": 0,
-  "georeferenced": 0,
-  "mapPages": []
- },
- "in.gazette.central.e.2015-08-31.165817": {
   "maps": 0,
   "georeferenced": 0,
   "mapPages": []
@@ -363,14 +236,6 @@
    19
   ]
  },
- "in.gazette.central.e.2015-09-17.166325": {
-  "maps": 2,
-  "georeferenced": 0,
-  "mapPages": [
-   16,
-   27
-  ]
- },
  "in.gazette.central.e.2015-09-17.166345": {
   "maps": 0,
   "georeferenced": 0,
@@ -388,48 +253,10 @@
    20
   ]
  },
- "in.gazette.central.e.2015-09-17.166382": {
-  "maps": 2,
-  "georeferenced": 0,
-  "mapPages": [
-   10,
-   18
-  ]
- },
- "in.gazette.central.e.2015-09-22.166330": {
-  "maps": 0,
-  "georeferenced": 0,
-  "mapPages": []
- },
- "in.gazette.central.e.2015-09-22.166383": {
-  "maps": 0,
-  "georeferenced": 0,
-  "mapPages": []
- },
- "in.gazette.central.e.2015-09-22.166388": {
-  "maps": 0,
-  "georeferenced": 0,
-  "mapPages": []
- },
- "in.gazette.central.e.2015-10-05.165970": {
-  "maps": 2,
-  "georeferenced": 0,
-  "mapPages": [
-   9,
-   20
-  ]
- },
  "in.gazette.central.e.2015-10-05.165988": {
   "maps": 0,
   "georeferenced": 0,
   "mapPages": []
- },
- "in.gazette.central.e.2015-10-13.166220": {
-  "maps": 1,
-  "georeferenced": 0,
-  "mapPages": [
-   23
-  ]
  },
  "in.gazette.central.e.2015-10-13.166269": {
   "maps": 0,
@@ -440,22 +267,6 @@
   "maps": 0,
   "georeferenced": 0,
   "mapPages": []
- },
- "in.gazette.central.e.2015-10-19.166369": {
-  "maps": 2,
-  "georeferenced": 0,
-  "mapPages": [
-   11,
-   22
-  ]
- },
- "in.gazette.central.e.2015-10-19.166387": {
-  "maps": 4,
-  "georeferenced": 0,
-  "mapPages": [
-   11,
-   26
-  ]
  },
  "in.gazette.central.e.2015-10-19.166391": {
   "maps": 0,
@@ -493,14 +304,6 @@
   "georeferenced": 0,
   "mapPages": []
  },
- "in.gazette.central.e.2015-11-17.166737": {
-  "maps": 2,
-  "georeferenced": 0,
-  "mapPages": [
-   9,
-   18
-  ]
- },
  "in.gazette.central.e.2015-11-17.166741": {
   "maps": 2,
   "georeferenced": 0,
@@ -517,11 +320,6 @@
    17
   ]
  },
- "in.gazette.central.e.2015-11-17.166755": {
-  "maps": 0,
-  "georeferenced": 0,
-  "mapPages": []
- },
  "in.gazette.central.e.2015-11-17.166765": {
   "maps": 7,
   "georeferenced": 0,
@@ -531,29 +329,6 @@
    18
   ]
  },
- "in.gazette.central.e.2015-11-17.166766": {
-  "maps": 0,
-  "georeferenced": 0,
-  "mapPages": []
- },
- "in.gazette.central.e.2015-11-20.166783": {
-  "maps": 0,
-  "georeferenced": 0,
-  "mapPages": []
- },
- "in.gazette.central.e.2015-11-20.166786": {
-  "maps": 2,
-  "georeferenced": 0,
-  "mapPages": [
-   9,
-   19
-  ]
- },
- "in.gazette.central.e.2015-11-20.166794": {
-  "maps": 0,
-  "georeferenced": 0,
-  "mapPages": []
- },
  "in.gazette.central.e.2015-11-20.166796": {
   "maps": 2,
   "georeferenced": 0,
@@ -562,33 +337,12 @@
    20
   ]
  },
- "in.gazette.central.e.2015-11-20.166799": {
-  "maps": 2,
-  "georeferenced": 0,
-  "mapPages": [
-   10,
-   20
-  ]
- },
  "in.gazette.central.e.2015-11-20.166802": {
   "maps": 0,
   "georeferenced": 0,
   "mapPages": []
  },
- "in.gazette.central.e.2015-11-20.166810": {
-  "maps": 2,
-  "georeferenced": 0,
-  "mapPages": [
-   9,
-   19
-  ]
- },
  "in.gazette.central.e.2015-11-20.166819": {
-  "maps": 0,
-  "georeferenced": 0,
-  "mapPages": []
- },
- "in.gazette.central.e.2015-11-20.166829": {
   "maps": 0,
   "georeferenced": 0,
   "mapPages": []
@@ -608,19 +362,6 @@
    10,
    19
   ]
- },
- "in.gazette.central.e.2015-12-22.167287": {
-  "maps": 2,
-  "georeferenced": 0,
-  "mapPages": [
-   11,
-   19
-  ]
- },
- "in.gazette.central.e.2015-12-30.167365": {
-  "maps": 0,
-  "georeferenced": 0,
-  "mapPages": []
  },
  "in.gazette.central.e.2015-12-30.167370": {
   "maps": 2,
@@ -646,11 +387,6 @@
    17
   ]
  },
- "in.gazette.central.e.2016-01-07.167500": {
-  "maps": 0,
-  "georeferenced": 0,
-  "mapPages": []
- },
  "in.gazette.central.e.2016-01-07.180046": {
   "maps": 0,
   "georeferenced": 0,
@@ -671,11 +407,6 @@
   "georeferenced": 0,
   "mapPages": []
  },
- "in.gazette.central.e.2016-01-27.167832": {
-  "maps": 0,
-  "georeferenced": 0,
-  "mapPages": []
- },
  "in.gazette.central.e.2016-03-11.168585": {
   "maps": 2,
   "georeferenced": 0,
@@ -690,14 +421,6 @@
   "mapPages": [
    11,
    19
-  ]
- },
- "in.gazette.central.e.2016-03-11.168588": {
-  "maps": 2,
-  "georeferenced": 0,
-  "mapPages": [
-   11,
-   20
   ]
  },
  "in.gazette.central.e.2016-03-11.168606": {
@@ -738,11 +461,6 @@
    16,
    31
   ]
- },
- "in.gazette.central.e.2016-03-29.168833": {
-  "maps": 0,
-  "georeferenced": 0,
-  "mapPages": []
  },
  "in.gazette.central.e.2016-03-29.168853": {
   "maps": 0,
@@ -805,13 +523,6 @@
   "georeferenced": 0,
   "mapPages": []
  },
- "in.gazette.central.e.2016-03-31.168946": {
-  "maps": 1,
-  "georeferenced": 0,
-  "mapPages": [
-   13
-  ]
- },
  "in.gazette.central.e.2016-03-31.168951": {
   "maps": 2,
   "georeferenced": 0,
@@ -868,18 +579,6 @@
   "georeferenced": 0,
   "mapPages": []
  },
- "in.gazette.central.e.2016-04-26.169254": {
-  "maps": 6,
-  "georeferenced": 0,
-  "mapPages": [
-   9,
-   10,
-   12,
-   18,
-   19,
-   21
-  ]
- },
  "in.gazette.central.e.2016-04-28.169345": {
   "maps": 2,
   "georeferenced": 0,
@@ -905,11 +604,6 @@
    10,
    19
   ]
- },
- "in.gazette.central.e.2016-05-19.169800": {
-  "maps": 0,
-  "georeferenced": 0,
-  "mapPages": []
  },
  "in.gazette.central.e.2016-05-19.169814": {
   "maps": 2,
@@ -937,14 +631,6 @@
   "georeferenced": 0,
   "mapPages": []
  },
- "in.gazette.central.e.2016-06-03.170040": {
-  "maps": 2,
-  "georeferenced": 0,
-  "mapPages": [
-   12,
-   23
-  ]
- },
  "in.gazette.central.e.2016-06-03.170042": {
   "maps": 0,
   "georeferenced": 0,
@@ -964,14 +650,6 @@
   "maps": 0,
   "georeferenced": 0,
   "mapPages": []
- },
- "in.gazette.central.e.2016-06-03.170051": {
-  "maps": 2,
-  "georeferenced": 0,
-  "mapPages": [
-   10,
-   19
-  ]
  },
  "in.gazette.central.e.2016-06-03.170053": {
   "maps": 2,
@@ -1002,14 +680,6 @@
    30
   ]
  },
- "in.gazette.central.e.2016-06-15.170254": {
-  "maps": 2,
-  "georeferenced": 0,
-  "mapPages": [
-   12,
-   21
-  ]
- },
  "in.gazette.central.e.2016-06-15.170259": {
   "maps": 3,
   "georeferenced": 0,
@@ -1017,11 +687,6 @@
    10,
    19
   ]
- },
- "in.gazette.central.e.2016-06-24.170425": {
-  "maps": 0,
-  "georeferenced": 0,
-  "mapPages": []
  },
  "in.gazette.central.e.2016-06-24.170426": {
   "maps": 0,
@@ -1038,14 +703,6 @@
  },
  "in.gazette.central.e.2016-07-01.170544": {
   "maps": 3,
-  "georeferenced": 0,
-  "mapPages": [
-   9,
-   17
-  ]
- },
- "in.gazette.central.e.2016-07-01.170551": {
-  "maps": 2,
   "georeferenced": 0,
   "mapPages": [
    9,
@@ -1081,14 +738,6 @@
    20
   ]
  },
- "in.gazette.central.e.2016-08-05.171144": {
-  "maps": 6,
-  "georeferenced": 0,
-  "mapPages": [
-   10,
-   23
-  ]
- },
  "in.gazette.central.e.2016-08-05.171154": {
   "maps": 0,
   "georeferenced": 0,
@@ -1118,16 +767,6 @@
    10,
    20
   ]
- },
- "in.gazette.central.e.2016-08-05.171207": {
-  "maps": 0,
-  "georeferenced": 0,
-  "mapPages": []
- },
- "in.gazette.central.e.2016-08-05.171210": {
-  "maps": 0,
-  "georeferenced": 0,
-  "mapPages": []
  },
  "in.gazette.central.e.2016-08-05.171211": {
   "maps": 2,
@@ -1237,54 +876,12 @@
    20
   ]
  },
- "in.gazette.central.e.2016-10-26.172391": {
-  "maps": 0,
-  "georeferenced": 0,
-  "mapPages": []
- },
- "in.gazette.central.e.2016-10-26.172406": {
-  "maps": 1,
-  "georeferenced": 0,
-  "mapPages": [
-   22
-  ]
- },
- "in.gazette.central.e.2016-11-03.172484": {
-  "maps": 2,
-  "georeferenced": 0,
-  "mapPages": [
-   14,
-   28
-  ]
- },
  "in.gazette.central.e.2016-11-03.172489": {
   "maps": 0,
   "georeferenced": 0,
   "mapPages": []
  },
- "in.gazette.central.e.2016-11-23.172725": {
-  "maps": 0,
-  "georeferenced": 0,
-  "mapPages": []
- },
  "in.gazette.central.e.2016-11-23.172726": {
-  "maps": 0,
-  "georeferenced": 0,
-  "mapPages": []
- },
- "in.gazette.central.e.2016-11-30.172887": {
-  "maps": 1,
-  "georeferenced": 0,
-  "mapPages": [
-   16
-  ]
- },
- "in.gazette.central.e.2016-11-30.172888": {
-  "maps": 0,
-  "georeferenced": 0,
-  "mapPages": []
- },
- "in.gazette.central.e.2016-11-30.172905": {
   "maps": 0,
   "georeferenced": 0,
   "mapPages": []
@@ -1319,95 +916,6 @@
    18
   ]
  },
- "in.gazette.central.e.2016-12-14.173161": {
-  "maps": 2,
-  "georeferenced": 0,
-  "mapPages": [
-   9,
-   21
-  ]
- },
- "in.gazette.central.e.2016-12-14.173162": {
-  "maps": 2,
-  "georeferenced": 0,
-  "mapPages": [
-   9,
-   10
-  ]
- },
- "in.gazette.central.e.2016-12-21.173186": {
-  "maps": 0,
-  "georeferenced": 0,
-  "mapPages": []
- },
- "in.gazette.central.e.2016-12-28.173332": {
-  "maps": 0,
-  "georeferenced": 0,
-  "mapPages": []
- },
- "in.gazette.central.e.2016-12-28.173334": {
-  "maps": 0,
-  "georeferenced": 0,
-  "mapPages": []
- },
- "in.gazette.central.e.2017-01-10.173559": {
-  "maps": 1,
-  "georeferenced": 0,
-  "mapPages": [
-   19
-  ]
- },
- "in.gazette.central.e.2017-01-10.173567": {
-  "maps": 3,
-  "georeferenced": 0,
-  "mapPages": [
-   10,
-   21
-  ]
- },
- "in.gazette.central.e.2017-01-10.173572": {
-  "maps": 1,
-  "georeferenced": 0,
-  "mapPages": [
-   9
-  ]
- },
- "in.gazette.central.e.2017-01-10.173588": {
-  "maps": 0,
-  "georeferenced": 0,
-  "mapPages": []
- },
- "in.gazette.central.e.2017-01-10.173643": {
-  "maps": 0,
-  "georeferenced": 0,
-  "mapPages": []
- },
- "in.gazette.central.e.2017-01-19.173791": {
-  "maps": 2,
-  "georeferenced": 0,
-  "mapPages": [
-   9,
-   18
-  ]
- },
- "in.gazette.central.e.2017-01-19.173792": {
-  "maps": 2,
-  "georeferenced": 0,
-  "mapPages": [
-   11,
-   21
-  ]
- },
- "in.gazette.central.e.2017-02-06.174040": {
-  "maps": 0,
-  "georeferenced": 0,
-  "mapPages": []
- },
- "in.gazette.central.e.2017-02-06.174044": {
-  "maps": 0,
-  "georeferenced": 0,
-  "mapPages": []
- },
  "in.gazette.central.e.2017-02-14.174178": {
   "maps": 2,
   "georeferenced": 0,
@@ -1416,28 +924,10 @@
    20
   ]
  },
- "in.gazette.central.e.2017-02-14.174180": {
-  "maps": 0,
-  "georeferenced": 0,
-  "mapPages": []
- },
  "in.gazette.central.e.2017-02-14.174183": {
   "maps": 0,
   "georeferenced": 0,
   "mapPages": []
- },
- "in.gazette.central.e.2017-02-28.174560": {
-  "maps": 0,
-  "georeferenced": 0,
-  "mapPages": []
- },
- "in.gazette.central.e.2017-03-16.174803": {
-  "maps": 2,
-  "georeferenced": 0,
-  "mapPages": [
-   11,
-   23
-  ]
  },
  "in.gazette.central.e.2017-03-16.174804": {
   "maps": 0,
@@ -1495,11 +985,6 @@
   "georeferenced": 0,
   "mapPages": []
  },
- "in.gazette.central.e.2017-04-26.175650": {
-  "maps": 0,
-  "georeferenced": 0,
-  "mapPages": []
- },
  "in.gazette.central.e.2017-04-26.175749": {
   "maps": 0,
   "georeferenced": 0,
@@ -1510,14 +995,6 @@
   "georeferenced": 0,
   "mapPages": [
    25
-  ]
- },
- "in.gazette.central.e.2017-04-28.175715": {
-  "maps": 2,
-  "georeferenced": 0,
-  "mapPages": [
-   11,
-   21
   ]
  },
  "in.gazette.central.e.2017-04-28.175827": {
@@ -1537,14 +1014,6 @@
   "maps": 0,
   "georeferenced": 0,
   "mapPages": []
- },
- "in.gazette.central.e.2017-05-15.176108": {
-  "maps": 2,
-  "georeferenced": 0,
-  "mapPages": [
-   13,
-   25
-  ]
  },
  "in.gazette.central.e.2017-05-15.176114": {
   "maps": 0,
@@ -1576,11 +1045,6 @@
   "georeferenced": 0,
   "mapPages": []
  },
- "in.gazette.central.e.2017-05-17.176153": {
-  "maps": 0,
-  "georeferenced": 0,
-  "mapPages": []
- },
  "in.gazette.central.e.2017-05-19.176170": {
   "maps": 1,
   "georeferenced": 0,
@@ -1596,14 +1060,6 @@
    27
   ]
  },
- "in.gazette.central.e.2017-05-26.176313": {
-  "maps": 2,
-  "georeferenced": 0,
-  "mapPages": [
-   13,
-   24
-  ]
- },
  "in.gazette.central.e.2017-05-26.176314": {
   "maps": 2,
   "georeferenced": 0,
@@ -1611,38 +1067,6 @@
    10,
    22
   ]
- },
- "in.gazette.central.e.2017-05-26.176317": {
-  "maps": 1,
-  "georeferenced": 1,
-  "mapPages": [
-   25
-  ]
- },
- "in.gazette.central.e.2017-05-31.176417": {
-  "maps": 0,
-  "georeferenced": 0,
-  "mapPages": []
- },
- "in.gazette.central.e.2017-05-31.176421": {
-  "maps": 1,
-  "georeferenced": 0,
-  "mapPages": [
-   9
-  ]
- },
- "in.gazette.central.e.2017-06-07.176557": {
-  "maps": 2,
-  "georeferenced": 0,
-  "mapPages": [
-   13,
-   24
-  ]
- },
- "in.gazette.central.e.2017-06-07.176560": {
-  "maps": 0,
-  "georeferenced": 0,
-  "mapPages": []
  },
  "in.gazette.central.e.2017-06-07.176561": {
   "maps": 1,
@@ -1833,11 +1257,6 @@
   "georeferenced": 0,
   "mapPages": []
  },
- "in.gazette.central.e.2017-08-17.178192": {
-  "maps": 0,
-  "georeferenced": 0,
-  "mapPages": []
- },
  "in.gazette.central.e.2017-08-22.178284": {
   "maps": 0,
   "georeferenced": 0,
@@ -1849,16 +1268,6 @@
   "mapPages": []
  },
  "in.gazette.central.e.2017-08-22.178315": {
-  "maps": 0,
-  "georeferenced": 0,
-  "mapPages": []
- },
- "in.gazette.central.e.2017-08-29.178395": {
-  "maps": 0,
-  "georeferenced": 0,
-  "mapPages": []
- },
- "in.gazette.central.e.2017-08-29.178399": {
   "maps": 0,
   "georeferenced": 0,
   "mapPages": []
@@ -1893,11 +1302,6 @@
   "georeferenced": 0,
   "mapPages": []
  },
- "in.gazette.central.e.2017-09-12.178811": {
-  "maps": 0,
-  "georeferenced": 0,
-  "mapPages": []
- },
  "in.gazette.central.e.2017-09-12.178813": {
   "maps": 1,
   "georeferenced": 1,
@@ -1906,11 +1310,6 @@
   ]
  },
  "in.gazette.central.e.2017-09-12.178814": {
-  "maps": 0,
-  "georeferenced": 0,
-  "mapPages": []
- },
- "in.gazette.central.e.2017-09-12.178815": {
   "maps": 0,
   "georeferenced": 0,
   "mapPages": []
@@ -2017,11 +1416,6 @@
   "georeferenced": 0,
   "mapPages": []
  },
- "in.gazette.central.e.2017-11-10.180211": {
-  "maps": 0,
-  "georeferenced": 0,
-  "mapPages": []
- },
  "in.gazette.central.e.2017-11-10.180212": {
   "maps": 0,
   "georeferenced": 0,
@@ -2087,11 +1481,6 @@
   "georeferenced": 0,
   "mapPages": []
  },
- "in.gazette.central.e.2017-12-14.180904": {
-  "maps": 0,
-  "georeferenced": 0,
-  "mapPages": []
- },
  "in.gazette.central.e.2017-12-29.181628": {
   "maps": 1,
   "georeferenced": 1,
@@ -2130,11 +1519,6 @@
   "mapPages": []
  },
  "in.gazette.central.e.2018-01-15.182110": {
-  "maps": 0,
-  "georeferenced": 0,
-  "mapPages": []
- },
- "in.gazette.central.e.2018-01-15.182119": {
   "maps": 0,
   "georeferenced": 0,
   "mapPages": []
@@ -2199,17 +1583,7 @@
   "georeferenced": 0,
   "mapPages": []
  },
- "in.gazette.central.e.2018-02-09.182915": {
-  "maps": 0,
-  "georeferenced": 0,
-  "mapPages": []
- },
  "in.gazette.central.e.2018-02-16.182929": {
-  "maps": 0,
-  "georeferenced": 0,
-  "mapPages": []
- },
- "in.gazette.central.e.2018-02-22.183346": {
   "maps": 0,
   "georeferenced": 0,
   "mapPages": []
@@ -2234,22 +1608,12 @@
   "georeferenced": 0,
   "mapPages": []
  },
- "in.gazette.central.e.2018-02-22.183489": {
-  "maps": 0,
-  "georeferenced": 0,
-  "mapPages": []
- },
  "in.gazette.central.e.2018-02-26.183459": {
   "maps": 0,
   "georeferenced": 0,
   "mapPages": []
  },
  "in.gazette.central.e.2018-02-26.183492": {
-  "maps": 0,
-  "georeferenced": 0,
-  "mapPages": []
- },
- "in.gazette.central.e.2018-03-13.183782": {
   "maps": 0,
   "georeferenced": 0,
   "mapPages": []
@@ -2271,119 +1635,10 @@
   "georeferenced": 0,
   "mapPages": []
  },
- "in.gazette.central.e.2018-05-07.185296": {
-  "maps": 0,
-  "georeferenced": 0,
-  "mapPages": []
- },
- "in.gazette.central.e.2018-05-11.185308": {
-  "maps": 2,
-  "georeferenced": 0,
-  "mapPages": [
-   14,
-   28
-  ]
- },
- "in.gazette.central.e.2018-05-11.185480": {
-  "maps": 0,
-  "georeferenced": 0,
-  "mapPages": []
- },
- "in.gazette.central.e.2018-05-14.185374": {
-  "maps": 0,
-  "georeferenced": 0,
-  "mapPages": []
- },
- "in.gazette.central.e.2018-05-22.185765": {
-  "maps": 2,
-  "georeferenced": 0,
-  "mapPages": [
-   12,
-   28
-  ]
- },
- "in.gazette.central.e.2018-05-22.185773": {
-  "maps": 0,
-  "georeferenced": 0,
-  "mapPages": []
- },
- "in.gazette.central.e.2018-05-22.185786": {
-  "maps": 10,
-  "georeferenced": 0,
-  "mapPages": [
-   12,
-   13,
-   14,
-   32,
-   33,
-   34,
-   35
-  ]
- },
- "in.gazette.central.e.2018-05-23.185809": {
-  "maps": 0,
-  "georeferenced": 0,
-  "mapPages": []
- },
- "in.gazette.central.e.2018-05-25.185943": {
-  "maps": 4,
-  "georeferenced": 0,
-  "mapPages": [
-   12,
-   13,
-   27,
-   28
-  ]
- },
- "in.gazette.central.e.2018-05-25.185947": {
-  "maps": 0,
-  "georeferenced": 0,
-  "mapPages": []
- },
- "in.gazette.central.e.2018-05-25.185969": {
-  "maps": 10,
-  "georeferenced": 0,
-  "mapPages": [
-   11,
-   12,
-   13,
-   14,
-   15,
-   27,
-   28,
-   29,
-   30,
-   31
-  ]
- },
- "in.gazette.central.e.2018-05-25.185979": {
-  "maps": 10,
-  "georeferenced": 0,
-  "mapPages": [
-   11,
-   12,
-   13,
-   14,
-   15,
-   29,
-   30,
-   31,
-   32,
-   33
-  ]
- },
  "in.gazette.central.e.2018-05-31.186140": {
   "maps": 0,
   "georeferenced": 0,
   "mapPages": []
- },
- "in.gazette.central.e.2018-05-31.186142": {
-  "maps": 2,
-  "georeferenced": 0,
-  "mapPages": [
-   16,
-   33
-  ]
  },
  "in.gazette.central.e.2018-06-19.186612": {
   "maps": 4,
@@ -2394,11 +1649,6 @@
    28,
    29
   ]
- },
- "in.gazette.central.e.2018-06-19.186613": {
-  "maps": 0,
-  "georeferenced": 0,
-  "mapPages": []
  },
  "in.gazette.central.e.2018-06-29.186972": {
   "maps": 10,
@@ -2454,22 +1704,6 @@
    35
   ]
  },
- "in.gazette.central.e.2018-07-09.187382": {
-  "maps": 10,
-  "georeferenced": 0,
-  "mapPages": [
-   13,
-   14,
-   15,
-   16,
-   17,
-   31,
-   32,
-   33,
-   34,
-   35
-  ]
- },
  "in.gazette.central.e.2018-07-13.187380": {
   "maps": 2,
   "georeferenced": 0,
@@ -2514,22 +1748,7 @@
   "georeferenced": 0,
   "mapPages": []
  },
- "in.gazette.central.e.2018-07-27.188079": {
-  "maps": 8,
-  "georeferenced": 0,
-  "mapPages": [
-   13,
-   14,
-   29,
-   30
-  ]
- },
  "in.gazette.central.e.2018-09-11.189541": {
-  "maps": 0,
-  "georeferenced": 0,
-  "mapPages": []
- },
- "in.gazette.central.e.2018-09-11.189550": {
   "maps": 0,
   "georeferenced": 0,
   "mapPages": []
@@ -2604,18 +1823,6 @@
   "georeferenced": 0,
   "mapPages": []
  },
- "in.gazette.central.e.2018-11-05.191867": {
-  "maps": 10,
-  "georeferenced": 0,
-  "mapPages": [
-   11,
-   12,
-   13,
-   24,
-   25,
-   26
-  ]
- },
  "in.gazette.central.e.2018-11-05.192830": {
   "maps": 2,
   "georeferenced": 0,
@@ -2632,25 +1839,12 @@
    32
   ]
  },
- "in.gazette.central.e.2018-11-05.192853": {
-  "maps": 0,
-  "georeferenced": 0,
-  "mapPages": []
- },
  "in.gazette.central.e.2018-11-26.193287": {
   "maps": 2,
   "georeferenced": 0,
   "mapPages": [
    11,
    22
-  ]
- },
- "in.gazette.central.e.2018-11-26.193321": {
-  "maps": 2,
-  "georeferenced": 0,
-  "mapPages": [
-   14,
-   36
   ]
  },
  "in.gazette.central.e.2018-11-26.193368": {
@@ -2689,28 +1883,6 @@
   "maps": 0,
   "georeferenced": 0,
   "mapPages": []
- },
- "in.gazette.central.e.2018-12-26.194534": {
-  "maps": 18,
-  "georeferenced": 0,
-  "mapPages": [
-   15,
-   16,
-   21,
-   37,
-   38,
-   43
-  ]
- },
- "in.gazette.central.e.2019-01-01.194833": {
-  "maps": 4,
-  "georeferenced": 0,
-  "mapPages": [
-   13,
-   14,
-   29,
-   30
-  ]
  },
  "in.gazette.central.e.2019-01-03.194834": {
   "maps": 5,
@@ -2771,11 +1943,6 @@
   ]
  },
  "in.gazette.central.e.2019-01-29.196458": {
-  "maps": 0,
-  "georeferenced": 0,
-  "mapPages": []
- },
- "in.gazette.central.e.2019-01-30.196592": {
   "maps": 0,
   "georeferenced": 0,
   "mapPages": []
@@ -3022,25 +2189,12 @@
   "georeferenced": 0,
   "mapPages": []
  },
- "in.gazette.central.e.2019-08-05.210390": {
-  "maps": 2,
-  "georeferenced": 0,
-  "mapPages": [
-   14,
-   30
-  ]
- },
  "in.gazette.central.e.2019-08-05.210433": {
   "maps": 0,
   "georeferenced": 0,
   "mapPages": []
  },
  "in.gazette.central.e.2019-08-09.210536": {
-  "maps": 0,
-  "georeferenced": 0,
-  "mapPages": []
- },
- "in.gazette.central.e.2019-08-09.210574": {
   "maps": 0,
   "georeferenced": 0,
   "mapPages": []
@@ -3082,11 +2236,6 @@
    13
   ]
  },
- "in.gazette.central.e.2019-08-30.211906": {
-  "maps": 0,
-  "georeferenced": 0,
-  "mapPages": []
- },
  "in.gazette.central.e.2019-08-30.211950": {
   "maps": 0,
   "georeferenced": 0,
@@ -3109,11 +2258,6 @@
    14,
    43
   ]
- },
- "in.gazette.central.e.2019-09-11.212325": {
-  "maps": 0,
-  "georeferenced": 0,
-  "mapPages": []
  },
  "in.gazette.central.e.2019-09-11.212461": {
   "maps": 1,
@@ -3174,11 +2318,6 @@
    24
   ]
  },
- "in.gazette.central.e.2019-10-10.213220": {
-  "maps": 0,
-  "georeferenced": 0,
-  "mapPages": []
- },
  "in.gazette.central.e.2019-10-10.213221": {
   "maps": 0,
   "georeferenced": 0,
@@ -3221,11 +2360,6 @@
   "georeferenced": 0,
   "mapPages": []
  },
- "in.gazette.central.e.2019-10-25.213510": {
-  "maps": 0,
-  "georeferenced": 0,
-  "mapPages": []
- },
  "in.gazette.central.e.2019-10-25.213523": {
   "maps": 0,
   "georeferenced": 0,
@@ -3261,23 +2395,6 @@
   "georeferenced": 0,
   "mapPages": [
    13
-  ]
- },
- "in.gazette.central.e.2019-11-07.213850": {
-  "maps": 0,
-  "georeferenced": 0,
-  "mapPages": []
- },
- "in.gazette.central.e.2019-11-11.213855": {
-  "maps": 6,
-  "georeferenced": 0,
-  "mapPages": [
-   14,
-   15,
-   16,
-   34,
-   35,
-   36
   ]
  },
  "in.gazette.central.e.2019-11-11.213856": {
@@ -3357,11 +2474,6 @@
    14,
    28
   ]
- },
- "in.gazette.central.e.2019-12-11.214723": {
-  "maps": 0,
-  "georeferenced": 0,
-  "mapPages": []
  },
  "in.gazette.central.e.2019-12-17.214768": {
   "maps": 0,
@@ -3524,11 +2636,6 @@
   "georeferenced": 0,
   "mapPages": []
  },
- "in.gazette.central.e.2020-06-15.219956": {
-  "maps": 0,
-  "georeferenced": 0,
-  "mapPages": []
- },
  "in.gazette.central.e.2020-06-18.220085": {
   "maps": 0,
   "georeferenced": 0,
@@ -3655,16 +2762,6 @@
    34
   ]
  },
- "in.gazette.central.e.2020-09-07.221610": {
-  "maps": 0,
-  "georeferenced": 0,
-  "mapPages": []
- },
- "in.gazette.central.e.2020-09-07.221632": {
-  "maps": 0,
-  "georeferenced": 0,
-  "mapPages": []
- },
  "in.gazette.central.e.2020-09-22.221903": {
   "maps": 0,
   "georeferenced": 0,
@@ -3772,11 +2869,6 @@
   ]
  },
  "in.gazette.central.e.2020-11-27.223419": {
-  "maps": 0,
-  "georeferenced": 0,
-  "mapPages": []
- },
- "in.gazette.central.e.2020-12-28.223996": {
   "maps": 0,
   "georeferenced": 0,
   "mapPages": []
@@ -3894,24 +2986,7 @@
   "georeferenced": 0,
   "mapPages": []
  },
- "in.gazette.central.e.2021-06-07.227425": {
-  "maps": 6,
-  "georeferenced": 0,
-  "mapPages": [
-   14,
-   15,
-   16,
-   30,
-   31,
-   32
-  ]
- },
  "in.gazette.central.e.2021-06-07.227428": {
-  "maps": 0,
-  "georeferenced": 0,
-  "mapPages": []
- },
- "in.gazette.central.e.2021-06-07.227469": {
   "maps": 0,
   "georeferenced": 0,
   "mapPages": []
@@ -3967,11 +3042,6 @@
    34
   ]
  },
- "in.gazette.central.e.2021-07-09.228199": {
-  "maps": 0,
-  "georeferenced": 0,
-  "mapPages": []
- },
  "in.gazette.central.e.2021-07-12.228238": {
   "maps": 0,
   "georeferenced": 0,
@@ -3996,14 +3066,6 @@
   "maps": 0,
   "georeferenced": 0,
   "mapPages": []
- },
- "in.gazette.central.e.2021-09-22.229953": {
-  "maps": 2,
-  "georeferenced": 0,
-  "mapPages": [
-   13,
-   32
-  ]
  },
  "in.gazette.central.e.2021-09-22.229958": {
   "maps": 2,
@@ -4064,16 +3126,6 @@
    28
   ]
  },
- "in.gazette.central.e.2022-11-10.240195": {
-  "maps": 0,
-  "georeferenced": 0,
-  "mapPages": []
- },
- "in.gazette.central.e.2022-11-10.240199": {
-  "maps": 0,
-  "georeferenced": 0,
-  "mapPages": []
- },
  "in.gazette.central.e.2022-12-07.240872": {
   "maps": 0,
   "georeferenced": 0,
@@ -4121,65 +3173,6 @@
   "georeferenced": 0,
   "mapPages": []
  },
- "in.gazette.central.e.2023-08-07.247902": {
-  "maps": 0,
-  "georeferenced": 0,
-  "mapPages": []
- },
- "in.gazette.central.e.2023-08-07.247903": {
-  "maps": 0,
-  "georeferenced": 0,
-  "mapPages": []
- },
- "in.gazette.central.e.2023-08-09.248003": {
-  "maps": 0,
-  "georeferenced": 0,
-  "mapPages": []
- },
- "in.gazette.central.e.2023-08-23.248348": {
-  "maps": 6,
-  "georeferenced": 0,
-  "mapPages": [
-   15,
-   16,
-   17,
-   35,
-   36,
-   37
-  ]
- },
- "in.gazette.central.e.2023-09-11.248646": {
-  "maps": 6,
-  "georeferenced": 0,
-  "mapPages": [
-   13,
-   14,
-   15,
-   33,
-   34,
-   35
-  ]
- },
- "in.gazette.central.e.2023-09-13.248691": {
-  "maps": 0,
-  "georeferenced": 0,
-  "mapPages": []
- },
- "in.gazette.central.e.2023-09-20.248884": {
-  "maps": 6,
-  "georeferenced": 0,
-  "mapPages": [
-   11,
-   12,
-   33,
-   34
-  ]
- },
- "in.gazette.central.e.2023-09-22.248996": {
-  "maps": 0,
-  "georeferenced": 0,
-  "mapPages": []
- },
  "in.gazette.central.e.2023-09-27.249094": {
   "maps": 0,
   "georeferenced": 0,
@@ -4210,14 +3203,6 @@
   "georeferenced": 0,
   "mapPages": []
  },
- "in.gazette.central.e.2023-11-02.249864": {
-  "maps": 2,
-  "georeferenced": 0,
-  "mapPages": [
-   16,
-   19
-  ]
- },
  "in.gazette.central.e.2023-11-03.249895": {
   "maps": 4,
   "georeferenced": 0,
@@ -4234,11 +3219,6 @@
   "mapPages": []
  },
  "in.gazette.central.e.2023-11-16.250070": {
-  "maps": 0,
-  "georeferenced": 0,
-  "mapPages": []
- },
- "in.gazette.central.e.2023-11-16.250098": {
   "maps": 0,
   "georeferenced": 0,
   "mapPages": []
@@ -4265,18 +3245,6 @@
   "georeferenced": 0,
   "mapPages": []
  },
- "in.gazette.central.e.2024-08-09.256291": {
-  "maps": 7,
-  "georeferenced": 0,
-  "mapPages": [
-   17,
-   18,
-   19,
-   36,
-   37,
-   38
-  ]
- },
  "in.gazette.central.e.2024-08-12.256322": {
   "maps": 0,
   "georeferenced": 0,
@@ -4298,11 +3266,6 @@
   "mapPages": []
  },
  "in.gazette.central.e.2024-09-03.256870": {
-  "maps": 0,
-  "georeferenced": 0,
-  "mapPages": []
- },
- "in.gazette.central.e.2024-09-05.256940": {
   "maps": 0,
   "georeferenced": 0,
   "mapPages": []
@@ -4383,11 +3346,6 @@
   "mapPages": []
  },
  "in.gazette.central.e.2024-10-07.257745": {
-  "maps": 0,
-  "georeferenced": 0,
-  "mapPages": []
- },
- "in.gazette.central.e.2024-10-08.257836": {
   "maps": 0,
   "georeferenced": 0,
   "mapPages": []
@@ -4514,11 +3472,6 @@
   "georeferenced": 0,
   "mapPages": []
  },
- "in.gazette.central.e.2025-01-10.260140": {
-  "maps": 0,
-  "georeferenced": 0,
-  "mapPages": []
- },
  "in.gazette.central.e.2025-06-03.263594": {
   "maps": 0,
   "georeferenced": 0,
@@ -4577,18 +3530,6 @@
    37
   ]
  },
- "in.gazette.central.e.2026-02-16.270233": {
-  "maps": 6,
-  "georeferenced": 0,
-  "mapPages": [
-   13,
-   14,
-   15,
-   50,
-   51,
-   52
-  ]
- },
  "in.gazette.central.e.2026-02-17.270341": {
   "maps": 4,
   "georeferenced": 0,
@@ -4618,21 +3559,9 @@
    46
   ]
  },
- "in.gazette.central.e.2026-04-02.271600": {
-  "maps": 6,
-  "georeferenced": 0,
-  "mapPages": [
-   11,
-   12,
-   13,
-   175,
-   176,
-   177
-  ]
- },
  "in.gazette.central.e.2026-04-23.272139": {
-  "maps": 2,
-  "georeferenced": 0,
+  "maps": 3,
+  "georeferenced": 1,
   "mapPages": [
    17,
    38

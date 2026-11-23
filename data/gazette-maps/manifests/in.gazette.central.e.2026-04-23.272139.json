@@ -12,7 +12,7 @@
   },
   "summary": {
     "en": [
-      "2 map image(s), 0 georeferenced with Allmaps."
+      "3 map image(s), 1 georeferenced with Allmaps."
     ]
   },
   "metadata": [
@@ -317,6 +317,223 @@
                 "format": "image/png"
               },
               "target": "https://publicmap.github.io/india-esz-dashboard/data/gazette-maps/manifests/in.gazette.central.e.2026-04-23.272139/sok-38-1/canvas"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "https://publicmap.github.io/india-esz-dashboard/data/gazette-maps/manifests/in.gazette.central.e.2026-04-23.272139/archive-37-2/canvas",
+      "type": "Canvas",
+      "label": {
+        "en": [
+          "Page 38 (page scan)"
+        ]
+      },
+      "width": 2481,
+      "height": 3508,
+      "metadata": [
+        {
+          "label": {
+            "en": [
+              "Page"
+            ]
+          },
+          "value": {
+            "en": [
+              "38"
+            ]
+          }
+        },
+        {
+          "label": {
+            "en": [
+              "Image source"
+            ]
+          },
+          "value": {
+            "en": [
+              "Page scan (archive.org)"
+            ]
+          }
+        },
+        {
+          "label": {
+            "en": [
+              "Georeferenced"
+            ]
+          },
+          "value": {
+            "en": [
+              "<a href=\"https://annotations.allmaps.org/maps/1221bff81bd18296\">Allmaps</a>"
+            ]
+          }
+        }
+      ],
+      "thumbnail": [
+        {
+          "id": "https://iiif.archive.org/image/iiif/3/in.gazette.central.e.2026-04-23.272139%2F272139_jp2.zip%2F272139_jp2%2F272139_0037.jp2/full/400,/0/default.jpg",
+          "type": "Image",
+          "format": "image/jpeg"
+        }
+      ],
+      "partOf": [
+        {
+          "id": "https://iiif.archive.org/iiif/in.gazette.central.e.2026-04-23.272139/manifest.json",
+          "type": "Manifest"
+        }
+      ],
+      "items": [
+        {
+          "id": "https://publicmap.github.io/india-esz-dashboard/data/gazette-maps/manifests/in.gazette.central.e.2026-04-23.272139/archive-37-2/page",
+          "type": "AnnotationPage",
+          "items": [
+            {
+              "id": "https://publicmap.github.io/india-esz-dashboard/data/gazette-maps/manifests/in.gazette.central.e.2026-04-23.272139/archive-37-2/painting",
+              "type": "Annotation",
+              "motivation": "painting",
+              "body": {
+                "format": "image/jpeg",
+                "id": "https://iiif.archive.org/image/iiif/3/in.gazette.central.e.2026-04-23.272139%2F272139_jp2.zip%2F272139_jp2%2F272139_0037.jp2/full/max/0/default.jpg",
+                "service": [
+                  {
+                    "id": "https://iiif.archive.org/image/iiif/3/in.gazette.central.e.2026-04-23.272139%2F272139_jp2.zip%2F272139_jp2%2F272139_0037.jp2",
+                    "profile": "level2",
+                    "type": "ImageService3"
+                  }
+                ],
+                "type": "Image"
+              },
+              "target": "https://publicmap.github.io/india-esz-dashboard/data/gazette-maps/manifests/in.gazette.central.e.2026-04-23.272139/archive-37-2/canvas"
+            }
+          ]
+        }
+      ],
+      "annotations": [
+        {
+          "id": "https://publicmap.github.io/india-esz-dashboard/data/gazette-maps/manifests/in.gazette.central.e.2026-04-23.272139/archive-37-2/georeferencing",
+          "type": "AnnotationPage",
+          "items": [
+            {
+              "id": "https://annotations.allmaps.org/maps/1221bff81bd18296",
+              "type": "Annotation",
+              "created": "2026-11-23T20:12:53.022Z",
+              "modified": "2026-11-23T20:12:53.022Z",
+              "motivation": "georeferencing",
+              "target": {
+                "type": "SpecificResource",
+                "source": {
+                  "id": "https://iiif.archive.org/image/iiif/3/in.gazette.central.e.2026-04-23.272139%2F272139_jp2.zip%2F272139_jp2%2F272139_0037.jp2",
+                  "type": "ImageService3",
+                  "height": 3508,
+                  "width": 2481,
+                  "partOf": [
+                    {
+                      "id": "https://iiif.archive.org/iiif/in.gazette.central.e.2026-04-23.272139$37/canvas",
+                      "type": "Canvas",
+                      "label": {
+                        "none": [
+                          "37"
+                        ]
+                      },
+                      "partOf": [
+                        {
+                          "id": "https://iiif.archive.org/iiif/in.gazette.central.e.2026-04-23.272139/manifest.json",
+                          "type": "Manifest",
+                          "label": {
+                            "none": [
+                              "Extrordinary Gazette of India, 2026-04-23"
+                            ]
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "selector": {
+                  "type": "SvgSelector",
+                  "value": "<svg width=\"2481\" height=\"3508\"><polygon points=\"0,0 0,3508 2481,3508 2481,0\" /></svg>"
+                }
+              },
+              "body": {
+                "type": "FeatureCollection",
+                "transformation": {
+                  "type": "polynomial",
+                  "options": {
+                    "order": 1
+                  }
+                },
+                "features": [
+                  {
+                    "type": "Feature",
+                    "properties": {
+                      "resourceCoords": [
+                        1894,
+                        1533
+                      ]
+                    },
+                    "geometry": {
+                      "type": "Point",
+                      "coordinates": [
+                        77.86898502807526,
+                        31.782410912377216
+                      ]
+                    }
+                  },
+                  {
+                    "type": "Feature",
+                    "properties": {
+                      "resourceCoords": [
+                        1028,
+                        2260
+                      ]
+                    },
+                    "geometry": {
+                      "type": "Point",
+                      "coordinates": [
+                        77.52711287325872,
+                        31.5698621652902
+                      ]
+                    }
+                  },
+                  {
+                    "type": "Feature",
+                    "properties": {
+                      "resourceCoords": [
+                        1654,
+                        1077
+                      ]
+                    },
+                    "geometry": {
+                      "type": "Point",
+                      "coordinates": [
+                        77.78208492485095,
+                        31.92219651566539
+                      ]
+                    }
+                  }
+                ],
+                "_allmaps": {
+                  "id": "https://annotations.allmaps.org/maps/1221bff81bd18296",
+                  "version": "https://annotations.allmaps.org/maps/1221bff81bd18296@032a1349943340ad",
+                  "image": {
+                    "id": "https://annotations.allmaps.org/images/09fa5a849158fb55",
+                    "version": "https://annotations.allmaps.org/images/09fa5a849158fb55@fc0dc6b3fdf73890",
+                    "canvases": [
+                      {
+                        "id": "https://annotations.allmaps.org/canvases/441b217f0403f607",
+                        "manifests": [
+                          {
+                            "id": "https://annotations.allmaps.org/manifests/1f66c1372de84e5b"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  "scale": 0.028582,
+                  "area": 10653361788.15
+                }
+              }
             }
           ]
         }
