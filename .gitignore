@@ -3,3 +3,8 @@ node_modules/
 .DS_Store
 .claude/
 .cache/
+
+# Gazette map rasters (digitizer output) — keep out of the repo
+data/gazette-maps/**/*.tif
+data/gazette-maps/**/*.tif.aux.xml
+data/gazette-maps/**/*.png
