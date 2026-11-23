@@ -20,10 +20,13 @@ export function sokManifestUrl(id) {
 
 export const exists = (p) => access(p).then(() => true, () => false);
 
-export async function get(url, { as = 'text', allow404 = false, tries = 3 } = {}) {
+// A stalled response (iiif.archive.org builds manifests on demand) aborts
+// and goes to the retry instead of holding a pool slot indefinitely. Binary
+// downloads (full-size images in dump-gazettes.js) get longer.
+export async function get(url, { as = 'text', allow404 = false, tries = 3, timeoutMs = as === 'buffer' ? 120_000 : 30_000 } = {}) {
   for (let attempt = 1; ; attempt += 1) {
     try {
-      const res = await fetch(url, { headers: { 'User-Agent': USER_AGENT } });
+      const res = await fetch(url, { headers: { 'User-Agent': USER_AGENT }, signal: AbortSignal.timeout(timeoutMs) });
       if (res.status === 404 && allow404) return null;
       if (!res.ok) throw new Error(`HTTP ${res.status} ${url}`);
       if (as === 'json') return await res.json();

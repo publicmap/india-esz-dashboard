@@ -18,18 +18,18 @@
 // This is wider than enrich-osm.js, which keeps only protect_class 2/4/6 for
 // Wikidata matching.
 //
-// The Postpass query only uses a bbox, which the spatial index makes cheap.
-// Each feature's point-on-surface is then tested locally against India's
-// outline: OSM relation 304716, simplified on the server and committed as
-// data/osm/india-outline.geojson. Intersecting with the full relation on the
-// server is slow, because it is a very large multipolygon. Matching by
-// point-on-surface keeps a park that straddles the border when its interior
-// point is in India. The outline is committed rather than fetched each run
-// because the border rarely changes, and Postpass sometimes holds the
-// relation with a NULL geometry when an OSM edit leaves its rings broken
-// (seen 2026-11-23); --refresh-india refetches it.
+// The Postpass query only uses a bbox, which the spatial index makes cheap;
+// it never touches India's OSM boundary relation, which is often broken (an
+// OSM edit that leaves its rings open makes Postpass hold it with a NULL
+// geometry, seen 2026-11-23). Each feature's point-on-surface is instead
+// tested locally against data/osm/india-outline.geojson, a committed snapshot
+// of OSM relation 304716 (simplified, and including territorial waters, so
+// marine parks and small islands are kept). It is never refetched: the
+// border rarely changes, so replace the file by hand if it ever needs to.
+// Matching by point-on-surface keeps a park that straddles the border when
+// its interior point is in India.
 //
-// Usage: node scripts/build-osm-protected-areas.js [--refresh-india]
+// Usage: node scripts/build-osm-protected-areas.js
 //        node scripts/build-osm-protected-areas.js --bbox-only
 //          (rewrites only the bbox and ESZ indexes, from the cached GeoJSON -- no
 //          Postpass download or tippecanoe run)
@@ -38,7 +38,6 @@ import { spawnSync } from 'node:child_process';
 
 const POSTPASS = 'https://postpass.geofabrik.de/api/interpreter';
 const USER_AGENT = 'india-esz-dashboard-bot/1.0 (https://github.com/publicmap/india-esz-dashboard)';
-const INDIA_RELATION = 304716;
 const INDIA_BBOX = [68, 6, 98, 38]; // mainland plus Andaman & Nicobar and Lakshadweep
 const INDIA_OUTLINE_PATH = 'data/osm/india-outline.geojson';
 const GEOJSON_PATH = '.cache/osm/india-protected-areas-all.geojson';
@@ -65,20 +64,10 @@ async function postpass(sql) {
   }
 }
 
-async function indiaOutline(refresh) {
-  if (!refresh && await exists(INDIA_OUTLINE_PATH)) return JSON.parse(await readFile(INDIA_OUTLINE_PATH, 'utf8'));
-  console.log(`Fetching India outline (relation ${INDIA_RELATION})...`);
-  const fc = await postpass(`
-    SELECT osm_id, ST_SimplifyPreserveTopology(geom, 0.002) AS geom
-    FROM postpass_polygon WHERE osm_type = 'R' AND osm_id = ${INDIA_RELATION}`);
-  if (!fc.features?.length) throw new Error('India relation not found in Postpass');
-  const type = fc.features[0].geometry?.type;
-  if (type !== 'Polygon' && type !== 'MultiPolygon') {
-    throw new Error(`Postpass returned no polygon for India relation ${INDIA_RELATION} (geometry type ${type}): `
-      + `its rings are probably broken in OSM right now. Keep the committed ${INDIA_OUTLINE_PATH} and retry later.`);
-  }
-  await mkdir('data/osm', { recursive: true });
-  await writeFile(INDIA_OUTLINE_PATH, JSON.stringify(fc));
+async function indiaOutline() {
+  const fc = JSON.parse(await readFile(INDIA_OUTLINE_PATH, 'utf8'));
+  const type = fc.features?.[0]?.geometry?.type;
+  if (type !== 'Polygon' && type !== 'MultiPolygon') throw new Error(`${INDIA_OUTLINE_PATH} has no polygon (geometry type ${type})`);
   return fc;
 }
 
@@ -164,7 +153,7 @@ async function main() {
     await writeEszIndex(cached);
     return;
   }
-  const india = await indiaOutline(args.includes('--refresh-india'));
+  const india = await indiaOutline();
   const contains = makeContains(india.features[0].geometry);
 
   console.log('Querying Postpass for protected areas in the India bbox...');

@@ -39,9 +39,12 @@ jobs:
         run: npm run enrich:archive
 
       # Gazette IIIF manifests rarely change, so they're cached between runs.
-      # Allmaps georeferencing is always refetched.
+      # Allmaps georeferencing is always refetched. Restore and save are split
+      # so the cache is saved as soon as the fetch finishes, even if a later
+      # step fails or the run is cancelled (actions/cache only saves when the
+      # whole job succeeds, so a cold ~50 min fetch was being thrown away).
       - name: Restore gazette manifest cache
-        uses: actions/cache@v4
+        uses: actions/cache/restore@v4
         with:
           path: .cache/gazettes
           key: gazettes-${{ github.run_id }}
@@ -49,6 +52,13 @@ jobs:
 
       - name: Build gazette map IIIF collection and mosaic
         run: npm run build:gazette-maps
+
+      - name: Save gazette manifest cache
+        if: always()
+        uses: actions/cache/save@v4
+        with:
+          path: .cache/gazettes
+          key: gazettes-${{ github.run_id }}
 
       - name: Install tippecanoe
         run: |

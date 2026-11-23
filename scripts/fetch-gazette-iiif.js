@@ -54,7 +54,7 @@ const OUT_DIR = 'data/gazette-maps';
 const PUBLIC_BASE = 'https://publicmap.github.io/india-esz-dashboard/data/gazette-maps';
 const COLLECTION_ID = `${PUBLIC_BASE}/collection.json`;
 const manifestId = (id) => `${PUBLIC_BASE}/manifests/${id}.json`;
-const CONCURRENCY = 8;
+const CONCURRENCY = 16;
 
 function gazetteMeta(id, records) {
   const uniq = (xs) => [...new Set(xs.filter(Boolean))];
