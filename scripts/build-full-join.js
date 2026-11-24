@@ -134,6 +134,48 @@ async function main() {
   // Wikidata's own OSM relation ID (P402), which few items carry.
   const osmByWikidata = await readFile('data/osm/india-protected-areas-wikidata.json', 'utf8').then(JSON.parse, () => ({}));
   const osmExtentById = await readFile('data/osm/india-protected-areas-bbox.json', 'utf8').then(JSON.parse, () => ({}));
+  // From build:admin-bboxes: where to open the Allmaps editor's georeference
+  // map for a PA (its `bbox` URL parameter) -- the bounds of the PA's Wikidata
+  // "located in" (P131) districts, else of its state(s). Null when neither is
+  // known; the dashboard then falls back to all of India.
+  const adminBboxes = await readFile('data/osm/admin-bboxes.json', 'utf8').then(JSON.parse, () => ({ admins: {}, paAdmins: {}, states: {} }));
+  // Candidates in order: the P131 districts (build:admin-bboxes already
+  // dropped ones that miss the PA's coordinate), the Wikidata state(s), the
+  // MoEF notification state(s). The first whose bounds hold the PA's
+  // coordinate wins (any non-empty one when the PA has no coordinate), so a
+  // wrong Wikidata state gives way to MoEF's; failing all of them, the
+  // smallest state whose bounds hold the coordinate (Siju WLS, "in Manipur"
+  // on Wikidata, opens on Meghalaya).
+  const COORD_MARGIN = 0.1;
+  const bboxArea = ([w, s, e, n]) => (e - w) * (n - s);
+  const stateBoxes = [...new Set(Object.values(adminBboxes.states))]
+    .map((q) => adminBboxes.admins[q]).filter(Boolean)
+    .map((a) => ({ allmapsBbox: a.bbox, allmapsBboxLabel: a.label }));
+  const allmapsArea = (wikidataId, wikidataStates, moefStates, lon, lat) => {
+    const stateAreas = (names) => (names || []).map((n) => adminBboxes.admins[adminBboxes.states[n]]).filter(Boolean);
+    const candidates = [
+      (adminBboxes.paAdmins[wikidataId] || []).map((q) => adminBboxes.admins[q]).filter(Boolean),
+      stateAreas(wikidataStates),
+      stateAreas(moefStates),
+    ].filter((areas) => areas.length).map((areas) => {
+      const boxes = areas.map((a) => a.bbox);
+      return {
+        allmapsBbox: [
+          Math.min(...boxes.map((b) => b[0])), Math.min(...boxes.map((b) => b[1])),
+          Math.max(...boxes.map((b) => b[2])), Math.max(...boxes.map((b) => b[3])),
+        ],
+        allmapsBboxLabel: [...new Set(areas.map((a) => a.label))].join(', '),
+      };
+    });
+    const holds = ({ allmapsBbox: [w, s, e, n] }) => lon >= w - COORD_MARGIN && lon <= e + COORD_MARGIN
+      && lat >= s - COORD_MARGIN && lat <= n + COORD_MARGIN;
+    if (lon == null || lat == null) return candidates[0] ?? { allmapsBbox: null, allmapsBboxLabel: null };
+    // None holds it: the smallest state whose bounds do.
+    const located = candidates.find(holds) ?? stateBoxes
+      .filter((st) => holds(st))
+      .sort((x, y) => bboxArea(x.allmapsBbox) - bboxArea(y.allmapsBbox))[0];
+    return located ?? candidates[0] ?? { allmapsBbox: null, allmapsBboxLabel: null };
+  };
   // {QID: [osm type/id]}: the OSM ESZ polygons of each PA, matched by name.
   const eszIndex = await readFile('data/osm/india-protected-areas-esz.json', 'utf8').then(JSON.parse, () => ({}));
   const { byQid: osmEszByWikidata, unmatched: unmatchedEsz } = matchEszToPAs(eszIndex, wikidataPAs);
@@ -247,6 +289,7 @@ async function main() {
       ]),
       coordinateLatitude: pa.coordinateLatitude ?? null,
       coordinateLongitude: pa.coordinateLongitude ?? null,
+      ...allmapsArea(pa.wikidataId, pa.state, [...new Set(notifications.map((n) => n.state))], pa.coordinateLongitude, pa.coordinateLatitude),
       ...summarize(notifications),
       notifications,
     });
@@ -254,7 +297,7 @@ async function main() {
 
   for (const entry of unmatchedByKey.values()) {
     entry.notifications.sort((a, b) => (b.notificationDate || '').localeCompare(a.notificationDate || ''));
-    Object.assign(entry, summarize(entry.notifications));
+    Object.assign(entry, allmapsArea(null, [], entry.state), summarize(entry.notifications));
     entries.push(entry);
   }
 

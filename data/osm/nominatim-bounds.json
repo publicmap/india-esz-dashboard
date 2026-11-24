@@ -1,0 +1,1986 @@
+{
+ "R10001144": {
+  "name": "Agra, Uttar Pradesh, India",
+  "bbox": [
+   77.85102,
+   27.04546,
+   78.22076,
+   27.29632
+  ]
+ },
+ "R10329991": {
+  "name": "Chengalpattu, Tamil Nadu, India",
+  "bbox": [
+   79.64198,
+   12.23203,
+   80.25515,
+   12.99762
+  ]
+ },
+ "R107001": {
+  "name": "Puducherry, India",
+  "bbox": [
+   75.52659,
+   10.82772,
+   82.31371,
+   16.76171
+  ]
+ },
+ "R11251493": {
+  "name": "Goa, India",
+  "bbox": [
+   73.6756,
+   14.75293,
+   74.33611,
+   15.80076
+  ]
+ },
+ "R12773165": {
+  "name": "Chandigarh, India",
+  "bbox": [
+   76.70499,
+   30.66497,
+   76.84903,
+   30.79495
+  ]
+ },
+ "R13997802": {
+  "name": "Tirupati District, Andhra Pradesh, India",
+  "bbox": [
+   78.98037,
+   13.29357,
+   80.26798,
+   14.48499
+  ]
+ },
+ "R14575603": {
+  "name": "Pakyong, Sikkim, India",
+  "bbox": [
+   88.48547,
+   27.13536,
+   88.91421,
+   27.32259
+  ]
+ },
+ "R1768896": {
+  "name": "Leh, India",
+  "bbox": [
+   76.41929,
+   32.33574,
+   79.46073,
+   35.67293
+  ]
+ },
+ "R1789229": {
+  "name": "Kokrajhar, Assam, India",
+  "bbox": [
+   89.82995,
+   26.11344,
+   90.4361,
+   26.86841
+  ]
+ },
+ "R1790779": {
+  "name": "Darjeeling, West Bengal, India",
+  "bbox": [
+   87.98729,
+   26.45146,
+   88.51247,
+   27.22107
+  ]
+ },
+ "R1790815": {
+  "name": "Mangan, Sikkim, India",
+  "bbox": [
+   88.1125,
+   27.37542,
+   88.88812,
+   28.12405
+  ]
+ },
+ "R1790816": {
+  "name": "Namchi, Sikkim, India",
+  "bbox": [
+   88.27581,
+   27.07926,
+   88.53352,
+   27.52717
+  ]
+ },
+ "R1790817": {
+  "name": "Gyalshing, Sikkim, India",
+  "bbox": [
+   88.03013,
+   27.22731,
+   88.35827,
+   27.60977
+  ]
+ },
+ "R1791324": {
+  "name": "Sikkim, India",
+  "bbox": [
+   88.01203,
+   27.07926,
+   88.92073,
+   28.12405
+  ]
+ },
+ "R1798824": {
+  "name": "Barmer, Rajasthan, India",
+  "bbox": [
+   70.08534,
+   24.64958,
+   71.94646,
+   26.51342
+  ]
+ },
+ "R1798847": {
+  "name": "Jaisalmer, Rajasthan, India",
+  "bbox": [
+   69.48444,
+   26.01759,
+   72.33768,
+   28.03698
+  ]
+ },
+ "R1818783": {
+  "name": "Tirunelveli, Tamil Nadu, India",
+  "bbox": [
+   77.1697,
+   8.14215,
+   77.97842,
+   8.95731
+  ]
+ },
+ "R1819212": {
+  "name": "Sivagangai, Tamil Nadu, India",
+  "bbox": [
+   78.12361,
+   9.52009,
+   79.01313,
+   10.40997
+  ]
+ },
+ "R1819274": {
+  "name": "Idukki, Kerala, India",
+  "bbox": [
+   76.62792,
+   9.27254,
+   77.41236,
+   10.35832
+  ]
+ },
+ "R1819317": {
+  "name": "Coimbatore, Tamil Nadu, India",
+  "bbox": [
+   76.65593,
+   10.22042,
+   77.29367,
+   11.40524
+  ]
+ },
+ "R1819318": {
+  "name": "Erode, Tamil Nadu, India",
+  "bbox": [
+   76.83364,
+   11.02274,
+   77.93305,
+   11.95458
+  ]
+ },
+ "R1819586": {
+  "name": "Ariyalur, Tamil Nadu, India",
+  "bbox": [
+   78.94089,
+   10.88618,
+   79.50975,
+   11.4195
+  ]
+ },
+ "R1819596": {
+  "name": "Thiruvarur, Tamil Nadu, India",
+  "bbox": [
+   79.26782,
+   10.35862,
+   79.76207,
+   11.01768
+  ]
+ },
+ "R1819773": {
+  "name": "Ramanathapuram, Tamil Nadu, India",
+  "bbox": [
+   78.21491,
+   9.08746,
+   79.46111,
+   9.94723
+  ]
+ },
+ "R1942586": {
+  "name": "Delhi, India",
+  "bbox": [
+   76.83884,
+   28.40463,
+   77.34534,
+   28.88345
+  ]
+ },
+ "R1942587": {
+  "name": "Uttar Pradesh, India",
+  "bbox": [
+   77.08388,
+   23.87063,
+   84.63451,
+   30.40638
+  ]
+ },
+ "R1942601": {
+  "name": "Haryana, India",
+  "bbox": [
+   74.47351,
+   27.65263,
+   77.60214,
+   30.92877
+  ]
+ },
+ "R1942686": {
+  "name": "Punjab, India",
+  "bbox": [
+   73.87983,
+   29.54294,
+   76.93906,
+   32.51118
+  ]
+ },
+ "R1942920": {
+  "name": "Rajasthan, India",
+  "bbox": [
+   69.48444,
+   23.05866,
+   78.27201,
+   30.19825
+  ]
+ },
+ "R1942946": {
+  "name": "Jhajjar, Haryana, India",
+  "bbox": [
+   76.28283,
+   28.3541,
+   76.96803,
+   28.83971
+  ]
+ },
+ "R1943188": {
+  "name": "Jammu and Kashmir, India",
+  "bbox": [
+   73.75003,
+   32.27636,
+   76.78032,
+   34.78714
+  ]
+ },
+ "R1944955": {
+  "name": "Anantnag, Jammu and Kashmir, India",
+  "bbox": [
+   75.02822,
+   33.36373,
+   75.5947,
+   34.25458
+  ]
+ },
+ "R1944971": {
+  "name": "Baramulla, Jammu and Kashmir, India",
+  "bbox": [
+   73.89603,
+   33.90784,
+   74.70161,
+   34.44672
+  ]
+ },
+ "R1948566": {
+  "name": "Hoshiarpur, Punjab, India",
+  "bbox": [
+   75.47139,
+   31.13274,
+   76.34936,
+   32.08574
+  ]
+ },
+ "R1948585": {
+  "name": "Patiala, Punjab, India",
+  "bbox": [
+   75.98301,
+   29.79114,
+   76.78697,
+   30.62746
+  ]
+ },
+ "R1948979": {
+  "name": "Bikaner, Rajasthan, India",
+  "bbox": [
+   71.87299,
+   27.18296,
+   74.3583,
+   29.04979
+  ]
+ },
+ "R1949080": {
+  "name": "Gujarat, India",
+  "bbox": [
+   68.17566,
+   20.11953,
+   74.47643,
+   24.71189
+  ]
+ },
+ "R1949098": {
+  "name": "Churu, Rajasthan, India",
+  "bbox": [
+   73.85962,
+   27.411,
+   75.67115,
+   28.99986
+  ]
+ },
+ "R1950061": {
+  "name": "Bharatpur, Rajasthan, India",
+  "bbox": [
+   76.95629,
+   26.70613,
+   77.7629,
+   27.34279
+  ]
+ },
+ "R1950071": {
+  "name": "Madhya Pradesh, India",
+  "bbox": [
+   74.02938,
+   21.07069,
+   82.81261,
+   26.86956
+  ]
+ },
+ "R1950075": {
+  "name": "Sawai Madhopur, Rajasthan, India",
+  "bbox": [
+   75.97983,
+   25.74107,
+   76.98131,
+   26.71652
+  ]
+ },
+ "R1950092": {
+  "name": "Neemuch, Madhya Pradesh, India",
+  "bbox": [
+   74.70861,
+   24.21028,
+   75.608,
+   25.0485
+  ]
+ },
+ "R1950800": {
+  "name": "Mahesana, Gujarat, India",
+  "bbox": [
+   71.94039,
+   23.0388,
+   72.86665,
+   24.10225
+  ]
+ },
+ "R1950884": {
+  "name": "Maharashtra, India",
+  "bbox": [
+   72.65261,
+   15.60636,
+   80.89778,
+   22.03027
+  ]
+ },
+ "R1950885": {
+  "name": "Dahod, Gujarat, India",
+  "bbox": [
+   73.77442,
+   22.50278,
+   74.47643,
+   23.33583
+  ]
+ },
+ "R1952515": {
+  "name": "Dang, Gujarat, India",
+  "bbox": [
+   73.46563,
+   20.56177,
+   73.94391,
+   21.08492
+  ]
+ },
+ "R1952530": {
+  "name": "Dadra and Nagar Haveli and Daman and Diu, India",
+  "bbox": [
+   70.87346,
+   20.04739,
+   73.21783,
+   20.76779
+  ]
+ },
+ "R1952531": {
+  "name": "Dadra and Nagar Haveli, Dadra and Nagar Haveli and Daman and Diu, India",
+  "bbox": [
+   72.92378,
+   20.04739,
+   73.21783,
+   20.36292
+  ]
+ },
+ "R1953566": {
+  "name": "Ahmedabad, Gujarat, India",
+  "bbox": [
+   71.83998,
+   21.98254,
+   72.84262,
+   23.50878
+  ]
+ },
+ "R1958606": {
+  "name": "Mainpuri, Uttar Pradesh, India",
+  "bbox": [
+   78.68839,
+   26.94514,
+   79.43686,
+   27.47339
+  ]
+ },
+ "R1958963": {
+  "name": "Bahraich, Uttar Pradesh, India",
+  "bbox": [
+   81.03857,
+   27.05905,
+   81.99041,
+   28.4092
+  ]
+ },
+ "R1958982": {
+  "name": "Bihar, India",
+  "bbox": [
+   83.32126,
+   24.28572,
+   88.2938,
+   27.52164
+  ]
+ },
+ "R1958984": {
+  "name": "Mahrajganj, Uttar Pradesh, India",
+  "bbox": [
+   83.11962,
+   26.88855,
+   83.93471,
+   27.47981
+  ]
+ },
+ "R1960177": {
+  "name": "West Bengal, India",
+  "bbox": [
+   85.81967,
+   21.5473,
+   89.8826,
+   27.22107
+  ]
+ },
+ "R1960191": {
+  "name": "Jharkhand, India",
+  "bbox": [
+   83.32811,
+   21.97003,
+   87.96283,
+   25.34892
+  ]
+ },
+ "R1960237": {
+  "name": "Munger, Bihar, India",
+  "bbox": [
+   86.26072,
+   24.94493,
+   86.73764,
+   25.49573
+  ]
+ },
+ "R1963163": {
+  "name": "Kaimur, Bihar, India",
+  "bbox": [
+   83.32126,
+   24.54,
+   83.89957,
+   25.41056
+  ]
+ },
+ "R1963173": {
+  "name": "Nalanda, Bihar, India",
+  "bbox": [
+   85.15293,
+   24.96079,
+   85.9064,
+   25.46213
+  ]
+ },
+ "R1970250": {
+  "name": "Nadia, West Bengal, India",
+  "bbox": [
+   88.13434,
+   22.87525,
+   88.79944,
+   24.09457
+  ]
+ },
+ "R1970297": {
+  "name": "Hooghly, West Bengal, India",
+  "bbox": [
+   87.50422,
+   22.59516,
+   88.50766,
+   23.22475
+  ]
+ },
+ "R1971803": {
+  "name": "Paschim Medinipur, West Bengal, India",
+  "bbox": [
+   87.05351,
+   21.76499,
+   87.8928,
+   22.9552
+  ]
+ },
+ "R1972004": {
+  "name": "Chhattisgarh, India",
+  "bbox": [
+   80.24418,
+   17.78222,
+   84.39596,
+   24.10669
+  ]
+ },
+ "R1972717": {
+  "name": "Bastar, Chhattisgarh, India",
+  "bbox": [
+   81.34576,
+   18.5949,
+   82.24674,
+   19.54131
+  ]
+ },
+ "R1972719": {
+  "name": "Dhamtari, Chhattisgarh, India",
+  "bbox": [
+   81.40997,
+   20.04411,
+   82.18057,
+   21.02665
+  ]
+ },
+ "R1973950": {
+  "name": "Gwalior, Madhya Pradesh, India",
+  "bbox": [
+   77.66734,
+   25.70862,
+   78.65226,
+   26.34841
+  ]
+ },
+ "R1973951": {
+  "name": "Morena, Madhya Pradesh, India",
+  "bbox": [
+   77.11458,
+   25.9,
+   78.54523,
+   26.86956
+  ]
+ },
+ "R1973969": {
+  "name": "Sidhi, Madhya Pradesh, India",
+  "bbox": [
+   81.30523,
+   23.80637,
+   82.37975,
+   24.61646
+  ]
+ },
+ "R1976080": {
+  "name": "Bhopal, Madhya Pradesh, India",
+  "bbox": [
+   77.16566,
+   23.0725,
+   77.64852,
+   23.89535
+  ]
+ },
+ "R1976081": {
+  "name": "Sagar, Madhya Pradesh, India",
+  "bbox": [
+   78.05973,
+   23.16541,
+   79.35233,
+   24.45121
+  ]
+ },
+ "R1976160": {
+  "name": "Indore, Madhya Pradesh, India",
+  "bbox": [
+   75.42307,
+   22.33214,
+   76.24728,
+   23.08922
+  ]
+ },
+ "R1976213": {
+  "name": "Dewas, Madhya Pradesh, India",
+  "bbox": [
+   75.89703,
+   22.28981,
+   77.13265,
+   23.32168
+  ]
+ },
+ "R1976216": {
+  "name": "Sehore, Madhya Pradesh, India",
+  "bbox": [
+   76.4302,
+   22.55542,
+   78.03471,
+   23.67455
+  ]
+ },
+ "R1976220": {
+  "name": "Narmadapuram, Madhya Pradesh, India",
+  "bbox": [
+   77.21288,
+   22.21344,
+   78.69872,
+   22.9871
+  ]
+ },
+ "R1976221": {
+  "name": "Raisen, Madhya Pradesh, India",
+  "bbox": [
+   77.3389,
+   22.78968,
+   78.81673,
+   23.74551
+  ]
+ },
+ "R1982904": {
+  "name": "Jabalpur, Madhya Pradesh, India",
+  "bbox": [
+   79.34682,
+   22.8308,
+   80.58461,
+   23.61576
+  ]
+ },
+ "R1982942": {
+  "name": "Seoni, Madhya Pradesh, India",
+  "bbox": [
+   79.1949,
+   21.59427,
+   80.28942,
+   22.95555
+  ]
+ },
+ "R1982963": {
+  "name": "Umaria, Madhya Pradesh, India",
+  "bbox": [
+   80.52838,
+   23.19447,
+   81.35306,
+   24.09166
+  ]
+ },
+ "R1984022": {
+  "name": "Odisha, India",
+  "bbox": [
+   81.38859,
+   17.81227,
+   87.48614,
+   22.56759
+  ]
+ },
+ "R1984023": {
+  "name": "Bargarh, Odisha, India",
+  "bbox": [
+   82.63643,
+   20.72296,
+   83.91023,
+   21.74284
+  ]
+ },
+ "R1984036": {
+  "name": "Sambalpur, Odisha, India",
+  "bbox": [
+   83.79691,
+   20.92132,
+   84.76965,
+   22.19013
+  ]
+ },
+ "R1984066": {
+  "name": "Nayagarh, Odisha, India",
+  "bbox": [
+   84.48313,
+   19.89694,
+   85.45572,
+   20.58048
+  ]
+ },
+ "R1984089": {
+  "name": "Khordha, Odisha, India",
+  "bbox": [
+   84.93547,
+   19.67193,
+   86.08142,
+   20.4355
+  ]
+ },
+ "R1984465": {
+  "name": "Kendujhar, Odisha, India",
+  "bbox": [
+   85.18423,
+   21.01581,
+   86.37039,
+   22.16259
+  ]
+ },
+ "R1984480": {
+  "name": "Baleshwar, Odisha, India",
+  "bbox": [
+   86.35132,
+   21.05963,
+   87.48614,
+   21.97994
+  ]
+ },
+ "R1984481": {
+  "name": "Mayurbhanj, Odisha, India",
+  "bbox": [
+   85.66208,
+   21.26348,
+   87.18432,
+   22.56759
+  ]
+ },
+ "R1984497": {
+  "name": "Kalahandi, Odisha, India",
+  "bbox": [
+   82.52434,
+   19.19835,
+   83.79058,
+   20.45487
+  ]
+ },
+ "R1984517": {
+  "name": "Malkangiri, Odisha, India",
+  "bbox": [
+   81.38859,
+   17.81227,
+   82.43045,
+   18.73698
+  ]
+ },
+ "R1984577": {
+  "name": "Kandhamal, Odisha, India",
+  "bbox": [
+   83.49494,
+   19.57229,
+   84.58722,
+   20.6888
+  ]
+ },
+ "R1985907": {
+  "name": "Nashik, Maharashtra, India",
+  "bbox": [
+   73.24827,
+   19.58589,
+   74.93513,
+   20.86493
+  ]
+ },
+ "R1986143": {
+  "name": "Satara, Maharashtra, India",
+  "bbox": [
+   73.53447,
+   17.09116,
+   74.90578,
+   18.18243
+  ]
+ },
+ "R1988443": {
+  "name": "Gondiya, Maharashtra, India",
+  "bbox": [
+   79.7961,
+   20.65576,
+   80.68114,
+   21.63606
+  ]
+ },
+ "R1988452": {
+  "name": "Gadchiroli, Maharashtra, India",
+  "bbox": [
+   79.73945,
+   18.68422,
+   80.89778,
+   20.83417
+  ]
+ },
+ "R1988465": {
+  "name": "Chandrapur, Maharashtra, India",
+  "bbox": [
+   78.79943,
+   19.46111,
+   79.99197,
+   20.73429
+  ]
+ },
+ "R1991091": {
+  "name": "Nagpur, Maharashtra, India",
+  "bbox": [
+   78.24924,
+   20.58341,
+   79.65639,
+   21.72228
+  ]
+ },
+ "R1991095": {
+  "name": "Wardha, Maharashtra, India",
+  "bbox": [
+   78.05245,
+   20.29354,
+   79.222,
+   21.35878
+  ]
+ },
+ "R1991125": {
+  "name": "Yavatmal, Maharashtra, India",
+  "bbox": [
+   77.28279,
+   19.43031,
+   79.149,
+   20.69791
+  ]
+ },
+ "R1991132": {
+  "name": "Washim, Maharashtra, India",
+  "bbox": [
+   76.60573,
+   19.84709,
+   77.6896,
+   20.75766
+  ]
+ },
+ "R1991609": {
+  "name": "Jalgaon, Maharashtra, India",
+  "bbox": [
+   74.76022,
+   20.27003,
+   76.39882,
+   21.41477
+  ]
+ },
+ "R1997163": {
+  "name": "Kolhapur, Maharashtra, India",
+  "bbox": [
+   73.68728,
+   15.74355,
+   74.70008,
+   17.18134
+  ]
+ },
+ "R1997193": {
+  "name": "North Goa, Goa, India",
+  "bbox": [
+   73.6756,
+   15.40809,
+   74.28236,
+   15.80076
+  ]
+ },
+ "R1997194": {
+  "name": "South Goa, Goa, India",
+  "bbox": [
+   73.76018,
+   15.13645,
+   74.10532,
+   15.539
+  ]
+ },
+ "R2018151": {
+  "name": "Kerala, India",
+  "bbox": [
+   74.86407,
+   8.29353,
+   77.41236,
+   12.79606
+  ]
+ },
+ "R2018203": {
+  "name": "Wayanad, Kerala, India",
+  "bbox": [
+   75.77315,
+   11.45136,
+   76.44353,
+   11.97868
+  ]
+ },
+ "R2019939": {
+  "name": "Karnataka, India",
+  "bbox": [
+   74.05439,
+   11.59456,
+   78.58758,
+   18.47665
+  ]
+ },
+ "R2019940": {
+  "name": "Chamarajanagar, Karnataka, India",
+  "bbox": [
+   76.40305,
+   11.59456,
+   77.77924,
+   12.3142
+  ]
+ },
+ "R2020511": {
+  "name": "Kodagu, Karnataka, India",
+  "bbox": [
+   75.36544,
+   11.93121,
+   76.18926,
+   12.83424
+  ]
+ },
+ "R2020529": {
+  "name": "Udupi, Karnataka, India",
+  "bbox": [
+   74.58268,
+   13.07142,
+   75.2058,
+   13.98215
+  ]
+ },
+ "R2020588": {
+  "name": "Bengaluru North, Karnataka, India",
+  "bbox": [
+   77.18266,
+   12.86591,
+   77.96503,
+   13.49907
+  ]
+ },
+ "R2020591": {
+  "name": "Mandya, Karnataka, India",
+  "bbox": [
+   76.32956,
+   12.21791,
+   77.3338,
+   13.05534
+  ]
+ },
+ "R2020649": {
+  "name": "Shimoga, Karnataka, India",
+  "bbox": [
+   74.62522,
+   13.4568,
+   75.87876,
+   14.65444
+  ]
+ },
+ "R2020650": {
+  "name": "Uttara Kannada, Karnataka, India",
+  "bbox": [
+   74.05439,
+   13.92581,
+   75.10292,
+   15.52496
+  ]
+ },
+ "R2020669": {
+  "name": "Gadag, Karnataka, India",
+  "bbox": [
+   75.27362,
+   14.94362,
+   76.04506,
+   15.88697
+  ]
+ },
+ "R2020670": {
+  "name": "Haveri, Karnataka, India",
+  "bbox": [
+   75.01513,
+   14.27424,
+   75.82025,
+   15.16177
+  ]
+ },
+ "R2020692": {
+  "name": "Ballari, Karnataka, India",
+  "bbox": [
+   76.36142,
+   14.85864,
+   77.16904,
+   15.83751
+  ]
+ },
+ "R2020713": {
+  "name": "Kalaburagi, Karnataka, India",
+  "bbox": [
+   76.06578,
+   16.71052,
+   77.69168,
+   17.77104
+  ]
+ },
+ "R2022095": {
+  "name": "Andhra Pradesh, India",
+  "bbox": [
+   76.76008,
+   12.62386,
+   84.7658,
+   19.16681
+  ]
+ },
+ "R2022096": {
+  "name": "Srikakulam  District, Andhra Pradesh, India",
+  "bbox": [
+   83.5858,
+   18.07805,
+   84.7658,
+   19.16681
+  ]
+ },
+ "R2022220": {
+  "name": "Guntur District, Andhra Pradesh, India",
+  "bbox": [
+   80.12297,
+   15.98129,
+   80.80412,
+   16.58939
+  ]
+ },
+ "R2022221": {
+  "name": "Nalgonda, Telangana, India",
+  "bbox": [
+   78.61529,
+   16.3557,
+   79.702,
+   17.36021
+  ]
+ },
+ "R2022227": {
+  "name": "Mahabubnagar, Telangana, India",
+  "bbox": [
+   77.67486,
+   16.37844,
+   78.37151,
+   17.01443
+  ]
+ },
+ "R2022277": {
+  "name": "Kurnool District, Andhra Pradesh, India",
+  "bbox": [
+   76.97429,
+   15.13097,
+   78.27354,
+   15.96494
+  ]
+ },
+ "R2022278": {
+  "name": "Prakasam District, Andhra Pradesh, India",
+  "bbox": [
+   79.31245,
+   14.96412,
+   80.27342,
+   16.1643
+  ]
+ },
+ "R2025855": {
+  "name": "Andaman and Nicobar Islands, India",
+  "bbox": [
+   92.20421,
+   6.75627,
+   94.27732,
+   13.67531
+  ]
+ },
+ "R2025886": {
+  "name": "Assam, India",
+  "bbox": [
+   89.6986,
+   24.13603,
+   96.01244,
+   27.97124
+  ]
+ },
+ "R2025921": {
+  "name": "Marigaon, Assam, India",
+  "bbox": [
+   91.97291,
+   26.06247,
+   92.56685,
+   26.51786
+  ]
+ },
+ "R2025972": {
+  "name": "Nagaon, Assam, India",
+  "bbox": [
+   92.39634,
+   25.96252,
+   93.31905,
+   26.69996
+  ]
+ },
+ "R2026041": {
+  "name": "Sonitpur, Assam, India",
+  "bbox": [
+   92.32289,
+   26.49733,
+   93.1464,
+   27.03834
+  ]
+ },
+ "R2026354": {
+  "name": "Golaghat, Assam, India",
+  "bbox": [
+   93.28764,
+   25.80777,
+   94.17736,
+   26.93099
+  ]
+ },
+ "R2026355": {
+  "name": "Jorhat, Assam, India",
+  "bbox": [
+   93.9713,
+   26.34705,
+   94.60352,
+   26.95273
+  ]
+ },
+ "R2026356": {
+  "name": "Lakhimpur, Assam, India",
+  "bbox": [
+   93.6981,
+   26.82827,
+   94.62726,
+   27.52229
+  ]
+ },
+ "R2026439": {
+  "name": "Tinsukia, Assam, India",
+  "bbox": [
+   95.21722,
+   27.22308,
+   96.01244,
+   27.97124
+  ]
+ },
+ "R2026443": {
+  "name": "Sivasagar, Assam, India",
+  "bbox": [
+   94.39827,
+   26.71255,
+   94.94262,
+   27.27547
+  ]
+ },
+ "R2026458": {
+  "name": "Tripura, India",
+  "bbox": [
+   91.15081,
+   22.93761,
+   92.33585,
+   24.53088
+  ]
+ },
+ "R2026469": {
+  "name": "North Tripura, Tripura, India",
+  "bbox": [
+   92.0626,
+   23.65393,
+   92.33585,
+   24.53088
+  ]
+ },
+ "R2027346": {
+  "name": "Arunachal Pradesh, India",
+  "bbox": [
+   91.56231,
+   26.65086,
+   97.39509,
+   29.37452
+  ]
+ },
+ "R2027347": {
+  "name": "East Kameng, Arunachal Pradesh, 790102, India",
+  "bbox": [
+   92.45609,
+   27.1321,
+   93.37315,
+   27.9825
+  ]
+ },
+ "R2027348": {
+  "name": "Papum Pare, Arunachal Pradesh, India",
+  "bbox": [
+   93.21208,
+   26.93692,
+   94.22107,
+   27.6368
+  ]
+ },
+ "R2027356": {
+  "name": "Lower Subansiri, Arunachal Pradesh, 791120, India",
+  "bbox": [
+   93.71853,
+   27.48825,
+   94.00829,
+   27.72608
+  ]
+ },
+ "R2027455": {
+  "name": "Changlang, Arunachal Pradesh, India",
+  "bbox": [
+   95.62626,
+   26.879,
+   97.16583,
+   27.66073
+  ]
+ },
+ "R2027460": {
+  "name": "Lakshadweep, India",
+  "bbox": [
+   71.51804,
+   8.06482,
+   73.90614,
+   12.60101
+  ]
+ },
+ "R2027475": {
+  "name": "South Garo Hills, Meghalaya, India",
+  "bbox": [
+   90.22694,
+   25.14464,
+   90.96896,
+   25.55401
+  ]
+ },
+ "R2027476": {
+  "name": "West Garo Hills, Meghalaya, India",
+  "bbox": [
+   89.89271,
+   25.2006,
+   90.4349,
+   26.01172
+  ]
+ },
+ "R2027521": {
+  "name": "Meghalaya, India",
+  "bbox": [
+   89.81444,
+   25.03065,
+   92.80274,
+   26.11817
+  ]
+ },
+ "R2027524": {
+  "name": "Ri-Bhoi, Meghalaya, India",
+  "bbox": [
+   91.34227,
+   25.63417,
+   92.27962,
+   26.11817
+  ]
+ },
+ "R2027869": {
+  "name": "Manipur, India",
+  "bbox": [
+   92.97071,
+   23.83362,
+   94.74524,
+   25.6921
+  ]
+ },
+ "R2027970": {
+  "name": "Chandel district, Manipur, India",
+  "bbox": [
+   93.73925,
+   23.83362,
+   94.25538,
+   24.50667
+  ]
+ },
+ "R2027973": {
+  "name": "Nagaland, India",
+  "bbox": [
+   93.3267,
+   25.19843,
+   95.24238,
+   27.0358
+  ]
+ },
+ "R2027974": {
+  "name": "Kohima, Nagaland, India",
+  "bbox": [
+   93.89511,
+   25.51847,
+   94.28262,
+   25.91536
+  ]
+ },
+ "R2027987": {
+  "name": "Mon, Nagaland, India",
+  "bbox": [
+   94.7797,
+   26.28868,
+   95.24238,
+   27.0358
+  ]
+ },
+ "R2027989": {
+  "name": "Zünheboto, Nagaland, India",
+  "bbox": [
+   94.21055,
+   25.73222,
+   94.71445,
+   26.29261
+  ]
+ },
+ "R2029046": {
+  "name": "Mizoram, India",
+  "bbox": [
+   92.26022,
+   21.94005,
+   93.43737,
+   24.52313
+  ]
+ },
+ "R2029050": {
+  "name": "Saiha, Mizoram, India",
+  "bbox": [
+   92.82038,
+   21.94005,
+   93.20228,
+   22.63376
+  ]
+ },
+ "R21180767": {
+  "name": "Delhi, Old Delhi, Delhi, India",
+  "bbox": [
+   76.83884,
+   28.40463,
+   77.34534,
+   28.88345
+  ]
+ },
+ "R3250963": {
+  "name": "Telangana, India",
+  "bbox": [
+   77.23659,
+   15.83642,
+   81.32262,
+   19.9173
+  ]
+ },
+ "R363496": {
+  "name": "Lahaul and Spiti, Himachal Pradesh, India",
+  "bbox": [
+   76.37292,
+   31.74751,
+   78.69279,
+   33.25652
+  ]
+ },
+ "R364055": {
+  "name": "Kullu, Himachal Pradesh, India",
+  "bbox": [
+   76.93552,
+   31.34042,
+   77.86844,
+   32.41518
+  ]
+ },
+ "R364070": {
+  "name": "Chamba, Himachal Pradesh, India",
+  "bbox": [
+   75.79676,
+   32.17551,
+   76.87744,
+   33.20898
+  ]
+ },
+ "R364074": {
+  "name": "Kangra, Himachal Pradesh, India",
+  "bbox": [
+   75.59401,
+   31.68572,
+   77.07787,
+   32.46726
+  ]
+ },
+ "R364161": {
+  "name": "Mandi, Himachal Pradesh, India",
+  "bbox": [
+   76.62069,
+   31.23021,
+   77.38913,
+   32.07302
+  ]
+ },
+ "R364168": {
+  "name": "Solan, Himachal Pradesh, India",
+  "bbox": [
+   76.59995,
+   30.74825,
+   77.24971,
+   31.36553
+  ]
+ },
+ "R364186": {
+  "name": "Himachal Pradesh, India",
+  "bbox": [
+   75.59401,
+   30.37717,
+   79.01238,
+   33.25652
+  ]
+ },
+ "R3686856": {
+  "name": "Yadgir, Karnataka, India",
+  "bbox": [
+   76.29135,
+   16.19376,
+   77.47914,
+   16.95399
+  ]
+ },
+ "R3740342": {
+  "name": "Ernakulam, Kerala, India",
+  "bbox": [
+   76.16284,
+   9.77369,
+   76.91957,
+   10.30322
+  ]
+ },
+ "R3743996": {
+  "name": "Kottayam, Kerala, India",
+  "bbox": [
+   76.36565,
+   9.40026,
+   76.98451,
+   9.85729
+  ]
+ },
+ "R374809": {
+  "name": "Uttarkashi, Uttarakhand, India",
+  "bbox": [
+   77.80955,
+   30.46822,
+   79.41725,
+   31.45902
+  ]
+ },
+ "R374815": {
+  "name": "Chamoli, Uttarakhand, India",
+  "bbox": [
+   79.07598,
+   29.92557,
+   80.10204,
+   31.07234
+  ]
+ },
+ "R374983": {
+  "name": "Dehradun, Uttarakhand, India",
+  "bbox": [
+   77.57133,
+   29.96217,
+   78.31041,
+   31.03753
+  ]
+ },
+ "R3841146": {
+  "name": "West Kameng, Arunachal Pradesh, India",
+  "bbox": [
+   92.02181,
+   26.89116,
+   92.84366,
+   27.70617
+  ]
+ },
+ "R4452723": {
+  "name": "Chikkaballapura, Karnataka, India",
+  "bbox": [
+   77.3599,
+   13.21916,
+   78.21039,
+   13.96031
+  ]
+ },
+ "R4458921": {
+  "name": "Bengaluru South, Karnataka, India",
+  "bbox": [
+   77.06806,
+   12.24325,
+   77.63503,
+   13.19697
+  ]
+ },
+ "R448985": {
+  "name": "Nilgiris, Tamil Nadu, India",
+  "bbox": [
+   76.23295,
+   11.18768,
+   77.01478,
+   11.70565
+  ]
+ },
+ "R5385295": {
+  "name": "Yamunanagar, Haryana, India",
+  "bbox": [
+   77.06527,
+   29.93506,
+   77.60214,
+   30.49683
+  ]
+ },
+ "R5515045": {
+  "name": "Ladakh, India",
+  "bbox": [
+   75.32697,
+   32.33574,
+   79.46073,
+   35.67293
+  ]
+ },
+ "R7255986": {
+  "name": "Hyderabad, Telangana, India",
+  "bbox": [
+   78.38199,
+   17.29313,
+   78.55632,
+   17.48431
+  ]
+ },
+ "R7398838": {
+  "name": "Nainital, Uttarakhand, India",
+  "bbox": [
+   78.85049,
+   28.97839,
+   79.97681,
+   29.61199
+  ]
+ },
+ "R7698599": {
+  "name": "Bhadradri Kothagudem, Telangana, India",
+  "bbox": [
+   80.20213,
+   17.19066,
+   81.32262,
+   18.24075
+  ]
+ },
+ "R7868535": {
+  "name": "Hyderabad, Bahadurpura mandal, Hyderabad, Telangana, India",
+  "bbox": [
+   78.23871,
+   17.29164,
+   78.62239,
+   17.56083
+  ]
+ },
+ "R7888990": null,
+ "R7910817": {
+  "name": "Chennai District, Tamil Nadu, India",
+  "bbox": [
+   80.13392,
+   12.85198,
+   80.3329,
+   13.23516
+  ]
+ },
+ "R7965683": {
+  "name": "Raigad, Maharashtra, India",
+  "bbox": [
+   72.81173,
+   17.85072,
+   73.66651,
+   19.1349
+  ]
+ },
+ "R7965684": {
+  "name": "Thane, Maharashtra, India",
+  "bbox": [
+   72.75686,
+   18.99845,
+   73.79705,
+   19.73143
+  ]
+ },
+ "R8258732": {
+  "name": "Junagadh, Gujarat, India",
+  "bbox": [
+   69.94424,
+   20.99252,
+   70.94789,
+   21.68052
+  ]
+ },
+ "R8259844": {
+  "name": "Bhavnagar, Gujarat, India",
+  "bbox": [
+   71.47793,
+   21.0013,
+   72.35999,
+   22.13032
+  ]
+ },
+ "R8259845": {
+  "name": "Devbhumi Dwaraka, Gujarat, India",
+  "bbox": [
+   68.93625,
+   21.79382,
+   69.93602,
+   22.53269
+  ]
+ },
+ "R8259846": {
+  "name": "Porbandar, Gujarat, India",
+  "bbox": [
+   69.37117,
+   21.2266,
+   70.1484,
+   21.9794
+  ]
+ },
+ "R8269589": {
+  "name": "Morbi, Gujarat, India",
+  "bbox": [
+   70.43691,
+   22.38255,
+   71.35961,
+   23.21885
+  ]
+ },
+ "R8269590": {
+  "name": "Kutch, Gujarat, India",
+  "bbox": [
+   68.17566,
+   22.72894,
+   71.76204,
+   24.69101
+  ]
+ },
+ "R8271162": {
+  "name": "Jamnagar, Gujarat, India",
+  "bbox": [
+   69.72535,
+   21.698,
+   70.663,
+   22.96197
+  ]
+ },
+ "R9381363": {
+  "name": "Kolkata, Greater Kolkata, Kolkata, West Bengal, India",
+  "bbox": [
+   88.24214,
+   22.43353,
+   88.45895,
+   22.63257
+  ]
+ },
+ "R9510709": {
+  "name": "Amravati, Maharashtra, India",
+  "bbox": [
+   76.62178,
+   20.539,
+   78.44951,
+   21.77002
+  ]
+ },
+ "R9511253": {
+  "name": "Ganjam, Odisha, India",
+  "bbox": [
+   84.13128,
+   18.93722,
+   85.184,
+   20.28019
+  ]
+ },
+ "R9513027": {
+  "name": "South 24 Parganas, West Bengal, India",
+  "bbox": [
+   88.04167,
+   21.5473,
+   89.09394,
+   22.62507
+  ]
+ },
+ "R9513028": {
+  "name": "North 24 Parganas, West Bengal, India",
+  "bbox": [
+   88.3318,
+   22.12918,
+   89.09645,
+   23.25661
+  ]
+ },
+ "R9513178": {
+  "name": "Rupnagar, Punjab, India",
+  "bbox": [
+   76.2866,
+   30.74552,
+   76.73845,
+   31.4373
+  ]
+ },
+ "R9513284": {
+  "name": "Fazilka, Punjab, India",
+  "bbox": [
+   73.87983,
+   29.94718,
+   74.46291,
+   30.69244
+  ]
+ },
+ "R9513330": {
+  "name": "Pathankot, Punjab, India",
+  "bbox": [
+   75.3208,
+   32.09306,
+   75.93686,
+   32.51118
+  ]
+ },
+ "R9513553": {
+  "name": "Sangrur, Punjab, India",
+  "bbox": [
+   75.55534,
+   29.72672,
+   76.20349,
+   30.54484
+  ]
+ },
+ "R9515009": {
+  "name": "North and Middle Andaman, Andaman and Nicobar Islands, India",
+  "bbox": [
+   92.64828,
+   12.06355,
+   94.27732,
+   13.67531
+  ]
+ },
+ "R9515010": {
+  "name": "South Andaman, Andaman and Nicobar Islands, India",
+  "bbox": [
+   92.20421,
+   10.51113,
+   93.12326,
+   12.31877
+  ]
+ },
+ "R9515443": {
+  "name": "Lower Dibang Valley, Arunachal Pradesh, 792110, India",
+  "bbox": [
+   95.32025,
+   27.87972,
+   96.45303,
+   28.53952
+  ]
+ },
+ "R9519791": {
+  "name": "Sipahijala, Tripura, India",
+  "bbox": [
+   91.15081,
+   23.27475,
+   91.56572,
+   23.7868
+  ]
+ },
+ "R9520304": {
+  "name": "Kiphire, Nagaland, 798611, India",
+  "bbox": [
+   94.56969,
+   25.58505,
+   95.0498,
+   26.03937
+  ]
+ },
+ "R9520359": {
+  "name": "Peren, Nagaland, India",
+  "bbox": [
+   93.3267,
+   25.19843,
+   93.94045,
+   25.70174
+  ]
+ },
+ "R9521466": {
+  "name": "Udalguri, Assam, India",
+  "bbox": [
+   91.70645,
+   26.47491,
+   92.40063,
+   26.93576
+  ]
+ },
+ "R9523416": {
+  "name": "Gariaband, Chhattisgarh, India",
+  "bbox": [
+   81.87312,
+   19.77571,
+   82.72362,
+   21.08346
+  ]
+ },
+ "R9524142": {
+  "name": "Bijapur, Chhattisgarh, India",
+  "bbox": [
+   80.24418,
+   18.13553,
+   81.23068,
+   19.40241
+  ]
+ },
+ "R9531818": {
+  "name": "Palghar, Maharashtra, India",
+  "bbox": [
+   72.65261,
+   19.287,
+   73.50451,
+   20.22793
+  ]
+ },
+ "R9540776": {
+  "name": "Alipurduar, West Bengal, India",
+  "bbox": [
+   89.04492,
+   26.39533,
+   89.8826,
+   26.86228
+  ]
+ },
+ "R9544370": {
+  "name": "Srinagar, Jammu and Kashmir, India",
+  "bbox": [
+   74.66809,
+   34.00771,
+   75.14584,
+   34.22835
+  ]
+ },
+ "R9547248": {
+  "name": "Kulgam, Jammu and Kashmir, India",
+  "bbox": [
+   74.51411,
+   33.46609,
+   75.17502,
+   33.78403
+  ]
+ },
+ "R9547249": {
+  "name": "Shopian, Jammu and Kashmir, India",
+  "bbox": [
+   74.56619,
+   33.62377,
+   75.04961,
+   33.8194
+  ]
+ },
+ "R9588868": {
+  "name": "Kendrapara, Odisha, India",
+  "bbox": [
+   86.24632,
+   20.29609,
+   87.09349,
+   20.79871
+  ]
+ },
+ "R96905": {
+  "name": "Tamil Nadu, India",
+  "bbox": [
+   76.23295,
+   8.07689,
+   80.3593,
+   13.56391
+  ]
+ },
+ "R9731669": {
+  "name": "Jannaram mandal, Mancherial, Telangana, India",
+  "bbox": [
+   78.87749,
+   19.0199,
+   79.14171,
+   19.25242
+  ]
+ },
+ "R9833014": {
+  "name": "Moinabad mandal, Ranga Reddy, Telangana, 501504, India",
+  "bbox": [
+   78.18233,
+   17.2424,
+   78.37614,
+   17.39983
+  ]
+ },
+ "R9987086": {
+  "name": "Uttarakhand, India",
+  "bbox": [
+   77.57133,
+   28.72432,
+   81.04553,
+   31.45902
+  ]
+ },
+ "search:Q109511181": null,
+ "search:Q1134770": null,
+ "search:Q1156": null,
+ "search:Q12924720": {
+  "name": "Jambughoda Taluka, Panchmahal, Gujarat, 389390, India",
+  "osm": "relation/9669116",
+  "bbox": [
+   73.6289,
+   22.28652,
+   73.76989,
+   22.46482
+  ]
+ },
+ "search:Q12942600": {
+  "name": "Vansda Taluka, Navsari, Gujarat, India",
+  "osm": "relation/9673507",
+  "bbox": [
+   73.18684,
+   20.58,
+   73.49686,
+   20.88171
+  ]
+ },
+ "search:Q12979488": null,
+ "search:Q12982818": null,
+ "search:Q170115": null,
+ "search:Q1772832": null,
+ "search:Q199605": null,
+ "search:Q2304045": null,
+ "search:Q2350142": null,
+ "search:Q2577663": null,
+ "search:Q261988": null,
+ "search:Q2747508": null,
+ "search:Q3335474": null,
+ "search:Q4940022": null,
+ "search:Q5445252": null,
+ "search:Q5529175": null,
+ "search:Q5587121": null,
+ "search:Q57156509": null,
+ "search:Q6443226": null,
+ "search:Q667736": null,
+ "search:Q6960324": null,
+ "search:Q7054815": null,
+ "search:Q709267": null,
+ "search:Q7566816": null,
+ "search:Q861954": null,
+ "search:Q867111": null,
+ "search:Q97653249": null
+}

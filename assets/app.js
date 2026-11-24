@@ -2597,9 +2597,9 @@ function archivePdfDoc(n) {
   };
 }
 
-function boundaryMapDoc(n) {
-  if (n.georeferencingLink) return { href: n.georeferencingLink, label: 'Boundary Map', disabled: false };
-  if (n.allmapsImagesLink) return { href: n.allmapsImagesLink, label: 'Locate and Georeference Boundary Map', disabled: true };
+function boundaryMapDoc(n, entry) {
+  if (n.georeferencingLink) return { href: withAllmapsBbox(n.georeferencingLink, entry.allmapsBbox), label: 'Boundary Map', disabled: false };
+  if (n.allmapsImagesLink) return { href: withAllmapsBbox(n.allmapsImagesLink, entry.allmapsBbox), label: 'Locate and Georeference Boundary Map', disabled: true };
   return { href: null, label: 'Boundary Map', disabled: true };
 }
 
@@ -2609,10 +2609,10 @@ function boundaryDataDoc(entry) {
   return { href: null, label: 'Boundary Data', disabled: true };
 }
 
-function gazetteMapsPanelHtml(n) {
+function gazetteMapsPanelHtml(n, entry) {
   const archiveId = archiveIdFromLink(n.notificationArchiveLink);
   if (!archiveId) return '';
-  return `<div class="gazette-maps" hidden data-archive-id="${escapeHtml(archiveId)}" data-map-pages="${(n.gazetteMapPages || []).join(',')}"></div>`;
+  return `<div class="gazette-maps" hidden data-archive-id="${escapeHtml(archiveId)}" data-map-pages="${(n.gazetteMapPages || []).join(',')}" data-bbox="${(entry.allmapsBbox || []).join(',')}"></div>`;
 }
 
 function docLinkHtml(doc, icon) {
@@ -2628,7 +2628,7 @@ function notificationRowHtml(n, entry) {
   const docs = [
     [moefPdfDoc(n), DOC_ICON.pdf],
     [archivePdfDoc(n), DOC_ICON.archive],
-    [boundaryMapDoc(n), DOC_ICON.map],
+    [boundaryMapDoc(n, entry), DOC_ICON.map],
     [boundaryDataDoc(entry), DOC_ICON.layers],
   ];
   const archiveId = archiveIdFromLink(n.notificationArchiveLink);
@@ -2643,7 +2643,7 @@ function notificationRowHtml(n, entry) {
       <span class="pa-notification-type"><i class="dot ${dotClass}" aria-hidden="true"></i>${escapeHtml(notificationTypeLabel(n.notificationStatus))}</span>
       ${n.orderNumber ? `<span class="pa-notification-order">${escapeHtml(n.orderNumber)}</span>` : ''}
       <span class="pa-notification-docs">${docs.map(([doc, icon]) => docLinkHtml(doc, icon)).join('')}</span>
-      ${gazetteMapsPanelHtml(n)}
+      ${gazetteMapsPanelHtml(n, entry)}
     </li>`;
 }
 
@@ -2708,9 +2708,25 @@ async function allmapsId(uri) {
   return [...new Uint8Array(digest)].map((b) => b.toString(16).padStart(2, '0')).join('').slice(0, 16);
 }
 
-function allmapsEditorUrl(manifestUrl, imageServiceId) {
-  const params = new URLSearchParams({ url: manifestUrl, 'bg-preset': 'osm', 'bg-url': ALLMAPS_BG_URL, image: imageServiceId });
+// Where the Allmaps editor opens its georeference map: the PA's Wikidata
+// "located in" districts, else its state (entry.allmapsBbox, from
+// build-full-join.js), else all of India.
+const INDIA_BBOX = [68.1, 6.5, 97.4, 37.1];
+const allmapsBboxParam = (bbox) => (bbox || INDIA_BBOX).join(',');
+
+function allmapsEditorUrl(manifestUrl, imageServiceId, bbox) {
+  const params = new URLSearchParams({
+    url: manifestUrl, 'bg-preset': 'osm', 'bg-url': ALLMAPS_BG_URL, image: imageServiceId, bbox: allmapsBboxParam(bbox),
+  });
   return `https://editor.allmaps.org/georeference?${params}`;
+}
+
+// The same for an editor link built at enrich time (data/enrichment-cache.csv).
+function withAllmapsBbox(url, bbox) {
+  if (!url) return url;
+  const u = new URL(url);
+  u.searchParams.set('bbox', allmapsBboxParam(bbox));
+  return u.href;
 }
 
 // Throttles measurable thumbnail loads across every open panel. The most
@@ -2864,7 +2880,7 @@ const isMapPage = (state, p) => state.georeferenced.has(p.serviceId)
   || state.candidates.has(p.page)
   || (p.colour != null && p.colour >= COLOUR_FRACTION_MIN);
 
-function gazetteThumbHtml(state, p, ignored) {
+function gazetteThumbHtml(state, p, ignored, bbox) {
   const georef = state.georeferenced.has(p.serviceId);
   const badge = georef
     ? '<span class="gazette-thumb-badge is-done">Georeferenced</span>'
@@ -2876,7 +2892,7 @@ function gazetteThumbHtml(state, p, ignored) {
   const img = p.failed
     ? `<img src="${escapeHtml(p.pageThumb)}" alt="Gazette page ${p.page}" loading="lazy" />`
     : `<img src="${escapeHtml(p.iiifThumb)}" alt="Gazette page ${p.page}" loading="lazy" crossorigin="anonymous" />`;
-  return `<a class="gazette-thumb${ignored ? ' is-ignored' : ''}${p.failed ? ' is-unchecked' : ''}" href="${escapeHtml(allmapsEditorUrl(state.manifestUrl, p.serviceId))}"
+  return `<a class="gazette-thumb${ignored ? ' is-ignored' : ''}${p.failed ? ' is-unchecked' : ''}" href="${escapeHtml(allmapsEditorUrl(state.manifestUrl, p.serviceId, bbox))}"
       target="_blank" rel="noopener" title="${escapeHtml(title)}">
       ${img}
       ${badge}
@@ -2886,6 +2902,7 @@ function gazetteThumbHtml(state, p, ignored) {
 
 function renderGazetteMaps(el, state) {
   const showAll = el.dataset.showAll === 'true';
+  const bbox = el.dataset.bbox ? el.dataset.bbox.split(',').map(Number) : null;
   const maps = state.pages.filter((p) => isMapPage(state, p));
   const failed = state.pages.filter((p) => p.failed && !isMapPage(state, p));
   const plural = (n, word) => `${n} ${word}${n === 1 ? '' : 's'}`;
@@ -2912,7 +2929,7 @@ function renderGazetteMaps(el, state) {
   const scrollLeft = el.querySelector('.gazette-thumbs')?.scrollLeft || 0;
   el.innerHTML = `
     <div class="gazette-maps-status"><span>${status}</span><span class="gazette-maps-actions">${buttons.join('')}</span></div>
-    ${shown.length ? `<div class="gazette-thumbs">${shown.map((p) => gazetteThumbHtml(state, p, showAll && !isMapPage(state, p))).join('')}</div>` : ''}`;
+    ${shown.length ? `<div class="gazette-thumbs">${shown.map((p) => gazetteThumbHtml(state, p, showAll && !isMapPage(state, p), bbox)).join('')}</div>` : ''}`;
   const strip = el.querySelector('.gazette-thumbs');
   if (strip) strip.scrollLeft = scrollLeft;
 }
