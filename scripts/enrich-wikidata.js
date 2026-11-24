@@ -456,6 +456,28 @@ async function main() {
     };
   }
 
+  // Drop master-list items that still have no protectedAreaType after the
+  // Wikipedia cross-reference (the last step that can assign one) and that no
+  // MoEF notification links to. The generic P31 branches (Q473972 protected
+  // area, Q29553 sanctuary, Q179049 nature reserve...) pull in reserved
+  // forests, forest ranges, elephant reserves, city parks, a dargah, the Taj
+  // Trapezium Zone etc. -- none of which are NP/WLS/BS/TR. Untyped items that
+  // *do* carry an ESZ notification are kept so the link isn't lost.
+  {
+    const fullMatch = buildMatcher(wikidataItems);
+    const moefLinkedIds = new Set(
+      moefRecords.map((r) => fullMatch(r.protectedAreaName, r.state).item?.wikidataId).filter(Boolean),
+    );
+    const dropped = wikidataItems.filter((i) => !i.protectedAreaType && !moefLinkedIds.has(i.wikidataId));
+    if (dropped.length) {
+      const droppedIds = new Set(dropped.map((i) => i.wikidataId));
+      const kept = wikidataItems.filter((i) => !droppedIds.has(i.wikidataId));
+      wikidataItems.length = 0;
+      wikidataItems.push(...kept);
+      console.log(`Dropped ${dropped.length} untyped, ESZ-less items: ${dropped.map((i) => `${i.wikidataLabel} (${i.wikidataId})`).join('; ')}`);
+    }
+  }
+
   const osmCache = await loadOsmCache();
   let osmGroup;
   if (osmCache) {

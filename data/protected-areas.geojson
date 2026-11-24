@@ -3717,12 +3717,12 @@
         ],
         "enwikiUrl": "https://en.wikipedia.org/wiki/Eravikulam_National_Park",
         "eszStatus": "draft",
-        "notificationCount": 2,
+        "notificationCount": 3,
         "notificationStatus": "Draft",
-        "notificationDate": "2021-01-12",
-        "orderNumber": "S.O. 124(E)",
-        "notificationPdfLink": "https://moef.gov.in/uploads/2021/01/eravikulam.pdf",
-        "notificationArchiveLink": "https://archive.org/details/in.gazette.central.e.2021-01-12.224379"
+        "notificationDate": "2026-06-02",
+        "orderNumber": "S.O. 2802(E)",
+        "notificationPdfLink": "https://moef.gov.in/uploads/pdf-uploads/pdf_6ac8b9727491e8.30242968.pdf",
+        "notificationArchiveLink": "https://archive.org/details/in.gazette.central.e.2026-06-02.273252"
       }
     },
     {
@@ -5469,34 +5469,6 @@
         "orderNumber": "S.O. 3654(E)",
         "notificationPdfLink": "https://moef.gov.in/uploads/2018/12/achanakmar.pdf",
         "notificationArchiveLink": "https://archive.org/details/in.gazette.central.e.2019-10-10.213250"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          88.1727,
-          25.1405
-        ]
-      },
-      "properties": {
-        "wikidataId": "Q4682873",
-        "wikidataUrl": "https://www.wikidata.org/wiki/Q4682873",
-        "name": "Adina Deer Park",
-        "protectedAreaType": null,
-        "state": "West Bengal",
-        "iucnCategory": null,
-        "area": null,
-        "osmRelationIds": [],
-        "enwikiUrl": "https://en.wikipedia.org/wiki/Adina_Deer_Park",
-        "eszStatus": "none",
-        "notificationCount": 0,
-        "notificationStatus": null,
-        "notificationDate": null,
-        "orderNumber": null,
-        "notificationPdfLink": null,
-        "notificationArchiveLink": null
       }
     },
     {
@@ -8362,34 +8334,6 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          80.266666666,
-          23.283333333
-        ]
-      },
-      "properties": {
-        "wikidataId": "Q17052151",
-        "wikidataUrl": "https://www.wikidata.org/wiki/Q17052151",
-        "name": "Dumna Nature Reserve Park",
-        "protectedAreaType": null,
-        "state": "Madhya Pradesh",
-        "iucnCategory": null,
-        "area": null,
-        "osmRelationIds": [],
-        "enwikiUrl": "https://en.wikipedia.org/wiki/Dumna_Nature_Reserve_Park",
-        "eszStatus": "none",
-        "notificationCount": 0,
-        "notificationStatus": null,
-        "notificationDate": null,
-        "orderNumber": null,
-        "notificationPdfLink": null,
-        "notificationArchiveLink": null
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
           78.1346,
           25.6304
         ]
@@ -9118,34 +9062,6 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          78.851,
-          9.25
-        ]
-      },
-      "properties": {
-        "wikidataId": "Q22948452",
-        "wikidataUrl": "https://www.wikidata.org/wiki/Q22948452",
-        "name": "Ervadi Dargah Sharif",
-        "protectedAreaType": null,
-        "state": "Tamil Nadu",
-        "iucnCategory": null,
-        "area": null,
-        "osmRelationIds": [],
-        "enwikiUrl": "https://en.wikipedia.org/wiki/Erwadi_dargah",
-        "eszStatus": "none",
-        "notificationCount": 0,
-        "notificationStatus": null,
-        "notificationDate": null,
-        "orderNumber": null,
-        "notificationPdfLink": null,
-        "notificationArchiveLink": null
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
           79.46383333,
           14.00916667
         ]
@@ -9365,34 +9281,6 @@
         "orderNumber": "S.O. 2776(E)",
         "notificationPdfLink": "https://moef.gov.in/uploads/2018/12/sandi-bird1.pdf",
         "notificationArchiveLink": "https://archive.org/details/in.gazette.central.e.2019-08-01.209982"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          78.9764,
-          11.1611
-        ]
-      },
-      "properties": {
-        "wikidataId": "Q7426133",
-        "wikidataUrl": "https://www.wikidata.org/wiki/Q7426133",
-        "name": "Sathanur fossilized tree trunks",
-        "protectedAreaType": null,
-        "state": "Tamil Nadu",
-        "iucnCategory": null,
-        "area": null,
-        "osmRelationIds": [],
-        "enwikiUrl": "https://en.wikipedia.org/wiki/National_Fossil_Wood_Park,_Sathanur",
-        "eszStatus": "none",
-        "notificationCount": 0,
-        "notificationStatus": null,
-        "notificationDate": null,
-        "orderNumber": null,
-        "notificationPdfLink": null,
-        "notificationArchiveLink": null
       }
     },
     {
@@ -9722,34 +9610,6 @@
         "area": null,
         "osmRelationIds": [],
         "enwikiUrl": "https://en.wikipedia.org/wiki/Thol_Wildlife_Sanctuary",
-        "eszStatus": "none",
-        "notificationCount": 0,
-        "notificationStatus": null,
-        "notificationDate": null,
-        "orderNumber": null,
-        "notificationPdfLink": null,
-        "notificationArchiveLink": null
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          79.4503,
-          10.9944
-        ]
-      },
-      "properties": {
-        "wikidataId": "Q7809473",
-        "wikidataUrl": "https://www.wikidata.org/wiki/Q7809473",
-        "name": "Tiruvidaimarudur Conservation Reserve",
-        "protectedAreaType": null,
-        "state": "Tamil Nadu",
-        "iucnCategory": "IUCN category V: Protected Landscape/Seascape",
-        "area": null,
-        "osmRelationIds": [],
-        "enwikiUrl": "https://en.wikipedia.org/wiki/Thiruppudaimarudur_Conservation_Reserve",
         "eszStatus": "none",
         "notificationCount": 0,
         "notificationStatus": null,
@@ -10884,34 +10744,6 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          87.264472,
-          22.637624
-        ]
-      },
-      "properties": {
-        "wikidataId": "Q117057454",
-        "wikidataUrl": "https://www.wikidata.org/wiki/Q117057454",
-        "name": "Shalboni Forest Range",
-        "protectedAreaType": null,
-        "state": "West Bengal",
-        "iucnCategory": null,
-        "area": null,
-        "osmRelationIds": [],
-        "enwikiUrl": null,
-        "eszStatus": "none",
-        "notificationCount": 0,
-        "notificationStatus": null,
-        "notificationDate": null,
-        "orderNumber": null,
-        "notificationPdfLink": null,
-        "notificationArchiveLink": null
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
           72.9358,
           19.3879
         ]
@@ -11192,62 +11024,6 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          77.283333333,
-          9.216666666
-        ]
-      },
-      "properties": {
-        "wikidataId": "Q97379507",
-        "wikidataUrl": "https://www.wikidata.org/wiki/Q97379507",
-        "name": "Tirunelveli (North) Forest (part)",
-        "protectedAreaType": null,
-        "state": "Tamil Nadu",
-        "iucnCategory": null,
-        "area": 23467,
-        "osmRelationIds": [],
-        "enwikiUrl": null,
-        "eszStatus": "none",
-        "notificationCount": 0,
-        "notificationStatus": null,
-        "notificationDate": null,
-        "orderNumber": null,
-        "notificationPdfLink": null,
-        "notificationArchiveLink": null
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          71.783,
-          11.902
-        ]
-      },
-      "properties": {
-        "wikidataId": "Q97628002",
-        "wikidataUrl": "https://www.wikidata.org/wiki/Q97628002",
-        "name": "Dr KK Mohammed Koya Sea Cucumber Conservation Reserve",
-        "protectedAreaType": null,
-        "state": null,
-        "iucnCategory": null,
-        "area": null,
-        "osmRelationIds": [],
-        "enwikiUrl": "https://en.wikipedia.org/wiki/Dr._K.K._Mohammed_Koya_Sea_Cucumber_Conservation_Reserve",
-        "eszStatus": "none",
-        "notificationCount": 0,
-        "notificationStatus": null,
-        "notificationDate": null,
-        "orderNumber": null,
-        "notificationPdfLink": null,
-        "notificationArchiveLink": null
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
           79.828611111,
           19.665
         ]
@@ -11269,34 +11045,6 @@
         "orderNumber": "S.O. 3877(E)",
         "notificationPdfLink": "https://moef.gov.in/uploads/2019/02/chaprala.pdf",
         "notificationArchiveLink": "https://archive.org/details/in.gazette.central.e.2020-10-27.222810"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          77.85194444,
-          27.23583333
-        ]
-      },
-      "properties": {
-        "wikidataId": "Q101311408",
-        "wikidataUrl": "https://www.wikidata.org/wiki/Q101311408",
-        "name": "Agra Bear Rescue Facility",
-        "protectedAreaType": null,
-        "state": "Uttar Pradesh",
-        "iucnCategory": null,
-        "area": null,
-        "osmRelationIds": [],
-        "enwikiUrl": "https://en.wikipedia.org/wiki/Agra_Bear_Rescue_Facility",
-        "eszStatus": "none",
-        "notificationCount": 0,
-        "notificationStatus": null,
-        "notificationDate": null,
-        "orderNumber": null,
-        "notificationPdfLink": null,
-        "notificationArchiveLink": null
       }
     },
     {
@@ -11976,34 +11724,6 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          90.345169,
-          25.596067
-        ]
-      },
-      "properties": {
-        "wikidataId": "Q137368881",
-        "wikidataUrl": "https://www.wikidata.org/wiki/Q137368881",
-        "name": "Selbagre Hoolock Gibbon Reserve",
-        "protectedAreaType": null,
-        "state": "Meghalaya",
-        "iucnCategory": null,
-        "area": null,
-        "osmRelationIds": [],
-        "enwikiUrl": null,
-        "eszStatus": "none",
-        "notificationCount": 0,
-        "notificationStatus": null,
-        "notificationDate": null,
-        "orderNumber": null,
-        "notificationPdfLink": null,
-        "notificationArchiveLink": null
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
           93.7194,
           25.85623
         ]
@@ -12480,34 +12200,6 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          76.86,
-          10.87
-        ]
-      },
-      "properties": {
-        "wikidataId": "Q122363297",
-        "wikidataUrl": "https://www.wikidata.org/wiki/Q122363297",
-        "name": "Coimbatore Elephant Reserve",
-        "protectedAreaType": null,
-        "state": null,
-        "iucnCategory": null,
-        "area": null,
-        "osmRelationIds": [],
-        "enwikiUrl": "https://en.wikipedia.org/wiki/Coimbatore_Elephant_Reserve",
-        "eszStatus": "none",
-        "notificationCount": 0,
-        "notificationStatus": null,
-        "notificationDate": null,
-        "orderNumber": null,
-        "notificationPdfLink": null,
-        "notificationArchiveLink": null
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
           78.183055555,
           10.624444444
         ]
@@ -12670,62 +12362,6 @@
         "notificationDate": "2021-12-17",
         "orderNumber": "S.O.5251(E)",
         "notificationPdfLink": "https://moef.gov.in/uploads/2021/12/jogimatti.pdf",
-        "notificationArchiveLink": null
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          87.0141653,
-          23.0642743
-        ]
-      },
-      "properties": {
-        "wikidataId": "Q124249813",
-        "wikidataUrl": "https://www.wikidata.org/wiki/Q124249813",
-        "name": "Tanba Forest",
-        "protectedAreaType": null,
-        "state": "West Bengal",
-        "iucnCategory": null,
-        "area": null,
-        "osmRelationIds": [],
-        "enwikiUrl": null,
-        "eszStatus": "none",
-        "notificationCount": 0,
-        "notificationStatus": null,
-        "notificationDate": null,
-        "orderNumber": null,
-        "notificationPdfLink": null,
-        "notificationArchiveLink": null
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          88.4819133,
-          22.9762116
-        ]
-      },
-      "properties": {
-        "wikidataId": "Q124393199",
-        "wikidataUrl": "https://www.wikidata.org/wiki/Q124393199",
-        "name": "Anandanagar Forest",
-        "protectedAreaType": null,
-        "state": "West Bengal",
-        "iucnCategory": null,
-        "area": null,
-        "osmRelationIds": [],
-        "enwikiUrl": null,
-        "eszStatus": "none",
-        "notificationCount": 0,
-        "notificationStatus": null,
-        "notificationDate": null,
-        "orderNumber": null,
-        "notificationPdfLink": null,
         "notificationArchiveLink": null
       }
     },
@@ -15314,62 +14950,6 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          88.52722222,
-          27.22305556
-        ]
-      },
-      "properties": {
-        "wikidataId": "Q38251694",
-        "wikidataUrl": "https://www.wikidata.org/wiki/Q38251694",
-        "name": "Sumin Reserve Forest",
-        "protectedAreaType": null,
-        "state": "Sikkim",
-        "iucnCategory": null,
-        "area": null,
-        "osmRelationIds": [],
-        "enwikiUrl": "https://en.wikipedia.org/wiki/Sumin_Reserve_Forest",
-        "eszStatus": "none",
-        "notificationCount": 0,
-        "notificationStatus": null,
-        "notificationDate": null,
-        "orderNumber": null,
-        "notificationPdfLink": null,
-        "notificationArchiveLink": null
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          76.475,
-          11.266666666
-        ]
-      },
-      "properties": {
-        "wikidataId": "Q39057492",
-        "wikidataUrl": "https://www.wikidata.org/wiki/Q39057492",
-        "name": "Nilambur Elephant Reserve",
-        "protectedAreaType": null,
-        "state": "Kerala",
-        "iucnCategory": null,
-        "area": null,
-        "osmRelationIds": [],
-        "enwikiUrl": "https://en.wikipedia.org/wiki/Nilambur_Elephant_Reserve",
-        "eszStatus": "none",
-        "notificationCount": 0,
-        "notificationStatus": null,
-        "notificationDate": null,
-        "orderNumber": null,
-        "notificationPdfLink": null,
-        "notificationArchiveLink": null
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
           77.87,
           12.41
         ]
@@ -15594,34 +15174,6 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          79.246666,
-          26.966667
-        ]
-      },
-      "properties": {
-        "wikidataId": "Q56277554",
-        "wikidataUrl": "https://www.wikidata.org/wiki/Q56277554",
-        "name": "Sarsai Nawar Wetland",
-        "protectedAreaType": null,
-        "state": null,
-        "iucnCategory": null,
-        "area": null,
-        "osmRelationIds": [],
-        "enwikiUrl": "https://en.wikipedia.org/wiki/Sarsai_Nawar_Wetland",
-        "eszStatus": "none",
-        "notificationCount": 0,
-        "notificationStatus": null,
-        "notificationDate": null,
-        "orderNumber": null,
-        "notificationPdfLink": null,
-        "notificationArchiveLink": null
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
           74.65,
           13.7
         ]
@@ -15755,34 +15307,6 @@
         "orderNumber": "S.O. 4007(E)",
         "notificationPdfLink": "https://moef.gov.in/uploads/2019/10/kanjirankulam.pdf",
         "notificationArchiveLink": "https://archive.org/details/in.gazette.central.e.2019-11-06.213748"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          73.833,
-          17.7
-        ]
-      },
-      "properties": {
-        "wikidataId": "Q15234037",
-        "wikidataUrl": "https://www.wikidata.org/wiki/Q15234037",
-        "name": "Kas Plateau Reserved Forest",
-        "protectedAreaType": null,
-        "state": "Maharashtra",
-        "iucnCategory": null,
-        "area": 1142,
-        "osmRelationIds": [],
-        "enwikiUrl": "https://en.wikipedia.org/wiki/Kas_plateau",
-        "eszStatus": "none",
-        "notificationCount": 0,
-        "notificationStatus": null,
-        "notificationDate": null,
-        "orderNumber": null,
-        "notificationPdfLink": null,
-        "notificationArchiveLink": null
       }
     },
     {

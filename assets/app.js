@@ -150,6 +150,17 @@ const OSM_PA_BUFFER_OPACITY = 0.5;
 const OSM_PA_ESZ_HATCH = { spacing: 8, width: 1.5, alpha: 0.75 };
 const OSM_PA_ESA_HATCH = { image: 'osm-pa-hatch-esa', color: 'rgba(74, 222, 128, 0.6)', spacing: 10, width: 1 };
 const osmPaEszHatchImage = (status) => `osm-pa-hatch-esz-${status}`;
+// Core zones (protect_class=1, e.g. "Netravali WLS Core Zone") are drawn as a
+// green dot pattern over their PA's fill and labelled "Core Zone". Patterns
+// don't scale with zoom, so the dots are packed closer at lower zooms (where
+// a core zone is only a few pixels across): each step applies from `minzoom`.
+const OSM_PA_CORE_ZONE_DOT_COLOR = '#15803d';
+const OSM_PA_CORE_ZONE_DOTS = [
+  { minzoom: 0, spacing: 3, radius: 0.6 },
+  { minzoom: 9, spacing: 4, radius: 0.8 },
+  { minzoom: 11, spacing: 6, radius: 1.1 },
+].map((d) => ({ ...d, color: OSM_PA_CORE_ZONE_DOT_COLOR, image: `osm-pa-dots-core-zone-${d.spacing}` }));
+const OSM_PA_CORE_ZONE_LABEL = 'Core Zone';
 // The NIC (Parivesh) ESZ layer gets the same hatch, muted: its features carry
 // no link to a PA, so it's drawn in one green at low opacity under the OSM
 // layer.
@@ -1601,12 +1612,14 @@ function addCollapsedAttribution() {
 
 // The georeferenced gazette maps: above the basemap masks, under every vector
 // overlay (boundaries, ESZs, reserves, OSM PAs, markers). Loading is async; a
-// failure leaves the rest of the map untouched.
+// failure leaves the rest of the map untouched. Starts as the "Gazette Maps"
+// checkbox says (off by default).
 function addNotificationMapsLayer() {
   const layer = new WarpedMapLayer({ layerId: NOTIFICATION_MAPS_LAYER_ID, opacity: NOTIFICATION_MAPS_OPACITY });
   map.addLayer(layer);
+  setNotificationMapsLayerVisibility(document.getElementById('layer-toggle-notification-maps').checked);
   layer.addGeoreferenceAnnotationByUrl(NOTIFICATION_MAPS_ANNOTATIONS_URL)
-    .catch((err) => console.warn('Notification maps failed to load:', err));
+    .catch((err) => console.warn('Gazette maps failed to load:', err));
 }
 
 function setNotificationMapsLayerVisibility(visible) {
@@ -1955,12 +1968,27 @@ function addOsmProtectedAreaLayer() {
   });
   map.addLayer({
     ...base,
+    id: 'osm-pa-core-zone',
+    type: 'fill',
+    filter: ['==', zone, 'core-zone'],
+    paint: {
+      'fill-pattern': ['step', ['zoom'], OSM_PA_CORE_ZONE_DOTS[0].image,
+        ...OSM_PA_CORE_ZONE_DOTS.slice(1).flatMap((d) => [d.minzoom, d.image])],
+    },
+  });
+  map.addLayer({
+    ...base,
     id: 'osm-pa-line',
     type: 'line',
     // Outlined in the same status colour as the core fill (grey when unlinked).
+    // Core zones are left unoutlined: their dots alone mark them.
+    filter: ['!=', zone, 'core-zone'],
     paint: { 'line-color': statusColor, 'line-width': 1 },
   });
-  map.addLayer(sourceTagLayer('osm-pa-source-tag', base.source, base['source-layer'], 'OSM', statusColor));
+  map.addLayer({
+    ...sourceTagLayer('osm-pa-source-tag', base.source, base['source-layer'], 'OSM', statusColor),
+    filter: ['!=', zone, 'core-zone'],
+  });
   // Polygon names in dark-green italics, set apart from the PA marker labels
   // (which are placed first, so they win any collision).
   map.addLayer({
@@ -1970,7 +1998,8 @@ function addOsmProtectedAreaLayer() {
     minzoom: OSM_PA_LABEL_MINZOOM,
     filter: ['==', ['geometry-type'], 'Polygon'],
     layout: {
-      'text-field': ['coalesce', ['get', 'name:en'], ['get', 'name']],
+      'text-field': ['case', ['==', zone, 'core-zone'], OSM_PA_CORE_ZONE_LABEL,
+        ['coalesce', ['get', 'name:en'], ['get', 'name']]],
       'text-font': ['open_sans_regular_italic'],
       'text-size': ['interpolate', ['linear'], ['zoom'], OSM_PA_LABEL_MINZOOM, 10, 12, 12],
       'text-max-width': 8,
@@ -1984,13 +2013,15 @@ function addOsmProtectedAreaLayer() {
 // its name and protection_title (OSM has no dedicated zone tag): e.g. "Kali
 // TR ESZ", protection_title=Eco-Sensitive Zone; "Western Ghats Eco-Sensitive
 // Area"; "Anamalai Tiger Reserve Buffer Area", "50m Wetland Buffer Zone",
-// "Wetland Zone of Influence". Everything else is a core area.
+// "Wetland Zone of Influence". protect_class=1 features are 'core-zone' (the
+// strictly protected core inside a PA). Everything else is a core area.
 function osmPaZoneExpr() {
   const text = ['downcase', ['concat',
     ['coalesce', ['get', 'name'], ''], ' | ', ['coalesce', ['get', 'name:en'], ''], ' | ',
     ['coalesce', ['get', 'protection_title'], '']]];
   const has = (...needles) => ['any', ...needles.map((n) => ['in', n, text])];
   return ['case',
+    ['==', ['to-string', ['get', 'protect_class']], '1'], 'core-zone',
     has('sensitive area'), 'esa',
     has('sensitive zone', 'esz'), 'esz',
     has('buffer', 'zone of influence'), 'buffer',
@@ -2066,6 +2097,22 @@ function addOsmPaHatchImages() {
     ctx.stroke();
     map.addImage(image, ctx.getImageData(0, 0, size, size), { pixelRatio: ratio });
   }
+  for (const dots of OSM_PA_CORE_ZONE_DOTS) addOsmPaDotImage(dots, ratio);
+}
+
+// A dot-grid fill pattern: one dot per tile, at its centre.
+function addOsmPaDotImage({ image, color, spacing, radius }, ratio) {
+  if (map.hasImage(image)) return;
+  const size = spacing * ratio;
+  const canvas = document.createElement('canvas');
+  canvas.width = size;
+  canvas.height = size;
+  const ctx = canvas.getContext('2d');
+  ctx.fillStyle = color;
+  ctx.beginPath();
+  ctx.arc(size / 2, size / 2, radius * ratio, 0, 2 * Math.PI);
+  ctx.fill();
+  map.addImage(image, ctx.getImageData(0, 0, size, size), { pixelRatio: ratio });
 }
 
 // OSM feature id -> the PA it's linked to (its own polygons, then its ESZ
@@ -2088,7 +2135,7 @@ function buildOsmIdToPaKey() {
 
 // The PA linked to the topmost OSM polygon under a screen point (core fill
 // over buffer over ESZ hatch), or null.
-const OSM_PA_CLICK_LAYERS = ['osm-pa-fill', 'osm-pa-buffer', 'osm-pa-hatch'];
+const OSM_PA_CLICK_LAYERS = ['osm-pa-core-zone', 'osm-pa-fill', 'osm-pa-buffer', 'osm-pa-hatch'];
 function osmPaKeyAt(point) {
   const layers = OSM_PA_CLICK_LAYERS.filter((id) => map.getLayer(id) && map.getLayoutProperty(id, 'visibility') !== 'none');
   if (!layers.length) return null;
@@ -2136,7 +2183,7 @@ function paMarkerAt(point) {
 
 function setOsmPaLayerVisibility(visible) {
   const visibility = visible ? 'visible' : 'none';
-  for (const id of ['osm-pa-hatch', 'osm-pa-buffer', 'osm-pa-fill', 'osm-pa-line', 'osm-pa-source-tag', 'osm-pa-label']) {
+  for (const id of ['osm-pa-hatch', 'osm-pa-buffer', 'osm-pa-fill', 'osm-pa-core-zone', 'osm-pa-line', 'osm-pa-source-tag', 'osm-pa-label']) {
     if (map.getLayer(id)) map.setLayoutProperty(id, 'visibility', visibility);
   }
 }

@@ -304,7 +304,9 @@ function splitUploadDates(uploadDateText, segmentCount) {
 
 function parseNotificationCell($, cell, { state, status, uploadDateText }) {
   const text = cleanText($(cell).text());
-  if (isEffectivelyEmpty(text)) return [];
+  // A cell holding nothing but the site's running serial number (e.g. "29.")
+  // is a placeholder for a stage that hasn't happened, not a notification.
+  if (isEffectivelyEmpty(text.replace(LEADING_INDEX_RE, ''))) return [];
 
   const segments = splitCellIntoNotifications($, cell, text);
   const uploadDates = splitUploadDates(uploadDateText, segments.length);
