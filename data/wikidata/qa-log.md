@@ -1,6 +1,6 @@
 # Protected-area QA log
 
-Generated 2026-11-23T20:36:27.757Z by `scripts/enrich-wikidata.js`.
+Generated 2026-11-24T05:28:03.431Z by `scripts/enrich-wikidata.js`.
 
 ## Wikidata ↔ Wikipedia joins
 
@@ -8,7 +8,7 @@ Cross-referenced against 745 records from `data/wikipedia/{national-parks,wildli
 
 ### Summary
 
-- **Wikidata protectedAreaType corrected from Wikipedia**: 43
+- **Wikidata protectedAreaType corrected from Wikipedia**: 44
 - **Wikipedia list entry type disagrees with final master-list type**: 61
 - **Wikidata item matched by multiple Wikipedia entries**: 67
 - **Fuzzy Wikidata<->Wikipedia matches**: 37
@@ -28,6 +28,7 @@ Wikidata's P31-derived type disagreed with the matched Wikipedia entry's -- corr
 | Q2989176 | Orang National Park | National Park | Tiger Reserve | tiger-reserves | https://en.wikipedia.org/wiki/Orang_National_Park | exact |
 | Q2428291 | Valmiki National Park | National Park | Tiger Reserve | tiger-reserves | https://en.wikipedia.org/wiki/Valmiki_National_Park | exact |
 | Q1427976 | Indravati National Park | National Park | Tiger Reserve | tiger-reserves | https://en.wikipedia.org/wiki/Indravati_National_Park | exact |
+| Q60398704 | Marine Sanctuary (Gulf of Kutch) | Wildlife Sanctuary | National Park | national-parks | https://en.wikipedia.org/wiki/Marine_National_Park,_Gulf_of_Kutch | exact |
 | Q111181101 | Limber Wildlife Sanctuary | Wildlife Sanctuary | National Park | national-parks | https://en.wikipedia.org/wiki/Kazinag_National_Park | exact |
 | Q665110 | Bandipur National Park | National Park | Tiger Reserve | tiger-reserves | https://en.wikipedia.org/wiki/Bandipur_National_Park | exact |
 | Q1520200 | Nagarhole National Park | National Park | Tiger Reserve | tiger-reserves | https://en.wikipedia.org/wiki/Nagarhole_National_Park | exact |
@@ -82,6 +83,7 @@ Q2989157	P31	Q5533772	S143	Q328	S854	"https://en.wikipedia.org/wiki/Nameri_Natio
 Q2989176	P31	Q5533772	S143	Q328	S854	"https://en.wikipedia.org/wiki/Orang_National_Park"
 Q2428291	P31	Q5533772	S143	Q328	S854	"https://en.wikipedia.org/wiki/Valmiki_National_Park"
 Q1427976	P31	Q5533772	S143	Q328	S854	"https://en.wikipedia.org/wiki/Indravati_National_Park"
+Q60398704	P31	Q46169	S143	Q328	S854	"https://en.wikipedia.org/wiki/Marine_National_Park,_Gulf_of_Kutch"
 Q111181101	P31	Q46169	S143	Q328	S854	"https://en.wikipedia.org/wiki/Kazinag_National_Park"
 Q665110	P31	Q5533772	S143	Q328	S854	"https://en.wikipedia.org/wiki/Bandipur_National_Park"
 Q1520200	P31	Q5533772	S143	Q328	S854	"https://en.wikipedia.org/wiki/Nagarhole_National_Park"
@@ -217,7 +219,7 @@ More than one Wikipedia entry (possibly from different lists) matched the same W
 | Q1427976 | Indravati National Park | Indravati National Park [national-parks] (National Park); Indravati National Park Tiger Reserve [tiger-reserves] (Tiger Reserve) | More than one Wikipedia entry matched the same Wikidata item -- either a genuine reclassification (fine) or a wrong fuzzy match on one of them (review). |
 | Q2397554 | Bhagwan Mahaveer Sanctuary and Mollem National Park | Mollem National Park [national-parks] (National Park); Bhagwan Mahavir Sanctuary [wildlife-sanctuaries] (Wildlife Sanctuary) | More than one Wikipedia entry matched the same Wikidata item -- either a genuine reclassification (fine) or a wrong fuzzy match on one of them (review). |
 | Q337028 | Gir National Park | Gir Forest National Park [national-parks] (National Park); Gir Wildlife Sanctuary [wildlife-sanctuaries] (Wildlife Sanctuary) | More than one Wikipedia entry matched the same Wikidata item -- either a genuine reclassification (fine) or a wrong fuzzy match on one of them (review). |
-| Q2724481 | Marine National Park, Gulf of Kutch | Marine National Park, Gulf of Kutch [national-parks] (National Park); Marine National Park, Gulf of Kutch [wildlife-sanctuaries] (National Park) | More than one Wikipedia entry matched the same Wikidata item -- either a genuine reclassification (fine) or a wrong fuzzy match on one of them (review). |
+| Q60398704 | Marine Sanctuary (Gulf of Kutch) | Marine National Park, Gulf of Kutch [national-parks] (National Park); Marine National Park, Gulf of Kutch [wildlife-sanctuaries] (National Park) | More than one Wikipedia entry matched the same Wikidata item -- either a genuine reclassification (fine) or a wrong fuzzy match on one of them (review). |
 | Q2985156 | Kalesar National Park | Kalesar National Park [national-parks] (National Park); Kalesar National Park [wildlife-sanctuaries] (National Park) | More than one Wikipedia entry matched the same Wikidata item -- either a genuine reclassification (fine) or a wrong fuzzy match on one of them (review). |
 | Q111181101 | Limber Wildlife Sanctuary | Kazinag National Park [national-parks] (National Park); Limber Wildlife Sanctuary [wildlife-sanctuaries] (Wildlife Sanctuary) | More than one Wikipedia entry matched the same Wikidata item -- either a genuine reclassification (fine) or a wrong fuzzy match on one of them (review). |
 | Q5215675 | Anshi National Park | Anshi National Park [national-parks] (National Park); Dandeli Wildlife Sanctuary [wildlife-sanctuaries] (Wildlife Sanctuary) | More than one Wikipedia entry matched the same Wikidata item -- either a genuine reclassification (fine) or a wrong fuzzy match on one of them (review). |
@@ -1446,27 +1448,33 @@ Wikidata item is typed as National Park / Wildlife Sanctuary / Tiger Reserve (ca
 | --- | --- | --- | --- | --- | --- |
 | Q106684744 | Biligiri Rangaswamy Temple Wildlife Sanctuary | Wildlife Sanctuary | Karnataka |  |  |
 | Q109974038 | Siju Wildlife Sanctuary | Wildlife Sanctuary | Manipur | Meghalaya | https://en.wikipedia.org/wiki/Siju_Wildlife_Sanctuary |
+| Q113133799 | Garbhanga Wildlife Sanctuary | Wildlife Sanctuary | Assam |  |  |
+| Q880724 | Blackbuck National Park | National Park | Gujarat |  |  |
+| Q2724481 | Marine National Park, Gulf of Kutch | National Park | Gujarat |  |  |
 | Q3174886 | Govind Pashu Vihar Wildlife Sanctuary | Wildlife Sanctuary | Uttar Pradesh | Uttarakhand | https://en.wikipedia.org/wiki/Govind_Pashu_Vihar_National_Park |
 | Q3364416 | Mandla Plant Fossils National Park | National Park | Madhya Pradesh |  |  |
 | Q3364473 | Pench Tiger Reserve | Tiger Reserve | Madhya Pradesh | Maharashtra | https://en.wikipedia.org/wiki/Pench_Tiger_Reserve |
+| Q4208325 | Qazinag National Park | National Park | Jammu and Kashmir |  |  |
 | Q4783879 | Aralam Wildlife Sanctuary | Wildlife Sanctuary | Kerala |  |  |
 | Q5215676 | Dandeli Wildlife Sanctuary | Wildlife Sanctuary | Karnataka |  |  |
 | Q5311756 | Dudhwa Tiger Reserve | Tiger Reserve | Uttar Pradesh |  |  |
 | Q5405090 | Eturnagaram Wildlife Sanctuary | Wildlife Sanctuary | Andhra Pradesh | Telangana | https://en.wikipedia.org/wiki/Eturnagaram_Wildlife_Sanctuary |
 | Q5517624 | Gajner Wildlife Sanctuary | Wildlife Sanctuary | Rajasthan |  |  |
 | Q5527862 | Gautala Autramghat Sanctuary | Wildlife Sanctuary | Maharashtra |  |  |
-| Q4208325 | Qazinag National Park | National Park | Jammu and Kashmir |  |  |
 | Q5597433 | Grass Hills National Park | National Park | Tamil Nadu |  |  |
 | Q6368141 | Karakoram Wildlife Sanctuary | Wildlife Sanctuary | Jammu and Kashmir | Ladakh | https://en.wikipedia.org/wiki/Karakoram_Wildlife_Sanctuary |
 | Q6750402 | Manjira Wildlife Sanctuary | Wildlife Sanctuary | Andhra Pradesh | Telangana | https://en.wikipedia.org/wiki/Manjira_Wildlife_Sanctuary |
 | Q6965807 | Narendrapur Wildlife Sanctuary | Wildlife Sanctuary | West Bengal |  |  |
+| Q15839097 | Nanda Devi and Valley of Flowers National Parks | National Park | Uttarakhand |  |  |
+| Q16253187 | Bankapur Peacock Sanctuary | Wildlife Sanctuary | Karnataka |  |  |
+| Q17002953 | Saraswati Wildlife Sanctuary | Wildlife Sanctuary | Haryana |  |  |
+| Q17010836 | Achabal Wildlife Sanctuary | Wildlife Sanctuary | Jammu and Kashmir |  |  |
+| Q18110132 | Balimela Wildlife Sanctuary | Wildlife Sanctuary | Odisha |  |  |
+| Q18126911 | Kondakameru Wildlife Sanctuary | Wildlife Sanctuary | Odisha |  |  |
+| Q19881905 | Amangarh Tiger Reserve | Tiger Reserve | Uttar Pradesh |  |  |
 | Q7786672 | Thol Wildlife Sanctuary | Wildlife Sanctuary | Gujarat |  |  |
 | Q13116281 | Karian Shola National Park | National Park | Tamil Nadu |  |  |
 | Q14205920 | Begur Wildlife Sanctuary | Wildlife Sanctuary | Kerala |  |  |
-| Q880724 | Blackbuck National Park | National Park | Gujarat |  |  |
-| Q60398704 | Marine Sanctuary (Gulf of Kutch) | Wildlife Sanctuary | Gujarat |  |  |
-| Q113133799 | Garbhanga Wildlife Sanctuary | Wildlife Sanctuary | Assam |  |  |
-| Q2979712 | Balpakram National Park | National Park | Meghalaya |  |  |
 | Q65321737 | Karimpuzha Wildlife Sanctuary | Wildlife Sanctuary | Kerala |  |  |
 | Q105581798 | Benog Wildlife Sanctuary | Wildlife Sanctuary | Uttarakhand |  |  |
 | Q105806882 | Kottur Elephant Sanctuary and Rehabilitation Centre | Wildlife Sanctuary | Kerala |  |  |
@@ -1477,13 +1485,7 @@ Wikidata item is typed as National Park / Wildlife Sanctuary / Tiger Reserve (ca
 | Q106674990 | Bhitarkanika Wildlife Sanctuary | Wildlife Sanctuary | Odisha |  |  |
 | Q106675711 | Udanti-Sitanadi Tiger Reserve | Tiger Reserve | Chhattisgarh |  |  |
 | Q107324541 | Mehao Wildlife Sanctuary | Wildlife Sanctuary | Arunachal Pradesh |  |  |
-| Q15839097 | Nanda Devi and Valley of Flowers National Parks | National Park | Uttarakhand |  |  |
-| Q16253187 | Bankapur Peacock Sanctuary | Wildlife Sanctuary | Karnataka |  |  |
-| Q17002953 | Saraswati Wildlife Sanctuary | Wildlife Sanctuary | Haryana |  |  |
-| Q17010836 | Achabal Wildlife Sanctuary | Wildlife Sanctuary | Jammu and Kashmir |  |  |
-| Q18110132 | Balimela Wildlife Sanctuary | Wildlife Sanctuary | Odisha |  |  |
-| Q18126911 | Kondakameru Wildlife Sanctuary | Wildlife Sanctuary | Odisha |  |  |
-| Q19881905 | Amangarh Tiger Reserve | Tiger Reserve | Uttar Pradesh |  |  |
+| Q2979712 | Balpakram National Park | National Park | Meghalaya |  |  |
 | Q26794303 | Changthang Wildlife Sanctuary | Wildlife Sanctuary | Ladakh |  |  |
 | Q26794312 | Shendurney Wildlife Reserve | Wildlife Sanctuary | Kerala |  |  |
 | Q28173945 | Khonoma Nature Conservation and Tragopan Sanctuary | Wildlife Sanctuary | Nagaland |  |  |
@@ -1532,26 +1534,27 @@ No OSM object references this wikidata id via P402, and no OSM object tags this 
 | --- | --- |
 | Q5215675 | Anshi National Park |
 | Q6375178 | Katarniaghat Wildlife Sanctuary |
-| Q3471776 | Hoollongapar Gibbon Sanctuary |
 | Q3595683 | Hazaribagh Wildlife Sanctuary |
-| Q134457402 | Lachipora Wildlife Sanctuary |
-| Q134992507 | Taj Trapezium Zone |
-| Q140306443 | Arial Island Wildlife Sanctuary |
-| Q141370278 | Western Ghats Ecologically Sensitive Area |
+| Q3471776 | Hoollongapar Gibbon Sanctuary |
 | Q7050184 | Noradehi Wildlife Sanctuary |
 | Q7206203 | Pobitora Wildlife Sanctuary |
 | Q7285897 | Rajbari National Park |
-| Q7786671 | Thol Lake |
-| Q16137059 | Munderikadavu Bird Sanctuary |
-| Q16895017 | Mehao Wildlife Sanctuary |
-| Q17126760 | Daroji Sloth Bear Sanctuary |
-| Q28419233 | Pakshipathalam Bird Sanctuary |
-| Q2720864 | Pench National Park |
 | Q102047437 | Gulmarg Wildlife Sanctuary |
 | Q106675739 | Udanti Wildlife Sanctuary |
 | Q106684744 | Biligiri Rangaswamy Temple Wildlife Sanctuary |
 | Q109974038 | Siju Wildlife Sanctuary |
 | Q110460281 | Yangoupokpi-Lokchao Wildlife Sanctuary |
+| Q113133799 | Garbhanga Wildlife Sanctuary |
+| Q134457402 | Lachipora Wildlife Sanctuary |
+| Q16137059 | Munderikadavu Bird Sanctuary |
+| Q16895017 | Mehao Wildlife Sanctuary |
+| Q17126760 | Daroji Sloth Bear Sanctuary |
+| Q28419233 | Pakshipathalam Bird Sanctuary |
+| Q60398704 | Marine Sanctuary (Gulf of Kutch) |
+| Q2720864 | Pench National Park |
+| Q7786671 | Thol Lake |
+| Q7461605 | Shahgarh Landscape |
+| Q2429161 | Melghat Tiger Reserve |
 | Q253455 | Dudhwa National Park |
 | Q1785732 | Koyna Wildlife Sanctuary |
 | Q1815612 | Namdapha National Park |
@@ -1564,6 +1567,8 @@ No OSM object references this wikidata id via P402, and no OSM object tags this 
 | Q3457187 | Dampa Tiger Reserve |
 | Q3523324 | Karimpuzha National Park |
 | Q3696259 | Chandoli National Park |
+| Q4208325 | Qazinag National Park |
+| Q4682873 | Adina Deer Park |
 | Q4807575 | Asola Bhatti Wildlife Sanctuary |
 | Q4941109 | Bonal Bird Sanctuary |
 | Q5118284 | Churdhar Sanctuary |
@@ -1571,8 +1576,6 @@ No OSM object references this wikidata id via P402, and no OSM object tags this 
 | Q5215676 | Dandeli Wildlife Sanctuary |
 | Q5311756 | Dudhwa Tiger Reserve |
 | Q5517624 | Gajner Wildlife Sanctuary |
-| Q4208325 | Qazinag National Park |
-| Q4682873 | Adina Deer Park |
 | Q5597433 | Grass Hills National Park |
 | Q6368141 | Karakoram Wildlife Sanctuary |
 | Q6443537 | Kumarakom Bird Sanctuary |
@@ -1581,6 +1584,24 @@ No OSM object references this wikidata id via P402, and no OSM object tags this 
 | Q6796837 | Mayani Bird Sanctuary |
 | Q6963221 | Nandhaur Wildlife Sanctuary |
 | Q6965807 | Narendrapur Wildlife Sanctuary |
+| Q15839097 | Nanda Devi and Valley of Flowers National Parks |
+| Q16155392 | Bhindawas Wildlife Sanctuary |
+| Q16253187 | Bankapur Peacock Sanctuary |
+| Q16887542 | Netravali Wildlife Sanctuary |
+| Q16894577 | Mandagadde Bird Sanctuary |
+| Q16896392 | Pangolakha Wildlife Sanctuary |
+| Q16948098 | Kanwar Sanctuary |
+| Q17002774 | Abubshahar Wildlife Sanctuary |
+| Q17002953 | Saraswati Wildlife Sanctuary |
+| Q17010836 | Achabal Wildlife Sanctuary |
+| Q17052151 | Dumna Nature Reserve Park |
+| Q17564493 | Bordoibam Bilmukh Bird Sanctuary |
+| Q18110132 | Balimela Wildlife Sanctuary |
+| Q18126911 | Kondakameru Wildlife Sanctuary |
+| Q18357307 | Uppalapadu Bird Sanctuary |
+| Q19881905 | Amangarh Tiger Reserve |
+| Q19894392 | Naina Devi Himalayan Bird Conservation Reserve |
+| Q22948452 | Ervadi Dargah Sharif |
 | Q7426133 | Sathanur fossilized tree trunks |
 | Q7461463 | Shahayadri Tiger reserve |
 | Q7697281 | Telineelapuram and Telukunchi Bird Sanctuaries |
@@ -1590,11 +1611,6 @@ No OSM object references this wikidata id via P402, and no OSM object tags this 
 | Q14205920 | Begur Wildlife Sanctuary |
 | Q14618939 | Nambor Wildlife Sanctuary |
 | Q14623369 | Bherjan-Borajan-Padumoni Wildlife Sanctuary |
-| Q2429161 | Melghat Tiger Reserve |
-| Q7461605 | Shahgarh Landscape |
-| Q60398704 | Marine Sanctuary (Gulf of Kutch) |
-| Q113133799 | Garbhanga Wildlife Sanctuary |
-| Q2979712 | Balpakram National Park |
 | Q111169695 | Tirthan Wildlife Sanctuary |
 | Q111181702 | Singphan Wildlife Sanctuary |
 | Q111181960 | Talra Wildlife Sanctuary |
@@ -1623,24 +1639,6 @@ No OSM object references this wikidata id via P402, and no OSM object tags this 
 | Q107112206 | Raimona National Park |
 | Q107203235 | Srivilliputhur-Megamalai Tiger Reserve |
 | Q107224583 | Lonar Wildlife Sanctuary |
-| Q15839097 | Nanda Devi and Valley of Flowers National Parks |
-| Q16155392 | Bhindawas Wildlife Sanctuary |
-| Q16253187 | Bankapur Peacock Sanctuary |
-| Q16887542 | Netravali Wildlife Sanctuary |
-| Q16894577 | Mandagadde Bird Sanctuary |
-| Q16896392 | Pangolakha Wildlife Sanctuary |
-| Q16948098 | Kanwar Sanctuary |
-| Q17002774 | Abubshahar Wildlife Sanctuary |
-| Q17002953 | Saraswati Wildlife Sanctuary |
-| Q17010836 | Achabal Wildlife Sanctuary |
-| Q17052151 | Dumna Nature Reserve Park |
-| Q17564493 | Bordoibam Bilmukh Bird Sanctuary |
-| Q18110132 | Balimela Wildlife Sanctuary |
-| Q18126911 | Kondakameru Wildlife Sanctuary |
-| Q18357307 | Uppalapadu Bird Sanctuary |
-| Q19881905 | Amangarh Tiger Reserve |
-| Q19894392 | Naina Devi Himalayan Bird Conservation Reserve |
-| Q22948452 | Ervadi Dargah Sharif |
 | Q137368881 | Selbagre Hoolock Gibbon Reserve |
 | Q137596744 | Kanhargaon Wildlife Sanctuary |
 | Q137596748 | Wan Wildlife Sanctuary |
@@ -1670,8 +1668,12 @@ No OSM object references this wikidata id via P402, and no OSM object tags this 
 | Q134984377 | Sikhna Jwhwlao National Park |
 | Q135350399 | Bhoramdev Wildlife Sanctuary |
 | Q135419116 | Kappatagudda Wildlife Sanctuary |
-| Q15203562 | Bornadi Wildlife Sanctuary |
-| Q15234037 | Kas Plateau Reserved Forest |
+| Q135650177 | Rajauli Wildlife Sanctuary |
+| Q135838331 | Chandratal Wildlife Sanctuary |
+| Q134992507 | Taj Trapezium Zone |
+| Q140306443 | Arial Island Wildlife Sanctuary |
+| Q141370278 | Western Ghats Ecologically Sensitive Area |
+| Q2979712 | Balpakram National Park |
 | Q26794312 | Shendurney Wildlife Reserve |
 | Q28173945 | Khonoma Nature Conservation and Tragopan Sanctuary |
 | Q38251694 | Sumin Reserve Forest |
@@ -1679,8 +1681,8 @@ No OSM object references this wikidata id via P402, and no OSM object tags this 
 | Q55074851 | Ghodazari Wildlife Sanctuary |
 | Q55633284 | Sitabani Wildlife Reserve |
 | Q56277554 | Sarsai Nawar Wetland |
-| Q135650177 | Rajauli Wildlife Sanctuary |
-| Q135838331 | Chandratal Wildlife Sanctuary |
+| Q15203562 | Bornadi Wildlife Sanctuary |
+| Q15234037 | Kas Plateau Reserved Forest |
 | WIKIPEDIA:gujarat:blackbuck-national-park-velavadar | Blackbuck National Park, Velavadar |
 | WIKIPEDIA:maharashtra:pench-national-park-jawaharlal-nehru | Pench National Park(Jawaharlal Nehru) |
 | WIKIPEDIA:meghalaya:ak-national-park | AK National Park |
@@ -1935,17 +1937,17 @@ Matched pair (by id) whose names score below 0.5 similarity -- the id link may i
 
 | wikidataId | wikidataLabel | osmUrl | osmName | matchSource | nameScore |
 | --- | --- | --- | --- | --- | --- |
+| Q880724 | Blackbuck National Park | https://www.openstreetmap.org/way/143357444 | Blackbuck National Park Velavadar | osm-wikidata-tag | 0.47 |
+| Q7499351 | Shivaram Wildlife Sanctuary | https://www.openstreetmap.org/way/670977220 | Lanja Madugu Siwaram WLS | osm-wikidata-tag | 0.25 |
 | Q2731635 | Gaga Wildlife Sanctuary | https://www.openstreetmap.org/relation/9282949 | Gaga (Great Indian Bustard) WLS | osm-wikidata-tag | 0.16 |
 | Q5070917 | Chandaka Elephant Sanctuary | https://www.openstreetmap.org/way/669747799 |  | osm-wikidata-tag | 0.00 |
 | Q6750402 | Manjira Wildlife Sanctuary | https://www.openstreetmap.org/way/670962706 | Manjeera Crocodile WLS | osm-wikidata-tag | 0.33 |
+| Q19361617 | Amchang Wildlife Sanctuary | https://www.openstreetmap.org/relation/9447819 |  | osm-wikidata-tag | 0.00 |
 | Q7531584 | Sita Mata Wildlife Sanctuary | https://www.openstreetmap.org/way/667134094 |  | osm-wikidata-tag | 0.00 |
 | Q7901902 | Ushakothi Wildlife Sanctuary | https://www.openstreetmap.org/way/669809270 | Badrama WLS | osm-wikidata-tag | 0.11 |
 | Q12988826 | Vallanadu Wildlife Sanctuary | https://www.openstreetmap.org/way/671212129 | Vallanadu Blackbuck WLS | osm-wikidata-tag | 0.47 |
-| Q880724 | Blackbuck National Park | https://www.openstreetmap.org/way/143357444 | Blackbuck National Park Velavadar | osm-wikidata-tag | 0.47 |
-| Q7499351 | Shivaram Wildlife Sanctuary | https://www.openstreetmap.org/way/670977220 | Lanja Madugu Siwaram WLS | osm-wikidata-tag | 0.25 |
 | Q112252433 | Rangayyanadurga Four–horned antelope Wildlife Sanctuary | https://www.openstreetmap.org/relation/9447282 | Rangayyanadurga WLS | osm-wikidata-tag | 0.42 |
 | Q85846882 | Pant Wildlife Sanctuary | https://www.openstreetmap.org/way/668763979 | Pant (Rajgir) WLS | osm-wikidata-tag | 0.36 |
-| Q19361617 | Amchang Wildlife Sanctuary | https://www.openstreetmap.org/relation/9447819 |  | osm-wikidata-tag | 0.00 |
 | Q137254449 | Baltal Thajwas Wildlife Sanctuary | https://www.openstreetmap.org/way/676588330 | Thajwas - Baltal Wildlife Sanctuary | osm-wikidata-tag | 0.29 |
 | Q137699192 | Surha Tal Bird Sanctuary | https://www.openstreetmap.org/way/668732919 | Jai Prakash Narayan (Surhatal) Bird WLS | osm-wikidata-tag | 0.21 |
 | Q125881460 | Mansar-Surinsar Wildlife sanctuary | https://www.openstreetmap.org/way/668486755 | Surinsar Mansar WLS | osm-wikidata-tag | 0.47 |
@@ -2216,7 +2218,7 @@ The notification's name+state matched more than one distinct Wikidata item exact
 | moefName | pickedWikidataId | pickedWikidataLabel | tiedWikidataId | tiedWikidataLabel |
 | --- | --- | --- | --- | --- |
 | Mehao Wildlife Sanctuary; Mehao WLS | Q16895017 | Mehao Wildlife Sanctuary | Q107324541 | Mehao Wildlife Sanctuary |
-| Marine National Park; Marine Sanctuary | Q2724481 | Marine National Park, Gulf of Kutch | Q60398704 | Marine Sanctuary (Gulf of Kutch) |
+| Marine National Park; Marine Sanctuary | Q60398704 | Marine Sanctuary (Gulf of Kutch) | Q2724481 | Marine National Park, Gulf of Kutch |
 | Thol Wildlife Sanctuary | Q7786671 | Thol Lake | Q7786672 | Thol Wildlife Sanctuary |
 | Khijadia Wildlife Sanctuary | Q2730580 | Khijadiya Bird Sanctuary | Q105944439 | Khijadia Bird Sanctuary |
 | Dandeli Wildlife Sanctuary | Q5215675 | Anshi National Park | Q5215676 | Dandeli Wildlife Sanctuary |
