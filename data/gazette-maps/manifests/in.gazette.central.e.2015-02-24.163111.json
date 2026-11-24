@@ -7,7 +7,7 @@
   "type": "Manifest",
   "label": {
     "en": [
-      "Cotigao WLS – ESZ notification"
+      "Cotigao Wildlife Sanctuary – ESZ notification"
     ]
   },
   "summary": {
@@ -429,20 +429,20 @@
                   "width": 2480,
                   "partOf": [
                     {
-                      "id": "https://iiif.archive.org/iiif/in.gazette.central.e.2015-02-24.163111$16/canvas",
+                      "id": "https://publicmap.github.io/india-esz-dashboard/data/gazette-maps/manifests/in.gazette.central.e.2015-02-24.163111/archive-16-2/canvas",
                       "type": "Canvas",
                       "label": {
-                        "none": [
-                          "16"
+                        "en": [
+                          "Cotigao Wildlife Sanctuary – Page 17 (page scan)"
                         ]
                       },
                       "partOf": [
                         {
-                          "id": "https://iiif.archive.org/iiif/in.gazette.central.e.2015-02-24.163111/manifest.json",
+                          "id": "https://publicmap.github.io/india-esz-dashboard/data/gazette-maps/manifests/in.gazette.central.e.2015-02-24.163111.json",
                           "type": "Manifest",
                           "label": {
-                            "none": [
-                              "Union Government, Extraordinary, 2015-02-24, Part II-Section 3-Sub-Section(ii), Ref. S.O.608(E)"
+                            "en": [
+                              "Cotigao Wildlife Sanctuary – ESZ notification"
                             ]
                           }
                         }

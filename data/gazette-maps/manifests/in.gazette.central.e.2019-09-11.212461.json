@@ -7,7 +7,7 @@
   "type": "Manifest",
   "label": {
     "en": [
-      "Tungareshwar Sanctuary – ESZ notification"
+      "Tungareshwar Wildlife Sanctuary – ESZ notification"
     ]
   },
   "summary": {
@@ -247,34 +247,24 @@
                   "width": 2550,
                   "partOf": [
                     {
-                      "id": "https://iiif.archive.org/iiif/in.gazette.central.e.2019-09-11.212461$43/canvas",
+                      "id": "https://publicmap.github.io/india-esz-dashboard/data/gazette-maps/manifests/in.gazette.central.e.2019-09-11.212461/archive-43-0/canvas",
                       "type": "Canvas",
                       "label": {
-                        "none": [
-                          "43"
+                        "en": [
+                          "Tungareshwar Wildlife Sanctuary – Page 44 (page scan)"
                         ]
                       },
                       "partOf": [
                         {
-                          "id": "https://iiif.archive.org/iiif/in.gazette.central.e.2019-09-11.212461/manifest.json",
+                          "id": "https://publicmap.github.io/india-esz-dashboard/data/gazette-maps/manifests/in.gazette.central.e.2019-09-11.212461.json",
                           "type": "Manifest",
                           "label": {
-                            "none": [
-                              "Gazette of India - Extraordinary, 2019-09-11, Part II-Section 3-Sub-Section(ii)"
+                            "en": [
+                              "Tungareshwar Wildlife Sanctuary – ESZ notification"
                             ]
                           }
                         }
                       ]
-                    },
-                    {
-                      "id": "https://publicmap.github.io/india-esz-dashboard/data/iiif-manifest.json/canvas/6",
-                      "type": "Canvas",
-                      "label": {
-                        "en": [
-                          "Tungareshwar Wildlife Sanctuary (2019-09-11)"
-                        ]
-                      },
-                      "partOf": []
                     }
                   ]
                 },

@@ -253,34 +253,24 @@
                   "width": 2481,
                   "partOf": [
                     {
-                      "id": "https://iiif.archive.org/iiif/in.gazette.central.e.2021-01-28.224827$37/canvas",
+                      "id": "https://publicmap.github.io/india-esz-dashboard/data/gazette-maps/manifests/in.gazette.central.e.2021-01-28.224827/archive-38-0/canvas",
                       "type": "Canvas",
                       "label": {
-                        "none": [
-                          "38"
+                        "en": [
+                          "Parambikulam Tiger Reserve – Page 39 (page scan)"
                         ]
                       },
                       "partOf": [
                         {
-                          "id": "https://iiif.archive.org/iiif/in.gazette.central.e.2021-01-28.224827/manifest.json",
+                          "id": "https://publicmap.github.io/india-esz-dashboard/data/gazette-maps/manifests/in.gazette.central.e.2021-01-28.224827.json",
                           "type": "Manifest",
                           "label": {
-                            "none": [
-                              "Extraordinary Gazette of India, 2021-01-28"
+                            "en": [
+                              "Parambikulam Tiger Reserve – ESZ notification"
                             ]
                           }
                         }
                       ]
-                    },
-                    {
-                      "id": "https://publicmap.github.io/india-esz-dashboard/data/iiif-manifest.json/canvas/4",
-                      "type": "Canvas",
-                      "label": {
-                        "en": [
-                          "Parambikulam Tiger Reserve (2021-01-28)"
-                        ]
-                      },
-                      "partOf": []
                     }
                   ]
                 },

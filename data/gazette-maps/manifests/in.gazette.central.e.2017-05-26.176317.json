@@ -247,20 +247,20 @@
                   "width": 4961,
                   "partOf": [
                     {
-                      "id": "https://iiif.archive.org/iiif/in.gazette.central.e.2017-05-26.176317$24/canvas",
+                      "id": "https://publicmap.github.io/india-esz-dashboard/data/gazette-maps/manifests/in.gazette.central.e.2017-05-26.176317/archive-24-0/canvas",
                       "type": "Canvas",
                       "label": {
-                        "none": [
-                          "24"
+                        "en": [
+                          "Brahmagiri Wildlife Sanctuary – Page 25 (page scan)"
                         ]
                       },
                       "partOf": [
                         {
-                          "id": "https://iiif.archive.org/iiif/in.gazette.central.e.2017-05-26.176317/manifest.json",
+                          "id": "https://publicmap.github.io/india-esz-dashboard/data/gazette-maps/manifests/in.gazette.central.e.2017-05-26.176317.json",
                           "type": "Manifest",
                           "label": {
-                            "none": [
-                              "Union Government, Extraordinary, 2017-05-26, Part II-Section 3-Sub-Section(ii), Ref. 1701 E"
+                            "en": [
+                              "Brahmagiri Wildlife Sanctuary – ESZ notification"
                             ]
                           }
                         }

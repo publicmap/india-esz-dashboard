@@ -16,6 +16,7 @@
     "enrich:allmaps": "node scripts/enrich-allmaps.js",
     "build:gazette-maps": "node scripts/fetch-gazette-iiif.js",
     "build:osm-protected-areas": "node scripts/build-osm-protected-areas.js",
+    "build:admin-bboxes": "node scripts/build-admin-bboxes.js",
     "build:natural-earth": "node scripts/build-natural-earth.js",
     "dump:gazettes": "node scripts/dump-gazettes.js",
     "suggest:missing-state": "node scripts/plugins/quickstatements-from-wikilinks.js --input data/wikidata/protected-areas.csv --output data/wikidata-protected-areas.state-suggestions.csv --qs-output data/wikidata-protected-areas.state.qs.txt --property P131 --property-label state --target-types Q12443800,Q467745 --filter-column state",
@@ -25,7 +26,7 @@
     "build:full-join": "node scripts/build-full-join.js",
     "build:source-stats": "node scripts/build-source-stats.js",
     "build:atlas": "node scripts/build-atlas.js",
-    "update": "npm run fetch && npm run parse && npm run clean && npm run enrich:osm && npm run enrich:wikidata && npm run enrich:archive && npm run enrich:allmaps && npm run build:gazette-maps && npm run build:osm-protected-areas && npm run build:geojson && npm run build:full-join && npm run build:atlas"
+    "update": "npm run fetch && npm run parse && npm run clean && npm run enrich:osm && npm run enrich:wikidata && npm run enrich:archive && npm run enrich:allmaps && npm run build:gazette-maps && npm run build:osm-protected-areas && npm run build:admin-bboxes && npm run build:geojson && npm run build:full-join && npm run build:atlas"
   },
   "license": "MIT",
   "dependencies": {
