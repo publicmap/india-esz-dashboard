@@ -8,772 +8,6 @@
         "http://iiif.io/api/extension/georef/1/context.json",
         "http://iiif.io/api/presentation/3/context.json"
       ],
-      "id": "https://annotations.allmaps.org/maps/674cd27a1a2b81c7",
-      "type": "Annotation",
-      "created": "2026-07-18T19:24:58.265Z",
-      "modified": "2026-07-18T19:24:58.265Z",
-      "motivation": "georeferencing",
-      "target": {
-        "type": "SpecificResource",
-        "source": {
-          "id": "https://iiif.archive.org/image/iiif/3/in.gazette.central.e.2026-06-02.273252%2F273252_jp2.zip%2F273252_jp2%2F273252_0059.jp2",
-          "type": "ImageService3",
-          "height": 3508,
-          "width": 2481,
-          "partOf": [
-            {
-              "id": "https://iiif.archive.org/iiif/in.gazette.central.e.2026-06-02.273252$59/canvas",
-              "type": "Canvas",
-              "label": {
-                "none": [
-                  "59"
-                ]
-              },
-              "partOf": [
-                {
-                  "id": "https://iiif.archive.org/iiif/in.gazette.central.e.2026-06-02.273252/manifest.json",
-                  "type": "Manifest",
-                  "label": {
-                    "none": [
-                      "Extrordinary Gazette of India, 2026-06-02"
-                    ]
-                  }
-                }
-              ]
-            }
-          ]
-        },
-        "selector": {
-          "type": "SvgSelector",
-          "value": "<svg width=\"2481\" height=\"3508\"><polygon points=\"0,0 0,3508 2481,3508 2481,0\" /></svg>"
-        }
-      },
-      "body": {
-        "type": "FeatureCollection",
-        "transformation": {
-          "type": "polynomial",
-          "options": {
-            "order": 1
-          }
-        },
-        "features": [
-          {
-            "type": "Feature",
-            "properties": {
-              "resourceCoords": [
-                1770,
-                2239
-              ]
-            },
-            "geometry": {
-              "type": "Point",
-              "coordinates": [
-                77.26758223446393,
-                10.121753495935224
-              ]
-            }
-          },
-          {
-            "type": "Feature",
-            "properties": {
-              "resourceCoords": [
-                1703,
-                1320
-              ]
-            },
-            "geometry": {
-              "type": "Point",
-              "coordinates": [
-                77.25739187083133,
-                10.259423407462009
-              ]
-            }
-          },
-          {
-            "type": "Feature",
-            "properties": {
-              "resourceCoords": [
-                736,
-                1855
-              ]
-            },
-            "geometry": {
-              "type": "Point",
-              "coordinates": [
-                77.02351536869833,
-                10.178613215386221
-              ]
-            }
-          },
-          {
-            "type": "Feature",
-            "properties": {
-              "resourceCoords": [
-                1377,
-                699
-              ]
-            },
-            "geometry": {
-              "type": "Point",
-              "coordinates": [
-                77.1767470883168,
-                10.358350221862523
-              ]
-            }
-          }
-        ],
-        "_allmaps": {
-          "id": "https://annotations.allmaps.org/maps/674cd27a1a2b81c7",
-          "version": "https://annotations.allmaps.org/maps/674cd27a1a2b81c7@2827eebfc1330796",
-          "image": {
-            "id": "https://annotations.allmaps.org/images/7ece3c91d4cd4a20",
-            "version": "https://annotations.allmaps.org/images/7ece3c91d4cd4a20@7c3e97de4f1d0fb3",
-            "canvases": [
-              {
-                "id": "https://annotations.allmaps.org/canvases/ec8534617b142e79",
-                "manifests": [
-                  {
-                    "id": "https://annotations.allmaps.org/manifests/25eba576e0c293e0"
-                  }
-                ]
-              }
-            ]
-          },
-          "scale": 0.047448,
-          "area": 3865944703.22
-        }
-      }
-    },
-    {
-      "@context": [
-        "http://iiif.io/api/extension/georef/1/context.json",
-        "http://iiif.io/api/presentation/3/context.json"
-      ],
-      "id": "https://annotations.allmaps.org/maps/cc5375807c5e5f5f",
-      "type": "Annotation",
-      "created": "2026-07-22T07:40:40.840Z",
-      "modified": "2026-07-22T07:40:40.840Z",
-      "motivation": "georeferencing",
-      "target": {
-        "type": "SpecificResource",
-        "source": {
-          "id": "https://iiif.archive.org/image/iiif/3/in.gazette.central.e.2026-05-26.273075%2F273075_jp2.zip%2F273075_jp2%2F273075_0038.jp2",
-          "type": "ImageService3",
-          "height": 3508,
-          "width": 2481,
-          "partOf": [
-            {
-              "id": "https://iiif.archive.org/iiif/in.gazette.central.e.2026-05-26.273075$38/canvas",
-              "type": "Canvas",
-              "label": {
-                "none": [
-                  "38"
-                ]
-              },
-              "partOf": [
-                {
-                  "id": "https://iiif.archive.org/iiif/in.gazette.central.e.2026-05-26.273075/manifest.json",
-                  "type": "Manifest",
-                  "label": {
-                    "none": [
-                      "Extrordinary Gazette of India, 2026-05-26"
-                    ]
-                  }
-                }
-              ]
-            }
-          ]
-        },
-        "selector": {
-          "type": "SvgSelector",
-          "value": "<svg width=\"2481\" height=\"3508\"><polygon points=\"0,0 0,3508 2481,3508 2481,0\" /></svg>"
-        }
-      },
-      "body": {
-        "type": "FeatureCollection",
-        "transformation": {
-          "type": "polynomial",
-          "options": {
-            "order": 1
-          }
-        },
-        "features": [
-          {
-            "type": "Feature",
-            "properties": {
-              "resourceCoords": [
-                1065,
-                1669
-              ]
-            },
-            "geometry": {
-              "type": "Point",
-              "coordinates": [
-                76.38489769368766,
-                10.350692684649331
-              ]
-            }
-          },
-          {
-            "type": "Feature",
-            "properties": {
-              "resourceCoords": [
-                2005,
-                1838
-              ]
-            },
-            "geometry": {
-              "type": "Point",
-              "coordinates": [
-                76.55457048165147,
-                10.320056869863166
-              ]
-            }
-          },
-          {
-            "type": "Feature",
-            "properties": {
-              "resourceCoords": [
-                1917,
-                810
-              ]
-            },
-            "geometry": {
-              "type": "Point",
-              "coordinates": [
-                76.53867323491272,
-                10.505335769486408
-              ]
-            }
-          }
-        ],
-        "_allmaps": {
-          "id": "https://annotations.allmaps.org/maps/cc5375807c5e5f5f",
-          "version": "https://annotations.allmaps.org/maps/cc5375807c5e5f5f@a8392b2dc5d26c2b",
-          "image": {
-            "id": "https://annotations.allmaps.org/images/9a5564d1b31b7e62",
-            "version": "https://annotations.allmaps.org/images/9a5564d1b31b7e62@ddebc515f365322f",
-            "canvases": [
-              {
-                "id": "https://annotations.allmaps.org/canvases/635f58e315775ef0",
-                "manifests": [
-                  {
-                    "id": "https://annotations.allmaps.org/manifests/47f634e8849707ba"
-                  }
-                ]
-              }
-            ]
-          },
-          "scale": 0.050368,
-          "area": 3430629947.49
-        }
-      }
-    },
-    {
-      "@context": [
-        "http://iiif.io/api/extension/georef/1/context.json",
-        "http://iiif.io/api/presentation/3/context.json"
-      ],
-      "id": "https://annotations.allmaps.org/maps/1221bff81bd18296",
-      "type": "Annotation",
-      "created": "2026-11-23T20:12:53.022Z",
-      "modified": "2026-11-23T20:12:53.022Z",
-      "motivation": "georeferencing",
-      "target": {
-        "type": "SpecificResource",
-        "source": {
-          "id": "https://iiif.archive.org/image/iiif/3/in.gazette.central.e.2026-04-23.272139%2F272139_jp2.zip%2F272139_jp2%2F272139_0037.jp2",
-          "type": "ImageService3",
-          "height": 3508,
-          "width": 2481,
-          "partOf": [
-            {
-              "id": "https://iiif.archive.org/iiif/in.gazette.central.e.2026-04-23.272139$37/canvas",
-              "type": "Canvas",
-              "label": {
-                "none": [
-                  "37"
-                ]
-              },
-              "partOf": [
-                {
-                  "id": "https://iiif.archive.org/iiif/in.gazette.central.e.2026-04-23.272139/manifest.json",
-                  "type": "Manifest",
-                  "label": {
-                    "none": [
-                      "Extrordinary Gazette of India, 2026-04-23"
-                    ]
-                  }
-                }
-              ]
-            }
-          ]
-        },
-        "selector": {
-          "type": "SvgSelector",
-          "value": "<svg width=\"2481\" height=\"3508\"><polygon points=\"0,0 0,3508 2481,3508 2481,0\" /></svg>"
-        }
-      },
-      "body": {
-        "type": "FeatureCollection",
-        "transformation": {
-          "type": "polynomial",
-          "options": {
-            "order": 1
-          }
-        },
-        "features": [
-          {
-            "type": "Feature",
-            "properties": {
-              "resourceCoords": [
-                1894,
-                1533
-              ]
-            },
-            "geometry": {
-              "type": "Point",
-              "coordinates": [
-                77.86898502807526,
-                31.782410912377216
-              ]
-            }
-          },
-          {
-            "type": "Feature",
-            "properties": {
-              "resourceCoords": [
-                1028,
-                2260
-              ]
-            },
-            "geometry": {
-              "type": "Point",
-              "coordinates": [
-                77.52711287325872,
-                31.5698621652902
-              ]
-            }
-          },
-          {
-            "type": "Feature",
-            "properties": {
-              "resourceCoords": [
-                1654,
-                1077
-              ]
-            },
-            "geometry": {
-              "type": "Point",
-              "coordinates": [
-                77.78208492485095,
-                31.92219651566539
-              ]
-            }
-          }
-        ],
-        "_allmaps": {
-          "id": "https://annotations.allmaps.org/maps/1221bff81bd18296",
-          "version": "https://annotations.allmaps.org/maps/1221bff81bd18296@032a1349943340ad",
-          "image": {
-            "id": "https://annotations.allmaps.org/images/09fa5a849158fb55",
-            "version": "https://annotations.allmaps.org/images/09fa5a849158fb55@fc0dc6b3fdf73890",
-            "canvases": [
-              {
-                "id": "https://annotations.allmaps.org/canvases/441b217f0403f607",
-                "manifests": [
-                  {
-                    "id": "https://annotations.allmaps.org/manifests/1f66c1372de84e5b"
-                  }
-                ]
-              }
-            ]
-          },
-          "scale": 0.028582,
-          "area": 10653361788.15
-        }
-      }
-    },
-    {
-      "@context": [
-        "http://iiif.io/api/extension/georef/1/context.json",
-        "http://iiif.io/api/presentation/3/context.json"
-      ],
-      "id": "https://annotations.allmaps.org/maps/6a898ad31a94b2af",
-      "type": "Annotation",
-      "created": "2026-07-22T08:48:59.239Z",
-      "modified": "2026-07-22T08:48:59.239Z",
-      "motivation": "georeferencing",
-      "target": {
-        "type": "SpecificResource",
-        "source": {
-          "id": "https://iiif.archive.org/image/iiif/3/in.gazette.central.e.2026-02-27.270617%2F270617_jp2.zip%2F270617_jp2%2F270617_0034.jp2",
-          "type": "ImageService3",
-          "height": 3508,
-          "width": 2481,
-          "partOf": [
-            {
-              "id": "https://iiif.archive.org/iiif/in.gazette.central.e.2026-02-27.270617$34/canvas",
-              "type": "Canvas",
-              "label": {
-                "none": [
-                  "34"
-                ]
-              },
-              "partOf": [
-                {
-                  "id": "https://iiif.archive.org/iiif/in.gazette.central.e.2026-02-27.270617/manifest.json",
-                  "type": "Manifest",
-                  "label": {
-                    "none": [
-                      "Extrordinary Gazette of India, 2026-02-27"
-                    ]
-                  }
-                }
-              ]
-            }
-          ]
-        },
-        "selector": {
-          "type": "SvgSelector",
-          "value": "<svg width=\"2481\" height=\"3508\"><polygon points=\"0,0 0,3508 2481,3508 2481,0\" /></svg>"
-        }
-      },
-      "body": {
-        "type": "FeatureCollection",
-        "transformation": {
-          "type": "polynomial",
-          "options": {
-            "order": 1
-          }
-        },
-        "features": [
-          {
-            "type": "Feature",
-            "properties": {
-              "resourceCoords": [
-                1388,
-                1653
-              ]
-            },
-            "geometry": {
-              "type": "Point",
-              "coordinates": [
-                76.35733047356393,
-                10.45810180146809
-              ]
-            }
-          },
-          {
-            "type": "Feature",
-            "properties": {
-              "resourceCoords": [
-                1037,
-                687
-              ]
-            },
-            "geometry": {
-              "type": "Point",
-              "coordinates": [
-                76.27057752977856,
-                10.696469712852107
-              ]
-            }
-          },
-          {
-            "type": "Feature",
-            "properties": {
-              "resourceCoords": [
-                1970,
-                1570
-              ]
-            },
-            "geometry": {
-              "type": "Point",
-              "coordinates": [
-                76.50003407552578,
-                10.478490058091978
-              ]
-            }
-          }
-        ],
-        "_allmaps": {
-          "id": "https://annotations.allmaps.org/maps/6a898ad31a94b2af",
-          "version": "https://annotations.allmaps.org/maps/6a898ad31a94b2af@4ccb4da6bf2b0feb",
-          "image": {
-            "id": "https://annotations.allmaps.org/images/6f2681175ea0afb5",
-            "version": "https://annotations.allmaps.org/images/6f2681175ea0afb5@ba7cf76804d4707b",
-            "canvases": [
-              {
-                "id": "https://annotations.allmaps.org/canvases/45dba8024ce0ab6e",
-                "manifests": [
-                  {
-                    "id": "https://annotations.allmaps.org/manifests/8d2f518eff7e1d85"
-                  }
-                ]
-              }
-            ]
-          },
-          "scale": 0.036931,
-          "area": 6381309927.1
-        }
-      }
-    },
-    {
-      "@context": [
-        "http://iiif.io/api/extension/georef/1/context.json",
-        "http://iiif.io/api/presentation/3/context.json"
-      ],
-      "id": "https://annotations.allmaps.org/maps/779db7d04d209e9e",
-      "type": "Annotation",
-      "created": "2026-07-21T16:18:56.322Z",
-      "modified": "2026-07-21T16:18:56.322Z",
-      "motivation": "georeferencing",
-      "target": {
-        "type": "SpecificResource",
-        "source": {
-          "id": "https://iiif.archive.org/image/iiif/3/in.gazette.central.e.2024-11-29.259220%2F259220_jp2.zip%2F259220_jp2%2F259220_0042.jp2",
-          "type": "ImageService3",
-          "height": 3508,
-          "width": 2481,
-          "partOf": [
-            {
-              "id": "https://iiif.archive.org/iiif/in.gazette.central.e.2024-11-29.259220$42/canvas",
-              "type": "Canvas",
-              "label": {
-                "none": [
-                  "42"
-                ]
-              },
-              "partOf": [
-                {
-                  "id": "https://iiif.archive.org/iiif/in.gazette.central.e.2024-11-29.259220/manifest.json",
-                  "type": "Manifest",
-                  "label": {
-                    "none": [
-                      "Extraordinary Gazette of India, 2024-11-29"
-                    ]
-                  }
-                }
-              ]
-            }
-          ]
-        },
-        "selector": {
-          "type": "SvgSelector",
-          "value": "<svg width=\"2481\" height=\"3508\"><polygon points=\"0,0 0,3508 2481,3508 2481,0\" /></svg>"
-        }
-      },
-      "body": {
-        "type": "FeatureCollection",
-        "transformation": {
-          "type": "polynomial",
-          "options": {
-            "order": 1
-          }
-        },
-        "features": [
-          {
-            "type": "Feature",
-            "properties": {
-              "resourceCoords": [
-                1922,
-                3168
-              ]
-            },
-            "geometry": {
-              "type": "Point",
-              "coordinates": [
-                77.39548444592958,
-                10.162493066067228
-              ]
-            }
-          },
-          {
-            "type": "Feature",
-            "properties": {
-              "resourceCoords": [
-                445,
-                2802
-              ]
-            },
-            "geometry": {
-              "type": "Point",
-              "coordinates": [
-                76.83033410127672,
-                10.303438451906075
-              ]
-            }
-          },
-          {
-            "type": "Feature",
-            "properties": {
-              "resourceCoords": [
-                1537,
-                2061
-              ]
-            },
-            "geometry": {
-              "type": "Point",
-              "coordinates": [
-                77.24722155230978,
-                10.587297043085314
-              ]
-            }
-          }
-        ],
-        "_allmaps": {
-          "id": "https://annotations.allmaps.org/maps/779db7d04d209e9e",
-          "version": "https://annotations.allmaps.org/maps/779db7d04d209e9e@4226bf5fedf92387",
-          "image": {
-            "id": "https://annotations.allmaps.org/images/d840752af857349f",
-            "version": "https://annotations.allmaps.org/images/d840752af857349f@714755ff6a4da809",
-            "canvases": [
-              {
-                "id": "https://annotations.allmaps.org/canvases/a10bf05aa0fa7888",
-                "manifests": [
-                  {
-                    "id": "https://annotations.allmaps.org/manifests/536b719da3fface4"
-                  }
-                ]
-              }
-            ]
-          },
-          "scale": 0.023748,
-          "area": 15432894352.66
-        }
-      }
-    },
-    {
-      "@context": [
-        "http://iiif.io/api/extension/georef/1/context.json",
-        "http://iiif.io/api/presentation/3/context.json"
-      ],
-      "id": "https://annotations.allmaps.org/maps/0cb3ac0ec09ca0ca",
-      "type": "Annotation",
-      "created": "2026-09-18T16:33:58.530Z",
-      "modified": "2026-09-18T16:33:58.530Z",
-      "motivation": "georeferencing",
-      "target": {
-        "type": "SpecificResource",
-        "source": {
-          "id": "https://iiif.archive.org/image/iiif/3/in.gazette.central.e.2023-11-16.250111%2F250111_jp2.zip%2F250111_jp2%2F250111_0066.jp2",
-          "type": "ImageService3",
-          "height": 3508,
-          "width": 2481,
-          "partOf": [
-            {
-              "id": "https://iiif.archive.org/iiif/in.gazette.central.e.2023-11-16.250111$66/canvas",
-              "type": "Canvas",
-              "label": {
-                "none": [
-                  "66"
-                ]
-              },
-              "partOf": [
-                {
-                  "id": "https://iiif.archive.org/iiif/in.gazette.central.e.2023-11-16.250111/manifest.json",
-                  "type": "Manifest",
-                  "label": {
-                    "none": [
-                      "Extraordinary Gazette of India, 2023-11-16"
-                    ]
-                  }
-                }
-              ]
-            }
-          ]
-        },
-        "selector": {
-          "type": "SvgSelector",
-          "value": "<svg width=\"2481\" height=\"3508\"><polygon points=\"0,0 0,3508 2481,3508 2481,0\" /></svg>"
-        }
-      },
-      "body": {
-        "type": "FeatureCollection",
-        "transformation": {
-          "type": "polynomial",
-          "options": {
-            "order": 1
-          }
-        },
-        "features": [
-          {
-            "type": "Feature",
-            "properties": {
-              "resourceCoords": [
-                1339,
-                710
-              ]
-            },
-            "geometry": {
-              "type": "Point",
-              "coordinates": [
-                74.76036488081269,
-                14.559272210615461
-              ]
-            }
-          },
-          {
-            "type": "Feature",
-            "properties": {
-              "resourceCoords": [
-                2064,
-                2481
-              ]
-            },
-            "geometry": {
-              "type": "Point",
-              "coordinates": [
-                74.98698855587361,
-                13.98815639328079
-              ]
-            }
-          },
-          {
-            "type": "Feature",
-            "properties": {
-              "resourceCoords": [
-                535,
-                1529
-              ]
-            },
-            "geometry": {
-              "type": "Point",
-              "coordinates": [
-                74.50868711706966,
-                14.29410366562908
-              ]
-            }
-          }
-        ],
-        "_allmaps": {
-          "id": "https://annotations.allmaps.org/maps/0cb3ac0ec09ca0ca",
-          "version": "https://annotations.allmaps.org/maps/0cb3ac0ec09ca0ca@3095effec439cc17",
-          "image": {
-            "id": "https://annotations.allmaps.org/images/2f1e4c612160cb3b",
-            "version": "https://annotations.allmaps.org/images/2f1e4c612160cb3b@733ce123bc403d81",
-            "canvases": [
-              {
-                "id": "https://annotations.allmaps.org/canvases/6609f72e4c317e72",
-                "manifests": [
-                  {
-                    "id": "https://annotations.allmaps.org/manifests/0d6acf88ff29c0d4"
-                  }
-                ]
-              }
-            ]
-          },
-          "scale": 0.028785,
-          "area": 10503801628.73
-        }
-      }
-    },
-    {
-      "@context": [
-        "http://iiif.io/api/extension/georef/1/context.json",
-        "http://iiif.io/api/presentation/3/context.json"
-      ],
       "id": "https://annotations.allmaps.org/maps/47be9a8c9ab98d71",
       "type": "Annotation",
       "created": "2026-07-18T16:20:08.134Z",
@@ -788,34 +22,24 @@
           "width": 2481,
           "partOf": [
             {
-              "id": "https://iiif.archive.org/iiif/in.gazette.central.e.2022-05-04.235561$14/canvas",
+              "id": "https://publicmap.github.io/india-esz-dashboard/data/gazette-maps/manifests/in.gazette.central.e.2022-05-04.235561/archive-15-0/canvas",
               "type": "Canvas",
               "label": {
-                "none": [
-                  "15"
+                "en": [
+                  "Koundinya Wildlife Sanctuary – Page 16 (page scan)"
                 ]
               },
               "partOf": [
                 {
-                  "id": "https://iiif.archive.org/iiif/in.gazette.central.e.2022-05-04.235561/manifest.json",
+                  "id": "https://publicmap.github.io/india-esz-dashboard/data/gazette-maps/manifests/in.gazette.central.e.2022-05-04.235561.json",
                   "type": "Manifest",
                   "label": {
-                    "none": [
-                      "Extraordinary Gazette of India, 2022-05-04"
+                    "en": [
+                      "Koundinya Wildlife Sanctuary – ESZ notification"
                     ]
                   }
                 }
               ]
-            },
-            {
-              "id": "https://publicmap.github.io/india-esz-dashboard/data/iiif-manifest.json/canvas/0",
-              "type": "Canvas",
-              "label": {
-                "en": [
-                  "Koundinya Wildlife Sanctuary (2022-05-04)"
-                ]
-              },
-              "partOf": []
             }
           ]
         },
@@ -929,54 +153,44 @@
         "http://iiif.io/api/extension/georef/1/context.json",
         "http://iiif.io/api/presentation/3/context.json"
       ],
-      "id": "https://annotations.allmaps.org/maps/bafdf4fb094ddc63",
+      "id": "https://annotations.allmaps.org/maps/82ddd6c5566e4d83",
       "type": "Annotation",
-      "created": "2026-10-30T09:50:31.012Z",
-      "modified": "2026-10-30T09:50:31.012Z",
+      "created": "2026-08-03T18:28:13.956Z",
+      "modified": "2026-08-03T18:28:13.956Z",
       "motivation": "georeferencing",
       "target": {
         "type": "SpecificResource",
         "source": {
-          "id": "https://iiif.archive.org/image/iiif/3/in.gazette.central.e.2021-06-18.227730%2F227730_jpg.zip%2F227730_jpg%2F227730_0029.jpg",
+          "id": "https://iiif.archive.org/image/iiif/3/in.gazette.central.e.2017-09-13.178943%2F178943_jp2.zip%2F178943_jp2%2F178943_0031.jp2",
           "type": "ImageService3",
-          "height": 3507,
-          "width": 2481,
+          "height": 3301,
+          "width": 2550,
           "partOf": [
             {
-              "id": "https://iiif.archive.org/iiif/in.gazette.central.e.2021-06-18.227730$28/canvas",
+              "id": "https://publicmap.github.io/india-esz-dashboard/data/gazette-maps/manifests/in.gazette.central.e.2017-09-13.178943/archive-31-0/canvas",
               "type": "Canvas",
               "label": {
-                "none": [
-                  "29"
+                "en": [
+                  "Valmiki National Park – Page 32 (page scan)"
                 ]
               },
               "partOf": [
                 {
-                  "id": "https://iiif.archive.org/iiif/in.gazette.central.e.2021-06-18.227730/manifest.json",
+                  "id": "https://publicmap.github.io/india-esz-dashboard/data/gazette-maps/manifests/in.gazette.central.e.2017-09-13.178943.json",
                   "type": "Manifest",
                   "label": {
-                    "none": [
-                      "Extraordinary Gazette of India, 2021-06-18"
+                    "en": [
+                      "Valmiki National Park – ESZ notification"
                     ]
                   }
                 }
               ]
-            },
-            {
-              "id": "https://publicmap.github.io/india-esz-dashboard/data/iiif-manifest.json/canvas/3",
-              "type": "Canvas",
-              "label": {
-                "en": [
-                  "Sri Venkateswara National Park (2021-06-18)"
-                ]
-              },
-              "partOf": []
             }
           ]
         },
         "selector": {
           "type": "SvgSelector",
-          "value": "<svg width=\"2481\" height=\"3507\"><polygon points=\"0,0 0,3507 2481,3507 2481,0\" /></svg>"
+          "value": "<svg width=\"2550\" height=\"3301\"><polygon points=\"0,0 0,3301 2550,3301 2550,0\" /></svg>"
         }
       },
       "body": {
@@ -992,15 +206,15 @@
             "type": "Feature",
             "properties": {
               "resourceCoords": [
-                1150,
-                747
+                502,
+                1122
               ]
             },
             "geometry": {
               "type": "Point",
               "coordinates": [
-                79.30719932174691,
-                13.95073706222179
+                83.83713012641033,
+                27.320699502509754
               ]
             }
           },
@@ -1008,15 +222,15 @@
             "type": "Feature",
             "properties": {
               "resourceCoords": [
-                1898,
-                1700
+                1928,
+                1077
               ]
             },
             "geometry": {
               "type": "Point",
               "coordinates": [
-                79.54504641204574,
-                13.687057449735718
+                84.62290473955,
+                27.33606746723771
               ]
             }
           },
@@ -1024,42 +238,42 @@
             "type": "Feature",
             "properties": {
               "resourceCoords": [
-                1052,
-                1853
+                1330,
+                1496
               ]
             },
             "geometry": {
               "type": "Point",
               "coordinates": [
-                79.27506875234155,
-                13.645242731442847
+                84.29196222030737,
+                27.15175072971572
               ]
             }
           }
         ],
         "_allmaps": {
-          "id": "https://annotations.allmaps.org/maps/bafdf4fb094ddc63",
-          "version": "https://annotations.allmaps.org/maps/bafdf4fb094ddc63@5f6c46b8a1fa4718",
+          "id": "https://annotations.allmaps.org/maps/82ddd6c5566e4d83",
+          "version": "https://annotations.allmaps.org/maps/82ddd6c5566e4d83@f2819d4edf4829eb",
           "image": {
-            "id": "https://annotations.allmaps.org/images/2969bcc698d2db8d",
-            "version": "https://annotations.allmaps.org/images/2969bcc698d2db8d@9734e9909b4e1fd2",
+            "id": "https://annotations.allmaps.org/images/b8c35d71d5ab9695",
+            "version": "https://annotations.allmaps.org/images/b8c35d71d5ab9695@eec55e650b41bfa6",
             "canvases": [
               {
-                "id": "https://annotations.allmaps.org/canvases/239a4759a34da6a3",
+                "id": "https://annotations.allmaps.org/canvases/fe89836282d70b8b",
                 "manifests": [
                   {
-                    "id": "https://annotations.allmaps.org/manifests/2e4ae6a3f48ba358"
+                    "id": "https://annotations.allmaps.org/manifests/b8f2bfc2e84dee7d"
                   }
                 ]
               },
               {
-                "id": "https://annotations.allmaps.org/canvases/8a77ceac62e8903b",
+                "id": "https://annotations.allmaps.org/canvases/d4da044e3c568404",
                 "manifests": []
               }
             ]
           },
-          "scale": 0.030783,
-          "area": 9182271869.19
+          "scale": 0.019262,
+          "area": 22688445139.2
         }
       }
     },
@@ -1068,54 +282,44 @@
         "http://iiif.io/api/extension/georef/1/context.json",
         "http://iiif.io/api/presentation/3/context.json"
       ],
-      "id": "https://annotations.allmaps.org/maps/64d84d806bb88301",
+      "id": "https://annotations.allmaps.org/maps/779db7d04d209e9e",
       "type": "Annotation",
-      "created": "2026-08-04T14:21:43.294Z",
-      "modified": "2026-08-04T14:21:43.294Z",
+      "created": "2026-07-21T16:18:56.322Z",
+      "modified": "2026-07-21T16:18:56.322Z",
       "motivation": "georeferencing",
       "target": {
         "type": "SpecificResource",
         "source": {
-          "id": "https://iiif.archive.org/image/iiif/3/in.gazette.central.e.2021-01-28.224827%2F224827_jpg.zip%2F224827_jpg%2F224827_0038.jpg",
+          "id": "https://iiif.archive.org/image/iiif/3/in.gazette.central.e.2024-11-29.259220%2F259220_jp2.zip%2F259220_jp2%2F259220_0042.jp2",
           "type": "ImageService3",
-          "height": 3507,
+          "height": 3508,
           "width": 2481,
           "partOf": [
             {
-              "id": "https://iiif.archive.org/iiif/in.gazette.central.e.2021-01-28.224827$37/canvas",
+              "id": "https://publicmap.github.io/india-esz-dashboard/data/gazette-maps/manifests/in.gazette.central.e.2024-11-29.259220/archive-42-7/canvas",
               "type": "Canvas",
               "label": {
-                "none": [
-                  "38"
+                "en": [
+                  "Anaimalai Tiger Reserve – Page 43 (page scan)"
                 ]
               },
               "partOf": [
                 {
-                  "id": "https://iiif.archive.org/iiif/in.gazette.central.e.2021-01-28.224827/manifest.json",
+                  "id": "https://publicmap.github.io/india-esz-dashboard/data/gazette-maps/manifests/in.gazette.central.e.2024-11-29.259220.json",
                   "type": "Manifest",
                   "label": {
-                    "none": [
-                      "Extraordinary Gazette of India, 2021-01-28"
+                    "en": [
+                      "Anaimalai Tiger Reserve – ESZ notification"
                     ]
                   }
                 }
               ]
-            },
-            {
-              "id": "https://publicmap.github.io/india-esz-dashboard/data/iiif-manifest.json/canvas/4",
-              "type": "Canvas",
-              "label": {
-                "en": [
-                  "Parambikulam Tiger Reserve (2021-01-28)"
-                ]
-              },
-              "partOf": []
             }
           ]
         },
         "selector": {
           "type": "SvgSelector",
-          "value": "<svg width=\"2481\" height=\"3507\"><polygon points=\"0,0 0,3507 2481,3507 2481,0\" /></svg>"
+          "value": "<svg width=\"2481\" height=\"3508\"><polygon points=\"0,0 0,3508 2481,3508 2481,0\" /></svg>"
         }
       },
       "body": {
@@ -1131,15 +335,15 @@
             "type": "Feature",
             "properties": {
               "resourceCoords": [
-                1646,
-                715
+                1922,
+                3168
               ]
             },
             "geometry": {
               "type": "Point",
               "coordinates": [
-                76.83555055024561,
-                10.55768162364214
+                77.39548444592958,
+                10.162493066067228
               ]
             }
           },
@@ -1147,15 +351,15 @@
             "type": "Feature",
             "properties": {
               "resourceCoords": [
-                1888,
-                2621
+                445,
+                2802
               ]
             },
             "geometry": {
               "type": "Point",
               "coordinates": [
-                76.89645132236626,
-                10.253806616905834
+                76.83033410127672,
+                10.303438451906075
               ]
             }
           },
@@ -1163,42 +367,38 @@
             "type": "Feature",
             "properties": {
               "resourceCoords": [
-                466,
-                1116
+                1537,
+                2061
               ]
             },
             "geometry": {
               "type": "Point",
               "coordinates": [
-                76.54528379204908,
-                10.492848483969937
+                77.24722155230978,
+                10.587297043085314
               ]
             }
           }
         ],
         "_allmaps": {
-          "id": "https://annotations.allmaps.org/maps/64d84d806bb88301",
-          "version": "https://annotations.allmaps.org/maps/64d84d806bb88301@76c4353dc68ab914",
+          "id": "https://annotations.allmaps.org/maps/779db7d04d209e9e",
+          "version": "https://annotations.allmaps.org/maps/779db7d04d209e9e@4226bf5fedf92387",
           "image": {
-            "id": "https://annotations.allmaps.org/images/983271c772119b11",
-            "version": "https://annotations.allmaps.org/images/983271c772119b11@401c30c4e4ae1e66",
+            "id": "https://annotations.allmaps.org/images/d840752af857349f",
+            "version": "https://annotations.allmaps.org/images/d840752af857349f@714755ff6a4da809",
             "canvases": [
               {
-                "id": "https://annotations.allmaps.org/canvases/c14d9620ac7e76ad",
+                "id": "https://annotations.allmaps.org/canvases/a10bf05aa0fa7888",
                 "manifests": [
                   {
-                    "id": "https://annotations.allmaps.org/manifests/23f1c72d8296f5ad"
+                    "id": "https://annotations.allmaps.org/manifests/536b719da3fface4"
                   }
                 ]
-              },
-              {
-                "id": "https://annotations.allmaps.org/canvases/07dd775a9c0357d4",
-                "manifests": []
               }
             ]
           },
-          "scale": 0.045845,
-          "area": 4139825254.87
+          "scale": 0.023748,
+          "area": 15432894352.66
         }
       }
     },
@@ -1207,34 +407,34 @@
         "http://iiif.io/api/extension/georef/1/context.json",
         "http://iiif.io/api/presentation/3/context.json"
       ],
-      "id": "https://annotations.allmaps.org/maps/2bc07b89acfe4c9f",
+      "id": "https://annotations.allmaps.org/maps/6e6bb75dfe7bd0fb",
       "type": "Annotation",
-      "created": "2026-09-18T18:46:32.315Z",
-      "modified": "2026-09-18T18:46:32.315Z",
+      "created": "2026-09-20T02:11:46.245Z",
+      "modified": "2026-09-20T02:11:46.245Z",
       "motivation": "georeferencing",
       "target": {
         "type": "SpecificResource",
         "source": {
-          "id": "https://iiif.archive.org/image/iiif/3/in.gazette.central.e.2020-08-28.221455%2F221455_jpg.zip%2F221455_jpg%2F221455_0038.jpg",
+          "id": "https://iiif.archive.org/image/iiif/3/in.gazette.central.e.2017-05-15.176128%2F176128_jp2.zip%2F176128_jp2%2F176128_0024.jp2",
           "type": "ImageService3",
-          "height": 3507,
+          "height": 3508,
           "width": 2481,
           "partOf": [
             {
-              "id": "https://iiif.archive.org/iiif/in.gazette.central.e.2020-08-28.221455$37/canvas",
+              "id": "https://publicmap.github.io/india-esz-dashboard/data/gazette-maps/manifests/in.gazette.central.e.2017-05-15.176128/archive-24-0/canvas",
               "type": "Canvas",
               "label": {
-                "none": [
-                  "38"
+                "en": [
+                  "Talakaveri Wildlife Sanctuary – Page 25 (page scan)"
                 ]
               },
               "partOf": [
                 {
-                  "id": "https://iiif.archive.org/iiif/in.gazette.central.e.2020-08-28.221455/manifest.json",
+                  "id": "https://publicmap.github.io/india-esz-dashboard/data/gazette-maps/manifests/in.gazette.central.e.2017-05-15.176128.json",
                   "type": "Manifest",
                   "label": {
-                    "none": [
-                      "Extraordinary Gazette of India, 2020-08-28"
+                    "en": [
+                      "Talakaveri Wildlife Sanctuary – ESZ notification"
                     ]
                   }
                 }
@@ -1244,7 +444,7 @@
         },
         "selector": {
           "type": "SvgSelector",
-          "value": "<svg width=\"2481\" height=\"3507\"><polygon points=\"0,0 0,3507 2481,3507 2481,0\" /></svg>"
+          "value": "<svg width=\"2481\" height=\"3508\"><polygon points=\"0,0 0,3508 2481,3508 2481,0\" /></svg>"
         }
       },
       "body": {
@@ -1260,15 +460,15 @@
             "type": "Feature",
             "properties": {
               "resourceCoords": [
-                1676,
-                1299
+                988,
+                1076
               ]
             },
             "geometry": {
               "type": "Point",
               "coordinates": [
-                75.14135995714116,
-                13.612487174249466
+                75.42321353342663,
+                12.466988140655445
               ]
             }
           },
@@ -1276,15 +476,15 @@
             "type": "Feature",
             "properties": {
               "resourceCoords": [
-                1925,
-                2143
+                1384,
+                1698
               ]
             },
             "geometry": {
               "type": "Point",
               "coordinates": [
-                75.19453958747872,
-                13.363242799298177
+                75.53199118498858,
+                12.205614164376314
               ]
             }
           },
@@ -1292,38 +492,54 @@
             "type": "Feature",
             "properties": {
               "resourceCoords": [
-                555,
-                1673
+                952,
+                1491
               ]
             },
             "geometry": {
               "type": "Point",
               "coordinates": [
-                74.90299246644503,
-                13.502949505703171
+                75.41354841065913,
+                12.291968554914277
+              ]
+            }
+          },
+          {
+            "type": "Feature",
+            "properties": {
+              "resourceCoords": [
+                1279,
+                1181
+              ]
+            },
+            "geometry": {
+              "type": "Point",
+              "coordinates": [
+                75.50290105386222,
+                12.423655831351851
               ]
             }
           }
         ],
         "_allmaps": {
-          "id": "https://annotations.allmaps.org/maps/2bc07b89acfe4c9f",
-          "version": "https://annotations.allmaps.org/maps/2bc07b89acfe4c9f@080c8319c3cc077f",
+          "id": "https://annotations.allmaps.org/maps/6e6bb75dfe7bd0fb",
+          "version": "https://annotations.allmaps.org/maps/6e6bb75dfe7bd0fb@5527c511312b2590",
           "image": {
-            "id": "https://annotations.allmaps.org/images/0616ac1e5b70b08e",
-            "version": "https://annotations.allmaps.org/images/0616ac1e5b70b08e@2acf3a996910013a",
+            "id": "https://annotations.allmaps.org/images/402c507ea5ce2b64",
+            "version": "https://annotations.allmaps.org/images/402c507ea5ce2b64@47cfdbd1b7e8c90d",
             "canvases": [
               {
-                "id": "https://annotations.allmaps.org/canvases/fead3a95deb679f1",
+                "id": "https://annotations.allmaps.org/canvases/5c48a631f692f1c9",
                 "manifests": [
                   {
-                    "id": "https://annotations.allmaps.org/manifests/a7e08644273d0bd0"
+                    "id": "https://annotations.allmaps.org/manifests/96e80288b60d9814"
                   }
                 ]
               }
             ]
           },
-          "scale": 0.036467,
-          "area": 6542867422.82
+          "scale": 0.026805,
+          "area": 12113059410.34
         }
       }
     },
@@ -1346,20 +562,20 @@
           "width": 2481,
           "partOf": [
             {
-              "id": "https://iiif.archive.org/iiif/in.gazette.central.e.2020-07-02.220342$41/canvas",
+              "id": "https://publicmap.github.io/india-esz-dashboard/data/gazette-maps/manifests/in.gazette.central.e.2020-07-02.220342/archive-42-0/canvas",
               "type": "Canvas",
               "label": {
-                "none": [
-                  "42"
+                "en": [
+                  "Kudremukh National Park – Page 43 (page scan)"
                 ]
               },
               "partOf": [
                 {
-                  "id": "https://iiif.archive.org/iiif/in.gazette.central.e.2020-07-02.220342/manifest.json",
+                  "id": "https://publicmap.github.io/india-esz-dashboard/data/gazette-maps/manifests/in.gazette.central.e.2020-07-02.220342.json",
                   "type": "Manifest",
                   "label": {
-                    "none": [
-                      "Extraordinary Gazette of India, 2020-07-02"
+                    "en": [
+                      "Kudremukh National Park – ESZ notification"
                     ]
                   }
                 }
@@ -1473,6 +689,526 @@
         "http://iiif.io/api/extension/georef/1/context.json",
         "http://iiif.io/api/presentation/3/context.json"
       ],
+      "id": "https://annotations.allmaps.org/maps/a69db9bde740114a",
+      "type": "Annotation",
+      "created": "2026-09-18T18:40:48.969Z",
+      "modified": "2026-09-18T18:40:48.969Z",
+      "motivation": "georeferencing",
+      "target": {
+        "type": "SpecificResource",
+        "source": {
+          "id": "https://iiif.archive.org/image/iiif/3/in.gazette.central.e.2017-04-13.175405%2F175405_jp2.zip%2F175405_jp2%2F175405_0034.jp2",
+          "type": "ImageService3",
+          "height": 3509,
+          "width": 2480,
+          "partOf": [
+            {
+              "id": "https://publicmap.github.io/india-esz-dashboard/data/gazette-maps/manifests/in.gazette.central.e.2017-04-13.175405/archive-34-2/canvas",
+              "type": "Canvas",
+              "label": {
+                "en": [
+                  "Mookambika Wildlife Sanctuary – Page 35 (page scan)"
+                ]
+              },
+              "partOf": [
+                {
+                  "id": "https://publicmap.github.io/india-esz-dashboard/data/gazette-maps/manifests/in.gazette.central.e.2017-04-13.175405.json",
+                  "type": "Manifest",
+                  "label": {
+                    "en": [
+                      "Mookambika Wildlife Sanctuary – ESZ notification"
+                    ]
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        "selector": {
+          "type": "SvgSelector",
+          "value": "<svg width=\"2480\" height=\"3509\"><polygon points=\"0,0 0,3509 2480,3509 2480,0\" /></svg>"
+        }
+      },
+      "body": {
+        "type": "FeatureCollection",
+        "transformation": {
+          "type": "polynomial",
+          "options": {
+            "order": 1
+          }
+        },
+        "features": [
+          {
+            "type": "Feature",
+            "properties": {
+              "resourceCoords": [
+                692,
+                1176
+              ]
+            },
+            "geometry": {
+              "type": "Point",
+              "coordinates": [
+                74.66498479591047,
+                13.981685474362678
+              ]
+            }
+          },
+          {
+            "type": "Feature",
+            "properties": {
+              "resourceCoords": [
+                1173,
+                1605
+              ]
+            },
+            "geometry": {
+              "type": "Point",
+              "coordinates": [
+                74.81347856559057,
+                13.836196938741026
+              ]
+            }
+          },
+          {
+            "type": "Feature",
+            "properties": {
+              "resourceCoords": [
+                1796,
+                1552
+              ]
+            },
+            "geometry": {
+              "type": "Point",
+              "coordinates": [
+                75.00219950923025,
+                13.852593809299307
+              ]
+            }
+          },
+          {
+            "type": "Feature",
+            "properties": {
+              "resourceCoords": [
+                1004,
+                2025
+              ]
+            },
+            "geometry": {
+              "type": "Point",
+              "coordinates": [
+                74.7608321132254,
+                13.6934054461409
+              ]
+            }
+          }
+        ],
+        "_allmaps": {
+          "id": "https://annotations.allmaps.org/maps/a69db9bde740114a",
+          "version": "https://annotations.allmaps.org/maps/a69db9bde740114a@e743e72834111968",
+          "image": {
+            "id": "https://annotations.allmaps.org/images/6d73f99799b21c00",
+            "version": "https://annotations.allmaps.org/images/6d73f99799b21c00@b79bf4e014cffce1",
+            "canvases": [
+              {
+                "id": "https://annotations.allmaps.org/canvases/bb6fe56641a6c340",
+                "manifests": [
+                  {
+                    "id": "https://annotations.allmaps.org/manifests/4c3a275442f92a47"
+                  }
+                ]
+              }
+            ]
+          },
+          "scale": 0.028422,
+          "area": 10772866359.35
+        }
+      }
+    },
+    {
+      "@context": [
+        "http://iiif.io/api/extension/georef/1/context.json",
+        "http://iiif.io/api/presentation/3/context.json"
+      ],
+      "id": "https://annotations.allmaps.org/maps/1221bff81bd18296",
+      "type": "Annotation",
+      "created": "2026-11-23T20:12:53.022Z",
+      "modified": "2026-11-23T20:12:53.022Z",
+      "motivation": "georeferencing",
+      "target": {
+        "type": "SpecificResource",
+        "source": {
+          "id": "https://iiif.archive.org/image/iiif/3/in.gazette.central.e.2026-04-23.272139%2F272139_jp2.zip%2F272139_jp2%2F272139_0037.jp2",
+          "type": "ImageService3",
+          "height": 3508,
+          "width": 2481,
+          "partOf": [
+            {
+              "id": "https://publicmap.github.io/india-esz-dashboard/data/gazette-maps/manifests/in.gazette.central.e.2026-04-23.272139/archive-37-2/canvas",
+              "type": "Canvas",
+              "label": {
+                "en": [
+                  "Great Himalayan National Park – Page 38 (page scan)"
+                ]
+              },
+              "partOf": [
+                {
+                  "id": "https://publicmap.github.io/india-esz-dashboard/data/gazette-maps/manifests/in.gazette.central.e.2026-04-23.272139.json",
+                  "type": "Manifest",
+                  "label": {
+                    "en": [
+                      "Great Himalayan National Park – ESZ notification"
+                    ]
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        "selector": {
+          "type": "SvgSelector",
+          "value": "<svg width=\"2481\" height=\"3508\"><polygon points=\"0,0 0,3508 2481,3508 2481,0\" /></svg>"
+        }
+      },
+      "body": {
+        "type": "FeatureCollection",
+        "transformation": {
+          "type": "polynomial",
+          "options": {
+            "order": 1
+          }
+        },
+        "features": [
+          {
+            "type": "Feature",
+            "properties": {
+              "resourceCoords": [
+                1894,
+                1533
+              ]
+            },
+            "geometry": {
+              "type": "Point",
+              "coordinates": [
+                77.86898502807526,
+                31.782410912377216
+              ]
+            }
+          },
+          {
+            "type": "Feature",
+            "properties": {
+              "resourceCoords": [
+                1028,
+                2260
+              ]
+            },
+            "geometry": {
+              "type": "Point",
+              "coordinates": [
+                77.52711287325872,
+                31.5698621652902
+              ]
+            }
+          },
+          {
+            "type": "Feature",
+            "properties": {
+              "resourceCoords": [
+                1654,
+                1077
+              ]
+            },
+            "geometry": {
+              "type": "Point",
+              "coordinates": [
+                77.78208492485095,
+                31.92219651566539
+              ]
+            }
+          }
+        ],
+        "_allmaps": {
+          "id": "https://annotations.allmaps.org/maps/1221bff81bd18296",
+          "version": "https://annotations.allmaps.org/maps/1221bff81bd18296@032a1349943340ad",
+          "image": {
+            "id": "https://annotations.allmaps.org/images/09fa5a849158fb55",
+            "version": "https://annotations.allmaps.org/images/09fa5a849158fb55@fc0dc6b3fdf73890",
+            "canvases": [
+              {
+                "id": "https://annotations.allmaps.org/canvases/441b217f0403f607",
+                "manifests": [
+                  {
+                    "id": "https://annotations.allmaps.org/manifests/1f66c1372de84e5b"
+                  }
+                ]
+              }
+            ]
+          },
+          "scale": 0.028582,
+          "area": 10653361788.15
+        }
+      }
+    },
+    {
+      "@context": [
+        "http://iiif.io/api/extension/georef/1/context.json",
+        "http://iiif.io/api/presentation/3/context.json"
+      ],
+      "id": "https://annotations.allmaps.org/maps/0cb3ac0ec09ca0ca",
+      "type": "Annotation",
+      "created": "2026-09-18T16:33:58.530Z",
+      "modified": "2026-09-18T16:33:58.530Z",
+      "motivation": "georeferencing",
+      "target": {
+        "type": "SpecificResource",
+        "source": {
+          "id": "https://iiif.archive.org/image/iiif/3/in.gazette.central.e.2023-11-16.250111%2F250111_jp2.zip%2F250111_jp2%2F250111_0066.jp2",
+          "type": "ImageService3",
+          "height": 3508,
+          "width": 2481,
+          "partOf": [
+            {
+              "id": "https://publicmap.github.io/india-esz-dashboard/data/gazette-maps/manifests/in.gazette.central.e.2023-11-16.250111/archive-66-0/canvas",
+              "type": "Canvas",
+              "label": {
+                "en": [
+                  "Sharavathi LTM Wildlife Sanctuary – Page 67 (page scan)"
+                ]
+              },
+              "partOf": [
+                {
+                  "id": "https://publicmap.github.io/india-esz-dashboard/data/gazette-maps/manifests/in.gazette.central.e.2023-11-16.250111.json",
+                  "type": "Manifest",
+                  "label": {
+                    "en": [
+                      "Sharavathi LTM Wildlife Sanctuary – ESZ notification"
+                    ]
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        "selector": {
+          "type": "SvgSelector",
+          "value": "<svg width=\"2481\" height=\"3508\"><polygon points=\"0,0 0,3508 2481,3508 2481,0\" /></svg>"
+        }
+      },
+      "body": {
+        "type": "FeatureCollection",
+        "transformation": {
+          "type": "polynomial",
+          "options": {
+            "order": 1
+          }
+        },
+        "features": [
+          {
+            "type": "Feature",
+            "properties": {
+              "resourceCoords": [
+                1339,
+                710
+              ]
+            },
+            "geometry": {
+              "type": "Point",
+              "coordinates": [
+                74.76036488081269,
+                14.559272210615461
+              ]
+            }
+          },
+          {
+            "type": "Feature",
+            "properties": {
+              "resourceCoords": [
+                2064,
+                2481
+              ]
+            },
+            "geometry": {
+              "type": "Point",
+              "coordinates": [
+                74.98698855587361,
+                13.98815639328079
+              ]
+            }
+          },
+          {
+            "type": "Feature",
+            "properties": {
+              "resourceCoords": [
+                535,
+                1529
+              ]
+            },
+            "geometry": {
+              "type": "Point",
+              "coordinates": [
+                74.50868711706966,
+                14.29410366562908
+              ]
+            }
+          }
+        ],
+        "_allmaps": {
+          "id": "https://annotations.allmaps.org/maps/0cb3ac0ec09ca0ca",
+          "version": "https://annotations.allmaps.org/maps/0cb3ac0ec09ca0ca@3095effec439cc17",
+          "image": {
+            "id": "https://annotations.allmaps.org/images/2f1e4c612160cb3b",
+            "version": "https://annotations.allmaps.org/images/2f1e4c612160cb3b@733ce123bc403d81",
+            "canvases": [
+              {
+                "id": "https://annotations.allmaps.org/canvases/6609f72e4c317e72",
+                "manifests": [
+                  {
+                    "id": "https://annotations.allmaps.org/manifests/0d6acf88ff29c0d4"
+                  }
+                ]
+              }
+            ]
+          },
+          "scale": 0.028785,
+          "area": 10503801628.73
+        }
+      }
+    },
+    {
+      "@context": [
+        "http://iiif.io/api/extension/georef/1/context.json",
+        "http://iiif.io/api/presentation/3/context.json"
+      ],
+      "id": "https://annotations.allmaps.org/maps/bafdf4fb094ddc63",
+      "type": "Annotation",
+      "created": "2026-10-30T09:50:31.012Z",
+      "modified": "2026-10-30T09:50:31.012Z",
+      "motivation": "georeferencing",
+      "target": {
+        "type": "SpecificResource",
+        "source": {
+          "id": "https://iiif.archive.org/image/iiif/3/in.gazette.central.e.2021-06-18.227730%2F227730_jpg.zip%2F227730_jpg%2F227730_0029.jpg",
+          "type": "ImageService3",
+          "height": 3507,
+          "width": 2481,
+          "partOf": [
+            {
+              "id": "https://publicmap.github.io/india-esz-dashboard/data/gazette-maps/manifests/in.gazette.central.e.2021-06-18.227730/archive-29-2/canvas",
+              "type": "Canvas",
+              "label": {
+                "en": [
+                  "Sri Venkateswara National Park – Page 30 (page scan)"
+                ]
+              },
+              "partOf": [
+                {
+                  "id": "https://publicmap.github.io/india-esz-dashboard/data/gazette-maps/manifests/in.gazette.central.e.2021-06-18.227730.json",
+                  "type": "Manifest",
+                  "label": {
+                    "en": [
+                      "Sri Venkateswara National Park – ESZ notification"
+                    ]
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        "selector": {
+          "type": "SvgSelector",
+          "value": "<svg width=\"2481\" height=\"3507\"><polygon points=\"0,0 0,3507 2481,3507 2481,0\" /></svg>"
+        }
+      },
+      "body": {
+        "type": "FeatureCollection",
+        "transformation": {
+          "type": "polynomial",
+          "options": {
+            "order": 1
+          }
+        },
+        "features": [
+          {
+            "type": "Feature",
+            "properties": {
+              "resourceCoords": [
+                1150,
+                747
+              ]
+            },
+            "geometry": {
+              "type": "Point",
+              "coordinates": [
+                79.30719932174691,
+                13.95073706222179
+              ]
+            }
+          },
+          {
+            "type": "Feature",
+            "properties": {
+              "resourceCoords": [
+                1898,
+                1700
+              ]
+            },
+            "geometry": {
+              "type": "Point",
+              "coordinates": [
+                79.54504641204574,
+                13.687057449735718
+              ]
+            }
+          },
+          {
+            "type": "Feature",
+            "properties": {
+              "resourceCoords": [
+                1052,
+                1853
+              ]
+            },
+            "geometry": {
+              "type": "Point",
+              "coordinates": [
+                79.27506875234155,
+                13.645242731442847
+              ]
+            }
+          }
+        ],
+        "_allmaps": {
+          "id": "https://annotations.allmaps.org/maps/bafdf4fb094ddc63",
+          "version": "https://annotations.allmaps.org/maps/bafdf4fb094ddc63@5f6c46b8a1fa4718",
+          "image": {
+            "id": "https://annotations.allmaps.org/images/2969bcc698d2db8d",
+            "version": "https://annotations.allmaps.org/images/2969bcc698d2db8d@9734e9909b4e1fd2",
+            "canvases": [
+              {
+                "id": "https://annotations.allmaps.org/canvases/239a4759a34da6a3",
+                "manifests": [
+                  {
+                    "id": "https://annotations.allmaps.org/manifests/2e4ae6a3f48ba358"
+                  }
+                ]
+              },
+              {
+                "id": "https://annotations.allmaps.org/canvases/8a77ceac62e8903b",
+                "manifests": []
+              }
+            ]
+          },
+          "scale": 0.030783,
+          "area": 9182271869.19
+        }
+      }
+    },
+    {
+      "@context": [
+        "http://iiif.io/api/extension/georef/1/context.json",
+        "http://iiif.io/api/presentation/3/context.json"
+      ],
       "id": "https://annotations.allmaps.org/maps/49b8bb239b56b4b0",
       "type": "Annotation",
       "created": "2026-08-25T05:43:06.342Z",
@@ -1487,20 +1223,20 @@
           "width": 2481,
           "partOf": [
             {
-              "id": "https://iiif.archive.org/iiif/in.gazette.central.e.2020-03-11.218606$34/canvas",
+              "id": "https://publicmap.github.io/india-esz-dashboard/data/gazette-maps/manifests/in.gazette.central.e.2020-03-11.218606/archive-34-0/canvas",
               "type": "Canvas",
               "label": {
-                "none": [
-                  "34"
+                "en": [
+                  "Bannerghatta National Park – Page 35 (page scan)"
                 ]
               },
               "partOf": [
                 {
-                  "id": "https://iiif.archive.org/iiif/in.gazette.central.e.2020-03-11.218606/manifest.json",
+                  "id": "https://publicmap.github.io/india-esz-dashboard/data/gazette-maps/manifests/in.gazette.central.e.2020-03-11.218606.json",
                   "type": "Manifest",
                   "label": {
-                    "none": [
-                      "Extraordinary Gazette of India, 2020-03-11"
+                    "en": [
+                      "Bannerghatta National Park – ESZ notification"
                     ]
                   }
                 }
@@ -1598,6 +1334,381 @@
         "http://iiif.io/api/extension/georef/1/context.json",
         "http://iiif.io/api/presentation/3/context.json"
       ],
+      "id": "https://annotations.allmaps.org/maps/2bc07b89acfe4c9f",
+      "type": "Annotation",
+      "created": "2026-09-18T18:46:32.315Z",
+      "modified": "2026-09-18T18:46:32.315Z",
+      "motivation": "georeferencing",
+      "target": {
+        "type": "SpecificResource",
+        "source": {
+          "id": "https://iiif.archive.org/image/iiif/3/in.gazette.central.e.2020-08-28.221455%2F221455_jpg.zip%2F221455_jpg%2F221455_0038.jpg",
+          "type": "ImageService3",
+          "height": 3507,
+          "width": 2481,
+          "partOf": [
+            {
+              "id": "https://publicmap.github.io/india-esz-dashboard/data/gazette-maps/manifests/in.gazette.central.e.2020-08-28.221455/archive-38-0/canvas",
+              "type": "Canvas",
+              "label": {
+                "en": [
+                  "Someshwara Wildlife Sanctuary – Page 39 (page scan)"
+                ]
+              },
+              "partOf": [
+                {
+                  "id": "https://publicmap.github.io/india-esz-dashboard/data/gazette-maps/manifests/in.gazette.central.e.2020-08-28.221455.json",
+                  "type": "Manifest",
+                  "label": {
+                    "en": [
+                      "Someshwara Wildlife Sanctuary – ESZ notification"
+                    ]
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        "selector": {
+          "type": "SvgSelector",
+          "value": "<svg width=\"2481\" height=\"3507\"><polygon points=\"0,0 0,3507 2481,3507 2481,0\" /></svg>"
+        }
+      },
+      "body": {
+        "type": "FeatureCollection",
+        "transformation": {
+          "type": "polynomial",
+          "options": {
+            "order": 1
+          }
+        },
+        "features": [
+          {
+            "type": "Feature",
+            "properties": {
+              "resourceCoords": [
+                1676,
+                1299
+              ]
+            },
+            "geometry": {
+              "type": "Point",
+              "coordinates": [
+                75.14135995714116,
+                13.612487174249466
+              ]
+            }
+          },
+          {
+            "type": "Feature",
+            "properties": {
+              "resourceCoords": [
+                1925,
+                2143
+              ]
+            },
+            "geometry": {
+              "type": "Point",
+              "coordinates": [
+                75.19453958747872,
+                13.363242799298177
+              ]
+            }
+          },
+          {
+            "type": "Feature",
+            "properties": {
+              "resourceCoords": [
+                555,
+                1673
+              ]
+            },
+            "geometry": {
+              "type": "Point",
+              "coordinates": [
+                74.90299246644503,
+                13.502949505703171
+              ]
+            }
+          }
+        ],
+        "_allmaps": {
+          "id": "https://annotations.allmaps.org/maps/2bc07b89acfe4c9f",
+          "version": "https://annotations.allmaps.org/maps/2bc07b89acfe4c9f@080c8319c3cc077f",
+          "image": {
+            "id": "https://annotations.allmaps.org/images/0616ac1e5b70b08e",
+            "version": "https://annotations.allmaps.org/images/0616ac1e5b70b08e@2acf3a996910013a",
+            "canvases": [
+              {
+                "id": "https://annotations.allmaps.org/canvases/fead3a95deb679f1",
+                "manifests": [
+                  {
+                    "id": "https://annotations.allmaps.org/manifests/a7e08644273d0bd0"
+                  }
+                ]
+              }
+            ]
+          },
+          "scale": 0.036467,
+          "area": 6542867422.82
+        }
+      }
+    },
+    {
+      "@context": [
+        "http://iiif.io/api/extension/georef/1/context.json",
+        "http://iiif.io/api/presentation/3/context.json"
+      ],
+      "id": "https://annotations.allmaps.org/maps/6a898ad31a94b2af",
+      "type": "Annotation",
+      "created": "2026-07-22T08:48:59.239Z",
+      "modified": "2026-07-22T08:48:59.239Z",
+      "motivation": "georeferencing",
+      "target": {
+        "type": "SpecificResource",
+        "source": {
+          "id": "https://iiif.archive.org/image/iiif/3/in.gazette.central.e.2026-02-27.270617%2F270617_jp2.zip%2F270617_jp2%2F270617_0034.jp2",
+          "type": "ImageService3",
+          "height": 3508,
+          "width": 2481,
+          "partOf": [
+            {
+              "id": "https://publicmap.github.io/india-esz-dashboard/data/gazette-maps/manifests/in.gazette.central.e.2026-02-27.270617/archive-34-0/canvas",
+              "type": "Canvas",
+              "label": {
+                "en": [
+                  "Peechi-Vazhani Wildlife Sanctuary – Page 35 (page scan)"
+                ]
+              },
+              "partOf": [
+                {
+                  "id": "https://publicmap.github.io/india-esz-dashboard/data/gazette-maps/manifests/in.gazette.central.e.2026-02-27.270617.json",
+                  "type": "Manifest",
+                  "label": {
+                    "en": [
+                      "Peechi-Vazhani Wildlife Sanctuary – ESZ notification"
+                    ]
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        "selector": {
+          "type": "SvgSelector",
+          "value": "<svg width=\"2481\" height=\"3508\"><polygon points=\"0,0 0,3508 2481,3508 2481,0\" /></svg>"
+        }
+      },
+      "body": {
+        "type": "FeatureCollection",
+        "transformation": {
+          "type": "polynomial",
+          "options": {
+            "order": 1
+          }
+        },
+        "features": [
+          {
+            "type": "Feature",
+            "properties": {
+              "resourceCoords": [
+                1388,
+                1653
+              ]
+            },
+            "geometry": {
+              "type": "Point",
+              "coordinates": [
+                76.35733047356393,
+                10.45810180146809
+              ]
+            }
+          },
+          {
+            "type": "Feature",
+            "properties": {
+              "resourceCoords": [
+                1037,
+                687
+              ]
+            },
+            "geometry": {
+              "type": "Point",
+              "coordinates": [
+                76.27057752977856,
+                10.696469712852107
+              ]
+            }
+          },
+          {
+            "type": "Feature",
+            "properties": {
+              "resourceCoords": [
+                1970,
+                1570
+              ]
+            },
+            "geometry": {
+              "type": "Point",
+              "coordinates": [
+                76.50003407552578,
+                10.478490058091978
+              ]
+            }
+          }
+        ],
+        "_allmaps": {
+          "id": "https://annotations.allmaps.org/maps/6a898ad31a94b2af",
+          "version": "https://annotations.allmaps.org/maps/6a898ad31a94b2af@4ccb4da6bf2b0feb",
+          "image": {
+            "id": "https://annotations.allmaps.org/images/6f2681175ea0afb5",
+            "version": "https://annotations.allmaps.org/images/6f2681175ea0afb5@ba7cf76804d4707b",
+            "canvases": [
+              {
+                "id": "https://annotations.allmaps.org/canvases/45dba8024ce0ab6e",
+                "manifests": [
+                  {
+                    "id": "https://annotations.allmaps.org/manifests/8d2f518eff7e1d85"
+                  }
+                ]
+              }
+            ]
+          },
+          "scale": 0.036931,
+          "area": 6381309927.1
+        }
+      }
+    },
+    {
+      "@context": [
+        "http://iiif.io/api/extension/georef/1/context.json",
+        "http://iiif.io/api/presentation/3/context.json"
+      ],
+      "id": "https://annotations.allmaps.org/maps/9e3547bf79c831a4",
+      "type": "Annotation",
+      "created": "2026-09-20T01:41:25.931Z",
+      "modified": "2026-09-20T01:41:25.931Z",
+      "motivation": "georeferencing",
+      "target": {
+        "type": "SpecificResource",
+        "source": {
+          "id": "https://iiif.archive.org/image/iiif/3/in.gazette.central.e.2017-05-26.176317%2F176317_jp2.zip%2F176317_jp2%2F176317_0024.jp2",
+          "type": "ImageService3",
+          "height": 7016,
+          "width": 4961,
+          "partOf": [
+            {
+              "id": "https://publicmap.github.io/india-esz-dashboard/data/gazette-maps/manifests/in.gazette.central.e.2017-05-26.176317/archive-24-0/canvas",
+              "type": "Canvas",
+              "label": {
+                "en": [
+                  "Brahmagiri Wildlife Sanctuary – Page 25 (page scan)"
+                ]
+              },
+              "partOf": [
+                {
+                  "id": "https://publicmap.github.io/india-esz-dashboard/data/gazette-maps/manifests/in.gazette.central.e.2017-05-26.176317.json",
+                  "type": "Manifest",
+                  "label": {
+                    "en": [
+                      "Brahmagiri Wildlife Sanctuary – ESZ notification"
+                    ]
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        "selector": {
+          "type": "SvgSelector",
+          "value": "<svg width=\"4961\" height=\"7016\"><polygon points=\"0,0 0,7016 4961,7016 4961,0\" /></svg>"
+        }
+      },
+      "body": {
+        "type": "FeatureCollection",
+        "transformation": {
+          "type": "polynomial",
+          "options": {
+            "order": 1
+          }
+        },
+        "features": [
+          {
+            "type": "Feature",
+            "properties": {
+              "resourceCoords": [
+                1816,
+                5030
+              ]
+            },
+            "geometry": {
+              "type": "Point",
+              "coordinates": [
+                75.79043683317656,
+                11.922297246537028
+              ]
+            }
+          },
+          {
+            "type": "Feature",
+            "properties": {
+              "resourceCoords": [
+                4011,
+                4734
+              ]
+            },
+            "geometry": {
+              "type": "Point",
+              "coordinates": [
+                76.05466451778517,
+                11.954754371054165
+              ]
+            }
+          },
+          {
+            "type": "Feature",
+            "properties": {
+              "resourceCoords": [
+                1835,
+                3056
+              ]
+            },
+            "geometry": {
+              "type": "Point",
+              "coordinates": [
+                75.79462419844546,
+                12.144226674926955
+              ]
+            }
+          }
+        ],
+        "_allmaps": {
+          "id": "https://annotations.allmaps.org/maps/9e3547bf79c831a4",
+          "version": "https://annotations.allmaps.org/maps/9e3547bf79c831a4@4e4d5d0a4ab3c967",
+          "image": {
+            "id": "https://annotations.allmaps.org/images/c22e3341f01e9f1f",
+            "version": "https://annotations.allmaps.org/images/c22e3341f01e9f1f@9e755f7fabde2ef7",
+            "canvases": [
+              {
+                "id": "https://annotations.allmaps.org/canvases/e0e8d2c514520bb1",
+                "manifests": [
+                  {
+                    "id": "https://annotations.allmaps.org/manifests/996723f0a1fc6e96"
+                  }
+                ]
+              }
+            ]
+          },
+          "scale": 0.078379,
+          "area": 5665806927.28
+        }
+      }
+    },
+    {
+      "@context": [
+        "http://iiif.io/api/extension/georef/1/context.json",
+        "http://iiif.io/api/presentation/3/context.json"
+      ],
       "id": "https://annotations.allmaps.org/maps/c588af7ad389ae96",
       "type": "Annotation",
       "created": "2026-10-27T09:12:30.625Z",
@@ -1612,34 +1723,24 @@
           "width": 2550,
           "partOf": [
             {
-              "id": "https://iiif.archive.org/iiif/in.gazette.central.e.2019-09-11.212461$43/canvas",
+              "id": "https://publicmap.github.io/india-esz-dashboard/data/gazette-maps/manifests/in.gazette.central.e.2019-09-11.212461/archive-43-0/canvas",
               "type": "Canvas",
               "label": {
-                "none": [
-                  "43"
+                "en": [
+                  "Tungareshwar Wildlife Sanctuary – Page 44 (page scan)"
                 ]
               },
               "partOf": [
                 {
-                  "id": "https://iiif.archive.org/iiif/in.gazette.central.e.2019-09-11.212461/manifest.json",
+                  "id": "https://publicmap.github.io/india-esz-dashboard/data/gazette-maps/manifests/in.gazette.central.e.2019-09-11.212461.json",
                   "type": "Manifest",
                   "label": {
-                    "none": [
-                      "Gazette of India - Extraordinary, 2019-09-11, Part II-Section 3-Sub-Section(ii)"
+                    "en": [
+                      "Tungareshwar Wildlife Sanctuary – ESZ notification"
                     ]
                   }
                 }
               ]
-            },
-            {
-              "id": "https://publicmap.github.io/india-esz-dashboard/data/iiif-manifest.json/canvas/6",
-              "type": "Canvas",
-              "label": {
-                "en": [
-                  "Tungareshwar Wildlife Sanctuary (2019-09-11)"
-                ]
-              },
-              "partOf": []
             }
           ]
         },
@@ -1785,34 +1886,34 @@
         "http://iiif.io/api/extension/georef/1/context.json",
         "http://iiif.io/api/presentation/3/context.json"
       ],
-      "id": "https://annotations.allmaps.org/maps/58ee7fa2b95445ff",
+      "id": "https://annotations.allmaps.org/maps/64d84d806bb88301",
       "type": "Annotation",
-      "created": "2026-07-24T06:38:24.551Z",
-      "modified": "2026-07-24T06:38:24.551Z",
+      "created": "2026-08-04T14:21:43.294Z",
+      "modified": "2026-08-04T14:21:43.294Z",
       "motivation": "georeferencing",
       "target": {
         "type": "SpecificResource",
         "source": {
-          "id": "https://iiif.archive.org/image/iiif/3/in.gazette.central.e.2017-12-29.181628%2F181628_jp2.zip%2F181628_jp2%2F181628_0021.jp2",
+          "id": "https://iiif.archive.org/image/iiif/3/in.gazette.central.e.2021-01-28.224827%2F224827_jpg.zip%2F224827_jpg%2F224827_0038.jpg",
           "type": "ImageService3",
-          "height": 3301,
-          "width": 2550,
+          "height": 3507,
+          "width": 2481,
           "partOf": [
             {
-              "id": "https://iiif.archive.org/iiif/in.gazette.central.e.2017-12-29.181628$21/canvas",
+              "id": "https://publicmap.github.io/india-esz-dashboard/data/gazette-maps/manifests/in.gazette.central.e.2021-01-28.224827/archive-38-0/canvas",
               "type": "Canvas",
               "label": {
-                "none": [
-                  "21"
+                "en": [
+                  "Parambikulam Tiger Reserve – Page 39 (page scan)"
                 ]
               },
               "partOf": [
                 {
-                  "id": "https://iiif.archive.org/iiif/in.gazette.central.e.2017-12-29.181628/manifest.json",
+                  "id": "https://publicmap.github.io/india-esz-dashboard/data/gazette-maps/manifests/in.gazette.central.e.2021-01-28.224827.json",
                   "type": "Manifest",
                   "label": {
-                    "none": [
-                      "Union Government, Extraordinary, 2017-12-29, Part II-Section 3-Sub-Section(ii), Ref. SO 4110 E"
+                    "en": [
+                      "Parambikulam Tiger Reserve – ESZ notification"
                     ]
                   }
                 }
@@ -1822,7 +1923,7 @@
         },
         "selector": {
           "type": "SvgSelector",
-          "value": "<svg width=\"2550\" height=\"3301\"><polygon points=\"0,0 0,3301 2550,3301 2550,0\" /></svg>"
+          "value": "<svg width=\"2481\" height=\"3507\"><polygon points=\"0,0 0,3507 2481,3507 2481,0\" /></svg>"
         }
       },
       "body": {
@@ -1838,15 +1939,15 @@
             "type": "Feature",
             "properties": {
               "resourceCoords": [
-                1014,
-                1069
+                1646,
+                715
               ]
             },
             "geometry": {
               "type": "Point",
               "coordinates": [
-                77.18026194581847,
-                28.485353824579644
+                76.83555055024561,
+                10.55768162364214
               ]
             }
           },
@@ -1854,15 +1955,15 @@
             "type": "Feature",
             "properties": {
               "resourceCoords": [
-                978,
-                2238
+                1888,
+                2621
               ]
             },
             "geometry": {
               "type": "Point",
               "coordinates": [
-                77.17457280162921,
-                28.404574688002103
+                76.89645132236626,
+                10.253806616905834
               ]
             }
           },
@@ -1870,38 +1971,42 @@
             "type": "Feature",
             "properties": {
               "resourceCoords": [
-                1640,
-                1811
+                466,
+                1116
               ]
             },
             "geometry": {
               "type": "Point",
               "coordinates": [
-                77.25290643763839,
-                28.433012842596096
+                76.54528379204908,
+                10.492848483969937
               ]
             }
           }
         ],
         "_allmaps": {
-          "id": "https://annotations.allmaps.org/maps/58ee7fa2b95445ff",
-          "version": "https://annotations.allmaps.org/maps/58ee7fa2b95445ff@da4c6b60a7b2c50e",
+          "id": "https://annotations.allmaps.org/maps/64d84d806bb88301",
+          "version": "https://annotations.allmaps.org/maps/64d84d806bb88301@76c4353dc68ab914",
           "image": {
-            "id": "https://annotations.allmaps.org/images/53ce1da8ee782e22",
-            "version": "https://annotations.allmaps.org/images/53ce1da8ee782e22@0706817c5c00bb6c",
+            "id": "https://annotations.allmaps.org/images/983271c772119b11",
+            "version": "https://annotations.allmaps.org/images/983271c772119b11@401c30c4e4ae1e66",
             "canvases": [
               {
-                "id": "https://annotations.allmaps.org/canvases/7da989a4aa66e3db",
+                "id": "https://annotations.allmaps.org/canvases/c14d9620ac7e76ad",
                 "manifests": [
                   {
-                    "id": "https://annotations.allmaps.org/manifests/3e9bf61034f14af8"
+                    "id": "https://annotations.allmaps.org/manifests/23f1c72d8296f5ad"
                   }
                 ]
+              },
+              {
+                "id": "https://annotations.allmaps.org/canvases/07dd775a9c0357d4",
+                "manifests": []
               }
             ]
           },
-          "scale": 0.106449,
-          "area": 742849505.24
+          "scale": 0.045845,
+          "area": 4139825254.87
         }
       }
     },
@@ -1910,54 +2015,44 @@
         "http://iiif.io/api/extension/georef/1/context.json",
         "http://iiif.io/api/presentation/3/context.json"
       ],
-      "id": "https://annotations.allmaps.org/maps/82ddd6c5566e4d83",
+      "id": "https://annotations.allmaps.org/maps/674cd27a1a2b81c7",
       "type": "Annotation",
-      "created": "2026-08-03T18:28:13.956Z",
-      "modified": "2026-08-03T18:28:13.956Z",
+      "created": "2026-07-18T19:24:58.265Z",
+      "modified": "2026-07-18T19:24:58.265Z",
       "motivation": "georeferencing",
       "target": {
         "type": "SpecificResource",
         "source": {
-          "id": "https://iiif.archive.org/image/iiif/3/in.gazette.central.e.2017-09-13.178943%2F178943_jp2.zip%2F178943_jp2%2F178943_0031.jp2",
+          "id": "https://iiif.archive.org/image/iiif/3/in.gazette.central.e.2026-06-02.273252%2F273252_jp2.zip%2F273252_jp2%2F273252_0059.jp2",
           "type": "ImageService3",
-          "height": 3301,
-          "width": 2550,
+          "height": 3508,
+          "width": 2481,
           "partOf": [
             {
-              "id": "https://iiif.archive.org/iiif/in.gazette.central.e.2017-09-13.178943$31/canvas",
+              "id": "https://publicmap.github.io/india-esz-dashboard/data/gazette-maps/manifests/in.gazette.central.e.2026-06-02.273252/archive-59-0/canvas",
               "type": "Canvas",
               "label": {
-                "none": [
-                  "31"
+                "en": [
+                  "Eravikulam National Park – Page 60 (page scan)"
                 ]
               },
               "partOf": [
                 {
-                  "id": "https://iiif.archive.org/iiif/in.gazette.central.e.2017-09-13.178943/manifest.json",
+                  "id": "https://publicmap.github.io/india-esz-dashboard/data/gazette-maps/manifests/in.gazette.central.e.2026-06-02.273252.json",
                   "type": "Manifest",
                   "label": {
-                    "none": [
-                      "Union Government, Extraordinary, 2017-09-13, Part II-Section 3-Sub-Section(ii), Ref. 3026 E"
+                    "en": [
+                      "Eravikulam National Park – ESZ notification"
                     ]
                   }
                 }
               ]
-            },
-            {
-              "id": "https://publicmap.github.io/india-esz-dashboard/data/iiif-manifest.json/canvas/1",
-              "type": "Canvas",
-              "label": {
-                "en": [
-                  "Valmiki National Park (2017-09-13)"
-                ]
-              },
-              "partOf": []
             }
           ]
         },
         "selector": {
           "type": "SvgSelector",
-          "value": "<svg width=\"2550\" height=\"3301\"><polygon points=\"0,0 0,3301 2550,3301 2550,0\" /></svg>"
+          "value": "<svg width=\"2481\" height=\"3508\"><polygon points=\"0,0 0,3508 2481,3508 2481,0\" /></svg>"
         }
       },
       "body": {
@@ -1973,15 +2068,15 @@
             "type": "Feature",
             "properties": {
               "resourceCoords": [
-                502,
-                1122
+                1770,
+                2239
               ]
             },
             "geometry": {
               "type": "Point",
               "coordinates": [
-                83.83713012641033,
-                27.320699502509754
+                77.26758223446393,
+                10.121753495935224
               ]
             }
           },
@@ -1989,15 +2084,15 @@
             "type": "Feature",
             "properties": {
               "resourceCoords": [
-                1928,
-                1077
+                1703,
+                1320
               ]
             },
             "geometry": {
               "type": "Point",
               "coordinates": [
-                84.62290473955,
-                27.33606746723771
+                77.25739187083133,
+                10.259423407462009
               ]
             }
           },
@@ -2005,42 +2100,179 @@
             "type": "Feature",
             "properties": {
               "resourceCoords": [
-                1330,
-                1496
+                736,
+                1855
               ]
             },
             "geometry": {
               "type": "Point",
               "coordinates": [
-                84.29196222030737,
-                27.15175072971572
+                77.02351536869833,
+                10.178613215386221
+              ]
+            }
+          },
+          {
+            "type": "Feature",
+            "properties": {
+              "resourceCoords": [
+                1377,
+                699
+              ]
+            },
+            "geometry": {
+              "type": "Point",
+              "coordinates": [
+                77.1767470883168,
+                10.358350221862523
               ]
             }
           }
         ],
         "_allmaps": {
-          "id": "https://annotations.allmaps.org/maps/82ddd6c5566e4d83",
-          "version": "https://annotations.allmaps.org/maps/82ddd6c5566e4d83@f2819d4edf4829eb",
+          "id": "https://annotations.allmaps.org/maps/674cd27a1a2b81c7",
+          "version": "https://annotations.allmaps.org/maps/674cd27a1a2b81c7@2827eebfc1330796",
           "image": {
-            "id": "https://annotations.allmaps.org/images/b8c35d71d5ab9695",
-            "version": "https://annotations.allmaps.org/images/b8c35d71d5ab9695@eec55e650b41bfa6",
+            "id": "https://annotations.allmaps.org/images/7ece3c91d4cd4a20",
+            "version": "https://annotations.allmaps.org/images/7ece3c91d4cd4a20@7c3e97de4f1d0fb3",
             "canvases": [
               {
-                "id": "https://annotations.allmaps.org/canvases/fe89836282d70b8b",
+                "id": "https://annotations.allmaps.org/canvases/ec8534617b142e79",
                 "manifests": [
                   {
-                    "id": "https://annotations.allmaps.org/manifests/b8f2bfc2e84dee7d"
+                    "id": "https://annotations.allmaps.org/manifests/25eba576e0c293e0"
                   }
                 ]
-              },
-              {
-                "id": "https://annotations.allmaps.org/canvases/d4da044e3c568404",
-                "manifests": []
               }
             ]
           },
-          "scale": 0.019262,
-          "area": 22688445139.2
+          "scale": 0.047448,
+          "area": 3865944703.22
+        }
+      }
+    },
+    {
+      "@context": [
+        "http://iiif.io/api/extension/georef/1/context.json",
+        "http://iiif.io/api/presentation/3/context.json"
+      ],
+      "id": "https://annotations.allmaps.org/maps/cc5375807c5e5f5f",
+      "type": "Annotation",
+      "created": "2026-07-22T07:40:40.840Z",
+      "modified": "2026-07-22T07:40:40.840Z",
+      "motivation": "georeferencing",
+      "target": {
+        "type": "SpecificResource",
+        "source": {
+          "id": "https://iiif.archive.org/image/iiif/3/in.gazette.central.e.2026-05-26.273075%2F273075_jp2.zip%2F273075_jp2%2F273075_0038.jp2",
+          "type": "ImageService3",
+          "height": 3508,
+          "width": 2481,
+          "partOf": [
+            {
+              "id": "https://publicmap.github.io/india-esz-dashboard/data/gazette-maps/manifests/in.gazette.central.e.2026-05-26.273075/archive-38-0/canvas",
+              "type": "Canvas",
+              "label": {
+                "en": [
+                  "Chimmini Wildlife Sanctuary – Page 39 (page scan)"
+                ]
+              },
+              "partOf": [
+                {
+                  "id": "https://publicmap.github.io/india-esz-dashboard/data/gazette-maps/manifests/in.gazette.central.e.2026-05-26.273075.json",
+                  "type": "Manifest",
+                  "label": {
+                    "en": [
+                      "Chimmini Wildlife Sanctuary – ESZ notification"
+                    ]
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        "selector": {
+          "type": "SvgSelector",
+          "value": "<svg width=\"2481\" height=\"3508\"><polygon points=\"0,0 0,3508 2481,3508 2481,0\" /></svg>"
+        }
+      },
+      "body": {
+        "type": "FeatureCollection",
+        "transformation": {
+          "type": "polynomial",
+          "options": {
+            "order": 1
+          }
+        },
+        "features": [
+          {
+            "type": "Feature",
+            "properties": {
+              "resourceCoords": [
+                1065,
+                1669
+              ]
+            },
+            "geometry": {
+              "type": "Point",
+              "coordinates": [
+                76.38489769368766,
+                10.350692684649331
+              ]
+            }
+          },
+          {
+            "type": "Feature",
+            "properties": {
+              "resourceCoords": [
+                2005,
+                1838
+              ]
+            },
+            "geometry": {
+              "type": "Point",
+              "coordinates": [
+                76.55457048165147,
+                10.320056869863166
+              ]
+            }
+          },
+          {
+            "type": "Feature",
+            "properties": {
+              "resourceCoords": [
+                1917,
+                810
+              ]
+            },
+            "geometry": {
+              "type": "Point",
+              "coordinates": [
+                76.53867323491272,
+                10.505335769486408
+              ]
+            }
+          }
+        ],
+        "_allmaps": {
+          "id": "https://annotations.allmaps.org/maps/cc5375807c5e5f5f",
+          "version": "https://annotations.allmaps.org/maps/cc5375807c5e5f5f@a8392b2dc5d26c2b",
+          "image": {
+            "id": "https://annotations.allmaps.org/images/9a5564d1b31b7e62",
+            "version": "https://annotations.allmaps.org/images/9a5564d1b31b7e62@ddebc515f365322f",
+            "canvases": [
+              {
+                "id": "https://annotations.allmaps.org/canvases/635f58e315775ef0",
+                "manifests": [
+                  {
+                    "id": "https://annotations.allmaps.org/manifests/47f634e8849707ba"
+                  }
+                ]
+              }
+            ]
+          },
+          "scale": 0.050368,
+          "area": 3430629947.49
         }
       }
     },
@@ -2063,34 +2295,24 @@
           "width": 2550,
           "partOf": [
             {
-              "id": "https://iiif.archive.org/iiif/in.gazette.central.e.2017-09-12.178813$20/canvas",
+              "id": "https://publicmap.github.io/india-esz-dashboard/data/gazette-maps/manifests/in.gazette.central.e.2017-09-12.178813/archive-20-0/canvas",
               "type": "Canvas",
               "label": {
-                "none": [
-                  "20"
+                "en": [
+                  "Asola Bhatti Wildlife Sanctuary – Page 21 (page scan)"
                 ]
               },
               "partOf": [
                 {
-                  "id": "https://iiif.archive.org/iiif/in.gazette.central.e.2017-09-12.178813/manifest.json",
+                  "id": "https://publicmap.github.io/india-esz-dashboard/data/gazette-maps/manifests/in.gazette.central.e.2017-09-12.178813.json",
                   "type": "Manifest",
                   "label": {
-                    "none": [
-                      "Union Government, Extraordinary, 2017-09-12, Part II-Section 3-Sub-Section(ii), Ref. SO 2996 E"
+                    "en": [
+                      "Asola Bhatti Wildlife Sanctuary – ESZ notification"
                     ]
                   }
                 }
               ]
-            },
-            {
-              "id": "https://publicmap.github.io/india-esz-dashboard/data/iiif-manifest.json/canvas/5",
-              "type": "Canvas",
-              "label": {
-                "en": [
-                  "Asola Bhatti Wildlife Sanctuary (2017-09-12)"
-                ]
-              },
-              "partOf": []
             }
           ]
         },
@@ -2188,6 +2410,256 @@
         "http://iiif.io/api/extension/georef/1/context.json",
         "http://iiif.io/api/presentation/3/context.json"
       ],
+      "id": "https://annotations.allmaps.org/maps/24d19c91b0420db1",
+      "type": "Annotation",
+      "created": "2026-08-07T17:59:28.211Z",
+      "modified": "2026-08-07T17:59:28.211Z",
+      "motivation": "georeferencing",
+      "target": {
+        "type": "SpecificResource",
+        "source": {
+          "id": "https://iiif.archive.org/image/iiif/3/in.gazette.central.e.2015-02-24.163111%2F163111_jp2.zip%2F163111_jp2%2F163111_0016.jp2",
+          "type": "ImageService3",
+          "height": 3509,
+          "width": 2480,
+          "partOf": [
+            {
+              "id": "https://publicmap.github.io/india-esz-dashboard/data/gazette-maps/manifests/in.gazette.central.e.2015-02-24.163111/archive-16-2/canvas",
+              "type": "Canvas",
+              "label": {
+                "en": [
+                  "Cotigao Wildlife Sanctuary – Page 17 (page scan)"
+                ]
+              },
+              "partOf": [
+                {
+                  "id": "https://publicmap.github.io/india-esz-dashboard/data/gazette-maps/manifests/in.gazette.central.e.2015-02-24.163111.json",
+                  "type": "Manifest",
+                  "label": {
+                    "en": [
+                      "Cotigao Wildlife Sanctuary – ESZ notification"
+                    ]
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        "selector": {
+          "type": "SvgSelector",
+          "value": "<svg width=\"2480\" height=\"3509\"><polygon points=\"0,0 0,3509 2480,3509 2480,0\" /></svg>"
+        }
+      },
+      "body": {
+        "type": "FeatureCollection",
+        "transformation": {
+          "type": "polynomial",
+          "options": {
+            "order": 1
+          }
+        },
+        "features": [
+          {
+            "type": "Feature",
+            "properties": {
+              "resourceCoords": [
+                1266,
+                2349
+              ]
+            },
+            "geometry": {
+              "type": "Point",
+              "coordinates": [
+                74.19580458237539,
+                15.041603188723455
+              ]
+            }
+          },
+          {
+            "type": "Feature",
+            "properties": {
+              "resourceCoords": [
+                1928,
+                2349
+              ]
+            },
+            "geometry": {
+              "type": "Point",
+              "coordinates": [
+                74.29623736107519,
+                15.041391825804608
+              ]
+            }
+          },
+          {
+            "type": "Feature",
+            "properties": {
+              "resourceCoords": [
+                995,
+                3035
+              ]
+            },
+            "geometry": {
+              "type": "Point",
+              "coordinates": [
+                74.15416229180454,
+                14.940875413846143
+              ]
+            }
+          }
+        ],
+        "_allmaps": {
+          "id": "https://annotations.allmaps.org/maps/24d19c91b0420db1",
+          "version": "https://annotations.allmaps.org/maps/24d19c91b0420db1@ca24594c95872955",
+          "image": {
+            "id": "https://annotations.allmaps.org/images/46616b8ef3a4a3f2",
+            "version": "https://annotations.allmaps.org/images/46616b8ef3a4a3f2@fd70f8a03f124dce",
+            "canvases": [
+              {
+                "id": "https://annotations.allmaps.org/canvases/06d89ecaf6a5ad1a",
+                "manifests": [
+                  {
+                    "id": "https://annotations.allmaps.org/manifests/d843db0e85d0a6b8"
+                  }
+                ]
+              }
+            ]
+          },
+          "scale": 0.06143,
+          "area": 2306086687.51
+        }
+      }
+    },
+    {
+      "@context": [
+        "http://iiif.io/api/extension/georef/1/context.json",
+        "http://iiif.io/api/presentation/3/context.json"
+      ],
+      "id": "https://annotations.allmaps.org/maps/58ee7fa2b95445ff",
+      "type": "Annotation",
+      "created": "2026-07-24T06:38:24.551Z",
+      "modified": "2026-07-24T06:38:24.551Z",
+      "motivation": "georeferencing",
+      "target": {
+        "type": "SpecificResource",
+        "source": {
+          "id": "https://iiif.archive.org/image/iiif/3/in.gazette.central.e.2017-12-29.181628%2F181628_jp2.zip%2F181628_jp2%2F181628_0021.jp2",
+          "type": "ImageService3",
+          "height": 3301,
+          "width": 2550,
+          "partOf": [
+            {
+              "id": "https://publicmap.github.io/india-esz-dashboard/data/gazette-maps/manifests/in.gazette.central.e.2017-12-29.181628/archive-21-0/canvas",
+              "type": "Canvas",
+              "label": {
+                "en": [
+                  "Asola Bhatti Wildlife Sanctuary – Page 22 (page scan)"
+                ]
+              },
+              "partOf": [
+                {
+                  "id": "https://publicmap.github.io/india-esz-dashboard/data/gazette-maps/manifests/in.gazette.central.e.2017-12-29.181628.json",
+                  "type": "Manifest",
+                  "label": {
+                    "en": [
+                      "Asola Bhatti Wildlife Sanctuary – ESZ notification"
+                    ]
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        "selector": {
+          "type": "SvgSelector",
+          "value": "<svg width=\"2550\" height=\"3301\"><polygon points=\"0,0 0,3301 2550,3301 2550,0\" /></svg>"
+        }
+      },
+      "body": {
+        "type": "FeatureCollection",
+        "transformation": {
+          "type": "polynomial",
+          "options": {
+            "order": 1
+          }
+        },
+        "features": [
+          {
+            "type": "Feature",
+            "properties": {
+              "resourceCoords": [
+                1014,
+                1069
+              ]
+            },
+            "geometry": {
+              "type": "Point",
+              "coordinates": [
+                77.18026194581847,
+                28.485353824579644
+              ]
+            }
+          },
+          {
+            "type": "Feature",
+            "properties": {
+              "resourceCoords": [
+                978,
+                2238
+              ]
+            },
+            "geometry": {
+              "type": "Point",
+              "coordinates": [
+                77.17457280162921,
+                28.404574688002103
+              ]
+            }
+          },
+          {
+            "type": "Feature",
+            "properties": {
+              "resourceCoords": [
+                1640,
+                1811
+              ]
+            },
+            "geometry": {
+              "type": "Point",
+              "coordinates": [
+                77.25290643763839,
+                28.433012842596096
+              ]
+            }
+          }
+        ],
+        "_allmaps": {
+          "id": "https://annotations.allmaps.org/maps/58ee7fa2b95445ff",
+          "version": "https://annotations.allmaps.org/maps/58ee7fa2b95445ff@da4c6b60a7b2c50e",
+          "image": {
+            "id": "https://annotations.allmaps.org/images/53ce1da8ee782e22",
+            "version": "https://annotations.allmaps.org/images/53ce1da8ee782e22@0706817c5c00bb6c",
+            "canvases": [
+              {
+                "id": "https://annotations.allmaps.org/canvases/7da989a4aa66e3db",
+                "manifests": [
+                  {
+                    "id": "https://annotations.allmaps.org/manifests/3e9bf61034f14af8"
+                  }
+                ]
+              }
+            ]
+          },
+          "scale": 0.106449,
+          "area": 742849505.24
+        }
+      }
+    },
+    {
+      "@context": [
+        "http://iiif.io/api/extension/georef/1/context.json",
+        "http://iiif.io/api/presentation/3/context.json"
+      ],
       "id": "https://annotations.allmaps.org/maps/549d3060d0ae82fb",
       "type": "Annotation",
       "created": "2026-09-18T18:35:20.266Z",
@@ -2202,20 +2674,20 @@
           "width": 2481,
           "partOf": [
             {
-              "id": "https://iiif.archive.org/iiif/in.gazette.central.e.2017-07-06.177343$21/canvas",
+              "id": "https://publicmap.github.io/india-esz-dashboard/data/gazette-maps/manifests/in.gazette.central.e.2017-07-06.177343/archive-21-2/canvas",
               "type": "Canvas",
               "label": {
-                "none": [
-                  "21"
+                "en": [
+                  "Gudavi Bird Sanctuary – Page 22 (page scan)"
                 ]
               },
               "partOf": [
                 {
-                  "id": "https://iiif.archive.org/iiif/in.gazette.central.e.2017-07-06.177343/manifest.json",
+                  "id": "https://publicmap.github.io/india-esz-dashboard/data/gazette-maps/manifests/in.gazette.central.e.2017-07-06.177343.json",
                   "type": "Manifest",
                   "label": {
-                    "none": [
-                      "Union Government, Extraordinary, 2017-07-06, Part II-Section 3-Sub-Section(ii), Ref. S O   2148 E"
+                    "en": [
+                      "Gudavi Bird Sanctuary – ESZ notification"
                     ]
                   }
                 }
@@ -2305,288 +2777,6 @@
           },
           "scale": 0.124989,
           "area": 557110183.24
-        }
-      }
-    },
-    {
-      "@context": [
-        "http://iiif.io/api/extension/georef/1/context.json",
-        "http://iiif.io/api/presentation/3/context.json"
-      ],
-      "id": "https://annotations.allmaps.org/maps/6e6bb75dfe7bd0fb",
-      "type": "Annotation",
-      "created": "2026-09-20T02:11:46.245Z",
-      "modified": "2026-09-20T02:11:46.245Z",
-      "motivation": "georeferencing",
-      "target": {
-        "type": "SpecificResource",
-        "source": {
-          "id": "https://iiif.archive.org/image/iiif/3/in.gazette.central.e.2017-05-15.176128%2F176128_jp2.zip%2F176128_jp2%2F176128_0024.jp2",
-          "type": "ImageService3",
-          "height": 3508,
-          "width": 2481,
-          "partOf": [
-            {
-              "id": "https://iiif.archive.org/iiif/in.gazette.central.e.2017-05-15.176128$24/canvas",
-              "type": "Canvas",
-              "label": {
-                "none": [
-                  "24"
-                ]
-              },
-              "partOf": [
-                {
-                  "id": "https://iiif.archive.org/iiif/in.gazette.central.e.2017-05-15.176128/manifest.json",
-                  "type": "Manifest",
-                  "label": {
-                    "none": [
-                      "Union Government, Extraordinary, 2017-05-15, Part II-Section 3-Sub-Section(ii), Ref. S O  1564 E"
-                    ]
-                  }
-                }
-              ]
-            }
-          ]
-        },
-        "selector": {
-          "type": "SvgSelector",
-          "value": "<svg width=\"2481\" height=\"3508\"><polygon points=\"0,0 0,3508 2481,3508 2481,0\" /></svg>"
-        }
-      },
-      "body": {
-        "type": "FeatureCollection",
-        "transformation": {
-          "type": "polynomial",
-          "options": {
-            "order": 1
-          }
-        },
-        "features": [
-          {
-            "type": "Feature",
-            "properties": {
-              "resourceCoords": [
-                988,
-                1076
-              ]
-            },
-            "geometry": {
-              "type": "Point",
-              "coordinates": [
-                75.42321353342663,
-                12.466988140655445
-              ]
-            }
-          },
-          {
-            "type": "Feature",
-            "properties": {
-              "resourceCoords": [
-                1384,
-                1698
-              ]
-            },
-            "geometry": {
-              "type": "Point",
-              "coordinates": [
-                75.53199118498858,
-                12.205614164376314
-              ]
-            }
-          },
-          {
-            "type": "Feature",
-            "properties": {
-              "resourceCoords": [
-                952,
-                1491
-              ]
-            },
-            "geometry": {
-              "type": "Point",
-              "coordinates": [
-                75.41354841065913,
-                12.291968554914277
-              ]
-            }
-          },
-          {
-            "type": "Feature",
-            "properties": {
-              "resourceCoords": [
-                1279,
-                1181
-              ]
-            },
-            "geometry": {
-              "type": "Point",
-              "coordinates": [
-                75.50290105386222,
-                12.423655831351851
-              ]
-            }
-          }
-        ],
-        "_allmaps": {
-          "id": "https://annotations.allmaps.org/maps/6e6bb75dfe7bd0fb",
-          "version": "https://annotations.allmaps.org/maps/6e6bb75dfe7bd0fb@5527c511312b2590",
-          "image": {
-            "id": "https://annotations.allmaps.org/images/402c507ea5ce2b64",
-            "version": "https://annotations.allmaps.org/images/402c507ea5ce2b64@47cfdbd1b7e8c90d",
-            "canvases": [
-              {
-                "id": "https://annotations.allmaps.org/canvases/5c48a631f692f1c9",
-                "manifests": [
-                  {
-                    "id": "https://annotations.allmaps.org/manifests/96e80288b60d9814"
-                  }
-                ]
-              }
-            ]
-          },
-          "scale": 0.026805,
-          "area": 12113059410.34
-        }
-      }
-    },
-    {
-      "@context": [
-        "http://iiif.io/api/extension/georef/1/context.json",
-        "http://iiif.io/api/presentation/3/context.json"
-      ],
-      "id": "https://annotations.allmaps.org/maps/a69db9bde740114a",
-      "type": "Annotation",
-      "created": "2026-09-18T18:40:48.969Z",
-      "modified": "2026-09-18T18:40:48.969Z",
-      "motivation": "georeferencing",
-      "target": {
-        "type": "SpecificResource",
-        "source": {
-          "id": "https://iiif.archive.org/image/iiif/3/in.gazette.central.e.2017-04-13.175405%2F175405_jp2.zip%2F175405_jp2%2F175405_0034.jp2",
-          "type": "ImageService3",
-          "height": 3509,
-          "width": 2480,
-          "partOf": [
-            {
-              "id": "https://iiif.archive.org/iiif/in.gazette.central.e.2017-04-13.175405$34/canvas",
-              "type": "Canvas",
-              "label": {
-                "none": [
-                  "34"
-                ]
-              },
-              "partOf": [
-                {
-                  "id": "https://iiif.archive.org/iiif/in.gazette.central.e.2017-04-13.175405/manifest.json",
-                  "type": "Manifest",
-                  "label": {
-                    "none": [
-                      "Union Government, Extraordinary, 2017-04-13, Part II-Section 3-Sub-Section(ii), Ref. 1176 E"
-                    ]
-                  }
-                }
-              ]
-            }
-          ]
-        },
-        "selector": {
-          "type": "SvgSelector",
-          "value": "<svg width=\"2480\" height=\"3509\"><polygon points=\"0,0 0,3509 2480,3509 2480,0\" /></svg>"
-        }
-      },
-      "body": {
-        "type": "FeatureCollection",
-        "transformation": {
-          "type": "polynomial",
-          "options": {
-            "order": 1
-          }
-        },
-        "features": [
-          {
-            "type": "Feature",
-            "properties": {
-              "resourceCoords": [
-                692,
-                1176
-              ]
-            },
-            "geometry": {
-              "type": "Point",
-              "coordinates": [
-                74.66498479591047,
-                13.981685474362678
-              ]
-            }
-          },
-          {
-            "type": "Feature",
-            "properties": {
-              "resourceCoords": [
-                1173,
-                1605
-              ]
-            },
-            "geometry": {
-              "type": "Point",
-              "coordinates": [
-                74.81347856559057,
-                13.836196938741026
-              ]
-            }
-          },
-          {
-            "type": "Feature",
-            "properties": {
-              "resourceCoords": [
-                1796,
-                1552
-              ]
-            },
-            "geometry": {
-              "type": "Point",
-              "coordinates": [
-                75.00219950923025,
-                13.852593809299307
-              ]
-            }
-          },
-          {
-            "type": "Feature",
-            "properties": {
-              "resourceCoords": [
-                1004,
-                2025
-              ]
-            },
-            "geometry": {
-              "type": "Point",
-              "coordinates": [
-                74.7608321132254,
-                13.6934054461409
-              ]
-            }
-          }
-        ],
-        "_allmaps": {
-          "id": "https://annotations.allmaps.org/maps/a69db9bde740114a",
-          "version": "https://annotations.allmaps.org/maps/a69db9bde740114a@e743e72834111968",
-          "image": {
-            "id": "https://annotations.allmaps.org/images/6d73f99799b21c00",
-            "version": "https://annotations.allmaps.org/images/6d73f99799b21c00@b79bf4e014cffce1",
-            "canvases": [
-              {
-                "id": "https://annotations.allmaps.org/canvases/bb6fe56641a6c340",
-                "manifests": [
-                  {
-                    "id": "https://annotations.allmaps.org/manifests/4c3a275442f92a47"
-                  }
-                ]
-              }
-            ]
-          },
-          "scale": 0.028422,
-          "area": 10772866359.35
         }
       }
     }

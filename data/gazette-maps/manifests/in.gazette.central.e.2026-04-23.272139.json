@@ -429,20 +429,20 @@
                   "width": 2481,
                   "partOf": [
                     {
-                      "id": "https://iiif.archive.org/iiif/in.gazette.central.e.2026-04-23.272139$37/canvas",
+                      "id": "https://publicmap.github.io/india-esz-dashboard/data/gazette-maps/manifests/in.gazette.central.e.2026-04-23.272139/archive-37-2/canvas",
                       "type": "Canvas",
                       "label": {
-                        "none": [
-                          "37"
+                        "en": [
+                          "Great Himalayan National Park – Page 38 (page scan)"
                         ]
                       },
                       "partOf": [
                         {
-                          "id": "https://iiif.archive.org/iiif/in.gazette.central.e.2026-04-23.272139/manifest.json",
+                          "id": "https://publicmap.github.io/india-esz-dashboard/data/gazette-maps/manifests/in.gazette.central.e.2026-04-23.272139.json",
                           "type": "Manifest",
                           "label": {
-                            "none": [
-                              "Extrordinary Gazette of India, 2026-04-23"
+                            "en": [
+                              "Great Himalayan National Park – ESZ notification"
                             ]
                           }
                         }

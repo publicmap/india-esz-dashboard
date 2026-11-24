@@ -7,7 +7,7 @@
   "type": "Manifest",
   "label": {
     "en": [
-      "Valmiki Wildlife Sanctuary, Valmiki National Park, Valmiki Tiger Reserve – ESZ notification"
+      "Valmiki National Park – ESZ notification"
     ]
   },
   "summary": {
@@ -247,34 +247,24 @@
                   "width": 2550,
                   "partOf": [
                     {
-                      "id": "https://iiif.archive.org/iiif/in.gazette.central.e.2017-09-13.178943$31/canvas",
+                      "id": "https://publicmap.github.io/india-esz-dashboard/data/gazette-maps/manifests/in.gazette.central.e.2017-09-13.178943/archive-31-0/canvas",
                       "type": "Canvas",
                       "label": {
-                        "none": [
-                          "31"
+                        "en": [
+                          "Valmiki National Park – Page 32 (page scan)"
                         ]
                       },
                       "partOf": [
                         {
-                          "id": "https://iiif.archive.org/iiif/in.gazette.central.e.2017-09-13.178943/manifest.json",
+                          "id": "https://publicmap.github.io/india-esz-dashboard/data/gazette-maps/manifests/in.gazette.central.e.2017-09-13.178943.json",
                           "type": "Manifest",
                           "label": {
-                            "none": [
-                              "Union Government, Extraordinary, 2017-09-13, Part II-Section 3-Sub-Section(ii), Ref. 3026 E"
+                            "en": [
+                              "Valmiki National Park – ESZ notification"
                             ]
                           }
                         }
                       ]
-                    },
-                    {
-                      "id": "https://publicmap.github.io/india-esz-dashboard/data/iiif-manifest.json/canvas/1",
-                      "type": "Canvas",
-                      "label": {
-                        "en": [
-                          "Valmiki National Park (2017-09-13)"
-                        ]
-                      },
-                      "partOf": []
                     }
                   ]
                 },

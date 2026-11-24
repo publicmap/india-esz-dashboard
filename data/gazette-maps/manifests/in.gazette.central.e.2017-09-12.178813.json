@@ -247,34 +247,24 @@
                   "width": 2550,
                   "partOf": [
                     {
-                      "id": "https://iiif.archive.org/iiif/in.gazette.central.e.2017-09-12.178813$20/canvas",
+                      "id": "https://publicmap.github.io/india-esz-dashboard/data/gazette-maps/manifests/in.gazette.central.e.2017-09-12.178813/archive-20-0/canvas",
                       "type": "Canvas",
                       "label": {
-                        "none": [
-                          "20"
+                        "en": [
+                          "Asola Bhatti Wildlife Sanctuary – Page 21 (page scan)"
                         ]
                       },
                       "partOf": [
                         {
-                          "id": "https://iiif.archive.org/iiif/in.gazette.central.e.2017-09-12.178813/manifest.json",
+                          "id": "https://publicmap.github.io/india-esz-dashboard/data/gazette-maps/manifests/in.gazette.central.e.2017-09-12.178813.json",
                           "type": "Manifest",
                           "label": {
-                            "none": [
-                              "Union Government, Extraordinary, 2017-09-12, Part II-Section 3-Sub-Section(ii), Ref. SO 2996 E"
+                            "en": [
+                              "Asola Bhatti Wildlife Sanctuary – ESZ notification"
                             ]
                           }
                         }
                       ]
-                    },
-                    {
-                      "id": "https://publicmap.github.io/india-esz-dashboard/data/iiif-manifest.json/canvas/5",
-                      "type": "Canvas",
-                      "label": {
-                        "en": [
-                          "Asola Bhatti Wildlife Sanctuary (2017-09-12)"
-                        ]
-                      },
-                      "partOf": []
                     }
                   ]
                 },

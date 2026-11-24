@@ -42,7 +42,7 @@
 // --ids are taken first, then the newest matched gazettes until --limit is reached.
 // --refresh re-downloads the cached manifests too.
 
-import { mkdir, writeFile } from 'node:fs/promises';
+import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import { generateAllmapsId, manifestUrl as archiveManifestUrl } from './lib/allmaps.js';
 import {
@@ -56,11 +56,20 @@ const COLLECTION_ID = `${PUBLIC_BASE}/collection.json`;
 const manifestId = (id) => `${PUBLIC_BASE}/manifests/${id}.json`;
 const CONCURRENCY = 16;
 
+// Wikidata labels by QID: cleaner than MoEF's protectedAreaName (typos such
+// as "Eravikulam Nation Park"), so preferred wherever the record has a match.
+const wikidataLabels = new Map(
+  JSON.parse(await readFile('data/wikidata/protected-areas.json', 'utf8'))
+    .filter((pa) => pa.wikidataId && pa.wikidataLabel)
+    .map((pa) => [pa.wikidataId, pa.wikidataLabel]),
+);
+
 function gazetteMeta(id, records) {
   const uniq = (xs) => [...new Set(xs.filter(Boolean))];
-  const names = uniq(records.map((r) => r.protectedAreaName));
+  const names = uniq(records.map((r) => wikidataLabels.get(r.wikidataId) ?? r.protectedAreaName));
   return {
     id,
+    paNames: names.join(', ') || id,
     title: `${names.join(', ') || id} – ESZ notification`,
     published: id.split('.')[4],
     orderNumber: uniq(records.map((r) => r.orderNumber)).join(', '),
@@ -124,6 +133,53 @@ async function fetchGazette(id, records, opts) {
 
 function langMap(s) { return { en: [s] }; }
 
+// Approximate ground area (km²) a georeferenced map covers: its resource mask
+// pushed through a least-squares affine fit of its GCPs (Allmaps' order-1
+// polynomial), then the shoelace formula on a local equirectangular
+// projection. Close enough to rank maps by size.
+function georeferencedAreaKm2(annotation) {
+  const gcps = (annotation.body?.features ?? [])
+    .map((f) => [f.properties?.resourceCoords, f.geometry?.coordinates])
+    .filter(([r, g]) => r && g);
+  const mask = (annotation.target?.selector?.value?.match(/points="([^"]+)"/)?.[1] ?? '')
+    .trim().split(/\s+/).map((pt) => pt.split(',').map(Number));
+  if (gcps.length < 3 || mask.length < 3) return 0;
+  // Normal equations for [x y 1] · [a b c]ᵀ = lon (and = lat).
+  const ata = [[0, 0, 0], [0, 0, 0], [0, 0, 0]];
+  const atLon = [0, 0, 0];
+  const atLat = [0, 0, 0];
+  for (const [[x, y], [lon, lat]] of gcps) {
+    const row = [x, y, 1];
+    for (let i = 0; i < 3; i++) {
+      for (let j = 0; j < 3; j++) ata[i][j] += row[i] * row[j];
+      atLon[i] += row[i] * lon;
+      atLat[i] += row[i] * lat;
+    }
+  }
+  const solve = (m, v) => {
+    const det = (a) => a[0][0] * (a[1][1] * a[2][2] - a[1][2] * a[2][1])
+      - a[0][1] * (a[1][0] * a[2][2] - a[1][2] * a[2][0])
+      + a[0][2] * (a[1][0] * a[2][1] - a[1][1] * a[2][0]);
+    const d = det(m);
+    if (!d) return null;
+    return [0, 1, 2].map((k) => det(m.map((r, i) => r.map((c, j) => (j === k ? v[i] : c)))) / d);
+  };
+  const cLon = solve(ata, atLon);
+  const cLat = solve(ata, atLat);
+  if (!cLon || !cLat) return 0;
+  const geo = mask.map(([x, y]) => [cLon[0] * x + cLon[1] * y + cLon[2], cLat[0] * x + cLat[1] * y + cLat[2]]);
+  const meanLat = geo.reduce((sum, [, lat]) => sum + lat, 0) / geo.length;
+  const kmPerDeg = 111.32;
+  const pts = geo.map(([lon, lat]) => [lon * kmPerDeg * Math.cos((meanLat * Math.PI) / 180), lat * kmPerDeg]);
+  let twice = 0;
+  for (let i = 0; i < pts.length; i++) {
+    const [x0, y0] = pts[i];
+    const [x1, y1] = pts[(i + 1) % pts.length];
+    twice += x0 * y1 - x1 * y0;
+  }
+  return Math.abs(twice) / 2;
+}
+
 function buildCanvas(gazette, map, index) {
   const { meta } = gazette;
   const base = `${manifestId(gazette.id).replace(/\.json$/, '')}/${map.source}-${map.page}-${index}`;
@@ -152,7 +208,22 @@ function buildCanvas(gazette, map, index) {
   if (map.georeference) {
     // Allmaps' annotation as served; its target is the IIIF image service,
     // which is what Allmaps Viewer matches against.
+    // Its partOf, though, names Allmaps' source canvas and manifest ("59",
+    // "Extrordinary Gazette of India, …"), and Allmaps Viewer labels maps by
+    // those, so point it at our canvas and manifest, which carry the PA name.
     const { '@context': _ctx, ...annotation } = map.georeference;
+    annotation.target = {
+      ...annotation.target,
+      source: {
+        ...annotation.target.source,
+        partOf: [{
+          id: canvasId,
+          type: 'Canvas',
+          label: langMap(`${meta.paNames} – ${canvas.label.en[0]}`),
+          partOf: [{ id: manifestId(gazette.id), type: 'Manifest', label: langMap(meta.title) }],
+        }],
+      },
+    };
     canvas.annotations = [{ id: `${base}/georeferencing`, type: 'AnnotationPage', items: [annotation] }];
   }
   return canvas;
@@ -247,6 +318,10 @@ async function main() {
     items: refs,
   };
   await writeFile(path.join(OUT_DIR, 'collection.json'), `${JSON.stringify(collection, null, 2)}\n`);
+  // Allmaps draws maps in list order, later ones on top, so list the largest
+  // first: smaller, more detailed maps then sit over the larger ones they overlap.
+  const areas = new Map(mosaic.map((c) => [c, georeferencedAreaKm2(c.annotations[0].items[0])]));
+  mosaic.sort((a, b) => areas.get(b) - areas.get(a));
   const mosaicManifest = {
     '@context': context,
     id: `${PUBLIC_BASE}/mosaic.json`,

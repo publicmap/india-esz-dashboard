@@ -7,7 +7,7 @@
   "type": "Manifest",
   "label": {
     "en": [
-      "Sharavathi Valley Wildlife Sanctuary – ESZ notification"
+      "Sharavathi LTM Wildlife Sanctuary – ESZ notification"
     ]
   },
   "summary": {
@@ -253,20 +253,20 @@
                   "width": 2481,
                   "partOf": [
                     {
-                      "id": "https://iiif.archive.org/iiif/in.gazette.central.e.2023-11-16.250111$66/canvas",
+                      "id": "https://publicmap.github.io/india-esz-dashboard/data/gazette-maps/manifests/in.gazette.central.e.2023-11-16.250111/archive-66-0/canvas",
                       "type": "Canvas",
                       "label": {
-                        "none": [
-                          "66"
+                        "en": [
+                          "Sharavathi LTM Wildlife Sanctuary – Page 67 (page scan)"
                         ]
                       },
                       "partOf": [
                         {
-                          "id": "https://iiif.archive.org/iiif/in.gazette.central.e.2023-11-16.250111/manifest.json",
+                          "id": "https://publicmap.github.io/india-esz-dashboard/data/gazette-maps/manifests/in.gazette.central.e.2023-11-16.250111.json",
                           "type": "Manifest",
                           "label": {
-                            "none": [
-                              "Extraordinary Gazette of India, 2023-11-16"
+                            "en": [
+                              "Sharavathi LTM Wildlife Sanctuary – ESZ notification"
                             ]
                           }
                         }

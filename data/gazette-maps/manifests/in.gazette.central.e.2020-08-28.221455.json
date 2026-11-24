@@ -7,7 +7,7 @@
   "type": "Manifest",
   "label": {
     "en": [
-      "Someshwara Wildlife – ESZ notification"
+      "Someshwara Wildlife Sanctuary – ESZ notification"
     ]
   },
   "summary": {
@@ -253,20 +253,20 @@
                   "width": 2481,
                   "partOf": [
                     {
-                      "id": "https://iiif.archive.org/iiif/in.gazette.central.e.2020-08-28.221455$37/canvas",
+                      "id": "https://publicmap.github.io/india-esz-dashboard/data/gazette-maps/manifests/in.gazette.central.e.2020-08-28.221455/archive-38-0/canvas",
                       "type": "Canvas",
                       "label": {
-                        "none": [
-                          "38"
+                        "en": [
+                          "Someshwara Wildlife Sanctuary – Page 39 (page scan)"
                         ]
                       },
                       "partOf": [
                         {
-                          "id": "https://iiif.archive.org/iiif/in.gazette.central.e.2020-08-28.221455/manifest.json",
+                          "id": "https://publicmap.github.io/india-esz-dashboard/data/gazette-maps/manifests/in.gazette.central.e.2020-08-28.221455.json",
                           "type": "Manifest",
                           "label": {
-                            "none": [
-                              "Extraordinary Gazette of India, 2020-08-28"
+                            "en": [
+                              "Someshwara Wildlife Sanctuary – ESZ notification"
                             ]
                           }
                         }

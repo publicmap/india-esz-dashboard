@@ -7,7 +7,7 @@
   "type": "Manifest",
   "label": {
     "en": [
-      "Peechi vazhani Wildlife Sanctuary – ESZ notification"
+      "Peechi-Vazhani Wildlife Sanctuary – ESZ notification"
     ]
   },
   "summary": {
@@ -253,20 +253,20 @@
                   "width": 2481,
                   "partOf": [
                     {
-                      "id": "https://iiif.archive.org/iiif/in.gazette.central.e.2026-02-27.270617$34/canvas",
+                      "id": "https://publicmap.github.io/india-esz-dashboard/data/gazette-maps/manifests/in.gazette.central.e.2026-02-27.270617/archive-34-0/canvas",
                       "type": "Canvas",
                       "label": {
-                        "none": [
-                          "34"
+                        "en": [
+                          "Peechi-Vazhani Wildlife Sanctuary – Page 35 (page scan)"
                         ]
                       },
                       "partOf": [
                         {
-                          "id": "https://iiif.archive.org/iiif/in.gazette.central.e.2026-02-27.270617/manifest.json",
+                          "id": "https://publicmap.github.io/india-esz-dashboard/data/gazette-maps/manifests/in.gazette.central.e.2026-02-27.270617.json",
                           "type": "Manifest",
                           "label": {
-                            "none": [
-                              "Extrordinary Gazette of India, 2026-02-27"
+                            "en": [
+                              "Peechi-Vazhani Wildlife Sanctuary – ESZ notification"
                             ]
                           }
                         }
