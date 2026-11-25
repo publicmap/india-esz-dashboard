@@ -17,7 +17,7 @@
 // Ministry/Department/Subject/Gazette Source parsed out of its `description`
 // field) purely so a human can QA a match from the cache CSV without having
 // to re-open archive.org for every row.
-import { readFile, writeFile } from 'node:fs/promises';
+import { readFile, rename, writeFile } from 'node:fs/promises';
 import { parse } from 'csv-parse/sync';
 import { stringify } from 'csv-stringify/sync';
 
@@ -60,7 +60,13 @@ export async function saveCache(path, cache) {
   const csv = stringify(sorted, {
     header: true, columns: COLUMNS, quoted: true,
   });
-  await writeFile(path, csv, 'utf8');
+  // Write-then-rename so a run killed mid-save (enrich scripts now checkpoint
+  // the cache periodically) can never leave a truncated file behind --
+  // loadCache() treats an empty/unreadable cache as empty, which would
+  // silently discard every cached lookup on the next run.
+  const tmp = `${path}.tmp`;
+  await writeFile(tmp, csv, 'utf8');
+  await rename(tmp, path);
 }
 
 function findRow(cache, orderNumber, notificationDate, protectedAreaName) {

@@ -8,3 +8,5 @@ node_modules/
 data/gazette-maps/**/*.tif
 data/gazette-maps/**/*.tif.aux.xml
 data/gazette-maps/**/*.png
+data/enrichment-cache.csv.tmp
+data/.retry-none-progress.json
