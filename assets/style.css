@@ -1231,315 +1231,371 @@ button.stat-tile.is-active {
   font-size: 0.78rem;
 }
 
-/* ---------- state accordion ---------- */
+/* ---------- Finder list ----------
+   Light, compact and minimal so a lot of rows fit: group headers (state,
+   size or type) with an area-weighted progress bar, then one-line PA rows. Type is a coloured icon; ESZ status a small badge. */
 .pa-accordion { background: var(--surface-1); }
 .state-row { border-bottom: 1px solid var(--gridline); }
 .state-row:last-child { border-bottom: none; }
 
-/* The collapsed state row (name, count, combined progress) gets its own
-   fixed dark theme, independent of the page's light/dark toggle -- same
-   "photo-strip" treatment as a collapsed .pa-card below. Once a state is
-   expanded, its body (.state-row-body / .pa-type-group) reverts to the
-   normal themed surface, since that content is read as detail, not browsed. */
 .state-row-header {
   width: 100%;
   display: flex;
   align-items: center;
-  flex-wrap: wrap;
-  gap: 0.6rem 0.9rem;
-  padding: 0.85rem 1.1rem;
-  background: #16241d;
+  gap: 0.5rem;
+  padding: 0.5rem 0.6rem;
+  background: none;
   border: none;
-  color: #f5ecd7;
+  color: var(--text-primary);
   font: inherit;
   text-align: left;
   cursor: pointer;
 }
-.state-row-header:hover { background: #1b2c22; }
+.state-row-header:hover { background: var(--surface-2); }
+.state-row-header:focus-visible { outline: 2px solid var(--accent); outline-offset: -2px; }
 .state-row-chevron {
   flex: none;
-  display: inline-block;
-  color: rgba(245, 236, 216, 0.68);
+  width: 0.7rem;
+  font-size: 0.75rem;
+  color: var(--text-muted);
   transition: transform 0.18s ease;
 }
-.state-row-header[aria-expanded="true"] .state-row-chevron { transform: rotate(90deg); color: #7fd4ab; }
+.state-row-header[aria-expanded="true"] .state-row-chevron { transform: rotate(90deg); color: var(--accent); }
 .state-row-name {
-  font-family: var(--font-display);
+  flex: 1 1 auto;
+  min-width: 0;
   font-weight: 600;
-  font-size: 1.05rem;
-  flex: none;
-  transition: color 0.18s ease;
+  font-size: 0.88rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
-/* An open state gets a visibly heavier header -- brighter accent-tinted
-   background, a left accent bar, and a bolder/brighter title -- so it's
-   unmistakable at a glance which state(s) are currently expanded. */
-.state-row-header[aria-expanded="true"] {
-  background: #1f3327;
-  box-shadow: inset 3px 0 0 #4fb787;
+.state-row-note { font-weight: 400; font-size: 0.78rem; color: var(--text-muted); }
+.state-row-header[aria-expanded="true"] { background: var(--surface-2); }
+.state-row-header[aria-expanded="true"] .state-row-name { color: var(--accent); }
+.state-row-count {
+  font-weight: 400;
+  font-size: 0.75rem;
+  font-variant-numeric: tabular-nums;
+  color: var(--text-muted);
 }
-.state-row-header[aria-expanded="true"]:hover { background: #24392c; }
-.state-row-header[aria-expanded="true"] .state-row-name {
-  color: #9fe6c4;
-  font-size: 1.12rem;
-}
-.state-row-count { font-size: 0.8rem; color: rgba(245, 236, 216, 0.68); flex: none; }
 
-/* Progress blocks (state-level and per-type) share one fixed width and are
-   pushed flush against the same right padding in both contexts, so their
-   bars line up exactly regardless of how much text sits to their left. The
-   meta line sits above the bar in both. */
-.state-row-progress,
-.pa-type-progress {
-  display: flex;
-  flex-direction: column;
-  align-items: stretch;
-  gap: 0.3rem;
-  flex: none;
-  width: 180px;
-  margin-left: auto;
-}
-.state-row-progress .chip-bar,
-.pa-type-progress .chip-bar {
-  width: 100%;
-}
-/* Thinner than the state-level bar so the hierarchy (state rolls up several
-   type groups) reads visually, not just from position/indent. */
-.pa-type-progress .chip-bar { height: 4px; }
-.state-row-progress-meta { font-size: 0.78rem; color: rgba(245, 236, 216, 0.68); white-space: nowrap; text-align: right; }
-
-.chip-bar {
+/* Group progress: a bar split by ESZ status, weighted by PA area; the
+   breakdown is in a tooltip (.list-tip). Fixed width so bars line up. */
+.area-bar-wrap { flex: none; display: inline-flex; align-items: center; gap: 0.4rem; width: 112px; }
+.area-bar {
+  flex: 1;
   display: flex;
   height: 6px;
   overflow: hidden;
   background: var(--gridline);
+  cursor: help;
 }
-.chip-bar-final { background: var(--status-final); }
-.chip-bar-draft { background: var(--status-draft); }
-.chip-bar-none { background: var(--status-none); }
+.area-bar-seg { display: block; height: 100%; }
+.area-bar-final { background: var(--status-final); }
+.area-bar-draft { background: var(--status-draft); }
+.area-bar-none { background: var(--status-none); opacity: 0.55; }
+.area-bar-pct { width: 4ch; text-align: right; font-size: 0.72rem; font-variant-numeric: tabular-nums; color: var(--text-secondary); }
 
-/* The whole expanded state row -- type groups, their progress bars, and the
-   PA cards within -- keeps the same fixed dark "photo-strip" theme as the
-   collapsed header, independent of the page's light/dark toggle, so a state
-   doesn't flash from a dark header into a light body when opened. Only a
-   card's own expanded detail view (read as body text, not browsed) reverts
-   to the normal themed surface -- see .pa-card.is-expanded below. */
-.state-row-body { background: #0e1a14; color: #f5ecd7; }
+.list-tip {
+  position: fixed;
+  z-index: 50;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  min-width: 220px;
+  padding: 0.55rem 0.7rem;
+  background: var(--surface-1);
+  color: var(--text-primary);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-soft);
+  font-size: 0.78rem;
+  pointer-events: none;
+}
+.list-tip[hidden] { display: none; }
+.list-tip-heading { font-weight: 600; margin-bottom: 0.15rem; }
+.list-tip-row { display: grid; grid-template-columns: auto 1fr auto 3.2ch; align-items: center; gap: 0.45rem; }
+.list-tip-value, .list-tip-pct { font-variant-numeric: tabular-nums; text-align: right; }
+.list-tip-pct { color: var(--text-muted); }
+.list-tip-foot { margin-top: 0.15rem; font-size: 0.72rem; color: var(--text-muted); }
+
+.visually-hidden {
+  position: absolute !important;
+  width: 1px; height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+/* An open group's body: its PA rows. */
 .state-row:not(.is-open) .state-row-body { display: none; }
-.state-row-body .chip-bar { background: rgba(245, 236, 216, 0.14); }
-.state-row-body .pa-type-progress-meta { color: rgba(245, 236, 216, 0.68); }
-.state-row-body .pa-type-count { color: rgba(245, 236, 216, 0.55); }
+.state-row-body { padding: 0 0 0.35rem; }
 
-/* .pa-type-group is a <section>, which the global `section` rule below gives
-   a 2.25rem bottom margin -- override to 0 so type groups sit flush against
-   each other (separated only by the border-top) and the last one doesn't
-   leave a large gap before the next state row. */
-.pa-type-group { position: relative; margin-bottom: 0; padding: 0.9rem 1.1rem 1.2rem 1rem; border-top: 1px solid rgba(245, 236, 216, 0.1); border-left: 3px solid transparent; }
-.state-row-body .pa-type-group:first-child { border-top: none; }
-.pa-type-group--tiger { background: linear-gradient(120deg, rgba(240, 149, 74, 0.14), transparent 65%); border-left-color: rgba(240, 149, 74, 0.55); }
-.pa-type-group--np { background: linear-gradient(120deg, rgba(79, 183, 135, 0.14), transparent 65%); border-left-color: rgba(79, 183, 135, 0.55); }
-.pa-type-group--bird-sanctuary { background: linear-gradient(120deg, rgba(90, 169, 230, 0.14), transparent 65%); border-left-color: rgba(90, 169, 230, 0.55); }
-.pa-type-group--wildlife-sanctuary { background: linear-gradient(120deg, rgba(240, 193, 75, 0.14), transparent 65%); border-left-color: rgba(240, 193, 75, 0.55); }
-.pa-type-group--other { background: linear-gradient(120deg, rgba(139, 130, 104, 0.14), transparent 65%); border-left-color: rgba(139, 130, 104, 0.5); }
-
-.pa-type-header {
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 0.4rem 1rem;
-  margin: 0 0 0.7rem;
-}
-.pa-type-title {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  margin: 0;
-  font-family: var(--font-display);
-  font-size: 0.98rem;
-  font-weight: 600;
-  flex: none;
-}
+/* Type icon: a small tinted square in the type's colour. */
 .pa-type-icon {
+  --type-color: #8f8670;
   flex: none;
-  width: 26px;
-  height: 26px;
+  width: 18px;
+  height: 18px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  color: var(--type-color);
+  background: color-mix(in srgb, var(--type-color) 16%, transparent);
 }
-.pa-type-icon svg { width: 15px; height: 15px; }
-.pa-type-group--tiger .pa-type-icon { background: rgba(240, 149, 74, 0.22); color: #f0954a; }
-.pa-type-group--np .pa-type-icon { background: rgba(79, 183, 135, 0.22); color: #4fb787; }
-.pa-type-group--bird-sanctuary .pa-type-icon { background: rgba(90, 169, 230, 0.22); color: #5aa9e6; }
-.pa-type-group--wildlife-sanctuary .pa-type-icon { background: rgba(240, 193, 75, 0.22); color: #f0c14b; }
-.pa-type-group--other .pa-type-icon { background: rgba(139, 130, 104, 0.22); color: #b5ab8f; }
-.pa-type-count { color: var(--text-muted); font-weight: 400; font-size: 0.85em; }
-.pa-type-progress-meta { font-size: 0.75rem; color: var(--text-muted); white-space: nowrap; text-align: right; }
+.pa-type-icon svg { width: 11px; height: 11px; }
+.pa-type--tiger { --type-color: #d9792f; }
+.pa-type--np { --type-color: #2f9a6a; }
+.pa-type--bird-sanctuary { --type-color: #3a8fd0; }
+.pa-type--wildlife-sanctuary { --type-color: #c9970f; }
+.pa-type--other { --type-color: #8f8670; }
 
-/* ---------- PA card list ---------- */
-/* Each PA is a full-width row (not a tile), laid out horizontally so a
-   thumbnail + name + area + status fit in one compact line. */
-.pa-card-list {
-  display: flex;
-  flex-direction: column;
-  gap: 0.3rem;
-}
-
-.pa-card {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  gap: 0;
-  padding: 0;
-  background: var(--surface-1);
-  border: 1px solid var(--border);
-  overflow: hidden;
-  transition: box-shadow 0.15s ease;
-}
-.pa-card:hover { box-shadow: var(--shadow-soft); }
-.pa-card.is-selected { box-shadow: 0 0 0 2px var(--accent); }
-/* ESZ-status border, matching the colour of its map marker (PA_MARKER_STATUS_COLOR
-   in app.js): green when the final ESZ is notified, yellow for a draft, and a
-   heavier red when no notification has been found. */
-.pa-card--final { border: 1px solid #0ca30c; }
-.pa-card--draft { border: 1px solid #fab219; }
-.pa-card--none { border: 2px solid #dc2626; }
-
-/* Collapsed, the row gets its own fixed dark theme (independent of the
-   page's light/dark toggle) -- a deliberate photo-strip look, not the
-   paper-toned surface the rest of the UI uses. Corners are square; the
-   card's border carries its ESZ status (see .pa-card--<status> above), the
-   same as its map marker. Clicking it swaps this compact strip for the
-   wiki-sourced header (image/title/excerpt) in place -- see
-   .pa-card.is-expanded .pa-card-row below -- rather than duplicating that
-   content in a separate panel. */
+/* ---------- PA rows ---------- */
+.pa-card-list { display: flex; flex-direction: column; }
+.pa-card { position: relative; }
 .pa-card-row {
   display: flex;
-  align-items: stretch;
-  gap: 0;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.22rem 0.6rem 0.22rem 1.5rem;
+  min-height: 28px;
   cursor: pointer;
-  background: #16241d;
-  color: #f5ecd7;
-  transition: background 0.15s ease;
-}
-.pa-card-row:hover { background: #1c2e24; }
-.pa-card-row .pa-card-right { color: rgba(245, 236, 216, 0.68); }
-
-/* Expanded, the row holds the wiki header (read as body text/links, not
-   browsed) so it reverts to the normal themed surface/text colour -- else it
-   would inherit the fixed dark-mode text colour set on .state-row-body above
-   and blend into its own light-mode background. */
-.pa-card.is-expanded .pa-card-row {
-  display: block;
-  background: var(--surface-1);
   color: var(--text-primary);
+  transition: background 0.12s ease;
 }
-.pa-card.is-expanded .pa-card-row:hover { background: var(--surface-1); }
-
-/* The compact strip and expanded header are both always in the DOM (see
-   cardOuterHtml in app.js) -- only one is shown at a time, purely via CSS, so
-   toggling a card never tears down (and thus never re-fetches/re-renders)
-   the wiki header's image or Commons gallery. display:contents on the
-   compact wrapper keeps its .pa-card-thumb/.pa-card-body as direct flex
-   children of .pa-card-row, matching the layout as if the wrapper weren't
-   there. */
-.pa-card-compact { display: contents; }
-.pa-card.is-expanded .pa-card-compact { display: none; }
-.pa-card-expanded-header { display: none; }
-.pa-card.is-expanded .pa-card-expanded-header { display: block; }
-
-.pa-card-thumb {
-  flex: none;
-  align-self: stretch;
-  width: 68px;
-  background: #0e1a14;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-}
-.pa-card-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
-.pa-card-thumb-placeholder {
-  font-family: var(--font-display);
-  font-size: 1.2rem;
-  font-weight: 700;
-  color: var(--text-muted);
-}
-.pa-card-body {
-  flex: 1 1 auto;
-  min-width: 0;
-  display: flex;
-  align-items: center;
-  gap: 0.6rem;
-  padding: 0.55rem 0.8rem;
+.pa-card-row:hover { background: var(--surface-2); }
+.pa-card-row:focus-visible { outline: 2px solid var(--accent); outline-offset: -2px; }
+.pa-card.is-selected .pa-card-row { box-shadow: inset 3px 0 0 var(--accent); }
+/* The row whose PA is showing in the detail pane. */
+.pa-card.is-open .pa-card-row,
+.pa-card.is-open .pa-card-row:hover {
+  background: color-mix(in srgb, var(--accent) 12%, var(--surface-1));
+  box-shadow: inset 3px 0 0 var(--accent);
 }
 .pa-card-name {
   flex: 1 1 auto;
   min-width: 0;
-  font-size: 0.88rem;
-  line-height: 1.25;
+  font-size: 0.82rem;
+  line-height: 1.3;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
-.pa-card-right {
+.pa-card-area {
   flex: none;
-  display: flex;
-  align-items: center;
-  gap: 0.9rem;
-  font-size: 0.78rem;
-  color: var(--text-secondary);
+  font-size: 0.72rem;
+  font-variant-numeric: tabular-nums;
+  color: var(--text-muted);
+  white-space: nowrap;
 }
-.pa-card-area { white-space: nowrap; }
-.pa-card-status { white-space: nowrap; }
+.status-badge {
+  flex: none;
+  width: 3.6em;
+  padding: 0.05rem 0;
+  text-align: center;
+  font-size: 0.66rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+.status-badge--final { color: var(--status-final); background: color-mix(in srgb, var(--status-final) 14%, transparent); }
+.status-badge--draft { color: color-mix(in srgb, var(--status-draft) 75%, var(--text-primary)); background: color-mix(in srgb, var(--status-draft) 18%, transparent); }
+.status-badge--none { color: var(--text-muted); background: color-mix(in srgb, var(--status-none) 14%, transparent); }
 
-/* Notification history pops open below the row -- normal themed
-   surface/text colour, same reasoning as the expanded row above. Empty when
-   collapsed, so it takes up no space until a card is expanded; the top
-   border only appears once there's actually something below the row. */
-.pa-card-detail {
+/* Detail pane: the open PA's wiki header + notification history, in its own
+   column between the list and the map (below the map on narrow screens). */
+.pa-detail-pane {
+  display: flex;
+  flex-direction: column;
   background: var(--surface-1);
   color: var(--text-primary);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-soft);
 }
-.pa-card-detail:not(:empty) { border-top: 1px solid var(--border); }
-.pa-card-detail:empty { display: none; }
-
-.pa-detail-grid {
-  display: grid;
-  grid-template-columns: 200px 1fr;
-  gap: 1.1rem;
-  padding: 1rem 1.2rem 0.4rem;
-}
-@media (max-width: 720px) {
-  .pa-detail-grid { grid-template-columns: 1fr; }
-}
-.pa-detail-media { overflow: hidden; background: var(--page-plane); min-height: 120px; display: flex; flex-direction: column; align-items: center; }
-.pa-detail-media a { display: block; }
-.pa-detail-image { width: 120px; height: 120px; display: block; object-fit: cover; }
-.pa-detail-media a + a { border-top: 1px solid var(--border); }
-.pa-commons-mosaic {
-  width: 126px;
+.pa-detail-pane[hidden] { display: none; }
+.pa-detail-pane-header {
   display: flex;
-  flex-wrap: wrap;
-  gap: 3px;
-  margin-top: 3px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding: 0.55rem 0.75rem;
+  border-bottom: 1px solid var(--border);
 }
-.pa-commons-mosaic:empty { display: none; margin-top: 0; }
-.pa-commons-mosaic a:not(.pa-commons-edit) { width: 40px; height: 40px; }
-.pa-commons-mosaic img { width: 100%; height: 100%; display: block; object-fit: cover; }
-.pa-commons-edit {
-  flex-basis: 100%;
-  font-size: 0.72rem;
+.pa-detail-pane-title { margin: 0; font-family: var(--font-display); font-size: 1rem; font-weight: 600; }
+.pa-detail-pane-close {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.3rem;
+  border: 1px solid var(--border);
+  background: var(--surface-2);
   color: var(--text-secondary);
-  text-decoration: none;
-  border-bottom: 1px solid color-mix(in srgb, currentColor 35%, transparent);
-  margin-top: 0.15rem;
+  cursor: pointer;
 }
-.pa-commons-edit:hover { border-bottom-color: currentColor; }
-.pa-detail-title { margin: 0 0 0.3rem; font-family: var(--font-display); font-size: 1.15rem; }
-.pa-detail-meta { margin: 0 0 0.3rem; font-size: 0.82rem; color: var(--text-secondary); }
-.pa-detail-links { margin: 0 0 0.5rem; font-size: 0.85rem; display: flex; gap: 0.6rem; flex-wrap: wrap; }
+.pa-detail-pane-close:hover { border-color: var(--text-muted); color: var(--text-primary); }
+.pa-detail-pane-heading { min-width: 0; }
+.pa-detail-pane-title { line-height: 1.25; }
+.pa-detail-pane-subtitle {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  margin: 0.15rem 0 0;
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+}
+.pa-detail-pane-subtitle[hidden] { display: none; }
+.pa-detail-pane-subtitle .pa-type-icon { flex: none; }
+.pa-detail-pane-header { align-items: flex-start; }
+.pa-detail-content { display: flex; flex-direction: column; gap: 0.75rem; padding: 0.75rem 0.85rem 1rem; }
+
+/* OSM / Wikidata / Wikipedia buttons, above the banner. */
+.pa-links { display: flex; gap: 0.4rem; flex-wrap: wrap; }
+.pa-link-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.3rem 0.6rem 0.3rem 0.4rem;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--surface-2);
+  color: var(--text-primary);
+  font: inherit;
+  font-size: 0.78rem;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  transition: border-color 0.15s, background 0.15s, transform 0.15s;
+}
+.pa-link-btn svg { width: 18px; height: 18px; flex: none; }
+a.pa-link-btn:hover { border-color: var(--accent); background: var(--surface-1); transform: translateY(-1px); }
+.pa-link-btn.is-missing { border-style: dashed; background: transparent; color: var(--text-muted); font-weight: 500; }
+.pa-link-btn.is-missing svg { filter: grayscale(1); opacity: 0.45; }
+.pa-link-btn.is-missing:hover,
+.pa-link-btn.is-missing[aria-expanded="true"] { border-color: var(--text-muted); color: var(--text-secondary); }
+.pa-link-help {
+  margin-top: -0.35rem;
+  padding: 0.55rem 0.7rem;
+  border-left: 3px solid var(--accent-gold);
+  background: color-mix(in srgb, var(--accent-gold) 10%, var(--surface-1));
+  font-size: 0.8rem;
+  line-height: 1.5;
+  color: var(--text-secondary);
+}
+.pa-link-help[hidden] { display: none; }
+.pa-link-help a { color: var(--accent); font-weight: 600; white-space: nowrap; }
+.pa-link-help code { font-size: 0.76rem; background: var(--surface-2); padding: 0 0.2rem; }
+
+/* Photo banner: slides stacked and cross-faded. */
+.pa-banner {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  background: var(--page-plane);
+  border: 1px solid var(--border);
+}
+.pa-banner[hidden] { display: none; }
+.pa-banner-slide {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.9s ease;
+}
+.pa-banner-slide.is-active { opacity: 1; pointer-events: auto; }
+.pa-banner-slide img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.pa-banner-slide:focus-visible { outline: 2px solid var(--accent); outline-offset: -2px; }
+.pa-banner-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border: 0;
+  border-radius: 50%;
+  background: rgba(20, 16, 8, 0.45);
+  color: #fff;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.2s, background 0.2s;
+}
+.pa-banner-prev { left: 0.45rem; }
+.pa-banner-next { right: 0.45rem; }
+.pa-banner:hover .pa-banner-nav, .pa-banner:focus-within .pa-banner-nav { opacity: 1; }
+.pa-banner-nav:hover { background: rgba(20, 16, 8, 0.7); }
+.pa-banner-foot {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  padding: 1.2rem 0.55rem 0.4rem;
+  background: linear-gradient(transparent, rgba(20, 16, 8, 0.55));
+  pointer-events: none;
+}
+.pa-banner-dots { display: flex; gap: 0.3rem; flex-wrap: wrap; pointer-events: auto; }
+.pa-banner-dots button {
+  width: 7px;
+  height: 7px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.5);
+  cursor: pointer;
+}
+.pa-banner-dots button[aria-current="true"] { background: #fff; transform: scale(1.25); }
+.pa-banner.is-single .pa-banner-nav, .pa-banner.is-single .pa-banner-dots { display: none; }
+.pa-banner-credit {
+  margin-left: auto;
+  font-size: 0.72rem;
+  color: #fff;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+  pointer-events: auto;
+}
+.pa-banner-credit[hidden] { display: none; }
+.pa-banner-credit:hover { border-bottom-color: #fff; }
+@media (hover: none) { .pa-banner-nav { opacity: 1; } }
+@media (prefers-reduced-motion: reduce) { .pa-banner-slide { transition: none; } }
+
+/* ESZ status (linking to the MoEF PDF), area and boundary data. */
+.pa-esz-row { display: flex; align-items: center; gap: 0.5rem 0.8rem; flex-wrap: wrap; font-size: 0.82rem; }
+.pa-esz-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.3rem 0.5rem;
+  border: 1px solid var(--border);
+  background: var(--surface-2);
+  color: var(--text-primary);
+  text-decoration: none;
+}
+.pa-esz-status svg { width: 15px; height: 15px; color: var(--accent); }
+a.pa-esz-status:hover { border-color: var(--accent); }
+.pa-esz-status-key { font-weight: 700; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.04em; color: var(--text-muted); }
+.pa-detail-area { color: var(--text-secondary); font-variant-numeric: tabular-nums; }
+.pa-boundary-link { display: inline-flex; align-items: center; gap: 0.3rem; margin-left: auto; color: var(--accent); font-weight: 600; text-decoration: none; }
+.pa-boundary-link svg { width: 16px; height: 16px; }
+a.pa-boundary-link:hover { text-decoration: underline; }
+.pa-boundary-link.is-disabled { color: var(--text-muted); font-weight: 500; }
+
+.pa-detail-section { border-top: 1px solid var(--border); padding-top: 0.2rem; }
+.pa-section-heading {
+  margin: 0.45rem 0 0.6rem;
+  font-size: 0.74rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-muted);
+}
+.pa-section-heading a { color: inherit; text-decoration: none; }
+.pa-section-heading a:hover { text-decoration: underline; }
 .pa-detail-excerpt { font-size: 0.85rem; line-height: 1.55; color: var(--text-secondary); margin: 0; }
-.pa-detail-excerpt:empty { display: none; }
 .pa-excerpt-more { white-space: nowrap; font-size: 0.82rem; }
 
 /* Protected area title linked to Wikipedia, with Wikidata/OSM logo links --
@@ -1556,44 +1612,164 @@ button.stat-tile.is-active {
 .pa-title-logo:hover { opacity: 1; color: var(--accent); }
 .pa-title-logo svg { width: 13px; height: 13px; }
 
-.pa-notification-heading {
-  margin: 0.6rem 1.2rem 0.4rem;
-  font-size: 0.78rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
-  color: var(--text-muted);
-}
-.pa-notification-heading a { color: inherit; text-decoration: none; }
-.pa-notification-heading a:hover { text-decoration: underline; }
-.pa-notification-list { list-style: none; margin: 0; padding: 0 1.2rem 1rem; display: flex; flex-direction: column; gap: 0.5rem; }
-.pa-notification-row {
+/* Notification timeline: newest first, a dot per notification on a rail. */
+.pa-timeline { list-style: none; margin: 0; padding: 0; position: relative; }
+.pa-tl-item {
+  position: relative;
   display: flex;
-  align-items: center;
-  gap: 0.7rem 0.9rem;
   flex-wrap: wrap;
+  gap: 0.45rem;
+  padding: 0 0 1rem 1.35rem;
   font-size: 0.82rem;
-  padding: 0.55rem 0.7rem;
-  border: 1px solid var(--gridline);
-  background: var(--surface-1);
 }
-.pa-notification-date {
-  flex: none;
-  min-width: 6.5em;
-  color: var(--text-secondary);
+.pa-tl-item::before {
+  content: "";
+  position: absolute;
+  left: 4px;
+  top: 0.9rem;
+  bottom: -0.1rem;
+  width: 2px;
+  background: var(--gridline);
+}
+.pa-tl-item:has(.pa-tl-gap) { padding-bottom: 2rem; }
+.pa-tl-item:last-child { padding-bottom: 0.2rem; }
+/* Days to the previous (older) notification, sitting on the rail below. */
+.pa-tl-gap {
+  position: absolute;
+  left: 1.9rem; /* beside the rail, in line with the card content */
+  bottom: 0.45rem;
+  padding: 0.05rem 0.4rem;
+  border: 1px solid var(--gridline);
+  border-radius: 999px;
+  background: var(--surface-1);
+  font-size: 0.68rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  white-space: nowrap;
   font-variant-numeric: tabular-nums;
 }
-.pa-notification-type {
+.pa-tl-item:last-child::before { display: none; }
+.pa-tl-dot {
+  position: absolute;
+  left: 0;
+  top: 0.3rem;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  box-shadow: 0 0 0 3px var(--surface-1);
+}
+/* Each notification is a card that can be switched on to show its
+   gazette's georeferenced maps on the map. */
+.pa-tl-card {
+  flex: 1 0 100%;
+  min-width: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  margin-top: -0.35rem;
+  padding: 0.4rem 0.55rem 0.55rem;
+  border: 1px solid transparent;
+  transition: background 0.15s, border-color 0.15s;
+}
+.pa-tl-item[data-warpable="true"] .pa-tl-card { cursor: pointer; }
+.pa-tl-item[data-warpable="true"] .pa-tl-card:hover { border-color: var(--gridline); background: var(--surface-2); }
+.pa-tl-item.is-on .pa-tl-card,
+.pa-tl-item.is-on .pa-tl-card:hover {
+  border-color: color-mix(in srgb, var(--accent) 55%, transparent);
+  background: color-mix(in srgb, var(--accent) 8%, var(--surface-1));
+}
+.pa-tl-item.is-on .pa-tl-dot { box-shadow: 0 0 0 3px var(--surface-1), 0 0 0 5px var(--accent); }
+.pa-tl-switch {
+  position: relative;
+  flex: none;
+  align-self: center;
+  margin-left: auto;
+  width: 30px;
+  height: 17px;
+  padding: 0;
+  border: 0;
+  border-radius: 999px;
+  background: var(--baseline);
+  cursor: pointer;
+  transition: background 0.15s;
+}
+.pa-tl-switch-knob {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+  transition: transform 0.15s;
+}
+.pa-tl-switch[aria-checked="true"] { background: var(--accent); }
+.pa-tl-switch[aria-checked="true"] .pa-tl-switch-knob { transform: translateX(13px); }
+.pa-tl-switch:disabled { opacity: 0.4; cursor: not-allowed; }
+.pa-tl-switch:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.pa-tl-head { flex: 1 0 100%; display: flex; align-items: baseline; gap: 0.2rem 0.6rem; flex-wrap: wrap; }
+.pa-tl-date { font-weight: 700; color: var(--text-primary); font-variant-numeric: tabular-nums; }
+.pa-tl-type { color: var(--text-secondary); }
+.pa-tl-order { color: var(--text-muted); font-size: 0.76rem; }
+.pa-tl-body { flex: 1 0 100%; display: flex; gap: 0.65rem; align-items: flex-start; }
+.pa-tl-thumb {
+  position: relative;
+  flex: none;
+  width: 72px;
+  height: 96px;
+  padding: 0;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  background: var(--page-plane);
+  cursor: pointer;
+  display: block;
+  font: inherit;
+}
+.pa-tl-thumb img { width: 100%; height: 100%; object-fit: cover; object-position: top; display: block; }
+.pa-tl-thumb-label {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.2rem;
+  padding: 0.2rem 0.1rem;
+  font-size: 0.66rem;
+  font-weight: 700;
+  color: #fff;
+  background: color-mix(in srgb, var(--accent-gold) 85%, #000);
+}
+.pa-tl-thumb.is-georeferenced .pa-tl-thumb-label { background: var(--accent); }
+.pa-tl-thumb:hover { border-color: var(--accent); }
+.pa-tl-thumb[aria-expanded="true"] { outline: 2px solid var(--accent); outline-offset: 1px; }
+.pa-tl-actions { display: flex; flex-wrap: wrap; gap: 0.35rem; align-content: flex-start; min-width: 0; }
+.pa-tl-action {
   display: inline-flex;
   align-items: center;
-  gap: 0.4rem;
+  gap: 0.3rem;
+  padding: 0.28rem 0.55rem;
+  border: 1px solid var(--gridline);
+  background: var(--page-plane);
+  color: var(--accent);
+  font: inherit;
+  font-size: 0.77rem;
   font-weight: 600;
-  color: var(--text-primary);
+  text-decoration: none;
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s, color 0.15s;
 }
-.pa-notification-order {
-  color: var(--text-muted);
-  font-size: 0.76rem;
+.pa-tl-action svg { width: 15px; height: 15px; flex: none; }
+a.pa-tl-action:hover, button.pa-tl-action:hover, button.pa-tl-action[aria-expanded="true"] {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--surface-1);
 }
+.pa-tl-action--search { color: var(--accent-3); border-style: dashed; }
+a.pa-tl-action--search:hover { background: var(--accent-3); border-color: var(--accent-3); }
+.pa-tl-action.is-disabled { color: var(--text-muted); border-style: dashed; opacity: 0.6; cursor: not-allowed; }
 .gazette-maps { flex: 1 0 100%; min-width: 0; }
 .gazette-maps[hidden] { display: none; }
 .gazette-maps { margin-top: 0.1rem; }
@@ -1639,7 +1815,8 @@ button.stat-tile.is-active {
   text-decoration: none;
 }
 .gazette-thumb img { display: block; width: 100%; aspect-ratio: 1 / 1.41; object-fit: cover; object-position: top; }
-.gazette-thumb:hover, .gazette-thumb:focus-visible { border-color: var(--accent); box-shadow: var(--shadow-soft); }
+.gazette-thumb-link { display: block; text-decoration: none; }
+.gazette-thumb:hover, .gazette-thumb:focus-within { border-color: var(--accent); box-shadow: var(--shadow-soft); }
 .gazette-thumb.is-ignored img { opacity: 0.55; filter: grayscale(1); }
 .gazette-thumb.is-unchecked { border-style: dashed; }
 .gazette-thumb-badge {
@@ -1655,7 +1832,65 @@ button.stat-tile.is-active {
   line-height: 1.2;
   text-align: center;
 }
-.gazette-thumb-badge.is-done { background: #1f6f54; }
+.gazette-thumb-badge.is-done {
+  display: flex;
+  align-items: stretch;
+  justify-content: space-between;
+  gap: 2px;
+  padding: 0;
+  background: none;
+}
+.gazette-thumb-gcps, .gazette-thumb-osm {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  padding: 2px 5px;
+  border: 0;
+  background: #1f6f54;
+  color: #fff;
+  font: inherit;
+  text-decoration: none;
+  cursor: pointer;
+}
+.gazette-thumb-gcps { flex: 1; }
+.gazette-thumb-osm { background: #7ebc6f; color: #1b3a14; }
+.gazette-thumb-gcps:hover, .gazette-thumb-gcps:focus-visible { background: #15523e; }
+.gazette-thumb-osm:hover, .gazette-thumb-osm:focus-visible { background: #6aa95b; }
+.gazette-osm-menu {
+  position: fixed;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  min-width: 14rem;
+  padding: 0.3rem 0;
+  background: var(--surface-1);
+  border: 1px solid var(--gridline);
+  box-shadow: var(--shadow-soft);
+  font-size: 0.8rem;
+}
+.gazette-osm-menu-head {
+  padding: 0.2rem 0.75rem 0.35rem;
+  font-size: 0.68rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--text-secondary);
+}
+.gazette-osm-menu a, .gazette-osm-menu button {
+  display: block;
+  padding: 0.35rem 0.75rem;
+  border: 0;
+  background: none;
+  color: var(--text-primary);
+  font: inherit;
+  text-align: left;
+  text-decoration: none;
+  cursor: pointer;
+}
+.gazette-osm-menu small { display: block; color: var(--text-secondary); font-size: 0.7rem; }
+.gazette-osm-menu a:hover, .gazette-osm-menu a:focus-visible,
+.gazette-osm-menu button:hover, .gazette-osm-menu button:focus-visible { background: var(--surface-2, rgba(0,0,0,0.06)); outline: none; }
 .gazette-thumb.is-ignored .gazette-thumb-badge { display: none; }
 .gazette-thumb-page {
   display: block;
@@ -1665,54 +1900,8 @@ button.stat-tile.is-active {
   color: #5c5340;
   background: #fffaf0;
 }
-.pa-notification-docs {
-  display: flex;
-  align-items: center;
-  gap: 0.4rem;
-  margin-left: auto;
-  flex: none;
-}
-.pa-doc-link {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 34px;
-  height: 34px;
-  border: 1px solid var(--gridline);
-  background: var(--page-plane);
-  color: var(--accent);
-  transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease, transform 0.15s ease;
-}
-.pa-doc-link svg { width: 18px; height: 18px; }
-button.pa-doc-link { cursor: pointer; padding: 0; font: inherit; }
-button.pa-doc-link[aria-expanded="true"] { background: var(--accent); border-color: var(--accent); color: var(--surface-1); }
-a.pa-doc-link:hover, button.pa-doc-link:hover {
-  background: var(--accent);
-  border-color: var(--accent);
-  color: var(--surface-1);
-  transform: translateY(-1px);
-}
-.pa-doc-link.is-disabled {
-  color: var(--text-muted);
-  border-style: dashed;
-}
-a.pa-doc-link.is-disabled:hover {
-  background: var(--surface-2);
-  border-color: var(--text-muted);
-  color: var(--text-primary);
-  transform: none;
-}
-span.pa-doc-link[aria-disabled="true"] {
-  color: var(--text-muted);
-  opacity: 0.45;
-  border-style: dashed;
-  cursor: not-allowed;
-}
-.pa-detail-empty { margin: 0 1.2rem 1rem; font-size: 0.85rem; color: var(--text-muted); }
+.pa-detail-empty { margin: 0; font-size: 0.85rem; color: var(--text-muted); }
 
-@media (max-width: 560px) {
-  .pa-notification-docs { margin-left: 0; width: 100%; }
-}
 
 /* ---------- footer ---------- */
 .site-footer {
@@ -1736,7 +1925,6 @@ span.pa-doc-link[aria-disabled="true"] {
   .filter-hero-controls { justify-content: stretch; }
   .filter-hero-controls .type-filter-select { flex: 1 1 auto; }
   .ambient-toggle span { display: none; }
-  .state-row-progress, .pa-type-progress { width: 100%; }
 }
 
 /* "#" permalink before a PA's detail heading: links to the page with that PA
@@ -1753,9 +1941,9 @@ span.pa-doc-link[aria-disabled="true"] {
 .row-toggle {
   display: inline-flex;
   align-items: center;
-  gap: 0.35rem;
+  justify-content: center;
   flex: none;
-  padding: 0.3rem 0.65rem;
+  padding: 0.35rem;
   border: 1px solid var(--border);
   background: var(--surface-1);
   color: var(--text-secondary);
@@ -1764,14 +1952,21 @@ span.pa-doc-link[aria-disabled="true"] {
   transition: background 0.18s ease, border-color 0.18s ease;
 }
 .row-toggle:hover { border-color: var(--text-muted); }
-/* The title bar -- and the whole collapsed header rows -- toggle on click. */
-.row-bar, .site-header .row.is-collapsed { cursor: pointer; }
-.row-bar { user-select: none; }
-.row-bar:hover .row-toggle, .site-header .row.is-collapsed:hover .row-toggle { border-color: var(--text-muted); }
-.site-header .row.is-collapsed:hover .row-toggle { background: rgba(255, 255, 255, 0.22); }
+/* Expanded rows close with their × button; a collapsed row reopens on a
+   click anywhere on it. Collapsed, the button is visually hidden but stays
+   focusable (the keyboard way back in), showing again when focused. */
+.row.is-collapsed { cursor: pointer; }
 .row-toggle:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
-.row-toggle svg { transition: transform 0.18s ease; }
-.row.is-collapsed .row-toggle svg { transform: rotate(180deg); }
+.row.is-collapsed .row-toggle:not(:focus-visible) {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  border: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+}
+.site-header .row.is-collapsed:hover { filter: brightness(1.06); }
 
 /* Header rows (1-2) sit on the canopy background; row 1 floats its toggle top-right. */
 .site-header .row-toggle {
@@ -1782,7 +1977,7 @@ span.pa-doc-link[aria-disabled="true"] {
 .site-header .row-toggle:hover { background: rgba(255, 255, 255, 0.22); }
 .site-header .row-toggle:focus-visible { outline-color: #ffe9a8; }
 .row-intro > .row-toggle { position: absolute; top: 0; right: 0; z-index: 4; }
-.row-intro .row-body { padding-right: 7rem; }
+.row-intro .row-body { padding-right: 3rem; }
 .row-stats { margin-top: 2rem; padding-top: 1.4rem; border-top: 1px solid rgba(255, 255, 255, 0.18); }
 .site-header .row-title {
   font-family: var(--font-body);
@@ -1824,7 +2019,7 @@ span.pa-doc-link[aria-disabled="true"] {
 .row-stats.is-collapsed .source-status-text a { pointer-events: auto; }
 
 /* Row 3 (in main): a titled bar above the content. */
-main { max-width: 1280px; display: flex; flex-direction: column; gap: 1.6rem; }
+main { max-width: 1280px; display: flex; flex-direction: column; gap: 0; }
 .row-bar {
   display: flex;
   align-items: center;
@@ -1845,10 +2040,8 @@ main { max-width: 1280px; display: flex; flex-direction: column; gap: 1.6rem; }
    shorter map, notes hidden. */
 .explorer { display: flex; flex-direction: column; gap: 1rem; }
 .row-explorer { --map-h: clamp(560px, calc(100vh - 160px), 960px); }
-.row-explorer.is-collapsed { --map-h: 560px; }
 .map-stage { position: relative; }
 .row-explorer #map { height: var(--map-h); }
-.row-explorer.is-collapsed .map-aside { display: none; }
 .map-aside { display: grid; grid-template-columns: minmax(0, 1fr); gap: 1rem; align-items: start; }
 .map-aside .map-hint { margin: 0; }
 .map-aside .mapping-progress { margin: 0; }
@@ -1857,7 +2050,21 @@ main { max-width: 1280px; display: flex; flex-direction: column; gap: 1.6rem; }
 }
 
 /* Basemap switch below the map: a two-option segmented control. */
-.basemap-switch { display: flex; align-items: center; flex-wrap: wrap; gap: 0; margin-top: -0.4rem; }
+.basemap-switch {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  gap: 0;
+  padding: 0.25rem 0.25rem 0.25rem 0.6rem;
+  background: var(--surface-1);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-soft);
+  white-space: nowrap;
+}
 .basemap-switch-label { margin-right: 0.6rem; font-size: 0.8rem; font-weight: 600; color: var(--text-secondary); }
 .basemap-option {
   padding: 0.35rem 0.8rem;
@@ -1892,8 +2099,8 @@ main { max-width: 1280px; display: flex; flex-direction: column; gap: 1.6rem; }
 .map-dock-toggle {
   display: inline-flex;
   align-items: center;
-  gap: 0.3rem;
-  padding: 0.25rem 0.55rem;
+  justify-content: center;
+  padding: 0.3rem;
   border: 1px solid var(--border);
   background: var(--surface-2);
   color: var(--text-secondary);
@@ -1901,9 +2108,20 @@ main { max-width: 1280px; display: flex; flex-direction: column; gap: 1.6rem; }
   cursor: pointer;
 }
 .map-dock-toggle:hover { border-color: var(--text-muted); }
-.map-dock-toggle svg { transition: transform 0.18s ease; }
-.map-dock.is-hidden .map-dock-toggle svg { transform: rotate(180deg); }
-.map-dock.is-hidden .map-dock-header { border-bottom: none; }
+.map-dock-toggle:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+/* Closed, the Finder is just its header bar, which reopens it on click; the
+   × stays focusable for keyboard users but is otherwise hidden. */
+.map-dock.is-hidden .map-dock-header { border-bottom: none; cursor: pointer; }
+.map-dock.is-hidden .map-dock-header:hover { background: var(--surface-2); }
+.map-dock.is-hidden .map-dock-toggle:not(:focus-visible) {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  border: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+}
 .map-dock.is-hidden .map-dock-body { display: none; }
 .map-dock-body { padding: 0.75rem; }
 .map-dock .table-toolbar { flex-direction: column; align-items: stretch; }
@@ -1913,11 +2131,30 @@ main { max-width: 1280px; display: flex; flex-direction: column; gap: 1.6rem; }
 .map-dock .result-status { align-self: flex-start; }
 .map-dock .data-filters-toggle { align-self: flex-start; }
 .map-dock .accordion-wrap { box-shadow: none; }
-.row-explorer.is-collapsed .map-dock .accordion-wrap { max-height: 420px; overflow-y: auto; }
+
+/* Group by State / Size / Type: a small segmented control. */
+.group-by { display: flex; align-items: center; flex-wrap: wrap; }
+.group-by-label { margin-right: 0.5rem; font-size: 0.75rem; font-weight: 600; color: var(--text-secondary); }
+.group-by-option {
+  padding: 0.25rem 0.65rem;
+  border: 1px solid var(--border);
+  background: var(--surface-1);
+  color: var(--text-secondary);
+  font: 600 0.75rem var(--font-body);
+  cursor: pointer;
+}
+.group-by-option + .group-by-option { border-left: none; }
+.group-by-option:hover { color: var(--text-primary); background: var(--surface-2); }
+.group-by-option[aria-pressed="true"] { background: var(--accent); border-color: var(--accent); color: #fffaf0; }
+.group-by-option:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; position: relative; }
+
+.pa-detail-pane { margin-top: 1rem; }
+.pa-detail-pane + .map-dock { margin-top: 1rem; }
 
 @media (min-width: 900px) {
-  /* List column on the left, map on the right, both the map's height.
-     Hidden, the list shrinks to its header bar above a full-width map. */
+  /* List column on the left, map on the right, all the map's height. An
+     open PA's detail pane slots in between them. Hidden, the list shrinks to
+     its header bar above the detail pane + map. */
   .map-stage {
     display: grid;
     grid-template-columns: min(420px, 36%) minmax(0, 1fr);
@@ -1927,11 +2164,22 @@ main { max-width: 1280px; display: flex; flex-direction: column; gap: 1.6rem; }
   }
   .map-stage #map { grid-area: map; }
   .map-dock { grid-area: dock; min-height: 0; }
+  .pa-detail-pane { grid-area: detail; min-height: 0; margin-top: 0; }
+  .pa-detail-pane + .map-dock { margin-top: 0; }
+  .pa-detail-pane-body { flex: 1; min-height: 0; overflow-y: auto; }
+  .map-stage:has(.pa-detail-pane:not([hidden])) {
+    grid-template-columns: min(360px, 28%) min(460px, 34%) minmax(0, 1fr);
+    grid-template-areas: "dock detail map";
+  }
   .map-stage:has(.map-dock.is-hidden) {
     grid-template-columns: minmax(0, 1fr);
     grid-template-rows: auto var(--map-h);
     grid-template-areas: "dock" "map";
     gap: 0.75rem;
+  }
+  .map-stage:has(.map-dock.is-hidden):has(.pa-detail-pane:not([hidden])) {
+    grid-template-columns: min(460px, 36%) minmax(0, 1fr);
+    grid-template-areas: "dock dock" "detail map";
   }
   /* The panel itself scrolls (toolbar pinned), so the list needs no cap. */
   .map-dock-body { flex: 1; min-height: 0; overflow-y: auto; padding-top: 0; }
@@ -1944,16 +2192,12 @@ main { max-width: 1280px; display: flex; flex-direction: column; gap: 1.6rem; }
     background: var(--surface-1);
     border-bottom: 1px solid var(--gridline);
   }
-  .row-explorer.is-collapsed .map-dock .accordion-wrap { max-height: none; overflow: visible; }
 }
 
 @media (max-width: 640px) {
-  .row-toggle-label { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
-  .row-toggle { padding: 0.4rem; }
   .row-intro .row-body { padding-right: 2.6rem; }
   .row-stats.is-collapsed .hero-stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .row-explorer #map { height: 70vh; min-height: 360px; }
-  .row-explorer.is-collapsed #map { height: 320px; min-height: 0; }
 }
 
 /* Square corners throughout: reset browser/MapLibre defaults that round. */

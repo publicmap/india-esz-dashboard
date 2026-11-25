@@ -257,9 +257,29 @@ function matchesDocAvailabilityFilters(entry) {
 }
 
 async function loadData() {
-  const res = await fetch('data/full-join.json');
-  paEntries = await res.json();
+  const [entries] = await Promise.all([
+    fetch('data/full-join.json').then((res) => res.json()),
+    loadStateBboxes(),
+  ]);
+  paEntries = entries;
   entryByPaKey = new Map(paEntries.map((e) => [e.paKey, e]));
+}
+
+// Whole-state extents from each state's OSM boundary (build-admin-bboxes.js),
+// keyed by the dashboard's state names. Bounds read off the state vector
+// tiles only cover the tiles loaded at the time, so a state partly off-screen
+// came out clipped; these are used first (see stateBoundaryBounds).
+const stateBboxByName = new Map();
+async function loadStateBboxes() {
+  try {
+    const res = await fetch('data/osm/admin-bboxes.json');
+    if (!res.ok) return;
+    const { states = {}, admins = {} } = await res.json();
+    for (const [name, qid] of Object.entries(states)) {
+      const bbox = admins[qid]?.bbox;
+      if (bbox?.length === 4) stateBboxByName.set(name, bbox);
+    }
+  } catch { /* fall back to the tile-derived bounds */ }
 }
 
 // The update workflow's cron schedule (.github/workflows/update.yml: '0 3 *
@@ -1260,7 +1280,7 @@ function paKeyFromHash() {
 
 function syncUrlHash() {
   if (!urlHashSyncEnabled) return;
-  const key = selectedWikidataId || [...expandedCards].pop() || null;
+  const key = selectedWikidataId || openDetailKey || null;
   const hash = key ? paKeyHash(key) : '';
   if (location.hash === hash || (!hash && !location.hash)) return;
   history.replaceState(null, '', `${location.pathname}${location.search}${hash}`);
@@ -1282,6 +1302,7 @@ function initUrlHash() {
 // omit it to just re-center at the current zoom (card hover).
 function focusFeature(feature, { zoom } = {}) {
   const center = feature.geometry.coordinates;
+  if (center.some((c) => c == null || Number.isNaN(c))) return; // never fly to null island
   if (zoom != null) map.flyTo({ center, zoom, essential: true });
   else map.panTo(center, { duration: 300 });
 }
@@ -1291,6 +1312,7 @@ function focusFeature(feature, { zoom } = {}) {
 // styling.
 function highlightCard(paKey) {
   setActivePaMarker(paKey);
+  setSelectedOsmPa(paKey);
   document.querySelectorAll('#pa-accordion .pa-card.is-selected').forEach((el) => el.classList.remove('is-selected'));
   if (paKey) {
     for (const el of document.querySelectorAll('#pa-accordion .pa-card')) {
@@ -1403,7 +1425,12 @@ function initMap() {
     // returnToOpenPa); programmatic moves carry no originalEvent.
     map.on('movestart', (e) => { if (e.originalEvent) mapViewPa = null; });
     map.on('click', (e) => {
-      const id = paMarkerAt(e.point)?.properties.wikidataId || osmPaKeyAt(e.point);
+      const markerId = paMarkerAt(e.point)?.properties.wikidataId;
+      const osmHit = markerId ? null : osmPaHitAt(e.point);
+      const id = markerId || osmHit?.paKey || null;
+      // A polygon matched only by location has no id on the entry: remember
+      // it, so it's outlined as selected too (see setSelectedOsmPa).
+      if (osmHit?.paKey) spatialOsmIdsByPaKey.set(osmHit.paKey, osmHit.osmId);
       if (id && id === selectedWikidataId) {
         deselectPa(id);
         return;
@@ -1429,15 +1456,20 @@ const PA_MARKER_STATUSES = ['final', 'draft', 'none'];
 // state mask a light yellow washes out, while this matches the green and
 // red in weight.
 const PA_MARKER_STATUS_COLOR = { final: STATUS_COLOR.final, draft: '#d97706', none: '#dc2626' };
-// Marker size by area: the mappable PAs with a known area are split into
-// equal thirds (small / medium / large), scaled by these factors; PAs with
-// no known area get the small size.
-const PA_MARKER_SIZE_SCALES = [1, 1.5, 2];
+// Marker size by area, in the Finder's "Group by size" buckets (see
+// sizeGroupKey); PAs with no known area are drawn as small, with a grey ring.
+const PA_MARKER_SIZE_SCALES = { 'very-small': 1, small: 1.4, medium: 1.8, large: 2.3 };
+// Ring width (px) per size bucket.
+const PA_MARKER_STROKE_WIDTHS = { 'very-small': 0.6, small: 1, medium: 1.4, large: 1.8 };
+const PA_MARKER_STROKE_COLOR = '#000000';
+const PA_MARKER_UNKNOWN_STROKE_COLOR = '#9ca3af';
 // Circle radius (px) of a small-bucket marker by zoom; the others scale up.
 const PA_MARKER_RADIUS_STOPS = [3, 2, 7, 3, 10, 4, 14, 5];
 // Below this zoom the label abbreviates the PA type (see abbreviatePaName).
 const PA_LABEL_FULL_NAME_ZOOM = 14;
 const PA_LABEL_FONT = ['open_sans_semibold'];
+// Base PA labels appear from this zoom; the active PA's label always shows.
+const PA_LABEL_MIN_ZOOM = 6;
 
 function paMarkerRadius(extra = 0) {
   const expr = ['interpolate', ['linear'], ['zoom']];
@@ -1491,16 +1523,20 @@ function addPaMarkerLayers() {
     paint: {
       'circle-radius': paMarkerRadius(),
       'circle-color': PA_MARKER_COLOR_EXPR,
-      'circle-stroke-color': '#ffffff',
-      'circle-stroke-width': 1,
+      'circle-stroke-color': ['case', ['get', 'sizeUnknown'], PA_MARKER_UNKNOWN_STROKE_COLOR, PA_MARKER_STROKE_COLOR],
+      'circle-stroke-width': ['get', 'markerStroke'],
     },
-    // Small PAs draw on top, so a large circle doesn't bury them.
-    layout: { 'circle-sort-key': ['-', 0, ['get', 'markerScale']] },
+    // Bigger PAs are painted first (lowest sort key), so smaller circles
+    // draw on top and a large circle doesn't bury them. Sorted by area, not
+    // just size bucket, so it also holds within a bucket.
+    layout: { 'circle-sort-key': ['-', 0, ['get', 'markerArea']] },
   });
   map.addLayer({
     id: 'protected-areas-labels',
     type: 'symbol',
     source: 'protected-areas',
+    // Only the active label (below) shows at lower zooms.
+    minzoom: PA_LABEL_MIN_ZOOM,
     layout: {
       ...PA_LABEL_LAYOUT,
       'text-field': PA_LABEL_TEXT_FIELD,
@@ -1518,7 +1554,7 @@ function addPaMarkerLayers() {
       'circle-radius': paMarkerRadius(1),
       'circle-color': PA_MARKER_COLOR_EXPR,
       'circle-stroke-color': '#000000',
-      'circle-stroke-width': 2,
+      'circle-stroke-width': ['+', ['get', 'markerStroke'], 1],
     },
   });
   map.addLayer({
@@ -1704,6 +1740,15 @@ const STATE_PROGRESS_COLORS = { none: '#fca5a5', partial: '#fde68a', complete: '
 const STATE_NO_DATA_COLOR = '#d1d5db'; // states with no PAs in the dataset
 const STATE_ACTIVE_FILL_COLOR = '#ffffff';
 const STATE_MASK_OPACITY = 0.9;
+// The active (white) state fades out as you zoom in, revealing the basemap.
+function stateMaskOpacityExpr(name) {
+  if (!name) return STATE_MASK_OPACITY;
+  const isActive = ['==', STATE_NAME_EXPR, name];
+  return ['interpolate', ['linear'], ['zoom'],
+    8, STATE_MASK_OPACITY,
+    12, ['case', isActive, 0.4, STATE_MASK_OPACITY],
+    16, ['case', isActive, 0, STATE_MASK_OPACITY]];
+}
 // Dashboard state names (from Wikidata) whose LGD STNAME is spelled differently.
 const LGD_STATE_NAME_OVERRIDES = {
   'Andaman and Nicobar Islands': 'ANDAMAN & NICOBAR',
@@ -1797,10 +1842,10 @@ function addStateBoundaryLayers() {
   // Label above the active outline so the line doesn't strike through it.
   map.moveLayer('state-boundaries-label');
   // The mask only fades the basemap: it sits directly above the basemap
-  // rasters (OSM or Survey of India, whichever is shown), under every
+  // rasters (OSM, Survey of India or satellite, whichever is shown), under every
   // overlay (ESZs, reserves, OSM PAs, markers, boundaries).
   const layerIds = map.getStyle().layers.map((l) => l.id);
-  const topBasemap = layerIds.includes('soi-osm') ? 'soi-osm' : 'osm';
+  const topBasemap = ['maptiler-satellite', 'soi-osm', 'osm'].find((id) => layerIds.includes(id));
   const aboveBasemap = layerIds[layerIds.indexOf(topBasemap) + 1];
   if (aboveBasemap && aboveBasemap !== 'state-boundaries-mask') map.moveLayer('state-boundaries-mask', aboveBasemap);
   // Every state's tiles are loaded at the initial all-India view -- cache
@@ -1828,6 +1873,8 @@ function cacheStateBounds(filter) {
 }
 
 function stateBoundaryBounds(stateName) {
+  const bbox = stateBboxByName.get(stateName);
+  if (bbox) return new maplibregl.LngLatBounds([bbox[0], bbox[1]], [bbox[2], bbox[3]]);
   const name = lgdStateName(stateName);
   if (!stateBoundsCache.has(name)) cacheStateBounds(['==', STATE_NAME_EXPR, name]);
   return stateBoundsCache.get(name) || null;
@@ -1843,6 +1890,7 @@ function setActiveStateOutline(stateName) {
   const progressColor = stateProgressColorExpr();
   map.setPaintProperty('state-boundaries-mask', 'fill-color',
     stateName ? ['case', isActive, STATE_ACTIVE_FILL_COLOR, progressColor] : progressColor);
+  map.setPaintProperty('state-boundaries-mask', 'fill-opacity', stateMaskOpacityExpr(stateName ? name : ''));
   // Hovered state's label: full opacity and placed first in collision
   // detection, so a neighbour's label can't knock it out.
   map.setPaintProperty('state-boundaries-label', 'text-opacity',
@@ -1889,11 +1937,16 @@ function addEszLayer() {
   });
 }
 
-// Basemap: OpenStreetMap (the style's 'osm' layer) or the Survey of India
-// map (raster, via Indian Open Maps), picked with the switch below the map.
-// SOI sits just above the OSM layer, under every overlay; only one of the
-// two is shown. Its tiles exist to z14 and are overzoomed beyond that.
+// Basemap: OpenStreetMap (the style's 'osm' layer), the Survey of India map
+// (raster, via Indian Open Maps) or MapTiler satellite imagery, picked with
+// the switch on the map. The extra rasters sit just above the OSM layer,
+// under every overlay; only one basemap is shown at a time. SOI tiles exist
+// to z14 and are overzoomed beyond that.
 const SOI_TILES_URL = 'https://indianopenmaps.com/soi/osm/{z}/{x}/{y}.webp';
+// Referrer-restricted MapTiler key: only works from the dashboard's origins.
+const MAPTILER_SATELLITE_TILES_URL = 'https://api.maptiler.com/tiles/satellite-v2/{z}/{x}/{y}.jpg?key=8n1qroRJ9APPiRFK8YVe';
+// Basemap name (the switch's data-basemap) -> its raster layer id.
+const BASEMAP_LAYERS = { osm: 'osm', soi: 'soi-osm', satellite: 'maptiler-satellite' };
 let currentBasemap = 'osm';
 
 function addSoiLayer() {
@@ -1906,17 +1959,27 @@ function addSoiLayer() {
       + '<a href="https://ramseraph.github.io/opendata/maps/SOI/" target="_blank" rel="noopener">Datameet Community</a>',
   });
   map.addLayer({ id: 'soi-osm', type: 'raster', source: 'soi-osm', layout: { visibility: 'none' } });
+  map.addSource('maptiler-satellite', {
+    type: 'raster',
+    tiles: [MAPTILER_SATELLITE_TILES_URL],
+    tileSize: 512,
+    maxzoom: 19,
+    attribution: '<a href="https://cloud.maptiler.com/tiles/" target="_blank" rel="noopener">&copy; MapTiler</a>',
+  });
+  map.addLayer({ id: 'maptiler-satellite', type: 'raster', source: 'maptiler-satellite', layout: { visibility: 'none' } });
   setBasemap(currentBasemap);
 }
 
 function setBasemap(name) {
+  if (!BASEMAP_LAYERS[name]) name = 'osm';
   currentBasemap = name;
   for (const btn of document.querySelectorAll('#basemap-switch .basemap-option')) {
     btn.setAttribute('aria-pressed', String(btn.dataset.basemap === name));
   }
-  if (!map || !map.getLayer('soi-osm')) return; // applied by addSoiLayer once the style loads
-  map.setLayoutProperty('soi-osm', 'visibility', name === 'soi' ? 'visible' : 'none');
-  map.setLayoutProperty('osm', 'visibility', name === 'soi' ? 'none' : 'visible');
+  if (!map || !map.getLayer('maptiler-satellite')) return; // applied by addSoiLayer once the style loads
+  for (const [key, layerId] of Object.entries(BASEMAP_LAYERS)) {
+    map.setLayoutProperty(layerId, 'visibility', key === name ? 'visible' : 'none');
+  }
 }
 
 function initBasemapSwitch() {
@@ -2062,6 +2125,25 @@ function addOsmProtectedAreaLayer() {
     type: 'line',
     filter: ['==', ['get', '@id'], ''],
     paint: { 'line-color': '#14532d', 'line-width': 2.5 },
+  });
+  // The selected PA's own boundary and its ESZ (see setSelectedOsmPa): a
+  // white casing under a bold green line, so it reads over any fill.
+  const none = ['==', ['get', '@id'], ''];
+  map.addLayer({
+    ...base,
+    id: 'osm-pa-selected-casing',
+    type: 'line',
+    filter: none,
+    layout: { 'line-join': 'round' },
+    paint: { 'line-color': '#ffffff', 'line-width': 6, 'line-opacity': 0.85 },
+  });
+  map.addLayer({
+    ...base,
+    id: 'osm-pa-selected',
+    type: 'line',
+    filter: none,
+    layout: { 'line-join': 'round' },
+    paint: { 'line-color': '#14532d', 'line-width': 3 },
   });
   map.addLayer({
     ...sourceTagLayer('osm-pa-source-tag', base.source, base['source-layer'], 'OSM', statusColor),
@@ -2231,9 +2313,6 @@ function osmPaHitAt(point) {
   return first;
 }
 
-function osmPaKeyAt(point) {
-  return osmPaHitAt(point)?.paKey || null;
-}
 
 // Untagged OSM polygon -> the PA whose Wikidata point falls inside it
 // (when several do, only the one named like the polygon). Uses every loaded tile piece of
@@ -2297,15 +2376,30 @@ function pointInPolygon([x, y], rings) {
 }
 
 // Bold outline on the hovered OSM polygon ('' / null clears it).
+// Outlines the OSM features linked to a PA (its boundary and ESZ, plus a
+// polygon clicked on the map that was matched to it by location).
+const spatialOsmIdsByPaKey = new Map();
+function setSelectedOsmPa(paKey) {
+  if (!map || !map.getLayer('osm-pa-selected')) return;
+  const entry = paKey ? entryByPaKey.get(paKey) : null;
+  const ids = entry ? [
+    ...(entry.osmFeatureIds || []),
+    ...(entry.osmRelationIds || []).map((id) => `relation/${id}`),
+    ...(entry.osmEszIds || []),
+    ...(spatialOsmIdsByPaKey.has(paKey) ? [spatialOsmIdsByPaKey.get(paKey)] : []),
+  ] : [];
+  const filter = ['in', ['get', '@id'], ['literal', [...new Set(ids)]]];
+  map.setFilter('osm-pa-selected-casing', filter);
+  map.setFilter('osm-pa-selected', filter);
+}
+
 function setOsmPaHover(osmId) {
   if (map.getLayer('osm-pa-hover')) map.setFilter('osm-pa-hover', ['==', ['get', '@id'], osmId || '']);
 }
 
-// Ends a PA's selection from the map: clears it and closes its card(s).
+// Ends a PA's selection from the map: clears it and closes its detail pane.
 function deselectPa(paKey) {
-  for (const cardEl of accordionEl.querySelectorAll('.pa-card.is-expanded')) {
-    if (cardEl.dataset.paKey === paKey) toggleCard(cardEl, false);
-  }
+  if (openDetailKey === paKey) closePaDetail();
   clearSelection();
 }
 
@@ -2338,7 +2432,7 @@ function paMarkerAt(point) {
 
 function setOsmPaLayerVisibility(visible) {
   const visibility = visible ? 'visible' : 'none';
-  for (const id of ['osm-pa-hatch', 'osm-pa-buffer', 'osm-pa-fill', 'osm-pa-core-zone', 'osm-pa-line', 'osm-pa-hover', 'osm-pa-source-tag', 'osm-pa-label']) {
+  for (const id of ['osm-pa-hatch', 'osm-pa-buffer', 'osm-pa-fill', 'osm-pa-core-zone', 'osm-pa-line', 'osm-pa-hover', 'osm-pa-selected-casing', 'osm-pa-selected', 'osm-pa-source-tag', 'osm-pa-label']) {
     if (map.getLayer(id)) map.setLayoutProperty(id, 'visibility', visibility);
   }
 }
@@ -2360,32 +2454,15 @@ function initPaPointsLayerToggle() {
   checkbox.addEventListener('change', () => setPaPointsLayerVisibility(checkbox.checked));
 }
 
+// Size bucket used for the map marker: the Finder's size group, with an
+// unknown area drawn as small.
+function paMarkerSizeKey(entry) {
+  const key = sizeGroupKey(entry);
+  return key === 'unknown' ? 'small' : key;
+}
+
 // Builds a GeoJSON point feature straight from a PA entry's already-joined
 // fields -- the map never needs to look anything up in a separate payload.
-// A PA's area for marker sizing: its OSM polygon's (measured consistently
-// by build-osm-protected-areas.js) else Wikidata's, which is sometimes off
-// by a unit conversion.
-function entrySizeArea(entry) {
-  return entry.osmAreaKm2 ?? entry.area ?? null;
-}
-
-// Tertile cut-offs over every mappable PA's area, computed once (from the
-// unfiltered list, so a marker's size doesn't change with the filters).
-let paAreaTertiles = null;
-function paMarkerSizeScale(entry) {
-  if (!paAreaTertiles) {
-    const areas = paEntries
-      .filter((e) => e.coordinateLatitude != null)
-      .map(entrySizeArea).filter((a) => a != null)
-      .sort((a, b) => a - b);
-    paAreaTertiles = [areas[Math.floor(areas.length / 3)], areas[Math.floor((2 * areas.length) / 3)]];
-  }
-  const area = entrySizeArea(entry);
-  if (area == null) return PA_MARKER_SIZE_SCALES[0];
-  const bucket = area < paAreaTertiles[0] ? 0 : area < paAreaTertiles[1] ? 1 : 2;
-  return PA_MARKER_SIZE_SCALES[bucket];
-}
-
 function entryToFeature(entry) {
   return {
     type: 'Feature',
@@ -2407,7 +2484,11 @@ function entryToFeature(entry) {
       enwikiUrl: entry.enwikiUrl,
       eszStatus: entry.eszStatus,
       shortName: abbreviatePaName(entry.name),
-      markerScale: paMarkerSizeScale(entry),
+      markerScale: PA_MARKER_SIZE_SCALES[paMarkerSizeKey(entry)],
+      markerStroke: PA_MARKER_STROKE_WIDTHS[paMarkerSizeKey(entry)],
+      sizeUnknown: sizeGroupKey(entry) === 'unknown',
+      // Draw-order area (unknown -> the upper end of Small, as in areaStats).
+      markerArea: entry.area > 0 ? entry.area : unknownAreaDefault(),
       notificationCount: entry.notifications.length,
       notificationStatus: entry.latest ? entry.latest.status : null,
       notificationDate: entry.latest ? entry.latest.date : null,
@@ -2420,17 +2501,23 @@ function entryToFeature(entry) {
 
 // Every mappable PA entry, unfiltered -- used as the map source's initial
 // data before the accordion (and its filters) has finished building.
+// Largest first in the source data too: circle-sort-key only orders features
+// within one tile, and this keeps the draw order where tiles overlap.
+function sortFeaturesLargestFirst(features) {
+  return features.sort((a, b) => b.properties.markerArea - a.properties.markerArea);
+}
+
 function allFeatureCollection() {
   return {
     type: 'FeatureCollection',
-    features: paEntries.filter((entry) => entry.coordinateLatitude != null).map(entryToFeature),
+    features: sortFeaturesLargestFirst(paEntries.filter((entry) => entry.coordinateLatitude != null).map(entryToFeature)),
   };
 }
 
 function filteredFeatureCollection() {
   return {
     type: 'FeatureCollection',
-    features: filteredEntries.filter((entry) => entry.coordinateLatitude != null).map(entryToFeature),
+    features: sortFeaturesLargestFirst(filteredEntries.filter((entry) => entry.coordinateLatitude != null).map(entryToFeature)),
   };
 }
 
@@ -2551,51 +2638,181 @@ function sortStateNames(states) {
   });
 }
 
-function chipBarHtml(counts) {
-  const pct = (n) => (counts.total ? (n / counts.total) * 100 : 0);
+// Sums each ESZ status's share of a group by PA area (km²) -- the group
+// progress measure. A PA with no known area is weighed at the upper end of
+// the "Small" size bucket (unknownAreaDefault), noted in the tooltip.
+function unknownAreaDefault() {
+  return getSizeThresholds()[1];
+}
+
+function areaStats(entries) {
+  const area = { final: 0, draft: 0, none: 0 };
+  const count = { final: 0, draft: 0, none: 0 };
+  let unknownArea = 0;
+  for (const e of entries) {
+    const status = e.eszStatus === 'final' || e.eszStatus === 'draft' ? e.eszStatus : 'none';
+    count[status] += 1;
+    if (e.area > 0) area[status] += e.area;
+    else {
+      area[status] += unknownAreaDefault();
+      unknownArea += 1;
+    }
+  }
+  const totalArea = area.final + area.draft + area.none;
+  return { area, count, totalArea, unknownArea, total: entries.length };
+}
+
+const STATUS_KEYS = ['final', 'draft', 'none'];
+const STATUS_BAR_LABEL = { final: 'Final', draft: 'Draft', none: 'Not notified' };
+
+function formatKm2(n) {
+  return `${Math.round(n).toLocaleString()} km&sup2;`;
+}
+
+// A group's notification progress: one bar split by status, weighted by PA
+// area. The per-status breakdown is in a tooltip (see initListTooltip) and
+// visually-hidden text for screen readers.
+function areaBarHtml(entries) {
+  const s = areaStats(entries);
+  const byArea = s.totalArea > 0;
+  const value = (k) => (byArea ? s.area[k] : s.count[k]);
+  const total = byArea ? s.totalArea : s.total;
+  const pct = (k) => (total ? (value(k) / total) * 100 : 0);
+  const rows = STATUS_KEYS.map((k) => `
+    <span class="list-tip-row">
+      <i class="dot dot-${k}" aria-hidden="true"></i>
+      <span class="list-tip-label">${STATUS_BAR_LABEL[k]}</span>
+      <span class="list-tip-value">${byArea ? formatKm2(s.area[k]) : `${s.count[k]} PAs`}</span>
+      <span class="list-tip-pct">${Math.round(pct(k))}%</span>
+    </span>`).join('');
+  const heading = byArea
+    ? `${formatKm2(s.totalArea)} of protected area`
+    : `${s.total} PA${s.total === 1 ? '' : 's'}, by count (area unknown)`;
+  const foot = byArea && s.unknownArea
+    ? `<span class="list-tip-foot">${s.unknownArea} PA${s.unknownArea === 1 ? '' : 's'} with unknown area counted as ${formatKm2(unknownAreaDefault())} each (upper end of Small)</span>`
+    : '';
+  const tip = `<span class="list-tip-heading">${heading}</span>${rows}${foot}`;
+  const srText = STATUS_KEYS.map((k) => `${STATUS_BAR_LABEL[k]} ${Math.round(pct(k))}%`).join(', ');
   return `
-    <span class="chip-bar">
-      <i class="chip-bar-seg chip-bar-final" style="width:${pct(counts.final)}%"></i>
-      <i class="chip-bar-seg chip-bar-draft" style="width:${pct(counts.draft)}%"></i>
-      <i class="chip-bar-seg chip-bar-none" style="width:${pct(counts.none)}%"></i>
+    <span class="area-bar-wrap">
+      <span class="area-bar" data-tip="${escapeHtml(tip)}">
+        ${STATUS_KEYS.map((k) => `<i class="area-bar-seg area-bar-${k}" style="width:${pct(k)}%"></i>`).join('')}
+        <span class="visually-hidden">${byArea ? 'By area' : 'By count'}: ${srText}</span>
+      </span>
+      <span class="area-bar-pct">${Math.round(pct('final'))}%</span>
     </span>`;
 }
 
-function progressPct(counts) {
-  return counts.total ? Math.round((counts.final / counts.total) * 100) : 0;
+// ---------------------------------------------------------------------------
+// Grouping of the Finder list: by state (default), size or type -- one
+// level only, each open group listing its PAs directly.
+
+let groupBy = 'state';
+const GROUP_BY_KEY = 'esz-dashboard-group-by';
+
+// Size bucket thresholds (km²): the quartiles of known PA areas, rounded to
+// a readable figure -- multiples of 50 above 50 km², of 10 above 10, of 5
+// below that. Computed once over every PA so the buckets don't shift as
+// filters change.
+let sizeThresholds = null;
+function getSizeThresholds() {
+  if (sizeThresholds) return sizeThresholds;
+  const areas = paEntries.map((e) => e.area).filter((a) => a > 0).sort((a, b) => a - b);
+  if (!areas.length) return (sizeThresholds = [500, 100, 5]);
+  const q = (p) => areas[Math.min(areas.length - 1, Math.floor(p * areas.length))];
+  const nice = (v) => {
+    if (v >= 50) return Math.max(50, Math.round(v / 50) * 50);
+    if (v >= 10) return Math.round(v / 10) * 10;
+    return Math.max(1, Math.round(v / 5) * 5) || 1;
+  };
+  const t = [nice(q(0.75)), nice(q(0.5)), nice(q(0.25))];
+  // Keep them strictly decreasing even when quartiles round to the same figure.
+  if (t[1] >= t[0]) t[1] = Math.max(1, t[0] / 2);
+  if (t[2] >= t[1]) t[2] = Math.max(1, t[1] / 2);
+  return (sizeThresholds = t);
 }
 
-// "N% ESZ notified" -- the collapsed state row's combined progress, with no
-// status breakdown (that only shows once a type group is expanded, see
-// progressMetaHtml below).
-function progressPctHtml(counts) {
-  return `${progressPct(counts)}% ESZ notified`;
+const SIZE_GROUPS = ['large', 'medium', 'small', 'very-small', 'unknown'];
+
+function sizeGroupKey(entry) {
+  if (!(entry.area > 0)) return 'unknown';
+  const [large, medium, small] = getSizeThresholds();
+  if (entry.area >= large) return 'large';
+  if (entry.area >= medium) return 'medium';
+  if (entry.area >= small) return 'small';
+  return 'very-small';
 }
 
-// "N% ESZ notified · X Final, Y Draft, Z Unknown" -- used by each expanded
-// type group's progress.
-function progressMetaHtml(counts) {
-  return `${progressPct(counts)}% ESZ notified &middot; ${counts.final} Final, ${counts.draft} Draft, ${counts.none} Unknown`;
+function sizeGroupLabel(key) {
+  const [large, medium, small] = getSizeThresholds();
+  const n = (v) => v.toLocaleString();
+  return {
+    large: ['Large', `${n(large)}+ km²`],
+    medium: ['Medium', `${n(medium)}–${n(large)} km²`],
+    small: ['Small', `${n(small)}–${n(medium)} km²`],
+    'very-small': ['Very small', `under ${n(small)} km²`],
+    unknown: ['Unknown size', 'no area data'],
+  }[key];
 }
 
-function stateHeaderHtml(stateName, entries) {
-  const isOpen = openStates.has(stateName);
-  const counts = statusCounts(entries);
+// The top-level groups for the current groupBy, in display order:
+// [{ key, name, note, entries, stateName?, type? }].
+// "Group by status": the PA's ESZ notification status.
+const STATUS_GROUPS = ['final', 'draft', 'none'];
+const STATUS_GROUP_LABEL = { final: 'Final ESZ notified', draft: 'Draft ESZ notified', none: 'Not notified' };
+const statusGroupKey = (entry) => (entry.eszStatus === 'final' || entry.eszStatus === 'draft' ? entry.eszStatus : 'none');
+
+function buildListGroups(entries) {
+  if (groupBy === 'size') {
+    const buckets = new Map(SIZE_GROUPS.map((k) => [k, []]));
+    for (const entry of entries) buckets.get(sizeGroupKey(entry)).push(entry);
+    return SIZE_GROUPS.filter((k) => buckets.get(k).length).map((k) => {
+      const [name, note] = sizeGroupLabel(k);
+      return { key: k, name, note, entries: buckets.get(k) };
+    });
+  }
+  if (groupBy === 'status') {
+    const buckets = new Map(STATUS_GROUPS.map((k) => [k, []]));
+    for (const entry of entries) buckets.get(statusGroupKey(entry)).push(entry);
+    return STATUS_GROUPS.filter((k) => buckets.get(k).length)
+      .map((k) => ({ key: k, name: STATUS_GROUP_LABEL[k], status: k, entries: buckets.get(k) }));
+  }
+  if (groupBy === 'type') {
+    const types = groupByType(entries);
+    return sortTypeNames(types).map((t) => ({ key: t, name: t, type: t, entries: types.get(t) }));
+  }
+  const states = buildStateGroups(entries);
+  return sortStateNames(states).map((st) => ({ key: st, name: st, stateName: st, entries: states.get(st) }));
+}
+
+// The top-level group key(s) a PA is listed under in the current grouping.
+function groupKeysForEntry(entry) {
+  if (groupBy === 'size') return [sizeGroupKey(entry)];
+  if (groupBy === 'type') return [entry.protectedAreaType || 'Unspecified type'];
+  if (groupBy === 'status') return [statusGroupKey(entry)];
+  return entry.state.length ? entry.state : [UNSPECIFIED_STATE_LABEL];
+}
+
+function typeIconHtml(type, extraClass = '') {
+  const meta = paTypeMeta(type);
+  return `<span class="pa-type-icon pa-type--${meta.modifier}${extraClass ? ` ${extraClass}` : ''}" aria-hidden="true">${meta.icon}</span>`;
+}
+
+function groupHeaderHtml(group, isOpen) {
+  const n = group.entries.length;
   return `
-    <button type="button" class="state-row-header" data-state="${escapeHtml(stateName)}" aria-expanded="${isOpen}">
+    <button type="button" class="state-row-header" data-group="${escapeHtml(group.key)}"${group.stateName ? ` data-state="${escapeHtml(group.stateName)}"` : ''} aria-expanded="${isOpen}">
       <span class="state-row-chevron" aria-hidden="true">&#9656;</span>
-      <span class="state-row-name">${escapeHtml(stateName)}</span>
-      <span class="state-row-count">${entries.length} protected area${entries.length === 1 ? '' : 's'}</span>
-      <span class="state-row-progress">
-        <span class="state-row-progress-meta">${progressPctHtml(counts)}</span>
-        ${chipBarHtml(counts)}
-      </span>
+      ${group.type ? typeIconHtml(group.type) : ''}
+      ${group.status ? `<i class="dot dot-${group.status}" aria-hidden="true"></i>` : ''}
+      <span class="state-row-name">${escapeHtml(group.name)} <span class="state-row-count" title="${n} protected area${n === 1 ? '' : 's'}">(${n})</span>${group.note ? ` <span class="state-row-note">${escapeHtml(group.note)}</span>` : ''}</span>
+      ${areaBarHtml(group.entries)}
     </button>`;
 }
 
 // Icon + subtle accent colour per protected-area type, so type groups within
 // an expanded state read at a glance instead of as identical grey sections.
-// "modifier" drives the .pa-type-group--<modifier> background tint in CSS.
+// "modifier" drives the .pa-type--<modifier> icon colour in CSS.
 const PA_TYPE_META = {
   'Tiger Reserve': {
     modifier: 'tiger',
@@ -2684,36 +2901,24 @@ function eszStatusLabel(status) {
   return status === 'final' ? 'Final' : status === 'draft' ? 'Draft' : 'Not notified';
 }
 
+// One compact line per PA: type icon, name, area, ESZ status badge.
 function cardCompactInnerHtml(entry) {
-  const thumb = commonsThumbnailUrl(entry.pageBanner || entry.image, 140);
-  const initial = (entry.protectedAreaType || entry.name || '?').charAt(0);
+  const type = entry.protectedAreaType || 'Unspecified type';
+  const status = entry.eszStatus === 'final' || entry.eszStatus === 'draft' ? entry.eszStatus : 'none';
+  const area = entry.area > 0 ? `${entry.area < 10 ? entry.area.toFixed(1) : Math.round(entry.area).toLocaleString()} km&sup2;` : '';
   return `
-    <div class="pa-card-thumb">
-      ${thumb ? `<img src="${thumb}" alt="" loading="lazy" />` : `<span class="pa-card-thumb-placeholder" aria-hidden="true">${escapeHtml(initial)}</span>`}
-    </div>
-    <div class="pa-card-body">
-      <span class="pa-card-name">${escapeHtml(entry.name || '')}</span>
-      <span class="pa-card-right">
-        ${entry.area ? `<span class="pa-card-area">${entry.area.toLocaleString()} km&sup2;</span>` : ''}
-        <span class="pa-card-status status-pill"><i class="dot dot-${entry.eszStatus}" aria-hidden="true"></i>${eszStatusLabel(entry.eszStatus)}</span>
-      </span>
-    </div>`;
+    <span title="${escapeHtml(type)}">${typeIconHtml(type)}</span>
+    <span class="pa-card-name">${escapeHtml(entry.name || '')}</span>
+    <span class="pa-card-area">${area}</span>
+    <span class="status-badge status-badge--${status}">${status === 'none' ? 'None' : eszStatusLabel(status)}</span>`;
 }
 
-// The compact strip and the expanded wiki header are both built once, up
-// front, as siblings -- expand/collapse then only toggles which one CSS
-// shows (see .pa-card.is-expanded rules), rather than tearing down and
-// rebuilding either on every toggle. That's what keeps re-expanding a card
-// instant and image-flicker-free instead of re-fetching/re-rendering the
-// Wikipedia excerpt and Commons gallery each time.
+// A list row only -- clicking it opens the PA's detail in the separate
+// detail pane between the list and the map (see openPaDetail).
 function cardOuterHtml(entry) {
   return `
-    <div class="pa-card pa-card--${entry.eszStatus === 'final' || entry.eszStatus === 'draft' ? entry.eszStatus : 'none'}" data-pa-key="${escapeHtml(entry.paKey)}" title="${escapeHtml(entry.name || '')}">
-      <div class="pa-card-row" tabindex="0" role="button" aria-expanded="false">
-        <div class="pa-card-compact">${cardCompactInnerHtml(entry)}</div>
-        <div class="pa-card-expanded-header"></div>
-      </div>
-      <div class="pa-card-detail"></div>
+    <div class="pa-card" data-pa-key="${escapeHtml(entry.paKey)}" title="${escapeHtml(entry.name || '')}">
+      <div class="pa-card-row" tabindex="0" role="button" aria-pressed="false" aria-controls="pa-detail-pane">${cardCompactInnerHtml(entry)}</div>
     </div>`;
 }
 
@@ -2804,60 +3009,230 @@ function archivePdfDoc(n) {
   };
 }
 
-function boundaryMapDoc(n, entry) {
-  if (n.georeferencingLink) return { href: withAllmapsBbox(n.georeferencingLink, entry.allmapsBbox), label: 'Boundary Map', disabled: false };
-  if (n.allmapsImagesLink) return { href: withAllmapsBbox(n.allmapsImagesLink, entry.allmapsBbox), label: 'Locate and Georeference Boundary Map', disabled: true };
-  return { href: null, label: 'Boundary Map', disabled: true };
-}
-
-function boundaryDataDoc(entry) {
-  const osmId = entryOsmFeatureId(entry);
-  if (osmId) return { href: osmBoundaryHref(osmId), label: 'Boundary Data', disabled: false };
-  return { href: null, label: 'Boundary Data', disabled: true };
-}
-
 function gazetteMapsPanelHtml(n, entry) {
   const archiveId = archiveIdFromLink(n.notificationArchiveLink);
   if (!archiveId) return '';
   return `<div class="gazette-maps" hidden data-archive-id="${escapeHtml(archiveId)}" data-map-pages="${(n.gazetteMapPages || []).join(',')}" data-bbox="${(entry.allmapsBbox || []).join(',')}"></div>`;
 }
 
-function docLinkHtml(doc, icon) {
-  const cls = `pa-doc-link${doc.disabled ? ' is-disabled' : ''}`;
-  const title = escapeHtml(doc.label);
-  if (doc.button) return `<button type="button" class="${cls} gazette-maps-trigger" aria-expanded="false" title="${title}" aria-label="${title}">${icon}</button>`;
-  if (!doc.href) return `<span class="${cls}" title="${title}" aria-label="${title}" aria-disabled="true">${icon}</span>`;
-  return `<a class="${cls}" href="${doc.href}" target="_blank" rel="noopener" title="${title}" aria-label="${title}">${icon}</a>`;
+// archive.org's BookReader page image: displayable without CORS and without
+// loading the IIIF manifest first, so a timeline thumbnail shows at once.
+const archivePageThumb = (archiveId, page, width = 160) => `https://archive.org/download/${archiveId}/page/n${page - 1}_w${width}.jpg`;
+
+// The gazette thumbnail on a timeline item. Until Allmaps reports a
+// georeferenced page (see attachTimelineThumb), it shows the first likely map
+// page (else page 1) and opens the row's "Find maps" panel.
+function timelineThumbHtml(n, archiveId) {
+  const page = (n.gazetteMapPages || [])[0] || 1;
+  const title = 'Find the boundary map in this gazette and georeference it in Allmaps';
+  return `<button type="button" class="pa-tl-thumb gazette-maps-trigger" aria-expanded="false" title="${title}" aria-label="${title}">
+      <img src="${escapeHtml(archivePageThumb(archiveId, page))}" alt="" loading="lazy" />
+      <span class="pa-tl-thumb-label">Georeference</span>
+    </button>`;
 }
 
-function notificationRowHtml(n, entry) {
-  const dotClass = NOTIFICATION_DOT_CLASS[n.notificationStatus] || 'dot-none';
-  const docs = [
-    [moefPdfDoc(n), DOC_ICON.pdf],
-    [archivePdfDoc(n), DOC_ICON.archive],
-    [boundaryMapDoc(n, entry), DOC_ICON.map],
-    [boundaryDataDoc(entry), DOC_ICON.layers],
-  ];
+// Calendar time between two notifications as "1y 2m 4 days", shown on the
+// rail joining them. Zero parts are left out.
+function timeBetweenLabel(laterDate, earlierDate) {
+  const parse = (d) => { const [y, m, day] = (d || '').split('-').map(Number); return y && m && day ? { y, m: m - 1, d: day } : null; };
+  const a = parse(laterDate);
+  const b = parse(earlierDate);
+  if (!a || !b) return null;
+  // b moved forward by whole months, clamped to the month's last day.
+  const addMonths = (n) => {
+    const y = b.y + Math.floor((b.m + n) / 12);
+    const m = (b.m + n) % 12;
+    return Date.UTC(y, m, Math.min(b.d, new Date(Date.UTC(y, m + 1, 0)).getUTCDate()));
+  };
+  const later = Date.UTC(a.y, a.m, a.d);
+  if (later < Date.UTC(b.y, b.m, b.d)) return null;
+  let months = (a.y - b.y) * 12 + (a.m - b.m);
+  if (addMonths(months) > later) months -= 1;
+  const days = Math.round((later - addMonths(months)) / 86400000);
+  const parts = [];
+  if (months >= 12) parts.push(`${Math.floor(months / 12)}y`);
+  if (months % 12) parts.push(`${months % 12}m`);
+  if (days || !parts.length) parts.push(`${days} day${days === 1 ? '' : 's'}`);
+  return parts.join(' ');
+}
+
+function timelineGapHtml(n, older) {
+  if (!older) return '';
+  const label = timeBetweenLabel(n.notificationDate, older.notificationDate);
+  if (!label) return '';
+  return `<span class="pa-tl-gap" title="${label} after the previous notification">${label}</span>`;
+}
+
+function timelineItemHtml(n, entry, older) {
   const archiveId = archiveIdFromLink(n.notificationArchiveLink);
+  const dotClass = NOTIFICATION_DOT_CLASS[n.notificationStatus] || 'dot-none';
+  const actions = [];
+  actions.push(n.notificationPdfLink
+    ? `<a class="pa-tl-action" href="${escapeHtml(n.notificationPdfLink)}" target="_blank" rel="noopener" title="The notification PDF on the MoEF website">${DOC_ICON.pdf}View Notification</a>`
+    : `<span class="pa-tl-action is-disabled" title="No MoEF PDF on record for this notification">${DOC_ICON.pdf}View Notification</span>`);
   if (archiveId) {
+    actions.push(`<a class="pa-tl-action" href="${escapeHtml(n.notificationArchiveLink)}" target="_blank" rel="noopener" title="The Gazette of India scan on archive.org">${DOC_ICON.archive}Gazette</a>`);
     const mapCount = (n.gazetteMapPages || []).length;
     const label = mapCount ? `Find maps in this gazette (${mapCount} likely map page${mapCount === 1 ? '' : 's'})` : 'Find maps in this gazette';
-    docs.push([{ button: true, label }, DOC_ICON.findMaps]);
+    actions.push(`<button type="button" class="pa-tl-action gazette-maps-trigger" aria-expanded="false" title="${label}">${DOC_ICON.findMaps}Find maps</button>`);
+  } else {
+    const search = archivePdfDoc(n);
+    if (search.href) actions.push(`<a class="pa-tl-action pa-tl-action--search" href="${escapeHtml(search.href)}" target="_blank" rel="noopener" title="No gazette scan is linked yet: search archive.org for MoEF notices of this date">${DOC_ICON.archive}Search Archive</a>`);
   }
   return `
-    <li class="pa-notification-row">
-      <span class="pa-notification-date">${escapeHtml(formatNotificationDate(n.notificationDate))}</span>
-      <span class="pa-notification-type"><i class="dot ${dotClass}" aria-hidden="true"></i>${escapeHtml(notificationTypeLabel(n.notificationStatus))}</span>
-      ${n.orderNumber ? `<span class="pa-notification-order">${escapeHtml(n.orderNumber)}</span>` : ''}
-      <span class="pa-notification-docs">${docs.map(([doc, icon]) => docLinkHtml(doc, icon)).join('')}</span>
-      ${gazetteMapsPanelHtml(n, entry)}
+    <li class="pa-notification-row pa-tl-item"${archiveId ? ` data-archive-id="${escapeHtml(archiveId)}" data-map-pages="${(n.gazetteMapPages || []).join(',')}"` : ''}>
+      <i class="pa-tl-dot ${dotClass}" aria-hidden="true"></i>
+      <div class="pa-tl-card">
+        <div class="pa-tl-head">
+          <span class="pa-tl-date">${escapeHtml(formatNotificationDate(n.notificationDate))}</span>
+          <span class="pa-tl-type">${escapeHtml(notificationTypeLabel(n.notificationStatus))}</span>
+          ${n.orderNumber ? `<span class="pa-tl-order">${escapeHtml(n.orderNumber)}</span>` : ''}
+          ${archiveId ? `<button type="button" class="pa-tl-switch" role="switch" aria-checked="false" disabled title="No georeferenced map in this gazette yet" aria-label="Show this notification's georeferenced maps on the map"><span class="pa-tl-switch-knob"></span></button>` : ''}
+        </div>
+        <div class="pa-tl-body">
+          ${archiveId ? timelineThumbHtml(n, archiveId) : ''}
+          <div class="pa-tl-actions">${actions.join('')}</div>
+        </div>
+        ${gazetteMapsPanelHtml(n, entry)}
+      </div>
+      ${timelineGapHtml(n, older)}
     </li>`;
 }
 
-function notificationListHtml(entry) {
-  const sorted = [...entry.notifications].sort((a, b) => (b.notificationDate || '').localeCompare(a.notificationDate || ''));
+function sortedNotifications(entry) {
+  return [...entry.notifications].sort((a, b) => (b.notificationDate || '').localeCompare(a.notificationDate || ''));
+}
+
+function notificationTimelineHtml(entry) {
+  const sorted = sortedNotifications(entry);
   if (!sorted.length) return `<p class="pa-detail-empty">No ESZ notification on record yet.</p>`;
-  return `<ul class="pa-notification-list">${sorted.map((n) => notificationRowHtml(n, entry)).join('')}</ul>`;
+  return `<ol class="pa-timeline">${sorted.map((n, i) => timelineItemHtml(n, entry, sorted[i + 1])).join('')}</ol>`;
+}
+
+// ---------------------------------------------------------------------------
+// Timeline rows as map layers. A row whose gazette has warpable maps in
+// Allmaps can be switched on, which draws those maps (one WarpedMapLayer per
+// gazette) above the OSM/Survey of India basemaps and the gazette mosaic, but
+// under the OSM boundaries, so several notifications' maps can be compared
+// with OSM. The newest such row is on by default until the user toggles one.
+const TIMELINE_MAPS_OPACITY = 0.8;
+const timelineMapLayers = new Map(); // archive id -> { layerId, layer, urls }
+
+const warpableGeorefs = (state) => [...state.allmaps.values()].filter(isWarpable);
+
+// Just above the gazette mosaic, itself just above the basemaps.
+function timelineMapsBeforeId() {
+  const layers = map.getStyle().layers;
+  const i = layers.findIndex((l) => l.id === NOTIFICATION_MAPS_LAYER_ID);
+  return i >= 0 ? layers[i + 1]?.id : undefined;
+}
+
+function showTimelineMaps(archiveId, on) {
+  let rec = timelineMapLayers.get(archiveId);
+  if (!on) {
+    if (rec && map?.getLayer(rec.layerId)) map.removeLayer(rec.layerId);
+    timelineMapLayers.delete(archiveId);
+    return;
+  }
+  const state = gazetteStates.get(archiveId);
+  if (!map || !state || !map.getLayer(NOTIFICATION_MAPS_LAYER_ID)) return;
+  if (!rec) {
+    const layerId = `timeline-maps-${archiveId}`;
+    const layer = new WarpedMapLayer({ layerId, opacity: TIMELINE_MAPS_OPACITY });
+    map.addLayer(layer, timelineMapsBeforeId());
+    rec = { layerId, layer, urls: new Set() };
+    timelineMapLayers.set(archiveId, rec);
+  }
+  for (const georef of warpableGeorefs(state)) {
+    if (rec.urls.has(georef.annotationUrl)) continue;
+    rec.urls.add(georef.annotationUrl);
+    rec.layer.addGeoreferenceAnnotationByUrl(georef.annotationUrl)
+      .catch((err) => console.warn('Georeferenced map failed to load:', georef.annotationUrl, err));
+  }
+}
+
+function clearTimelineMapLayers() {
+  for (const archiveId of [...timelineMapLayers.keys()]) showTimelineMaps(archiveId, false);
+}
+
+function setTimelineItemOn(itemEl, on) {
+  const sw = itemEl.querySelector('.pa-tl-switch');
+  if (!sw) return;
+  const value = on && itemEl.dataset.warpable === 'true';
+  sw.setAttribute('aria-checked', String(value));
+  itemEl.classList.toggle('is-on', value);
+  showTimelineMaps(itemEl.dataset.archiveId, value);
+}
+
+// Enables a row's switch once its gazette has a warpable map, and adds maps
+// found later to a row that's already on.
+function syncTimelineSwitch(itemEl, state) {
+  const count = warpableGeorefs(state).length;
+  const sw = itemEl.querySelector('.pa-tl-switch');
+  if (!sw || !count) return;
+  const wasWarpable = itemEl.dataset.warpable === 'true';
+  itemEl.dataset.warpable = 'true';
+  sw.disabled = false;
+  sw.title = `Show ${count} georeferenced map${count === 1 ? '' : 's'} from this gazette on the map`;
+  if (itemEl.classList.contains('is-on')) showTimelineMaps(itemEl.dataset.archiveId, true);
+  if (!wasWarpable) applyDefaultTimelineToggle(itemEl.closest('.pa-detail-content'));
+}
+
+function applyDefaultTimelineToggle(contentEl) {
+  if (!contentEl || contentEl.dataset.timelineTouched) return;
+  const items = [...contentEl.querySelectorAll('.pa-tl-item')];
+  const first = items.find((it) => it.dataset.warpable === 'true');
+  items.forEach((it) => { if (it.classList.contains('is-on') !== (it === first)) setTimelineItemOn(it, it === first); });
+}
+
+// A click on a row (outside its links and buttons) or its switch toggles it.
+function handleTimelineToggleClick(e) {
+  const item = e.target.closest('.pa-tl-item');
+  if (!item?.querySelector('.pa-tl-switch')) return false;
+  const sw = e.target.closest('.pa-tl-switch');
+  if (!sw && e.target.closest('a, button, .gazette-maps, .pa-tl-gap')) return false;
+  if (item.dataset.warpable !== 'true') return Boolean(sw);
+  item.closest('.pa-detail-content').dataset.timelineTouched = 'true';
+  setTimelineItemOn(item, !item.classList.contains('is-on'));
+  return true;
+}
+
+// The first page of the gazette with control points in Allmaps, preferring
+// one with enough of them to warp.
+function firstGeoreferencedPage(state) {
+  const pages = state.pages.filter((p) => state.allmaps.has(p.serviceId));
+  return pages.find((p) => isWarpable(state.allmaps.get(p.serviceId))) || pages[0] || null;
+}
+
+// Swaps a timeline item's "Georeference" thumbnail for the gazette's first
+// georeferenced page, linking to the warped map in the Allmaps viewer (or the
+// editor, below three control points), once Allmaps reports one.
+function attachTimelineThumb(itemEl, bbox) {
+  const candidates = (itemEl.dataset.mapPages || '').split(',').filter(Boolean).map(Number);
+  const state = gazetteState(itemEl.dataset.archiveId, candidates);
+  const update = () => {
+    if (!itemEl.isConnected) { state.listeners.delete(update); return; }
+    syncTimelineSwitch(itemEl, state);
+    const page = firstGeoreferencedPage(state);
+    if (!page || itemEl.dataset.georefPage === String(page.page)) return;
+    itemEl.dataset.georefPage = String(page.page);
+    const georef = state.allmaps.get(page.serviceId);
+    const warpable = isWarpable(georef);
+    const title = warpable
+      ? `Page ${page.page}, georeferenced with ${georef.gcps} control points: view the map in Allmaps`
+      : `Page ${page.page} has ${georef.gcps} control point${georef.gcps === 1 ? '' : 's'} (3 needed to warp): continue in the Allmaps editor`;
+    const link = document.createElement('a');
+    link.className = 'pa-tl-thumb is-georeferenced';
+    link.href = warpable ? allmapsViewerUrl(georef) : allmapsEditorUrl(state.manifestUrl, page.serviceId, bbox);
+    link.target = '_blank';
+    link.rel = 'noopener';
+    link.title = title;
+    link.setAttribute('aria-label', title);
+    link.innerHTML = `<img src="${escapeHtml(page.pageThumb)}" alt="" loading="lazy" /><span class="pa-tl-thumb-label">${MARKER_ICON}${warpable ? 'View map' : `${georef.gcps} GCP${georef.gcps === 1 ? '' : 's'}`}</span>`;
+    itemEl.querySelector('.pa-tl-thumb')?.replaceWith(link);
+  };
+  state.listeners.add(update);
+  loadGazettePages(state).then(() => { checkAllmapsImages(state); update(); });
 }
 
 // ---------------------------------------------------------------------------
@@ -2874,10 +3249,16 @@ function notificationListHtml(entry) {
 //    draws it to a canvas and keeps pages with enough clearly coloured pixels:
 //    text and tables are black and white, annexure maps are in colour. Pages
 //    are scanned last-first, because the annexures sit at the end.
-// Allmaps annotations for the manifest (looked up by the sha1 id Allmaps
-// uses) mark pages "Georeferenced"; the rest get "Add Georeferencing".
-// Clicking a thumbnail opens that page in the Allmaps editor over the Survey
-// of India basemap. "Show all" lists every page, with non-map pages greyed.
+// Opening the panel also asks Allmaps which pages already have control
+// points: every map saved against the gazette's manifest (api.allmaps.org,
+// which unlike annotations.allmaps.org also lists maps with fewer than three
+// GCPs), then, image by image, any likely map page not found there (maps can
+// be saved against a bare image). A page with control points counts as a map
+// page, and shows a marker with its GCP count linking to Allmaps, plus an OSM
+// menu to trace it in iD or JOSM over the warped map or the Survey of India
+// basemap. The rest get "Add Georeferencing". Clicking a thumbnail opens that
+// page in the Allmaps editor over the Survey of India basemap. "Show all"
+// lists every page, with non-map pages greyed.
 //
 // Thumbnails come from archive.org's IIIF Image API (about 1 s each, with a
 // CORS header so they can be measured). About one URL in four hangs and
@@ -3002,7 +3383,8 @@ function gazetteState(archiveId, candidatePages) {
       manifestUrl: `https://iiif.archive.org/iiif/${archiveId}/manifest.json`,
       candidates: new Set(candidatePages),
       pages: [],
-      georeferenced: new Set(),
+      allmaps: new Map(), // image service id -> {mapId, gcps, bbox} from Allmaps
+      allmapsChecked: new Set(), // image service ids already looked up one by one
       loading: null, // promise for manifest + annotations
       error: null,
       scan: 'idle', // 'idle' | 'running' | 'done'
@@ -3018,17 +3400,11 @@ function notifyGazette(state) { state.listeners.forEach((fn) => fn()); }
 function loadGazettePages(state) {
   state.loading ??= (async () => {
     try {
-      const [manifest, annotations] = await Promise.all([
+      const [manifest, maps] = await Promise.all([
         fetch(state.manifestUrl).then((r) => { if (!r.ok) throw new Error(`manifest HTTP ${r.status}`); return r.json(); }),
-        allmapsId(state.manifestUrl)
-          .then((id) => fetch(`https://annotations.allmaps.org/manifests/${id}`))
-          .then((r) => (r.ok ? r.json() : null))
-          .catch(() => null),
+        allmapsId(state.manifestUrl).then((id) => fetchAllmapsMaps(`https://api.allmaps.org/manifests/${id}/maps`)),
       ]);
-      for (const a of annotations?.items || []) {
-        const src = a.target?.source;
-        if (src) state.georeferenced.add(src.id || src['@id']);
-      }
+      maps.forEach((m) => addAllmapsMap(state, m));
       state.pages = (manifest.items || []).map((canvas, index) => {
         const body = canvas.items?.[0]?.items?.[0]?.body;
         const service = [].concat(body?.service || [])[0];
@@ -3050,6 +3426,43 @@ function loadGazettePages(state) {
     notifyGazette(state);
   })();
   return state.loading;
+}
+
+// Georeferenced maps from the Allmaps API ([] for a 404 or a network error).
+function fetchAllmapsMaps(url) {
+  return fetch(url).then((r) => (r.ok ? r.json() : [])).then((d) => (Array.isArray(d) ? d : [])).catch(() => []);
+}
+
+// Keeps the map with the most control points when an image has several.
+function addAllmapsMap(state, m) {
+  const imageId = m.resource?.id;
+  const gcps = (m.gcps || []).filter((g) => Array.isArray(g.geo));
+  if (!imageId || !gcps.length) return;
+  if ((state.allmaps.get(imageId)?.gcps || 0) >= gcps.length) return;
+  const lons = gcps.map((g) => g.geo[0]);
+  const lats = gcps.map((g) => g.geo[1]);
+  state.allmaps.set(imageId, {
+    mapId: m.id.split('/').pop(),
+    annotationUrl: m.id,
+    gcps: gcps.length,
+    bbox: [Math.min(...lons), Math.min(...lats), Math.max(...lons), Math.max(...lats)],
+  });
+}
+
+// Looks up, one image at a time, likely map pages that the manifest lookup
+// didn't return.
+function checkAllmapsImages(state) {
+  for (const p of state.pages) {
+    if (state.allmaps.has(p.serviceId) || state.allmapsChecked.has(p.serviceId) || !isMapPage(state, p)) continue;
+    state.allmapsChecked.add(p.serviceId);
+    allmapsId(p.serviceId)
+      .then((id) => fetchAllmapsMaps(`https://api.allmaps.org/images/${id}/maps`))
+      .then((maps) => {
+        const before = state.allmaps.size;
+        maps.forEach((m) => addAllmapsMap(state, m));
+        if (state.allmaps.size !== before) notifyGazette(state);
+      });
+  }
 }
 
 async function scanGazette(state) {
@@ -3076,22 +3489,39 @@ async function scanGazette(state) {
       if (p.failed) return;
       colourCache[p.serviceId] = Math.round(p.colour * 100000) / 100000;
       if (++sinceSave >= 10) { sinceSave = 0; saveColourCache(); }
-    }, batch).then(() => { state.scanned += 1; notifyGazette(state); });
+    }, batch).then(() => { state.scanned += 1; checkAllmapsImages(state); notifyGazette(state); });
   }));
   saveColourCache();
   state.scan = 'done';
   notifyGazette(state);
 }
 
-const isMapPage = (state, p) => state.georeferenced.has(p.serviceId)
+const isMapPage = (state, p) => state.allmaps.has(p.serviceId)
   || state.candidates.has(p.page)
   || (p.colour != null && p.colour >= COLOUR_FRACTION_MIN);
 
+const MARKER_ICON = '<svg viewBox="0 0 24 24" width="11" height="11" aria-hidden="true"><path fill="currentColor" d="M12 2a7 7 0 0 0-7 7c0 5.2 7 13 7 13s7-7.8 7-13a7 7 0 0 0-7-7Zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5Z"/></svg>';
+// A simplified OpenStreetMap mark: a magnifier over a map sheet.
+const OSM_ICON = '<svg viewBox="0 0 24 24" width="12" height="12" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" d="M3 6l5-2 6 2 5-2v8M3 6v14l5-2 3 1M8 4v14M14 6v5"/><circle cx="16.5" cy="16.5" r="3.5" fill="none" stroke="currentColor" stroke-width="2"/><path stroke="currentColor" stroke-width="2.2" stroke-linecap="round" d="M19 19l2.5 2.5"/></svg>';
+
+// Allmaps can warp (and so view or tile) a map only from three control points.
+const isWarpable = (georef) => georef.gcps >= 3;
+const allmapsViewerUrl = (georef) => `https://viewer.allmaps.org/?url=${encodeURIComponent(georef.annotationUrl)}`;
+
 function gazetteThumbHtml(state, p, ignored, bbox) {
-  const georef = state.georeferenced.has(p.serviceId);
-  const badge = georef
-    ? '<span class="gazette-thumb-badge is-done">Georeferenced</span>'
-    : '<span class="gazette-thumb-badge">Add Georeferencing</span>';
+  const georef = state.allmaps.get(p.serviceId);
+  const editorUrl = allmapsEditorUrl(state.manifestUrl, p.serviceId, bbox);
+  let badge;
+  if (georef) {
+    const gcpLabel = `${georef.gcps} control point${georef.gcps === 1 ? '' : 's'}`;
+    const markerTitle = isWarpable(georef) ? `${gcpLabel}: view the georeferenced map in Allmaps` : `${gcpLabel} (3 needed to warp): continue in the Allmaps editor`;
+    badge = `<span class="gazette-thumb-badge is-done">
+        <a class="gazette-thumb-gcps" href="${escapeHtml(isWarpable(georef) ? allmapsViewerUrl(georef) : editorUrl)}" target="_blank" rel="noopener" title="${escapeHtml(markerTitle)}" aria-label="${escapeHtml(markerTitle)}">${MARKER_ICON}${georef.gcps}</a>
+        ${isWarpable(georef) ? `<button type="button" class="gazette-thumb-osm" data-gazette-action="osm" data-service-id="${escapeHtml(p.serviceId)}" aria-haspopup="menu" title="Edit OpenStreetMap over this map" aria-label="Edit OpenStreetMap over this map">${OSM_ICON}</button>` : ''}
+      </span>`;
+  } else {
+    badge = '<span class="gazette-thumb-badge">Add Georeferencing</span>';
+  }
   let title = `Page ${p.page}: ${georef ? 'open in the Allmaps editor' : 'add georeferencing in the Allmaps editor'}`;
   if (p.failed) title += " (couldn't check this page for colour)";
   // Same URL and crossorigin mode as the measuring load, so a measured page
@@ -3099,12 +3529,15 @@ function gazetteThumbHtml(state, p, ignored, bbox) {
   const img = p.failed
     ? `<img src="${escapeHtml(p.pageThumb)}" alt="Gazette page ${p.page}" loading="lazy" />`
     : `<img src="${escapeHtml(p.iiifThumb)}" alt="Gazette page ${p.page}" loading="lazy" crossorigin="anonymous" />`;
-  return `<a class="gazette-thumb${ignored ? ' is-ignored' : ''}${p.failed ? ' is-unchecked' : ''}" href="${escapeHtml(allmapsEditorUrl(state.manifestUrl, p.serviceId, bbox))}"
-      target="_blank" rel="noopener" title="${escapeHtml(title)}">
-      ${img}
+  // The badge holds links of its own, so it sits beside the thumbnail link
+  // rather than inside it.
+  return `<div class="gazette-thumb${ignored ? ' is-ignored' : ''}${p.failed ? ' is-unchecked' : ''}">
+      <a class="gazette-thumb-link" href="${escapeHtml(editorUrl)}" target="_blank" rel="noopener" title="${escapeHtml(title)}">
+        ${img}
+        <span class="gazette-thumb-page">p. ${p.page}</span>
+      </a>
       ${badge}
-      <span class="gazette-thumb-page">p. ${p.page}</span>
-    </a>`;
+    </div>`;
 }
 
 function renderGazetteMaps(el, state) {
@@ -3125,6 +3558,7 @@ function renderGazetteMaps(el, state) {
       ? `${plural(maps.length, 'likely map page')}, from images in the gazette PDF and Allmaps`
       : 'No map pages recorded for this gazette';
   }
+  if (state.allmaps.size && !state.error) status += ` &middot; ${plural(state.allmaps.size, 'page')} with control points in Allmaps`;
   const buttons = [];
   if (state.pages.length && state.scan === 'idle') {
     buttons.push('<button type="button" class="gazette-maps-btn" data-gazette-action="scan" title="Check every page for colour maps (slow: about a second a page)">Scan all pages</button>');
@@ -3157,23 +3591,104 @@ function attachGazettePanel(el) {
   renderGazetteMaps(el, state);
   loadGazettePages(state).then(() => {
     // Nothing recorded for this gazette: scanning is the only way to find maps.
-    if (!state.error && state.candidates.size === 0 && state.georeferenced.size === 0) scanGazette(state);
+    if (!state.error && state.candidates.size === 0 && state.allmaps.size === 0) scanGazette(state);
+    checkAllmapsImages(state);
   });
   return state;
+}
+
+// ---------------------------------------------------------------------------
+// "Edit OpenStreetMap" menu on a georeferenced gazette page. iD takes a
+// single custom background, so it gets one command per layer; JOSM's remote
+// control (http://127.0.0.1:8111, JOSM running with remote control enabled)
+// adds both as imagery layers and zooms to the map's control points.
+const ALLMAPS_TILES = (georef) => `https://allmaps.xyz/maps/${georef.mapId}/{z}/{x}/{y}.png`;
+const SOI_TILES_PNG = 'https://indianopenmaps.com/soi/osm/{z}/{x}/{y}.png'; // JOSM can't read webp
+
+function georefView(georef) {
+  const [w, s, e, n] = georef.bbox;
+  const span = Math.max(e - w, (n - s) * 1.2, 0.005);
+  const zoom = Math.max(10, Math.min(17, Math.floor(Math.log2(360 / span)) + 1));
+  return { zoom, lat: (s + n) / 2, lon: (w + e) / 2 };
+}
+
+function idEditUrl(georef, tiles) {
+  const { zoom, lat, lon } = georefView(georef);
+  return `https://www.openstreetmap.org/edit?editor=id#map=${zoom}/${lat.toFixed(5)}/${lon.toFixed(5)}&background=custom:${encodeURIComponent(tiles)}`;
+}
+
+async function openInJosm(georef) {
+  const rc = 'http://127.0.0.1:8111';
+  const imagery = (title, tiles) => `${rc}/imagery?${new URLSearchParams({ title, type: 'tms', max_zoom: '19' })}&url=${encodeURIComponent(tiles.replace('{z}', '{zoom}'))}`;
+  const [w, s, e, n] = georef.bbox;
+  const pad = 0.01;
+  const calls = [
+    imagery('Survey of India (indianopenmaps)', SOI_TILES_PNG),
+    imagery(`Allmaps gazette map ${georef.mapId}`, ALLMAPS_TILES(georef)),
+    `${rc}/zoom?${new URLSearchParams({ left: w - pad, right: e + pad, bottom: s - pad, top: n + pad })}`,
+  ];
+  try {
+    // Sequential, so the layers stack in order. JOSM sends no CORS header,
+    // hence no-cors: an unreachable JOSM still rejects.
+    for (const url of calls) await fetch(url, { mode: 'no-cors' });
+  } catch {
+    alert('Couldn\'t reach JOSM. Start JOSM and enable Remote Control (Preferences → Remote Control), then try again.');
+  }
+}
+
+let osmMenuEl = null;
+function closeOsmMenu() {
+  osmMenuEl?.remove();
+  osmMenuEl = null;
+  document.removeEventListener('pointerdown', onOsmMenuOutside, true);
+  document.removeEventListener('keydown', onOsmMenuKey, true);
+  window.removeEventListener('scroll', closeOsmMenu, true);
+}
+function onOsmMenuOutside(e) { if (!osmMenuEl?.contains(e.target) && !e.target.closest('.gazette-thumb-osm')) closeOsmMenu(); }
+function onOsmMenuKey(e) { if (e.key === 'Escape') closeOsmMenu(); }
+
+function openOsmMenu(btn, georef) {
+  const reopen = osmMenuEl?.dataset.mapId !== georef.mapId;
+  closeOsmMenu();
+  if (!reopen) return; // second click on the same button closes it
+  const menu = document.createElement('div');
+  menu.className = 'gazette-osm-menu';
+  menu.setAttribute('role', 'menu');
+  menu.dataset.mapId = georef.mapId;
+  menu.innerHTML = `
+    <div class="gazette-osm-menu-head">Edit OpenStreetMap</div>
+    <a role="menuitem" href="${escapeHtml(idEditUrl(georef, ALLMAPS_TILES(georef)))}" target="_blank" rel="noopener">Edit using iD <small>over the georeferenced map</small></a>
+    <a role="menuitem" href="${escapeHtml(idEditUrl(georef, SOI_TILES_URL))}" target="_blank" rel="noopener">Edit using iD <small>over the Survey of India map</small></a>
+    <button type="button" role="menuitem" data-josm>Edit using JOSM <small>both layers, via Remote Control</small></button>`;
+  menu.querySelector('[data-josm]').addEventListener('click', () => { openInJosm(georef); closeOsmMenu(); });
+  menu.querySelectorAll('a').forEach((a) => a.addEventListener('click', () => setTimeout(closeOsmMenu)));
+  document.body.appendChild(menu);
+  const r = btn.getBoundingClientRect();
+  const mw = menu.offsetWidth;
+  const mh = menu.offsetHeight;
+  menu.style.left = `${Math.max(8, Math.min(r.left, window.innerWidth - mw - 8))}px`;
+  menu.style.top = `${r.bottom + mh + 4 > window.innerHeight ? Math.max(8, r.top - mh - 4) : r.bottom + 4}px`;
+  osmMenuEl = menu;
+  document.addEventListener('pointerdown', onOsmMenuOutside, true);
+  document.addEventListener('keydown', onOsmMenuKey, true);
+  window.addEventListener('scroll', closeOsmMenu, true);
+  menu.querySelector('[role="menuitem"]').focus({ preventScroll: true });
 }
 
 // Delegated handler for the "Find maps" row action and the panel buttons.
 function handleGazetteMapsClick(e) {
   const trigger = e.target.closest('.gazette-maps-trigger');
   if (trigger) {
-    const panel = trigger.closest('.pa-notification-row').querySelector('.gazette-maps');
+    const row = trigger.closest('.pa-notification-row');
+    const panel = row.querySelector('.gazette-maps');
     const open = trigger.getAttribute('aria-expanded') !== 'true';
-    trigger.setAttribute('aria-expanded', String(open));
+    row.querySelectorAll('.gazette-maps-trigger').forEach((t) => t.setAttribute('aria-expanded', String(open)));
     panel.hidden = !open;
     if (open && !panel.dataset.attached) {
       panel.dataset.attached = 'true';
       attachGazettePanel(panel);
     }
+    if (open) requestAnimationFrame(() => panel.scrollIntoView({ block: 'nearest', behavior: 'smooth' }));
     return true;
   }
   const btn = e.target.closest('[data-gazette-action]');
@@ -3182,6 +3697,10 @@ function handleGazetteMapsClick(e) {
   const state = gazetteStates.get(panel.dataset.archiveId);
   if (!state) return true;
   if (btn.dataset.gazetteAction === 'scan') scanGazette(state);
+  if (btn.dataset.gazetteAction === 'osm') {
+    const georef = state.allmaps.get(btn.dataset.serviceId);
+    if (georef) openOsmMenu(btn, georef);
+  }
   if (btn.dataset.gazetteAction === 'show-all') {
     panel.dataset.showAll = panel.dataset.showAll === 'true' ? 'false' : 'true';
     renderGazetteMaps(panel, state);
@@ -3189,50 +3708,228 @@ function handleGazetteMapsClick(e) {
   return true;
 }
 
-// Replaces the compact row's thumb/name/status with the full wiki-sourced
-// header (bigger image + Commons gallery, title with logos, meta, excerpt)
-// when a card expands -- this *is* the row's expanded state, not a separate
-// panel, so there's no duplicate title/image sitting below it.
-function detailHeaderHtml(entry) {
-  const thumb = entry.pageBanner || entry.image;
-  const meta = [];
-  if (entry.iucnCategory) meta.push(escapeHtml(entry.iucnCategory.replace(/^IUCN category [IVXLC]+:\s*/, '')));
-  if (entry.area) meta.push(`${entry.area.toLocaleString()} km&sup2;`);
-  const stateLabel = stateAsString(entry.state);
-  if (stateLabel) meta.push(escapeHtml(stateLabel));
+// ---------------------------------------------------------------------------
+// Detail pane: link buttons, photo banner, ESZ status, notification
+// timeline, then the Wikipedia summary. The PA's name, state and type go in
+// the pane header (see openPaDetail).
 
-  const links = [];
+// Simplified marks in each project's own colours, greyed by CSS when the PA
+// has no item there.
+const BRAND_LOGO = {
+  osm: '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10" cy="10" r="7.6" fill="#7ebc6f" stroke="#3f6b35" stroke-width="1.6"/><path d="M5.6 12.6 8.4 8l2.2 2.8 1.6-1.6 2.6 3.4z" fill="#fff"/><path d="m15.6 15.6 5.6 5.6" stroke="#3f6b35" stroke-width="2.8" stroke-linecap="round"/></svg>',
+  wikidata: '<svg viewBox="0 0 24 24" aria-hidden="true"><g transform="translate(1.6 5)"><rect width="1.3" height="14" fill="#990000"/><rect x="2" width="2.8" height="14" fill="#990000"/><rect x="5.6" width="2.8" height="14" fill="#339966"/><rect x="9.2" width="1.3" height="14" fill="#339966"/><rect x="11.3" width="1.3" height="14" fill="#006699"/><rect x="13.4" width="2.8" height="14" fill="#006699"/><rect x="17" width="1.3" height="14" fill="#006699"/></g></svg>',
+  wikipedia: '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10.4" fill="#f8f9fa" stroke="#72777d" stroke-width="1.3"/><text x="12" y="16.6" text-anchor="middle" font-family="Georgia, \'Times New Roman\', serif" font-size="13.5" fill="#202122">W</text></svg>',
+};
+
+// One button per project. A missing one keeps its place, greyed, and
+// clicking it explains how to add the PA there.
+function paLinkItems(entry) {
+  const name = entry.name || '';
   const osmId = entryOsmFeatureId(entry);
-  if (osmId) {
-    const where = osmId.startsWith('relation/') ? 'amche-atlas' : 'OpenStreetMap';
-    links.push(`<a href="${osmBoundaryHref(osmId)}" target="_blank" rel="noopener">Boundary in ${where}</a>`);
+  const qid = entry.wikidataId && /^Q\d+$/.test(entry.wikidataId) ? entry.wikidataId : null;
+  const link = (href, label) => `<a href="${escapeHtml(href)}" target="_blank" rel="noopener">${label}</a>`;
+  return [
+    {
+      key: 'osm',
+      label: 'OpenStreetMap',
+      href: osmId ? `https://www.openstreetmap.org/${osmId}` : null,
+      help: `No OpenStreetMap boundary is linked to this protected area yet. ${qid
+        ? `Find its boundary on OpenStreetMap and tag it <code>wikidata=${qid}</code>, or trace it from a georeferenced gazette map below.`
+        : 'Once it has a Wikidata item, tag its OpenStreetMap boundary with that item\'s ID.'} ${link(`https://www.openstreetmap.org/search?query=${encodeURIComponent(name)}`, 'Search OpenStreetMap')}`,
+    },
+    {
+      key: 'wikidata',
+      label: 'Wikidata',
+      href: entry.wikidataUrl || null,
+      help: `No Wikidata item is matched to this protected area. Search Wikidata for an existing item, or create one (instance of a protected area type, located in ${escapeHtml(stateAsString(entry.state) || 'its state')}). ${link(`https://www.wikidata.org/w/index.php?search=${encodeURIComponent(name)}`, 'Search Wikidata')}`,
+    },
+    {
+      key: 'wikipedia',
+      label: 'Wikipedia',
+      href: entry.enwikiUrl || null,
+      help: `No English Wikipedia article is linked to this protected area. If one exists, add it to the Wikidata item's sitelinks${qid ? '' : ' (once the item exists)'}; otherwise, start one. ${link(guessedWikipediaUrl(name), 'Find or start the article')}${qid ? ` &middot; ${link(`https://www.wikidata.org/wiki/${qid}`, 'Add the sitelink')}` : ''}`,
+    },
+  ];
+}
+
+function paLinkButtonsHtml(entry) {
+  const buttons = paLinkItems(entry).map((item) => (item.href
+    ? `<a class="pa-link-btn pa-link-btn--${item.key}" href="${escapeHtml(item.href)}" target="_blank" rel="noopener" title="View on ${item.label}">${BRAND_LOGO[item.key]}<span>${item.label}</span></a>`
+    : `<button type="button" class="pa-link-btn pa-link-btn--${item.key} is-missing" data-link-help="${item.key}" aria-expanded="false" aria-controls="pa-link-help" title="Not on ${item.label} yet: how to add it">${BRAND_LOGO[item.key]}<span>${item.label}</span></button>`)).join('');
+  return `<div class="pa-links">${buttons}</div><div class="pa-link-help" id="pa-link-help" role="status" hidden></div>`;
+}
+
+// Clicking a missing project's button toggles its how-to below the row.
+function handleLinkHelpClick(e) {
+  const btn = e.target.closest('[data-link-help]');
+  if (!btn) return false;
+  const contentEl = btn.closest('.pa-detail-content');
+  const helpEl = contentEl.querySelector('.pa-link-help');
+  const open = btn.getAttribute('aria-expanded') !== 'true';
+  contentEl.querySelectorAll('[data-link-help]').forEach((b) => b.setAttribute('aria-expanded', 'false'));
+  btn.setAttribute('aria-expanded', String(open));
+  helpEl.hidden = !open;
+  if (open) {
+    const item = paLinkItems(entryByPaKey.get(openDetailKey)).find((i) => i.key === btn.dataset.linkHelp);
+    helpEl.innerHTML = item.help;
   }
-
-  return `
-    <div class="pa-detail-grid">
-      <div class="pa-detail-media">
-        ${thumb ? `<a href="${commonsFilePageUrl(thumb)}" target="_blank" rel="noopener"><img class="pa-detail-image" src="${commonsThumbnailUrl(thumb, 120)}" alt="" loading="lazy" /></a>` : ''}
-        ${entry.wikidataId ? `<div class="pa-commons-mosaic" aria-label="More images from Wikimedia Commons"></div>` : ''}
-      </div>
-      <div class="pa-detail-body">
-        <h3 class="pa-detail-title"><a class="pa-permalink" href="${escapeHtml(paKeyHash(entry.paKey))}" title="Link to this protected area" aria-label="Link to this protected area">#</a>${paTitleLinksHtml(entry)}</h3>
-        ${meta.length ? `<p class="pa-detail-meta">${meta.join(' &middot; ')}</p>` : ''}
-        ${links.length ? `<p class="pa-detail-links">${links.join(' &middot; ')}</p>` : ''}
-        <p class="pa-detail-excerpt">${entry.enwikiUrl ? 'Loading Wikipedia summary&hellip;' : ''}</p>
-      </div>
-    </div>`;
+  return true;
 }
 
-// The only thing that pops open in the separate detail pane below the row.
-function notificationSectionHtml(entry) {
-  return `
-    <h4 class="pa-notification-heading"><a href="https://www.moef.gov.in/esz-notifications" target="_blank" rel="noopener">History of Eco-Sensitive Zone Notifications</a></h4>
-    ${notificationListHtml(entry)}`;
+function eszStatusHtml(entry) {
+  const status = entry.eszStatus === 'final' || entry.eszStatus === 'draft' ? entry.eszStatus : 'unknown';
+  const label = { final: 'Final', draft: 'Draft', unknown: 'Unknown' }[status];
+  const wanted = status === 'final' ? ['Final', 'Amendment'] : ['Draft'];
+  const n = status === 'unknown' ? null : sortedNotifications(entry).find((x) => wanted.includes(x.notificationStatus) && x.notificationPdfLink);
+  const inner = `<span class="pa-esz-status-key">ESZ Status</span><span class="status-badge status-badge--${status === 'unknown' ? 'none' : status}">${label}</span>`;
+  const statusHtml = n
+    ? `<a class="pa-esz-status" href="${escapeHtml(n.notificationPdfLink)}" target="_blank" rel="noopener" title="Open the ${escapeHtml(notificationTypeLabel(n.notificationStatus))} of ${escapeHtml(formatNotificationDate(n.notificationDate))} (MoEF PDF)">${inner}${DOC_ICON.pdf}</a>`
+    : `<span class="pa-esz-status" title="${status === 'unknown' ? 'No ESZ notification on record' : 'No MoEF PDF on record'}">${inner}</span>`;
+  const osmId = entryOsmFeatureId(entry);
+  const boundary = osmId
+    ? `<a class="pa-boundary-link" href="${escapeHtml(osmBoundaryHref(osmId))}" target="_blank" rel="noopener" title="The protected area's boundary in ${osmId.startsWith('relation/') ? 'amche-atlas' : 'OpenStreetMap'}">${DOC_ICON.layers}Boundary data</a>`
+    : `<span class="pa-boundary-link is-disabled" title="No mapped boundary in OpenStreetMap yet">${DOC_ICON.layers}No boundary data</span>`;
+  const area = entry.area > 0 ? `<span class="pa-detail-area">${entry.area < 10 ? entry.area.toFixed(1) : Math.round(entry.area).toLocaleString()} km&sup2;</span>` : '';
+  return `<div class="pa-esz-row">${statusHtml}${area}${boundary}</div>`;
 }
 
-// Wikipedia summary fetched once per PA and cached, since collapsing then
-// re-expanding a card (or a filter change re-rendering an open state) would
-// otherwise re-fetch it.
+function detailBodyHtml(entry) {
+  return `
+    ${paLinkButtonsHtml(entry)}
+    <div class="pa-banner" hidden aria-roledescription="carousel" aria-label="Photos of ${escapeHtml(entry.name || 'this protected area')}">
+      <div class="pa-banner-track"></div>
+      <button type="button" class="pa-banner-nav pa-banner-prev" aria-label="Previous photo"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 5-7 7 7 7"/></svg></button>
+      <button type="button" class="pa-banner-nav pa-banner-next" aria-label="Next photo"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 5 7 7-7 7"/></svg></button>
+      <div class="pa-banner-foot"><span class="pa-banner-dots"></span><a class="pa-banner-credit" hidden target="_blank" rel="noopener">Add photos</a></div>
+    </div>
+    ${eszStatusHtml(entry)}
+    <section class="pa-detail-section">
+      <h4 class="pa-section-heading"><a href="https://www.moef.gov.in/esz-notifications" target="_blank" rel="noopener">ESZ notification timeline</a></h4>
+      ${notificationTimelineHtml(entry)}
+    </section>
+    ${entry.enwikiUrl ? `<section class="pa-detail-section pa-detail-wiki">
+      <h4 class="pa-section-heading">Wikipedia</h4>
+      <p class="pa-detail-excerpt">Loading Wikipedia summary&hellip;</p>
+    </section>` : ''}`;
+}
+
+// ---------------------------------------------------------------------------
+// Photo banner: Wikidata's image/banner, the Wikipedia lead image and the
+// Commons category, cross-fading every BANNER_INTERVAL_MS. Hovering or
+// focusing it pauses; arrows, dots and the keyboard browse by hand. Slides
+// arrive one source at a time, so they're appended as they come.
+const BANNER_INTERVAL_MS = 5000;
+const BANNER_IMAGE_WIDTH = 800;
+const bannerControllers = new WeakMap(); // .pa-detail-content -> controller
+
+// Same file, different URL shapes (Special:FilePath, upload thumbs): key by
+// the File: page name.
+function commonsFileKey(url) {
+  const page = commonsFilePageUrl(url) || '';
+  try { return decodeURIComponent(page.split('/').pop()).replace(/_/g, ' ').toLowerCase(); } catch { return page; }
+}
+
+function initBanner(contentEl, entry) {
+  const el = contentEl.querySelector('.pa-banner');
+  const track = el.querySelector('.pa-banner-track');
+  const dots = el.querySelector('.pa-banner-dots');
+  const slides = [];
+  const seen = new Set();
+  let index = 0;
+  let timer = null;
+  let paused = false;
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  const show = (i) => {
+    if (!slides.length) return;
+    index = (i + slides.length) % slides.length;
+    slides.forEach((s, j) => {
+      const active = j === index;
+      s.classList.toggle('is-active', active);
+      s.setAttribute('aria-hidden', String(!active));
+      s.tabIndex = active ? 0 : -1;
+    });
+    dots.querySelectorAll('button').forEach((d, j) => d.setAttribute('aria-current', String(j === index)));
+  };
+  const stop = () => { clearInterval(timer); timer = null; };
+  const start = () => {
+    stop();
+    if (slides.length < 2 || reducedMotion) return;
+    timer = setInterval(() => {
+      if (!el.isConnected) { stop(); return; }
+      if (!paused && !document.hidden) show(index + 1);
+    }, BANNER_INTERVAL_MS);
+  };
+  const go = (i) => { show(i); start(); }; // manual browsing restarts the clock
+
+  el.querySelector('.pa-banner-prev').addEventListener('click', () => go(index - 1));
+  el.querySelector('.pa-banner-next').addEventListener('click', () => go(index + 1));
+  dots.addEventListener('click', (e) => { const d = e.target.closest('button'); if (d) go(Number(d.dataset.index)); });
+  el.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowLeft') { e.preventDefault(); go(index - 1); }
+    if (e.key === 'ArrowRight') { e.preventDefault(); go(index + 1); }
+  });
+  el.addEventListener('mouseenter', () => { paused = true; });
+  el.addEventListener('mouseleave', () => { paused = false; });
+  el.addEventListener('focusin', () => { paused = true; });
+  el.addEventListener('focusout', (e) => { if (!el.contains(e.relatedTarget)) paused = false; });
+
+  const controller = {
+    add(src, pageUrl) {
+      const key = commonsFileKey(pageUrl || src);
+      if (!src || seen.has(key)) return;
+      seen.add(key);
+      const slide = document.createElement('a');
+      slide.className = 'pa-banner-slide';
+      slide.href = pageUrl || commonsFilePageUrl(src);
+      slide.target = '_blank';
+      slide.rel = 'noopener';
+      slide.title = 'View on Wikimedia Commons (author and licence)';
+      const img = document.createElement('img');
+      img.src = src;
+      img.alt = '';
+      img.decoding = 'async';
+      img.addEventListener('error', () => controller.remove(slide));
+      slide.appendChild(img);
+      track.appendChild(slide);
+      slides.push(slide);
+      const dot = document.createElement('button');
+      dot.type = 'button';
+      dot.dataset.index = String(slides.length - 1);
+      dot.setAttribute('aria-label', `Photo ${slides.length}`);
+      dots.appendChild(dot);
+      el.hidden = false;
+      el.classList.toggle('is-single', slides.length < 2);
+      show(slides.length === 1 ? 0 : index);
+      if (slides.length === 2) start();
+    },
+    remove(slide) {
+      const i = slides.indexOf(slide);
+      if (i < 0) return;
+      slides.splice(i, 1);
+      slide.remove();
+      dots.lastElementChild?.remove();
+      el.hidden = !slides.length;
+      el.classList.toggle('is-single', slides.length < 2);
+      if (slides.length < 2) stop();
+      show(index >= slides.length ? 0 : index);
+    },
+    setCategory(url) {
+      const credit = el.querySelector('.pa-banner-credit');
+      credit.href = url;
+      credit.hidden = false;
+      credit.title = 'More photos, and where to add your own, on Wikimedia Commons';
+    },
+  };
+  bannerControllers.set(contentEl, controller);
+  const ownImage = entry.pageBanner || entry.image;
+  if (ownImage) controller.add(commonsThumbnailUrl(ownImage, BANNER_IMAGE_WIDTH), commonsFilePageUrl(ownImage));
+  return controller;
+}
+
+// Wikipedia summary fetched once per PA and cached, so reopening a PA's
+// detail doesn't re-fetch it. `cardEl` is the detail content element it
+// fills; once another PA replaces it, the late fetch lands on a detached node.
 const excerptCache = new Map();
 
 async function loadExcerpt(entry, cardEl) {
@@ -3256,32 +3953,19 @@ async function loadExcerpt(entry, cardEl) {
 }
 
 function applyExcerpt(cardEl, result, wikiUrl) {
+  if (result?.imageUrl) bannerControllers.get(cardEl)?.add(wikimediaThumbUrl(result.thumbUrl, BANNER_IMAGE_WIDTH), commonsFilePageUrl(result.imageUrl));
   const excerptEl = cardEl.querySelector('.pa-detail-excerpt');
-  if (!excerptEl) return; // card was collapsed/re-rendered before the fetch resolved
-  if (!result || !result.extract) { excerptEl.remove(); return; }
+  if (!excerptEl) return; // replaced by another PA before the fetch resolved
+  if (!result || !result.extract) { excerptEl.closest('.pa-detail-wiki')?.remove(); return; }
   excerptEl.innerHTML = `${escapeHtml(result.extract)} <a class="pa-excerpt-more" href="${wikiUrl}" target="_blank" rel="noopener">Read more on Wikipedia</a>`;
-  const media = cardEl.querySelector('.pa-detail-media');
-  if (result.imageUrl && media && !media.querySelector('img')) {
-    const link = document.createElement('a');
-    link.href = commonsFilePageUrl(result.imageUrl);
-    link.target = '_blank';
-    link.rel = 'noopener';
-    const img = document.createElement('img');
-    img.className = 'pa-detail-image';
-    img.loading = 'lazy';
-    img.alt = '';
-    img.src = wikimediaThumbUrl(result.thumbUrl, 120);
-    link.appendChild(img);
-    media.insertBefore(link, media.firstChild);
-  }
 }
 
 // The Commons category (Wikidata P373) isn't in the pre-built data files, so
-// it's fetched live per PA the first time its card is expanded, then cached
-// (both the category lookup and the resulting image list) so re-expanding
+// it's fetched live per PA the first time its detail opens, then cached
+// (both the category lookup and the resulting image list) so reopening
 // doesn't repeat either API round trip.
 const commonsCategoryCache = new Map();
-const commonsMosaicCache = new Map();
+const commonsImagesCache = new Map();
 
 async function fetchCommonsCategory(wikidataId) {
   if (commonsCategoryCache.has(wikidataId)) return commonsCategoryCache.get(wikidataId);
@@ -3298,96 +3982,81 @@ async function fetchCommonsCategory(wikidataId) {
 }
 
 async function fetchCommonsCategoryImages(category, limit = 12) {
-  if (commonsMosaicCache.has(category)) return commonsMosaicCache.get(category);
+  if (commonsImagesCache.has(category)) return commonsImagesCache.get(category);
   let images = [];
   try {
-    const url = `https://commons.wikimedia.org/w/api.php?action=query&generator=categorymembers&gcmtitle=${encodeURIComponent(`Category:${category}`)}&gcmtype=file&gcmlimit=${limit}&prop=imageinfo&iiprop=url&iiurlwidth=40&format=json&origin=*`;
+    const url = `https://commons.wikimedia.org/w/api.php?action=query&generator=categorymembers&gcmtitle=${encodeURIComponent(`Category:${category}`)}&gcmtype=file&gcmlimit=${limit}&prop=imageinfo&iiprop=url|mime&iiurlwidth=${BANNER_IMAGE_WIDTH}&format=json&origin=*`;
     const res = await fetch(url);
     if (res.ok) {
       const json = await res.json();
       images = Object.values(json.query?.pages ?? {})
-        .filter((p) => p.imageinfo?.[0])
+        .filter((p) => p.imageinfo?.[0] && /^image\/(jpeg|png|webp)$/.test(p.imageinfo[0].mime || ''))
         .map((p) => ({
           thumbUrl: p.imageinfo[0].thumburl || p.imageinfo[0].url,
           pageUrl: `https://commons.wikimedia.org/wiki/${encodeURIComponent(p.title.replace(/ /g, '_'))}`,
         }));
     }
   } catch { /* leave images empty */ }
-  commonsMosaicCache.set(category, images);
+  commonsImagesCache.set(category, images);
   return images;
 }
 
-async function loadCommonsMosaic(entry, cardEl) {
+async function loadCommonsBanner(entry, cardEl) {
   if (!entry.wikidataId) return;
   const category = await fetchCommonsCategory(entry.wikidataId);
-  // Card may have collapsed, or a re-render (filter change) may have replaced
-  // this element, while the category lookup above was in flight.
-  let mosaicEl = cardEl.querySelector('.pa-commons-mosaic');
-  if (!category) { mosaicEl?.remove(); return; }
+  if (!category) return;
   const images = await fetchCommonsCategoryImages(category);
-  mosaicEl = cardEl.querySelector('.pa-commons-mosaic');
-  if (!mosaicEl) return;
-  const galleryUrl = `https://commons.wikimedia.org/wiki/Category:${encodeURIComponent(category)}`;
-  const imagesHtml = images.map((img) => `
-    <a href="${img.pageUrl}" target="_blank" rel="noopener">
-      <img src="${img.thumbUrl}" alt="" loading="lazy" />
-    </a>`).join('');
-  mosaicEl.innerHTML = `${imagesHtml}<a class="pa-commons-edit" href="${galleryUrl}" target="_blank" rel="noopener">[Edit Photos]</a>`;
+  const banner = bannerControllers.get(cardEl);
+  if (!banner || !cardEl.isConnected) return;
+  banner.setCategory(`https://commons.wikimedia.org/wiki/Category:${encodeURIComponent(category.replace(/ /g, '_'))}`);
+  images.forEach((img) => banner.add(img.thumbUrl, img.pageUrl));
 }
 
-function typeGroupHtml(type, entries) {
-  const sorted = sortEntriesByAreaDesc(entries);
-  const counts = statusCounts(entries);
-  const meta = paTypeMeta(type);
-  return `
-    <section class="pa-type-group pa-type-group--${meta.modifier}">
-      <div class="pa-type-header">
-        <h3 class="pa-type-title">
-          <span class="pa-type-icon" aria-hidden="true">${meta.icon}</span>
-          ${escapeHtml(type)} <span class="pa-type-count">(${entries.length})</span>
-        </h3>
-        <span class="pa-type-progress">
-          <span class="pa-type-progress-meta">${progressMetaHtml(counts)}</span>
-          ${chipBarHtml(counts)}
-        </span>
-      </div>
-      <div class="pa-card-list">${sorted.map(cardOuterHtml).join('')}</div>
-    </section>`;
+// An open group's body: its PAs as one flat list, largest first.
+function groupBodyHtml(group) {
+  return `<div class="pa-card-list">${sortEntriesByAreaDesc(group.entries).map(cardOuterHtml).join('')}</div>`;
 }
 
-function stateRowHtml(stateName, entries) {
-  const isOpen = openStates.has(stateName);
-  const typeMap = groupByType(entries);
-  const bodyHtml = isOpen ? sortTypeNames(typeMap).map((t) => typeGroupHtml(t, typeMap.get(t))).join('') : '';
+function groupRowHtml(group) {
+  const isOpen = openGroups[groupBy].has(group.key);
   return `
-    <div class="state-row${isOpen ? ' is-open' : ''}" data-state-row="${escapeHtml(stateName)}">
-      ${stateHeaderHtml(stateName, entries)}
-      <div class="state-row-body">${bodyHtml}</div>
+    <div class="state-row${isOpen ? ' is-open' : ''}" data-group-row="${escapeHtml(group.key)}"${group.stateName ? ` data-state-row="${escapeHtml(group.stateName)}"` : ''}>
+      ${groupHeaderHtml(group, isOpen)}
+      <div class="state-row-body">${isOpen ? groupBodyHtml(group) : ''}</div>
     </div>`;
 }
 
-// State names currently expanded -- survives across re-renders (filter
-// changes, card expand/collapse) the same way openDraftGroups used to for
-// the old table's draft-reveal toggle.
-const openStates = new Set();
-// PA keys whose card is currently showing its full detail panel.
-const expandedCards = new Set();
+// Top-level groups currently open, per grouping -- survives re-renders
+// (filter changes) and switching the grouping back and forth.
+const openGroups = { state: new Set(), size: new Set(), type: new Set(), status: new Set() };
+const openStates = openGroups.state;
+// The PA whose detail is showing in the detail pane (null when it's closed).
+let openDetailKey = null;
 const accordionEl = document.getElementById('pa-accordion');
+const detailPaneEl = document.getElementById('pa-detail-pane');
+const detailPaneBodyEl = document.getElementById('pa-detail-pane-body');
 
 function renderAccordion() {
-  const groups = buildStateGroups(filteredEntries);
-  const stateNames = sortStateNames(groups);
-  accordionEl.innerHTML = stateNames.map((name) => stateRowHtml(name, groups.get(name))).join('');
-
-  for (const paKey of expandedCards) {
-    const cardEl = [...accordionEl.querySelectorAll('.pa-card')].find((el) => el.dataset.paKey === paKey);
-    if (cardEl) toggleCard(cardEl, true, { syncMap: false });
-  }
+  accordionEl.innerHTML = buildListGroups(filteredEntries).map(groupRowHtml).join('');
+  markOpenCard();
   highlightCard(selectedWikidataId);
 }
 
+// Marks the list row(s) of the PA open in the detail pane.
+function markOpenCard() {
+  for (const el of accordionEl.querySelectorAll('.pa-card')) {
+    const isOpen = el.dataset.paKey === openDetailKey;
+    el.classList.toggle('is-open', isOpen);
+    el.querySelector('.pa-card-row')?.setAttribute('aria-pressed', String(isOpen));
+  }
+}
+
 function selectEntryOnMap(entry) {
-  if (!entry.wikidataId || entry.coordinateLatitude == null) { clearSelection(); return; }
+  if (!entry.wikidataId || entry.coordinateLatitude == null) {
+    clearSelection();
+    zoomToEntry(entry); // its OSM boundary if mapped, else its state
+    return;
+  }
   zoomToEntry(entry);
   selectedWikidataId = entry.wikidataId;
   highlightCard(selectedWikidataId);
@@ -3400,19 +4069,23 @@ function zoomToEntry(entry) {
   if (entry.osmBbox) {
     const [w, s, e, n] = entry.osmBbox;
     map.fitBounds([[w, s], [e, n]], { padding: mapOverlayPadding(24), maxZoom: 14, duration: 800 });
-  } else {
+  } else if (entry.coordinateLatitude != null && entry.coordinateLongitude != null) {
     focusFeature(entryToFeature(entry), { zoom: 10 });
+  } else {
+    // No location: frame its state rather than flying to 0,0.
+    if (entry.state[0]) fitMapToState(entry.state[0], { force: true });
+    return;
   }
   mapViewState = null; // no longer framing a whole state
   mapViewPa = entry.wikidataId;
 }
 
-// The open PA: the selected one, else the most recently expanded card that's
-// still open (a map click clears the selection but leaves its card open).
+// The open PA: the selected one, else the one still showing in the detail
+// pane (a map click clears the selection but leaves the pane open).
 function openPaKey() {
   if (selectedWikidataId) return selectedWikidataId;
-  const keys = [...expandedCards].filter((k) => entryByPaKey.get(k)?.coordinateLatitude != null);
-  return keys.length ? keys[keys.length - 1] : null;
+  // A PA with no location still counts: zoomToEntry frames its state.
+  return openDetailKey && entryByPaKey.has(openDetailKey) ? openDetailKey : null;
 }
 
 // While a PA is open, puts the map back on it if something (a state-header
@@ -3426,36 +4099,82 @@ function returnToOpenPa() {
   return true;
 }
 
-function toggleCard(cardEl, shouldExpand, { syncMap = true } = {}) {
-  const paKey = cardEl.dataset.paKey;
+// Shows a PA in the detail pane between the list and the map (replacing
+// whichever PA was there) and marks its list row.
+function openPaDetail(paKey, { syncMap = true } = {}) {
   const entry = entryByPaKey.get(paKey);
   if (!entry) return;
-  const rowEl = cardEl.querySelector('.pa-card-row');
-  const headerEl = cardEl.querySelector('.pa-card-expanded-header');
-  const detailEl = cardEl.querySelector('.pa-card-detail');
-  if (shouldExpand) {
-    expandedCards.delete(paKey); // re-added last: the most recently opened PA (see openPaKey)
-    expandedCards.add(paKey);
-    cardEl.classList.add('is-expanded');
-    rowEl.setAttribute('aria-expanded', 'true');
-    // Only build the header (and kick off the excerpt/mosaic fetches) the
-    // first time this card expands -- re-expanding later just shows what's
-    // already there.
-    if (!headerEl.childElementCount) {
-      headerEl.innerHTML = detailHeaderHtml(entry);
-      loadExcerpt(entry, cardEl);
-      loadCommonsMosaic(entry, cardEl);
-    }
-    detailEl.innerHTML = notificationSectionHtml(entry);
-    if (syncMap) selectEntryOnMap(entry);
-  } else {
-    expandedCards.delete(paKey);
-    cardEl.classList.remove('is-expanded');
-    rowEl.setAttribute('aria-expanded', 'false');
-    detailEl.innerHTML = '';
-    if (selectedWikidataId === entry.wikidataId) clearSelection();
+  if (openDetailKey !== paKey || !detailPaneBodyEl.childElementCount) {
+    openDetailKey = paKey;
+    // A fresh element per PA, so a late excerpt/mosaic fetch for a PA that's
+    // since been replaced lands on a detached node rather than this one.
+    const contentEl = document.createElement('div');
+    contentEl.className = 'pa-detail-content';
+    contentEl.innerHTML = detailBodyHtml(entry);
+    clearTimelineMapLayers();
+    detailPaneBodyEl.replaceChildren(contentEl);
+    detailPaneBodyEl.scrollTop = 0;
+    setDetailPaneHeading(entry);
+    initBanner(contentEl, entry);
+    const bbox = entry.allmapsBbox || null;
+    contentEl.querySelectorAll('.pa-tl-item[data-archive-id]').forEach((item) => attachTimelineThumb(item, bbox));
+    loadExcerpt(entry, contentEl);
+    loadCommonsBanner(entry, contentEl);
   }
+  const wasHidden = detailPaneEl.hidden;
+  detailPaneEl.hidden = false;
+  markOpenCard();
+  if (wasHidden && map) map.resize();
+  if (syncMap) selectEntryOnMap(entry);
   syncUrlHash();
+}
+
+// The pane header: the PA's name (with a "#" permalink), then its state
+// and type.
+function setDetailPaneHeading(entry) {
+  const titleEl = document.getElementById('pa-detail-pane-title');
+  const subtitleEl = document.getElementById('pa-detail-pane-subtitle');
+  if (!entry) {
+    titleEl.textContent = 'Protected area';
+    subtitleEl.replaceChildren();
+    subtitleEl.hidden = true;
+    return;
+  }
+  titleEl.innerHTML = `<a class="pa-permalink" href="${escapeHtml(paKeyHash(entry.paKey))}" title="Link to this protected area" aria-label="Link to this protected area">#</a>${escapeHtml(entry.name || '')}`;
+  const type = entry.protectedAreaType || '';
+  const parts = [stateAsString(entry.state), type].filter(Boolean).map(escapeHtml);
+  subtitleEl.innerHTML = `${type ? typeIconHtml(type) : ''}<span>${parts.join(' &middot; ')}</span>`;
+  subtitleEl.hidden = !parts.length;
+}
+
+function closePaDetail() {
+  if (!openDetailKey && detailPaneEl.hidden) return;
+  const entry = entryByPaKey.get(openDetailKey);
+  openDetailKey = null;
+  detailPaneEl.hidden = true;
+  detailPaneBodyEl.replaceChildren();
+  clearTimelineMapLayers();
+  setDetailPaneHeading(null);
+  markOpenCard();
+  if (map) map.resize();
+  if (entry && selectedWikidataId === entry.wikidataId) clearSelection();
+  // Always back to all of India, dropping any state selection too.
+  if (selectedState) deselectState();
+  else showIndiaView();
+  syncUrlHash();
+}
+
+function toggleCard(cardEl) {
+  const paKey = cardEl.dataset.paKey;
+  if (paKey === openDetailKey) closePaDetail();
+  else openPaDetail(paKey);
+}
+
+function toggleGroup(key) {
+  const open = openGroups[groupBy];
+  if (open.has(key)) open.delete(key);
+  else open.add(key);
+  renderAccordion();
 }
 
 function toggleState(stateName) {
@@ -3469,22 +4188,21 @@ function toggleState(stateName) {
   renderAccordion();
 }
 
-// Opens a PA's state section(s), scrolls to its card, and expands its detail
-// -- used when a map marker is clicked (the marker's own click handler
-// already selected the PA and fitted its state, so map sync is skipped here).
+// Opens a PA's state section(s), scrolls to its card, and shows its detail
+// in the detail pane -- used when a map marker is clicked (the marker's own
+// click handler already selected the PA and fitted its state, so map sync is
+// skipped here).
 function revealCard(paKey) {
   const entry = entryByPaKey.get(paKey);
   if (!entry) return;
-  const states = entry.state.length ? entry.state : [UNSPECIFIED_STATE_LABEL];
   let changed = false;
-  for (const state of states) {
-    if (!openStates.has(state)) { openStates.add(state); changed = true; }
+  for (const key of groupKeysForEntry(entry)) {
+    if (!openGroups[groupBy].has(key)) { openGroups[groupBy].add(key); changed = true; }
   }
   if (changed) renderAccordion();
+  openPaDetail(paKey, { syncMap: false });
   const cardEl = [...accordionEl.querySelectorAll('.pa-card')].find((el) => el.dataset.paKey === paKey);
-  if (!cardEl) return;
-  cardEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
-  if (!cardEl.classList.contains('is-expanded')) toggleCard(cardEl, true, { syncMap: false });
+  cardEl?.scrollIntoView({ behavior: 'smooth', block: 'center' });
 }
 
 // Bumped on every card hover enter/leave, so a PA focus waiting on a state
@@ -3502,29 +4220,32 @@ function onCardHoverEnter(cardEl) {
     returnToOpenPa();
     return;
   }
-  if (selectedWikidataId) return; // a card/marker is selected -- hover is suspended until cleared
+  // Works while a PA is open too: leaving the list goes back to it (see
+  // resetMapAfterStateHover / returnToOpenPa).
   const entry = entryByPaKey.get(cardEl.dataset.paKey);
-  if (!entry || entry.coordinateLatitude == null) return;
+  if (!entry) return;
   const token = ++cardHoverToken;
-  const stateName = cardEl.closest('.state-row')?.dataset.stateRow;
-  const focusPa = () => {
-    if (token !== cardHoverToken || selectedWikidataId) return;
-    focusFeature(entryToFeature(entry));
-    setActivePaMarker(entry.wikidataId);
+  // Fit the PA's state into view (whatever the list is grouped by), then
+  // highlight the PA's marker and OSM boundary within it.
+  const stateName = cardEl.closest('.state-row')?.dataset.stateRow || entry.state[0];
+  const highlight = () => {
+    if (token !== cardHoverToken) return;
+    if (entry.coordinateLatitude != null) setActivePaMarker(entry.wikidataId);
+    setOsmPaHover(entryOsmFeatureId(entry));
   };
   if (stateName) {
     clearTimeout(stateHoverTimer); // a header hover's pending fit is superseded
     setActiveStateOutline(stateName);
-    if (mapViewState !== stateName) fitMapToState(stateName);
+    if (mapViewState !== stateName) fitMapToState(stateName, { force: true });
   }
-  if (map.isMoving()) map.once('moveend', focusPa);
-  else focusPa();
+  if (map.isMoving()) map.once('moveend', highlight);
+  else highlight();
 }
 
 function onCardHoverLeave() {
   cardHoverToken += 1;
-  if (selectedWikidataId) return;
-  setActivePaMarker(null);
+  setActivePaMarker(null); // falls back to the selected PA's marker, if any
+  setOsmPaHover(null);
   setActiveStateOutline(selectedState);
 }
 
@@ -3650,18 +4371,85 @@ function mapOverlayPadding(base) {
   return pad;
 }
 
-// Hide/show the protected-area list beside the map. Hidden, it shrinks to
-// its header bar and the map takes the full width.
+// Close/reopen the Finder beside the map. Its close button shrinks it to
+// its header bar (the map takes the full width); clicking that bar reopens
+// it -- the same pattern as the page rows (see initRows).
 function initMapDock() {
   const dock = document.getElementById('map-dock');
   const toggle = document.getElementById('map-dock-toggle');
-  if (!dock || !toggle) return;
-  toggle.addEventListener('click', () => {
-    const hidden = dock.classList.toggle('is-hidden');
+  const header = dock?.querySelector('.map-dock-header');
+  if (!dock || !toggle || !header) return;
+  // Hidden, the close button is visually hidden but stays focusable as the
+  // keyboard way to reopen it.
+  const setHidden = (hidden) => {
+    dock.classList.toggle('is-hidden', hidden);
     toggle.setAttribute('aria-expanded', String(!hidden));
-    toggle.querySelector('.map-dock-toggle-label').textContent = hidden ? 'Show list' : 'Hide list';
+    toggle.setAttribute('aria-label', hidden ? 'Open the finder' : 'Close the finder');
+    toggle.title = hidden ? '' : 'Close';
     if (map) map.resize();
+  };
+  toggle.addEventListener('click', (e) => {
+    e.stopPropagation();
+    setHidden(!dock.classList.contains('is-hidden'));
   });
+  header.addEventListener('click', () => { if (dock.classList.contains('is-hidden')) setHidden(false); });
+}
+
+// Group by State / Size / Type above the Finder list; remembered per browser.
+function initGroupBy() {
+  const control = document.getElementById('group-by');
+  if (!control) return;
+  try {
+    const stored = localStorage.getItem(GROUP_BY_KEY);
+    if (['state', 'size', 'type', 'status'].includes(stored)) groupBy = stored;
+  } catch { /* storage unavailable */ }
+  const sync = () => {
+    for (const btn of control.querySelectorAll('[data-group-by]')) {
+      btn.setAttribute('aria-pressed', String(btn.dataset.groupBy === groupBy));
+    }
+  };
+  sync();
+  control.addEventListener('click', (e) => {
+    const btn = e.target.closest('[data-group-by]');
+    if (!btn || btn.dataset.groupBy === groupBy) return;
+    groupBy = btn.dataset.groupBy;
+    try { localStorage.setItem(GROUP_BY_KEY, groupBy); } catch { /* ignore */ }
+    sync();
+    renderAccordion();
+    if (openDetailKey) revealCard(openDetailKey);
+  });
+}
+
+// One floating tooltip for every group progress bar in the Finder list,
+// showing the bar's per-status area breakdown (its data-tip).
+function initListTooltip() {
+  const tip = document.createElement('div');
+  tip.className = 'list-tip';
+  tip.setAttribute('role', 'tooltip');
+  tip.hidden = true;
+  document.body.appendChild(tip);
+  const show = (bar) => {
+    tip.innerHTML = bar.dataset.tip;
+    tip.hidden = false;
+    const r = bar.getBoundingClientRect();
+    const t = tip.getBoundingClientRect();
+    let left = r.right - t.width;
+    left = Math.max(8, Math.min(left, window.innerWidth - t.width - 8));
+    let top = r.bottom + 6;
+    if (top + t.height > window.innerHeight - 8) top = r.top - t.height - 6;
+    tip.style.left = `${left}px`;
+    tip.style.top = `${top}px`;
+  };
+  accordionEl.addEventListener('mouseover', (e) => {
+    const bar = e.target.closest('.area-bar-wrap')?.querySelector('.area-bar');
+    if (bar) show(bar);
+  });
+  accordionEl.addEventListener('mouseout', (e) => {
+    const wrap = e.target.closest('.area-bar-wrap');
+    if (wrap && !wrap.contains(e.relatedTarget)) tip.hidden = true;
+  });
+  accordionEl.addEventListener('scroll', () => { tip.hidden = true; }, true);
+  document.getElementById('map-dock-body')?.addEventListener('scroll', () => { tip.hidden = true; });
 }
 
 // Flies to the all-India view for a state-header hover (unless the map is
@@ -3698,32 +4486,31 @@ function resetMapAfterStateHover() {
 
 function initAccordionEvents() {
   accordionEl.addEventListener('click', (e) => {
-    if (handleGazetteMapsClick(e)) return;
-    // An expanded row hosts real links (Wikipedia, Commons, amche-atlas...)
-    // -- let those navigate instead of toggling the card closed.
-    if (e.target.closest('a[href]')) return;
     const row = e.target.closest('.pa-card-row');
     if (row) {
       const card = row.closest('.pa-card');
-      if (card) toggleCard(card, !card.classList.contains('is-expanded'));
+      if (card) toggleCard(card);
       return;
     }
     const header = e.target.closest('.state-row-header');
-    if (header) toggleState(header.dataset.state);
+    if (!header) return;
+    if (header.dataset.state) toggleState(header.dataset.state);
+    else toggleGroup(header.dataset.group);
   });
   accordionEl.addEventListener('keydown', (e) => {
     if (e.key !== 'Enter' && e.key !== ' ') return;
     const row = e.target.closest('.pa-card-row');
     if (row && e.target === row) {
       e.preventDefault();
-      const card = row.closest('.pa-card');
-      toggleCard(card, !card.classList.contains('is-expanded'));
+      toggleCard(row.closest('.pa-card'));
     }
   });
+  detailPaneEl.addEventListener('click', (e) => { if (!handleLinkHelpClick(e) && !handleTimelineToggleClick(e)) handleGazetteMapsClick(e); });
+  document.getElementById('pa-detail-pane-close').addEventListener('click', closePaDetail);
   // mouseenter/mouseleave don't bubble, so delegation uses mouseover/mouseout
   // with a relatedTarget check to only fire once per card boundary crossing.
   accordionEl.addEventListener('mouseover', (e) => {
-    const stateHeader = e.target.closest('.state-row-header');
+    const stateHeader = e.target.closest('.state-row-header[data-state]');
     if (stateHeader && !stateHeader.contains(e.relatedTarget)) {
       // Highlight the state as if selected, over the all-India view --
       // except the selected state's own header, which leaves the map on it
@@ -3737,7 +4524,7 @@ function initAccordionEvents() {
     if (card && !card.contains(e.relatedTarget)) onCardHoverEnter(card);
   });
   accordionEl.addEventListener('mouseout', (e) => {
-    const stateHeader = e.target.closest('.state-row-header');
+    const stateHeader = e.target.closest('.state-row-header[data-state]');
     if (stateHeader && !stateHeader.contains(e.relatedTarget)) {
       clearTimeout(stateHoverTimer);
       setActiveStateOutline(selectedState);
@@ -4024,9 +4811,12 @@ function initRows() {
 
   const setRow = (row, isCollapsed) => {
     row.classList.toggle('is-collapsed', isCollapsed);
+    // Collapsed, the close button is visually hidden (the whole row reopens
+    // on click) but stays focusable as the keyboard way back in.
     const toggle = row.querySelector('.row-toggle');
     toggle.setAttribute('aria-expanded', String(!isCollapsed));
-    toggle.querySelector('.row-toggle-label').textContent = isCollapsed ? 'Expand' : 'Collapse';
+    toggle.setAttribute('aria-label', isCollapsed ? 'Open this section' : 'Close this section');
+    toggle.title = isCollapsed ? '' : 'Close';
   };
 
   // Clicks on these keep their own behaviour instead of toggling the row.
@@ -4041,17 +4831,14 @@ function initRows() {
       setRow(row, next);
       collapsed[key] = next;
       try { localStorage.setItem(ROW_STATE_KEY, JSON.stringify(collapsed)); } catch { /* ignore */ }
-      if (key === 'explorer') requestAnimationFrame(() => map?.resize());
     };
 
-    // The whole title bar toggles. The header rows (intro, stats) have no
-    // bulky content when collapsed, so there the entire collapsed row acts
-    // as the bar.
+    // Expanded, only the close button collapses the row; collapsed, a click
+    // anywhere on it (outside its own links/buttons) opens it again.
     row.addEventListener('click', (e) => {
+      if (e.target.closest('.row-toggle')) { toggleRow(); return; }
       if (e.target.closest(INTERACTIVE)) return;
-      const inBar = e.target.closest('.row-bar, .row-toggle');
-      const wholeRowIsBar = row.classList.contains('is-collapsed') && row.closest('.site-header');
-      if (inBar || wholeRowIsBar) toggleRow();
+      if (row.classList.contains('is-collapsed')) toggleRow();
     });
   });
 }
@@ -4064,6 +4851,8 @@ function renderEszIntro() {
 async function main() {
   initRows();
   initMapDock();
+  initGroupBy();
+  initListTooltip();
   renderEszIntro();
   initSourceStatus().catch((err) => console.error(err));
   await loadData();

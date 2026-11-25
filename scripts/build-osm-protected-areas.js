@@ -158,13 +158,25 @@ async function main() {
 
   console.log('Querying Postpass for protected areas in the India bbox...');
   const t0 = Date.now();
+  // Postpass's import decides area-vs-line from tags, and boundary=* alone
+  // is not an area tag, so a closed way tagged only boundary=protected_area
+  // (no leisure/natural/landuse) lands in postpass_line, not
+  // postpass_pointpolygon (Harike Lake WLS, Melghat TR, Dudhwa NP, Namdapha
+  // NP... seen 2026-11-26). Closed ways from postpass_line are turned back
+  // into polygons here; open ones are boundary fragments and stay out.
+  const filter = `geom && ST_MakeEnvelope(${INDIA_BBOX.join(', ')}, 4326)
+      AND (tags->>'boundary' IN ('protected_area', 'national_park') OR tags ? 'protect_class')`;
   const fc = await postpass(`
+    WITH pa AS (
+      SELECT osm_type, osm_id, tags, geom FROM postpass_pointpolygon WHERE ${filter}
+      UNION ALL
+      SELECT osm_type, osm_id, tags, ST_BuildArea(geom) AS geom FROM postpass_line
+      WHERE ${filter} AND osm_type = 'W' AND ST_IsClosed(ST_LineMerge(geom))
+    )
     SELECT osm_type, osm_id, tags,
       ST_X(ST_PointOnSurface(geom)) AS lon, ST_Y(ST_PointOnSurface(geom)) AS lat,
       geom
-    FROM postpass_pointpolygon
-    WHERE geom && ST_MakeEnvelope(${INDIA_BBOX.join(', ')}, 4326)
-      AND (tags->>'boundary' IN ('protected_area', 'national_park') OR tags ? 'protect_class')`);
+    FROM pa WHERE geom IS NOT NULL`);
   console.log(`Fetched ${fc.features.length} features in ${Math.round((Date.now() - t0) / 1000)} s.`);
 
   const features = [];

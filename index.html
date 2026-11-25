@@ -49,10 +49,10 @@
     </div>
     <div class="header-inner">
       <section class="row row-intro" id="row-intro" data-row="intro" aria-label="About this dashboard">
-      <button class="row-toggle" type="button" aria-expanded="true" aria-controls="row-intro-body">
-        <span class="row-toggle-label">Collapse</span>
-        <svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true" fill="none" stroke="currentColor"
-          stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 15l6-6 6 6" /></svg>
+      <button class="row-toggle" type="button" aria-expanded="true" aria-controls="row-intro-body"
+        aria-label="Close this section" title="Close">
+        <svg viewBox="0 0 24 24" width="13" height="13" aria-hidden="true" fill="none" stroke="currentColor"
+            stroke-width="2.2" stroke-linecap="round"><path d="M5 5l14 14M19 5L5 19" /></svg>
       </button>
       <div class="row-body" id="row-intro-body">
       <p class="header-kicker">Status Of Eco-Sensitive Buffer Zones For The Protected Areas of India</p>
@@ -126,10 +126,10 @@
       <section class="row row-stats" id="row-stats" data-row="stats" aria-labelledby="row-stats-title">
       <div class="row-bar">
         <h2 class="row-title" id="row-stats-title">Nationwide progress</h2>
-        <button class="row-toggle" type="button" aria-expanded="true" aria-controls="row-stats-body">
-          <span class="row-toggle-label">Collapse</span>
-          <svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true" fill="none" stroke="currentColor"
-            stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 15l6-6 6 6" /></svg>
+        <button class="row-toggle" type="button" aria-expanded="true" aria-controls="row-stats-body"
+          aria-label="Close this section" title="Close">
+          <svg viewBox="0 0 24 24" width="13" height="13" aria-hidden="true" fill="none" stroke="currentColor"
+            stroke-width="2.2" stroke-linecap="round"><path d="M5 5l14 14M19 5L5 19" /></svg>
         </button>
       </div>
       <div class="row-body" id="row-stats-body">
@@ -269,15 +269,9 @@
     </div>
   </div>
 
-  <main>
-    <section class="row row-explorer" id="row-explorer" data-row="explorer" aria-labelledby="row-explorer-title">
+  <main class="row row-explorer" id="row-explorer" aria-labelledby="row-explorer-title">
       <div class="row-bar">
-        <h2 class="row-title" id="row-explorer-title">Map</h2>
-        <button class="row-toggle" type="button" aria-expanded="true" aria-controls="row-explorer-body">
-          <span class="row-toggle-label">Collapse</span>
-          <svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true" fill="none" stroke="currentColor"
-            stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 15l6-6 6 6" /></svg>
-        </button>
+        <h2 class="row-title" id="row-explorer-title">Explore Protected Areas</h2>
       </div>
       <div class="row-body explorer" id="row-explorer-body">
         <div class="map-stage">
@@ -316,15 +310,36 @@
               </label>
               </div>
             </details>
+            <div class="basemap-switch" id="basemap-switch" role="group" aria-labelledby="basemap-switch-label">
+              <span class="basemap-switch-label" id="basemap-switch-label">Basemap:</span>
+              <button type="button" class="basemap-option" data-basemap="osm" aria-pressed="true">OpenStreetMap</button>
+              <button type="button" class="basemap-option" data-basemap="soi" aria-pressed="false"
+                title="Survey of India topographic map, served by Indian Open Maps (Datameet Community)">Survey of India</button>
+              <button type="button" class="basemap-option" data-basemap="satellite" aria-pressed="false"
+                title="Satellite imagery from MapTiler">Satellite</button>
+            </div>
           </div>
+          <aside class="pa-detail-pane" id="pa-detail-pane" aria-labelledby="pa-detail-pane-title" hidden>
+            <div class="pa-detail-pane-header">
+              <div class="pa-detail-pane-heading">
+                <h3 class="pa-detail-pane-title" id="pa-detail-pane-title">Protected area</h3>
+                <p class="pa-detail-pane-subtitle" id="pa-detail-pane-subtitle" hidden></p>
+              </div>
+              <button class="pa-detail-pane-close" id="pa-detail-pane-close" type="button"
+                aria-label="Close protected area details" title="Close">
+                <svg viewBox="0 0 24 24" width="13" height="13" aria-hidden="true" fill="none" stroke="currentColor"
+                  stroke-width="2.2" stroke-linecap="round"><path d="M5 5l14 14M19 5L5 19" /></svg>
+              </button>
+            </div>
+            <div class="pa-detail-pane-body" id="pa-detail-pane-body"></div>
+          </aside>
           <aside class="map-dock" id="map-dock" aria-labelledby="map-dock-title">
             <div class="map-dock-header">
-              <h3 class="map-dock-title" id="map-dock-title">Protected areas</h3>
+              <h3 class="map-dock-title" id="map-dock-title">Finder</h3>
               <button class="map-dock-toggle" id="map-dock-toggle" type="button" aria-expanded="true"
-                aria-controls="map-dock-body">
-                <span class="map-dock-toggle-label">Hide list</span>
-                <svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true" fill="none" stroke="currentColor"
-                  stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 15l6-6 6 6" /></svg>
+                aria-controls="map-dock-body" aria-label="Close the finder" title="Close">
+                <svg viewBox="0 0 24 24" width="13" height="13" aria-hidden="true" fill="none" stroke="currentColor"
+                  stroke-width="2.2" stroke-linecap="round"><path d="M5 5l14 14M19 5L5 19" /></svg>
               </button>
             </div>
             <div class="map-dock-body table-panel" id="map-dock-body">
@@ -337,6 +352,13 @@
               <select id="pa-type-filter" class="type-filter-select" aria-label="Filter by protected area type">
                 <option value="">All types</option>
               </select>
+            </div>
+            <div class="group-by" id="group-by" role="group" aria-labelledby="group-by-label">
+              <span class="group-by-label" id="group-by-label">Group by</span>
+              <button type="button" class="group-by-option" data-group-by="state" aria-pressed="true">State</button>
+              <button type="button" class="group-by-option" data-group-by="size" aria-pressed="false">Size</button>
+              <button type="button" class="group-by-option" data-group-by="type" aria-pressed="false">Type</button>
+              <button type="button" class="group-by-option" data-group-by="status" aria-pressed="false">Status</button>
             </div>
             <span class="result-status">
               <span id="result-count" class="result-count"></span>
@@ -520,12 +542,6 @@
             </div>
           </aside>
         </div>
-        <div class="basemap-switch" id="basemap-switch" role="group" aria-labelledby="basemap-switch-label">
-          <span class="basemap-switch-label" id="basemap-switch-label">Basemap:</span>
-          <button type="button" class="basemap-option" data-basemap="osm" aria-pressed="true">OpenStreetMap</button>
-          <button type="button" class="basemap-option" data-basemap="soi" aria-pressed="false"
-            title="Survey of India topographic map, served by Indian Open Maps (Datameet Community)">Survey of India</button>
-        </div>
           <div class="map-aside">
           <p class="map-hint">Click a point for details. The Eco-Sensitive Zones and Wildlife Reserves &amp; Corridors
             overlays are sourced from
@@ -570,7 +586,6 @@
           </section>
           </div>
       </div>
-    </section>
   </main>
 
   <footer class="site-footer">
