@@ -131,8 +131,9 @@ const OCEAN_TILES_URL = 'https://vector.openstreetmap.org/shortbread_v1/{z}/{x}/
 // scripts/build-natural-earth.js: outlines for every country, and a grey mask
 // over all of them except India.
 const NATURAL_EARTH_PMTILES_URL = new URL('data/natural-earth/countries-ind.pmtiles', document.baseURI).href;
-const COUNTRY_MASK_COLOR = '#9ca3af';
-const COUNTRY_MASK_OPACITY = 0.9;
+const COUNTRY_MASK_COLOR = '#e5e7eb'; // countries other than India: a subtle grey
+const COUNTRY_MASK_OPACITY = 1;
+const OCEAN_COLOR = '#f2f8fc'; // sea: a very faint blue, opaque
 
 const OSM_PA_PMTILES_URL = new URL('data/osm/india-protected-areas-all.pmtiles', document.baseURI).href;
 const OSM_PA_SOURCE_LAYER = 'protected_areas';
@@ -1331,6 +1332,7 @@ function initMap() {
   addCollapsedAttribution();
 
   map.on('load', () => {
+    addSoiLayer(); // first, so it sits directly on the OSM basemap
     addOceanLayers();
     addCountryLayers();
     addNotificationMapsLayer();
@@ -1371,15 +1373,26 @@ function initMap() {
       hoveredMapLgdName = lgdName;
       setActiveStateOutline(lgdName ? (dashboardStateName(lgdName) || lgdName) : selectedState);
     };
+    // Hovering an OSM polygon outlines it and, when it's connected to a PA,
+    // activates that PA's marker as hovering the marker would; it's then
+    // clickable (see the click handler). Markers on top take precedence.
+    let hoveredOsm = { osmId: null, paKey: null };
+    const onOsmPaHover = (point) => {
+      const hit = (point && !hoveredMarkerId && osmPaHitAt(point)) || { osmId: null, paKey: null };
+      if (hit.osmId !== hoveredOsm.osmId) setOsmPaHover(hit.osmId);
+      if (hit.paKey !== hoveredOsm.paKey && !hoveredMarkerId && !selectedWikidataId) setActivePaMarker(hit.paKey);
+      hoveredOsm = hit;
+      if (!hoveredMarkerId) map.getCanvas().style.cursor = hit.paKey ? 'pointer' : '';
+    };
     map.on('mousemove', (e) => {
       onMarkerHover(paMarkerAt(e.point));
       onMapStateHover(e.point);
-      // Linked OSM polygons are clickable too (see the click handler).
-      if (!hoveredMarkerId) map.getCanvas().style.cursor = osmPaKeyAt(e.point) ? 'pointer' : '';
+      onOsmPaHover(e.point);
     });
     map.getCanvas().addEventListener('mouseleave', () => {
       onMarkerHover(null);
       onMapStateHover(null);
+      onOsmPaHover(null);
     });
     // A click on a PA marker, or on an OSM polygon linked to a PA (its own
     // boundary or its ESZ), toggles that PA's selection: selecting it (and
@@ -1412,7 +1425,10 @@ function initMap() {
 // notified, yellow for a draft, red when no notification has been found --
 // with the PA's name as a text label beside it.
 const PA_MARKER_STATUSES = ['final', 'draft', 'none'];
-const PA_MARKER_STATUS_COLOR = { final: STATUS_COLOR.final, draft: STATUS_COLOR.draft, none: '#dc2626' };
+// Draft is a deeper amber than STATUS_COLOR.draft's yellow: on the grey
+// state mask a light yellow washes out, while this matches the green and
+// red in weight.
+const PA_MARKER_STATUS_COLOR = { final: STATUS_COLOR.final, draft: '#d97706', none: '#dc2626' };
 // Marker size by area: the mappable PAs with a known area are split into
 // equal thirds (small / medium / large), scaled by these factors; PAs with
 // no known area get the small size.
@@ -1457,7 +1473,11 @@ const PA_LABEL_LAYOUT = {
   'text-justify': 'auto',
   'text-max-width': 10,
 };
-const PA_LABEL_PAINT = { 'text-color': '#111827', 'text-halo-color': '#ffffff', 'text-halo-width': 1.5 };
+// Base PA labels have no halo -- across many (often faded) labels a white
+// halo is mostly noise; only the activated (hovered/selected) label gets one
+// to lift it off the map.
+const PA_LABEL_PAINT = { 'text-color': '#111827' };
+const PA_ACTIVE_LABEL_PAINT = { ...PA_LABEL_PAINT, 'text-halo-color': '#ffffff', 'text-halo-width': 1.5 };
 
 // Base circles + labels for every PA, plus an "active" circle + label pair
 // for one PA (hovered on the map or in the list, else the selected one),
@@ -1513,7 +1533,7 @@ function addPaMarkerLayers() {
       'text-allow-overlap': true,
       'text-ignore-placement': true,
     },
-    paint: PA_LABEL_PAINT,
+    paint: PA_ACTIVE_LABEL_PAINT,
   });
 }
 
@@ -1554,7 +1574,7 @@ function addOceanLayers() {
     type: 'fill',
     source: 'ocean',
     'source-layer': 'ocean',
-    paint: { 'fill-color': '#ebfaff', 'fill-opacity': 0.5 },
+    paint: { 'fill-color': OCEAN_COLOR, 'fill-opacity': 1 },
   });
   map.addLayer({
     id: 'ocean-line',
@@ -1587,7 +1607,7 @@ function addCountryLayers() {
     type: 'line',
     source: 'natural-earth-countries',
     'source-layer': 'countries',
-    paint: { 'line-color': '#6b7280', 'line-width': 0.75 },
+    paint: { 'line-color': '#6b7280', 'line-width': 0.1 },
   });
 }
 
@@ -1673,15 +1693,17 @@ function addBoundaryCorrectionLayers() {
 // "LGD_States", name in STNAME as upper case). Drawn as a faint outline for
 // every state with its name label, plus a highlight outline for the active
 // state -- the selected (expanded / clicked) one, or a hovered accordion
-// header previewing another -- and a white mask over every other state while
-// one is active (see setActiveStateOutline).
+// header previewing another -- and a fill on every state coloured by its
+// final-notification progress, white on the active one (see setActiveStateOutline).
 const STATE_BOUNDARY_TILES_URL = 'https://indianopenmaps.com/not-so-open/states/lgd/{z}/{x}/{y}.pbf';
 const STATE_NAME_EXPR = ['upcase', ['to-string', ['get', 'STNAME']]];
-const STATE_MASK_COLOR = '#ffffff';
-const STATE_MASK_OPACITY = 0.8;
-const STATE_ACTIVE_FILL_COLOR = '#fdf3c4'; // off-yellow
-// The active state's tint fades out as you zoom in: 0.8 up to z12, 0 by z18.
-const STATE_ACTIVE_FILL_OPACITY_STOPS = [12, 0.8, 18, 0];
+// State fill over the basemap, coloured by final-notification progress (share
+// of the state's PAs with a Final ESZ notification): red at 0%, yellow in
+// progress, green at 100%. The selected/hovered state turns white instead.
+const STATE_PROGRESS_COLORS = { none: '#fca5a5', partial: '#fde68a', complete: '#86efac' };
+const STATE_NO_DATA_COLOR = '#d1d5db'; // states with no PAs in the dataset
+const STATE_ACTIVE_FILL_COLOR = '#ffffff';
+const STATE_MASK_OPACITY = 0.9;
 // Dashboard state names (from Wikidata) whose LGD STNAME is spelled differently.
 const LGD_STATE_NAME_OVERRIDES = {
   'Andaman and Nicobar Islands': 'ANDAMAN & NICOBAR',
@@ -1692,6 +1714,23 @@ const LGD_STATE_NAME_OVERRIDES = {
 
 function lgdStateName(stateName) {
   return (LGD_STATE_NAME_OVERRIDES[stateName] || stateName).toUpperCase();
+}
+
+// fill-color expression: each LGD state name -> its final-notification
+// progress colour, from the full (unfiltered) dataset.
+function stateProgressColorExpr() {
+  const pairs = [];
+  const seen = new Set();
+  for (const r of computeStateNotificationDetails()) {
+    const name = lgdStateName(r.state);
+    if (seen.has(name)) continue;
+    seen.add(name);
+    const color = r.final === 0 ? STATE_PROGRESS_COLORS.none
+      : r.allFinal ? STATE_PROGRESS_COLORS.complete
+        : STATE_PROGRESS_COLORS.partial;
+    pairs.push(name, color);
+  }
+  return pairs.length ? ['match', STATE_NAME_EXPR, ...pairs, STATE_NO_DATA_COLOR] : STATE_NO_DATA_COLOR;
 }
 
 function addStateBoundaryLayers() {
@@ -1708,10 +1747,9 @@ function addStateBoundaryLayers() {
     source: 'state-boundaries',
     'source-layer': 'LGD_States',
     // Covers every state at all times (so map clicks can hit-test states via
-    // this layer); setActiveStateOutline drives the colour and opacity --
-    // white at 0.8 on every state that isn't active (all of them until one
-    // is), and an off-yellow tint on the active one that fades out by z18.
-    paint: { 'fill-color': STATE_MASK_COLOR, 'fill-opacity': STATE_MASK_OPACITY },
+    // this layer); coloured by final-notification progress, with
+    // setActiveStateOutline turning the active state white.
+    paint: { 'fill-color': stateProgressColorExpr(), 'fill-opacity': STATE_MASK_OPACITY },
   });
   map.addLayer({
     id: 'state-boundaries-line',
@@ -1758,10 +1796,12 @@ function addStateBoundaryLayers() {
   });
   // Label above the active outline so the line doesn't strike through it.
   map.moveLayer('state-boundaries-label');
-  // The mask only fades the basemap: it sits directly above the OSM raster,
-  // under every overlay (ESZs, reserves, OSM PAs, markers, boundaries).
+  // The mask only fades the basemap: it sits directly above the basemap
+  // rasters (OSM or Survey of India, whichever is shown), under every
+  // overlay (ESZs, reserves, OSM PAs, markers, boundaries).
   const layerIds = map.getStyle().layers.map((l) => l.id);
-  const aboveBasemap = layerIds[layerIds.indexOf('osm') + 1];
+  const topBasemap = layerIds.includes('soi-osm') ? 'soi-osm' : 'osm';
+  const aboveBasemap = layerIds[layerIds.indexOf(topBasemap) + 1];
   if (aboveBasemap && aboveBasemap !== 'state-boundaries-mask') map.moveLayer('state-boundaries-mask', aboveBasemap);
   // Every state's tiles are loaded at the initial all-India view -- cache
   // their bboxes before the user can zoom away.
@@ -1793,23 +1833,16 @@ function stateBoundaryBounds(stateName) {
   return stateBoundsCache.get(name) || null;
 }
 
-// Outlines one state (by dashboard name) and masks every other state white,
-// or clears both with null.
+// Outlines one state (by dashboard name) and fills it white (other states keep
+// their progress colour), or clears both with null.
 function setActiveStateOutline(stateName) {
   if (!map || !map.getLayer('state-boundaries-active')) return;
   const name = stateName ? lgdStateName(stateName) : '';
   map.setFilter('state-boundaries-active', ['==', STATE_NAME_EXPR, name]);
   const isActive = ['==', STATE_NAME_EXPR, name];
+  const progressColor = stateProgressColorExpr();
   map.setPaintProperty('state-boundaries-mask', 'fill-color',
-    stateName ? ['case', isActive, STATE_ACTIVE_FILL_COLOR, STATE_MASK_COLOR] : STATE_MASK_COLOR);
-  // A zoom interpolate has to be the outermost expression, so the
-  // active/inactive case goes inside each stop.
-  const [z0, o0, z1, o1] = STATE_ACTIVE_FILL_OPACITY_STOPS;
-  map.setPaintProperty('state-boundaries-mask', 'fill-opacity', stateName
-    ? ['interpolate', ['linear'], ['zoom'],
-      z0, ['case', isActive, o0, STATE_MASK_OPACITY],
-      z1, ['case', isActive, o1, STATE_MASK_OPACITY]]
-    : STATE_MASK_OPACITY);
+    stateName ? ['case', isActive, STATE_ACTIVE_FILL_COLOR, progressColor] : progressColor);
   // Hovered state's label: full opacity and placed first in collision
   // detection, so a neighbour's label can't knock it out.
   map.setPaintProperty('state-boundaries-label', 'text-opacity',
@@ -1853,6 +1886,43 @@ function addEszLayer() {
     filter: ['has', 'Name'],
     layout: { ...PARIVESH_LABEL_LAYOUT, 'text-field': ['concat', ['get', 'Name'], ' ESZ'] },
     paint: PARIVESH_LABEL_PAINT,
+  });
+}
+
+// Basemap: OpenStreetMap (the style's 'osm' layer) or the Survey of India
+// map (raster, via Indian Open Maps), picked with the switch below the map.
+// SOI sits just above the OSM layer, under every overlay; only one of the
+// two is shown. Its tiles exist to z14 and are overzoomed beyond that.
+const SOI_TILES_URL = 'https://indianopenmaps.com/soi/osm/{z}/{x}/{y}.webp';
+let currentBasemap = 'osm';
+
+function addSoiLayer() {
+  map.addSource('soi-osm', {
+    type: 'raster',
+    tiles: [SOI_TILES_URL],
+    tileSize: 256,
+    maxzoom: 14,
+    attribution: '<a href="https://onlinemaps.surveyofindia.gov.in/" target="_blank" rel="noopener">&copy; Survey of India</a>, '
+      + '<a href="https://ramseraph.github.io/opendata/maps/SOI/" target="_blank" rel="noopener">Datameet Community</a>',
+  });
+  map.addLayer({ id: 'soi-osm', type: 'raster', source: 'soi-osm', layout: { visibility: 'none' } });
+  setBasemap(currentBasemap);
+}
+
+function setBasemap(name) {
+  currentBasemap = name;
+  for (const btn of document.querySelectorAll('#basemap-switch .basemap-option')) {
+    btn.setAttribute('aria-pressed', String(btn.dataset.basemap === name));
+  }
+  if (!map || !map.getLayer('soi-osm')) return; // applied by addSoiLayer once the style loads
+  map.setLayoutProperty('soi-osm', 'visibility', name === 'soi' ? 'visible' : 'none');
+  map.setLayoutProperty('osm', 'visibility', name === 'soi' ? 'none' : 'visible');
+}
+
+function initBasemapSwitch() {
+  document.getElementById('basemap-switch').addEventListener('click', (e) => {
+    const btn = e.target.closest('.basemap-option');
+    if (btn) setBasemap(btn.dataset.basemap);
   });
 }
 
@@ -1984,6 +2054,14 @@ function addOsmProtectedAreaLayer() {
     // Core zones are left unoutlined: their dots alone mark them.
     filter: ['!=', zone, 'core-zone'],
     paint: { 'line-color': statusColor, 'line-width': 1 },
+  });
+  // The OSM polygon under the pointer, outlined boldly (see setOsmPaHover).
+  map.addLayer({
+    ...base,
+    id: 'osm-pa-hover',
+    type: 'line',
+    filter: ['==', ['get', '@id'], ''],
+    paint: { 'line-color': '#14532d', 'line-width': 2.5 },
   });
   map.addLayer({
     ...sourceTagLayer('osm-pa-source-tag', base.source, base['source-layer'], 'OSM', statusColor),
@@ -2133,17 +2211,94 @@ function buildOsmIdToPaKey() {
   return index;
 }
 
-// The PA linked to the topmost OSM polygon under a screen point (core fill
-// over buffer over ESZ hatch), or null.
+// The topmost OSM polygon under a screen point (core fill over buffer over
+// ESZ hatch) and the PA it's connected to: by its OSM id when the join
+// linked it (wikidata tag / relation id / ESZ), otherwise -- for untagged
+// polygons -- the PA whose point lies inside it (see osmPaKeyBySpatial).
+// Returns { osmId, paKey } (paKey may be null), or null off every polygon.
 const OSM_PA_CLICK_LAYERS = ['osm-pa-core-zone', 'osm-pa-fill', 'osm-pa-buffer', 'osm-pa-hatch'];
-function osmPaKeyAt(point) {
+function osmPaHitAt(point) {
   const layers = OSM_PA_CLICK_LAYERS.filter((id) => map.getLayer(id) && map.getLayoutProperty(id, 'visibility') !== 'none');
   if (!layers.length) return null;
+  let first = null;
   for (const f of map.queryRenderedFeatures(point, { layers })) {
-    const key = osmIdToPaKey.get(f.properties['@id']);
-    if (key) return key;
+    const osmId = f.properties['@id'];
+    const linked = osmIdToPaKey.get(osmId);
+    if (linked) return { osmId, paKey: linked };
+    if (!first) first = { osmId, paKey: osmPaKeyBySpatial(osmId, f.properties) };
+    if (first.paKey) return first;
   }
-  return null;
+  return first;
+}
+
+function osmPaKeyAt(point) {
+  return osmPaHitAt(point)?.paKey || null;
+}
+
+// Untagged OSM polygon -> the PA whose Wikidata point falls inside it
+// (when several do, only the one named like the polygon). Uses every loaded tile piece of
+// the polygon (rendered features are clipped to their tile). Cached per
+// polygon and integer zoom, since what's loaded varies with zoom.
+const osmSpatialPaKeyCache = new Map();
+function osmPaKeyBySpatial(osmId, props) {
+  const cacheKey = `${osmId}@${Math.floor(map.getZoom())}`;
+  if (osmSpatialPaKeyCache.has(cacheKey)) return osmSpatialPaKeyCache.get(cacheKey);
+  const pieces = map.querySourceFeatures('osm-protected-areas', {
+    sourceLayer: OSM_PA_SOURCE_LAYER,
+    filter: ['==', ['get', '@id'], osmId],
+  });
+  const polygons = [];
+  for (const f of pieces) {
+    if (f.geometry.type === 'Polygon') polygons.push(f.geometry.coordinates);
+    else if (f.geometry.type === 'MultiPolygon') polygons.push(...f.geometry.coordinates);
+  }
+  let paKey = null;
+  if (polygons.length) {
+    let [w, s, e, n] = [Infinity, Infinity, -Infinity, -Infinity];
+    for (const poly of polygons) for (const [x, y] of poly[0]) {
+      w = Math.min(w, x); e = Math.max(e, x); s = Math.min(s, y); n = Math.max(n, y);
+    }
+    const inside = paEntries.filter((entry) => {
+      const x = entry.coordinateLongitude, y = entry.coordinateLatitude;
+      if (y == null || x < w || x > e || y < s || y > n) return false;
+      return polygons.some((poly) => pointInPolygon([x, y], poly));
+    });
+    const osmName = normalizeOsmPaName(props['name:en'] || props.name || '');
+    const byName = osmName && inside.find((entry) => {
+      const name = normalizeOsmPaName(entry.name || '');
+      return name && (name.includes(osmName) || osmName.includes(name));
+    });
+    // Several PAs inside and none named like the polygon: too ambiguous.
+    paKey = (byName || (inside.length === 1 ? inside[0] : null))?.paKey || null;
+  }
+  osmSpatialPaKeyCache.set(cacheKey, paKey);
+  return paKey;
+}
+
+// Lower-cased name with PA-type words and punctuation dropped, so
+// "Dhyanganga WLS" and "Dnyanganga Wildlife Sanctuary" compare on the core.
+function normalizeOsmPaName(name) {
+  return name.toLowerCase()
+    .replace(/\b(wildlife|sanctuary|wls|national|park|np|tiger|reserve|tr|bird|conservation|eco|sensitive|zone|esz)\b/g, ' ')
+    .replace(/[^a-z]+/g, '');
+}
+
+// Ray-casting test against a polygon's rings (outer ring, then holes).
+function pointInPolygon([x, y], rings) {
+  let inside = false;
+  for (const ring of rings) {
+    for (let i = 0, j = ring.length - 1; i < ring.length; j = i++) {
+      const [xi, yi] = ring[i];
+      const [xj, yj] = ring[j];
+      if ((yi > y) !== (yj > y) && x < ((xj - xi) * (y - yi)) / (yj - yi) + xi) inside = !inside;
+    }
+  }
+  return inside;
+}
+
+// Bold outline on the hovered OSM polygon ('' / null clears it).
+function setOsmPaHover(osmId) {
+  if (map.getLayer('osm-pa-hover')) map.setFilter('osm-pa-hover', ['==', ['get', '@id'], osmId || '']);
 }
 
 // Ends a PA's selection from the map: clears it and closes its card(s).
@@ -2183,7 +2338,7 @@ function paMarkerAt(point) {
 
 function setOsmPaLayerVisibility(visible) {
   const visibility = visible ? 'visible' : 'none';
-  for (const id of ['osm-pa-hatch', 'osm-pa-buffer', 'osm-pa-fill', 'osm-pa-core-zone', 'osm-pa-line', 'osm-pa-source-tag', 'osm-pa-label']) {
+  for (const id of ['osm-pa-hatch', 'osm-pa-buffer', 'osm-pa-fill', 'osm-pa-core-zone', 'osm-pa-line', 'osm-pa-hover', 'osm-pa-source-tag', 'osm-pa-label']) {
     if (map.getLayer(id)) map.setLayoutProperty(id, 'visibility', visibility);
   }
 }
@@ -3464,10 +3619,11 @@ function fitMapToState(stateName, { force = false } = {}) {
   stateHoverMovedMap = true;
 }
 
-// fitBounds padding that clears the map's overlays -- the layer toggle panel
-// (top-left) and the attribution box (bottom) -- so a fitted state isn't
-// hidden under them in the narrow map column. Each side gets `base` plus
-// whatever an overlay pinned to that edge covers.
+// fitBounds padding that clears the map's overlays -- the Layers control
+// (top-right), the attribution box (bottom) and, on wide screens, the
+// protected-area list docked over the map's left edge -- so a fitted state
+// isn't hidden under them. Each side gets `base` plus whatever an overlay
+// pinned to that edge covers.
 function mapOverlayPadding(base) {
   const mapRect = map.getContainer().getBoundingClientRect();
   const pad = { top: base, bottom: base, left: base, right: base };
@@ -3484,9 +3640,30 @@ function mapOverlayPadding(base) {
     if (fromTop < mapRect.height / 2) pad.top = Math.max(pad.top, fromTop + base);
     else if (fromBottom < mapRect.height / 2) pad.bottom = Math.max(pad.bottom, fromBottom + base);
   }
-  // fitBounds throws if padding leaves no room; give up the extra in that case.
-  if (pad.top + pad.bottom >= mapRect.height - 40) return base;
+  // The dock only overlays the map when it's absolutely positioned (wide
+  // screens) and showing its list; stacked below the map it covers nothing.
+  const dock = document.getElementById('map-dock');
+  if (dock && !dock.classList.contains('is-hidden') && getComputedStyle(dock).position === 'absolute') {
+    const r = dock.getBoundingClientRect();
+    pad.left = Math.max(pad.left, r.right - mapRect.left + base);
+  }
+  // fitBounds can't fit if padding leaves no room; give up the extra then.
+  if (pad.top + pad.bottom >= mapRect.height - 40) { pad.top = base; pad.bottom = base; }
+  if (pad.left + pad.right >= mapRect.width - 80) { pad.left = base; pad.right = base; }
   return pad;
+}
+
+// Hide/show the protected-area list docked over the map. Hidden, it shrinks
+// to its header bar so the whole map is visible.
+function initMapDock() {
+  const dock = document.getElementById('map-dock');
+  const toggle = document.getElementById('map-dock-toggle');
+  if (!dock || !toggle) return;
+  toggle.addEventListener('click', () => {
+    const hidden = dock.classList.toggle('is-hidden');
+    toggle.setAttribute('aria-expanded', String(!hidden));
+    toggle.querySelector('.map-dock-toggle-label').textContent = hidden ? 'Show list' : 'Hide list';
+  });
 }
 
 // Flies to the all-India view for a state-header hover (unless the map is
@@ -3837,12 +4014,58 @@ function initFilterEvents() {
   document.getElementById('export-filtered').addEventListener('click', exportFilteredCsv);
 }
 
+// Each page row (intro, stats, explorer -- see .row in index.html) has an
+// expanded and a collapsed state. Collapsed rows keep a compact view rather
+// than disappearing; the choice is remembered per browser.
+const ROW_STATE_KEY = 'esz-dashboard-collapsed-rows';
+
+function initRows() {
+  // Rows start collapsed; a stored choice from an earlier visit overrides that.
+  let collapsed = {};
+  try { collapsed = JSON.parse(localStorage.getItem(ROW_STATE_KEY)) || {}; } catch { /* storage unavailable */ }
+
+  const setRow = (row, isCollapsed) => {
+    row.classList.toggle('is-collapsed', isCollapsed);
+    const toggle = row.querySelector('.row-toggle');
+    toggle.setAttribute('aria-expanded', String(!isCollapsed));
+    toggle.querySelector('.row-toggle-label').textContent = isCollapsed ? 'Expand' : 'Collapse';
+  };
+
+  // Clicks on these keep their own behaviour instead of toggling the row.
+  const INTERACTIVE = 'a, button:not(.row-toggle), input, select, textarea, summary, label, [role="button"], .dropdown-menu';
+
+  document.querySelectorAll('.row[data-row]').forEach((row) => {
+    const key = row.dataset.row;
+    setRow(row, collapsed[key] ?? true);
+
+    const toggleRow = () => {
+      const next = !row.classList.contains('is-collapsed');
+      setRow(row, next);
+      collapsed[key] = next;
+      try { localStorage.setItem(ROW_STATE_KEY, JSON.stringify(collapsed)); } catch { /* ignore */ }
+      if (key === 'explorer') requestAnimationFrame(() => map?.resize());
+    };
+
+    // The whole title bar toggles. The header rows (intro, stats) have no
+    // bulky content when collapsed, so there the entire collapsed row acts
+    // as the bar.
+    row.addEventListener('click', (e) => {
+      if (e.target.closest(INTERACTIVE)) return;
+      const inBar = e.target.closest('.row-bar, .row-toggle');
+      const wholeRowIsBar = row.classList.contains('is-collapsed') && row.closest('.site-header');
+      if (inBar || wholeRowIsBar) toggleRow();
+    });
+  });
+}
+
 function renderEszIntro() {
   const el = document.getElementById('esz-intro');
   if (el) el.innerHTML = ESZ_INTRO_HTML;
 }
 
 async function main() {
+  initRows();
+  initMapDock();
   renderEszIntro();
   initSourceStatus().catch((err) => console.error(err));
   await loadData();
@@ -3867,6 +4090,7 @@ async function main() {
   initWildlifeReserveLayerToggle();
   initOsmPaLayerToggle();
   initNotificationMapsLayerToggle();
+  initBasemapSwitch();
   initAccordionEvents();
   applyFilters();
   initFilterEvents();
