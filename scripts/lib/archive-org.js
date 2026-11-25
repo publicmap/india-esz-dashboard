@@ -48,10 +48,9 @@
 // hand against two Campbell Bay National Park notifications) but it's one
 // extra fetch per candidate on that date, so it only runs once title and
 // description have both failed, and it stays scoped to the exact
-// notification date first before widening -- both examples we confirmed
-// matched their exact printed date, so unlike the description fallback,
-// there's no evidence the widened window is actually needed here, and
-// avoiding it keeps this expensive pass as narrow as possible.
+// notification date first. Only if that misses does it widen to scans dated
+// 1-7 days later (matchMethod "fulltext-window"), with a stricter
+// own-number + MoEF + ESZ check -- see findWindowedFullTextMatch().
 //
 // Fourth pass, broad description fallback: same collection+date+description
 // query as the "Search Archive PDF" link the dashboard shows for an
@@ -68,6 +67,8 @@ const FIELDS = ['identifier', 'date', 'title', 'description', 'creator', 'collec
 const DESCRIPTION_LABELS = ['Date', 'Type', 'Part Number', 'Reference Number', 'Department', 'Ministry', 'Office', 'Subject', 'Gazette Source', 'Gazette ID'];
 const DATE_WINDOW_DAYS = 5;
 const FULLTEXT_CANDIDATE_CAP = 60;
+const FULLTEXT_WINDOW_DAYS = 7;
+const FULLTEXT_WINDOW_CANDIDATE_CAP = 500;
 const OCR_FETCH_CONCURRENCY = 5;
 // The S.O. number is confirmed (checked against several matched documents) to
 // always land in the opening lines of the scan -- within the first ~600
@@ -109,10 +110,10 @@ function addDays(dateStr, days) {
   return d.toISOString().slice(0, 10);
 }
 
-async function search(clause, notificationDate, { windowDays = 0, restrictIdentifier = true } = {}) {
+async function search(clause, notificationDate, { windowDays = 0, identifierPrefix = IDENTIFIER_PREFIX } = {}) {
   const endDate = windowDays > 0 ? addDays(notificationDate, windowDays) : notificationDate;
   const dateClause = windowDays > 0 ? `date:[${notificationDate} TO ${endDate}]` : `date:"${notificationDate}"`;
-  const identifierClause = restrictIdentifier ? `AND identifier:${IDENTIFIER_PREFIX} ` : '';
+  const identifierClause = `AND identifier:${identifierPrefix} `;
   const q = `collection:"gazetteofindia" ${identifierClause}AND ${dateClause} AND (${clause})`;
   const url = `${ADVANCED_SEARCH_URL}?q=${encodeURIComponent(q)}`
     + FIELDS.map((f) => `&fl[]=${f}`).join('')
@@ -134,20 +135,19 @@ async function search(clause, notificationDate, { windowDays = 0, restrictIdenti
 
 // Every item on the notification's date, unfiltered by title/description --
 // this is the candidate pool the full-text fallback greps through by hand.
-async function listCandidates(notificationDate, windowDays = 0) {
-  const endDate = windowDays > 0 ? addDays(notificationDate, windowDays) : notificationDate;
-  const dateClause = windowDays > 0 ? `date:[${notificationDate} TO ${endDate}]` : `date:"${notificationDate}"`;
+async function listCandidates(startDate, endDate = startDate, cap = FULLTEXT_CANDIDATE_CAP) {
+  const dateClause = startDate === endDate ? `date:"${startDate}"` : `date:[${startDate} TO ${endDate}]`;
   const q = `collection:"gazetteofindia" AND identifier:${IDENTIFIER_PREFIX} AND ${dateClause}`;
-  const url = `${ADVANCED_SEARCH_URL}?q=${encodeURIComponent(q)}&fl[]=identifier&fl[]=date&rows=100&output=json`;
+  const url = `${ADVANCED_SEARCH_URL}?q=${encodeURIComponent(q)}&fl[]=identifier&fl[]=date&rows=${Math.max(cap, 100)}&output=json`;
   const json = await fetchWithRetry(url);
   const docs = json?.response?.docs ?? [];
   const inWindow = docs.filter((doc) => {
     if (typeof doc.date !== 'string') return false;
     const d = doc.date.slice(0, 10);
-    return d >= notificationDate && d <= endDate;
+    return d >= startDate && d <= endDate;
   });
   inWindow.sort((a, b) => a.date.slice(0, 10).localeCompare(b.date.slice(0, 10)));
-  return inWindow.slice(0, FULLTEXT_CANDIDATE_CAP);
+  return inWindow.slice(0, cap);
 }
 
 async function fetchOcrText(identifier) {
@@ -184,7 +184,32 @@ function buildSoNumberPattern(digits) {
 // Without a protectedAreaName (or before any name-match turns up), it still
 // has to scan every candidate, same as before, to correctly fall back to the
 // earliest digit-only match.
-async function scanCandidates(candidates, pattern, nameNeedle) {
+// Stricter check for the windowed full-text pass (scans dated after the
+// notification date). Across a week of gazettes (~250-350 scans) a bare
+// "<n>(E)" hit is no longer specific: confirmed false positive -- a
+// petroleum-ministry gazette citing "का.आ.--2877(अ) दिनांक 24 जून 2022"
+// matched Nokrek's S.O. 2877(E). So a windowed hit must also (a) be the
+// notification's own number, not a citation ("सं. का.आ. <n>" / "No. S.O.
+// <n>" / "संख्या ..."), (b) come from MoEF, and (c) mention ESZs. Only the
+// first ~30KB is fetched and it's usually the Hindi half, so each check
+// accepts Hindi or English wording ("ESZ" alone is how some scans say it).
+const CITATION_BEFORE = /(सं\s*\.|संख्या|No\s*\.)\s*(का\s*\.?\s*आ\s*\.?|S\s*\.?\s*O\s*\.?)?[\s.\-–—]*$/i;
+const MOEF_TEXT = /पर्यावरण\s*,?\s*वन|environment\s*,?\s*forests?/i;
+const ESZ_TEXT = /eco[\s-]?sensitive|\bESZ\b|पारिस्थितिक|संवेदी/i;
+
+function isOwnEszNotification(text, pattern) {
+  const global = new RegExp(pattern.source, 'g');
+  let ownNumber = false;
+  for (let m = global.exec(text); m; m = global.exec(text)) {
+    if (!CITATION_BEFORE.test(text.slice(Math.max(0, m.index - 30), m.index))) {
+      ownNumber = true;
+      break;
+    }
+  }
+  return ownNumber && MOEF_TEXT.test(text) && ESZ_TEXT.test(text);
+}
+
+async function scanCandidates(candidates, pattern, nameNeedle, accept = (text) => pattern.test(text)) {
   const matches = [];
   let next = 0;
   let stopEarly = false;
@@ -200,7 +225,7 @@ async function scanCandidates(candidates, pattern, nameNeedle) {
       } catch {
         continue; // some items 404/500 on the OCR derivative -- skip, not fatal
       }
-      if (!pattern.test(text)) continue;
+      if (!accept(text)) continue;
       const hasName = nameNeedle ? text.toLowerCase().includes(nameNeedle) : false;
       matches.push({ doc, hasName, idx });
       if (hasName) stopEarly = true;
@@ -227,6 +252,25 @@ async function findFullTextMatch(digits, notificationDate, protectedAreaName) {
   // No name match: fall back to the earliest digit-only match in candidate
   // order (workers can finish out of order, so sort by original index rather
   // than completion order to match the original sequential-scan semantics).
+  matches.sort((a, b) => a.idx - b.idx);
+  return matches[0].doc;
+}
+
+// Scans filed 1..FULLTEXT_WINDOW_DAYS days after the printed notification
+// date (confirmed lags: Keibul Lamjao S.O. 3337(E) +1 day, Renuka Ji S.O.
+// 3682(E) +3 days). Forward-only, like the description window: the one
+// earlier-dated hit seen in testing was a false positive. Candidates are
+// already sorted by date, and matches by index, so the nearest date wins.
+async function findWindowedFullTextMatch(digits, notificationDate) {
+  const candidates = await listCandidates(
+    addDays(notificationDate, 1),
+    addDays(notificationDate, FULLTEXT_WINDOW_DAYS),
+    FULLTEXT_WINDOW_CANDIDATE_CAP,
+  );
+  if (candidates.length === 0) return null;
+  const pattern = buildSoNumberPattern(digits);
+  const matches = await scanCandidates(candidates, pattern, null, (text) => isOwnEszNotification(text, pattern));
+  if (matches.length === 0) return null;
   matches.sort((a, b) => a.idx - b.idx);
   return matches[0].doc;
 }
@@ -314,19 +358,21 @@ export async function findGazetteArchiveLink(orderNumber, notificationDate, prot
   if (digits) {
     const fullTextDoc = await findFullTextMatch(digits, notificationDate, protectedAreaName);
     if (fullTextDoc) return toResult(fullTextDoc, 'fulltext');
+    const windowedDoc = await findWindowedFullTextMatch(digits, notificationDate);
+    if (windowedDoc) return toResult(windowedDoc, 'fulltext-window');
   }
 
   // Absolute last resort: the same collection+date+description(digits) query
   // a user gets by clicking the "Search Archive PDF" link in the dashboard
-  // (see archivePdfDoc() in assets/app.js), but without the
-  // identifier:in.gazette.central.e.* restriction every pass above relies on
-  // for precision. Only reachable if that restriction itself was the problem
-  // (e.g. a genuine central gazette scan filed under an unexpected
-  // identifier) -- dropping it also means a same-day state gazette that
-  // happens to reuse the same S.O. number could slip through, so this match
-  // is lower confidence than any of the passes above.
+  // (see archivePdfDoc() in assets/app.js), widened from the English
+  // extraordinary prefix to any central gazette (in.gazette.central.*) in
+  // case a genuine scan is filed under another central series. It used to
+  // drop the identifier restriction entirely, but every one of its 9 hits in
+  // the 2026-11-25 rerun was a state gazette (odisha, karnataka_eo, punjab,
+  // punjabdsa) that merely reused the S.O. number -- MoEF ESZ notifications
+  // are never published in state gazettes.
   if (digits) {
-    const broadDocs = await search(`description:(${digits})`, notificationDate, { restrictIdentifier: false });
+    const broadDocs = await search(`description:(${digits})`, notificationDate, { identifierPrefix: 'in.gazette.central.*' });
     if (broadDocs[0]) return toResult(broadDocs[0], 'description-broad');
   }
 
