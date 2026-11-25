@@ -17,6 +17,7 @@ import { diffByKey, logDiff } from './lib/diff-log.js';
 
 const CONCURRENCY = 6;
 const CACHE_PATH = 'data/enrichment-cache.csv';
+const RETRY_NONE = process.argv.includes('--retry-none');
 
 function recordKey(r) {
   return `${r.orderNumber}|${r.notificationDate}|${r.protectedAreaName}|${r.state}`;
@@ -56,7 +57,9 @@ async function main() {
     }
 
     const cached = getArchiveResult(cache, record.orderNumber, record.notificationDate);
-    if (cached !== undefined) {
+    // --retry-none re-looks-up cached "NONE" misses: many were cached before
+    // the full-text OCR fallback existed (2026-08-04) and now resolve.
+    if (cached !== undefined && !(RETRY_NONE && cached === null)) {
       cacheHits += 1;
       return { ...record, notificationArchiveLink: cached ? cached.url : null };
     }
