@@ -2785,12 +2785,17 @@ function moefPdfDoc(n) {
   return { href: n.notificationPdfLink || null, label: 'MoEF PDF', disabled: !n.notificationPdfLink };
 }
 
+// Unlinked notifications get a search for every MoEF notice in the central
+// gazette on the notification date, a short list to browse by hand. The old
+// date+description:(S.O. digits) query mirrored a matcher pass that had
+// already failed for exactly these rows, so it always came back empty. The
+// description's "Ministry: Ministry of Environment, ..." field stands in for
+// the S.O. number, which these scans' metadata usually lacks.
 function archivePdfDoc(n) {
   if (n.notificationArchiveLink) return { href: n.notificationArchiveLink, label: 'Archive PDF', disabled: false };
-  const digits = n.orderNumber ? (n.orderNumber.match(/\d+/) || [])[0] : null;
-  if (!digits || !n.notificationDate) return { href: null, label: 'Archive PDF', disabled: true };
+  if (!n.notificationDate) return { href: null, label: 'Archive PDF', disabled: true };
   const query = new URLSearchParams({
-    query: `collection:"gazetteofindia" AND date:${n.notificationDate} AND description:(${digits})`,
+    query: `collection:"gazetteofindia" AND identifier:in.gazette.central.* AND date:${n.notificationDate} AND description:Environment`,
   }).toString();
   return {
     href: `https://archive.org/search?${query}`,
@@ -3620,9 +3625,8 @@ function fitMapToState(stateName, { force = false } = {}) {
 }
 
 // fitBounds padding that clears the map's overlays -- the Layers control
-// (top-right), the attribution box (bottom) and, on wide screens, the
-// protected-area list docked over the map's left edge -- so a fitted state
-// isn't hidden under them. Each side gets `base` plus whatever an overlay
+// (top-right) and the attribution box (bottom) -- so a fitted state isn't
+// hidden under them. Each side gets `base` plus whatever an overlay
 // pinned to that edge covers.
 function mapOverlayPadding(base) {
   const mapRect = map.getContainer().getBoundingClientRect();
@@ -3640,21 +3644,14 @@ function mapOverlayPadding(base) {
     if (fromTop < mapRect.height / 2) pad.top = Math.max(pad.top, fromTop + base);
     else if (fromBottom < mapRect.height / 2) pad.bottom = Math.max(pad.bottom, fromBottom + base);
   }
-  // The dock only overlays the map when it's absolutely positioned (wide
-  // screens) and showing its list; stacked below the map it covers nothing.
-  const dock = document.getElementById('map-dock');
-  if (dock && !dock.classList.contains('is-hidden') && getComputedStyle(dock).position === 'absolute') {
-    const r = dock.getBoundingClientRect();
-    pad.left = Math.max(pad.left, r.right - mapRect.left + base);
-  }
   // fitBounds can't fit if padding leaves no room; give up the extra then.
   if (pad.top + pad.bottom >= mapRect.height - 40) { pad.top = base; pad.bottom = base; }
   if (pad.left + pad.right >= mapRect.width - 80) { pad.left = base; pad.right = base; }
   return pad;
 }
 
-// Hide/show the protected-area list docked over the map. Hidden, it shrinks
-// to its header bar so the whole map is visible.
+// Hide/show the protected-area list beside the map. Hidden, it shrinks to
+// its header bar and the map takes the full width.
 function initMapDock() {
   const dock = document.getElementById('map-dock');
   const toggle = document.getElementById('map-dock-toggle');
@@ -3663,6 +3660,7 @@ function initMapDock() {
     const hidden = dock.classList.toggle('is-hidden');
     toggle.setAttribute('aria-expanded', String(!hidden));
     toggle.querySelector('.map-dock-toggle-label').textContent = hidden ? 'Show list' : 'Hide list';
+    if (map) map.resize();
   });
 }
 

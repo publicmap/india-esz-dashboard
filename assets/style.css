@@ -1840,13 +1840,14 @@ main { max-width: 1280px; display: flex; flex-direction: column; gap: 1.6rem; }
   color: var(--text-primary);
 }
 
-/* Row 3: full-width map with the protected-area list docked over its left
-   edge (below the map on narrow screens). Expanded = tall map + notes
-   below; collapsed = a shorter map, notes hidden. */
+/* Row 3: the protected-area list in a column beside the map (below the map
+   on narrow screens). Expanded = tall map + notes below; collapsed = a
+   shorter map, notes hidden. */
 .explorer { display: flex; flex-direction: column; gap: 1rem; }
+.row-explorer { --map-h: clamp(560px, calc(100vh - 160px), 960px); }
+.row-explorer.is-collapsed { --map-h: 560px; }
 .map-stage { position: relative; }
-.row-explorer #map { height: clamp(560px, calc(100vh - 160px), 960px); }
-.row-explorer.is-collapsed #map { height: 560px; }
+.row-explorer #map { height: var(--map-h); }
 .row-explorer.is-collapsed .map-aside { display: none; }
 .map-aside { display: grid; grid-template-columns: minmax(0, 1fr); gap: 1rem; align-items: start; }
 .map-aside .map-hint { margin: 0; }
@@ -1877,7 +1878,7 @@ main { max-width: 1280px; display: flex; flex-direction: column; gap: 1.6rem; }
   flex-direction: column;
   background: var(--surface-1);
   border: 1px solid var(--border);
-  box-shadow: var(--shadow-lift);
+  box-shadow: var(--shadow-soft);
 }
 .map-dock-header {
   display: flex;
@@ -1915,16 +1916,24 @@ main { max-width: 1280px; display: flex; flex-direction: column; gap: 1.6rem; }
 .row-explorer.is-collapsed .map-dock .accordion-wrap { max-height: 420px; overflow-y: auto; }
 
 @media (min-width: 900px) {
-  .map-dock {
-    position: absolute;
-    top: 12px;
-    left: 12px;
-    bottom: 12px;
-    z-index: 3;
-    width: min(420px, 42%);
+  /* List column on the left, map on the right, both the map's height.
+     Hidden, the list shrinks to its header bar above a full-width map. */
+  .map-stage {
+    display: grid;
+    grid-template-columns: min(420px, 36%) minmax(0, 1fr);
+    grid-template-rows: var(--map-h);
+    grid-template-areas: "dock map";
+    gap: 1rem;
   }
-  .map-dock.is-hidden { bottom: auto; }
-  /* Docked, the panel itself scrolls (toolbar pinned), so the list needs no cap. */
+  .map-stage #map { grid-area: map; }
+  .map-dock { grid-area: dock; min-height: 0; }
+  .map-stage:has(.map-dock.is-hidden) {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: auto var(--map-h);
+    grid-template-areas: "dock" "map";
+    gap: 0.75rem;
+  }
+  /* The panel itself scrolls (toolbar pinned), so the list needs no cap. */
   .map-dock-body { flex: 1; min-height: 0; overflow-y: auto; padding-top: 0; }
   .map-dock .table-toolbar {
     position: sticky;
