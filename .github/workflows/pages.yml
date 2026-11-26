@@ -33,6 +33,39 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      # Georeferencing reference overlays (scripts/build-georef-overlays.py):
+      # PNG tiles too big to commit, so they're built here into data/ and
+      # kept in the Actions cache between runs; --all only re-renders PAs
+      # whose inputs changed. OSM outlines come from the GeoJSON the update
+      # workflow caches (without it, overlays show only gazette table points).
+      - name: Restore OSM protected areas GeoJSON
+        uses: actions/cache/restore@v4
+        with:
+          path: .cache/osm/india-protected-areas-all.geojson
+          key: osm-protected-areas-none
+          restore-keys: osm-protected-areas-
+
+      - name: Restore georeferencing overlays
+        uses: actions/cache/restore@v4
+        with:
+          path: data/georef-overlays
+          key: georef-overlays-none
+          restore-keys: georef-overlays-
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v5
+        with:
+          version: '0.6.6'
+
+      - name: Build georeferencing overlays
+        run: uv run scripts/build-georef-overlays.py --all
+
+      - name: Save georeferencing overlays
+        uses: actions/cache/save@v4
+        with:
+          path: data/georef-overlays
+          key: georef-overlays-${{ github.run_id }}
+
       - name: Assemble site
         run: |
           mkdir -p _site

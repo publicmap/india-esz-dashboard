@@ -1,0 +1,66 @@
+{
+  "gazette": "in.gazette.central.e.2026-01-16.269376",
+  "source": "https://egazette.servantsofknowledge.in/details/in.gazette.central.e.2026-01-16.269376/",
+  "tables": [
+    {
+      "annexure": "III",
+      "title": "BOUNDARY GEOCOORDINATES OF THE PROTECTED AREA",
+      "kind": "boundary",
+      "points": 26
+    },
+    {
+      "annexure": "IV",
+      "title": "GEOCOORDINATES OF ESZ BOUNDARY AROUND WILDLIFE SANCTUARY",
+      "kind": "boundary",
+      "points": 29
+    },
+    {
+      "annexure": "V",
+      "title": "(kilometre)",
+      "kind": "villages",
+      "points": 93
+    }
+  ],
+  "maps": [
+    {
+      "name": "p16-i1",
+      "page": 16,
+      "georef": {}
+    },
+    {
+      "name": "p17-i1",
+      "page": 17,
+      "georef": {}
+    },
+    {
+      "name": "p18-i1",
+      "page": 18,
+      "georef": {}
+    },
+    {
+      "name": "p41-i1",
+      "page": 41,
+      "georef": {}
+    },
+    {
+      "name": "p42-i1",
+      "page": 42,
+      "georef": {}
+    },
+    {
+      "name": "p43-i1",
+      "page": 43,
+      "georef": {}
+    }
+  ],
+  "stated_areas": [
+    {
+      "context": "It spans an area of 610.528 square kilometres",
+      "km2": 610.528
+    },
+    {
+      "context": "Zone is zero to one kilometre around the boundary of Kumbhalgarh Wildlife Sanctuary and the area of Eco- sensitive Zone 243 square kilometres",
+      "km2": 243.0
+    }
+  ]
+}

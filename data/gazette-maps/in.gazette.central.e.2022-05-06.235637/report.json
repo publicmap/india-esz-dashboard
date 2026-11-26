@@ -1,0 +1,123 @@
+{
+  "gazette": "in.gazette.central.e.2022-05-06.235637",
+  "source": "https://egazette.servantsofknowledge.in/details/in.gazette.central.e.2022-05-06.235637/",
+  "tables": [
+    {
+      "annexure": "III",
+      "title": "TABLE A: GEO- COORDINATES OF PROMINENT LOCATIONS OF KIBBER WILDLIFE SANCTUARY",
+      "kind": "boundary",
+      "points": 16
+    },
+    {
+      "annexure": "III",
+      "title": "TABLE B: GEO-COORDINATES OF PROMINENT LOCATIONS OF ECO-SENSITIVE ZONE",
+      "kind": "boundary",
+      "points": 15
+    }
+  ],
+  "maps": [
+    {
+      "name": "p12-i1",
+      "page": 12,
+      "georef": {
+        "score": 0.19802584194060882,
+        "hit_fraction": 0.22580645161290322,
+        "chance": 0.034640280354566066,
+        "color": "red",
+        "minutes": 60,
+        "lon0": 74.0,
+        "lat0": 33.0,
+        "median_px_error": 8.030603253925522,
+        "color_scores": {
+          "red": 0.198,
+          "orange": 0.117,
+          "green": -0.005,
+          "cyan": 0.092,
+          "blue": 0.055,
+          "black": 0.089
+        }
+      }
+    },
+    {
+      "name": "p13-i1",
+      "page": 13,
+      "georef": {}
+    },
+    {
+      "name": "p14-i1",
+      "page": 14,
+      "georef": {}
+    },
+    {
+      "name": "p25-i1",
+      "page": 25,
+      "georef": {
+        "score": 0.19655927222250502,
+        "hit_fraction": 0.22580645161290322,
+        "chance": 0.03640241075567918,
+        "color": "red",
+        "minutes": 60,
+        "lon0": 74.0,
+        "lat0": 33.0,
+        "median_px_error": 9.2870599464344,
+        "color_scores": {
+          "red": 0.197,
+          "orange": 0.117,
+          "green": 0.026,
+          "cyan": 0.09,
+          "blue": 0.083,
+          "black": 0.077
+        }
+      }
+    },
+    {
+      "name": "p26-i1",
+      "page": 26,
+      "georef": {}
+    },
+    {
+      "name": "p27-i1",
+      "page": 27,
+      "georef": {
+        "score": 0.3402318187745627,
+        "hit_fraction": 0.3548387096774194,
+        "chance": 0.022139429148774942,
+        "color": "green",
+        "minutes": 60,
+        "lon0": 75.0,
+        "lat0": 35.0,
+        "median_px_error": 7.544537514331638,
+        "color_scores": {
+          "orange": 0.028,
+          "yellow": 0.185,
+          "green": 0.34,
+          "black": 0.068
+        }
+      }
+    }
+  ],
+  "stated_areas": [
+    {
+      "context": "The total area of the Sanctuary is 2220.17 square kilometres",
+      "km2": 2220.17
+    },
+    {
+      "context": "5 kilometre to 11 kilometre around the boundary of Kibber Wildlife Sanctuary and the area of the Eco-sensitive Zone is 627 square kilometres",
+      "km2": 627.0
+    }
+  ],
+  "digitized_map": "p27-i1",
+  "zone_areas_km2": {
+    "esz": 875.19,
+    "protected_area": 3588.57
+  },
+  "table_fit_m": {
+    "Annexure III": {
+      "points": 15,
+      "median": 8667,
+      "p90": 29861,
+      "within_250m": 0.0
+    }
+  },
+  "warning": "Listed boundary points are far from the traced lines; the trace is probably wrong."
+}

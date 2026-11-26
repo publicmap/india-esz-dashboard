@@ -10,3 +10,7 @@ data/gazette-maps/**/*.tif.aux.xml
 data/gazette-maps/**/*.png
 data/enrichment-cache.csv.tmp
 data/.retry-none-progress.json
+
+# Georeferencing reference overlays (build-georef-overlays.py): built into
+# the deployed site by the Pages workflow, never committed
+data/georef-overlays/

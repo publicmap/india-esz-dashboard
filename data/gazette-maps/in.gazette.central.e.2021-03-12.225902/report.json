@@ -1,0 +1,335 @@
+{
+  "gazette": "in.gazette.central.e.2021-03-12.225902",
+  "source": "https://egazette.servantsofknowledge.in/details/in.gazette.central.e.2021-03-12.225902/",
+  "tables": [
+    {
+      "annexure": "1",
+      "title": "\u0917\u093e\u0932\u093e\u0925\u093f\u092f\u093e \u0930\u093e\u0937\u094d\u091f\u094d\u0930\u0940\u092f \u0909\u0926\u094d\u092f\u093e\u0928 \u0914\u0930 \u092a\u093e\u0930\u093f\u0938\u094d\u0925\u093f\u0924\u093f\u0915\u0940 \u0938\u0902\u0935\u0947\u0926\u0940 \u091c\u094b\u0928 \u0915\u0940 \u0938\u0940\u092e\u093e \u0915\u093e \u0935\u093f\u0935\u0930\u0923",
+      "kind": "boundary",
+      "points": 17
+    },
+    {
+      "annexure": "III",
+      "title": "TABLE A : Geo - coordinates of prominent locations shown on along the boundary of Galathea National Park as",
+      "kind": "boundary",
+      "points": 12
+    },
+    {
+      "annexure": "III",
+      "title": "Table B : Geo - coordinates of prominent locations along the boundary of Eco - sensitive Zone of",
+      "kind": "boundary",
+      "points": 8
+    }
+  ],
+  "maps": [
+    {
+      "name": "p1-i1",
+      "page": 1,
+      "georef": {}
+    },
+    {
+      "name": "p1-i2",
+      "page": 1,
+      "georef": {}
+    },
+    {
+      "name": "p2-i1",
+      "page": 2,
+      "georef": {}
+    },
+    {
+      "name": "p2-i2",
+      "page": 2,
+      "georef": {}
+    },
+    {
+      "name": "p3-i1",
+      "page": 3,
+      "georef": {}
+    },
+    {
+      "name": "p3-i2",
+      "page": 3,
+      "georef": {}
+    },
+    {
+      "name": "p4-i1",
+      "page": 4,
+      "georef": {}
+    },
+    {
+      "name": "p4-i2",
+      "page": 4,
+      "georef": {}
+    },
+    {
+      "name": "p5-i1",
+      "page": 5,
+      "georef": {}
+    },
+    {
+      "name": "p5-i2",
+      "page": 5,
+      "georef": {}
+    },
+    {
+      "name": "p6-i1",
+      "page": 6,
+      "georef": {}
+    },
+    {
+      "name": "p6-i2",
+      "page": 6,
+      "georef": {}
+    },
+    {
+      "name": "p7-i1",
+      "page": 7,
+      "georef": {}
+    },
+    {
+      "name": "p7-i2",
+      "page": 7,
+      "georef": {}
+    },
+    {
+      "name": "p8-i1",
+      "page": 8,
+      "georef": {}
+    },
+    {
+      "name": "p8-i2",
+      "page": 8,
+      "georef": {}
+    },
+    {
+      "name": "p9-i1",
+      "page": 9,
+      "georef": {}
+    },
+    {
+      "name": "p9-i2",
+      "page": 9,
+      "georef": {}
+    },
+    {
+      "name": "p10-i1",
+      "page": 10,
+      "georef": {}
+    },
+    {
+      "name": "p10-i2",
+      "page": 10,
+      "georef": {}
+    },
+    {
+      "name": "p11-i1",
+      "page": 11,
+      "georef": {}
+    },
+    {
+      "name": "p11-i2",
+      "page": 11,
+      "georef": {}
+    },
+    {
+      "name": "p12-i1",
+      "page": 12,
+      "georef": {}
+    },
+    {
+      "name": "p12-i2",
+      "page": 12,
+      "georef": {}
+    },
+    {
+      "name": "p13-i1",
+      "page": 13,
+      "georef": {}
+    },
+    {
+      "name": "p13-i2",
+      "page": 13,
+      "georef": {}
+    },
+    {
+      "name": "p14-i1",
+      "page": 14,
+      "georef": {}
+    },
+    {
+      "name": "p14-i2",
+      "page": 14,
+      "georef": {}
+    },
+    {
+      "name": "p15-i1",
+      "page": 15,
+      "georef": {}
+    },
+    {
+      "name": "p15-i2",
+      "page": 15,
+      "georef": {}
+    },
+    {
+      "name": "p16-i2",
+      "page": 16,
+      "georef": {}
+    },
+    {
+      "name": "p17-i1",
+      "page": 17,
+      "georef": {}
+    },
+    {
+      "name": "p17-i2",
+      "page": 17,
+      "georef": {}
+    },
+    {
+      "name": "p18-i1",
+      "page": 18,
+      "georef": {}
+    },
+    {
+      "name": "p18-i2",
+      "page": 18,
+      "georef": {}
+    },
+    {
+      "name": "p19-i1",
+      "page": 19,
+      "georef": {}
+    },
+    {
+      "name": "p19-i2",
+      "page": 19,
+      "georef": {}
+    },
+    {
+      "name": "p20-i1",
+      "page": 20,
+      "georef": {}
+    },
+    {
+      "name": "p20-i2",
+      "page": 20,
+      "georef": {}
+    },
+    {
+      "name": "p21-i1",
+      "page": 21,
+      "georef": {}
+    },
+    {
+      "name": "p21-i2",
+      "page": 21,
+      "georef": {}
+    },
+    {
+      "name": "p22-i1",
+      "page": 22,
+      "georef": {}
+    },
+    {
+      "name": "p22-i2",
+      "page": 22,
+      "georef": {}
+    },
+    {
+      "name": "p23-i1",
+      "page": 23,
+      "georef": {}
+    },
+    {
+      "name": "p23-i2",
+      "page": 23,
+      "georef": {}
+    },
+    {
+      "name": "p24-i2",
+      "page": 24,
+      "georef": {}
+    },
+    {
+      "name": "p25-i2",
+      "page": 25,
+      "georef": {}
+    },
+    {
+      "name": "p26-i1",
+      "page": 26,
+      "georef": {}
+    },
+    {
+      "name": "p26-i2",
+      "page": 26,
+      "georef": {}
+    },
+    {
+      "name": "p27-i1",
+      "page": 27,
+      "georef": {}
+    },
+    {
+      "name": "p27-i2",
+      "page": 27,
+      "georef": {}
+    },
+    {
+      "name": "p28-i1",
+      "page": 28,
+      "georef": {}
+    },
+    {
+      "name": "p28-i2",
+      "page": 28,
+      "georef": {}
+    },
+    {
+      "name": "p29-i1",
+      "page": 29,
+      "georef": {}
+    },
+    {
+      "name": "p29-i2",
+      "page": 29,
+      "georef": {}
+    },
+    {
+      "name": "p30-i1",
+      "page": 30,
+      "georef": {}
+    },
+    {
+      "name": "p30-i2",
+      "page": 30,
+      "georef": {}
+    },
+    {
+      "name": "p31-i1",
+      "page": 31,
+      "georef": {}
+    },
+    {
+      "name": "p31-i2",
+      "page": 31,
+      "georef": {}
+    }
+  ],
+  "stated_areas": [
+    {
+      "context": "AND WHEREAS , the Galathea National Park is spread over an area of 110 square kilometers",
+      "km2": 110.0
+    },
+    {
+      "context": "f zero to one kilometre around the boundary of Galathea National Park and the area of the Eco - sensitive Zone shall be 14.93 square kilometres",
+      "km2": 14.93
+    },
+    {
+      "context": "Area of ESZ : 14.93 Sq.km",
+      "km2": 14.93
+    }
+  ]
+}

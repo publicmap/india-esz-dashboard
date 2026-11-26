@@ -92,6 +92,35 @@ function matchEszToPAs(eszIndex, pas) {
   return { byQid, unmatched };
 }
 
+// { gazetteCoordinates } for a notification whose gazette has been through
+// digitize-gazette-maps.py: counts of its coordinate-table points
+// (table-points.geojson) and of the zones traced from its map
+// (boundaries.geojson), which the dashboard's "Coordinates" panel loads.
+// A trace is only counted when the gazette's own boundary-table points sit
+// on it (report.json table_fit_m: every table's median distance within
+// TRACE_MAX_MEDIAN_M); otherwise the trace is wrong (e.g. the lines picked
+// up were roads or rivers) and tracedZones is 0, with tracedLowConfidence.
+const TRACE_MAX_MEDIAN_M = 1000;
+async function gazetteDigitized(archiveLink) {
+  const id = archiveLink?.match(/archive\.org\/details\/([^/?#]+)/)?.[1];
+  if (!id) return {};
+  const read = (f) => readFile(`data/gazette-maps/${id}/${f}`, 'utf8').then(JSON.parse, () => null);
+  const [table, traced, report] = await Promise.all([read('table-points.geojson'), read('boundaries.geojson'), read('report.json')]);
+  const points = (table?.features || []).filter((f) => f.geometry?.type === 'Point');
+  const fits = Object.values(report?.table_fit_m || {});
+  const traceOk = fits.length > 0 && fits.every((f) => f.median <= TRACE_MAX_MEDIAN_M);
+  const tracedZones = traceOk ? traced?.features?.length || 0 : 0;
+  if (!points.length && !tracedZones) return {};
+  return {
+    gazetteCoordinates: {
+      boundaryPoints: points.filter((f) => f.properties.kind === 'boundary').length,
+      villagePoints: points.filter((f) => f.properties.kind === 'villages').length,
+      tracedZones,
+      ...(traced?.features?.length && !traceOk ? { tracedLowConfidence: true } : {}),
+    },
+  };
+}
+
 function gazetteMapCounts(index, archiveLink) {
   const id = archiveLink?.match(/archive\.org\/details\/([^/?#]+)/)?.[1];
   const counts = id && index[id];
@@ -135,7 +164,8 @@ async function main() {
   const osmByWikidata = await readFile('data/osm/india-protected-areas-wikidata.json', 'utf8').then(JSON.parse, () => ({}));
   const osmExtentById = await readFile('data/osm/india-protected-areas-bbox.json', 'utf8').then(JSON.parse, () => ({}));
   // From build:admin-bboxes: where to open the Allmaps editor's georeference
-  // map for a PA (its `bbox` URL parameter) -- the bounds of the PA's Wikidata
+  // map for a PA not mapped in OSM (see osmAllmapsArea for the ones that
+  // are; its `bbox` URL parameter) -- the bounds of the PA's Wikidata
   // "located in" (P131) districts, else of its state(s). Null when neither is
   // known; the dashboard then falls back to all of India.
   const adminBboxes = await readFile('data/osm/admin-bboxes.json', 'utf8').then(JSON.parse, () => ({ admins: {}, paAdmins: {}, states: {} }));
@@ -201,6 +231,22 @@ async function main() {
       osmAreaKm2: Math.max(...found.map((f) => f.areaKm2)),
     };
   };
+  // A PA mapped in OSM opens the Allmaps editor on its own boundary rather
+  // than its districts/state, padded by half its size each side (at least
+  // ~5 km) so the ESZ drawn around it on the gazette map is in view too.
+  const OSM_ALLMAPS_PAD_FRACTION = 0.5;
+  const OSM_ALLMAPS_MIN_PAD = 0.05;
+  const round5 = (x) => Math.round(x * 1e5) / 1e5;
+  const osmAllmapsArea = (osmBbox) => {
+    if (!osmBbox) return null;
+    const [w, s, e, n] = osmBbox;
+    const padX = Math.max((e - w) * OSM_ALLMAPS_PAD_FRACTION, OSM_ALLMAPS_MIN_PAD);
+    const padY = Math.max((n - s) * OSM_ALLMAPS_PAD_FRACTION, OSM_ALLMAPS_MIN_PAD);
+    return {
+      allmapsBbox: [round5(w - padX), round5(s - padY), round5(e + padX), round5(n + padY)],
+      allmapsBboxLabel: 'OSM boundary',
+    };
+  };
   const enrichmentCache = await loadCache('data/enrichment-cache.csv');
 
   const notificationsByWikidataId = new Map();
@@ -220,6 +266,7 @@ async function main() {
       georeferencingLink: findGeoreferencingLink(enrichmentCache, r.orderNumber, r.notificationDate, r.protectedAreaName),
       allmapsImagesLink: findAllmapsImagesLink(enrichmentCache, r.orderNumber, r.notificationDate, r.protectedAreaName),
       ...gazetteMapCounts(gazetteMapIndex, r.notificationArchiveLink),
+      ...(await gazetteDigitized(r.notificationArchiveLink)),
     };
     if (r.wikidataId) {
       const list = notificationsByWikidataId.get(r.wikidataId) || [];
@@ -268,6 +315,10 @@ async function main() {
 
   for (const pa of wikidataPAs) {
     const notifications = notificationsByWikidataId.get(pa.wikidataId) || [];
+    const extent = osmExtent([
+      ...(pa.osmRelationIds || []).map((id) => `relation/${id}`),
+      ...(osmByWikidata[pa.wikidataId] || []),
+    ]);
     entries.push({
       paKey: pa.wikidataId,
       wikidataId: pa.wikidataId,
@@ -283,14 +334,19 @@ async function main() {
       osmRelationIds: pa.osmRelationIds || [],
       osmFeatureIds: osmByWikidata[pa.wikidataId] || [],
       osmEszIds: osmEszByWikidata[pa.wikidataId] || [],
-      ...osmExtent([
-        ...(pa.osmRelationIds || []).map((id) => `relation/${id}`),
-        ...(osmByWikidata[pa.wikidataId] || []),
-      ]),
+      ...extent,
       coordinateLatitude: pa.coordinateLatitude ?? null,
       coordinateLongitude: pa.coordinateLongitude ?? null,
-      ...allmapsArea(pa.wikidataId, pa.state, [...new Set(notifications.map((n) => n.state))], pa.coordinateLongitude, pa.coordinateLatitude),
+      ...(osmAllmapsArea(extent.osmBbox)
+        ?? allmapsArea(pa.wikidataId, pa.state, [...new Set(notifications.map((n) => n.state))], pa.coordinateLongitude, pa.coordinateLatitude)),
       ...summarize(notifications),
+      // build-georef-overlays.py --all builds a reference overlay (OSM boundary
+      // + gazette table points as a georeferenced image, shown under the
+      // gazette page in the Allmaps editor) for every PA with either, in the
+      // Pages workflow -- so this is decided from the inputs, not by looking
+      // for the (uncommitted) overlay files.
+      georefOverlay: extent.osmBbox || notifications.some((n) => n.gazetteCoordinates?.boundaryPoints || n.gazetteCoordinates?.villagePoints)
+        ? `data/georef-overlays/${pa.wikidataId}/annotation.json` : null,
       notifications,
     });
   }

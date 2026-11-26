@@ -1,0 +1,132 @@
+{
+  "gazette": "in.gazette.central.e.2024-08-09.256291",
+  "source": "https://egazette.servantsofknowledge.in/details/in.gazette.central.e.2024-08-09.256291/",
+  "tables": [
+    {
+      "annexure": "I",
+      "title": "14   THE GAZETTE OF INDIA : EXTRAORDINARY   [PART II\u2014SEC. 3(ii)]",
+      "kind": "boundary",
+      "points": 6
+    },
+    {
+      "annexure": "I",
+      "title": "96o26\u20196.400 \u092a\u0942 \u092d\u0942-\u091c\u0928\u093f\u0947\u093f\u093e\u0902\u0915 \u0935\u093e\u0932\u0947 \u092a\u094d\u0930\u093e\u0930\u0902\u091c\u092d\u0915 \u0932\u092c\u0902\u093f\u0941 \u0938\u0947 \u091c\u092e\u0932 \u093f\u093e\u0924\u0940 \u0939\u0948\u0964",
+      "kind": "boundary",
+      "points": 7
+    },
+    {
+      "annexure": "I",
+      "title": "\u0938\u093e\u0930\u0923\u0940 \u0915\u0903 \u0915\u092e\u0932\u093e\u0902\u0917 \u092c\u093e\u0918 \u0930\u0930\u091c\u093c\u0935\u093e \u0915\u0940 \u0938\u0940\u092e\u093e \u0915\u093e \u091c\u0935\u0935\u0930\u0923 \u0928\u093e\u092e\u0903 \u0915\u092e\u0932\u093e\u0902\u0917 \u092c\u093e\u0918 \u0930\u0930\u091c\u093c\u0935\u093e",
+      "kind": "boundary",
+      "points": 30
+    },
+    {
+      "annexure": "I",
+      "title": "to the boundary of Kamlang Wildlife Sanctuary/Tiger Reserve with a width of 1km following at geo-coordinates 27\u00b0 54\u2019",
+      "kind": "boundary",
+      "points": 8
+    },
+    {
+      "annexure": "I",
+      "title": "International boundary of Myanmar & India. Thence following the international boundary along the geo-coordinates",
+      "kind": "boundary",
+      "points": 4
+    },
+    {
+      "annexure": "I",
+      "title": "Thence, parallel to the boundary of Namdapha National Park & Tiger Reserve through geo-coordinates 27\u00b020'30.67\" N,",
+      "kind": "boundary",
+      "points": 3
+    },
+    {
+      "annexure": "I",
+      "title": "SOUTH: Thence, following international boundary through geo-coordinates 27\u00b020'37.74\" N, 96 48 5.02\" E; upto geo-",
+      "kind": "boundary",
+      "points": 10
+    },
+    {
+      "annexure": "I",
+      "title": "Thence parallel to the boundary of Kamlang WLS & TR for a width of 1 km through geo co-ordinates 27\u00b039\u201936,45N,",
+      "kind": "boundary",
+      "points": 4
+    },
+    {
+      "annexure": "IV",
+      "title": "AND NAMDAPHA TIGER RESERVE ALONG WITH GEO-COORDINATES",
+      "kind": "villages",
+      "points": 17
+    }
+  ],
+  "maps": [
+    {
+      "name": "p17-i1",
+      "page": 17,
+      "georef": {
+        "score": 0.1746652871190224,
+        "hit_fraction": 0.2638888888888889,
+        "chance": 0.10810596037868765,
+        "color": "black",
+        "minutes": 60,
+        "lon0": 93.0,
+        "lat0": 28.0,
+        "median_px_error": 9.442325323911007,
+        "color_scores": {
+          "red": 0.148,
+          "yellow": 0.068,
+          "green": 0.11,
+          "blue": 0.174,
+          "black": 0.175
+        }
+      }
+    },
+    {
+      "name": "p17-i2",
+      "page": 17,
+      "georef": {}
+    },
+    {
+      "name": "p18-i1",
+      "page": 18,
+      "georef": {}
+    },
+    {
+      "name": "p19-i1",
+      "page": 19,
+      "georef": {}
+    }
+  ],
+  "stated_areas": [
+    {
+      "context": "AND WHEREAS, the Kamlang Tiger Reserve is spread over an area of 783 square kilometers",
+      "km2": 783.0
+    },
+    {
+      "context": "AND WHEREAS, the Namdapha National Park and Tiger Reserve is spread over an area of 2230.245 square kilometer",
+      "km2": 2230.245
+    },
+    {
+      "context": "out of which 1985.235 square kilometer",
+      "km2": 1985.235
+    },
+    {
+      "context": "is core and 245 square kilometers",
+      "km2": 245.0
+    },
+    {
+      "context": "92 kilometres cover an area of 450.39 square kilometers",
+      "km2": 450.39
+    },
+    {
+      "context": "Scientist \u201cG\u201d ANNEXURE- I TABLE A: BOUNDARY DESCRIPTION OF THE KAMLANG TIGER RESERVE Name: Kamlang Tiger Reserve Area :783.0 Sq. km",
+      "km2": 783.0
+    },
+    {
+      "context": "Name: - Core area of Kamlang Tiger Reserve Area: - 671.0 Sq. km",
+      "km2": 671.0
+    },
+    {
+      "context": "Name: - Buffer area of Kamlang Tiger Reserve Area: - 112.0 Sq. km",
+      "km2": 112.0
+    }
+  ]
+}

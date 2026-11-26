@@ -1,0 +1,352 @@
+{
+  "gazette": "in.gazette.central.e.2021-09-22.229958",
+  "source": "https://egazette.servantsofknowledge.in/details/in.gazette.central.e.2021-09-22.229958/",
+  "tables": [
+    {
+      "annexure": "III",
+      "title": "TABLE A : GEO- COORDINATES OF PROMINENT LOCATIONS OF CORINGA WILDLIFE",
+      "kind": "boundary",
+      "points": 9
+    },
+    {
+      "annexure": "III",
+      "title": "TABLE B : GEO - COORDINATES OF PROMINENT LOCATIONS OF ECO - SENSITIVE ZONE",
+      "kind": "boundary",
+      "points": 11
+    }
+  ],
+  "maps": [
+    {
+      "name": "p1-i1",
+      "page": 1,
+      "georef": {}
+    },
+    {
+      "name": "p1-i2",
+      "page": 1,
+      "georef": {}
+    },
+    {
+      "name": "p2-i1",
+      "page": 2,
+      "georef": {}
+    },
+    {
+      "name": "p2-i2",
+      "page": 2,
+      "georef": {}
+    },
+    {
+      "name": "p3-i1",
+      "page": 3,
+      "georef": {}
+    },
+    {
+      "name": "p3-i2",
+      "page": 3,
+      "georef": {}
+    },
+    {
+      "name": "p4-i1",
+      "page": 4,
+      "georef": {}
+    },
+    {
+      "name": "p4-i2",
+      "page": 4,
+      "georef": {}
+    },
+    {
+      "name": "p5-i1",
+      "page": 5,
+      "georef": {}
+    },
+    {
+      "name": "p5-i2",
+      "page": 5,
+      "georef": {}
+    },
+    {
+      "name": "p6-i1",
+      "page": 6,
+      "georef": {}
+    },
+    {
+      "name": "p6-i2",
+      "page": 6,
+      "georef": {}
+    },
+    {
+      "name": "p7-i1",
+      "page": 7,
+      "georef": {}
+    },
+    {
+      "name": "p7-i2",
+      "page": 7,
+      "georef": {}
+    },
+    {
+      "name": "p8-i1",
+      "page": 8,
+      "georef": {}
+    },
+    {
+      "name": "p8-i2",
+      "page": 8,
+      "georef": {}
+    },
+    {
+      "name": "p9-i1",
+      "page": 9,
+      "georef": {}
+    },
+    {
+      "name": "p9-i2",
+      "page": 9,
+      "georef": {}
+    },
+    {
+      "name": "p10-i1",
+      "page": 10,
+      "georef": {}
+    },
+    {
+      "name": "p10-i2",
+      "page": 10,
+      "georef": {}
+    },
+    {
+      "name": "p11-i1",
+      "page": 11,
+      "georef": {}
+    },
+    {
+      "name": "p11-i2",
+      "page": 11,
+      "georef": {}
+    },
+    {
+      "name": "p12-i1",
+      "page": 12,
+      "georef": {}
+    },
+    {
+      "name": "p13-i1",
+      "page": 13,
+      "georef": {}
+    },
+    {
+      "name": "p13-i2",
+      "page": 13,
+      "georef": {}
+    },
+    {
+      "name": "p14-i1",
+      "page": 14,
+      "georef": {}
+    },
+    {
+      "name": "p14-i2",
+      "page": 14,
+      "georef": {}
+    },
+    {
+      "name": "p15-i1",
+      "page": 15,
+      "georef": {}
+    },
+    {
+      "name": "p15-i2",
+      "page": 15,
+      "georef": {}
+    },
+    {
+      "name": "p16-i1",
+      "page": 16,
+      "georef": {}
+    },
+    {
+      "name": "p16-i2",
+      "page": 16,
+      "georef": {}
+    },
+    {
+      "name": "p17-i1",
+      "page": 17,
+      "georef": {}
+    },
+    {
+      "name": "p17-i2",
+      "page": 17,
+      "georef": {}
+    },
+    {
+      "name": "p18-i1",
+      "page": 18,
+      "georef": {}
+    },
+    {
+      "name": "p18-i2",
+      "page": 18,
+      "georef": {}
+    },
+    {
+      "name": "p19-i1",
+      "page": 19,
+      "georef": {}
+    },
+    {
+      "name": "p19-i2",
+      "page": 19,
+      "georef": {}
+    },
+    {
+      "name": "p20-i1",
+      "page": 20,
+      "georef": {}
+    },
+    {
+      "name": "p20-i2",
+      "page": 20,
+      "georef": {}
+    },
+    {
+      "name": "p21-i1",
+      "page": 21,
+      "georef": {}
+    },
+    {
+      "name": "p21-i2",
+      "page": 21,
+      "georef": {}
+    },
+    {
+      "name": "p22-i1",
+      "page": 22,
+      "georef": {}
+    },
+    {
+      "name": "p23-i1",
+      "page": 23,
+      "georef": {}
+    },
+    {
+      "name": "p23-i2",
+      "page": 23,
+      "georef": {}
+    },
+    {
+      "name": "p24-i1",
+      "page": 24,
+      "georef": {}
+    },
+    {
+      "name": "p24-i2",
+      "page": 24,
+      "georef": {}
+    },
+    {
+      "name": "p25-i1",
+      "page": 25,
+      "georef": {}
+    },
+    {
+      "name": "p25-i2",
+      "page": 25,
+      "georef": {}
+    },
+    {
+      "name": "p26-i1",
+      "page": 26,
+      "georef": {}
+    },
+    {
+      "name": "p26-i2",
+      "page": 26,
+      "georef": {}
+    },
+    {
+      "name": "p27-i1",
+      "page": 27,
+      "georef": {}
+    },
+    {
+      "name": "p27-i2",
+      "page": 27,
+      "georef": {}
+    },
+    {
+      "name": "p28-i1",
+      "page": 28,
+      "georef": {}
+    },
+    {
+      "name": "p28-i2",
+      "page": 28,
+      "georef": {}
+    },
+    {
+      "name": "p29-i1",
+      "page": 29,
+      "georef": {}
+    },
+    {
+      "name": "p29-i2",
+      "page": 29,
+      "georef": {}
+    },
+    {
+      "name": "p30-i1",
+      "page": 30,
+      "georef": {}
+    },
+    {
+      "name": "p30-i2",
+      "page": 30,
+      "georef": {}
+    }
+  ],
+  "stated_areas": [
+    {
+      "context": "23609   16\u203243\u203230 \u2033 N $ 10 $ 9 Sanctuary Notified Area : 235.70 Km\u00b2",
+      "km2": 235.7
+    },
+    {
+      "context": "E6   Eco Sensitive Zone Area : 177.30 Km\u00b2",
+      "km2": 177.3
+    },
+    {
+      "context": "34 Sanctuary Notified Area : 235.70 Km\u00b2",
+      "km2": 235.7
+    },
+    {
+      "context": "Eco Sensitive Zone Area : 177.30 Km\u00b2",
+      "km2": 177.3
+    },
+    {
+      "context": "and ( iii ) Bhyravapalem Reserve Forest extending over an area of 235.70 square kilometers",
+      "km2": 235.7
+    },
+    {
+      "context": "5 kilometres around the boundary of Coringa Wildlife Sanctuary and the area of the Eco - sensitive Zone is 177.30 square kilometres",
+      "km2": 177.3
+    },
+    {
+      "context": "31 $ 9 $ 10 Sanctuary Notified Area : 235.70 Km\u00b2",
+      "km2": 235.7
+    },
+    {
+      "context": "E6   Eco Sensitive Zone Area : 177.30 Km\u00b2",
+      "km2": 177.3
+    },
+    {
+      "context": "23609 S6 85 Sanctuary Notified Area : 235.70 Km\u00b2",
+      "km2": 235.7
+    },
+    {
+      "context": "E6   Eco Sensitive Zone Area : 177.30 Km\u00b2",
+      "km2": 177.3
+    }
+  ]
+}

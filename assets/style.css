@@ -1794,6 +1794,41 @@ a.pa-tl-action--search:hover { background: var(--accent-3); border-color: var(--
 }
 .gazette-maps-btn[aria-pressed="true"] { background: var(--accent); border-color: var(--accent); color: var(--surface-1); }
 .gazette-maps-btn:hover { color: var(--text-primary); border-color: var(--baseline); }
+.gazette-maps-btn svg { width: 13px; height: 13px; vertical-align: -2px; margin-right: 0.2rem; }
+/* "Coordinates" panel on a timeline row: the gazette's coordinate tables and
+   the zones traced from its map. */
+.coord-table { flex: 1 0 100%; min-width: 0; margin-top: 0.45rem; }
+.coord-table[hidden] { display: none; }
+.coord-table-group { margin-top: 0.45rem; border: 1px solid var(--gridline); background: var(--surface-1); }
+.coord-table-group > summary {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.3rem 0.5rem;
+  font-size: 0.76rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  cursor: pointer;
+}
+.coord-count { margin-left: auto; font-weight: 400; color: var(--text-muted); white-space: nowrap; }
+.coord-swatch { display: inline-block; flex: none; width: 9px; height: 9px; border-radius: 50%; margin-right: 0.3rem; }
+.coord-swatch--zone { border-radius: 2px; background: linear-gradient(135deg, #15803d 50%, #d9731c 50%); }
+.coord-scroll { max-height: 15rem; overflow: auto; border-top: 1px solid var(--gridline); }
+.coord-table table { width: 100%; border-collapse: collapse; font-size: 0.74rem; font-variant-numeric: tabular-nums; }
+.coord-table th {
+  position: sticky;
+  top: 0;
+  background: var(--surface-2);
+  color: var(--text-muted);
+  font-weight: 600;
+  text-align: left;
+  padding: 0.2rem 0.5rem;
+}
+.coord-table td { padding: 0.18rem 0.5rem; border-top: 1px solid var(--gridline); color: var(--text-primary); }
+.coord-table td:first-child { color: var(--text-muted); }
+.coord-table tbody tr { cursor: pointer; }
+.coord-table tbody tr:hover td { background: var(--page-plane); }
+.coord-note { margin: 0; padding: 0.3rem 0.5rem; font-size: 0.72rem; color: var(--text-muted); border-top: 1px solid var(--gridline); }
 .gazette-thumbs {
   display: flex;
   gap: 0.5rem;
@@ -2208,3 +2243,5 @@ input[type="search"] { -webkit-appearance: none; appearance: none; }
 .maplibregl-ctrl-attrib,
 .maplibregl-ctrl-attrib-button,
 .maplibregl-ctrl-group button { border-radius: 0; }
+.coord-note--alone { border: 1px dashed var(--gridline); margin-top: 0.45rem; }
+.coord-table tr.is-outlier td { color: var(--text-muted); text-decoration: line-through; cursor: help; }

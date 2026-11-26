@@ -2934,6 +2934,8 @@ const DOC_ICON = {
   archive: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="4.2" rx="1"/><path d="M4.5 8.2V19a1 1 0 0 0 1 1h13a1 1 0 0 0 1-1V8.2"/><path d="M10 12.5h4"/></svg>',
   findMaps: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="13" height="16" rx="1.5"/><path d="M6 8.5h7M6 12h3"/><circle cx="15.5" cy="14.5" r="3.3"/><path d="m18 17 3 3"/></svg>',
   map: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M9 4.5 3.5 6.7v13L9 17.5l6 2.2 5.5-2.2v-13L15 6.7l-6-2.2z"/><path d="M9 4.5v13M15 6.7v13"/><circle cx="12" cy="11.5" r="1.6"/></svg>',
+  coords: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="1.5"/><path d="M3 9h18M3 14.5h18M9 4v16"/></svg>',
+  download: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v11m0 0-4.5-4.5M12 15l4.5-4.5"/><path d="M4.5 19.5h15"/></svg>',
   layers: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.5 3 8.2l9 4.7 9-4.7-9-4.7z"/><path d="M3 12.2l9 4.7 9-4.7"/><path d="M3 16.2l9 4.7 9-4.7"/></svg>',
 };
 
@@ -3012,7 +3014,7 @@ function archivePdfDoc(n) {
 function gazetteMapsPanelHtml(n, entry) {
   const archiveId = archiveIdFromLink(n.notificationArchiveLink);
   if (!archiveId) return '';
-  return `<div class="gazette-maps" hidden data-archive-id="${escapeHtml(archiveId)}" data-map-pages="${(n.gazetteMapPages || []).join(',')}" data-bbox="${(entry.allmapsBbox || []).join(',')}"></div>`;
+  return `<div class="gazette-maps" hidden data-archive-id="${escapeHtml(archiveId)}" data-map-pages="${(n.gazetteMapPages || []).join(',')}" data-bbox="${(entry.allmapsBbox || []).join(',')}" data-overlay="${escapeHtml(entry.georefOverlay || '')}"></div>`;
 }
 
 // archive.org's BookReader page image: displayable without CORS and without
@@ -3075,6 +3077,7 @@ function timelineItemHtml(n, entry, older) {
     const mapCount = (n.gazetteMapPages || []).length;
     const label = mapCount ? `Find maps in this gazette (${mapCount} likely map page${mapCount === 1 ? '' : 's'})` : 'Find maps in this gazette';
     actions.push(`<button type="button" class="pa-tl-action gazette-maps-trigger" aria-expanded="false" title="${label}">${DOC_ICON.findMaps}Find maps</button>`);
+    actions.push(coordTableButtonHtml(n));
   } else {
     const search = archivePdfDoc(n);
     if (search.href) actions.push(`<a class="pa-tl-action pa-tl-action--search" href="${escapeHtml(search.href)}" target="_blank" rel="noopener" title="No gazette scan is linked yet: search archive.org for MoEF notices of this date">${DOC_ICON.archive}Search Archive</a>`);
@@ -3094,6 +3097,7 @@ function timelineItemHtml(n, entry, older) {
           <div class="pa-tl-actions">${actions.join('')}</div>
         </div>
         ${gazetteMapsPanelHtml(n, entry)}
+        ${archiveId && n.gazetteCoordinates ? `<div class="coord-table" hidden data-archive-id="${escapeHtml(archiveId)}" data-traced="${n.gazetteCoordinates.tracedZones ? 'true' : ''}" data-trace-rejected="${n.gazetteCoordinates.tracedLowConfidence ? 'true' : ''}"></div>` : ''}
       </div>
       ${timelineGapHtml(n, older)}
     </li>`;
@@ -3153,6 +3157,7 @@ function showTimelineMaps(archiveId, on) {
 
 function clearTimelineMapLayers() {
   for (const archiveId of [...timelineMapLayers.keys()]) showTimelineMaps(archiveId, false);
+  for (const archiveId of [...coordLayersShown]) showCoordLayers(archiveId, false);
 }
 
 function setTimelineItemOn(itemEl, on) {
@@ -3190,10 +3195,285 @@ function handleTimelineToggleClick(e) {
   const item = e.target.closest('.pa-tl-item');
   if (!item?.querySelector('.pa-tl-switch')) return false;
   const sw = e.target.closest('.pa-tl-switch');
-  if (!sw && e.target.closest('a, button, .gazette-maps, .pa-tl-gap')) return false;
+  if (!sw && e.target.closest('a, button, .gazette-maps, .coord-table, .pa-tl-gap')) return false;
   if (item.dataset.warpable !== 'true') return Boolean(sw);
   item.closest('.pa-detail-content').dataset.timelineTouched = 'true';
   setTimelineItemOn(item, !item.classList.contains('is-on'));
+  return true;
+}
+
+// ---------------------------------------------------------------------------
+// "Coordinates" on a timeline row: what digitize-gazette-maps.py extracted
+// from the gazette (data/gazette-maps/<id>/) -- the coordinate tables
+// (table-points.geojson: boundary vertices numbered as in the table, and
+// village points) and the zones auto-traced from its map
+// (boundaries.geojson). The panel lists them, draws them on the map (as a
+// reference while georeferencing the gazette's map) and downloads them as
+// one GeoJSON. Rows show the button disabled until a gazette is digitized.
+const COORD_TABLE_COLORS = ['#db2777', '#ea580c', '#7c3aed', '#ca8a04', '#0891b2'];
+const COORD_VILLAGE_COLOR = '#2563eb';
+const COORD_ZONE_COLORS = { core: '#15803d', buffer: OSM_PA_BUFFER_COLOR, esz: '#d9731c' };
+const COORD_ZONE_LABELS = { core: 'Core', buffer: 'Buffer', esz: 'Eco-sensitive zone' };
+const coordDataCache = new Map(); // archive id -> Promise<{ tables, outlines, zones }>
+const coordLayersShown = new Set(); // archive ids drawn on the map
+
+function coordTableButtonHtml(n) {
+  const c = n.gazetteCoordinates;
+  if (!c) {
+    return `<span class="pa-tl-action is-disabled" title="No coordinate table or traced map has been extracted from this gazette yet">${DOC_ICON.coords}Coordinates</span>`;
+  }
+  const parts = [];
+  if (c.boundaryPoints) parts.push(`${c.boundaryPoints} boundary points`);
+  if (c.villagePoints) parts.push(`${c.villagePoints} villages`);
+  if (c.tracedZones) parts.push(`${c.tracedZones} zones traced from the map`);
+  return `<button type="button" class="pa-tl-action coord-table-trigger" aria-expanded="false" title="Coordinate tables from this gazette: ${parts.join(', ')}">${DOC_ICON.coords}Coordinates</button>`;
+}
+
+// Tables as [{ key, annexure, title, kind, color, points: [Feature] }] in
+// gazette order, with each point's colour in properties._color for the map.
+// Traced zones are loaded only when build-full-join.js counted them (a trace
+// the gazette's own table points disagree with is left out).
+function loadCoordData(archiveId, withTrace) {
+  if (!coordDataCache.has(archiveId)) {
+    const get = (file) => fetch(`data/gazette-maps/${archiveId}/${file}`)
+      .then((r) => (r.ok ? r.json() : { features: [] }), () => ({ features: [] }));
+    const none = Promise.resolve({ features: [] });
+    coordDataCache.set(archiveId, Promise.all([get('table-points.geojson'), withTrace ? get('boundaries.geojson') : none]).then(([table, traced]) => {
+      const tables = new Map();
+      const outlines = [];
+      let boundaryTables = 0;
+      for (const f of table.features || []) {
+        const p = f.properties || {};
+        const key = `${p.annexure}|${p.table}`;
+        if (f.geometry?.type !== 'Point') {
+          if (p.kind === 'outline') outlines.push({ key, feature: f });
+          continue;
+        }
+        if (!tables.has(key)) {
+          const color = p.kind === 'villages' ? COORD_VILLAGE_COLOR : COORD_TABLE_COLORS[boundaryTables++ % COORD_TABLE_COLORS.length];
+          tables.set(key, { key, annexure: p.annexure, title: p.table, kind: p.kind, color, points: [] });
+        }
+        const t = tables.get(key);
+        t.points.push({ ...f, properties: { ...p, _color: t.color, _layer: 'point' } });
+      }
+      // _layer picks the map layer: a table outline that closes is saved as
+      // a Polygon, but it's still drawn as a dashed line, not a traced zone.
+      for (const o of outlines) o.feature = { ...o.feature, properties: { ...o.feature.properties, _color: tables.get(o.key)?.color || COORD_TABLE_COLORS[0], _layer: 'outline' } };
+      const zones = (traced.features || []).map((f) => ({ ...f, properties: { ...f.properties, _color: COORD_ZONE_COLORS[f.properties?.zone] || '#64748b', _layer: 'zone' } }));
+      markCoordOutliers([...tables.values()].flatMap((t) => t.points));
+      return { tables: [...tables.values()], outlines: outlines.map((o) => o.feature), zones };
+    }));
+  }
+  return coordDataCache.get(archiveId);
+}
+
+// Points far from the rest of the gazette's points are misreads (prose read
+// as a table, a dropped digit): flagged _outlier, they stay in the table but
+// are left off the map. "Far" is COORD_OUTLIER_FACTOR times the median
+// distance from the median point, at least COORD_OUTLIER_MIN_DEG.
+const COORD_OUTLIER_FACTOR = 5;
+const COORD_OUTLIER_MIN_DEG = 0.1;
+function markCoordOutliers(points) {
+  if (points.length < 4) return;
+  const median = (a) => { const s = [...a].sort((x, y) => x - y); return s[Math.floor(s.length / 2)]; };
+  const cx = median(points.map((f) => f.geometry.coordinates[0]));
+  const cy = median(points.map((f) => f.geometry.coordinates[1]));
+  const dist = points.map((f) => Math.hypot(f.geometry.coordinates[0] - cx, f.geometry.coordinates[1] - cy));
+  const limit = Math.max(COORD_OUTLIER_FACTOR * median(dist), COORD_OUTLIER_MIN_DEG);
+  points.forEach((f, i) => { if (dist[i] > limit) f.properties._outlier = true; });
+}
+
+const fmtCoord = (v) => (typeof v === 'number' ? v.toFixed(5) : '');
+
+function renderCoordTable(panel, data) {
+  const { tables, zones } = data;
+  const archiveId = panel.dataset.archiveId;
+  const on = coordLayersShown.has(archiveId);
+  const tableHtml = (t) => `
+    <details class="coord-table-group"${t.kind === 'villages' ? '' : ' open'}>
+      <summary><i class="coord-swatch" style="background:${t.color}"></i>Annexure ${escapeHtml(t.annexure || '?')}: ${escapeHtml(t.title || 'Coordinates')} <span class="coord-count">${t.points.length} ${t.kind === 'villages' ? 'villages' : 'points'}${(() => { const n = t.points.filter((f) => f.properties._outlier).length; return n ? `, ${n} misread` : ''; })()}</span></summary>
+      <div class="coord-scroll"><table>
+        <thead><tr><th>#</th><th>Name</th><th>Latitude</th><th>Longitude</th></tr></thead>
+        <tbody>${t.points.map((f) => {
+          const [lon, lat] = f.geometry.coordinates;
+          if (f.properties._outlier) return `<tr class="is-outlier" title="Far from the other points: probably misread from the gazette, so it isn't drawn on the map"><td>`
+            + `${escapeHtml(f.properties.seq ?? '')}</td><td>${escapeHtml(f.properties.name || '')}</td><td>${fmtCoord(lat)}</td><td>${fmtCoord(lon)}</td></tr>`;
+          return `<tr data-lon="${lon}" data-lat="${lat}" title="Show on the map"><td>${escapeHtml(f.properties.seq ?? '')}</td><td>${escapeHtml(f.properties.name || '')}</td><td>${fmtCoord(lat)}</td><td>${fmtCoord(lon)}</td></tr>`;
+        }).join('')}</tbody>
+      </table></div>
+    </details>`;
+  const zonesHtml = zones.length ? `
+    <details class="coord-table-group" open>
+      <summary><i class="coord-swatch coord-swatch--zone"></i>Traced from the gazette map <span class="coord-count">${zones.length} zone${zones.length === 1 ? '' : 's'}</span></summary>
+      <div class="coord-scroll"><table>
+        <thead><tr><th>Zone</th><th>Area</th><th>Map page</th></tr></thead>
+        <tbody>${zones.map((f) => `<tr data-zone="${escapeHtml(f.properties.zone || '')}" title="Show on the map"><td><i class="coord-swatch" style="background:${f.properties._color}"></i>${escapeHtml(COORD_ZONE_LABELS[f.properties.zone] || f.properties.zone || '?')}</td><td>${f.properties.area_km2 != null ? `${Number(f.properties.area_km2).toLocaleString()} km²` : ''}</td><td>${escapeHtml(f.properties.source_page ?? '')}</td></tr>`).join('')}</tbody>
+      </table></div>
+      <p class="coord-note">Auto-traced from the scanned map: check against the tables before relying on it.</p>
+    </details>` : '';
+  panel.innerHTML = `
+    <div class="gazette-maps-status">
+      <span>Extracted from the gazette text and map.</span>
+      <span class="gazette-maps-actions">
+        <button type="button" class="gazette-maps-btn" data-coord-action="map" aria-pressed="${on}">Show on map</button>
+        <button type="button" class="gazette-maps-btn" data-coord-action="download">${DOC_ICON.download}GeoJSON</button>
+      </span>
+    </div>
+    ${tables.map(tableHtml).join('')}${zonesHtml}
+    ${panel.dataset.traceRejected ? '<p class="coord-note coord-note--alone">A boundary traced from this gazette\'s map is left out: the table points above don\'t sit on it, so the trace is likely wrong.</p>' : ''}`;
+}
+
+// The points (numbered by table sequence), the outline each boundary table
+// traces in listed order, and the traced zones, on top of every other layer.
+function showCoordLayers(archiveId, on, data) {
+  const id = `coords-${archiveId}`;
+  const layerIds = ['fill', 'line', 'outline', 'pts', 'labels'].map((s) => `${id}-${s}`);
+  if (!on) {
+    coordLayersShown.delete(archiveId);
+    if (!map) return;
+    layerIds.forEach((l) => { if (map.getLayer(l)) map.removeLayer(l); });
+    if (map.getSource(id)) map.removeSource(id);
+    return;
+  }
+  if (!map || !data) return;
+  coordLayersShown.add(archiveId);
+  if (map.getSource(id)) return;
+  map.addSource(id, {
+    type: 'geojson',
+    data: { type: 'FeatureCollection', features: [...data.zones, ...coordOutlines(data), ...coordMapPoints(data)] },
+  });
+  const isZone = ['==', ['get', '_layer'], 'zone'];
+  map.addLayer({ id: `${id}-fill`, type: 'fill', source: id, filter: isZone, paint: { 'fill-color': ['get', '_color'], 'fill-opacity': 0.18 } });
+  map.addLayer({ id: `${id}-line`, type: 'line', source: id, filter: isZone, paint: { 'line-color': ['get', '_color'], 'line-width': 2 } });
+  map.addLayer({ id: `${id}-outline`, type: 'line', source: id, filter: ['==', ['get', '_layer'], 'outline'], paint: { 'line-color': ['get', '_color'], 'line-width': 1.5, 'line-dasharray': [2, 1.5], 'line-opacity': 0.8 } });
+  map.addLayer({
+    id: `${id}-pts`, type: 'circle', source: id, filter: ['==', ['get', '_layer'], 'point'],
+    paint: {
+      'circle-color': ['get', '_color'],
+      'circle-radius': ['case', ['==', ['get', 'kind'], 'villages'], 3, 5],
+      'circle-stroke-color': '#fff', 'circle-stroke-width': 1.5,
+    },
+  });
+  map.addLayer({
+    id: `${id}-labels`, type: 'symbol', source: id, filter: ['==', ['get', '_layer'], 'point'],
+    layout: {
+      // Boundary points by their table number (as printed on most gazette
+      // maps), with the name once zoomed in; villages by name only.
+      // (MapLibre allows one zoom step per expression, so the kinds branch
+      // inside it.)
+      'text-field': ['step', ['zoom'],
+        ['case', ['==', ['get', 'kind'], 'villages'], '', ['to-string', ['get', 'seq']]],
+        11, ['case', ['==', ['get', 'kind'], 'villages'], ['coalesce', ['get', 'name'], ''], ['to-string', ['get', 'seq']]],
+        12, ['case', ['==', ['get', 'kind'], 'villages'], ['coalesce', ['get', 'name'], ''],
+          ['concat', ['to-string', ['get', 'seq']], ' ', ['coalesce', ['get', 'name'], '']]]],
+      'text-font': PA_LABEL_FONT,
+      'text-size': 11,
+      'text-anchor': 'left',
+      'text-offset': [0.6, 0],
+      'text-optional': true,
+    },
+    paint: { 'text-color': ['get', '_color'], 'text-halo-color': '#fff', 'text-halo-width': 1.4 },
+  });
+}
+
+const coordMapPoints = (data) => data.tables.flatMap((t) => t.points).filter((f) => !f.properties._outlier);
+// Each boundary table's outline, through its points in listed order minus
+// the misread ones.
+function coordOutlines(data) {
+  return data.tables.filter((t) => t.kind === 'boundary').map((t) => {
+    const coords = t.points.filter((f) => !f.properties._outlier).map((f) => f.geometry.coordinates);
+    return coords.length > 1 && { type: 'Feature', geometry: { type: 'LineString', coordinates: coords }, properties: { _color: t.color, _layer: 'outline' } };
+  }).filter(Boolean);
+}
+
+function coordBounds(features) {
+  const b = new maplibregl.LngLatBounds();
+  const add = (c) => (typeof c[0] === 'number' ? b.extend(c) : c.forEach(add));
+  features.forEach((f) => add(f.geometry.coordinates));
+  return b;
+}
+
+function setCoordLayersOn(panel, on) {
+  const archiveId = panel.dataset.archiveId;
+  return loadCoordData(archiveId, panel.dataset.traced === 'true').then((data) => {
+    showCoordLayers(archiveId, on, data);
+    panel.querySelector('[data-coord-action="map"]')?.setAttribute('aria-pressed', String(on));
+    return data;
+  });
+}
+
+function downloadCoordGeojson(archiveId, data) {
+  const strip = (f, extractedFrom) => {
+    const { _color, _layer, _outlier, ...props } = f.properties;
+    return { type: 'Feature', geometry: f.geometry, properties: { gazette: archiveId, ...props, extracted_from: extractedFrom, ...(_outlier ? { likely_misread: true } : {}) } };
+  };
+  const fc = {
+    type: 'FeatureCollection',
+    features: [
+      ...data.tables.flatMap((t) => t.points).map((f) => strip(f, 'gazette coordinate table')),
+      ...data.outlines.map((f) => strip(f, 'gazette coordinate table')),
+      ...data.zones.map((f) => strip(f, 'traced from gazette map')),
+    ],
+  };
+  const url = URL.createObjectURL(new Blob([JSON.stringify(fc, null, 1)], { type: 'application/geo+json' }));
+  const a = Object.assign(document.createElement('a'), { href: url, download: `${archiveId}-coordinates.geojson` });
+  document.body.append(a);
+  a.click();
+  a.remove();
+  setTimeout(() => URL.revokeObjectURL(url), 1000);
+}
+
+// Delegated: the row's "Coordinates" button, the panel's buttons, and a
+// click on a table row (flies there, drawing the layers if they're off).
+function handleCoordTableClick(e) {
+  const trigger = e.target.closest('.coord-table-trigger');
+  if (trigger) {
+    const panel = trigger.closest('.pa-tl-card').querySelector('.coord-table');
+    const open = trigger.getAttribute('aria-expanded') !== 'true';
+    trigger.setAttribute('aria-expanded', String(open));
+    panel.hidden = !open;
+    if (open && !panel.dataset.attached) {
+      panel.dataset.attached = 'true';
+      panel.innerHTML = '<div class="gazette-maps-status">Loading coordinates…</div>';
+      loadCoordData(panel.dataset.archiveId, panel.dataset.traced === 'true').then((data) => {
+        renderCoordTable(panel, data);
+        requestAnimationFrame(() => panel.scrollIntoView({ block: 'nearest', behavior: 'smooth' }));
+      });
+    } else if (open) {
+      requestAnimationFrame(() => panel.scrollIntoView({ block: 'nearest', behavior: 'smooth' }));
+    }
+    return true;
+  }
+  const panel = e.target.closest('.coord-table');
+  if (!panel) return false;
+  const archiveId = panel.dataset.archiveId;
+  const btn = e.target.closest('[data-coord-action]');
+  if (btn?.dataset.coordAction === 'map') {
+    const on = !coordLayersShown.has(archiveId);
+    setCoordLayersOn(panel, on).then((data) => {
+      if (!on || !map) return;
+      const all = [...data.zones, ...coordMapPoints(data)];
+      if (all.length) map.fitBounds(coordBounds(all), { padding: mapOverlayPadding(24), maxZoom: 13, duration: 600 });
+    });
+    return true;
+  }
+  if (btn?.dataset.coordAction === 'download') {
+    loadCoordData(archiveId, panel.dataset.traced === 'true').then((data) => downloadCoordGeojson(archiveId, data));
+    return true;
+  }
+  const row = e.target.closest('tr[data-lon], tr[data-zone]');
+  if (row) {
+    setCoordLayersOn(panel, true).then((data) => {
+      if (!map) return;
+      if (row.dataset.lon) {
+        map.flyTo({ center: [Number(row.dataset.lon), Number(row.dataset.lat)], zoom: Math.max(map.getZoom(), 13), essential: true });
+      } else {
+        const zone = data.zones.filter((f) => f.properties.zone === row.dataset.zone);
+        if (zone.length) map.fitBounds(coordBounds(zone), { padding: mapOverlayPadding(24), maxZoom: 13, duration: 600 });
+      }
+    });
+    return true;
+  }
   return true;
 }
 
@@ -3207,7 +3487,7 @@ function firstGeoreferencedPage(state) {
 // Swaps a timeline item's "Georeference" thumbnail for the gazette's first
 // georeferenced page, linking to the warped map in the Allmaps viewer (or the
 // editor, below three control points), once Allmaps reports one.
-function attachTimelineThumb(itemEl, bbox) {
+function attachTimelineThumb(itemEl, view) {
   const candidates = (itemEl.dataset.mapPages || '').split(',').filter(Boolean).map(Number);
   const state = gazetteState(itemEl.dataset.archiveId, candidates);
   const update = () => {
@@ -3223,7 +3503,7 @@ function attachTimelineThumb(itemEl, bbox) {
       : `Page ${page.page} has ${georef.gcps} control point${georef.gcps === 1 ? '' : 's'} (3 needed to warp): continue in the Allmaps editor`;
     const link = document.createElement('a');
     link.className = 'pa-tl-thumb is-georeferenced';
-    link.href = warpable ? allmapsViewerUrl(georef) : allmapsEditorUrl(state.manifestUrl, page.serviceId, bbox);
+    link.href = warpable ? allmapsViewerUrl(georef) : allmapsEditorUrl(state.manifestUrl, page.serviceId, view);
     link.target = '_blank';
     link.rel = 'noopener';
     link.title = title;
@@ -3296,16 +3576,20 @@ async function allmapsId(uri) {
   return [...new Uint8Array(digest)].map((b) => b.toString(16).padStart(2, '0')).join('').slice(0, 16);
 }
 
-// Where the Allmaps editor opens its georeference map: the PA's Wikidata
-// "located in" districts, else its state (entry.allmapsBbox, from
-// build-full-join.js), else all of India.
+// Where the Allmaps editor opens its georeference map: the PA's OSM
+// boundary (padded), else its Wikidata "located in" districts, else its
+// state (entry.allmapsBbox, from build-full-join.js), else all of India.
+// When the PA has a reference overlay (build-georef-overlays.py: its OSM
+// boundary and the gazette's coordinate-table points, as a georeferenced
+// image), the editor shows it as a background georeference annotation.
 const INDIA_BBOX = [68.1, 6.5, 97.4, 37.1];
 const allmapsBboxParam = (bbox) => (bbox || INDIA_BBOX).join(',');
 
-function allmapsEditorUrl(manifestUrl, imageServiceId, bbox) {
+function allmapsEditorUrl(manifestUrl, imageServiceId, view) {
   const params = new URLSearchParams({
-    url: manifestUrl, 'bg-preset': 'osm', 'bg-url': ALLMAPS_BG_URL, image: imageServiceId, bbox: allmapsBboxParam(bbox),
+    url: manifestUrl, 'bg-preset': 'osm', 'bg-url': ALLMAPS_BG_URL, image: imageServiceId, bbox: allmapsBboxParam(view?.bbox),
   });
+  if (view?.overlay) params.set('bg-annotation-url', new URL(view.overlay, document.baseURI).href);
   return `https://editor.allmaps.org/georeference?${params}`;
 }
 
@@ -3508,9 +3792,9 @@ const OSM_ICON = '<svg viewBox="0 0 24 24" width="12" height="12" aria-hidden="t
 const isWarpable = (georef) => georef.gcps >= 3;
 const allmapsViewerUrl = (georef) => `https://viewer.allmaps.org/?url=${encodeURIComponent(georef.annotationUrl)}`;
 
-function gazetteThumbHtml(state, p, ignored, bbox) {
+function gazetteThumbHtml(state, p, ignored, view) {
   const georef = state.allmaps.get(p.serviceId);
-  const editorUrl = allmapsEditorUrl(state.manifestUrl, p.serviceId, bbox);
+  const editorUrl = allmapsEditorUrl(state.manifestUrl, p.serviceId, view);
   let badge;
   if (georef) {
     const gcpLabel = `${georef.gcps} control point${georef.gcps === 1 ? '' : 's'}`;
@@ -3542,7 +3826,10 @@ function gazetteThumbHtml(state, p, ignored, bbox) {
 
 function renderGazetteMaps(el, state) {
   const showAll = el.dataset.showAll === 'true';
-  const bbox = el.dataset.bbox ? el.dataset.bbox.split(',').map(Number) : null;
+  const view = {
+    bbox: el.dataset.bbox ? el.dataset.bbox.split(',').map(Number) : null,
+    overlay: el.dataset.overlay || null,
+  };
   const maps = state.pages.filter((p) => isMapPage(state, p));
   const failed = state.pages.filter((p) => p.failed && !isMapPage(state, p));
   const plural = (n, word) => `${n} ${word}${n === 1 ? '' : 's'}`;
@@ -3570,7 +3857,7 @@ function renderGazetteMaps(el, state) {
   const scrollLeft = el.querySelector('.gazette-thumbs')?.scrollLeft || 0;
   el.innerHTML = `
     <div class="gazette-maps-status"><span>${status}</span><span class="gazette-maps-actions">${buttons.join('')}</span></div>
-    ${shown.length ? `<div class="gazette-thumbs">${shown.map((p) => gazetteThumbHtml(state, p, showAll && !isMapPage(state, p), bbox)).join('')}</div>` : ''}`;
+    ${shown.length ? `<div class="gazette-thumbs">${shown.map((p) => gazetteThumbHtml(state, p, showAll && !isMapPage(state, p), view)).join('')}</div>` : ''}`;
   const strip = el.querySelector('.gazette-thumbs');
   if (strip) strip.scrollLeft = scrollLeft;
 }
@@ -4116,8 +4403,8 @@ function openPaDetail(paKey, { syncMap = true } = {}) {
     detailPaneBodyEl.scrollTop = 0;
     setDetailPaneHeading(entry);
     initBanner(contentEl, entry);
-    const bbox = entry.allmapsBbox || null;
-    contentEl.querySelectorAll('.pa-tl-item[data-archive-id]').forEach((item) => attachTimelineThumb(item, bbox));
+    const view = { bbox: entry.allmapsBbox || null, overlay: entry.georefOverlay || null };
+    contentEl.querySelectorAll('.pa-tl-item[data-archive-id]').forEach((item) => attachTimelineThumb(item, view));
     loadExcerpt(entry, contentEl);
     loadCommonsBanner(entry, contentEl);
   }
@@ -4299,7 +4586,8 @@ function dashboardStateName(lgdName) {
 }
 
 // Map click: on a state, switch the selection (and the expanded accordion
-// row) to it; outside every state, collapse and clear the selected state.
+// row) to it and zoom to it -- re-zooming if it's already selected; outside
+// every state, collapse and clear the selected state.
 function onMapStateClick(e) {
   const hit = map.queryRenderedFeatures(e.point, { layers: ['state-boundaries-mask'] })[0];
   const lgdName = hit ? String(hit.properties.STNAME || '').toUpperCase() : '';
@@ -4313,11 +4601,16 @@ function onMapStateClick(e) {
   // States with no PAs in the dataset have no accordion row, but can still
   // be selected on the map under their LGD name.
   const stateName = dashboardStateName(lgdName) || lgdName;
-  if (stateName === selectedState) return;
-  if (selectedState) openStates.delete(selectedState);
-  openStates.add(stateName);
-  selectState(stateName);
-  renderAccordion();
+  if (stateName === selectedState) {
+    // Already selected: just zoom back to it (the user may have panned away).
+    fitMapToState(stateName, { force: true });
+    stateHoverMovedMap = false;
+  } else {
+    if (selectedState) openStates.delete(selectedState);
+    openStates.add(stateName);
+    selectState(stateName);
+    renderAccordion();
+  }
   const header = [...accordionEl.querySelectorAll('.state-row-header')].find((el) => el.dataset.state === stateName);
   if (header) header.scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
@@ -4505,7 +4798,7 @@ function initAccordionEvents() {
       toggleCard(row.closest('.pa-card'));
     }
   });
-  detailPaneEl.addEventListener('click', (e) => { if (!handleLinkHelpClick(e) && !handleTimelineToggleClick(e)) handleGazetteMapsClick(e); });
+  detailPaneEl.addEventListener('click', (e) => { if (!handleLinkHelpClick(e) && !handleTimelineToggleClick(e) && !handleCoordTableClick(e)) handleGazetteMapsClick(e); });
   document.getElementById('pa-detail-pane-close').addEventListener('click', closePaDetail);
   // mouseenter/mouseleave don't bubble, so delegation uses mouseover/mouseout
   // with a relatedTarget check to only fire once per card boundary crossing.

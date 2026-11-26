@@ -69,6 +69,15 @@ jobs:
       - name: Build OSM protected areas GeoJSON and MBTiles
         run: npm run build:osm-protected-areas
 
+      # The full OSM GeoJSON stays out of the repo (.cache/osm); the Pages
+      # workflow restores it to draw PA outlines on the georeferencing
+      # reference overlays (scripts/build-georef-overlays.py).
+      - name: Save OSM protected areas GeoJSON for the Pages build
+        uses: actions/cache/save@v4
+        with:
+          path: .cache/osm/india-protected-areas-all.geojson
+          key: osm-protected-areas-${{ github.run_id }}
+
       - name: Build protected areas GeoJSON
         run: npm run build:geojson
 

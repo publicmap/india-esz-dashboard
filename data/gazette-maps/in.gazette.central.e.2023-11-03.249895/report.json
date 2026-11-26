@@ -1,0 +1,50 @@
+{
+  "gazette": "in.gazette.central.e.2023-11-03.249895",
+  "source": "https://egazette.servantsofknowledge.in/details/in.gazette.central.e.2023-11-03.249895/",
+  "tables": [
+    {
+      "annexure": "IV",
+      "title": "GEO- COORDINATES OF PROMINENT LOCATIONS OF RALAMANDAL WILDLIFE SANCTUARY",
+      "kind": "boundary",
+      "points": 4
+    },
+    {
+      "annexure": "IV",
+      "title": "GEO-COORDINATES OF PROMINENT LOCATIONS OF ECO-SENSITIVE ZONE",
+      "kind": "boundary",
+      "points": 4
+    }
+  ],
+  "maps": [
+    {
+      "name": "p12-i1",
+      "page": 12,
+      "georef": {}
+    },
+    {
+      "name": "p13-i1",
+      "page": 13,
+      "georef": {}
+    },
+    {
+      "name": "p23-i1",
+      "page": 23,
+      "georef": {}
+    },
+    {
+      "name": "p24-i1",
+      "page": 24,
+      "georef": {}
+    }
+  ],
+  "stated_areas": [
+    {
+      "context": "It is located within compartment number R-260, having a total area of 2.34550 square kilometres",
+      "km2": 2.3455
+    },
+    {
+      "context": "\u2013 (1) The Eco-sensitive Zone shall cover an area of 0.810 square kilometres",
+      "km2": 0.81
+    }
+  ]
+}

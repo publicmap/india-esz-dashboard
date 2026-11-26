@@ -1,0 +1,77 @@
+{
+  "gazette": "in.gazette.central.e.2022-05-09.235661",
+  "source": "https://egazette.servantsofknowledge.in/details/in.gazette.central.e.2022-05-09.235661/",
+  "tables": [
+    {
+      "annexure": "I",
+      "title": "PA (meters)",
+      "kind": "boundary",
+      "points": 18
+    }
+  ],
+  "maps": [
+    {
+      "name": "p12-i1",
+      "page": 12,
+      "georef": {}
+    },
+    {
+      "name": "p13-i1",
+      "page": 13,
+      "georef": {
+        "score": 1.0,
+        "hit_fraction": 1.0,
+        "chance": 0.009222350806509223,
+        "color": "red",
+        "minutes": 2.5,
+        "lon0": 74.25000000000007,
+        "lat0": 34.125000000000036,
+        "median_px_error": 1.4388931457799186,
+        "color_scores": {
+          "red": 1.0,
+          "yellow": 0.22,
+          "green": 0.104,
+          "blue": 0.05
+        }
+      }
+    },
+    {
+      "name": "p14-i1",
+      "page": 14,
+      "georef": {}
+    },
+    {
+      "name": "p26-i1",
+      "page": 26,
+      "georef": {}
+    },
+    {
+      "name": "p28-i1",
+      "page": 28,
+      "georef": {}
+    }
+  ],
+  "stated_areas": [
+    {
+      "context": "AND WHEREAS, the Gulmarg Wildlife Sanctuary is spread over an area of 180 square kilometers",
+      "km2": 180.0
+    },
+    {
+      "context": "– (1) The Eco-sensitive Zone shall be of 62.2 square kilometres",
+      "km2": 62.2
+    }
+  ],
+  "digitized_map": "p13-i1",
+  "zone_areas_km2": {
+    "protected_area": 3.33
+  },
+  "table_fit_m": {
+    "Annexure I": {
+      "points": 18,
+      "median": 10535,
+      "p90": 14343,
+      "within_250m": 0.0
+    }
+  },
+  "warning": "Listed boundary points are far from the traced lines; the trace is probably wrong."
+}

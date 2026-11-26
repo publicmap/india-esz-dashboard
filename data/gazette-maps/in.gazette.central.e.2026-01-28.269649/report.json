@@ -1,0 +1,66 @@
+{
+  "gazette": "in.gazette.central.e.2026-01-28.269649",
+  "source": "https://egazette.servantsofknowledge.in/details/in.gazette.central.e.2026-01-28.269649/",
+  "tables": [
+    {
+      "annexure": "I",
+      "title": "Table B: DETAILED BOUNDARY DESCRIPTION OF THE ECO SENSITIVE ZONE OF",
+      "kind": "boundary",
+      "points": 146
+    },
+    {
+      "annexure": "III",
+      "title": "TABLE A: GEO COORDINATES OF THE IMPORTANT POINTS ON THE BOUNDARY",
+      "kind": "boundary",
+      "points": 35
+    },
+    {
+      "annexure": "III",
+      "title": "TABLE-B : GEO COORDINATES OF THE IMPORTANT POINTS ON THE ESZ",
+      "kind": "boundary",
+      "points": 130
+    },
+    {
+      "annexure": "IV",
+      "title": "LIST OF SETTLEMENTS UNDER ESZ OF JALDAPARA NATIONAL PARK",
+      "kind": "villages",
+      "points": 103
+    }
+  ],
+  "maps": [
+    {
+      "name": "p28-i1",
+      "page": 28,
+      "georef": {}
+    },
+    {
+      "name": "p29-i1",
+      "page": 29,
+      "georef": {}
+    },
+    {
+      "name": "p30-i1",
+      "page": 30,
+      "georef": {}
+    },
+    {
+      "name": "p66-i1",
+      "page": 66,
+      "georef": {}
+    }
+  ],
+  "stated_areas": [
+    {
+      "context": "According to the notification, the total land area of Jaldapara National Park is 234.51 square kilometre",
+      "km2": 234.51
+    },
+    {
+      "context": "However, the actual area notified as the National Park is 216.34 square kilometre",
+      "km2": 216.34
+    },
+    {
+      "context": "81 kilometre around the boundary of Jaldapara National Park and the area of the Eco-sensitive Zone is approximately 518.29 square kilometre",
+      "km2": 518.29
+    }
+  ]
+}
